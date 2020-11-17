@@ -32,7 +32,7 @@
 <meta property="og:description" content="FreeBSD 計劃的目標在於提供可作任意用途的軟體而不附帶任何限制條文。 我們之中許多人對程式碼 (以及計畫本身) 都有非常大的投入， 因此，當然不介意偶爾有一些資金上的補償，但我們並沒打算堅決地要求得到這類資助。 我們認為我們的首要“使命”是為任何人提供程式碼， 不管他們打算用這些程式碼做什麼， 因為這樣程式碼將能夠被更廣泛地使用，從而發揮其價值。 我認為這是自由軟體最基本的，同時也是我們所倡">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-11-17T11:55:35.000Z">
-<meta property="article:modified_time" content="2020-11-17T12:07:34.485Z">
+<meta property="article:modified_time" content="2020-11-17T12:14:33.707Z">
 <meta property="article:author" content="vane">
 <meta property="article:tag" content="Unix">
 <meta name="twitter:card" content="summary">
@@ -312,7 +312,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2020-11-17 19:55:35 / Modified: 20:07:34" itemprop="dateCreated datePublished" datetime="2020-11-17T19:55:35+08:00">2020-11-17</time>
+      <time title="Created: 2020-11-17 19:55:35 / Modified: 20:14:33" itemprop="dateCreated datePublished" datetime="2020-11-17T19:55:35+08:00">2020-11-17</time>
     </span>
 
   
@@ -337,7 +337,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Symbols count in article: </span>
-      <span>7.6k</span>
+      <span>7.4k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -359,7 +359,7 @@
 <p>我們程式碼樹中，有若干是以 GNU 通用公共授權條款 (GPL) 或者 GNU 較寬鬆通用公共授權條款 (LGPL) 發佈的那些程式碼帶有少許的附加限制，還好只是強制性的要求開放程式碼而不是別的。 由於使用 GPL 的軟體在商業用途上會增加若干複雜性，因此，如果可以選擇的話， 我們會比較喜歡使用限制相對更寬鬆的 BSD 版權來發佈軟體。 -<em>Jordan Hubbard</em></p>
 <a id="more"></a>
 
-<p><a target="_blank" rel="noopener" href="https://www.freebsd.org/doc/en_US/books/handbook/"><strong>FreeBSD Handbook</strong></a></p>
+<p><a target="_blank" rel="noopener" href="https://www.freebsd.org/doc/en/books/handbook/"><strong>FreeBSD Handbook</strong></a></p>
 <h5 id="Install-Desktop-Enviroment"><a href="#Install-Desktop-Enviroment" class="headerlink" title="Install Desktop Enviroment"></a>Install Desktop Enviroment</h5><p>GhostBSD 是一个很好的 FreeBSD 桌面发行版，注意使用 Official 版本。不能直接使用 FreeBSD 源升级。</p>
 <p>X 最初設計是以網路為中心，採用 “client-server” 架構。在此架構下 “X 伺服器” 在有鍵盤、螢幕、滑鼠的電腦上運作。該伺服器負責的工作包含管理顯示、處理來自鍵盤、滑鼠的輸入及來自其他設備)的輸入或輸出。</p>
 <p>每個 X 應用程式，如 XTerm、Firefox 都是 “客戶端”。</p>
@@ -370,14 +370,14 @@
 <h5 id="Screen-resolution-on-FreeBSD-on-VirtualBox"><a href="#Screen-resolution-on-FreeBSD-on-VirtualBox" class="headerlink" title="Screen resolution on FreeBSD on VirtualBox"></a>Screen resolution on FreeBSD on VirtualBox</h5><p>问题描述：在virtualbox虚拟机下，无法改变桌面分辨率为1366x768</p>
 <p>VBoxManage setextradata “FreeBSD” VBoxInternal2/EfiGraphicsResolution 1366x768</p>
 <h5 id="Disable-the-Forward-Back-buttons-on-my-mouse"><a href="#Disable-the-Forward-Back-buttons-on-my-mouse" class="headerlink" title="Disable the Forward/Back buttons on my mouse"></a>Disable the Forward/Back buttons on my mouse</h5><p>问题描述：浏览网页时，鼠标滑轮滚动浏览器就会前进后退。</p>
-<p>Salved：<a target="_blank" rel="noopener" href="https://unix.stackexchange.com/questions/20550/how-to-disable-the-forward-back-buttons-on-my-mouse">https://unix.stackexchange.com/questions/20550/how-to-disable-the-forward-back-buttons-on-my-mouse</a></p>
+<p><a target="_blank" rel="noopener" href="https://unix.stackexchange.com/questions/20550/how-to-disable-the-forward-back-buttons-on-my-mouse">Salved</a>：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># xev | grep -A2 ButtonPress</span></span><br><span class="line">[上下滑动鼠标滑轮，看看映射到那些button，一般是buttons 8 and 9]</span><br><span class="line"></span><br><span class="line">[<span class="keyword">then</span> <span class="built_in">disable</span> button 8 and 9（前提是有上面的问题，否则就不要禁）]</span><br><span class="line"><span class="comment"># vi ~/.Xmodmap</span></span><br><span class="line">pointer = 1 2 3 4 5 6 7 0 0 0 0 0</span><br><span class="line"></span><br><span class="line">[<span class="built_in">test</span> it with the <span class="built_in">command</span>,<span class="built_in">command</span> automatically when you <span class="built_in">log</span> <span class="keyword">in</span>; <span class="keyword">if</span> yours doesn<span class="string">&#x27;t, arrange for it to run when X starts.]</span></span><br><span class="line"><span class="string"># xmodmap ~/.Xmodmap</span></span><br></pre></td></tr></table></figure>
 
 <h5 id="Install-chinese-font"><a href="#Install-chinese-font" class="headerlink" title="Install chinese font"></a>Install chinese font</h5><p>CJK（中日韩统一表意文字）</p>
 <h5 id="单使用模式设为不安全"><a href="#单使用模式设为不安全" class="headerlink" title="单使用模式设为不安全"></a>单使用模式设为不安全</h5><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># vi /etc/ttys</span></span><br><span class="line">console none	unknown off insecure</span><br></pre></td></tr></table></figure>
 
 <h5 id="No-space-left-on-device"><a href="#No-space-left-on-device" class="headerlink" title="No space left on device"></a>No space left on device</h5><p>问题描述：使用 pkg update 时提示这个问题。原因是 /tmp is too small。</p>
-<p>Salved: <a target="_blank" rel="noopener" href="https://forums.freebsd.org/threads/no-space-left-on-device.61232/">https://forums.freebsd.org/threads/no-space-left-on-device.61232/</a></p>
+<p><a target="_blank" rel="noopener" href="https://forums.freebsd.org/threads/no-space-left-on-device.61232/">Salved</a>: </p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># vi /etc/fstab</span></span><br><span class="line">tmpfs	/tmp	tmpfs	rw,size=256000000	0	0</span><br><span class="line">[size 以Byte为单位]</span><br></pre></td></tr></table></figure>
 
 <h5 id="Binary-套件"><a href="#Binary-套件" class="headerlink" title="Binary 套件"></a>Binary 套件</h5><p><a target="_blank" rel="noopener" href="https://mirrors.ustc.edu.cn/help/freebsd.html">USTC Mirrors</a>：注意使用 Latest 源，有很多流行软件。</p>
