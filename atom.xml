@@ -6,7 +6,7 @@
   <link href="https://vanehsiung.github.io/atom.xml" rel="self"/>
   
   <link href="https://vanehsiung.github.io/"/>
-  <updated>2020-11-16T14:18:40.917Z</updated>
+  <updated>2020-11-17T01:25:14.228Z</updated>
   <id>https://vanehsiung.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Third Post</title>
+    <link href="https://vanehsiung.github.io/2020/11/17/Third-Post/"/>
+    <id>https://vanehsiung.github.io/2020/11/17/Third-Post/</id>
+    <published>2020-11-17T01:25:14.000Z</published>
+    <updated>2020-11-17T01:25:14.228Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Center Post</title>
+    <link href="https://vanehsiung.github.io/2020/11/17/Center-Post/"/>
+    <id>https://vanehsiung.github.io/2020/11/17/Center-Post/</id>
+    <published>2020-11-17T01:24:52.000Z</published>
+    <updated>2020-11-17T01:24:52.636Z</updated>
+    
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>
