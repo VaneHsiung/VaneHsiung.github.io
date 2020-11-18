@@ -3,51 +3,221 @@
   <entry>
     <title>FreeBSD</title>
     <url>/2020/11/17/FreeBSD/</url>
-    <content><![CDATA[<p>FreeBSD 計劃的目標在於提供可作任意用途的軟體而不附帶任何限制條文。 我們之中許多人對程式碼 (以及計畫本身) 都有非常大的投入， 因此，當然不介意偶爾有一些資金上的補償，但我們並沒打算堅決地要求得到這類資助。 我們認為我們的首要“使命”是為任何人提供程式碼， 不管他們打算用這些程式碼做什麼， 因為這樣程式碼將能夠被更廣泛地使用，從而發揮其價值。 我認為這是自由軟體最基本的，同時也是我們所倡導的一個目標。</p>
-<p>我們程式碼樹中，有若干是以 GNU 通用公共授權條款 (GPL) 或者 GNU 較寬鬆通用公共授權條款 (LGPL) 發佈的那些程式碼帶有少許的附加限制，還好只是強制性的要求開放程式碼而不是別的。 由於使用 GPL 的軟體在商業用途上會增加若干複雜性，因此，如果可以選擇的話， 我們會比較喜歡使用限制相對更寬鬆的 BSD 版權來發佈軟體。 -<em>Jordan Hubbard</em></p>
+    <content><![CDATA[<blockquote><p>FreeBSD 計劃的目標在於提供可作任意用途的軟體而不附帶任何限制條文。 我們之中許多人對程式碼 (以及計畫本身) 都有非常大的投入， 因此，當然不介意偶爾有一些資金上的補償，但我們並沒打算堅決地要求得到這類資助。 我們認為我們的首要“使命”是為任何人提供程式碼， 不管他們打算用這些程式碼做什麼， 因為這樣程式碼將能夠被更廣泛地使用，從而發揮其價值。 我認為這是自由軟體最基本的，同時也是我們所倡導的一個目標。</p>
+<p>我們程式碼樹中，有若干是以 GNU 通用公共授權條款 (GPL) 或者 GNU 較寬鬆通用公共授權條款 (LGPL) 發佈的那些程式碼帶有少許的附加限制，還好只是強制性的要求開放程式碼而不是別的。 由於使用 GPL 的軟體在商業用途上會增加若干複雜性，因此，如果可以選擇的話， 我們會比較喜歡使用限制相對更寬鬆的 BSD 版權來發佈軟體。</p>
+<footer><strong>Jordan Hubbard</strong><cite><span class="exturl" data-url="aHR0cHM6Ly93d3cuZnJlZWJzZC5vcmcvZG9jL3poX1RXL2Jvb2tzL2hhbmRib29rLw==">FreeBSD Handbook<i class="fa fa-external-link-alt"></i></span></cite></footer></blockquote>
+
 <a id="more"></a>
 
-<p><a href="https://www.freebsd.org/doc/en/books/handbook/"><strong>FreeBSD Handbook</strong></a></p>
-<h5 id="Install-Desktop-Enviroment"><a href="#Install-Desktop-Enviroment" class="headerlink" title="Install Desktop Enviroment"></a>Install Desktop Enviroment</h5><p>GhostBSD 是一个很好的 FreeBSD 桌面发行版，注意使用 Official 版本。不能直接使用 FreeBSD 源升级。</p>
+<h3 id="Install-Desktop-Enviroment"><a href="#Install-Desktop-Enviroment" class="headerlink" title="Install Desktop Enviroment"></a>Install Desktop Enviroment</h3><p>GhostBSD 是一个很好的 FreeBSD 桌面发行版，注意使用 Official 版本。不能直接使用 FreeBSD 源升级。</p>
 <p>X 最初設計是以網路為中心，採用 “client-server” 架構。在此架構下 “X 伺服器” 在有鍵盤、螢幕、滑鼠的電腦上運作。該伺服器負責的工作包含管理顯示、處理來自鍵盤、滑鼠的輸入及來自其他設備)的輸入或輸出。</p>
 <p>每個 X 應用程式，如 XTerm、Firefox 都是 “客戶端”。</p>
 <p>視窗管理程式規定螢幕上的視窗該長什麼樣、要如何移動滑鼠指標、 要用什麼鍵來在視窗切換、每個視窗的標題列長相，及是否該有關閉按鈕，等等。視窗管理程式負責滑鼠指標的聚焦政策。 聚焦政策指的是如何決定使用中及接收鍵盤輸入的視窗。通常較為人熟悉的聚焦政策叫做 “click-to-focus”，這個模式中，滑鼠點選到的視窗便會處於作用中 (Active) 的狀態。</p>
 <p>KDE 與 GNOME 會被稱作桌面環境是因為包含了完整常用桌面作業的應用程式。</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">[Install X Window System]</span><br><span class="line"><span class="comment"># pkg install xorg</span></span><br><span class="line"></span><br><span class="line">[顯示卡、顯示器以及輸入裝置會自動偵測，無須任何手動設置。除非自動設置失敗，否則請勿建立 xorg.conf 或執行 -configure 步驟。]</span><br><span class="line"></span><br><span class="line">[加入要執行 Xorg 的使用者到 video 或 wheel 群組，以便在可用時能開啟 3D 加速。]</span><br><span class="line"><span class="comment"># pw groupmod video -m jru || pw groupmod wheel -m jru</span></span><br><span class="line"></span><br><span class="line">[較舊版的 FreeBSD 使用的 sc(4) 並不知到 KMS 系統的存在，這會導致關閉 X 之後即始仍在運作但系統 Console 卻呈現空白。較新版的 vt(4) Console 可避免這個問題。加入此行到 /boot/loader.conf 來開啟 vt(4)]</span><br><span class="line">kern.vty=vt</span><br><span class="line"></span><br><span class="line">[在 FreeBSD 較建議使用 /usr/<span class="built_in">local</span>/etc/X11/ 來存放設定檔，每个项目都需要设定。多档完整路徑通常為 /usr/<span class="built_in">local</span>/etc/X11/xorg.conf.d/。单档路径为/usr/<span class="built_in">local</span>/etc/X11/xorg.conf]</span><br><span class="line"></span><br><span class="line">[Install Desktop Environment]</span><br><span class="line"><span class="comment"># pkg install gnome3 [gnome3-lite]</span></span><br><span class="line"><span class="comment"># pkg install x11/kde5</span></span><br><span class="line"><span class="comment"># pkg install xfce</span></span><br><span class="line"><span class="comment"># pkg install mate</span></span><br><span class="line"></span><br><span class="line">[Install/Enable Display Manager]</span><br><span class="line"><span class="comment"># pkg install slim [xfce,mate]</span></span><br><span class="line"><span class="comment"># pkg install x11/sddm [kde]</span></span><br><span class="line"></span><br><span class="line">[Setting]</span><br><span class="line"><span class="comment"># vi /etc/fstab [gnome, kde]</span></span><br><span class="line">proc           /proc       procfs  rw  0   0</span><br><span class="line"><span class="comment"># vi /etc/rc.conf</span></span><br><span class="line">moused_enalbe=<span class="string">&quot;YES&quot;</span></span><br><span class="line">dbus_enable=<span class="string">&quot;YES&quot;</span> [gnome, kde, xfce]</span><br><span class="line">hald_enable=<span class="string">&quot;YES&quot;</span> [gnome, kde, mate]</span><br><span class="line">gdm_enalbe=<span class="string">&quot;YES&quot;</span> [gnome启动]</span><br><span class="line">sddm_enable=<span class="string">&quot;YES&quot;</span> [kde启动]</span><br><span class="line">slim_enable=<span class="string">&quot;YES&quot;</span> [xfce,mate]</span><br><span class="line">gnome_enable=<span class="string">&quot;YES&quot;</span> [gnome服务]</span><br><span class="line"></span><br><span class="line">[slim Usage:failed to execute login <span class="built_in">command</span>]</span><br><span class="line"><span class="comment"># vi ~/.xinitrc</span></span><br><span class="line"><span class="built_in">exec</span> mate-session [mate]</span><br><span class="line"><span class="built_in">exec</span> xfce4-session [xfce]</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>Install X Window System</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo pkg install xorg</span><br></pre></td></tr></table></figure>
 
-<h5 id="Screen-resolution-on-FreeBSD-on-VirtualBox"><a href="#Screen-resolution-on-FreeBSD-on-VirtualBox" class="headerlink" title="Screen resolution on FreeBSD on VirtualBox"></a>Screen resolution on FreeBSD on VirtualBox</h5><p>问题描述：在virtualbox虚拟机下，无法改变桌面分辨率为1366x768</p>
-<p>VBoxManage setextradata “FreeBSD” VBoxInternal2/EfiGraphicsResolution 1366x768</p>
-<h5 id="Disable-the-Forward-Back-buttons-on-my-mouse"><a href="#Disable-the-Forward-Back-buttons-on-my-mouse" class="headerlink" title="Disable the Forward/Back buttons on my mouse"></a>Disable the Forward/Back buttons on my mouse</h5><p>问题描述：浏览网页时，鼠标滑轮滚动浏览器就会前进后退。</p>
-<p><span class="exturl" data-url="aHR0cHM6Ly91bml4LnN0YWNrZXhjaGFuZ2UuY29tL3F1ZXN0aW9ucy8yMDU1MC9ob3ctdG8tZGlzYWJsZS10aGUtZm9yd2FyZC1iYWNrLWJ1dHRvbnMtb24tbXktbW91c2U=">Salved<i class="fa fa-external-link-alt"></i></span>：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># xev | grep -A2 ButtonPress</span></span><br><span class="line">[上下滑动鼠标滑轮，看看映射到那些button，一般是buttons 8 and 9]</span><br><span class="line"></span><br><span class="line">[<span class="keyword">then</span> <span class="built_in">disable</span> button 8 and 9（前提是有上面的问题，否则就不要禁）]</span><br><span class="line"><span class="comment"># vi ~/.Xmodmap</span></span><br><span class="line">pointer = 1 2 3 4 5 6 7 0 0 0 0 0</span><br><span class="line"></span><br><span class="line">[<span class="built_in">test</span> it with the <span class="built_in">command</span>,<span class="built_in">command</span> automatically when you <span class="built_in">log</span> <span class="keyword">in</span>; <span class="keyword">if</span> yours doesn<span class="string">&#x27;t, arrange for it to run when X starts.]</span></span><br><span class="line"><span class="string"># xmodmap ~/.Xmodmap</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>顯示卡、顯示器以及輸入裝置會自動偵測，無須任何手動設置。除非自動設置失敗，否則請勿建立 xorg.conf 或執行 -configure 步驟。</p>
+<ul>
+<li><p>加入要執行 Xorg 的使用者到 video 或 wheel 群組，以便在可用時能開啟 3D 加速。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo pw groupmod video -m jru || pw groupmod wheel -m jru</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>較舊版的 FreeBSD 使用的 sc(4) 並不知到 KMS 系統的存在，這會導致關閉 X 之後即始仍在運作但系統 Console 卻呈現空白。較新版的 vt(4) Console 可避免這個問題。加入此行到 /boot/loader.conf 來開啟 vt(4)</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">kern.vty&#x3D;vt</span><br></pre></td></tr></table></figure>
 
-<h5 id="Install-chinese-font"><a href="#Install-chinese-font" class="headerlink" title="Install chinese font"></a>Install chinese font</h5><p>CJK（中日韩统一表意文字）</p>
-<h5 id="单使用模式设为不安全"><a href="#单使用模式设为不安全" class="headerlink" title="单使用模式设为不安全"></a>单使用模式设为不安全</h5><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># vi /etc/ttys</span></span><br><span class="line">console none	unknown off insecure</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>在 FreeBSD 較建議使用 /usr/local/etc/X11/ 來存放設定檔，每个项目都需要设定。多档完整路徑通常為 /usr/local/etc/X11/xorg.conf.d/。单档路径为/usr/local/etc/X11/xorg.conf</p>
+<ul>
+<li><p>Install Desktop Environment</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo pkg install		# gnome3 gnome3-lite</span><br><span class="line">$ sudo pkg install		# x11&#x2F;kde5</span><br><span class="line">$ sudo pkg install		# xfce</span><br><span class="line">$ sudo pkg install		# mate</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Install/Enable Display Manager</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo pkg install		# slim xfce,mate</span><br><span class="line">$ sudo pkg install		# x11&#x2F;sddm kde</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Setting</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo vi &#x2F;etc&#x2F;fstab gnome, kde</span><br><span class="line">proc           &#x2F;proc       procfs  rw  0   0</span><br><span class="line">$ sudo vi &#x2F;etc&#x2F;rc.conf</span><br><span class="line">moused_enalbe&#x3D;&quot;YES&quot;</span><br><span class="line">dbus_enable&#x3D;&quot;YES&quot;		# gnome, kde, xfce</span><br><span class="line">hald_enable&#x3D;&quot;YES&quot;		# gnome, kde, mate</span><br><span class="line">gdm_enalbe&#x3D;&quot;YES&quot;		# gnome启动</span><br><span class="line">sddm_enable&#x3D;&quot;YES&quot;		# kde启动</span><br><span class="line">slim_enable&#x3D;&quot;YES&quot;		# xfce,mate</span><br><span class="line">gnome_enable&#x3D;&quot;YES&quot;		# gnome服务</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>slim Usage:failed to execute login command</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo vi ~&#x2F;.xinitrc</span><br><span class="line">exec mate-session		# mate</span><br><span class="line">exec xfce4-session		# xfce</span><br></pre></td></tr></table></figure>
 
-<h5 id="No-space-left-on-device"><a href="#No-space-left-on-device" class="headerlink" title="No space left on device"></a>No space left on device</h5><p>问题描述：使用 pkg update 时提示这个问题。原因是 /tmp is too small。</p>
-<p><span class="exturl" data-url="aHR0cHM6Ly9mb3J1bXMuZnJlZWJzZC5vcmcvdGhyZWFkcy9uby1zcGFjZS1sZWZ0LW9uLWRldmljZS42MTIzMi8=">Salved<i class="fa fa-external-link-alt"></i></span>: </p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># vi /etc/fstab</span></span><br><span class="line">tmpfs	/tmp	tmpfs	rw,size=256000000	0	0</span><br><span class="line">[size 以Byte为单位]</span><br></pre></td></tr></table></figure>
-
-<h5 id="Binary-套件"><a href="#Binary-套件" class="headerlink" title="Binary 套件"></a>Binary 套件</h5><p><span class="exturl" data-url="aHR0cHM6Ly9taXJyb3JzLnVzdGMuZWR1LmNuL2hlbHAvZnJlZWJzZC5odG1s">USTC Mirrors<i class="fa fa-external-link-alt"></i></span>：注意使用 Latest 源，有很多流行软件。</p>
+</li>
+</ul>
+<h3 id="Binary-套件"><a href="#Binary-套件" class="headerlink" title="Binary 套件"></a>Binary 套件</h3><p><span class="exturl" data-url="aHR0cHM6Ly9taXJyb3JzLnVzdGMuZWR1LmNuL2hlbHAvZnJlZWJzZC5odG1s">USTC Mirrors<i class="fa fa-external-link-alt"></i></span>：注意使用 Latest 源，有很多流行软件。</p>
 <p>因編譯選項不同，有些 Port 會有多個版本可使用。</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">[使用 USTC MIRROR]</span><br><span class="line"><span class="comment"># vi /usr/local/etc/pkg/repos/FreeBSD.conf</span></span><br><span class="line">FreeBSD: &#123;</span><br><span class="line">  url: <span class="string">&quot;pkg+http://mirrors.ustc.edu.cn/freebsd-pkg/<span class="variable">$&#123;ABI&#125;</span>/latest&quot;</span>,</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># pkg update -f  [更新索引]</span></span><br><span class="line"></span><br><span class="line">[要啟動 (Bootstrap) 系統請執行]</span><br><span class="line"><span class="comment"># /usr/sbin/pkg</span></span><br><span class="line"></span><br><span class="line">[否則，要安裝 Port 套件，則須執行]</span><br><span class="line"><span class="comment"># cd /usr/ports/ports-mgmt/pkg</span></span><br><span class="line"><span class="comment"># make</span></span><br><span class="line"><span class="comment"># make install clean</span></span><br><span class="line"></span><br><span class="line">[當升級原使用舊版 pkg_* 工具的既有系統時，必須將資料庫轉換成新的格式]</span><br><span class="line"><span class="comment"># pkg2ng</span></span><br><span class="line"></span><br><span class="line">[Update the available remote repositories as listed <span class="keyword">in</span> pkg.conf]</span><br><span class="line"><span class="comment"># pkg update</span></span><br><span class="line"></span><br><span class="line">[Search <span class="keyword">for</span> a package]</span><br><span class="line"><span class="comment"># pkg search perl</span></span><br><span class="line"></span><br><span class="line">[在指定要安裝的套件時，最好使用 Port 來源來指定該應用程式，Port 來源是指應用程式在 Port 樹中的路徑]</span><br><span class="line"><span class="comment"># pkg search -o perl</span></span><br><span class="line"></span><br><span class="line">[Install a package:Installing must specify a unique origin or version otherwise it will try installing all matches]</span><br><span class="line"><span class="comment"># pkg install perl-5.14</span></span><br><span class="line"></span><br><span class="line">[列出已經安裝的 Port 中有那些已過時]</span><br><span class="line"><span class="comment"># pkg version -l &quot;&lt;&quot;</span></span><br><span class="line"></span><br><span class="line">[Upgrade from remote repository]</span><br><span class="line"><span class="comment"># pkg upgrade</span></span><br><span class="line"></span><br><span class="line">[Delete an installed package]</span><br><span class="line"><span class="comment"># pkg delete perl-5.14</span></span><br><span class="line"></span><br><span class="line">[Remove unneeded dependencies]</span><br><span class="line"><span class="comment"># pkg autoremove</span></span><br><span class="line">	</span><br><span class="line">[List installed packages]</span><br><span class="line"><span class="comment"># pkg info</span></span><br><span class="line"></span><br><span class="line">[Display information about installed packages]</span><br><span class="line"><span class="comment"># pkg info perl-5.14</span></span><br><span class="line"></span><br><span class="line">[Show the pkg-message of a package]</span><br><span class="line"><span class="comment"># pkg info -D perl-5.14</span></span><br><span class="line"></span><br><span class="line">[要查詢已安裝在系統上的軟體是否有任何已知的漏洞可執行]</span><br><span class="line"><span class="comment"># pkg audit -F</span></span><br><span class="line"></span><br><span class="line">[因為相依所安裝的套件稱作 自動 (Automatic) 套件，而非自動套件即套件被安裝的原因不是因為其他套件所相依，可以使用以下方式查詢]</span><br><span class="line"><span class="comment"># pkg prime-list</span></span><br><span class="line"></span><br><span class="line">[Clean the <span class="built_in">local</span> cache of fetched remote packages]</span><br><span class="line"><span class="comment"># pkg clean</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>使用 USTC MIRROR</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo vi &#x2F;usr&#x2F;local&#x2F;etc&#x2F;pkg&#x2F;repos&#x2F;FreeBSD.conf</span><br><span class="line">FreeBSD: &#123;</span><br><span class="line">  url: &quot;pkg+http:&#x2F;&#x2F;mirrors.ustc.edu.cn&#x2F;freebsd-pkg&#x2F;$&#123;ABI&#125;&#x2F;latest&quot;,</span><br><span class="line">&#125;</span><br><span class="line">$ sudo pkg update -f		# 更新索引</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>要啟動 (Bootstrap) 系統請執行</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo &#x2F;usr&#x2F;sbin&#x2F;pkg</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>當升級原使用舊版 pkg_* 工具的既有系統時，必須將資料庫轉換成新的格式</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo pkg2ng</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Update the available remote repositories as listed in pkg.conf</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo pkg update</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Search for a package</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo pkg search perl</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在指定要安裝的套件時，最好使用 Port 來源來指定該應用程式，Port 來源是指應用程式在 Port 樹中的路徑</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo pkg search -o perl</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Install a package:Installing must specify a unique origin or version otherwise it will try installing all matches</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo pkg install perl-5.14</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>列出已經安裝的 Port 中有那些已過時</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo pkg version -l &quot;&lt;&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Upgrade from remote repository</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo pkg upgrade</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Delete an installed package</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo pkg delete perl-5.14</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Remove unneeded dependencies</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo pkg autoremove</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>List installed packages</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo pkg info</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Display information about installed packages</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo pkg info perl-5.14</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Show the pkg-message of a package</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo pkg info -D perl-5.14</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>要查詢已安在系統上的軟體是否有任何已知的漏洞</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo pkg audit -F</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>因為相依所安裝的套件稱作自動 (Automatic) 套件，而非自動套件即套件被安裝的原因不是因為其他套件所相依</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo pkg prime-list</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Clean the local cache of fetched remote packages</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo pkg clean</span><br></pre></td></tr></table></figure>
 
-<h5 id="Port-套件"><a href="#Port-套件" class="headerlink" title="Port 套件"></a>Port 套件</h5><p>優點：</p>
+</li>
+</ul>
+<h3 id="Port-套件"><a href="#Port-套件" class="headerlink" title="Port 套件"></a>Port 套件</h3><p>優點：</p>
 <ul>
 <li>可更改編譯選項</li>
 <li>部份軟體的授權條款中禁止以 Binary 格式發佈。 這種軟體必須以原始碼發佈並由終端使用者編譯。</li>
 <li>原始碼可套用自訂的修補。</li>
 </ul>
 <p>Port 中並不含實際的原始碼，即為 <code>distfile</code>，在編譯 Port 解壓縮時會自動下載的原始碼到 <code>/usr/ports/distfiles</code>。</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">[安裝 Port 套件集（Portsnap 方法）]</span><br><span class="line">[下載壓縮後的 Port 套件集快照 (Snapshot) 到 /var/db/portsnap]</span><br><span class="line"><span class="comment"># portsnap fetch</span></span><br><span class="line"></span><br><span class="line">[第一次執行 Portsnap 時，要先解壓縮快照到 /usr/ports]</span><br><span class="line"><span class="comment"># portsnap extract</span></span><br><span class="line"></span><br><span class="line">[執行以下指令來更新 /usr/ports]</span><br><span class="line"><span class="comment"># portsnap fetch</span></span><br><span class="line"><span class="comment"># portsnap update</span></span><br><span class="line"></span><br><span class="line">[要找到 Port 所在的分類]</span><br><span class="line"><span class="comment"># whereis lsof</span></span><br><span class="line"></span><br><span class="line">[使用 Port 套件集內建的搜尋機制來找軟體]</span><br><span class="line"><span class="comment"># cd /usr/ports</span></span><br><span class="line"><span class="comment"># make search name=lsof</span></span><br><span class="line"><span class="comment"># make quicksearch name=lsof [若不要接受這麼多資訊]</span></span><br><span class="line"></span><br><span class="line">[若要進行更有深度的搜尋]</span><br><span class="line"><span class="comment"># make search key=string</span></span><br><span class="line"><span class="comment"># make quicksearch key=string</span></span><br><span class="line"></span><br><span class="line">[一次設定所有Port 編譯選項]</span><br><span class="line"><span class="comment"># make config-recursive</span></span><br><span class="line"></span><br><span class="line">[重新進入 Port 的編譯選項清單]</span><br><span class="line"><span class="comment"># make config [or]</span></span><br><span class="line"><span class="comment"># make showconfig [or]</span></span><br><span class="line"><span class="comment"># make rmconfig</span></span><br><span class="line"></span><br><span class="line">[編譯並安裝 Port]</span><br><span class="line"><span class="comment"># cd /usr/ports/sysutils/lsof</span></span><br><span class="line"><span class="comment"># make install</span></span><br><span class="line"></span><br><span class="line">[編譯在 /usr/ports Port 並安裝到 /usr/home/example/<span class="built_in">local</span>]</span><br><span class="line"><span class="comment"># make WRKDIRPREFIX=../ports PREFIX=../local install</span></span><br><span class="line"></span><br><span class="line">[安裝過程中會建立工作用的子目錄用來儲存編譯時暫存的檔案。可移除此目錄來節省磁碟空間並漸少往後升級新版 Port 時造成問題]</span><br><span class="line"><span class="comment"># make clean</span></span><br><span class="line"></span><br><span class="line">[移除已安裝的 Port]</span><br><span class="line"><span class="comment"># cd /usr/ports/sysutils/lsof</span></span><br><span class="line"><span class="comment"># make deinstall</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>安裝 Port 套件集：下載壓縮後的 Port 套件集快照 (Snapshot) 到 /var/db/portsnap</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo portsnap fetch</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>第一次執行 Portsnap 時，要先解壓縮快照到 /usr/ports</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo portsnap extract</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>執行以下指令來更新 /usr/ports</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo portsnap fetch</span><br><span class="line">$ sudo portsnap update</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>要找到 Port 所在的分類</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo whereis lsof</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用 Port 套件集內建的搜尋機制來找軟體</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo cd &#x2F;usr&#x2F;ports</span><br><span class="line">$ sudo make search name&#x3D;lsof</span><br><span class="line">$ sudo make quicksearch name&#x3D;lsof		# 若不要接受這麼多資訊</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>若要進行更有深度的搜尋</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo make search key&#x3D;string</span><br><span class="line">$ sudo make quicksearch key&#x3D;string</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>一次設定所有Port 編譯選項</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo make config-recursive</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重新進入 Port 的編譯選項清單</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo make config or</span><br><span class="line">$ sudo make showconfig or</span><br><span class="line">$ sudo make rmconfig</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>編譯並安裝 Port</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo cd &#x2F;usr&#x2F;ports&#x2F;sysutils&#x2F;lsof</span><br><span class="line">$ sudo make install</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>編譯在 /usr/ports Port 並安裝到 /usr/home/example/local</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo make WRKDIRPREFIX&#x3D;..&#x2F;ports PREFIX&#x3D;..&#x2F;local install</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安裝過程中會建立工作用的子目錄用來儲存編譯時暫存的檔案。可移除此目錄來節省磁碟空間並漸少往後升級新版 Port 時造成問題</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo make clean</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>移除已安裝的 Port</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo cd &#x2F;usr&#x2F;ports&#x2F;sysutils&#x2F;lsof</span><br><span class="line">$ sudo make deinstall</span><br></pre></td></tr></table></figure>
 
+</li>
+</ul>
 <p>安裝後的注意事項：</p>
 <ul>
 <li>大部份應用程式安裝會在 <code>/usr/local/etc</code> 安裝至少一個預設的設定檔。</li>
 <li>應用程式提供的文件會安裝到 <code>/usr/local/share/doc</code>。</li>
 <li>部份應用程式會以服務的方式執行，在啟動應用程式前前需要加入設定到 <code>/etc/rc.conf</code>。這些應用程式通常會安裝啟動 Script 到 <code>/usr/local/etc/rc.d</code>。</li>
 </ul>
-<h5 id="VirtualBox™-guest-additions"><a href="#VirtualBox™-guest-additions" class="headerlink" title="VirtualBox™ guest additions"></a>VirtualBox™ guest additions</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># cd &#x2F;usr&#x2F;ports&#x2F;emulators&#x2F;virtualbox-ose-additions &amp;&amp; make install clean</span><br><span class="line"># vi &#x2F;etc&#x2F;rc.conf</span><br><span class="line">vboxguest_enable&#x3D;&quot;YES&quot;</span><br><span class="line">vboxservice_enable&#x3D;&quot;YES&quot;</span><br><span class="line">[若有使用 ntpd或 ntpdate，便可關閉主機時間同步功能]</span><br><span class="line">vboxservice_flags&#x3D;&quot;--disable-timesync&quot; </span><br></pre></td></tr></table></figure>
+<h3 id="Linux®-Binary-相容性"><a href="#Linux®-Binary-相容性" class="headerlink" title="Linux® Binary 相容性"></a>Linux® Binary 相容性</h3><p>FreeBSD 提供 Linux® Binary 的相容性，允許使用者在 FreeBSD 系統上不需要修改就可以安裝和執行大部份的 Linux® Binary。</p>
+<p>最好不要直接安装 Linux 的软件，而要使用 FreeBSD 源中的 Linux 软件，一般以 “linux-package” 命名。</p>
+<ul>
+<li><p>載入 Linux® 核心模組</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo kldload linux</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>對 64-位元的相容性</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo kldload linux64</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>確認模組已載入</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo kldstat</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安裝基本的 Linux® 程式庫和 Binary</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo pkg install emulators&#x2F;linux_base-c7</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Add the following line</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo vi &#x2F;etc&#x2F;fstab</span><br><span class="line">linprocfs   &#x2F;compat&#x2F;linux&#x2F;proc	linprocfs	rw	0	0</span><br><span class="line">linsysfs    &#x2F;compat&#x2F;linux&#x2F;sys	linsysfs	rw	0	0</span><br><span class="line">tmpfs    &#x2F;compat&#x2F;linux&#x2F;dev&#x2F;shm	tmpfs	rw,mode&#x3D;1777	0	0</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>開機時開啟 Linux® 相容性</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo vi &#x2F;etc&#x2F;rc.conf</span><br><span class="line">linux_enable&#x3D;&quot;YES&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安裝 Linux® ELF Binary</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo brandelf -t Linux my-linux-elf-binary</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安裝以 Linux® RPM 為基礎的應用程式,需先安裝 archivers/rpm4 套件或 Port</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo pkg install rpm4</span><br><span class="line">$ sudo cd &#x2F;compat&#x2F;linux</span><br><span class="line">$ sudo rpm2cpio &lt; &#x2F;path&#x2F;to&#x2F;linux.archive.rpm | cpio -id</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h5 id="手動安裝其他程式庫"><a href="#手動安裝其他程式庫" class="headerlink" title="手動安裝其他程式庫"></a>手動安裝其他程式庫</h5><ul>
+<li><p>在 Linux® 系統，可使用 ldd 來找出應用程式需要哪個共用程式庫</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">% ldd linuxdoom</span><br><span class="line">libXt.so.3 (DLL Jump 3.1) &#x3D;&gt; &#x2F;usr&#x2F;X11&#x2F;lib&#x2F;libXt.so.3.1.0</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>複製 Linux® 系統輸出結果中最後一欄需要的的檔案到 FreeBSD 系統的 /compat/linux。 複製完後，建立符號連結 (Symbolic link) 至輸出結果第一欄的名稱</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;compat&#x2F;linux&#x2F;usr&#x2F;X11&#x2F;lib&#x2F;libXt.so.3.1.0</span><br><span class="line">&#x2F;compat&#x2F;linux&#x2F;usr&#x2F;X11&#x2F;lib&#x2F;libXt.so.3 -&gt; libXt.so.3.1.0</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="Others"><a href="#Others" class="headerlink" title="Others"></a>Others</h3><h5 id="Screen-resolution-on-FreeBSD-on-VirtualBox"><a href="#Screen-resolution-on-FreeBSD-on-VirtualBox" class="headerlink" title="Screen resolution on FreeBSD on VirtualBox"></a>Screen resolution on FreeBSD on VirtualBox</h5><p>问题描述：在virtualbox虚拟机下，无法改变桌面分辨率为1366x768</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ VBoxManage setextradata &quot;FreeBSD&quot; VBoxInternal2&#x2F;EfiGraphicsResolution 1366x768</span><br></pre></td></tr></table></figure>
+
+<h5 id="Disable-the-Forward-Back-buttons-on-my-mouse"><a href="#Disable-the-Forward-Back-buttons-on-my-mouse" class="headerlink" title="Disable the Forward/Back buttons on my mouse"></a>Disable the Forward/Back buttons on my mouse</h5><p>问题描述：浏览网页时，鼠标滑轮滚动浏览器就会前进后退。</p>
+<p><span class="exturl" data-url="aHR0cHM6Ly91bml4LnN0YWNrZXhjaGFuZ2UuY29tL3F1ZXN0aW9ucy8yMDU1MC9ob3ctdG8tZGlzYWJsZS10aGUtZm9yd2FyZC1iYWNrLWJ1dHRvbnMtb24tbXktbW91c2U=">Salved<i class="fa fa-external-link-alt"></i></span>：</p>
+<ul>
+<li><p>执行下面命令后，上下滑动鼠标滑轮，看看映射到那些button，一般是buttons 8 and 9</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo xev | grep -A2 ButtonPress</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>then disable button 8 and 9（前提是有上面的问题，否则就不要禁）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo vi ~&#x2F;.Xmodmap</span><br><span class="line">pointer &#x3D; 1 2 3 4 5 6 7 0 0 0 0 0</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>test it with the command,command automatically when you log in; if yours doesn’t, arrange for it to run when X starts.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo xmodmap ~&#x2F;.Xmodmap</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h5 id="Install-chinese-font"><a href="#Install-chinese-font" class="headerlink" title="Install chinese font"></a>Install chinese font</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo pkg search cjk		# CJK（中日韩统一表意文字）</span><br></pre></td></tr></table></figure>
+
+<h5 id="设单使用模式为不安全"><a href="#设单使用模式为不安全" class="headerlink" title="设单使用模式为不安全"></a>设单使用模式为不安全</h5><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ sudo vi /etc/ttys</span><br><span class="line">console none	unknown off insecure</span><br></pre></td></tr></table></figure>
+
+<h5 id="No-space-left-on-device"><a href="#No-space-left-on-device" class="headerlink" title="No space left on device"></a>No space left on device</h5><p>问题描述：使用 pkg update 时提示这个问题。原因是 /tmp is too small。</p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9mb3J1bXMuZnJlZWJzZC5vcmcvdGhyZWFkcy9uby1zcGFjZS1sZWZ0LW9uLWRldmljZS42MTIzMi8=">Salved<i class="fa fa-external-link-alt"></i></span>: </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo vi &#x2F;etc&#x2F;fstab</span><br><span class="line">tmpfs	&#x2F;tmp	tmpfs	rw,size&#x3D;256000000	0	0		# size 以Byte为单位</span><br></pre></td></tr></table></figure>
+
+<h5 id="VirtualBox™-guest-additions"><a href="#VirtualBox™-guest-additions" class="headerlink" title="VirtualBox™ guest additions"></a>VirtualBox™ guest additions</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo cd &#x2F;usr&#x2F;ports&#x2F;emulators&#x2F;virtualbox-ose-additions &amp;&amp; make install clean</span><br><span class="line">$ sudo vi &#x2F;etc&#x2F;rc.conf</span><br><span class="line">vboxguest_enable&#x3D;&quot;YES&quot;</span><br><span class="line">vboxservice_enable&#x3D;&quot;YES&quot;</span><br><span class="line">vboxservice_flags&#x3D;&quot;--disable-timesync&quot;		# 若有使用 ntpd或 ntpdate，便可關閉主機時間同步功能</span><br></pre></td></tr></table></figure>
 
 <h5 id="為何要編譯自訂的核心"><a href="#為何要編譯自訂的核心" class="headerlink" title="為何要編譯自訂的核心?"></a>為何要編譯自訂的核心?</h5><p> 自訂核心有許多項優點，如：</p>
 <ul>
@@ -60,17 +230,10 @@
 <p>在 man指令加上 -k 旗標可列出有包含指定裝置品牌或名稱的手冊頁面清單：<code>man -k Intel</code></p>
 <h5 id="設定檔"><a href="#設定檔" class="headerlink" title="設定檔"></a>設定檔</h5><p><code>/usr/src/sys</code> 下子目錄代表著支援的硬體架構 (Architecture)，每個支援的硬體架構中會有 <code>conf</code> 子目錄，裡面含有供該架構使用的 <code>GENERIC</code> 核心設定檔。</p>
 <p>說明在<code>GENERIC</code> 同目錄的 <code>NOTES</code> 檔案中。所有架構通用選項，參考 <code>/usr/src/sys/conf/NOTES</code>。</p>
-<h5 id="Linux®-Binary-相容性"><a href="#Linux®-Binary-相容性" class="headerlink" title="Linux® Binary 相容性"></a>Linux® Binary 相容性</h5><p>优先使用 FreeBSD 套件，如果FreeBSD套件没有，则使用FreeBSD套件中的代替品，否则就不要使用FreeBSD。</p>
-<p>最好不要直接安装 Linux 的软件，而要使用 FreeBSD 源中的 Linux 软件，一般以 “linux-package” 命名。</p>
-<p>FreeBSD 提供 Linux® Binary 的相容性，允許使用者在 FreeBSD 系統上不需要修改就可以安裝和執行大部份的 Linux® Binary。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[載入 Linux® 核心模組]</span><br><span class="line"># kldload linux</span><br><span class="line"></span><br><span class="line">[對 64-位元的相容性]</span><br><span class="line"># kldload linux64</span><br><span class="line"></span><br><span class="line">[確認模組已載入]</span><br><span class="line"># kldstat</span><br><span class="line"></span><br><span class="line">[安裝基本的 Linux® 程式庫和 Binary]</span><br><span class="line"># pkg install emulators&#x2F;linux_base-c7</span><br><span class="line"></span><br><span class="line">[Add the following line]</span><br><span class="line"># vi &#x2F;etc&#x2F;fstab</span><br><span class="line">linprocfs   &#x2F;compat&#x2F;linux&#x2F;proc	linprocfs	rw	0	0</span><br><span class="line">linsysfs    &#x2F;compat&#x2F;linux&#x2F;sys	linsysfs	rw	0	0</span><br><span class="line">tmpfs    &#x2F;compat&#x2F;linux&#x2F;dev&#x2F;shm	tmpfs	rw,mode&#x3D;1777	0	0</span><br><span class="line"></span><br><span class="line">[開機時開啟 Linux® 相容性]</span><br><span class="line"># vi &#x2F;etc&#x2F;rc.conf</span><br><span class="line">linux_enable&#x3D;&quot;YES&quot;</span><br><span class="line"></span><br><span class="line">[安裝 Linux® ELF Binary]</span><br><span class="line"># brandelf -t Linux my-linux-elf-binary</span><br><span class="line"></span><br><span class="line">[安裝以 Linux® RPM 為基礎的應用程式,需先安裝 archivers&#x2F;rpm4 套件或 Port]</span><br><span class="line"># pkg install rpm4</span><br><span class="line"># cd &#x2F;compat&#x2F;linux</span><br><span class="line"># rpm2cpio &lt; &#x2F;path&#x2F;to&#x2F;linux.archive.rpm | cpio -id</span><br></pre></td></tr></table></figure>
-
-<h5 id="手動安裝其他程式庫"><a href="#手動安裝其他程式庫" class="headerlink" title="手動安裝其他程式庫"></a>手動安裝其他程式庫</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[在 Linux® 系統，可使用 ldd 來找出應用程式需要哪個共用程式庫]</span><br><span class="line">% ldd linuxdoom</span><br><span class="line">libXt.so.3 (DLL Jump 3.1) &#x3D;&gt; &#x2F;usr&#x2F;X11&#x2F;lib&#x2F;libXt.so.3.1.0</span><br><span class="line"></span><br><span class="line">[複製 Linux® 系統輸出結果中最後一欄需要的的檔案到 FreeBSD 系統的 &#x2F;compat&#x2F;linux。 複製完後，建立符號連結 (Symbolic link) 至輸出結果第一欄的名稱]</span><br><span class="line">&#x2F;compat&#x2F;linux&#x2F;usr&#x2F;X11&#x2F;lib&#x2F;libXt.so.3.1.0</span><br><span class="line">&#x2F;compat&#x2F;linux&#x2F;usr&#x2F;X11&#x2F;lib&#x2F;libXt.so.3 -&gt; libXt.so.3.1.0</span><br></pre></td></tr></table></figure>
-
 <h5 id="Fish"><a href="#Fish" class="headerlink" title="Fish"></a>Fish</h5><p>Fish 是”the <strong>f</strong>riendly <strong>i</strong>nteractive <strong>sh</strong>ell”的简称，最大特点就是方便易用。</p>
 <p>Fish 会自动在光标后面给出建议，表示可能的选项，颜色为灰色。如果采纳建议，可以按下<code>→</code>或<code>Control + F</code>。如果只采纳一部分，可以按下<code>Alt + →</code>。</p>
 <p>输入命令时，Fish 会自动显示匹配的上一条历史记录。如果没有匹配的历史记录，Fish 会猜测可能的结果，自动补全各种输入。</p>
-<h5 id="run-command-on-startup-on-FreeBSD"><a href="#run-command-on-startup-on-FreeBSD" class="headerlink" title="run command on startup on FreeBSD"></a><span class="exturl" data-url="aHR0cHM6Ly91bml4LnN0YWNrZXhjaGFuZ2UuY29tL3F1ZXN0aW9ucy80NjgxOTYvaG93LXRvLXJ1bi1zaW1wbGUtY29tbWFuZC1vbi1zdGFydHVwLW9uLWZyZWVic2Q=">run command on startup on FreeBSD<i class="fa fa-external-link-alt"></i></span></h5><p>one of the final stages of the automatic boot process is to read a script file called <code>/etc/rc.local</code> (if it exists). This file requires no special formatting or keywords, or the execute bit set.</p>
+<h5 id="Run-command-on-startup-on-FreeBSD"><a href="#Run-command-on-startup-on-FreeBSD" class="headerlink" title="Run command on startup on FreeBSD"></a><span class="exturl" data-url="aHR0cHM6Ly91bml4LnN0YWNrZXhjaGFuZ2UuY29tL3F1ZXN0aW9ucy80NjgxOTYvaG93LXRvLXJ1bi1zaW1wbGUtY29tbWFuZC1vbi1zdGFydHVwLW9uLWZyZWVic2Q=">Run command on startup on FreeBSD<i class="fa fa-external-link-alt"></i></span></h5><p>one of the final stages of the automatic boot process is to read a script file called <code>/etc/rc.local</code> (if it exists). This file requires no special formatting or keywords, or the execute bit set.</p>
 ]]></content>
       <tags>
         <tag>Unix</tag>

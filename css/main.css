@@ -1548,7 +1548,7 @@ pre code {
   white-space: nowrap;
 }
 .post-toc .nav .nav-child {
-  display: none;
+  display: block;
 }
 .post-toc .nav .active > .nav-child {
   display: block;
@@ -2811,7 +2811,7 @@ mark.search-keyword {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #eb6a25;
+  background: #ffdbff;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2832,3 +2832,12 @@ mark.search-keyword {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+/*
+//隐藏社交图标前的圆点
+.links-of-author a,
+.links-of-author .exturl {
+  &:before {
+    display: none;
+  }
+}
+*/
