@@ -54,7 +54,23 @@
     isPost : true,
     lang   : 'en'
   };
-</script><script src="/lib/fireworks.js"></script>
+</script><script src="/lib/fireworks.js"></script> 
+<script>
+  var OriginTitile = document.title;
+  var titleTime;
+  document.addEventListener("visibilitychange", function() {
+    if (document.hidden) {
+      document.title = "(つェ⊂)我藏好了哦~" + OriginTitile;
+      clearTimeout(titleTime);
+    } else {
+      document.title = "(*´∇｀*) 被你发现啦~" + OriginTitile;
+      titleTime = setTimeout(function() {
+        document.title = OriginTitile;
+      }, 2000);
+    }
+  });
+</script>
+
 
   <title>Hello World | vBlog</title>
   
@@ -268,7 +284,6 @@
 
 
 
-
         </section>
       </div>
     </div>
@@ -406,6 +421,23 @@
     
 
     <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>vane
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://vanehsiung.github.io/2020/11/13/hello-world/" title="Hello World">https://vanehsiung.github.io/2020/11/13/hello-world/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9lbg=="><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
 
         
 
@@ -489,7 +521,8 @@
     </span>
 </div>
   <div class="powered-by">Powered by <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZy9tdXNlLw==">NexT.Muse</span>
-  </div><script src="https://cdn.jsdelivr.net/gh/suyin-long/activate-power-mode@1.0/dist/activate-power-mode.js"></script>
+  </div>
+<script src="https://cdn.jsdelivr.net/gh/suyin-long/activate-power-mode@1.0/dist/activate-power-mode.js"></script>
 <script>
 POWERMODE.colorful = true; // make power mode colorful
 POWERMODE.shake = false; // turn off shake
