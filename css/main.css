@@ -2811,7 +2811,7 @@ mark.search-keyword {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #ffdbff;
+  background: #fff2d2;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2832,12 +2832,7 @@ mark.search-keyword {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-/*
-//隐藏社交图标前的圆点
-.links-of-author a,
-.links-of-author .exturl {
-  &:before {
-    display: none;
-  }
+.links-of-author a:before,
+.links-of-author .exturl:before {
+  display: none;
 }
-*/
