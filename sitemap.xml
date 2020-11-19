@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://vanehsiung.github.io/about/index.html</loc>
+    <loc>https://vanehsiung.github.io/2020/11/19/Test/</loc>
     
     <lastmod>2020-11-19</lastmod>
     
@@ -11,7 +11,14 @@
   <url>
     <loc>https://vanehsiung.github.io/2020/11/17/FreeBSD/</loc>
     
-    <lastmod>2020-11-18</lastmod>
+    <lastmod>2020-11-19</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://vanehsiung.github.io/about/index.html</loc>
+    
+    <lastmod>2020-11-19</lastmod>
     
   </url>
   
