@@ -22,10 +22,13 @@
 
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css">
+  <script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"vanehsiung.github.io","root":"/","scheme":"Gemini","version":"8.0.2","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+    var CONFIG = {"hostname":"vanehsiung.github.io","root":"/","scheme":"Gemini","version":"8.0.2","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
 
   <meta name="description" content="We believe that our first and foremost “mission” is to provide code to any and all comers, and for whatever purpose, so that the code gets the widest possible use and provides the widest possible bene">
@@ -261,7 +264,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">2</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -341,7 +344,7 @@
 <hr>
 <h3 id="联系方式"><a href="#联系方式" class="headerlink" title="联系方式"></a>联系方式</h3><ul>
 <li>短信：1329664280</li>
-<li>Email：<span class="exturl" data-url="bWFpbHRvOiYjMTA5OyYjeDY5OyYjOTk7JiMxMTQ7JiN4NmY7JiN4NjY7JiN4NzU7JiN4NzQ7JiN4NjM7JiN4NzM7JiM2NDsmI3g2ZjsmI3g3NTsmIzExNjsmIzEwODsmIzExMTsmIzExMTsmIzEwNzsmI3gyZTsmI3g2MzsmIzExMTsmIzEwOTs=">&#109;&#x69;&#99;&#114;&#x6f;&#x66;&#x75;&#x74;&#x63;&#x73;&#64;&#x6f;&#x75;&#116;&#108;&#111;&#111;&#107;&#x2e;&#x63;&#111;&#109;<i class="fa fa-external-link-alt"></i></span></li>
+<li>Email：<span class="exturl" data-url="bWFpbHRvOiYjeDZkOyYjeDY5OyYjOTk7JiN4NzI7JiMxMTE7JiN4NjY7JiN4NzU7JiMxMTY7JiM5OTsmI3g3MzsmI3g0MDsmI3g2ZjsmIzExNzsmIzExNjsmIzEwODsmI3g2ZjsmIzExMTsmIzEwNzsmI3gyZTsmI3g2MzsmI3g2ZjsmIzEwOTs=">&#x6d;&#x69;&#99;&#x72;&#111;&#x66;&#x75;&#116;&#99;&#x73;&#x40;&#x6f;&#117;&#116;&#108;&#x6f;&#111;&#107;&#x2e;&#x63;&#x6f;&#109;<i class="fa fa-external-link-alt"></i></span></li>
 <li>QQ：1664548605</li>
 </ul>
 <hr>
@@ -475,6 +478,9 @@ document.body.addEventListener('input', POWERMODE);
   <script size="300" alpha="0.6" zIndex="-1" src="//cdn.jsdelivr.net/npm/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/@next-theme/pjax@0.4.0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js"></script>
 <script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
   <script>
 var pjax = new Pjax({
@@ -539,6 +545,26 @@ document.addEventListener('pjax:success', () => {
 
 
 
+  <script>
+    NProgress.configure({
+      showSpinner: false
+    });
+    NProgress.start();
+    document.addEventListener('readystatechange', () => {
+      if (document.readyState === 'interactive') {
+        NProgress.inc(0.8);
+      }
+      if (document.readyState === 'complete') {
+        NProgress.done();
+      }
+    });
+    document.addEventListener('pjax:send', () => {
+      NProgress.start();
+    });
+    document.addEventListener('pjax:success', () => {
+      NProgress.done();
+    });
+  </script>
 
 
   
