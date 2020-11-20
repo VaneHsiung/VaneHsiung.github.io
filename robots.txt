@@ -1,0 +1,15 @@
+# robots.txt generated at http://tool.chinaz.com/robots/ 
+User-agent: Baiduspider
+Disallow: 
+User-agent: Googlebot
+Disallow: 
+User-agent: Bingbot
+Disallow: 
+Disallow: /assets/
+Disallow: /css/
+Disallow: /images/
+Disallow: /js/
+Disallow: /lib/
+Disallow: /live2dw
+Disallow: /uploads/
+Sitemap: https://vanehsiung.github.io/sitemap.xml
