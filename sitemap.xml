@@ -4,7 +4,21 @@
   <url>
     <loc>https://vanehsiung.github.io/2020/11/21/Conversation/</loc>
     
-    <lastmod>2020-11-21</lastmod>
+    <lastmod>2020-11-22</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://vanehsiung.github.io/links/index.html</loc>
+    
+    <lastmod>2020-11-22</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://vanehsiung.github.io/about/index.html</loc>
+    
+    <lastmod>2020-11-22</lastmod>
     
   </url>
   
@@ -30,13 +44,6 @@
   </url>
   
   <url>
-    <loc>https://vanehsiung.github.io/about/index.html</loc>
-    
-    <lastmod>2020-11-20</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://vanehsiung.github.io/tags/index.html</loc>
     
     <lastmod>2020-11-17</lastmod>
@@ -46,22 +53,22 @@
 
   <url>
     <loc>https://vanehsiung.github.io/</loc>
-    <lastmod>2020-11-21</lastmod>
+    <lastmod>2020-11-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   
   <url>
-    <loc>https://vanehsiung.github.io/tags/Lyric/</loc>
-    <lastmod>2020-11-21</lastmod>
+    <loc>https://vanehsiung.github.io/tags/Lyrics/</loc>
+    <lastmod>2020-11-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://vanehsiung.github.io/tags/Unix/</loc>
-    <lastmod>2020-11-21</lastmod>
+    <lastmod>2020-11-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
