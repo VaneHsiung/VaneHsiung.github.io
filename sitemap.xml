@@ -2,14 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://vanehsiung.github.io/2020/11/21/Conversation/</loc>
+    <loc>https://vanehsiung.github.io/links/index.html</loc>
     
     <lastmod>2020-11-22</lastmod>
     
   </url>
   
   <url>
-    <loc>https://vanehsiung.github.io/links/index.html</loc>
+    <loc>https://vanehsiung.github.io/2020/11/21/Conversation/</loc>
     
     <lastmod>2020-11-22</lastmod>
     
@@ -60,14 +60,14 @@
 
   
   <url>
-    <loc>https://vanehsiung.github.io/tags/Lyrics/</loc>
+    <loc>https://vanehsiung.github.io/tags/Unix/</loc>
     <lastmod>2020-11-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://vanehsiung.github.io/tags/Unix/</loc>
+    <loc>https://vanehsiung.github.io/tags/Lyrics/</loc>
     <lastmod>2020-11-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

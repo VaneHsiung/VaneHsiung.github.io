@@ -1,21 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Conversation</title>
-    <url>/2020/11/21/Conversation/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><img data-src="/2020/11/21/Conversation/The%20Silent%20League.jpg" class="" title="The Silent League">
-
-<blockquote class="blockquote-center">
-<p>Just a little conversation<br>About give me your picture<br>On the cover of a magazine<br>On the cover of a magazine<br>Just a little conversation<br>But how long it might take one?<br>To get along with such thing?<br>To get along with such thing?<br>But everybody knows<br>It’s easier to fall apart<br>Just a little conversation<br>About give me your picture<br>On the cover of a magazine<br>On the cover of a magazine</p>
-
-</blockquote>
-
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="//music.163.com/outchain/player?type=2&id=3716423&auto=0&height=32"></iframe>]]></content>
-      <tags>
-        <tag>Lyrics</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>FreeBSD</title>
     <url>/2020/11/17/FreeBSD/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote><p>FreeBSD 計劃的目標在於提供可作任意用途的軟體而不附帶任何限制條文。 我們之中許多人對程式碼 (以及計畫本身) 都有非常大的投入， 因此，當然不介意偶爾有一些資金上的補償，但我們並沒打算堅決地要求得到這類資助。 我們認為我們的首要“使命”是為任何人提供程式碼， 不管他們打算用這些程式碼做什麼， 因為這樣程式碼將能夠被更廣泛地使用，從而發揮其價值。 我認為這是自由軟體最基本的，同時也是我們所倡導的一個目標。</p>
@@ -252,6 +237,21 @@
 ]]></content>
       <tags>
         <tag>Unix</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Conversation</title>
+    <url>/2020/11/21/Conversation/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><img data-src="/2020/11/21/Conversation/The%20Silent%20League.jpg" class="" title="The Silent League">
+
+<blockquote class="blockquote-center">
+<p>Just a little conversation<br>About give me your picture<br>On the cover of a magazine<br>On the cover of a magazine<br>Just a little conversation<br>But how long it might take one?<br>To get along with such thing?<br>To get along with such thing?<br>But everybody knows<br>It’s easier to fall apart<br>Just a little conversation<br>About give me your picture<br>On the cover of a magazine<br>On the cover of a magazine</p>
+
+</blockquote>
+
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="//music.163.com/outchain/player?type=2&id=3716423&auto=0&height=32"></iframe>]]></content>
+      <tags>
+        <tag>Lyrics</tag>
       </tags>
   </entry>
   <entry>
