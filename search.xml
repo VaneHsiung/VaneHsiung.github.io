@@ -24,6 +24,18 @@
 
 <a id="more"></a>
 
+<h3 id="FreeBSD-Beginner"><a href="#FreeBSD-Beginner" class="headerlink" title="FreeBSD Beginner"></a>FreeBSD Beginner</h3><p>如果从没有了解过 FreeBSD，请看如下：</p>
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuZnJlZWJzZC5vcmcvZG9jL3poX1RXL2Jvb2tzL2hhbmRib29rL2ludHJvZHVjdGlvbi5odG1s">FreeBSD 简介<i class="fa fa-external-link-alt"></i></span>：<ul>
+<li>使用 FreeBSD 使用手冊繁体中文版，繁体中文版较之简体中文版更新。</li>
+<li>对于 FreeBSD 使用所需的一切知识，都可以在 FreeBSD 使用手册中找到；对于 FreeBSD 使用过程中遇到的一切问题，都可以在 <span class="exturl" data-url="aHR0cHM6Ly9mb3J1bXMuZnJlZWJzZC5vcmcv">FreeBSD Forums<i class="fa fa-external-link-alt"></i></span> 找到解答，或者提出问题。</li>
+</ul>
+</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9teS5vc2NoaW5hLm5ldC9xaWhoL2Jsb2cvNzg3NDM=">FreeBSD的现状和未来<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3RvcGljLzE5NTU5MjM3L2hvdA==">FreeBSD 知乎话题<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly90aWViYS5iYWlkdS5jb20vZj9rdz1mcmVlYnNkJmllPXV0Zi04">FreeBSD 吧<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cudjJleC5jb20vZ28vZnJlZWJzZA==">FreeBSD v2ex 主题<i class="fa fa-external-link-alt"></i></span></li>
+</ul>
 <h3 id="Install-Desktop-Enviroment"><a href="#Install-Desktop-Enviroment" class="headerlink" title="Install Desktop Enviroment"></a>Install Desktop Enviroment</h3><p>GhostBSD 是最好的 FreeBSD 桌面发行版，注意使用 Official 版本，不能直接使用 FreeBSD 源升级，没有中国源。</p>
 <p>X 最初設計是以網路為中心，採用 “client-server” 架構。在此架構下 “X 伺服器” 在有鍵盤、螢幕、滑鼠的電腦上運作。該伺服器負責的工作包含管理顯示、處理來自鍵盤、滑鼠的輸入及來自其他設備)的輸入或輸出。</p>
 <p>每個 X 應用程式，如 XTerm、Firefox 都是 “客戶端”。</p>
