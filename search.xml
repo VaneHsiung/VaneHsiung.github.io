@@ -36,7 +36,8 @@
 <li><span class="exturl" data-url="aHR0cHM6Ly90aWViYS5iYWlkdS5jb20vZj9rdz1mcmVlYnNkJmllPXV0Zi04">FreeBSD 吧<i class="fa fa-external-link-alt"></i></span></li>
 <li><span class="exturl" data-url="aHR0cHM6Ly93d3cudjJleC5jb20vZ28vZnJlZWJzZA==">FreeBSD v2ex 主题<i class="fa fa-external-link-alt"></i></span></li>
 </ul>
-<h3 id="Install-Desktop-Enviroment"><a href="#Install-Desktop-Enviroment" class="headerlink" title="Install Desktop Enviroment"></a>Install Desktop Enviroment</h3><p>GhostBSD 是最好的 FreeBSD 桌面发行版，注意使用 Official 版本，不能直接使用 FreeBSD 源升级，没有中国源。</p>
+<h3 id="Install-Desktop-Enviroment"><a href="#Install-Desktop-Enviroment" class="headerlink" title="Install Desktop Enviroment"></a>Install Desktop Enviroment</h3><p><span class="exturl" data-url="aHR0cHM6Ly93d3cuZ2hvc3Ric2Qub3JnLw==">GhostBSD<i class="fa fa-external-link-alt"></i></span> 是 FreeBSD 桌面发行版，注意使用 Official 版本，不能直接使用 FreeBSD 源升级。</p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9ub21hZGJzZC5vcmcv">nomadbsd<i class="fa fa-external-link-alt"></i></span> 是个非常漂亮的 FreeBSD 桌面发行版 ，德国产。</p>
 <p>X 最初設計是以網路為中心，採用 “client-server” 架構。在此架構下 “X 伺服器” 在有鍵盤、螢幕、滑鼠的電腦上運作。該伺服器負責的工作包含管理顯示、處理來自鍵盤、滑鼠的輸入及來自其他設備)的輸入或輸出。</p>
 <p>每個 X 應用程式，如 XTerm、Firefox 都是 “客戶端”。</p>
 <p>視窗管理程式規定螢幕上的視窗該長什麼樣、要如何移動滑鼠指標、 要用什麼鍵來在視窗切換、每個視窗的標題列長相，及是否該有關閉按鈕，等等。視窗管理程式負責滑鼠指標的聚焦政策。 聚焦政策指的是如何決定使用中及接收鍵盤輸入的視窗。通常較為人熟悉的聚焦政策叫做 “click-to-focus”，這個模式中，滑鼠點選到的視窗便會處於作用中 (Active) 的狀態。</p>

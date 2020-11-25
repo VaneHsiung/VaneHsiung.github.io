@@ -2,23 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://vanehsiung.github.io/2020/11/24/Linux-Deploy/</loc>
-    
-    <lastmod>2020-11-24</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://vanehsiung.github.io/2020/11/17/FreeBSD/</loc>
     
-    <lastmod>2020-11-23</lastmod>
+    <lastmod>2020-11-25</lastmod>
     
   </url>
   
   <url>
     <loc>https://vanehsiung.github.io/links/index.html</loc>
     
-    <lastmod>2020-11-23</lastmod>
+    <lastmod>2020-11-25</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://vanehsiung.github.io/2020/11/24/Linux-Deploy/</loc>
+    
+    <lastmod>2020-11-24</lastmod>
     
   </url>
   
@@ -53,7 +53,7 @@
 
   <url>
     <loc>https://vanehsiung.github.io/</loc>
-    <lastmod>2020-11-24</lastmod>
+    <lastmod>2020-11-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -61,14 +61,14 @@
   
   <url>
     <loc>https://vanehsiung.github.io/tags/Lyrics/</loc>
-    <lastmod>2020-11-24</lastmod>
+    <lastmod>2020-11-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://vanehsiung.github.io/tags/Unix/</loc>
-    <lastmod>2020-11-24</lastmod>
+    <lastmod>2020-11-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
