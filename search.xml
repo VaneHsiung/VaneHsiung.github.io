@@ -366,4 +366,103 @@
         <tag>Unix</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Microservices</title>
+    <url>/2020/11/26/Microservices/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>定义：“微服务架构”这个术语描述这样一种特定的软件设计方法，即以若干组可独立部署的服务的方式进行软件应用系统的设计。</p>
+<a id="more"></a>
+
+<h3 id="单体应用"><a href="#单体应用" class="headerlink" title="单体应用"></a>单体应用</h3><p>一个单体应用系统（即服务端应用系统，一个单个可执行的逻辑程序）是以一个单个单元的方式来构建的。处理用户请求的所有逻辑都运行在一个单个的进程内。通过精心设计，就能在开发人员的笔记本电脑上运行和测试这样的应用系统，并且使用一个部署流水线来确保变更被很好地进行了测试，然后部署到生产环境中。但是渐渐地，特别是随着越来越多的应用系统正被部署到云端，软件变更受到了很大的限制，应用系统的一个很小的部分的一处变更，也需要将整个单体应用系统进行重新构建和部署。这导致了微服务架构风格的诞生：以构建一组小型服务的方式来构建应用系统。</p>
+<h5 id="单体应用架构"><a href="#单体应用架构" class="headerlink" title="单体应用架构"></a>单体应用架构</h5><p>一个单体应用，往往将应用所有功能都打包在一起：</p>
+<img data-src="/2020/11/26/Microservices/monolithic0.webp" class="" title="monolithic">
+
+<p>当用户访问量变大导致一台服务器无法支撑时，就加服务器加负载均衡：</p>
+<img data-src="/2020/11/26/Microservices/monolithic1.webp" class="" title="monolithic">
+
+<p>之后把静态文件独立出来，通过 CDN 等进行加速，提升单体应用的整体响应：</p>
+<img data-src="/2020/11/26/Microservices/monolithic2.webp" class="" title="monolithic">
+
+<h3 id="微服务"><a href="#微服务" class="headerlink" title="微服务"></a>微服务</h3><p>微服务架构风格这种开发方法，是以开发一组小型服务的方式来开发一个独立的应用系统的。其中每个小型服务都运行在自己的进程中，并经常采用HTTP资源API这样轻量的机制来相互通信。这些服务围绕业务功能进行构建，并能通过全自动的部署机制来进行独立部署。这些微服务可以使用不同的语言来编写，并且可以使用不同的数据存储技术。对这些微服务我们仅做最低限度的集中管理。</p>
+<img data-src="/2020/11/26/Microservices/microservices0.webp" class="" title="microservices">
+
+<h5 id="微服务架构"><a href="#微服务架构" class="headerlink" title="微服务架构"></a>微服务架构</h5><p>微服务架构，核心是为了解决应用微服务之后的服务治理问题。</p>
+<p>第一个问题就是服务发现问题，解决方法是服务注册中心：</p>
+<img data-src="/2020/11/26/Microservices/microservices6.webp" class="" title="microservices">
+
+<p>第二个问题是服务配置管理的问题，解决方案是配置中心：</p>
+<img data-src="/2020/11/26/Microservices/microservices7.webp" class="" title="microservices">
+
+<p>以上是应用内部的服务治理，当客户端或外部应用调用服务的时候就需要使用到服务网关提供统一的服务入口，最终形成典型微服务架构：</p>
+<img data-src="/2020/11/26/Microservices/microservices8.webp" class="" title="microservices">
+
+<h3 id="微服务架构的九大特性"><a href="#微服务架构的九大特性" class="headerlink" title="微服务架构的九大特性"></a>微服务架构的九大特性</h3><p>不存在微服务架构风格的正式定义。但是可以描述所见到的能够被贴上微服务标签的那些架构的共性。</p>
+<h5 id="特性一：“组件化”与“多服务”"><a href="#特性一：“组件化”与“多服务”" class="headerlink" title="特性一：“组件化”与“多服务”"></a>特性一：“组件化”与“多服务”</h5><p>微服务架构也会使用软件库，但其将自身软件进行组件化的主要方法是将软件分解为诸多服务。</p>
+<ul>
+<li>组件定义：一个组件就是一个可以独立更换和升级的软件单元。</li>
+<li>软件库定义：它能被链接到一段程序，且能通过内存中的函数来进行调用。是进程内的组件。</li>
+<li>服务：是进程外的组件，它们通过诸如web service请求或远程过程调用这样的机制来进行通信。</li>
+</ul>
+<p>以使用服务（而不是以软件库）的方式来实现组件化的原因是：</p>
+<ul>
+<li>服务可被独立部署。如果一个应用系统由在单个进程中的多个软件库所组成，那么对任一组件做一处修改，都不得不重新部署整个应用系统。但是如果该应用系统被分解为多个服务，那么对于一个服务的多处修改，仅需要重新部署这一个服务。</li>
+<li>能获得更加显式的组件接口。通过使用显式的远程调用机制，服务能更容易地避免客户端破坏组件的封装，从而导致组件间出现过度紧密的耦合。</li>
+</ul>
+<p>不足：</p>
+<ul>
+<li>比起进程内调用，远程调用更加昂贵。</li>
+<li>如果需要修改组件间的职责分配，那么当跨越进程边界时，这种组件行为的改动会更加难以实现。</li>
+</ul>
+<h5 id="特性二：围绕“业务功能”组织团队"><a href="#特性二：围绕“业务功能”组织团队" class="headerlink" title="特性二：围绕“业务功能”组织团队"></a>特性二：围绕“业务功能”组织团队</h5><p>康威定律：</p>
+<blockquote><p>任何设计（广义上的）系统的组织，都会产生这样一个设计，即该设计的结构与该组织的沟通结构相一致。</p>
+<footer><strong>Melvyn Conway</strong></footer></blockquote>
+
+<p>当在寻求将一个大型应用系统分解成几部分时，公司管理层往往会聚焦在技术层面上。这会导致组建用户界面团队、服务器端团队和数据库团队。</p>
+<img data-src="/2020/11/26/Microservices/microservices1.webp" class="" title="microservices">
+
+<p>当团队沿着这些技术线分开后，即使要实现软件一个简单的变更，也会导致跨团队的项目时延和预算审批。在这种情况下，聪明的团队会进行局部优化，直接把代码逻辑塞到他们能访问到的任意应用系统中。</p>
+<p>微服务根据业务功能来将系统分解为若干服务。这些服务针对该业务领域提供多层次广泛的软件实现，包括用户界面、持久性存储以及任何对外的协作性操作。因此，团队是跨职能的。</p>
+<img data-src="/2020/11/26/Microservices/microservices2.webp" class="" title="microservices">
+
+<h5 id="特性三：“做产品”而不是“做项目”"><a href="#特性三：“做产品”而不是“做项目”" class="headerlink" title="特性三：“做产品”而不是“做项目”"></a>特性三：“做产品”而不是“做项目”</h5><p>项目模型：目标是交付某一块软件。一旦完工后，软件就被移交给维护团队，构建该软件的项目团队就会被解散。</p>
+<p>微服务模型（产品理念）：一个团队在一个产品的整个生命周期中都应该保持对其拥有。这会使开发人员每天都会关注软件是如何在生产环境下运行的，并且增进他们与用户的联系，因为他们必须承担某些支持工作。</p>
+<h5 id="特性四：“智能端点”与“傻瓜管道”"><a href="#特性四：“智能端点”与“傻瓜管道”" class="headerlink" title="特性四：“智能端点”与“傻瓜管道”"></a>特性四：“智能端点”与“傻瓜管道”</h5><p>当在不同的进程之间构建各种通信结构时，许多产品和方法强调将大量的智能特性纳入通信机制本身。</p>
+<p>微服务社区主张智能端点和傻瓜管道。使用微服务所构建的各个应用的目标，都是尽可能地实现“高内聚和低耦合”——他们拥有自己的领域逻辑，并且更多地是像经典Unix的“过滤器”那样来工作。这些应用通过使用一些简单的REST风格的协议来进行编制，而不去使用复杂的协议。</p>
+<p>微服务最常用的两种协议是：带有资源API的HTTP“请求－响应”协议，和轻量级的消息发送协议。对于前一种协议的最佳表述是：</p>
+<blockquote><p>Be of the web, not behind the web</p>
+<footer><strong>Ian Robinson</strong></footer></blockquote>
+
+<h5 id="特性五：“去中心化”地治理技术"><a href="#特性五：“去中心化”地治理技术" class="headerlink" title="特性五：“去中心化”地治理技术"></a>特性五：“去中心化”地治理技术</h5><p>使用中心化的方式来对开发进行治理，其中一个后果，就是趋向于在单一技术平台上制定标准。我们更喜欢根据工作的不同来选用合理的工具。</p>
+<h5 id="特性六：“去中心化”地管理数据"><a href="#特性六：“去中心化”地管理数据" class="headerlink" title="特性六：“去中心化”地管理数据"></a>特性六：“去中心化”地管理数据</h5><p>去中心化地管理数据，其表现形式多种多样。从最抽象的层面看，这意味着各个系统对客观世界所构建的概念模型，将彼此各不相同。微服务趋向使用“实战检验”的标准而非“强制执行”的标准。</p>
+<p>如同在概念模型上进行去中心化的决策一样，微服务也在数据存储上进行去中心化的决策。单体应用在逻辑上各自使用一个单独的数据库来持久化数据，但是各家企业往往喜欢一系列单体应用共用一个单独的数据库。微服务更喜欢让每一个服务来管理其自有数据库。这种方法被称作“多语种持久化”。</p>
+<img data-src="/2020/11/26/Microservices/microservices3.webp" class="" title="microservices">
+
+<h5 id="特性七：“基础设施”自动化"><a href="#特性七：“基础设施”自动化" class="headerlink" title="特性七：“基础设施”自动化"></a>特性七：“基础设施”自动化</h5><p>基础设施自动化技术已经得到长足的发展。云的演进，特别是AWS的发展，已经降低了构建、部署和运维微服务的操作复杂性。</p>
+<p>构建流水线：</p>
+<img data-src="/2020/11/26/Microservices/microservices4.webp" class="" title="microservices">
+
+<p>部署在单块系统和微服务上没什么区别。然而，两者在运维领域的情况却截然不同：</p>
+<img data-src="/2020/11/26/Microservices/microservices5.webp" class="" title="microservices">
+
+<h5 id="特性八：“容错”设计"><a href="#特性八：“容错”设计" class="headerlink" title="特性八：“容错”设计"></a>特性八：“容错”设计</h5><p>使用各个微服务来替代组件，其结果是各个应用程序需要设计成能够容忍这些服务所出现的故障。</p>
+<p>因为各个服务可以在任何时候发生故障，所以两件事就变得很重要，即能够快速地检测出故障，且在可能的情况下能够自动恢复服务。</p>
+<h5 id="特性九：“演进式”设计"><a href="#特性九：“演进式”设计" class="headerlink" title="特性九：“演进式”设计"></a>特性九：“演进式”设计</h5><p>微服务的从业者们将服务的分解，视作一个额外的工具，来让应用开发人员能够控制应用系统中的变化，而无须减少变化的发生。</p>
+<p>要将软件系统分解为各个组件时，决定切分应用系统时应该遵循的原则是：一个组件的关键属性，是具有独立更换和升级的特点。</p>
+<p>这种强调可更换性的特点，是模块化设计一般性原则的一个特例，通过“变化模式”来驱动进行模块化的实现。将那些同时发生变化的东西，放到同一个模块中；很少发生变化的部分，放到不同的服务中。如果发现需要同时反复变更两个服务，这就是它们需要被合并信号。</p>
+<h3 id="微服务框架"><a href="#微服务框架" class="headerlink" title="微服务框架"></a>微服务框架</h3><ul>
+<li>Spring Cloud</li>
+</ul>
+<img data-src="/2020/11/26/Microservices/Spring%20Cloud.webp" class="" title="Spring Cloud">
+
+<ul>
+<li>Dubbo</li>
+</ul>
+<img data-src="/2020/11/26/Microservices/Dubbo.png" class="" title="Dubbo">
+
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><p><span class="exturl" data-url="aHR0cHM6Ly9tYXJ0aW5mb3dsZXIuY29tL2FydGljbGVzL21pY3Jvc2VydmljZXMuaHRtbA==">Microservices<i class="fa fa-external-link-alt"></i></span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly93d3cuamlhbnNodS5jb20vcC83MjkzYjE0ODAyOGY=">微服务入门这一篇就够了<i class="fa fa-external-link-alt"></i></span></p>
+]]></content>
+      <tags>
+        <tag>Architecture</tag>
+      </tags>
+  </entry>
 </search>
