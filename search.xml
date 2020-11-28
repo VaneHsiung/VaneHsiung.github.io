@@ -81,6 +81,7 @@
 </li>
 </ul>
 <h3 id="Binary-套件"><a href="#Binary-套件" class="headerlink" title="Binary 套件"></a>Binary 套件</h3><p><span class="exturl" data-url="aHR0cHM6Ly9taXJyb3JzLnVzdGMuZWR1LmNuL2hlbHAvZnJlZWJzZC5odG1s">USTC Mirrors<i class="fa fa-external-link-alt"></i></span>：注意使用 Latest 源，有很多流行软件。</p>
+<p>搜寻软件：<span class="exturl" data-url="aHR0cHM6Ly93d3cuZnJlZWJzZC5vcmcvcG9ydHMvaW5kZXguaHRtbA==">FreeBSD Ports<i class="fa fa-external-link-alt"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly93d3cuZnJlc2hwb3J0cy5vcmcv">FreshPorts<i class="fa fa-external-link-alt"></i></span></p>
 <p>因編譯選項不同，有些 Port 會有多個版本可使用。</p>
 <ul>
 <li><p>使用 USTC MIRROR</p>
@@ -214,6 +215,9 @@
 </li>
 <li><p>安裝以 Linux® RPM 為基礎的應用程式,需先安裝 archivers/rpm4 套件或 Port</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo pkg install rpm4</span><br><span class="line">$ sudo cd &#x2F;compat&#x2F;linux</span><br><span class="line">$ sudo rpm2cpio &lt; &#x2F;path&#x2F;to&#x2F;linux.archive.rpm | cpio -id</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Example</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo pkg install linux-sublime3-3.2.2</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
