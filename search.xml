@@ -591,7 +591,7 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo pkg clean</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Example</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo pkg install node npm</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo pkg install node npm		# Node.js</span><br><span class="line">$ sudo pkg install telegram-desktop</span><br><span class="line">$ sudo pkg install firefox-esr</span><br><span class="line">$ sudo pkg install plank</span><br><span class="line">$ sudo pkg install intellij		# Intellij IDEA use openjdk8</span><br></pre></td></tr></table></figure>
 
 
 </li>
@@ -682,7 +682,7 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo pkg install rpm4</span><br><span class="line">$ sudo cd &#x2F;compat&#x2F;linux</span><br><span class="line">$ sudo rpm2cpio &lt; &#x2F;path&#x2F;to&#x2F;linux.archive.rpm | cpio -id</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Example</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo pkg install linux-sublime3-3.2.2</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo pkg install linux-sublime3</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
@@ -728,7 +728,7 @@
 
 </li>
 </ul>
-<h5 id="Install-chinese-font"><a href="#Install-chinese-font" class="headerlink" title="Install chinese font"></a>Install chinese font</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo pkg search cjk		# CJK（中日韩统一表意文字）</span><br></pre></td></tr></table></figure>
+<h5 id="Install-chinese-font"><a href="#Install-chinese-font" class="headerlink" title="Install chinese font"></a>Install chinese font</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo pkg install zh-CJKUnifonts		# CJK（中日韩统一表意文字）</span><br></pre></td></tr></table></figure>
 
 <h5 id="设单使用模式为不安全"><a href="#设单使用模式为不安全" class="headerlink" title="设单使用模式为不安全"></a>设单使用模式为不安全</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo vi &#x2F;etc&#x2F;ttys</span><br><span class="line">console none	unknown off insecure</span><br></pre></td></tr></table></figure>
 
@@ -778,6 +778,16 @@
 </ul>
 </li>
 </ul>
+</li>
+</ul>
+<h5 id="FreeBSD-Insall-Oracle-JDK"><a href="#FreeBSD-Insall-Oracle-JDK" class="headerlink" title="FreeBSD Insall Oracle JDK"></a>FreeBSD Insall Oracle JDK</h5><ul>
+<li><p>安装 Linux Compact</p>
+</li>
+<li><p>在 <code>/usr/ports/java/linux-oracle-jdk18</code> 运行 <code>sudo make install</code></p>
+</li>
+<li><p>根据提示在 <span class="exturl" data-url="aHR0cHM6Ly93d3cub3JhY2xlLmNvbS9qYXZhL3RlY2hub2xvZ2llcy9vcmFjbGUtamF2YS1hcmNoaXZlLWRvd25sb2Fkcy5odG1s">Oracle Java Archive<i class="fa fa-external-link-alt"></i></span> 下载需要的 JDK 版本安装包，复制到 <code>/usr/ports/distfiles</code></p>
+</li>
+<li><p>在 <code>/usr/ports/java/linux-oracle-jdk18</code> 运行 <code>sudo make install</code>，安装成功</p>
 </li>
 </ul>
 <h3 id="BSDs"><a href="#BSDs" class="headerlink" title="BSDs"></a>BSDs</h3><p>NetBSD: <span class="exturl" data-url="aHR0cHM6Ly9taXJyb3JzLmh1YXdlaWNsb3VkLmNvbS9OZXRCU0Qv">huaweicloud<i class="fa fa-external-link-alt"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly9taXJyb3JzLmFsaXl1bi5jb20vbmV0YnNkLz9zcG09YTJjNmguMTM2NTExMDQuMC4wLjRkODQzYmY0QXpKWVRY">aliyun<i class="fa fa-external-link-alt"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly9taXJyb3JzLnR1bmEudHNpbmdodWEuZWR1LmNuLw==">tsinghua<i class="fa fa-external-link-alt"></i></span></p>
