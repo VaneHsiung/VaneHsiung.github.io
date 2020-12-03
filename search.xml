@@ -335,7 +335,8 @@
 <h5 id="Using-modesetting-Driver"><a href="#Using-modesetting-Driver" class="headerlink" title="Using modesetting Driver"></a>Using modesetting Driver</h5><p>If you use <code>i915kms</code> kernel module, you don’t need to install <code>xf86-video-intel</code>, the <code>modesetting</code> generic DDX driver that is built in the X server, will do just well. The xf86-video-intel might even cause you troubles.</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># cat &#x2F;usr&#x2F;local&#x2F;etc&#x2F;X11&#x2F;xorg.conf.d&#x2F;card.conf</span><br><span class="line">Section &quot;Device&quot;</span><br><span class="line">  Identifier &quot;Card0&quot;</span><br><span class="line">  Option &quot;DPMS&quot;</span><br><span class="line">  Driver &quot;modesetting&quot;</span><br><span class="line">EndSection</span><br></pre></td></tr></table></figure>
 
-<h5 id="Using-Dedicated-video-Login-Class-Instead-of-Global-One"><a href="#Using-Dedicated-video-Login-Class-Instead-of-Global-One" class="headerlink" title="Using Dedicated video: Login Class Instead of Global One"></a>Using Dedicated video: Login Class Instead of Global One</h5><p>If you modify <code>/etc/login.conf</code>, you are modifying the systemwide locale for the default login class to which all users belong (also user www for Apache, for example).</p>
+<h5 id="Using-Dedicated-video-Login-Class-Instead-of-Global-One"><a href="#Using-Dedicated-video-Login-Class-Instead-of-Global-One" class="headerlink" title="Using Dedicated video: Login Class Instead of Global One"></a>Using Dedicated video: Login Class Instead of Global One</h5><p>（可解决中文乱码）</p>
+<p>If you modify <code>/etc/login.conf</code>, you are modifying the systemwide locale for the default login class to which all users belong (also user www for Apache, for example).</p>
 <p>Add this login class to the <code>/etc/login.conf</code> file.</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">video:\</span><br><span class="line">        :charset&#x3D;UTF-8:\</span><br><span class="line">        :lang&#x3D;en_US.UTF-8:\</span><br><span class="line">        :tc&#x3D;default:</span><br></pre></td></tr></table></figure>
 
@@ -472,18 +473,6 @@
 
 <a id="more"></a>
 
-<h3 id="FreeBSD-Beginner"><a href="#FreeBSD-Beginner" class="headerlink" title="FreeBSD Beginner"></a>FreeBSD Beginner</h3><p>如果从没有了解过 FreeBSD，请看如下：</p>
-<ul>
-<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuZnJlZWJzZC5vcmcvZG9jL3poX1RXL2Jvb2tzL2hhbmRib29rL2ludHJvZHVjdGlvbi5odG1s">FreeBSD 简介<i class="fa fa-external-link-alt"></i></span>：<ul>
-<li>使用 FreeBSD 使用手冊繁体中文版，繁体中文版较之简体中文版更新。</li>
-<li>对于 FreeBSD 使用所需的一切知识，都可以在 FreeBSD 使用手册中找到；对于 FreeBSD 使用过程中遇到的一切问题，都可以在 <span class="exturl" data-url="aHR0cHM6Ly9mb3J1bXMuZnJlZWJzZC5vcmcv">FreeBSD Forums<i class="fa fa-external-link-alt"></i></span> 找到解答，或者提出问题。</li>
-</ul>
-</li>
-<li><span class="exturl" data-url="aHR0cHM6Ly9teS5vc2NoaW5hLm5ldC9xaWhoL2Jsb2cvNzg3NDM=">FreeBSD的现状和未来<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3RvcGljLzE5NTU5MjM3L2hvdA==">FreeBSD 知乎话题<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly90aWViYS5iYWlkdS5jb20vZj9rdz1mcmVlYnNkJmllPXV0Zi04">FreeBSD 吧<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly93d3cudjJleC5jb20vZ28vZnJlZWJzZA==">FreeBSD v2ex 主题<i class="fa fa-external-link-alt"></i></span></li>
-</ul>
 <h3 id="Xorg-Configuration"><a href="#Xorg-Configuration" class="headerlink" title="Xorg Configuration"></a>Xorg Configuration</h3><p>顯示卡、顯示器以及輸入裝置會自動偵測，無須任何手動設置。除非自動設置失敗，否則請勿建立 xorg.conf 或執行 -configure 步驟。</p>
 <p>加入要執行 Xorg 的使用者到 <code>video</code> 或 <code>wheel</code> 群組，以便在可用時能開啟 3D 加速。要加入使用者 <em><code>jru</code></em> 到任一個可用的群組：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># pw groupmod video -m jru || pw groupmod wheel -m jru</span><br></pre></td></tr></table></figure>
@@ -591,7 +580,7 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo pkg clean</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Example</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo pkg install node npm		# Node.js</span><br><span class="line">$ sudo pkg install telegram-desktop</span><br><span class="line">$ sudo pkg install firefox-esr</span><br><span class="line">$ sudo pkg install plank</span><br><span class="line">$ sudo pkg install intellij		# Intellij IDEA use openjdk8</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo pkg install vim atom linux-sublime3</span><br><span class="line">$ sudo pkg install git node npm		# Node.js</span><br><span class="line">$ sudo pkg install plank telegram-desktop firefox-esr</span><br><span class="line">$ sudo pkg install intellij tomcat mysql180-server mysql180-client		# Intellij IDEA use openjdk8</span><br><span class="line">$ sudo pkg install p7zip</span><br><span class="line">$ sudo pkg install zsh		# ZSH_THEME&#x3D;&quot;agnoster&quot;</span><br><span class="line">$ pip install NetEase-MusicBox		# export PATH&#x3D;&quot;your-dir:$PATH&quot;</span><br><span class="line">$ sudo pkg install you-get youtube_dl</span><br><span class="line">$ sudo pkg install vlc mplayer</span><br></pre></td></tr></table></figure>
 
 
 </li>
@@ -645,6 +634,9 @@
 </li>
 <li><p>移除已安裝的 Port</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo cd &#x2F;usr&#x2F;ports&#x2F;sysutils&#x2F;lsof</span><br><span class="line">$ sudo make deinstall</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Example</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;usr&#x2F;ports&#x2F;java&#x2F;linux-oracle-jdk18$ sudo make install</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
@@ -680,9 +672,7 @@
 </li>
 <li><p>安裝以 Linux® RPM 為基礎的應用程式,需先安裝 archivers/rpm4 套件或 Port</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo pkg install rpm4</span><br><span class="line">$ sudo cd &#x2F;compat&#x2F;linux</span><br><span class="line">$ sudo rpm2cpio &lt; &#x2F;path&#x2F;to&#x2F;linux.archive.rpm | cpio -id</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Example</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo pkg install linux-sublime3</span><br></pre></td></tr></table></figure>
+
 
 </li>
 </ul>
@@ -781,17 +771,16 @@
 </li>
 </ul>
 <h5 id="FreeBSD-Insall-Oracle-JDK"><a href="#FreeBSD-Insall-Oracle-JDK" class="headerlink" title="FreeBSD Insall Oracle JDK"></a>FreeBSD Insall Oracle JDK</h5><ul>
-<li><p>安装 Linux Compact</p>
-</li>
-<li><p>在 <code>/usr/ports/java/linux-oracle-jdk18</code> 运行 <code>sudo make install</code></p>
-</li>
-<li><p>根据提示在 <span class="exturl" data-url="aHR0cHM6Ly93d3cub3JhY2xlLmNvbS9qYXZhL3RlY2hub2xvZ2llcy9vcmFjbGUtamF2YS1hcmNoaXZlLWRvd25sb2Fkcy5odG1s">Oracle Java Archive<i class="fa fa-external-link-alt"></i></span> 下载需要的 JDK 版本安装包，复制到 <code>/usr/ports/distfiles</code></p>
-</li>
-<li><p>在 <code>/usr/ports/java/linux-oracle-jdk18</code> 运行 <code>sudo make install</code>，安装成功</p>
-</li>
+<li>安装 Linux Compact</li>
+<li>在 <code>/usr/ports/java/linux-oracle-jdk18</code> 运行 <code>sudo make install</code></li>
+<li>根据提示在 <span class="exturl" data-url="aHR0cHM6Ly93d3cub3JhY2xlLmNvbS9qYXZhL3RlY2hub2xvZ2llcy9vcmFjbGUtamF2YS1hcmNoaXZlLWRvd25sb2Fkcy5odG1s">Oracle Java Archive<i class="fa fa-external-link-alt"></i></span> 下载需要的 JDK 版本安装包，复制到 <code>/usr/ports/distfiles</code></li>
+<li>在 <code>/usr/ports/java/linux-oracle-jdk18</code> 运行 <code>sudo make install</code>，安装成功</li>
 </ul>
+<h5 id="FreeBSD-Install-Python-and-pip"><a href="#FreeBSD-Install-Python-and-pip" class="headerlink" title="FreeBSD Install Python and pip"></a>FreeBSD Install Python and pip</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo pkg install python</span><br><span class="line"></span><br><span class="line">$ python --version</span><br><span class="line">Python 3.7.9</span><br><span class="line"></span><br><span class="line">$ sudo pkg install py37-pip</span><br></pre></td></tr></table></figure>
+
 <h3 id="BSDs"><a href="#BSDs" class="headerlink" title="BSDs"></a>BSDs</h3><p>NetBSD: <span class="exturl" data-url="aHR0cHM6Ly9taXJyb3JzLmh1YXdlaWNsb3VkLmNvbS9OZXRCU0Qv">huaweicloud<i class="fa fa-external-link-alt"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly9taXJyb3JzLmFsaXl1bi5jb20vbmV0YnNkLz9zcG09YTJjNmguMTM2NTExMDQuMC4wLjRkODQzYmY0QXpKWVRY">aliyun<i class="fa fa-external-link-alt"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly9taXJyb3JzLnR1bmEudHNpbmdodWEuZWR1LmNuLw==">tsinghua<i class="fa fa-external-link-alt"></i></span></p>
 <p>OpenBSD: <span class="exturl" data-url="aHR0cHM6Ly9taXJyb3JzLmh1YXdlaWNsb3VkLmNvbS9PcGVuQlNELw==">huaweicloud<i class="fa fa-external-link-alt"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly9taXJyb3JzLmFsaXl1bi5jb20vb3BlbmJzZC8/c3BtPWEyYzZoLjEzNjUxMTA0LjAuMC4xNGRiNWE1MHFGblhsNg==">aliyun<i class="fa fa-external-link-alt"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly9taXJyb3JzLnR1bmEudHNpbmdodWEuZWR1LmNuLw==">tsinghua<i class="fa fa-external-link-alt"></i></span></p>
+<p>一篇好文：<span class="exturl" data-url="aHR0cHM6Ly9teS5vc2NoaW5hLm5ldC9xaWhoL2Jsb2cvNzg3NDM=">FreeBSD的现状和未来<i class="fa fa-external-link-alt"></i></span></p>
 ]]></content>
       <tags>
         <tag>Unix</tag>

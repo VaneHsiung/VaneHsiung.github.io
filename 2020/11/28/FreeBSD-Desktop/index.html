@@ -19,7 +19,7 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-<link rel="stylesheet" href="https://fonts.loli.net/css?family=Roboto:300,300italic,400,400italic,700,700italic|Noto+Sans+SC:300,300italic,400,400italic,700,700italic|Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="https://fonts.loli.net/css?family=Share+Tech+Mono:300,300italic,400,400italic,700,700italic|ZCOOL+XiaoWei:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
@@ -29,7 +29,7 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"vanehsiung.github.io","root":"/","scheme":"Gemini","version":"8.0.2","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+    var CONFIG = {"hostname":"vanehsiung.github.io","root":"/","scheme":"Muse","version":"8.0.2","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
 
   <meta name="description" content="The FreeBSD Desktop series are about creating efficient desktop environment on the FreeBSD system.">
@@ -57,7 +57,7 @@
 <meta property="og:image" content="https://vanehsiung.github.io/2020/11/28/FreeBSD-Desktop/locker-mate-screensaver.png">
 <meta property="og:image" content="https://vanehsiung.github.io/2020/11/28/FreeBSD-Desktop/xlock-user-pass.png">
 <meta property="article:published_time" content="2020-11-28T08:38:58.000Z">
-<meta property="article:modified_time" content="2020-12-01T03:41:33.705Z">
+<meta property="article:modified_time" content="2020-12-01T12:29:56.018Z">
 <meta property="article:author" content="vane">
 <meta property="article:tag" content="Unix">
 <meta name="twitter:card" content="summary">
@@ -382,7 +382,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2020-12-01 11:41:33" itemprop="dateModified" datetime="2020-12-01T11:41:33+08:00">2020-12-01</time>
+        <time title="Modified: 2020-12-01 20:29:56" itemprop="dateModified" datetime="2020-12-01T20:29:56+08:00">2020-12-01</time>
       </span>
 
   
@@ -598,7 +598,8 @@
 <h5 id="Using-modesetting-Driver"><a href="#Using-modesetting-Driver" class="headerlink" title="Using modesetting Driver"></a>Using modesetting Driver</h5><p>If you use <code>i915kms</code> kernel module, you don’t need to install <code>xf86-video-intel</code>, the <code>modesetting</code> generic DDX driver that is built in the X server, will do just well. The xf86-video-intel might even cause you troubles.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># cat &#x2F;usr&#x2F;local&#x2F;etc&#x2F;X11&#x2F;xorg.conf.d&#x2F;card.conf</span><br><span class="line">Section &quot;Device&quot;</span><br><span class="line">  Identifier &quot;Card0&quot;</span><br><span class="line">  Option &quot;DPMS&quot;</span><br><span class="line">  Driver &quot;modesetting&quot;</span><br><span class="line">EndSection</span><br></pre></td></tr></table></figure>
 
-<h5 id="Using-Dedicated-video-Login-Class-Instead-of-Global-One"><a href="#Using-Dedicated-video-Login-Class-Instead-of-Global-One" class="headerlink" title="Using Dedicated video: Login Class Instead of Global One"></a>Using Dedicated video: Login Class Instead of Global One</h5><p>If you modify <code>/etc/login.conf</code>, you are modifying the systemwide locale for the default login class to which all users belong (also user www for Apache, for example).</p>
+<h5 id="Using-Dedicated-video-Login-Class-Instead-of-Global-One"><a href="#Using-Dedicated-video-Login-Class-Instead-of-Global-One" class="headerlink" title="Using Dedicated video: Login Class Instead of Global One"></a>Using Dedicated video: Login Class Instead of Global One</h5><p>（可解决中文乱码）</p>
+<p>If you modify <code>/etc/login.conf</code>, you are modifying the systemwide locale for the default login class to which all users belong (also user www for Apache, for example).</p>
 <p>Add this login class to the <code>/etc/login.conf</code> file.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">video:\</span><br><span class="line">        :charset&#x3D;UTF-8:\</span><br><span class="line">        :lang&#x3D;en_US.UTF-8:\</span><br><span class="line">        :tc&#x3D;default:</span><br></pre></td></tr></table></figure>
 
@@ -833,7 +834,7 @@
       </span>
     </span>
 </div>
-  <div class="powered-by">Powered by <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZw==">NexT.Gemini</span>
+  <div class="powered-by">Powered by <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZy9tdXNlLw==">NexT.Muse</span>
   </div>
 
 <script src="https://cdn.jsdelivr.net/gh/suyin-long/activate-power-mode@1.0/dist/activate-power-mode.js"></script>
@@ -850,13 +851,12 @@ document.body.addEventListener('input', POWERMODE);
   </footer>
 
   
-  <script size="300" alpha="0.6" zIndex="-1" src="//cdn.jsdelivr.net/npm/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/@next-theme/pjax@0.4.0/pjax.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
   <script>
 var pjax = new Pjax({
   selectors: [
