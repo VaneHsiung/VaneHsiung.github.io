@@ -1,21 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Conversation</title>
-    <url>/2020/11/21/Conversation/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><img data-src="/2020/11/21/Conversation/The%20Silent%20League.jpg" class="" title="The Silent League">
-
-<blockquote class="blockquote-center">
-<p>Just a little conversation<br>About give me your picture<br>On the cover of a magazine<br>On the cover of a magazine<br>Just a little conversation<br>But how long it might take one?<br>To get along with such thing?<br>To get along with such thing?<br>But everybody knows<br>It’s easier to fall apart<br>Just a little conversation<br>About give me your picture<br>On the cover of a magazine<br>On the cover of a magazine</p>
-
-</blockquote>
-
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="//music.163.com/outchain/player?type=2&id=3716423&auto=0&height=32"></iframe>]]></content>
-      <tags>
-        <tag>Lyrics</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Foreign Time</title>
     <url>/2020/12/09/Foreign-Time/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><img data-src="/2020/12/09/Foreign-Time/Glass%20Towers.jpg" class="" title="Glass Towers">
@@ -31,55 +16,18 @@
       </tags>
   </entry>
   <entry>
-    <title>Linux Deploy</title>
-    <url>/2020/11/24/Linux-Deploy/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>这是一篇旧文章，做个记录。</p>
-<a id="more"></a>
+    <title>Conversation</title>
+    <url>/2020/11/21/Conversation/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><img data-src="/2020/11/21/Conversation/The%20Silent%20League.jpg" class="" title="The Silent League">
 
-<h3 id="通过-Linux-Deploy-在-Android-上安装-Linux"><a href="#通过-Linux-Deploy-在-Android-上安装-Linux" class="headerlink" title="通过 Linux Deploy 在 Android 上安装 Linux"></a>通过 Linux Deploy 在 Android 上安装 Linux</h3><h5 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h5><p>一个 Root 了的 Android 手机</p>
-<p><span class="exturl" data-url="aHR0cHM6Ly93d3cuYnVzeWJveC5uZXQv">Busy Box<i class="fa fa-external-link-alt"></i></span>：Linux Deploy 支撑软件。</p>
-<p><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL21lZWZpay9saW51eGRlcGxveS9yZWxlYXNlcw==">Linux deploy<i class="fa fa-external-link-alt"></i></span>：Linux 系统支撑软件。</p>
-<h5 id="安装-Busy-Box"><a href="#安装-Busy-Box" class="headerlink" title="安装 Busy Box"></a>安装 Busy Box</h5><p>点击安装，等待程序自行运行，在界面中输出 <code>## END</code> 后退出程序。</p>
-<h5 id="Linux-deploy"><a href="#Linux-deploy" class="headerlink" title="Linux deploy"></a>Linux deploy</h5><ul>
-<li>点击左图左上角部分，选择 <strong>设置</strong>，在设置界面中找到PATH变量，赋予其值 <code>/system/xbin</code>。</li>
-<li>建议开启 <strong>锁定Wifi</strong> 功能。</li>
-<li>接着退回主界面，点击右下角部分。</li>
-<li><strong>发行版</strong> 看个人喜好选择，Debian 系（Debian，Kaili，Ubuntu）较热门。</li>
-<li><strong>架构</strong> 默认。</li>
-<li><strong>源</strong> 默认。如果下的慢的话，就仿照默认的源换为国内的源，如 <span class="exturl" data-url="aHR0cDovL21pcnJvcnMudXN0Yy5lZHUuY24v">USTC MIRRORS<i class="fa fa-external-link-alt"></i></span>，但是不要特意去换源，官方的源用的了的话官方的源最好。</li>
-<li><strong>安装路径</strong> ：安装在手机自带的存储空间中，则在路径开头加上<code>$&#123;ENV_DIR&#125;</code>；安装在 <strong>sdcard</strong> 中，加上<code>$&#123;EXTERNAL_STORAGE&#125;</code>。</li>
-<li><strong>文件系统</strong> ：推荐 <code>ext4</code>。</li>
-<li><strong>用户名</strong> 和 <strong>密码</strong> 自定义。</li>
-<li><strong>DNS</strong> 默认。</li>
-<li><strong>本地化</strong> ：简体中文可以选择 <code>zh_CN.UTF-8</code>，建议选择 <code>en_US.UTF-8</code> 。</li>
-<li><strong>挂载列表</strong>：添加访问手机内容的目录，<strong>手机目录：挂载点</strong>，如 <code>/sdcard:/mnt</code>，之后会自动挂载。</li>
-<li>**开启<code>SSH</code>**。</li>
-<li><strong>图形界面功能</strong>，需要的话就选 <code>XFce</code> 为桌面，XFce`是轻量级桌面环境。</li>
-<li>退出系统设置界面，点击主界面右上角，选择安装。<br>  等待程序自行安装Linux系统，开始时会自动创造一个4G左右大小的img文件，这个是默认的大小，你可以根据你手机的容量自定义，创造文件需要一点时间，屏幕会很安静，再然后会安装各种东西，屏幕会输出很多信息，根据你的源的速度，等待时间不等，看到 <code>&lt;&lt;&lt;deploy</code> 则安装完毕。如果中间没有 <code>failed</code> 则安装成功。安装失败的话就需要重新安装，换个快一点的网，或者好一点的源。</li>
-<li> <strong>注意：安装完毕后要先点击停止按钮，再按启动按钮</strong>。这个很重要，不然你就得重装了。</li>
-</ul>
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><ul>
-<li><p>Andorid 端用 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2Nvbm5lY3Rib3QvY29ubmVjdGJvdC9yZWxlYXNlcw==">ConnectBox<i class="fa fa-external-link-alt"></i></span></p>
-</li>
-<li><p>Windows用  <span class="exturl" data-url="aHR0cHM6Ly93d3cuY2hpYXJrLmdyZWVuZW5kLm9yZy51ay9+c2d0YXRoYW0vcHV0dHkvbGF0ZXN0Lmh0bWw=">putty<i class="fa fa-external-link-alt"></i></span> ，图形界面用 <span class="exturl" data-url="aHR0cHM6Ly93d3cucmVhbHZuYy5jb20vZW4vY29ubmVjdC9kb3dubG9hZC92aWV3ZXIv">VNC Viewer<i class="fa fa-external-link-alt"></i></span>。VNC Viewer 直接搜主机IP就行，VNC Server 在你选择安装图形界面功能时就自动安装了，不需要再安装 vnc4server。</p>
-</li>
-<li><p>Linux 输入<code>ssh username@hostname</code>就行。</p>
-</li>
-</ul>
-<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><ul>
-<li><p>安装后如果用 vnc viewer 只有一个点的话，可以换一个发行版，我尝试的 CentOS 有这个问题。</p>
-</li>
-<li><p>Linux连的时候出现 <code>WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!</code>：</p>
-   <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ ssh-keygen -R + 输入服务器的IP</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>altarch 架构的手机 CentOS 系统换源</p>
-   <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ cp CentOS-7-armhfp.repo CentOS-Base.repo</span><br><span class="line">$ mv CentOS-7-armhfp.repo CentOS-7-armhfp.repo.backup</span><br><span class="line">$ vi CentOS-Base.repo</span><br><span class="line">baseurl&#x3D;https:&#x2F;&#x2F;mirrors.ustc.edu.cn&#x2F;centos-altarch&#x2F;7.6.1810&#x2F;os&#x2F;armhfp&#x2F;</span><br><span class="line">$ yum makecache</span><br><span class="line">$ yum update</span><br></pre></td></tr></table></figure></li>
-<li><p><strong>如果你之前没有安装VNC的话，现在又想装：</strong></p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ yum -y install tigervnc-server</span><br></pre></td></tr></table></figure></li>
-</ul>
-]]></content>
+<blockquote class="blockquote-center">
+<p>Just a little conversation<br>About give me your picture<br>On the cover of a magazine<br>On the cover of a magazine<br>Just a little conversation<br>But how long it might take one?<br>To get along with such thing?<br>To get along with such thing?<br>But everybody knows<br>It’s easier to fall apart<br>Just a little conversation<br>About give me your picture<br>On the cover of a magazine<br>On the cover of a magazine</p>
+
+</blockquote>
+
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="//music.163.com/outchain/player?type=2&id=3716423&auto=0&height=32"></iframe>]]></content>
       <tags>
-        <tag>Unix</tag>
+        <tag>Lyrics</tag>
       </tags>
   </entry>
   <entry>
@@ -179,6 +127,58 @@
 ]]></content>
       <tags>
         <tag>Architecture</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux Deploy</title>
+    <url>/2020/11/24/Linux-Deploy/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>这是一篇旧文章，做个记录。</p>
+<a id="more"></a>
+
+<h3 id="通过-Linux-Deploy-在-Android-上安装-Linux"><a href="#通过-Linux-Deploy-在-Android-上安装-Linux" class="headerlink" title="通过 Linux Deploy 在 Android 上安装 Linux"></a>通过 Linux Deploy 在 Android 上安装 Linux</h3><h5 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h5><p>一个 Root 了的 Android 手机</p>
+<p><span class="exturl" data-url="aHR0cHM6Ly93d3cuYnVzeWJveC5uZXQv">Busy Box<i class="fa fa-external-link-alt"></i></span>：Linux Deploy 支撑软件。</p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL21lZWZpay9saW51eGRlcGxveS9yZWxlYXNlcw==">Linux deploy<i class="fa fa-external-link-alt"></i></span>：Linux 系统支撑软件。</p>
+<h5 id="安装-Busy-Box"><a href="#安装-Busy-Box" class="headerlink" title="安装 Busy Box"></a>安装 Busy Box</h5><p>点击安装，等待程序自行运行，在界面中输出 <code>## END</code> 后退出程序。</p>
+<h5 id="Linux-deploy"><a href="#Linux-deploy" class="headerlink" title="Linux deploy"></a>Linux deploy</h5><ul>
+<li>点击左图左上角部分，选择 <strong>设置</strong>，在设置界面中找到PATH变量，赋予其值 <code>/system/xbin</code>。</li>
+<li>建议开启 <strong>锁定Wifi</strong> 功能。</li>
+<li>接着退回主界面，点击右下角部分。</li>
+<li><strong>发行版</strong> 看个人喜好选择，Debian 系（Debian，Kaili，Ubuntu）较热门。</li>
+<li><strong>架构</strong> 默认。</li>
+<li><strong>源</strong> 默认。如果下的慢的话，就仿照默认的源换为国内的源，如 <span class="exturl" data-url="aHR0cDovL21pcnJvcnMudXN0Yy5lZHUuY24v">USTC MIRRORS<i class="fa fa-external-link-alt"></i></span>，但是不要特意去换源，官方的源用的了的话官方的源最好。</li>
+<li><strong>安装路径</strong> ：安装在手机自带的存储空间中，则在路径开头加上<code>$&#123;ENV_DIR&#125;</code>；安装在 <strong>sdcard</strong> 中，加上<code>$&#123;EXTERNAL_STORAGE&#125;</code>。</li>
+<li><strong>文件系统</strong> ：推荐 <code>ext4</code>。</li>
+<li><strong>用户名</strong> 和 <strong>密码</strong> 自定义。</li>
+<li><strong>DNS</strong> 默认。</li>
+<li><strong>本地化</strong> ：简体中文可以选择 <code>zh_CN.UTF-8</code>，建议选择 <code>en_US.UTF-8</code> 。</li>
+<li><strong>挂载列表</strong>：添加访问手机内容的目录，<strong>手机目录：挂载点</strong>，如 <code>/sdcard:/mnt</code>，之后会自动挂载。</li>
+<li>**开启<code>SSH</code>**。</li>
+<li><strong>图形界面功能</strong>，需要的话就选 <code>XFce</code> 为桌面，XFce`是轻量级桌面环境。</li>
+<li>退出系统设置界面，点击主界面右上角，选择安装。<br>  等待程序自行安装Linux系统，开始时会自动创造一个4G左右大小的img文件，这个是默认的大小，你可以根据你手机的容量自定义，创造文件需要一点时间，屏幕会很安静，再然后会安装各种东西，屏幕会输出很多信息，根据你的源的速度，等待时间不等，看到 <code>&lt;&lt;&lt;deploy</code> 则安装完毕。如果中间没有 <code>failed</code> 则安装成功。安装失败的话就需要重新安装，换个快一点的网，或者好一点的源。</li>
+<li> <strong>注意：安装完毕后要先点击停止按钮，再按启动按钮</strong>。这个很重要，不然你就得重装了。</li>
+</ul>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><ul>
+<li><p>Andorid 端用 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2Nvbm5lY3Rib3QvY29ubmVjdGJvdC9yZWxlYXNlcw==">ConnectBox<i class="fa fa-external-link-alt"></i></span></p>
+</li>
+<li><p>Windows用  <span class="exturl" data-url="aHR0cHM6Ly93d3cuY2hpYXJrLmdyZWVuZW5kLm9yZy51ay9+c2d0YXRoYW0vcHV0dHkvbGF0ZXN0Lmh0bWw=">putty<i class="fa fa-external-link-alt"></i></span> ，图形界面用 <span class="exturl" data-url="aHR0cHM6Ly93d3cucmVhbHZuYy5jb20vZW4vY29ubmVjdC9kb3dubG9hZC92aWV3ZXIv">VNC Viewer<i class="fa fa-external-link-alt"></i></span>。VNC Viewer 直接搜主机IP就行，VNC Server 在你选择安装图形界面功能时就自动安装了，不需要再安装 vnc4server。</p>
+</li>
+<li><p>Linux 输入<code>ssh username@hostname</code>就行。</p>
+</li>
+</ul>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><ul>
+<li><p>安装后如果用 vnc viewer 只有一个点的话，可以换一个发行版，我尝试的 CentOS 有这个问题。</p>
+</li>
+<li><p>Linux连的时候出现 <code>WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!</code>：</p>
+   <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ ssh-keygen -R + 输入服务器的IP</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>altarch 架构的手机 CentOS 系统换源</p>
+   <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ cp CentOS-7-armhfp.repo CentOS-Base.repo</span><br><span class="line">$ mv CentOS-7-armhfp.repo CentOS-7-armhfp.repo.backup</span><br><span class="line">$ vi CentOS-Base.repo</span><br><span class="line">baseurl&#x3D;https:&#x2F;&#x2F;mirrors.ustc.edu.cn&#x2F;centos-altarch&#x2F;7.6.1810&#x2F;os&#x2F;armhfp&#x2F;</span><br><span class="line">$ yum makecache</span><br><span class="line">$ yum update</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>如果你之前没有安装VNC的话，现在又想装：</strong></p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ yum -y install tigervnc-server</span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>Unix</tag>
       </tags>
   </entry>
   <entry>
