@@ -1,21 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Foreign Time</title>
-    <url>/2020/12/09/Foreign-Time/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><img data-src="/2020/12/09/Foreign-Time/Glass%20Towers.jpg" class="" title="Glass Towers">
-
-<blockquote class="blockquote-center">
-<p>I took a ride down where nobody grinsto remind myself<br>it’s sink or swimits all over the town suicide<br>A lovers mind is for nobody’s sin she’ll take off her clothes and jump right in<br>being the dog that I am I won’t hide<br>But I’m too young too late too young to find what I’ve been looking for<br>in this gutter town in this silly town<br>But I’m too young too late too young to find what I’ve been looking for<br>in this gutter town in this silly town<br>I still hold onto those things that I read in a book that told me I can’t win<br>oh what a mess that I am<br>I’m alive<br>Universities painted a life that has come before me<br>other guys, people that were what I am in a foreign time<br>But I’m too young too late too young to find what I’ve been looking for<br>in this gutter town in this silly town<br>But I’m too young too late too young to find what I’ve been looking for<br>in this gutter town in this silly town<br>I took a ride down where nobody grins to remind myself it’s sink or swim<br>its all over the town suicide</p>
-
-</blockquote>
-
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="//music.163.com/outchain/player?type=2&id=26607463&auto=0&height=32"></iframe>]]></content>
-      <tags>
-        <tag>Lyrics</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Conversation</title>
     <url>/2020/11/21/Conversation/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><img data-src="/2020/11/21/Conversation/The%20Silent%20League.jpg" class="" title="The Silent League">
@@ -26,6 +11,21 @@
 </blockquote>
 
 <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="//music.163.com/outchain/player?type=2&id=3716423&auto=0&height=32"></iframe>]]></content>
+      <tags>
+        <tag>Lyrics</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Foreign Time</title>
+    <url>/2020/12/09/Foreign-Time/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><img data-src="/2020/12/09/Foreign-Time/Glass%20Towers.jpg" class="" title="Glass Towers">
+
+<blockquote class="blockquote-center">
+<p>I took a ride down where nobody grinsto remind myself<br>it’s sink or swimits all over the town suicide<br>A lovers mind is for nobody’s sin she’ll take off her clothes and jump right in<br>being the dog that I am I won’t hide<br>But I’m too young too late too young to find what I’ve been looking for<br>in this gutter town in this silly town<br>But I’m too young too late too young to find what I’ve been looking for<br>in this gutter town in this silly town<br>I still hold onto those things that I read in a book that told me I can’t win<br>oh what a mess that I am<br>I’m alive<br>Universities painted a life that has come before me<br>other guys, people that were what I am in a foreign time<br>But I’m too young too late too young to find what I’ve been looking for<br>in this gutter town in this silly town<br>But I’m too young too late too young to find what I’ve been looking for<br>in this gutter town in this silly town<br>I took a ride down where nobody grins to remind myself it’s sink or swim<br>its all over the town suicide</p>
+
+</blockquote>
+
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="//music.163.com/outchain/player?type=2&id=26607463&auto=0&height=32"></iframe>]]></content>
       <tags>
         <tag>Lyrics</tag>
       </tags>
@@ -799,6 +799,826 @@
 ]]></content>
       <tags>
         <tag>Unix</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo</title>
+    <url>/2020/12/10/Hexo/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a><span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlvL3poLWNuL2RvY3MvaW5kZXguaHRtbA==">Hexo<i class="fa fa-external-link-alt"></i></span></h3><p>Hexo 是一个快速、简洁且高效的博客框架。</p>
+<h5 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h5><ul>
+<li><p>安装 Git：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ scoop install git</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装 node.js：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ scoop install nodejs</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装 Hexo：-g 表示全局安装，会将 Hexo 命令加入环境变量中。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h5 id="建站"><a href="#建站" class="headerlink" title="建站"></a>建站</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ hexo init [folder]</span><br><span class="line">$ cd &lt;folder&gt;</span><br><span class="line">$ npm install	 不必执行，在执行 hexo init 的过程中就已经自动安装好了项目依赖。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.</span><br><span class="line">├── node_modules		&#x2F;&#x2F;依赖安装目录</span><br><span class="line">├── scaffolds			&#x2F;&#x2F;模板文件夹，Hexo的模板是指在新建的文章文件中默认填充的内容。</span><br><span class="line">|   ├── draft.md		&#x2F;&#x2F;草稿模板</span><br><span class="line">|   ├── page.md			&#x2F;&#x2F;页面模板</span><br><span class="line">|   └── post.md			&#x2F;&#x2F;文章模板</span><br><span class="line">├── source				&#x2F;&#x2F;资源文件夹</span><br><span class="line">|   └── _posts			&#x2F;&#x2F;文章目录</span><br><span class="line">├── themes				&#x2F;&#x2F;主题文件夹，Hexo 会根据主题来生成静态页面。</span><br><span class="line">|   └── landscape		&#x2F;&#x2F;默认主题</span><br><span class="line">├── .gitignore			&#x2F;&#x2F;指定不纳入git版本控制的文件</span><br><span class="line">├── _config.yml			&#x2F;&#x2F;站点配置文件</span><br><span class="line">├── db.json            </span><br><span class="line">├── package.json		&#x2F;&#x2F;应用程序的信息</span><br><span class="line">└── package-lock.json</span><br></pre></td></tr></table></figure>
+
+<p>source：资源文件夹是存放用户资源的地方。除 _posts 文件夹之外，开头命名为 _ (下划线)的文件 / 文件夹和隐藏的文件将会被忽略。</p>
+<h5 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h5><p>您可以在 <code>_config.yml</code> 中修改大部分的配置。</p>
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>title</code></td>
+<td align="left">网站标题</td>
+</tr>
+<tr>
+<td align="left"><code>subtitle</code></td>
+<td align="left">网站副标题</td>
+</tr>
+<tr>
+<td align="left"><code>description</code></td>
+<td align="left">网站描述</td>
+</tr>
+<tr>
+<td align="left"><code>keywords</code></td>
+<td align="left">网站的关键词。支援多个关键词。</td>
+</tr>
+<tr>
+<td align="left"><code>author</code></td>
+<td align="left">您的名字</td>
+</tr>
+<tr>
+<td align="left"><code>language</code></td>
+<td align="left">网站使用的语言。</td>
+</tr>
+<tr>
+<td align="left"><code>timezone</code></td>
+<td align="left">网站时区。Hexo 默认使用您电脑的时区。如 <code>Asia/Shanghai</code>。</td>
+</tr>
+<tr>
+<td align="left"><code>url</code></td>
+<td align="left">网址 http://<code>or</code>https://</td>
+</tr>
+<tr>
+<td align="left"><code>root</code></td>
+<td align="left">网站根目录</td>
+</tr>
+<tr>
+<td align="left"><code>theme</code></td>
+<td align="left">当前主题名称。值为<code>false</code>时禁用主题</td>
+</tr>
+<tr>
+<td align="left"><code>deploy</code></td>
+<td align="left">部署部分的设置</td>
+</tr>
+</tbody></table>
+<h5 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h5><ul>
+<li><p>version 显示 Hexo 版本：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ hexo version</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>list 列出网站资料：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ hexo list</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>新建一篇文章：如果没有设置 layout 的话，默认使用 _config.yml 中的 default_layout 参数代替。如果标题包含空格的话，请使用引号括起来。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ hexo new [layout] &lt;title&gt;</span><br><span class="line">$ hexo n [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Hexo 有三种默认布局：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">布局	路径</span><br><span class="line">post	source&#x2F;_posts</span><br><span class="line">page	source</span><br><span class="line">draft	source&#x2F;_drafts</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>预览草稿，publish 发表草稿：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ hexo server --draft</span><br><span class="line">$ hexo publish [layout] &lt;filename&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>clean 清除缓存文件 (db.json) 和已生成的静态文件 (public)：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ hexo clean</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>generate 生成静态文件：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br><span class="line">$ hexo g</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动 hexo 的内置 Web 服务器：该命令将会调用 <span class="exturl" data-url="aHR0cHM6Ly93d3cubWFya2Rvd25ndWlkZS5vcmcvYmFzaWMtc3ludGF4">Markdown<i class="fa fa-external-link-alt"></i></span> 引擎解析项目中的博客内容生成网页资源，资源将会存于内存中。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br><span class="line">$ hexo s --debug		# 开启调试模式（--debug）</span><br><span class="line">$ hexo s --port 8000	# 添加 -p &#x2F; --port 参数来设置 Web 服务监听的端口号</span><br><span class="line">$ hexo s --static		# 加 -s &#x2F; --static 参数，本地改动不触发 hexo 实时解析更新。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>deploy 部署网站：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br><span class="line">$ hexo d</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h5 id="写作"><a href="#写作" class="headerlink" title="写作"></a>写作</h5><ul>
+<li><p>Front-matter： 是文件最上方以 <code>---</code> 分隔的区域，用于指定个别文件的变量</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">layout: 		# 布局</span><br><span class="line">title: 			# 标题</span><br><span class="line">date: 			# 建立日期</span><br><span class="line">updated: 		# 更新日期</span><br><span class="line">comments: 		# 开启文章的评论功能</span><br><span class="line">tags:			# 标签</span><br><span class="line">- 标签1</span><br><span class="line">- 标签2</span><br><span class="line">categories: [分类1, 分类2]		# 分类, 不适用与分页</span><br><span class="line">permalink: 		# 覆盖文章网址</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<p>  标签是一种列表结构，而分类是一种树结构。</p>
+</li>
+<li><p>文本居中标签：在引用单行文本时使用</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;blockquote class&#x3D;&quot;blockquote-center&quot;&gt;blah blah blah&lt;&#x2F;blockquote&gt;		# HTML方式</span><br><span class="line"></span><br><span class="line">&#123;% centerquote %&#125;blah blah blah&#123;% endcenterquote %&#125;		# 标签方式</span><br><span class="line"></span><br><span class="line">&#123;% cq %&#125; blah blah blah &#123;% endcq %&#125;		# 标签别名</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>引用块</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;% blockquote [author[, source]] [link] [source_link_title] %&#125;</span><br><span class="line">content</span><br><span class="line">&#123;% endblockquote %&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>代码块</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">​&#96;&#96;&#96; [language] [title] [url] [link text]</span><br><span class="line">code snippet</span><br></pre></td></tr></table></figure>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">- langugae：语言名称，引导渲染引擎正确解析并高亮显示关键字</span><br><span class="line">- title：代码块标题，将会显示在左上角</span><br><span class="line">- url：链接地址，如果没有指定 link text 则会在右上角显示 link</span><br><span class="line">- link text：链接名称，指定 url 后有效，将会显示在右上角</span><br><span class="line">- 如果设置语言为 diff，可以在代码前添加 &#96;+&#96; 和 &#96;-&#96; 来使用如上所示的高亮增删行提示效果，在展示代码改动痕迹时比较实用。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>note 标签：通过 note 标签可以为段落添加背景色</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;% note [class] %&#125;</span><br><span class="line">文本内容 (支持行内标签)</span><br><span class="line">&#123;% endnote %&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>支持的 class 种类包括 default、primary、success、info、warning、danger</li>
+</ul>
+</li>
+<li><p>label 标签：通过 label 标签可以为文字添加背景色</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;% label [class]@text  %&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>支持的 class 种类包括 default、primary、success、info、warning、danger</li>
+</ul>
+</li>
+<li><p>button 按钮：通过 button 标签可以快速添加带有主题样式的按钮</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;% button &#x2F;path&#x2F;to&#x2F;url&#x2F;, text, icon [class], title %&#125;</span><br><span class="line">&#123;% btn &#x2F;path&#x2F;to&#x2F;url&#x2F;, text, icon [class], title %&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>tab 标签：tab 标签用于快速创建 tab 选项卡</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;% tabs [Unique name], [index] %&#125;</span><br><span class="line">  &lt;!-- tab [Tab caption]@[icon] --&gt;</span><br><span class="line">  标签页内容（支持行内标签）</span><br><span class="line">  &lt;!-- endtab --&gt;</span><br><span class="line">&#123;% endtabs %&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Unique name: 全局唯一的 Tab 名称，将作为各个标签页的 id 属性前缀</li>
+<li>index: 当前激活的标签页索引，如果未定义则默认选中显示第一个标签页，如果设为 - 1 则默认隐藏所有标签页</li>
+<li>Tab caption: 当前标签页的标题，如果不指定则会以 Unique name 加上索引作为标题</li>
+<li>icon: 在标签页标题中添加 Font awesome 图标</li>
+</ul>
+</li>
+<li><p>引用站内链接</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;% post_path slug %&#125;</span><br><span class="line">&#123;% post_link slug [title] %&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>slug</code> 表示 <code>_post</code> 目录下的 Markdown 文件名。</li>
+<li>post_path 标签将会渲染为文章的地址，即 permalink；而 post_link 标签将会渲染为链接，可以通过 title 指定链接标题。</li>
+</ul>
+</li>
+<li><p>插入 Swig 代码：通过 raw 标签来禁止 Markdown 引擎渲染标签内的内容。该标签通常用于在页面内引入三方脚本实现特殊功能。</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;% raw %&#125;</span><br><span class="line">content</span><br><span class="line">&#123;% endraw %&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>插入 Gist</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;% gist gist_id [filename] %&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>gist_id: Gist 仓库页面 url 中最后一段随机字符串</li>
+<li>filename: Gist 中的文件名，如果 Gist 中只有一个文件，可以不用指定 filename，如果 Gist 中有多个文件，可以在标签内输入 filename 来指定只引入某个文件，如果没有指定 filename，将会引入 Gist 中的所有文件。</li>
+</ul>
+</li>
+<li><p>插入图片：</p>
+<ul>
+<li><p>Markdown 并不会保存插入的图片资源本身，只是记录了获取资源的链接。因此我们可以选择一款合适的图床来支持博客写作。</p>
+</li>
+<li><p>相对路径引用的标签插件</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;% asset_img slug [title] %&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>slug 是资源文件夹下的图片名</p>
+</li>
+<li><p>Embedding an image using markdown：allows you to embed an image in markdown without using asset_img tag plugin.</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">post_asset_folder: true</span><br><span class="line">marked:</span><br><span class="line">  prependRoot: true</span><br><span class="line">  postAsset: true</span><br></pre></td></tr></table></figure>
+
+<p>  <code>![](image.jpg)</code> will be rendered as <code>&lt;img src=&quot;/2020/01/02/foo/image.jpg&quot;&gt;</code>.</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0QwbjlYMW4vaGV4by1ibG9nLWVuY3J5cHQ=">文章加密<i class="fa fa-external-link-alt"></i></span></p>
+<ul>
+<li><p>Install</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ npm install --save hexo-blog-encrypt</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Quick start: Add the “password” value to your post’s front matter like</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">password: mikemessi</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p><span class="exturl" data-url="aHR0cHM6Ly9zdXlpbi1ibG9nLmNsdWIvMjAxOS8zS1pNQkFGLw==">Hexo 添加文章时自动打开编辑器<i class="fa fa-external-link-alt"></i></span></p>
+<ul>
+<li><p>在 Hexo 目录下的 scripts 目录中创建一个 JavaScript 脚本文件。通过这个脚本，我们用其来监听 <code>hexo new</code> 这个动作，并在检测到 <code>hexo new</code> 之后，执行编辑器打开的命令。</p>
+</li>
+<li><p>将下列内容写入你的脚本</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var spawn &#x3D; require(&#39;child_process&#39;).exec;</span><br><span class="line"></span><br><span class="line">hexo.on(&#39;new&#39;, function(data)&#123;</span><br><span class="line">  spawn(&#39;start  &quot;markdown编辑器绝对路径.exe&quot; &#39; + data.path);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>文章置顶</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">sticky: true</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h5 id="资源文件夹"><a href="#资源文件夹" class="headerlink" title="资源文件夹"></a>资源文件夹</h5><p>资源（Asset）代表 source 文件夹中除了文章以外的所有文件。</p>
+<p><strong>文章资源文件夹</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">post_asset_folder: true</span><br></pre></td></tr></table></figure>
+
+<p>当资源文件管理功能打开后，Hexo将会在你每一次通过 <code>hexo new [layout] &lt;title&gt;</code> 命令创建新文章时自动创建一个文件夹。这个资源文件夹将会有与这个文章文件一样的名字。将所有与你的文章有关的资源放在这个关联文件夹中之后，你可以通过相对路径来引用它们。</p>
+<h5 id="一键部署"><a href="#一键部署" class="headerlink" title="一键部署"></a>一键部署</h5><ul>
+<li>新建一个空的 repository（没有init任何内容）。你的 repository 必须直接命名为 <code>&lt;你的 GitHub 用户名.github.io&gt;</code>。从而能通过 <code>&lt;你的 GitHub 用户名.github.io&gt;</code> 域名直接访问你的blog。</li>
+<li>安装 hexo-deployer-git。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>修改<code>_config.yml</code>配置。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@github.com:yourname&#x2F;yourname.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>生成站点文件并推送至远程库。执行 <code>hexo clean</code> &amp;  <code>hexo deploy</code>。</li>
+<li>登入 Github，在库设置（Repository Settings）中将默认分支设置为<code>_config.yml</code>配置中的分支名称。稍等片刻（Blog 不会立马加载出来，需多刷新几下），您的站点就会显示在您的Github Pages中。</li>
+<li>这是如何发生的：当执行 <code>hexo deploy</code> 时，Hexo 会将 <code>public</code> 目录中的文件和目录推送至 <code>_config.yml</code> 中指定的远端仓库和分支中，并且<strong>完全覆盖</strong>该分支下的已有内容。</li>
+<li>部署分支与写作分支：<code>hexo d</code> 部署到 GitHub 的是 hexo 编译后的文件，不包含源文件。可以利用git的分支管理，将源文件上传到 GitHub。一个好的实践是放在两个不同的 Git 仓库中。</li>
+</ul>
+<h5 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h5><p>创建 Hexo 主题非常容易，您只要在 <code>themes</code> 文件夹内，新增一个任意名称的文件夹，并修改 <code>_config.yml</code> 内的 <code>theme</code> 设定，即可切换主题。</p>
+<p>_config.yml：主题的配置文件。和 Hexo 配置文件不同，主题配置文件修改时会自动更新，无需重启 Hexo Server。</p>
+<p>languages：语言文件夹。</p>
+<p>layout：布局文件夹。</p>
+<p>scripts：脚本文件夹。</p>
+<p>source：资源文件夹。</p>
+<p>在 GitHub 搜索 Hexo 即可找到流行的 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlvL3RoZW1lcy8=">Hexo 主题<i class="fa fa-external-link-alt"></i></span>。各主题都有相应的使用文档。</p>
+<h3 id="NexT"><a href="#NexT" class="headerlink" title="NexT"></a><span class="exturl" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZy9kb2NzLw==">NexT<i class="fa fa-external-link-alt"></i></span></h3><h5 id="Getting-Started"><a href="#Getting-Started" class="headerlink" title="Getting Started"></a>Getting Started</h5><p><strong>Installation</strong></p>
+<ul>
+<li><p>Installation</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ cd hexo-site</span><br><span class="line">$ npm install hexo-theme-next</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Usage, theme config file</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">theme: next</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Update</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ cd hexo-site</span><br><span class="line">$ npm update hexo-theme-next</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p><strong>Configuration</strong></p>
+<p>Installed through npm</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ cp node_modules&#x2F;hexo-theme-next&#x2F;_config.yml _config.next.yml</span><br></pre></td></tr></table></figure>
+
+<h5 id="Theme-Settings"><a href="#Theme-Settings" class="headerlink" title="Theme Settings"></a>Theme Settings</h5><p><em>Choosing Scheme</em>: </p>
+<p>By using Scheme NexT gives you different views. And nearly all config can be used by those Schemes. </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># next&#x2F;_config.yml</span><br><span class="line">scheme: Muse</span><br></pre></td></tr></table></figure>
+
+<p><em>Configuring Favicon</em>: </p>
+<p>By default the Hexo site use NexT favicons in <code>hexo-site/themes/next/source/images/</code> directory with different size for different device. </p>
+<p>You can replace them with your own favicons.</p>
+<p>For example, you can put your favicons in <code>hexo-site/source/images/</code> directory. Then you need to rename them and change the settings in favicon section in theme config file.</p>
+<p><em>Creative Commons</em>:</p>
+<p>NexT supports the display of <em>Creative Commons 4.0 International License</em> in sidebar and post.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># next&#x2F;_config.yml</span><br><span class="line">creative_commons:</span><br><span class="line">  license: by-nc-sa</span><br><span class="line">  sidebar: true</span><br><span class="line">  post: false</span><br><span class="line">  language: en</span><br></pre></td></tr></table></figure>
+
+<p>通行的版权协议是一种限制性的协议，就是说，只有它明文许可你可以做的事，你才能做，否则就是侵权行为。</p>
+<p>而”开放内容许可证”（open content licenses）只明文禁止使用者不能做的事，除此以外，可以随意使用这些作品。创作共用许可证（Creative Commons licenses，简称cc），就是这样一种许可证。</p>
+<p>使用创作共用许可证，作者可以选择保留四种权利：</p>
+<ol>
+<li>署名（Attribution，简写为by）：必须提到原作者。</li>
+<li>非商业用途（Noncommercial，简写为nc）：不得用于盈利性目的。</li>
+<li>禁止演绎（No Derivative Works，简写为nd）：不得修改原作品。</li>
+<li>相同方式共享（Share Alike，简写为sa）：如果允许修改原作品，那么必须使用相同的许可证发布。</li>
+</ol>
+<p><em>Configuring Menu Items</em>:</p>
+<p>Menu settings items have format <code>Key: /link/ || icon</code> which contains 3 values:</p>
+<ul>
+<li>Key → is the name of menu item (home, archives, etc.).</li>
+<li>/link/ → is the target link to relative url inside your site.</li>
+<li>icon → is the name of <span class="exturl" data-url="aHR0cHM6Ly9mb250YXdlc29tZS5jb20v">Font Awesome icon<i class="fa fa-external-link-alt"></i></span>.</li>
+</ul>
+<p>To customize menu items, edit the following content in theme config file:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: &#x2F; || fa fa-home</span><br><span class="line">  about: &#x2F;about&#x2F; || fa fa-user</span><br><span class="line">  tags: &#x2F;tags&#x2F; || fa fa-tags</span><br><span class="line">  archives: &#x2F;archives&#x2F; || fa fa-archive</span><br></pre></td></tr></table></figure>
+
+<p><span class="exturl" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZy9kb2NzL3RoZW1lLXNldHRpbmdzL2N1c3RvbS1wYWdlcy5odG1s">Google Calendar Page<i class="fa fa-external-link-alt"></i></span></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">schedule: &#x2F;schedule&#x2F; || fa fa-calendar</span><br></pre></td></tr></table></figure>
+
+<p><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2hleG9qcy9oZXhvLWdlbmVyYXRvci1zaXRlbWFw">sitemap<i class="fa fa-external-link-alt"></i></span>：为了让博文被google或百度检索，需要使用hexo的sitemap功能。 </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sitemap: &#x2F;sitemap.xml || fa fa-sitemap</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>Install</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ npm install hexo-generator-sitemap --save</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Hexo Config</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sitemap:</span><br><span class="line">  path: sitemap.xml</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>Except home and archives, all custom pages under menu section need to be created manually!</p>
+<p><strong>Sidebar Setting</strong></p>
+<p><em>Configuring Avatar</em>：</p>
+<p>Put your avatar under site directory <code>source/uploads/</code> (create directory if it doesn’t exists).And then change option to <code>url: /uploads/avatar.png</code>.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">avatar:</span><br><span class="line">  url: &#x2F;uploads&#x2F;avatar.png</span><br><span class="line">  rounded: true</span><br></pre></td></tr></table></figure>
+
+<p>点击头像回到首页：</p>
+<p>主要是将<code>&lt;img class=&quot;site-author-image&quot; ... /&gt;</code>加入到<code>&lt;a href=&quot;/&quot;&gt;&lt;/a&gt;</code>。</p>
+<p><em>Sidebar Social Links</em>：</p>
+<ul>
+<li><p>Edit the <code>social</code> section in theme config file as following:</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">social:</span><br><span class="line">  GitHub: https:&#x2F;&#x2F;github.com&#x2F;yourname || fab fa-github</span><br><span class="line">  E-Mail: mailto:yourname@example.com || fa fa-envelope</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>取消社交图标前的小圆点：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># create hexo-site&#x2F;source&#x2F;_data&#x2F;styles.styl</span><br><span class="line">.links-of-author a,</span><br><span class="line">.links-of-author .exturl &#123;</span><br><span class="line">  &amp;:before &#123;</span><br><span class="line">    display: none;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p><em>Sidebar Blogrolls</em> (友链):</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">links:</span><br><span class="line">  Title1: https:&#x2F;&#x2F;example.com&#x2F;</span><br></pre></td></tr></table></figure>
+
+<p><em>Sidebar TOC</em>:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">toc:</span><br><span class="line">  number: false</span><br><span class="line">  expand_all: true</span><br><span class="line">  max_depth: 5</span><br></pre></td></tr></table></figure>
+
+<p><strong>Footer</strong></p>
+<p><em>Site Footer Icon</em>:</p>
+<p>By default NexT shows red heart icon between year and copyright information in the footer. </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">footer:</span><br><span class="line">  icon:</span><br><span class="line">    animated: true</span><br></pre></td></tr></table></figure>
+
+<p><em>Site Copyright Name</em>:</p>
+<p>By default NexT shows the name of author from site config file. </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">footer:</span><br><span class="line">  copyright: YourName</span><br></pre></td></tr></table></figure>
+
+<p><em>Site Platform Information</em>:</p>
+<p>By default NexT shows Hexo and Theme &amp; scheme information.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">footer:</span><br><span class="line">  powered: false</span><br></pre></td></tr></table></figure>
+
+<p><em>Site Beian Information</em>:</p>
+<p>Beian information is for Chinese users.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">footer:</span><br><span class="line">  beian:</span><br><span class="line">    enable: true</span><br><span class="line">    icp: 京ICP备 1234567890号-1</span><br><span class="line">    gongan_id: 1234567890</span><br><span class="line">    gongan_num: 京公网安备 1234567890号</span><br><span class="line">    gongan_icon_url: &#x2F;uploads&#x2F;beian.png</span><br></pre></td></tr></table></figure>
+
+<p><strong>Post Settings</strong></p>
+<p><em>Preamble Text</em>:</p>
+<p>You can use following ways to show summary of articles and a Read More button.</p>
+<p>Use <code>&lt;!-- more --&gt;</code> in your article to break your article manually, which is recommended by Hexo. (recommended)</p>
+<p>If you have added <code>description</code> and set its value to your article summary in front-matter, NexT excerpts <code>description</code> as preamble text in homepage by default. Without <code>description</code>, the full contents would be the preamble text in homepage.</p>
+<p><em>Post Wordcount</em>:</p>
+<ul>
+<li><p>Installation</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ cd hexo-site</span><br><span class="line">$ npm install hexo-word-counter</span><br><span class="line">$ hexo clean</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Hexo Config</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">symbols_count_time:</span><br><span class="line">  total_symbols: false	# By default NexT shows the number of all posts words in footer section.</span><br><span class="line">  total_time: false		# By default NexT shows the estimated reading time of all posts in footer section. </span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p><em>Donate Settings</em>:</p>
+<ul>
+<li><p>Get your WeChat / Alipay receive money QRcode image(s) and put into <code>source/images</code> .</p>
+</li>
+<li><p>Set needed values in <code>theme config file</code>:</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">reward_settings:</span><br><span class="line">  enable: true</span><br><span class="line">  animation: false</span><br><span class="line">  comment: Buy me a coffee</span><br><span class="line"></span><br><span class="line">reward:</span><br><span class="line">  wechatpay: &#x2F;images&#x2F;wechatpay.png</span><br><span class="line">  alipay: &#x2F;images&#x2F;alipay.png</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p><em>Follow Me</em>:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">follow_me:</span><br><span class="line">  WeChat: &#x2F;images&#x2F;wechat_channel.jpg || fab fa-weixin</span><br><span class="line">  RSS: &#x2F;atom.xml || fa fa-rss</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>安装RSS插件</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm i hexo-generator-feed</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>配置站点配置文件(/_config.yml)的Extensions</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">plugin:</span><br><span class="line">- hexo-generator-feed</span><br><span class="line"># Feed Atom</span><br><span class="line">feed:</span><br><span class="line">  type: atom</span><br><span class="line">  path: atom.xml</span><br><span class="line">  limit: 20</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>编辑主题配置文件(/theme/next/_config.yml)的<code>social links</code>，开启RSS的页面功能</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">rss: &#x2F;atom.xml</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>关注RSS：把 <code>https://vanehsiung.github.io/atom.xml</code> 复制到RSS阅读器上，就能关注了。</li>
+</ul>
+<p><strong>Custom Pages</strong></p>
+<p><em>Custom Page Support</em>:</p>
+<ul>
+<li><p>Adding New Page</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ cd hexo-site</span><br><span class="line">$ hexo new page tags</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Setting Front-matter Values</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">    ---</span><br><span class="line">    title: Tags</span><br><span class="line">    date: title: 2020-11-14 22:50:2</span><br><span class="line">type: &quot;tags&quot;</span><br><span class="line">    ---</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Editting Menu</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">menu:</span><br><span class="line">  tags: &#x2F;tags&#x2F; || fa fa-tags</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p><em>Custom 404 Page</em>:</p>
+<ul>
+<li><p>Create a new page called 404</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ cd hexo-site</span><br><span class="line">$ hexo new page 404</span><br><span class="line">---</span><br><span class="line">title: 404</span><br><span class="line">permalink: &#x2F;404.html		# 在 Github Docs 中 Github Pages 章有写</span><br><span class="line">comments: false</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Make sure relative_link is disabled in site config file</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">relative_link: false</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Whether users can be redirected to the 404 page depends on the settings of the website hosting service or web server, not Hexo. </p>
+</li>
+<li><p><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmdpdGh1Yi5jb20vY24vZnJlZS1wcm8tdGVhbUBsYXRlc3QvZ2l0aHViL3dvcmtpbmctd2l0aC1naXRodWItcGFnZXMvY3JlYXRpbmctYS1jdXN0b20tNDA0LXBhZ2UtZm9yLXlvdXItZ2l0aHViLXBhZ2VzLXNpdGU=">为 GitHub Pages 站点创建自定义 404 页面<i class="fa fa-external-link-alt"></i></span></p>
+</li>
+</ul>
+<p><strong>Misc Theme Settings</strong></p>
+<p><em>Mobile Devices Adaptation</em>:</p>
+<p>reduce padding/margin indents on devices with narrow width</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mobile_layout_economy: true</span><br></pre></td></tr></table></figure>
+
+<p><em>Codeblock Style</em>:</p>
+<p>NexT supports the copy-and-paste functionality of codeblock.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">codeblock:</span><br><span class="line">  copy_button:</span><br><span class="line">    enable: true</span><br><span class="line">    style: mac		# Mac Panel风格代码块</span><br></pre></td></tr></table></figure>
+
+<p><em>Back To Top</em>:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">back2top:</span><br><span class="line">  scrollpercent: true</span><br></pre></td></tr></table></figure>
+
+<p><em>Fonts Customization</em>：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">font:</span><br><span class="line">  enable: true</span><br><span class="line">  </span><br><span class="line">  host: https:&#x2F;&#x2F;fonts.loli.net</span><br><span class="line">  </span><br><span class="line">  global:</span><br><span class="line">    family: Roboto Slab, Noto Serif SC</span><br><span class="line">    size: 1.125</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>host：查看字体与使用字体的网址是不一样的；可能不能查看字体，但可以使用字体</p>
+<ul>
+<li><p>查看 <span class="exturl" data-url="aHR0cHM6Ly93d3cuZ29vZ2xlLmNvbS9mb250cw==">Google Fonts<i class="fa fa-external-link-alt"></i></span>，使用 Google Fonts <code>https://fonts.googleapis.com</code>，以下为镜像</p>
+<ul>
+<li><p><code>https://fonts.loli.net</code></p>
+</li>
+<li><p><code>https://fonts.googleapis.cnpmjs.org</code></p>
+</li>
+<li><p><code>https://fonts.proxy.ustclug.org</code></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>查看<span class="exturl" data-url="aHR0cDovL3d3dy5nb29nbGVmb250cy5jbi9lbmdsaXNo">谷歌字体中文版<i class="fa fa-external-link-alt"></i></span>，使用 <code>https://fonts.font.im</code></p>
+</li>
+<li><p>技巧：先放 latin 文字，再放 chinese 文字，就可以分别定制英文与中文（有些中文字体包含英文字母）。手机无法显示自定义的中文字体，但可以显示自定义的英文字体。</p>
+</li>
+</ul>
+<p><strong>SEO</strong></p>
+<p><em>SEO Setting</em>:</p>
+<p>Next provides useful options for better Search Engine Optimization (SEO).</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># theme config file</span><br><span class="line">disable_baidu_transformation: true</span><br><span class="line">index_with_subtitle: true</span><br><span class="line">exturl: true</span><br></pre></td></tr></table></figure>
+
+<p><em>Webmaster Tools</em>:</p>
+<ul>
+<li><p>Google Webmaster Tools</p>
+<ul>
+<li><p>Login to <span class="exturl" data-url="aHR0cHM6Ly93d3cuZ29vZ2xlLmNvbS93ZWJtYXN0ZXJzL3Rvb2xz">Google Webmaster Tools<i class="fa fa-external-link-alt"></i></span> and go to verification methods and choose <code>HTML Tag</code>, you will get some code:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;meta name&#x3D;&quot;google-site-verification&quot; content&#x3D;&quot;XXXXXXXXXXXXXXXXXXXXXXX&quot;&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Copy <code>XXXXXXXXXXXXXXXXXXXXXXX</code> value of <code>content</code> key.Edit theme config file and add or change <code>google_site_verification</code> section:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">google_site_verification: XXXXXXXXXXXXXXXXXXXXXXX</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>submit sitemap</p>
+</li>
+<li><p>That the new console says ‘couldnt fetch’ is a bug in the console. Pending is the real status!</p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>Bing Webmaster Tools</p>
+<ul>
+<li><p>Login to <span class="exturl" data-url="aHR0cHM6Ly93d3cuYmluZy5jb20vd2VibWFzdGVyLw==">Bing Webmaster Tools<i class="fa fa-external-link-alt"></i></span> and go to verification methods and choose <code>HTML Tag</code>, you will get some code:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;meta name&#x3D;&quot;msvalidate.01&quot; content&#x3D;&quot;XXXXXXXXXXXXXXXXXXXXXXX&quot;&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Copy <code>XXXXXXXXXXXXXXXXXXXXXXX</code> value of <code>content</code> key. Edit theme config file and add or change <code>bing_site_verification</code> section:</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">bing_site_verification: XXXXXXXXXXXXXXXXXXXXXXX</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>submit sitemap</p>
+</li>
+<li><p>Bing 收录最快，立马就可以看到</p>
+</li>
+</ul>
+</li>
+<li><p>Baidu Webmaster Tools</p>
+<ul>
+<li><p>Login to <span class="exturl" data-url="aHR0cHM6Ly96aXl1YW4uYmFpZHUuY29tL3NpdGUvIy8=">Baidu Webmaster Tools<i class="fa fa-external-link-alt"></i></span> and go to verification methods and choose <code>HTML Tag</code>, you will get some code:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;meta name&#x3D;&quot;baidu-site-verification&quot; content&#x3D;&quot;XXXXXXXXXXXXXXXXXXXXXXX&quot;&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Copy <code>XXXXXXXXXXXXXXXXXXXXXXX</code> value of <code>content</code> key.Edit theme config file and add or change <code>baidu_site_verification</code> section:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">baidu_site_verification: XXXXXXXXXXXXXXXXXXXXXXX</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Push the url to baidu automatically</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">baidu_push: true</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>submit sitemap</p>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="Third-party-Services"><a href="#Third-party-Services" class="headerlink" title="Third-party Services"></a>Third-party Services</h5><p><strong>Comment Systems</strong></p>
+<p><em>LiveRe (Korea)</em>:</p>
+<ul>
+<li><p>Create an account or log into <span class="exturl" data-url="aHR0cHM6Ly9saXZlcmUuY29tLw==">LiveRe<i class="fa fa-external-link-alt"></i></span>, click on the <code>installation</code> button and select the free city version, then click on the <code>install now</code> button.</p>
+</li>
+<li><p>Copy the <code>data-uid</code> field in the installation code to get your LiveRe UID.</p>
+</li>
+<li><p>Add the obtained LiveRe UID to the <code>livere_uid</code> section in the theme config file as following:</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">livere_uid: </span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>*Valine (China)*：</p>
+<ul>
+<li><p>Create an account or log into <span class="exturl" data-url="aHR0cHM6Ly9sZWFuY2xvdWQuY24v">LeanCloud<i class="fa fa-external-link-alt"></i></span>, and then click on the bottom left corner to create the application in dashboard.</p>
+</li>
+<li><p>Go to the application you just created, select <code>Settings → App Keys</code> in the lower left corner, and you will see your APP ID and APP Key.</p>
+</li>
+<li><p>Edit configurations in <code>valine</code> section in the theme config file as following:</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">valine:</span><br><span class="line">  enable: true</span><br><span class="line">  appId: </span><br><span class="line">  appKey: </span><br></pre></td></tr></table></figure>
+</li>
+<li><p>评论数据管理：请自行登录<code>Leancloud应用</code>管理。具体步骤：<code>登录</code>&gt;<code>选择你创建的应用</code>&gt;<code>存储</code>&gt;选择Class <code>Comment</code></p>
+</li>
+</ul>
+<p><strong>Statistics and Analytics</strong></p>
+<p><em>Analytics Tools</em>:</p>
+<ul>
+<li><p>Baidu Analytics (China)</p>
+<ul>
+<li><p>Login to <span class="exturl" data-url="aHR0cHM6Ly90b25namkuYmFpZHUuY29tLw==">Baidu Analytics<i class="fa fa-external-link-alt"></i></span> and locate to site code getting page.</p>
+</li>
+<li><p>Copy the script ID after <code>hm.js?</code>.</p>
+</li>
+<li><p>Edit theme config file and change section <code>baidu_analytics</code> to your script ID.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">baidu_analytics: </span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>Google Analytics</p>
+<ul>
+<li><p>Create an account and log into <span class="exturl" data-url="aHR0cHM6Ly9hbmFseXRpY3MuZ29vZ2xlLmNvbS8=">Google Analytics<i class="fa fa-external-link-alt"></i></span>.</p>
+</li>
+<li><p>Edit theme config file and fill <code>tracking_id</code> under section <code>google_analytics</code> with your Google track ID. Google track ID always starts with <code>UA-</code> (最新版 Google Analytics 是 <code>G-</code>).</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">google_analytics:</span><br><span class="line">  tracking_id: G-XXXXXXXX</span><br><span class="line">  only_pageview: false</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<p><em>Counting Tools</em>:</p>
+<p>Busuanzi Counting (China), Edit busuanzi_count option in theme config file.</p>
+<p>不蒜子是基于域名来进行统计计算的。数据比百度统计多很多。网络不好的话，数据与图标不一定显示得出来。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">busuanzi_count:</span><br><span class="line">  enable: true</span><br></pre></td></tr></table></figure>
+
+<p><strong>Search Services</strong></p>
+<p><em>Local Search</em>:</p>
+<p>This search method is recommended for most users.</p>
+<ul>
+<li><p>Installation</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ npm install hexo-generator-searchdb</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Hexo Config</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">search:</span><br><span class="line">  path: search.xml</span><br><span class="line">  field: post</span><br><span class="line">  content: true</span><br><span class="line">  format: html</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>NexT Config</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">local_search:</span><br><span class="line">  enable: true</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p><strong>External Libraries</strong></p>
+<p><em>PJAX</em>：</p>
+<ul>
+<li><p>You can enable it by setting value <code>pjax</code> to <code>true</code> in <code>theme config file</code>.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pjax: true</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>It listens to every click on links you want (by default all of them).When an internal link is clicked, Pjax fetches the page’s HTML via AJAX.</p>
+</li>
+<li><p>Please use the absolute path of the image or <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlvL2RvY3MvdGFnLXBsdWdpbnMjSW5jbHVkZS1Bc3NldHM=">Hexo asset_img tag<i class="fa fa-external-link-alt"></i></span> in your posts, otherwise the images may fail to load during Pjax refresh.</p>
+</li>
+<li><p>例子：添加音乐播放器并保持跳转时不中断播放状态；fireworks 特效更流畅，不存在点击链接时的卡顿现象（点击链接时不会触发fireworks）。</p>
+</li>
+</ul>
+<p><em>Fancybox</em>:</p>
+<p>A jQuery lightbox script for displaying images, videos and more.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">fancybox: true</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://github.com/ApoorvSaxena/lozad.js"><em>Lazyload</em></a>:</p>
+<p>It delays loading of images in long web pages. Images outside of viewport will not be loaded before user scrolls to them.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">lazyload: true</span><br></pre></td></tr></table></figure>
+
+<p><em>Progress Bar</em>:</p>
+<p>NProgress will automatically monitor your Ajax requests, event loop lag, document ready state and elements on your page to decide on the progress.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nprogress:</span><br><span class="line">  enable: true</span><br><span class="line">  spinner: false</span><br></pre></td></tr></table></figure>
+
+<p><em>Canvas Ribbon</em>：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">canvas_ribbon:</span><br><span class="line">  enable: true</span><br><span class="line">  size: 300		# The width of the ribbon.</span><br><span class="line">  alpha: 0.6		# The transparency of the ribbon.</span><br><span class="line">  zIndex: -1		# The display level of the ribbon.</span><br></pre></td></tr></table></figure>
+
+<p><em>粒子漂浮聚合</em>：</p>
+<p>该功能由 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3RoZW1lLW5leHQvdGhlbWUtbmV4dC1jYW52YXMtbmVzdA==">theme-next-canvas-nest<i class="fa fa-external-link-alt"></i></span> 插件提供：</p>
+<ul>
+<li><p>Create a file named <code>footer.njk </code> in <code>hexo/source/_data</code> directory, Edit this file and add the following content</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;script color&#x3D;&quot;0,0,255&quot; opacity&#x3D;&quot;0.5&quot; zIndex&#x3D;&quot;-1&quot; count&#x3D;&quot;99&quot; src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;canvas-nest.js@1&#x2F;dist&#x2F;canvas-nest.js&quot;&gt;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>In the NexT <code>_config.yml</code>, uncomment <code>footer</code> under the <code>custom_file_path</code> section.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">custom_file_path:</span><br><span class="line">  footer: source&#x2F;_data&#x2F;footer.njk</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h5 id="Tag-Plugins"><a href="#Tag-Plugins" class="headerlink" title="Tag Plugins"></a>Tag Plugins</h5><p><a href="https://github.com/mermaid-js/mermaid"><strong>Mermaid</strong></a></p>
+<ul>
+<li><p>Settings</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mermaid:</span><br><span class="line">  enable: true</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Usage</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;% mermaid type %&#125;</span><br><span class="line">&#123;% endmermaid %&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h5 id="Advanced-Settings"><a href="#Advanced-Settings" class="headerlink" title="Advanced Settings"></a>Advanced Settings</h5><p><strong>Custom Files</strong></p>
+<ul>
+<li>uncomment under the section in <code>theme config file</code>.<code>stylecustom_file_path</code>。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">custom_file_path:</span><br><span class="line">  head: source&#x2F;_data&#x2F;head.njk</span><br><span class="line">  header: source&#x2F;_data&#x2F;header.njk</span><br><span class="line">  ...</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Edit in site root directory and add files:<code>source/_data/...</code>。</li>
+<li>Then use it。</li>
+<li>Stylus 是 CSS 的预处理框架，给 CSS 添加了可编程的特性。Stylus支持三种注释，单行注释（<code>//</code>)，多行注释(<code>/* */</code>)。</li>
+<li>Nunjucks 是 jinja2 的 javascript 的实现，可以使用 <code>&#123;#` and `#&#125;</code> 来写注释，渲染时将会去除所有的注释。</li>
+<li>不要直接修改 model 文件，而要使用 custom file，方便之后升级。</li>
+</ul>
+<p><strong>Front Matter</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">photos: &#x2F;uploads&#x2F;png.png</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<h3 id="Misc-Settings"><a href="#Misc-Settings" class="headerlink" title="Misc Settings"></a>Misc Settings</h3><p>想要什么功能可以搜一下，看是否有现成的 model 可以使用。</p>
+<p><strong>网易云音乐</strong></p>
+<ul>
+<li>在网页版云音乐中找到歌曲，点击生成外链播放器</li>
+<li>根据个人喜好选择播放器尺寸和播放模式</li>
+<li>将获取到的 iframe 代码添加到页面中</li>
+</ul>
+<p><strong><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0RJWWdvZC9BUGxheWVy">Aplayer<i class="fa fa-external-link-alt"></i></span> 音频播放器</strong></p>
+<ul>
+<li><p>借助 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL01vZVBsYXllci9oZXhvLXRhZy1hcGxheWVy">hexo-tag-aplayer<i class="fa fa-external-link-alt"></i></span> 插件，可以通过标签的形式方便快捷的插入音频组件。</p>
+</li>
+<li><p>Installation</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install --save hexo-tag-aplayer</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Usage</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;% aplayer &quot;title&quot; &quot;author&quot; &quot;url&quot; [&quot;picture_url&quot;, &quot;narrow&quot;, &quot;autoplay&quot;, &quot;width:xxx&quot;, &quot;lrc:xxx&quot;] %&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>title: 曲目标题</li>
+<li>author: 曲目作者</li>
+<li>url: 音乐文件 URL 地址</li>
+<li>picture_url: (可选) 音乐对应的图片地址</li>
+<li>narrow: （可选）播放器袖珍风格</li>
+<li>autoplay: (可选) 自动播放，移动端浏览器暂时不支持此功能</li>
+<li>width:xxx: (可选) 播放器宽度 (默认: 100%)</li>
+<li>lrc:xxx: （可选）歌词文件 URL 地址</li>
+</ul>
+</li>
+<li><p>当开启 Hexo 的 文章资源文件夹功能时，可直接引用</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;% aplayer &quot;Caffeine&quot; &quot;Jeff Williams&quot; &quot;caffeine.mp3&quot; &quot;picture.jpg&quot; &quot;lrc:caffeine.txt&quot; %&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p><strong><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0RJWWdvZC9EUGxheWVy">Dpalyer<i class="fa fa-external-link-alt"></i></span> 视频播放器</strong></p>
+<ul>
+<li><p><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL01vZVBsYXllci9oZXhvLXRhZy1kcGxheWVy">Installation<i class="fa fa-external-link-alt"></i></span></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install hexo-tag-dplayer --save</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Usage</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;% dplayer &quot;url&#x3D;video-url&quot; &quot;pic&#x3D;image-url&quot; ... [&quot;key&#x3D;value&quot;] %&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>部分重要 key</p>
+<ul>
+<li>播放器<ul>
+<li>autoplay：是否开启视频自动播放，默认为 <code>fasle</code></li>
+<li>loop：是否开启视频循环播放，默认为 <code>false</code></li>
+<li>screenshot：是否开启截图，默认为 <code>false</code></li>
+<li>mutex：是否禁止多个播放器同时播放，默认为 <code>true</code></li>
+<li>dmunlimited：是否开启海量弹幕模式，默认为 <code>false</code></li>
+<li>preload：预加载模式，可选 <code>note</code> <code>metadata</code> <code>auto</code></li>
+<li>theme：主题色</li>
+<li>lang：语言，可选 <code>en</code> <code>zh-cn</code> <code>zh-tw</code></li>
+<li>logo：左上角的 Logo</li>
+<li>volume：默认音量，默认为 0.7</li>
+<li>width：播放器宽度</li>
+<li>height：播放器长度</li>
+</ul>
+</li>
+<li>视频<ul>
+<li>url：视频链接</li>
+<li>pic：视频封面</li>
+<li>thumbnails：视频缩略图，可以使用 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL01vZVBsYXllci9EUGxheWVyLXRodW1ibmFpbHM=">DPlayer-thumbnails<i class="fa fa-external-link-alt"></i></span> 生成</li>
+<li>vidtype：视频类型，可选 <code>auto</code> <code>hls</code> <code>flv</code> <code>dash</code> 或其他自定义类型</li>
+</ul>
+</li>
+<li>字幕<ul>
+<li>suburl：字幕链接</li>
+<li>subtype：字幕类型，可选 <code>webvtt</code> <code>ass</code>，目前只支持 <code>webvtt</code></li>
+<li>subbottom：字幕距离播放器底部的距离，如 <code>10px</code> <code>10%</code></li>
+<li>subcolor：字幕颜色</li>
+</ul>
+</li>
+<li>弹幕<ul>
+<li>id：弹幕 id</li>
+<li>api：弹幕 api</li>
+<li>token：弹幕后端验证 token</li>
+<li>addition：额外外挂弹幕</li>
+<li>dmuser：弹幕用户名</li>
+<li>maximum：弹幕最大数量</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>看板娘</strong></p>
+<p>该功能由 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0VZSE4vaGV4by1oZWxwZXItbGl2ZTJk">hexo-helper-live2d<i class="fa fa-external-link-alt"></i></span> 插件支持</p>
+<ul>
+<li><p>Installation</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install --save hexo-helper-live2d</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Config：在站点配置文件中设置，主题配置文件中设置没用</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">live2d:</span><br><span class="line">  enable: true</span><br><span class="line">  scriptFrom: local</span><br><span class="line">  pluginRootPath: live2dw&#x2F;</span><br><span class="line">  pluginJsPath: lib&#x2F;</span><br><span class="line">  pluginModelPath: assets&#x2F;</span><br><span class="line">  tagMode: false</span><br><span class="line">  log: false</span><br><span class="line">  model:</span><br><span class="line">    use: live2d-widget-model-shizuku</span><br><span class="line">  display:</span><br><span class="line">    position: right</span><br><span class="line">    width: 150</span><br><span class="line">    height: 300</span><br><span class="line">  mobile:</span><br><span class="line">    show: true</span><br><span class="line">  react:</span><br><span class="line">    opacity: 0.7</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Models：可以从 <span class="exturl" data-url="aHR0cHM6Ly9odWFqaTgudG9wL3Bvc3QvbGl2ZTJkLXBsdWdpbi0yLjAv">hexo live2d 模型预览<i class="fa fa-external-link-alt"></i></span> 里找到你喜欢的角色，然后根据 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3hpYXpleXUvbGl2ZTJkLXdpZGdldC1tb2RlbHM=">live2d-widget-models<i class="fa fa-external-link-alt"></i></span> 中提供的方法来下载模型数据.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ npm install live2d-widget-model-shizuku</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p><a href="https://github.com/next-theme/hexo-next-fireworks"><strong>Fireworks</strong></a></p>
+<p>一个鼠标点击动画特效</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ npm install next-theme&#x2F;hexo-next-fireworks</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://github.com/suyin-long/activate-power-mode"><strong>activate-power-mode</strong></a></p>
+<p>一个为博客添加酷炫打字特效的插件</p>
+<ul>
+<li><p>编辑 <code>/hexo-site/source/_data/footer.njk</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;suyin-long&#x2F;activate-power-mode@1.0&#x2F;dist&#x2F;activate-power-mode.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">POWERMODE.colorful &#x3D; true; &#x2F;&#x2F; make power mode colorful</span><br><span class="line">POWERMODE.shake &#x3D; false; &#x2F;&#x2F; turn off shake</span><br><span class="line">document.body.addEventListener(&#39;input&#39;, POWERMODE);</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>取消<code>footer: source/_data/footer.njk</code>的注释</p>
+</li>
+</ul>
+<p><strong>搞怪网页标题</strong></p>
+<ul>
+<li><p>编辑 <code>/hexo-site/source/_data/head.njk</code>，添加</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;# 搞怪网页标题 #&#125; &#123;% if theme.title_trick.enable %&#125;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">  var OriginTitile &#x3D; document.title;</span><br><span class="line">  var titleTime;</span><br><span class="line">  document.addEventListener(&quot;visibilitychange&quot;, function() &#123;</span><br><span class="line">    if (document.hidden) &#123;</span><br><span class="line">      document.title &#x3D; &quot;&#123;&#123; theme.title_trick.leave &#125;&#125;&quot;;</span><br><span class="line">      clearTimeout(titleTime);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      document.title &#x3D; &quot;&#123;&#123; theme.title_trick.enter &#125;&#125;&quot;;</span><br><span class="line">      titleTime &#x3D; setTimeout(function() &#123;</span><br><span class="line">        document.title &#x3D; OriginTitile;</span><br><span class="line">      &#125;, 2000);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在主题配置文件中添加</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># a trick on website title</span><br><span class="line">title_trick:</span><br><span class="line">  enable: true</span><br><span class="line">  leave: &quot;(つェ⊂)我藏好了哦~&quot;</span><br><span class="line">  enter: &quot;(*´∇｀*) 被你发现啦~&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>我先是放在 <code>sorce/_data/head.njk</code> 中，问题是改变一次标题后就只显示网址。我认为 script 可能在 <code>&lt;title&gt;</code> 之前加载，所以就放在 <code>source/_data/header.njk</code>，正常运行。</p>
+</li>
+</ul>
+<p><a href="https://github.com/next-theme/hexo-next-three"><strong>Hexo NexT Three</strong></a></p>
+<ul>
+<li><p>Install</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install next-theme&#x2F;hexo-next-three</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Configure</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># JavaScript 3D library.</span><br><span class="line"># Dependencies: https:&#x2F;&#x2F;github.com&#x2F;next-theme&#x2F;hexo-next-three</span><br><span class="line">three:</span><br><span class="line">  enable: true</span><br><span class="line">  defer: true</span><br><span class="line">  cdn:</span><br><span class="line">  waves:</span><br><span class="line">    enable: false</span><br><span class="line">    cdn:</span><br><span class="line">  lines:</span><br><span class="line">    enable: false</span><br><span class="line">    cdn:</span><br><span class="line">  sphere:</span><br><span class="line">    enable: false</span><br><span class="line">    cdn:</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p><a href="https://github.com/jiangtj-lab/hexo-cake-moon-menu"><strong>hexo-cake-moon-menu</strong></a></p>
+<ul>
+<li><p>How to use</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ npm install hexo-cake-moon-menu</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Config: In hexo <code>_config.yml</code> </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">moon_menu:</span><br><span class="line">  back2top:</span><br><span class="line">    enable: true</span><br><span class="line">    icon: fas fa-chevron-up</span><br><span class="line">    func: back2top</span><br><span class="line">    order: -1</span><br><span class="line">  back2bottom:</span><br><span class="line">    enable: true</span><br><span class="line">    icon: fas fa-chevron-down</span><br><span class="line">    func: back2bottom</span><br><span class="line">    order: -2</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p><strong>permalink</strong></p>
+<ul>
+<li><p>默认的文章 url 地址为 <code>http://yoursite.com/:year/:month/:day/:title/</code>，这种 url 格式层级太多，并且如果文章标题是中文的话可能会发生转义而出现一堆乱码，不利于搜索引擎的爬取分析，因此建议在站点配置中修改 <code>permalink</code> 的格式来简化页面 url，并尽量采用英文命名 Markdown 文件。(这个根据个人选择，我认为有更有组织的文件结构更重要)</p>
+</li>
+<li><p>这个 front matter 必须是 html 文件，文件会生成到 public 根目录。</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">permalink: &#x2F;post-name.html</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p><strong>robots.txt</strong></p>
+<p>robots.txt（统一小写）是一种存放于网站根目录下的ASCII编码的文本文件，它通常告诉网络搜索引擎的漫游器（又称网络蜘蛛），此网站中的哪些内容是不应被搜索引擎的漫游器获取的，哪些是可以被漫游器获取的。</p>
+<p><span class="exturl" data-url="aHR0cDovL3Rvb2wuY2hpbmF6LmNvbS9yb2JvdHMv">robots.txt在线生成器<i class="fa fa-external-link-alt"></i></span></p>
+<p><strong>Great Blog</strong></p>
+<p><span class="exturl" data-url="aHR0cDovL3llYXJpdG8uY24vdGFncy9IZXhvLw==">yearito<i class="fa fa-external-link-alt"></i></span> ，<span class="exturl" data-url="aHR0cHM6Ly9zdXlpbi1ibG9nLmNsdWIvMjAyMC8zMjNFSDJZLw==">suyin<i class="fa fa-external-link-alt"></i></span> ，<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLnlsZWFvLmNvbS9jYXRlZ29yaWVzL0hleG8lRTYlOEElOTglRTglODUlQkUv">yleao<i class="fa fa-external-link-alt"></i></span> ，<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmRsemhhbmcuY29tL3Bvc3RzLzM2Lz9oaWdobGlnaHQ9aGV4bw==">dlzhang<i class="fa fa-external-link-alt"></i></span></p>
+<h3 id="Version"><a href="#Version" class="headerlink" title="Version"></a>Version</h3><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Version</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>npm</td>
+<td>7.0.8</td>
+</tr>
+<tr>
+<td>hexo</td>
+<td>5.2.0</td>
+</tr>
+<tr>
+<td>hexo-theme-next</td>
+<td>8.0.2</td>
+</tr>
+</tbody></table>
+]]></content>
+      <tags>
+        <tag>Hexo</tag>
       </tags>
   </entry>
 </search>
