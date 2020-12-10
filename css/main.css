@@ -181,7 +181,7 @@ body {
 body {
   background: var(--body-bg-color);
   color: var(--text-color);
-  font-family: Share Tech Mono, ZCOOL XiaoWei, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-family: Architects Daughter, 'PingFang SC', 'Microsoft YaHei', sans-serif;
   font-size: 1em;
   line-height: 2;
   min-height: 100%;
@@ -194,7 +194,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: Share Tech Mono, Share Tech Mono, ZCOOL XiaoWei, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-family: Architects Daughter, 'PingFang SC', 'Microsoft YaHei', sans-serif;
   font-weight: bold;
   line-height: 1.5;
   margin: 20px 0 15px;
@@ -511,7 +511,7 @@ pre {
 }
 pre,
 code {
-  font-family: Share Tech Mono, consolas, Menlo, monospace, 'PingFang SC', 'Microsoft YaHei';
+  font-family: consolas, Menlo, monospace, 'PingFang SC', 'Microsoft YaHei';
 }
 code {
   border-radius: 3px;
@@ -1238,7 +1238,7 @@ pre code {
   color: var(--brand-hover-color);
 }
 .site-title {
-  font-family: Share Tech Mono, Share Tech Mono, ZCOOL XiaoWei, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-family: Architects Daughter, 'PingFang SC', 'Microsoft YaHei', sans-serif;
   font-size: 1.375em;
   font-weight: normal;
   margin: 0;
@@ -1969,7 +1969,7 @@ pre code {
   width: 4px;
 }
 .post-body {
-  font-family: Share Tech Mono, Share Tech Mono, ZCOOL XiaoWei, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-family: Architects Daughter, 'PingFang SC', 'Microsoft YaHei', sans-serif;
   overflow-wrap: break-word;
 }
 @media (min-width: 1200px) {
@@ -2163,7 +2163,7 @@ pre code {
 }
 .posts-expand .post-meta-container {
   color: #999;
-  font-family: Share Tech Mono, Share Tech Mono, ZCOOL XiaoWei, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-family: Architects Daughter, 'PingFang SC', 'Microsoft YaHei', sans-serif;
   font-size: 0.75em;
   margin-top: 3px;
 }
@@ -2838,7 +2838,7 @@ mark.search-keyword {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #5cffaa;
+  background: #e5ffa7;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
