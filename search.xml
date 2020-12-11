@@ -70,12 +70,12 @@
 <li><p>安装后如果用 vnc viewer 只有一个点的话，可以换一个发行版，我尝试的 CentOS 有这个问题。</p>
 </li>
 <li><p>Linux连的时候出现 <code>WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!</code>：</p>
-   <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ ssh-keygen -R + 输入服务器的IP</span><br></pre></td></tr></table></figure>
+   <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ssh-keygen -R + 输入服务器的IP</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>altarch 架构的手机 CentOS 系统换源</p>
-   <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ cp CentOS-7-armhfp.repo CentOS-Base.repo</span><br><span class="line">$ mv CentOS-7-armhfp.repo CentOS-7-armhfp.repo.backup</span><br><span class="line">$ vi CentOS-Base.repo</span><br><span class="line">baseurl&#x3D;https:&#x2F;&#x2F;mirrors.ustc.edu.cn&#x2F;centos-altarch&#x2F;7.6.1810&#x2F;os&#x2F;armhfp&#x2F;</span><br><span class="line">$ yum makecache</span><br><span class="line">$ yum update</span><br></pre></td></tr></table></figure></li>
+   <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cp CentOS-7-armhfp.repo CentOS-Base.repo</span><br><span class="line">mv CentOS-7-armhfp.repo CentOS-7-armhfp.repo.backup</span><br><span class="line">vi CentOS-Base.repo</span><br><span class="line">baseurl=https://mirrors.ustc.edu.cn/centos-altarch/7.6.1810/os/armhfp/</span><br><span class="line">yum makecache</span><br><span class="line">yum update</span><br></pre></td></tr></table></figure></li>
 <li><p><strong>如果你之前没有安装VNC的话，现在又想装：</strong></p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ yum -y install tigervnc-server</span><br></pre></td></tr></table></figure></li>
+  <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">yum -y install tigervnc-server</span><br></pre></td></tr></table></figure></li>
 </ul>
 ]]></content>
       <tags>
@@ -216,7 +216,7 @@
 </ul>
 </li>
 <li><p>I prefer not to use a login manager so I have an alias named <code>x</code> to <code>xinit</code> command. This way after I login I type <code>x</code> press [ENTER] and x11 desktop is started.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">x: aliased to xinit ~&#x2F;.xinitrc -- -dpi 75 -nolisten tcp 1&gt; &#x2F;dev&#x2F;null 2&gt; &#x2F;dev&#x2F;null</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">x: aliased to xinit ~/.xinitrc -- -dpi 75 -nolisten tcp 1&gt; /dev/null 2&gt; /dev/null</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>we can silence the FreeBSD boot process even more. Just add <code>rc_startmsgs=&quot;NO&quot;</code> to your <code>/etc/rc.conf</code> file.</p>
 </li>
@@ -232,7 +232,7 @@
 <h3 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h3><h5 id="BIOS"><a href="#BIOS" class="headerlink" title="BIOS"></a>BIOS</h5><p>Disable unused (Express Card/Bluetooth/Camera/Fingerprint Reader/…) and unwanted options (Intel AMT/Security Chip/UEFI/…).</p>
 <h5 id="Install-1"><a href="#Install-1" class="headerlink" title="Install"></a>Install</h5><ul>
 <li><p>To put the image on the pendrive we will use the dd tool available on almost any Mac OS X (macOS) and Linux system. For Windows You will have to download it from here – <span class="exturl" data-url="aHR0cDovL3d3dy5jaHJ5c29jb21lLm5ldC9kZA==">dd for windows<i class="fa fa-external-link-alt"></i></span>( bs=1M on Linux/Windows ).</p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo dd if&#x3D;FreeBSD-11.1-RELEASE-amd64-memstick.img of&#x3D;&#x2F;dev&#x2F;da1 bs&#x3D;1m</span><br></pre></td></tr></table></figure>
+  <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo dd if=FreeBSD-11.1-RELEASE-amd64-memstick.img of=/dev/da1 bs=1m</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>When we have a new machine there is always a problem with new name for it. The RFC 1178 <span class="exturl" data-url="aHR0cHM6Ly90b29scy5pZXRmLm9yZy9odG1sL3JmYzExNzg=">Choosing a Name for Your Computer<i class="fa fa-external-link-alt"></i></span> from 1990 year tries to address that issue </p>
 </li>
@@ -263,42 +263,42 @@
 <img data-src="/2020/11/28/FreeBSD-Desktop/freebsd-11-1-laptop-install-24.png" class="" title="FreeBSD">
 
 <h5 id="Boot"><a href="#Boot" class="headerlink" title="Boot"></a>Boot</h5><p>If You will have attached LAN cable and your interface is <code>em0</code> (check <code>ifconfig</code> command output) then <code>dhclient em0</code> command should grant You the working connection to the Internet – assuming that You have DHCP server on that network. </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># ifconfig em0 up</span><br><span class="line"># dhclient em0</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ifconfig em0 up</span><br><span class="line">dhclient em0</span><br></pre></td></tr></table></figure>
 
 <p>To test the network connectivity use the <code>ping</code> command.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># ping -c 3 freebsd.org</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ping -c 3 freebsd.org</span><br></pre></td></tr></table></figure>
 
 <p>If You would like to connect to the World with wireless connection then here are the needed commands. First lets check what wireless card You have.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># sysctl net.wlan.devices</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sysctl net.wlan.devices</span><br></pre></td></tr></table></figure>
 
 <p>We will now create <code>wlan</code> virtual device on top of our <code>iwn0</code> device and bring it up.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># ifconfig wlan0 create wlandev iwn0</span><br><span class="line"># ifconfig wlan0 up</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ifconfig wlan0 create wlandev iwn0</span><br><span class="line">ifconfig wlan0 up</span><br></pre></td></tr></table></figure>
 
 <p>We can scan for existing nearby WiFi access points if needed.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># ifconfig wlan0 scan</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ifconfig wlan0 scan</span><br></pre></td></tr></table></figure>
 
 <p>Now we need to add the desired WiFi network to the /etc/wpa_supplicant.conf file as shown below.</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">network&#x3D;&#123;</span><br><span class="line">  ssid&#x3D;&quot;WIFI-NETWORK-NAME&quot;</span><br><span class="line">  psk&#x3D;&quot;PASSWORD&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>Then You may connect to it using the <code>wpa_supplicant</code> daemon. Hit the <code>[CTRL]+[Z]</code> key combination to put the process into suspended state. Then we type the <code>bg</code> command to put it back into running state, but in the background so we can continue to type next commands.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># wpa_supplicant -i wlan0 -c &#x2F;etc&#x2F;wpa_supplicant.conf</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">wpa_supplicant -i wlan0 -c /etc/wpa_supplicant.conf</span><br></pre></td></tr></table></figure>
 
 <p>Now we will request for the IP address from the access point DHCP server.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># dhclient wlan0</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dhclient wlan0</span><br></pre></td></tr></table></figure>
 
 <h3 id="X11-Window-System"><a href="#X11-Window-System" class="headerlink" title="X11 Window System"></a>X11 Window System</h3><h5 id="BIOS-or-UEFI"><a href="#BIOS-or-UEFI" class="headerlink" title="BIOS or UEFI"></a>BIOS or UEFI</h5><p>First things first, if You find a device that is not supported by any ‘accelerated’ driver like <code>intel</code> or <code>nvidia</code>. You would use <code>vesa</code> driver (Video Electronics Standards Association) while booting in BIOS mode and You will use <code>scfb</code> driver (System Console Frame Buffer) while booting on UEFI mode. This can be checked by </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">% sysctl machdep.bootmethod</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sysctl machdep.bootmethod</span><br></pre></td></tr></table></figure>
 
-<h5 id="Packages"><a href="#Packages" class="headerlink" title="Packages"></a>Packages</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># pkg install xorg xdm xterm openbox xf86-video-intel</span><br></pre></td></tr></table></figure>
+<h5 id="Packages"><a href="#Packages" class="headerlink" title="Packages"></a>Packages</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pkg install xorg xdm xterm openbox xf86-video-intel</span><br></pre></td></tr></table></figure>
 
 <h5 id="Group"><a href="#Group" class="headerlink" title="Group"></a>Group</h5><p>To have hardware accelerated X11 You will also need to add your regular user to the <code>video</code> group.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># pw groupmod video -m username</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pw groupmod video -m username</span><br></pre></td></tr></table></figure>
 
 <h5 id="Login-Class"><a href="#Login-Class" class="headerlink" title="Login Class"></a>Login Class</h5><p>Remember to also add UTF-8 as the default encoding in the <code>/etc/login.conf</code> file as show below. Also, after adding them, run the <code>cap_mkdb /etc/login.conf</code> command as root and relogin with your regular user.</p>
 <figure class="highlight diff"><table><tr><td class="code"><pre><span class="line"><span class="addition">+		:charset=UTF-8:\</span></span><br><span class="line"><span class="addition">+		:lang=en_US.UTF-8:\</span></span><br></pre></td></tr></table></figure>
 
 <p>The UTF-8 encoding – same as in the <code>lang</code> parameter in the <code>/etc/login.conf</code> file – must be added at the begining of your <code>~/.xinitrc</code> file, like that:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export LC_ALL&#x3D;en_US.UTF-8</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> LC_ALL=en_US.UTF-8</span><br></pre></td></tr></table></figure>
 
 <h5 id="Kernel-Module"><a href="#Kernel-Module" class="headerlink" title="Kernel Module"></a>Kernel Module</h5><p>Most computers/laptops/servers will have integrated GPU which should be supported by the X11 <code>intel</code> driver and:</p>
 <ul>
@@ -306,49 +306,49 @@
 <li><code>/boot/modules/i915kms.ko</code> from <code>drm-next-kmod</code> package (port moved to graphics/drm-fbsd12.0-kmod on 2018-12-09)</li>
 </ul>
 <p>To add the KMS (Kernel Mode Setting) Intel module loading into the <code>/etc/rc.conf</code> file put the line below into it.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">kld_list&#x3D;&quot;$&#123;kld_list&#125; i915kms&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">kld_list=<span class="string">&quot;<span class="variable">$&#123;kld_list&#125;</span> i915kms&quot;</span></span><br></pre></td></tr></table></figure>
 
 <p>In case of need to use <code>drm-next-kmod</code> module instead of the base system one, your <code>/etc/rc.conf</code> file would look like that one below.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">kld_list&#x3D;&quot;$&#123;kld_list&#125; &#x2F;boot&#x2F;modules&#x2F;i915kms.ko&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">kld_list=<span class="string">&quot;<span class="variable">$&#123;kld_list&#125;</span> /boot/modules/i915kms.ko&quot;</span></span><br></pre></td></tr></table></figure>
 
 <p>If you find yourself in the situation that the <code>drm-next-kmod</code> would still not support your latest graphics card then you may try the latest version of the <code>drm-next-kmod</code>.</p>
 <h5 id="X11-Window-System-Configuration"><a href="#X11-Window-System-Configuration" class="headerlink" title="X11 Window System Configuration"></a>X11 Window System Configuration</h5><p>You can just configure these parts of X11 server that You need without touching other parts. This individual configuration is done in the <code>/usr/local/etc/X11/xorg.conf.d</code> directory with individual files for each setting.</p>
 <ul>
 <li><p>The DontZap option is to enable the X11 server abort with <code>[CTRL] + [ALT] + [BACKSPACE]</code> shortcut.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># cat &#x2F;usr&#x2F;local&#x2F;etc&#x2F;X11&#x2F;xorg.conf.d&#x2F;flags.conf</span><br><span class="line">Section &quot;ServerFlags&quot;</span><br><span class="line">  Option &quot;DontZap&quot; &quot;off&quot;</span><br><span class="line">EndSection</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cat /usr/local/etc/X11/xorg.conf.d/flags.conf</span><br><span class="line">Section &quot;ServerFlags&quot;</span><br><span class="line">  Option &quot;DontZap&quot; &quot;off&quot;</span><br><span class="line">EndSection</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>terminate:ctrl_alt_bksp</code> to allow termination of the X11 server with <code>[CTRL] + [ALT] + [BACKSPACE]</code> shortcut and <code>ctrl:nocaps</code> to ignore the Caps Lock key as I also find that useful.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># cat &#x2F;usr&#x2F;local&#x2F;etc&#x2F;X11&#x2F;xorg.conf.d&#x2F;keyboard.conf</span><br><span class="line">Section &quot;InputDevice&quot;</span><br><span class="line">  Identifier &quot;Keyboard0&quot;</span><br><span class="line">  Driver &quot;kbd&quot;</span><br><span class="line">  Option &quot;XkbLayout&quot; &quot;us&quot;</span><br><span class="line">  Option &quot;XkbOptions&quot; &quot;terminate:ctrl_alt_bksp,ctrl:nocaps&quot;</span><br><span class="line">EndSection</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cat /usr/local/etc/X11/xorg.conf.d/keyboard.conf</span><br><span class="line">Section &quot;InputDevice&quot;</span><br><span class="line">  Identifier &quot;Keyboard0&quot;</span><br><span class="line">  Driver &quot;kbd&quot;</span><br><span class="line">  Option &quot;XkbLayout&quot; &quot;us&quot;</span><br><span class="line">  Option &quot;XkbOptions&quot; &quot;terminate:ctrl_alt_bksp,ctrl:nocaps&quot;</span><br><span class="line">EndSection</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>graphics card configuration</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># cat &#x2F;usr&#x2F;local&#x2F;etc&#x2F;X11&#x2F;xorg.conf.d&#x2F;card.conf</span><br><span class="line">Section &quot;Device&quot;</span><br><span class="line">  Identifier &quot;Card0&quot;</span><br><span class="line">  Option &quot;DPMS&quot;</span><br><span class="line">  Driver &quot;intel&quot;</span><br><span class="line">EndSection</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cat /usr/local/etc/X11/xorg.conf.d/card.conf</span><br><span class="line">Section &quot;Device&quot;</span><br><span class="line">  Identifier &quot;Card0&quot;</span><br><span class="line">  Option &quot;DPMS&quot;</span><br><span class="line">  Driver &quot;intel&quot;</span><br><span class="line">EndSection</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
 <h5 id="XDM-or-XINIT-STARTX"><a href="#XDM-or-XINIT-STARTX" class="headerlink" title="XDM or XINIT/STARTX"></a>XDM or XINIT/STARTX</h5><p>You will also have to decide how You want to start your X11 Window Server, you may login in plan text console and then type <code>xinit</code> or <code>startx</code> to read your <code>~/.xinitrc</code> configuration and daemons or You may want to use X11 Login manager such as <code>xdm/sddm/slim</code> with <code>~/.xsession</code> configuration to load after successful login. The difference between <code>xinit</code> and <code>startx</code> is that <code>startx</code> command executes <code>xinit</code> command with arguments.</p>
 <p>When I use <code>xinit</code> to directly start the X11 server I use an alias to <code>xinit</code> with these parameters:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">alias x&#x3D;&#39;xinit ~&#x2F;.xinitrc -- -dpi 75 -nolisten tcp&#39;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">alias</span> x=<span class="string">&#x27;xinit ~/.xinitrc -- -dpi 75 -nolisten tcp&#x27;</span></span><br></pre></td></tr></table></figure>
 
 <p>I keep that alias in the <code>~/.zshrc</code> file.</p>
 <p>While <code>xinit</code> run commands based on the <code>~/.xinitrc</code> file the XDM login manager looks for the <code>~/.xsession</code> file. As You will be loading same stuff regardless of the startup method we will create a link of <code>~/.xsession</code> pointing to the <code>~/.xinitrc</code> file. This way either method You choose You will always end with started X11 session.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">% ln -s ~&#x2F;.xinitrc ~&#x2F;.xsession</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ln -s ~/.xinitrc ~/.xsession</span><br></pre></td></tr></table></figure>
 
 <p>One more case about the <code>~/.xinitrc</code> (or <code>~/.xsession</code>) file. It is interpreted as a shell script (and yes you can do <code>if/then/else/fi</code> and <code>case/esac</code> or <code>for/while</code> POSIX shell scripting in it) but it does not need to be executable. The last command in this file MUST NOT to be put in the background (must be without the <code>&amp;</code> char at the end) because the X11 session will end.</p>
 <h5 id="XDM-Black-Theme"><a href="#XDM-Black-Theme" class="headerlink" title="XDM Black Theme"></a>XDM Black Theme</h5><p>To configure this black XDM theme You will need to modify contents of two files as show below.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># cat &#x2F;usr&#x2F;local&#x2F;etc&#x2F;X11&#x2F;xdm&#x2F;Xsetup_0</span><br><span class="line">xsetroot -solid black</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cat /usr/local/etc/X11/xdm/Xsetup_0</span><br><span class="line">xsetroot -solid black</span><br></pre></td></tr></table></figure>
 
 <p>This we will set black background on the login screen on the :<code>0</code> X11 server – the default one.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># cat &#x2F;usr&#x2F;local&#x2F;etc&#x2F;X11&#x2F;xdm&#x2F;Xresources</span><br><span class="line">xlogin.Login.greeting:</span><br><span class="line">xlogin.Login.unsecureGreeting:</span><br><span class="line">xlogin.Login.fail:                Fail.</span><br><span class="line">xlogin.Login.changePasswdMessage: Change.</span><br><span class="line">xlogin.Login.namePrompt:          Username:</span><br><span class="line">xlogin.Login.passwdPrompt:        Password:</span><br><span class="line">xlogin.Login.echoPasswd:          true</span><br><span class="line">xlogin.Login.background:          black</span><br><span class="line">xlogin.Login.foreground:          white</span><br><span class="line">xlogin.Login.failColor:           #cccccc</span><br><span class="line">xlogin.Login.inpColor:            black</span><br><span class="line">xlogin.Login.promptColor:         #aaaaaa</span><br><span class="line">xlogin.Login.face:                courier:size&#x3D;13:style&#x3D;Bold</span><br><span class="line">xlogin.Login.failFace:            courier:size&#x3D;13:style&#x3D;Bold</span><br><span class="line">xlogin.Login.promptFace:          courier:size&#x3D;13:style&#x3D;Normal</span><br><span class="line">xlogin.Login.greetFace:           courier:size&#x3D;13</span><br><span class="line">xlogin.Login.width:               400</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cat /usr/local/etc/X11/xdm/Xresources</span><br><span class="line">xlogin.Login.greeting:</span><br><span class="line">xlogin.Login.unsecureGreeting:</span><br><span class="line">xlogin.Login.fail:                Fail.</span><br><span class="line">xlogin.Login.changePasswdMessage: Change.</span><br><span class="line">xlogin.Login.namePrompt:          Username:</span><br><span class="line">xlogin.Login.passwdPrompt:        Password:</span><br><span class="line">xlogin.Login.echoPasswd:          true</span><br><span class="line">xlogin.Login.background:          black</span><br><span class="line">xlogin.Login.foreground:          white</span><br><span class="line">xlogin.Login.failColor:           #cccccc</span><br><span class="line">xlogin.Login.inpColor:            black</span><br><span class="line">xlogin.Login.promptColor:         #aaaaaa</span><br><span class="line">xlogin.Login.face:                courier:size=13:style=Bold</span><br><span class="line">xlogin.Login.failFace:            courier:size=13:style=Bold</span><br><span class="line">xlogin.Login.promptFace:          courier:size=13:style=Normal</span><br><span class="line">xlogin.Login.greetFace:           courier:size=13</span><br><span class="line">xlogin.Login.width:               400</span><br></pre></td></tr></table></figure>
 
 <img data-src="/2020/11/28/FreeBSD-Desktop/xdm-black.png" class="" title="FreeBSD">
 
 <h5 id="Client-Configuration"><a href="#Client-Configuration" class="headerlink" title="Client Configuration"></a>Client Configuration</h5><p> the simple <code>~/.xinitrc</code> file with <code>Openbox</code> window manager, prestarted <code>xterm</code> terminal and black background for our simple session.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">% cat ~&#x2F;.xinitrc</span><br><span class="line"># SET PROPER locale(1) with LC_ALL VARIABLE.</span><br><span class="line">  export LC_ALL&#x3D;en_US.UTF-8</span><br><span class="line"></span><br><span class="line"># PRESTARTED APPS</span><br><span class="line">  xterm &amp;</span><br><span class="line">  xsetroot -solid black &amp;</span><br><span class="line"></span><br><span class="line"># WINDOW MANAGER</span><br><span class="line">  openbox</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cat ~/.xinitrc</span><br><span class="line"><span class="meta">#</span><span class="bash"> SET PROPER locale(1) with LC_ALL VARIABLE.</span></span><br><span class="line">  export LC_ALL=en_US.UTF-8</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> PRESTARTED APPS</span></span><br><span class="line">  xterm &amp;</span><br><span class="line">  xsetroot -solid black &amp;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> WINDOW MANAGER</span></span><br><span class="line">  openbox</span><br></pre></td></tr></table></figure>
 
 <img data-src="/2020/11/28/FreeBSD-Desktop/desktop.png" class="" title="FreeBSD">
 
 <h5 id="Using-modesetting-Driver"><a href="#Using-modesetting-Driver" class="headerlink" title="Using modesetting Driver"></a>Using modesetting Driver</h5><p>If you use <code>i915kms</code> kernel module, you don’t need to install <code>xf86-video-intel</code>, the <code>modesetting</code> generic DDX driver that is built in the X server, will do just well. The xf86-video-intel might even cause you troubles.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># cat &#x2F;usr&#x2F;local&#x2F;etc&#x2F;X11&#x2F;xorg.conf.d&#x2F;card.conf</span><br><span class="line">Section &quot;Device&quot;</span><br><span class="line">  Identifier &quot;Card0&quot;</span><br><span class="line">  Option &quot;DPMS&quot;</span><br><span class="line">  Driver &quot;modesetting&quot;</span><br><span class="line">EndSection</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cat /usr/local/etc/X11/xorg.conf.d/card.conf</span><br><span class="line">Section &quot;Device&quot;</span><br><span class="line">  Identifier &quot;Card0&quot;</span><br><span class="line">  Option &quot;DPMS&quot;</span><br><span class="line">  Driver &quot;modesetting&quot;</span><br><span class="line">EndSection</span><br></pre></td></tr></table></figure>
 
 <h5 id="Using-Dedicated-video-Login-Class-Instead-of-Global-One"><a href="#Using-Dedicated-video-Login-Class-Instead-of-Global-One" class="headerlink" title="Using Dedicated video: Login Class Instead of Global One"></a>Using Dedicated video: Login Class Instead of Global One</h5><p>（可解决中文乱码）</p>
 <p>If you modify <code>/etc/login.conf</code>, you are modifying the systemwide locale for the default login class to which all users belong (also user www for Apache, for example).</p>
@@ -356,16 +356,16 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">video:\</span><br><span class="line">        :charset&#x3D;UTF-8:\</span><br><span class="line">        :lang&#x3D;en_US.UTF-8:\</span><br><span class="line">        :tc&#x3D;default:</span><br></pre></td></tr></table></figure>
 
 <p>Rebuild the login class database.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># cap_mkdb &#x2F;etc&#x2F;login.conf</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cap_mkdb &#x2F;etc&#x2F;login.conf</span><br></pre></td></tr></table></figure>
 
 <p>Lets set the login class to video for the vuk user.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># pw usermod -L video -n vuk</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pw usermod -L video -n vuk</span><br></pre></td></tr></table></figure>
 
 <p>How the account looks after setting the login class.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># grep vuk &#x2F;etc&#x2F;master.passwd</span><br><span class="line">vuk:&#123;REMOVED&#125;:1000:1000:video:0:0:vuk:&#x2F;home&#x2F;vuk:&#x2F;bin&#x2F;sh</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">grep vuk /etc/master.passwd</span><br><span class="line">vuk:&#123;REMOVED&#125;:1000:1000:video:0:0:vuk:/home/vuk:/bin/sh</span><br></pre></td></tr></table></figure>
 
 <p>Now logout and login again to make that work. View the changes through the <code>locale</code> command.</p>
-<h5 id="Tap-to-Click-on-Synaptics-Touchpad"><a href="#Tap-to-Click-on-Synaptics-Touchpad" class="headerlink" title="Tap to Click on Synaptics Touchpad"></a>Tap to Click on Synaptics Touchpad</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># pkg install xf86-input-synaptics</span><br><span class="line"></span><br><span class="line"># cat &#x2F;usr&#x2F;local&#x2F;etc&#x2F;X11&#x2F;xorg.conf.d&#x2F;touchpad.conf</span><br><span class="line">Section &quot;InputClass&quot;</span><br><span class="line">  Identifier &quot;touchpad&quot;</span><br><span class="line">  MatchIsTouchpad &quot;on&quot;</span><br><span class="line">  Driver &quot;libinput&quot;</span><br><span class="line">  Option &quot;Tapping&quot; &quot;on&quot;</span><br><span class="line">EndSection</span><br></pre></td></tr></table></figure>
+<h5 id="Tap-to-Click-on-Synaptics-Touchpad"><a href="#Tap-to-Click-on-Synaptics-Touchpad" class="headerlink" title="Tap to Click on Synaptics Touchpad"></a>Tap to Click on Synaptics Touchpad</h5><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pkg install xf86-input-synaptics</span><br><span class="line"></span><br><span class="line">cat /usr/local/etc/X11/xorg.conf.d/touchpad.conf</span><br><span class="line">Section &quot;InputClass&quot;</span><br><span class="line">  Identifier &quot;touchpad&quot;</span><br><span class="line">  MatchIsTouchpad &quot;on&quot;</span><br><span class="line">  Driver &quot;libinput&quot;</span><br><span class="line">  Option &quot;Tapping&quot; &quot;on&quot;</span><br><span class="line">EndSection</span><br></pre></td></tr></table></figure>
 
 <h3 id="Key-Components"><a href="#Key-Components" class="headerlink" title="Key Components"></a>Key Components</h3><h5 id="Window-Manager"><a href="#Window-Manager" class="headerlink" title="Window Manager"></a>Window Manager</h5><p>The <span class="exturl" data-url="aHR0cHM6Ly93d3cuYm94LWxvb2sub3JnL3AvMTAxNzgzMi8=">TWM<i class="fa fa-external-link-alt"></i></span> <em>Openbox</em> theme.</p>
 <img data-src="/2020/11/28/FreeBSD-Desktop/openbox-theme-twm.png" class="" title="FreeBSD">
@@ -408,7 +408,7 @@
 
 <ul>
 <li><p>The Rofi requires simple command.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">% rofi -show run -theme solarized_alternate -font &quot;Monaco 8&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">rofi -show run -theme solarized_alternate -font &quot;Monaco 8&quot;</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
@@ -444,7 +444,7 @@
 
 <ul>
 <li><p>The <code>xautolock</code> will be used to automatically lock the screen (invoke mate-screensaver or xlock command) after defined period of inactivity time.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">% xautolock \</span><br><span class="line">    -time 1 \</span><br><span class="line">    -locker \</span><br><span class="line">    ~&#x2F;bin&#x2F;example-lock-handler.sh \</span><br><span class="line">    -resetsaver</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">xautolock \</span><br><span class="line">    -time 1 \</span><br><span class="line">    -locker \</span><br><span class="line">    ~/bin/example-lock-handler.sh \</span><br><span class="line">    -resetsaver</span><br></pre></td></tr></table></figure>
 
 <p>The xautolock also has to be started and run in the background using the <code>~/.xinitrc</code> or <code>~/.xsession</code> file.</p>
 </li>
@@ -452,12 +452,12 @@
 <h5 id="Blue-Light-Spectrum-Suppress"><a href="#Blue-Light-Spectrum-Suppress" class="headerlink" title="Blue Light Spectrum Suppress"></a>Blue Light Spectrum Suppress</h5><p>Automatically adjusts color temperature of the screen according to your current time in your location.</p>
 <ul>
 <li><p>While <span class="exturl" data-url="aHR0cHM6Ly9qdXN0Z2V0Zmx1eC5jb20v">F.lux<i class="fa fa-external-link-alt"></i></span>  (closed source) does not provide a native binary for FreeBSD it does offer such binary for Linux and as FreeBSD provides Linux Binary Compatibility its possible to use it on FreeBSD. To use F.lux just start it in the <code>~/.xinitrc</code> or <code>~/.xsession</code> file like that.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">~&#x2F;path&#x2F;to&#x2F;bin&#x2F;xflux -l 33.54321 -g 11.12345 &amp;</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">~/path/to/bin/xflux -l 33.54321 -g 11.12345 &amp;</span><br></pre></td></tr></table></figure>
 
 <p>Of course 33.54321 is latitude and 11.12345 is longitude of your localization.</p>
 </li>
 <li><p><code>Redshift</code> is the solution that I propose to use as open source blue light spectrum suppressor. Similarly like with the F.lux to start Redshift just put it in the <code>~/.xinitrc</code> or <code>~/.xsession</code> file like that.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">% redshift -l 33.54321:11.12345 -g 0.9 &amp;</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">redshift -l 33.54321:11.12345 -g 0.9 &amp;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Someone else suggested trying <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtaXIvc2N0ZA==">sctd<i class="fa fa-external-link-alt"></i></span> which is sct but rewritten/modified to be a daemon that will automatically change the color temperature during the day (or night). The sctd uses smaller about of RAM memory, uses less libraries and size of these libraries is smaller then what redshfit needs. </p>
 </li>
@@ -466,7 +466,7 @@
 <li><p><code>doas</code> (sudo equivalent) </p>
 </li>
 <li><p>Font: Download them and extract them like that into the <code>~/.fonts</code> directory, if if does not exists, create it. To make sure that Openbox will see them you can verify it using the <code>fc-match</code> command like below.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">% fc-match &#39;Ubuntu Mono&#39;</span><br><span class="line">ubuntu-mono-regular.ttf: &quot;Ubuntu Mono&quot; &quot;Regular&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">fc-match &#x27;Ubuntu Mono&#x27;</span><br><span class="line">ubuntu-mono-regular.ttf: &quot;Ubuntu Mono&quot; &quot;Regular&quot;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Openbox: Openbox consists mostly of two files. <code>~/.config/openbox/menu.xml</code> and <code>~/.config/openbox/rc.xml</code>. The icons for the Openbox menu are kept under <code>~/.config/openbox/icons</code> directory.</p>
 </li>
@@ -490,21 +490,21 @@
 
 <h3 id="Xorg-Configuration"><a href="#Xorg-Configuration" class="headerlink" title="Xorg Configuration"></a>Xorg Configuration</h3><p>顯示卡、顯示器以及輸入裝置會自動偵測，無須任何手動設置。除非自動設置失敗，否則請勿建立 xorg.conf 或執行 -configure 步驟。</p>
 <p>加入要執行 Xorg 的使用者到 <code>video</code> 或 <code>wheel</code> 群組，以便在可用時能開啟 3D 加速。要加入使用者 <em><code>jru</code></em> 到任一個可用的群組：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># pw groupmod video -m jru || pw groupmod wheel -m jru</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pw groupmod video -m jru || pw groupmod wheel -m jru</span><br></pre></td></tr></table></figure>
 
 <p>較舊版的 FreeBSD 使用的 sc 並不知到 KMS 系統的存在，這會導致關閉 X 之後即始仍在運作但系統 Console 卻呈現空白。較新版的 vt Console 可避免這個問題。</p>
 <p>加入此行到 <code>/boot/loader.conf</code> 來開啟 vt：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">kern.vty&#x3D;vt</span><br></pre></td></tr></table></figure>
 
 <p>使用多檔，每一個檔案只設定一個指定項目會較傳統使用單一 <code>/etc/X11/xorg.conf</code> 設定來的簡單。完整路徑為 <code>/usr/local/etc/X11/xorg.conf.d/</code>。</p>
-<h5 id="在檔案中設定影像驅動程式"><a href="#在檔案中設定影像驅動程式" class="headerlink" title="在檔案中設定影像驅動程式"></a>在檔案中設定影像驅動程式</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># vi &#x2F;usr&#x2F;local&#x2F;etc&#x2F;X11&#x2F;xorg.conf.d&#x2F;driver-intel.conf</span><br><span class="line">Section &quot;Device&quot;</span><br><span class="line">	Identifier &quot;Card0&quot;</span><br><span class="line">	Driver     &quot;intel&quot;</span><br><span class="line">	# BusID    &quot;PCI:1:0:0&quot;</span><br><span class="line">EndSection</span><br></pre></td></tr></table></figure>
+<h5 id="在檔案中設定影像驅動程式"><a href="#在檔案中設定影像驅動程式" class="headerlink" title="在檔案中設定影像驅動程式"></a>在檔案中設定影像驅動程式</h5><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vi /usr/local/etc/X11/xorg.conf.d/driver-intel.conf</span><br><span class="line">Section &quot;Device&quot;</span><br><span class="line">	Identifier &quot;Card0&quot;</span><br><span class="line">	Driver     &quot;intel&quot;</span><br><span class="line"><span class="meta">	#</span><span class="bash"> BusID    <span class="string">&quot;PCI:1:0:0&quot;</span></span></span><br><span class="line">EndSection</span><br></pre></td></tr></table></figure>
 
 <p>若有多張顯示卡，可取消註解 <code>BusID</code> identifier 然後設定為想要的顯示卡，顯示卡的 Bus ID 清單可以使用 <code>pciconf -lv | grep -B3 display</code> 取得。</p>
 <h5 id="手動設定"><a href="#手動設定" class="headerlink" title="手動設定"></a>手動設定</h5><p>設定檔可由 Xorg 根據偵測到的硬體產生，這個檔案對一開始自訂設定很有幫助。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Xorg -configure</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Xorg -configure</span><br></pre></td></tr></table></figure>
 
 <p>設定檔會儲存至 <code>/root/xorg.conf.new</code>，做任何需要的更改，然後使用以下指令測試該檔案：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Xorg -config &#x2F;root&#x2F;xorg.conf.new</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Xorg -config /root/xorg.conf.new</span><br></pre></td></tr></table></figure>
 
 <p>在新設定檔調整與測試過後，便可分開成較小的檔案放置到正常的位置 <code>/usr/local/etc/X11/xorg.conf.d/</code>。</p>
 <h3 id="Install-Desktop-Enviroment"><a href="#Install-Desktop-Enviroment" class="headerlink" title="Install Desktop Enviroment"></a>Install Desktop Enviroment</h3><ul>
@@ -521,19 +521,28 @@
 <p>KDE 與 GNOME 會被稱作桌面環境是因為包含了完整常用桌面作業的應用程式。</p>
 <ul>
 <li><p>Install X Window System</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo pkg install xorg</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo pkg install xorg</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Install Desktop Environment</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo pkg install gnome3</span><br><span class="line">$ sudo pkg install gnome3-lite</span><br><span class="line">$ sudo pkg install x11&#x2F;kde5</span><br><span class="line">$ sudo pkg install xfce</span><br><span class="line">$ sudo pkg install mate</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo pkg install gnome3</span><br><span class="line">sudo pkg install gnome3-lite</span><br><span class="line">sudo pkg install x11/kde5</span><br><span class="line">sudo pkg install xfce</span><br><span class="line">sudo pkg install mate</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Install/Enable Display Manager</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo pkg install xdm</span><br><span class="line">$ sudo pkg install slim			# xfce,mate</span><br><span class="line">$ sudo pkg install x11&#x2F;sddm		# kde</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo pkg install xdm</span><br><span class="line">sudo pkg install slim			# xfce,mate</span><br><span class="line">sudo pkg install x11/sddm		# kde</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Setting</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo vi &#x2F;etc&#x2F;ttys</span><br><span class="line">ttyv8   &quot;&#x2F;usr&#x2F;local&#x2F;bin&#x2F;xdm -nodaemon&quot;  xterm  on secure</span><br><span class="line"></span><br><span class="line">$ sudo vi &#x2F;etc&#x2F;fstab gnome, kde</span><br><span class="line">proc           &#x2F;proc       procfs  rw  0   0</span><br><span class="line"></span><br><span class="line">$ sudo vi &#x2F;etc&#x2F;rc.conf</span><br><span class="line">moused_enalbe&#x3D;&quot;YES&quot;</span><br><span class="line">dbus_enable&#x3D;&quot;YES&quot;		# gnome, kde, xfce</span><br><span class="line">hald_enable&#x3D;&quot;YES&quot;		# gnome, kde, mate</span><br><span class="line">gdm_enalbe&#x3D;&quot;YES&quot;		# gnome启动</span><br><span class="line">sddm_enable&#x3D;&quot;YES&quot;		# kde启动</span><br><span class="line">slim_enable&#x3D;&quot;YES&quot;		# xfce,mate</span><br><span class="line">gnome_enable&#x3D;&quot;YES&quot;		# gnome服务</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo vi /etc/ttys</span><br><span class="line">ttyv8   &quot;/usr/local/bin/xdm -nodaemon&quot;  xterm  on secure</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo vi /etc/fstab gnome, kde</span><br><span class="line">proc           /proc       procfs  rw  0   0</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo vi /etc/rc.conf</span><br><span class="line">moused_enalbe=&quot;YES&quot;</span><br><span class="line">dbus_enable=&quot;YES&quot;		# gnome, kde, xfce</span><br><span class="line">hald_enable=&quot;YES&quot;		# gnome, kde, mate</span><br><span class="line">gdm_enalbe=&quot;YES&quot;		# gnome启动</span><br><span class="line">sddm_enable=&quot;YES&quot;		# kde启动</span><br><span class="line">slim_enable=&quot;YES&quot;		# xfce,mate</span><br><span class="line">gnome_enable=&quot;YES&quot;		# gnome服务</span><br></pre></td></tr></table></figure>
+
+
+
 </li>
+</ul>
+<ul>
 <li><p>slim Usage:failed to execute login command</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo vi ~&#x2F;.xinitrc</span><br><span class="line">exec mate-session		# mate</span><br><span class="line">exec xfce4-session		# xfce</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo vi ~/.xinitrc</span><br><span class="line">exec mate-session		# mate</span><br><span class="line">exec xfce4-session		# xfce</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
@@ -541,61 +550,61 @@
 <p>因編譯選項不同，有些 Port 會有多個版本可使用。</p>
 <ul>
 <li><p><span class="exturl" data-url="aHR0cHM6Ly9taXJyb3JzLnVzdGMuZWR1LmNuL2hlbHAvZnJlZWJzZC1wa2cuaHRtbA==">USTC Mirrors<i class="fa fa-external-link-alt"></i></span>：注意使用 Latest 源，有很多流行软件。创建 <code>/usr/local/etc/pkg/repos/FreeBSD.conf</code> 覆盖官方源 <code>/etc/pkg/FreeBSD.conf</code> 配置</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo vi &#x2F;usr&#x2F;local&#x2F;etc&#x2F;pkg&#x2F;repos&#x2F;FreeBSD.conf</span><br><span class="line">FreeBSD: &#123;</span><br><span class="line">  url: &quot;pkg+http:&#x2F;&#x2F;mirrors.ustc.edu.cn&#x2F;freebsd-pkg&#x2F;$&#123;ABI&#125;&#x2F;latest&quot;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$ sudo pkg update -f		# 更新索引</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo vi /usr/local/etc/pkg/repos/FreeBSD.conf</span><br><span class="line">FreeBSD: &#123;</span><br><span class="line">  url: &quot;pkg+http://mirrors.ustc.edu.cn/freebsd-pkg/$&#123;ABI&#125;/latest&quot;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">sudo pkg update -f		# 更新索引</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><span class="exturl" data-url="aHR0cDovL21pcnJvcnMuMTYzLmNvbS9mcmVlYnNkLXBrZy9GcmVlQlNEJTNhMTIlM2FhbWQ2NC9sYXRlc3Qv">163 Mirrors<i class="fa fa-external-link-alt"></i></span></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">url: &quot;pkg+http:&#x2F;&#x2F;mirrors.163.com&#x2F;freebsd-pkg&#x2F;$&#123;ABI&#125;&#x2F;latest&quot;,</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>要啟動 (Bootstrap) 系統，請執行</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo &#x2F;usr&#x2F;sbin&#x2F;pkg</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo /usr/sbin/pkg</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>當升級原使用舊版 pkg_* 工具的既有系統時，必須將資料庫轉換成新的格式</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo pkg2ng</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo pkg2ng</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Update the available remote repositories as listed in pkg.conf</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo pkg update</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo pkg update</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Search for a package</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo pkg search perl</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo pkg search perl</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>在指定要安裝的套件時，最好使用 Port 來源來指定該應用程式，Port 來源是指應用程式在 Port 樹中的路徑</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo pkg search -o perl</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo pkg search -o perl</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Install a package: Installing must specify a unique origin or version otherwise it will try installing all matches</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo pkg install perl-5.14</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo pkg install perl-5.14</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>列出已經安裝的 Port 中有那些已過時</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo pkg version -l &quot;&lt;&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo pkg version -l &quot;&lt;&quot;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Upgrade from remote repository</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo pkg upgrade</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo pkg upgrade</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Delete an installed package</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo pkg delete perl-5.14</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo pkg delete perl-5.14</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Remove unneeded dependencies</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo pkg autoremove</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo pkg autoremove</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>List installed packages</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo pkg info</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo pkg info</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Display information about installed packages</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo pkg info perl-5.14</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo pkg info perl-5.14</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Show the pkg-message of a package</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo pkg info -D perl-5.14</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo pkg info -D perl-5.14</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>要查詢已安在系統上的軟體是否有任何已知的漏洞</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo pkg audit -F</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo pkg audit -F</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>因為相依所安裝的套件稱作自動 (Automatic) 套件，而非自動套件即套件被安裝的原因不是因為其他套件所相依</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo pkg prime-list		# deprecated</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo pkg prime-list		# deprecated</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Clean the local cache of fetched remote packages</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo pkg clean</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo pkg clean</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Example</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo pkg install vim atom linux-sublime3</span><br><span class="line">$ sudo pkg install git node npm		# Node.js</span><br><span class="line">$ sudo pkg install plank telegram-desktop firefox-esr</span><br><span class="line">$ sudo pkg install intellij tomcat mysql180-server mysql180-client		# Intellij IDEA use openjdk8</span><br><span class="line">$ sudo pkg install p7zip</span><br><span class="line">$ sudo pkg install zsh		# ZSH_THEME&#x3D;&quot;agnoster&quot;</span><br><span class="line">$ pip install NetEase-MusicBox		# export PATH&#x3D;&quot;your-dir:$PATH&quot;</span><br><span class="line">$ sudo pkg install you-get youtube_dl</span><br><span class="line">$ sudo pkg install vlc mplayer</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo pkg install vim atom linux-sublime3</span><br><span class="line">sudo pkg install git node npm		# Node.js</span><br><span class="line">sudo pkg install plank telegram-desktop firefox-esr</span><br><span class="line">sudo pkg install intellij tomcat mysql180-server mysql180-client		# Intellij IDEA use openjdk8</span><br><span class="line">sudo pkg install p7zip</span><br><span class="line">sudo pkg install zsh		# ZSH_THEME=&quot;agnoster&quot;</span><br><span class="line">pip install NetEase-MusicBox		# export PATH=&quot;your-dir:$PATH&quot;</span><br><span class="line">sudo pkg install you-get youtube_dl</span><br><span class="line">sudo pkg install vlc mplayer</span><br></pre></td></tr></table></figure>
 
 
 </li>
@@ -615,43 +624,43 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">MASTER_SITE_OVERRIDE?&#x3D;http:&#x2F;&#x2F;mirrors.163.com&#x2F;freebsd-ports&#x2F;distfiles&#x2F;$&#123;DIST_SUBDIR&#125;&#x2F;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>安裝 Port 套件集：下載壓縮後的 Port 套件集快照 (Snapshot) 到 /var/db/portsnap</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo portsnap fetch</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo portsnap fetch</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>第一次執行 Portsnap 時，要先解壓縮快照到 /usr/ports</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo portsnap extract</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo portsnap extract</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>執行以下指令來更新 /usr/ports</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo portsnap fetch</span><br><span class="line">$ sudo portsnap update</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo portsnap fetch</span><br><span class="line">sudo portsnap update</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>要找到 Port 所在的分類</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo whereis lsof</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo whereis lsof</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>使用 Port 套件集內建的搜尋機制來找軟體</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo cd &#x2F;usr&#x2F;ports</span><br><span class="line">$ sudo make search name&#x3D;lsof</span><br><span class="line">$ sudo make quicksearch name&#x3D;lsof		# 不接受多資訊</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo cd /usr/ports</span><br><span class="line">sudo make search name=lsof</span><br><span class="line">sudo make quicksearch name=lsof		# 不接受多資訊</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>若要進行更有深度的搜尋</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo make search key&#x3D;string</span><br><span class="line">$ sudo make quicksearch key&#x3D;string</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo make search key=string</span><br><span class="line">sudo make quicksearch key=string</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>一次設定所有Port 編譯選項</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo make config-recursive</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo make config-recursive</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>重新進入 Port 的編譯選項清單</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo make config			# or</span><br><span class="line">$ sudo make showconfig		# or</span><br><span class="line">$ sudo make rmconfig</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo make config			# or</span><br><span class="line">sudo make showconfig		# or</span><br><span class="line">sudo make rmconfig</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>編譯並安裝 Port</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo cd &#x2F;usr&#x2F;ports&#x2F;sysutils&#x2F;lsof</span><br><span class="line">$ sudo make install</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo cd /usr/ports/sysutils/lsof</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>編譯在 /usr/ports Port 並安裝到 /usr/home/example/local</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo make WRKDIRPREFIX&#x3D;..&#x2F;ports PREFIX&#x3D;..&#x2F;local install</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo make WRKDIRPREFIX=../ports PREFIX=../local install</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>安裝過程中會建立工作用的子目錄用來儲存編譯時暫存的檔案。可移除此目錄來節省磁碟空間並漸少往後升級新版 Port 時造成問題</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo make clean</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo make clean</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>移除已安裝的 Port</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo cd &#x2F;usr&#x2F;ports&#x2F;sysutils&#x2F;lsof</span><br><span class="line">$ sudo make deinstall</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo cd /usr/ports/sysutils/lsof</span><br><span class="line">sudo make deinstall</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Example</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;usr&#x2F;ports&#x2F;java&#x2F;linux-oracle-jdk18$ sudo make install</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd /usr/ports/java/linux-oracle-jdk18</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
@@ -665,35 +674,35 @@
 <p>最好不要直接安装 Linux 的软件，而使用 FreeBSD 源中的 Linux 软件，一般以 <code>linux-package</code> 命名。</p>
 <ul>
 <li><p>載入 Linux® 核心模組</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo kldload linux</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo kldload linux</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>對 64-位元的相容性</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo kldload linux64</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo kldload linux64</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>確認模組已載入</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo kldstat</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo kldstat</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>安裝基本的 Linux® 程式庫和 Binary</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo pkg install emulators&#x2F;linux_base-c7</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo pkg install emulators/linux_base-c7</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Add the following line</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo vi &#x2F;etc&#x2F;fstab</span><br><span class="line">linprocfs   &#x2F;compat&#x2F;linux&#x2F;proc	linprocfs	rw	0	0</span><br><span class="line">linsysfs    &#x2F;compat&#x2F;linux&#x2F;sys	linsysfs	rw	0	0</span><br><span class="line">tmpfs    &#x2F;compat&#x2F;linux&#x2F;dev&#x2F;shm	tmpfs	rw,mode&#x3D;1777	0	0</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo vi /etc/fstab</span><br><span class="line">linprocfs   /compat/linux/proc	linprocfs	rw	0	0</span><br><span class="line">linsysfs    /compat/linux/sys	linsysfs	rw	0	0</span><br><span class="line">tmpfs    /compat/linux/dev/shm	tmpfs	rw,mode=1777	0	0</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>開機時開啟 Linux® 相容性</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo vi &#x2F;etc&#x2F;rc.conf</span><br><span class="line">linux_enable&#x3D;&quot;YES&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo vi /etc/rc.conf</span><br><span class="line">linux_enable=&quot;YES&quot;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>安裝 Linux® ELF Binary</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo brandelf -t Linux my-linux-elf-binary</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo brandelf -t Linux my-linux-elf-binary</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>安裝以 Linux® RPM 為基礎的應用程式,需先安裝 archivers/rpm4 套件或 Port</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo pkg install rpm4</span><br><span class="line">$ sudo cd &#x2F;compat&#x2F;linux</span><br><span class="line">$ sudo rpm2cpio &lt; &#x2F;path&#x2F;to&#x2F;linux.archive.rpm | cpio -id</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo pkg install rpm4</span><br><span class="line">sudo cd /compat/linux</span><br><span class="line">sudo rpm2cpio &lt; /path/to/linux.archive.rpm | cpio -id</span><br></pre></td></tr></table></figure>
 
 
 </li>
 </ul>
 <h5 id="手動安裝其他程式庫"><a href="#手動安裝其他程式庫" class="headerlink" title="手動安裝其他程式庫"></a>手動安裝其他程式庫</h5><ul>
 <li><p>在 Linux® 系統，可使用 ldd 來找出應用程式需要哪個共用程式庫</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">% ldd linuxdoom</span><br><span class="line">libXt.so.3 (DLL Jump 3.1) &#x3D;&gt; &#x2F;usr&#x2F;X11&#x2F;lib&#x2F;libXt.so.3.1.0</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ldd linuxdoom</span><br><span class="line">libXt.so.3 (DLL Jump 3.1) =&gt; /usr/X11/lib/libXt.so.3.1.0</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>複製 Linux® 系統輸出結果中最後一欄需要的的檔案到 FreeBSD 系統的 /compat/linux。 複製完後，建立符號連結 (Symbolic link) 至輸出結果第一欄的名稱</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;compat&#x2F;linux&#x2F;usr&#x2F;X11&#x2F;lib&#x2F;libXt.so.3.1.0</span><br><span class="line">&#x2F;compat&#x2F;linux&#x2F;usr&#x2F;X11&#x2F;lib&#x2F;libXt.so.3 -&gt; libXt.so.3.1.0</span><br></pre></td></tr></table></figure>
@@ -717,31 +726,31 @@
 <h5 id="設定檔"><a href="#設定檔" class="headerlink" title="設定檔"></a>設定檔</h5><p><code>/usr/src/sys</code> 下子目錄代表著支援的硬體架構 (Architecture)，每個支援的硬體架構中會有 <code>conf</code> 子目錄，裡面含有供該架構使用的 <code>GENERIC</code> 核心設定檔。</p>
 <p>說明在<code>GENERIC</code> 同目錄的 <code>NOTES</code> 檔案中。所有架構通用選項，參考 <code>/usr/src/sys/conf/NOTES</code>。</p>
 <h3 id="Others"><a href="#Others" class="headerlink" title="Others"></a>Others</h3><h5 id="Screen-resolution-on-FreeBSD-on-VirtualBox"><a href="#Screen-resolution-on-FreeBSD-on-VirtualBox" class="headerlink" title="Screen resolution on FreeBSD on VirtualBox"></a>Screen resolution on FreeBSD on VirtualBox</h5><p>问题描述：在virtualbox虚拟机下，无法改变桌面分辨率为1366x768</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ VBoxManage setextradata &quot;FreeBSD&quot; VBoxInternal2&#x2F;EfiGraphicsResolution 1366x768</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">VBoxManage setextradata &quot;FreeBSD&quot; VBoxInternal2/EfiGraphicsResolution 1366x768</span><br></pre></td></tr></table></figure>
 
 <h5 id="Disable-the-Forward-Back-buttons-on-my-mouse"><a href="#Disable-the-Forward-Back-buttons-on-my-mouse" class="headerlink" title="Disable the Forward/Back buttons on my mouse"></a>Disable the Forward/Back buttons on my mouse</h5><p>问题描述：浏览网页时，鼠标滑轮滚动浏览器就会前进后退。</p>
 <p><span class="exturl" data-url="aHR0cHM6Ly91bml4LnN0YWNrZXhjaGFuZ2UuY29tL3F1ZXN0aW9ucy8yMDU1MC9ob3ctdG8tZGlzYWJsZS10aGUtZm9yd2FyZC1iYWNrLWJ1dHRvbnMtb24tbXktbW91c2U=">Salved<i class="fa fa-external-link-alt"></i></span>：</p>
 <ul>
 <li><p>执行下面命令后，上下滑动鼠标滑轮，看看映射到那些button，一般是buttons 8 and 9</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo xev | grep -A2 ButtonPress</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo xev | grep -A2 ButtonPress</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>then disable button 8 and 9（前提是有上面的问题，否则就不要禁）</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo vi ~&#x2F;.Xmodmap</span><br><span class="line">pointer &#x3D; 1 2 3 4 5 6 7 0 0 0 0 0</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo vi ~/.Xmodmap</span><br><span class="line">pointer = 1 2 3 4 5 6 7 0 0 0 0 0</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>test it with the command,command automatically when you log in; if yours doesn’t, arrange for it to run when X starts.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo xmodmap ~&#x2F;.Xmodmap</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo xmodmap ~/.Xmodmap</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
-<h5 id="Install-chinese-font"><a href="#Install-chinese-font" class="headerlink" title="Install chinese font"></a>Install chinese font</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo pkg install zh-CJKUnifonts		# CJK（中日韩统一表意文字）</span><br></pre></td></tr></table></figure>
+<h5 id="Install-chinese-font"><a href="#Install-chinese-font" class="headerlink" title="Install chinese font"></a>Install chinese font</h5><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo pkg install zh-CJKUnifonts		# CJK（中日韩统一表意文字）</span><br></pre></td></tr></table></figure>
 
-<h5 id="设单使用模式为不安全"><a href="#设单使用模式为不安全" class="headerlink" title="设单使用模式为不安全"></a>设单使用模式为不安全</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo vi &#x2F;etc&#x2F;ttys</span><br><span class="line">console none	unknown off insecure</span><br></pre></td></tr></table></figure>
+<h5 id="设单使用模式为不安全"><a href="#设单使用模式为不安全" class="headerlink" title="设单使用模式为不安全"></a>设单使用模式为不安全</h5><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo vi /etc/ttys</span><br><span class="line">console none	unknown off insecure</span><br></pre></td></tr></table></figure>
 
 <h5 id="No-space-left-on-device"><a href="#No-space-left-on-device" class="headerlink" title="No space left on device"></a>No space left on device</h5><p>问题描述：使用 pkg update 时提示这个问题。原因是 /tmp is too small。</p>
 <p><span class="exturl" data-url="aHR0cHM6Ly9mb3J1bXMuZnJlZWJzZC5vcmcvdGhyZWFkcy9uby1zcGFjZS1sZWZ0LW9uLWRldmljZS42MTIzMi8=">Salved<i class="fa fa-external-link-alt"></i></span>: </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo vi &#x2F;etc&#x2F;fstab</span><br><span class="line">tmpfs	&#x2F;tmp	tmpfs	rw,size&#x3D;256000000	0	0		# size 以Byte为单位</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo vi /etc/fstab</span><br><span class="line">tmpfs	/tmp	tmpfs	rw,size=256000000	0	0		# size 以Byte为单位</span><br></pre></td></tr></table></figure>
 
-<h5 id="VirtualBox™-guest-additions"><a href="#VirtualBox™-guest-additions" class="headerlink" title="VirtualBox™ guest additions"></a>VirtualBox™ guest additions</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo cd &#x2F;usr&#x2F;ports&#x2F;emulators&#x2F;virtualbox-ose-additions &amp;&amp; make install clean</span><br><span class="line"></span><br><span class="line">$ sudo vi &#x2F;etc&#x2F;rc.conf</span><br><span class="line">vboxguest_enable&#x3D;&quot;YES&quot;</span><br><span class="line">vboxservice_enable&#x3D;&quot;YES&quot;</span><br><span class="line">vboxservice_flags&#x3D;&quot;--disable-timesync&quot;		# 若有使用 ntpd或 ntpdate，便可關閉主機時間同步功能</span><br></pre></td></tr></table></figure>
+<h5 id="VirtualBox™-guest-additions"><a href="#VirtualBox™-guest-additions" class="headerlink" title="VirtualBox™ guest additions"></a>VirtualBox™ guest additions</h5><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo cd /usr/ports/emulators/virtualbox-ose-additions &amp;&amp; make install clean</span><br><span class="line"></span><br><span class="line">sudo vi /etc/rc.conf</span><br><span class="line">vboxguest_enable=&quot;YES&quot;</span><br><span class="line">vboxservice_enable=&quot;YES&quot;</span><br><span class="line">vboxservice_flags=&quot;--disable-timesync&quot;		# 若有使用 ntpd或 ntpdate，便可關閉主機時間同步功能</span><br></pre></td></tr></table></figure>
 
 <h5 id="Fish"><a href="#Fish" class="headerlink" title="Fish"></a>Fish</h5><p>Fish 是”the <strong>f</strong>riendly <strong>i</strong>nteractive <strong>sh</strong>ell”的简称，最大特点就是方便易用。</p>
 <p>Fish 会自动在光标后面给出建议，表示可能的选项，颜色为灰色。如果采纳建议，可以按下<code>→</code>或<code>Control + F</code>。如果只采纳一部分，可以按下<code>Alt + →</code>。</p>
@@ -750,9 +759,7 @@
 <li><p>These directories are defined in <code>/etc/defaults/rc.conf</code>（主要是运行脚本）</p>
 <ul>
 <li><p>Default startup directory is <code>/usr/local/etc/rc.d/</code>. if you need the files to be executed in a specific order, try numbering the files. For example:</p>
-<blockquote>
-<p>000This.Will.Run.First.sh<br>020This.Will.Run.Next.sh<br>030And.Then.This.sh</p>
-</blockquote>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">000This.Will.Run.First.sh</span><br><span class="line">020This.Will.Run.Next.sh</span><br><span class="line">030And.Then.This.sh</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>deprecated: <code>/etc/rc.local</code>        </p>
 </li>
@@ -764,20 +771,20 @@
 <p>（本质就是在 <code>.xinitrc</code> 调用程序指令，GUI 程序开机启动都需放入 <code>.xinitrc</code>，在 Xorg 启动后运行）</p>
 <ul>
 <li><p>Installation</p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># cd &#x2F;usr&#x2F;ports&#x2F;x11&#x2F;dsbautostart &amp;&amp; make install distclean</span><br></pre></td></tr></table></figure>
+  <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd /usr/ports/x11/dsbautostart &amp;&amp; make install distclean</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Usage</p>
 <ul>
 <li><p>Manual</p>
-<pre><code>- Setup: Add the following command to your `~/.xinitrc`, or to your window manager&#39;s startup script (e.g. ~/.config/openbox/autostart.sh)
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sh ~&#x2F;.config&#x2F;DSB&#x2F;autostart.sh&amp;</span><br></pre></td></tr></table></figure>
-
-- `~/.config/DSB/autostart.sh`
-
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">plank&amp;</span><br></pre></td></tr></table></figure></code></pre>
 <ul>
-<li>GUI: <code>Setting -&gt; DSBAutostart -&gt; Add Command</code>, example <code>plank</code>, then <code>Save</code> and <code>Quit</code></li>
+<li><p>Setup: Add the following command to your <code>~/.xinitrc</code>, or to your window manager’s startup script (e.g. ~/.config/openbox/autostart.sh)</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sh ~&#x2F;.config&#x2F;DSB&#x2F;autostart.sh&amp;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>~/.config/DSB/autostart.sh</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">plank&amp;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>GUI: <code>Setting -&gt; DSBAutostart -&gt; Add Command</code>, example <code>plank</code>, then <code>Save</code> and <code>Quit</code></p>
+</li>
 </ul>
 </li>
 </ul>
@@ -791,7 +798,7 @@
 <li>根据提示在 <span class="exturl" data-url="aHR0cHM6Ly93d3cub3JhY2xlLmNvbS9qYXZhL3RlY2hub2xvZ2llcy9vcmFjbGUtamF2YS1hcmNoaXZlLWRvd25sb2Fkcy5odG1s">Oracle Java Archive<i class="fa fa-external-link-alt"></i></span> 下载需要的 JDK 版本安装包，复制到 <code>/usr/ports/distfiles</code></li>
 <li>在 <code>/usr/ports/java/linux-oracle-jdk18</code> 运行 <code>sudo make install</code>，安装成功</li>
 </ul>
-<h5 id="FreeBSD-Install-Python-and-pip"><a href="#FreeBSD-Install-Python-and-pip" class="headerlink" title="FreeBSD Install Python and pip"></a>FreeBSD Install Python and pip</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ sudo pkg install python</span><br><span class="line"></span><br><span class="line">$ python --version</span><br><span class="line">Python 3.7.9</span><br><span class="line"></span><br><span class="line">$ sudo pkg install py37-pip</span><br></pre></td></tr></table></figure>
+<h5 id="FreeBSD-Install-Python-and-pip"><a href="#FreeBSD-Install-Python-and-pip" class="headerlink" title="FreeBSD Install Python and pip"></a>FreeBSD Install Python and pip</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo pkg install python</span><br><span class="line"></span><br><span class="line">python --version</span><br><span class="line">Python 3.7.9</span><br><span class="line"></span><br><span class="line">sudo pkg install py37-pip</span><br></pre></td></tr></table></figure>
 
 <h3 id="BSDs"><a href="#BSDs" class="headerlink" title="BSDs"></a>BSDs</h3><p>NetBSD: <span class="exturl" data-url="aHR0cHM6Ly9taXJyb3JzLmh1YXdlaWNsb3VkLmNvbS9OZXRCU0Qv">huaweicloud<i class="fa fa-external-link-alt"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly9taXJyb3JzLmFsaXl1bi5jb20vbmV0YnNkLz9zcG09YTJjNmguMTM2NTExMDQuMC4wLjRkODQzYmY0QXpKWVRY">aliyun<i class="fa fa-external-link-alt"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly9taXJyb3JzLnR1bmEudHNpbmdodWEuZWR1LmNuLw==">tsinghua<i class="fa fa-external-link-alt"></i></span></p>
 <p>OpenBSD: <span class="exturl" data-url="aHR0cHM6Ly9taXJyb3JzLmh1YXdlaWNsb3VkLmNvbS9PcGVuQlNELw==">huaweicloud<i class="fa fa-external-link-alt"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly9taXJyb3JzLmFsaXl1bi5jb20vb3BlbmJzZC8/c3BtPWEyYzZoLjEzNjUxMTA0LjAuMC4xNGRiNWE1MHFGblhsNg==">aliyun<i class="fa fa-external-link-alt"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly9taXJyb3JzLnR1bmEudHNpbmdodWEuZWR1LmNuLw==">tsinghua<i class="fa fa-external-link-alt"></i></span></p>
@@ -809,17 +816,17 @@
 
 <h5 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h5><ul>
 <li><p>安装 Git：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ scoop install git</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">scoop install git</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>安装 node.js：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ scoop install nodejs</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">scoop install nodejs</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>安装 Hexo：-g 表示全局安装，会将 Hexo 命令加入环境变量中。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
-<h5 id="建站"><a href="#建站" class="headerlink" title="建站"></a>建站</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ hexo init [folder]</span><br><span class="line">$ cd &lt;folder&gt;</span><br><span class="line">$ npm install	 不必执行，在执行 hexo init 的过程中就已经自动安装好了项目依赖。</span><br></pre></td></tr></table></figure>
+<h5 id="建站"><a href="#建站" class="headerlink" title="建站"></a>建站</h5><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo init [folder]</span><br><span class="line">cd &lt;folder&gt;</span><br><span class="line">npm install	 # 不必执行，在执行 hexo init 的过程中就已经自动安装好了项目依赖。</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.</span><br><span class="line">├── node_modules		&#x2F;&#x2F;依赖安装目录</span><br><span class="line">├── scaffolds			&#x2F;&#x2F;模板文件夹，Hexo的模板是指在新建的文章文件中默认填充的内容。</span><br><span class="line">|   ├── draft.md		&#x2F;&#x2F;草稿模板</span><br><span class="line">|   ├── page.md			&#x2F;&#x2F;页面模板</span><br><span class="line">|   └── post.md			&#x2F;&#x2F;文章模板</span><br><span class="line">├── source				&#x2F;&#x2F;资源文件夹</span><br><span class="line">|   └── _posts			&#x2F;&#x2F;文章目录</span><br><span class="line">├── themes				&#x2F;&#x2F;主题文件夹，Hexo 会根据主题来生成静态页面。</span><br><span class="line">|   └── landscape		&#x2F;&#x2F;默认主题</span><br><span class="line">├── .gitignore			&#x2F;&#x2F;指定不纳入git版本控制的文件</span><br><span class="line">├── _config.yml			&#x2F;&#x2F;站点配置文件</span><br><span class="line">├── db.json            </span><br><span class="line">├── package.json		&#x2F;&#x2F;应用程序的信息</span><br><span class="line">└── package-lock.json</span><br></pre></td></tr></table></figure>
 
@@ -879,37 +886,56 @@
 </tbody></table>
 <h5 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h5><ul>
 <li><p>version 显示 Hexo 版本：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ hexo version</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo version</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>list 列出网站资料：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ hexo list</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo list</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>新建一篇文章：如果没有设置 layout 的话，默认使用 _config.yml 中的 default_layout 参数代替。如果标题包含空格的话，请使用引号括起来。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ hexo new [layout] &lt;title&gt;</span><br><span class="line">$ hexo n [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo new [layout] &lt;title&gt;</span><br><span class="line">hexo n [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Hexo 有三种默认布局：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">布局	路径</span><br><span class="line">post	source&#x2F;_posts</span><br><span class="line">page	source</span><br><span class="line">draft	source&#x2F;_drafts</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>布局</th>
+<th>路径</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>post</td>
+<td>source/_posts</td>
+</tr>
+<tr>
+<td>page</td>
+<td>source</td>
+</tr>
+<tr>
+<td>draft</td>
+<td>source/_drafts</td>
+</tr>
+</tbody></table>
 </li>
 <li><p>预览草稿，publish 发表草稿：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ hexo server --draft</span><br><span class="line">$ hexo publish [layout] &lt;filename&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo server --draft</span><br><span class="line">hexo publish [layout] &lt;filename&gt;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>clean 清除缓存文件 (db.json) 和已生成的静态文件 (public)：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ hexo clean</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>generate 生成静态文件：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br><span class="line">$ hexo g</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo generate</span><br><span class="line">hexo g</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>启动 hexo 的内置 Web 服务器：该命令将会调用 <span class="exturl" data-url="aHR0cHM6Ly93d3cubWFya2Rvd25ndWlkZS5vcmcvYmFzaWMtc3ludGF4">Markdown<i class="fa fa-external-link-alt"></i></span> 引擎解析项目中的博客内容生成网页资源，资源将会存于内存中。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br><span class="line">$ hexo s --debug		# 开启调试模式（--debug）</span><br><span class="line">$ hexo s --port 8000	# 添加 -p &#x2F; --port 参数来设置 Web 服务监听的端口号</span><br><span class="line">$ hexo s --static		# 加 -s &#x2F; --static 参数，本地改动不触发 hexo 实时解析更新。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo server</span><br><span class="line">hexo s --debug		# 开启调试模式（--debug）</span><br><span class="line">hexo s --port 8000	# 添加 -p &#x2F; --port 参数来设置 Web 服务监听的端口号</span><br><span class="line">hexo s --static		# 加 -s &#x2F; --static 参数，本地改动不触发 hexo 实时解析更新。</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>deploy 部署网站：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br><span class="line">$ hexo d</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo deploy</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
 <h5 id="写作"><a href="#写作" class="headerlink" title="写作"></a>写作</h5><ul>
 <li><p>Front-matter： 是文件最上方以 <code>---</code> 分隔的区域，用于指定个别文件的变量</p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">layout: 		# 布局</span><br><span class="line">title: 			# 标题</span><br><span class="line">date: 			# 建立日期</span><br><span class="line">updated: 		# 更新日期</span><br><span class="line">comments: 		# 开启文章的评论功能</span><br><span class="line">tags:			# 标签</span><br><span class="line">- 标签1</span><br><span class="line">- 标签2</span><br><span class="line">categories: [分类1, 分类2]		# 分类, 不适用与分页</span><br><span class="line">permalink: 		# 覆盖文章网址</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+  <figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">layout:</span> 		<span class="comment"># 布局</span></span><br><span class="line"><span class="attr">title:</span> 			<span class="comment"># 标题</span></span><br><span class="line"><span class="attr">date:</span> 			<span class="comment"># 建立日期</span></span><br><span class="line"><span class="attr">updated:</span> 		<span class="comment"># 更新日期</span></span><br><span class="line"><span class="attr">comments:</span> 		<span class="comment"># 开启文章的评论功能</span></span><br><span class="line"><span class="attr">tags:</span>			<span class="comment"># 标签</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">标签1</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">标签2</span></span><br><span class="line"><span class="attr">categories:</span> [<span class="string">分类1</span>, <span class="string">分类2</span>]		<span class="comment"># 分类, 不适用与分页</span></span><br><span class="line"><span class="attr">permalink:</span> 		<span class="comment"># 覆盖文章网址</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
 
 <p>  标签是一种列表结构，而分类是一种树结构。</p>
 </li>
@@ -920,8 +946,15 @@
   <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;% blockquote [author[, source]] [link] [source_link_title] %&#125;</span><br><span class="line">content</span><br><span class="line">&#123;% endblockquote %&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>代码块</p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">​&#96;&#96;&#96; [language] [title] [url] [link text]</span><br><span class="line">code snippet</span><br></pre></td></tr></table></figure>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">- langugae：语言名称，引导渲染引擎正确解析并高亮显示关键字</span><br><span class="line">- title：代码块标题，将会显示在左上角</span><br><span class="line">- url：链接地址，如果没有指定 link text 则会在右上角显示 link</span><br><span class="line">- link text：链接名称，指定 url 后有效，将会显示在右上角</span><br><span class="line">- 如果设置语言为 diff，可以在代码前添加 &#96;+&#96; 和 &#96;-&#96; 来使用如上所示的高亮增删行提示效果，在展示代码改动痕迹时比较实用。</span><br></pre></td></tr></table></figure>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">​&#96;&#96;&#96; [language] [title] [url] [link text]</span><br><span class="line">code snippet</span><br><span class="line">​&#96;&#96;&#96;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>langugae</code>：语言名称，引导渲染引擎正确解析并高亮显示关键字</li>
+<li><code>title</code>：代码块标题，将会显示在左上角</li>
+<li><code>url</code>：链接地址，如果没有指定 link text 则会在右上角显示 link</li>
+<li><code>link text</code>：链接名称，指定 url 后有效，将会显示在右上角</li>
+<li>如果设置语言为 diff，可以在代码前添加 <code>+</code> 和 <code>-</code> 来使用如上所示的高亮增删行提示效果，在展示代码改动痕迹时比较实用。</li>
+</ul>
 </li>
 <li><p>note 标签：通过 note 标签可以为段落添加背景色</p>
   <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;% note [class] %&#125;</span><br><span class="line">文本内容 (支持行内标签)</span><br><span class="line">&#123;% endnote %&#125;</span><br></pre></td></tr></table></figure>
@@ -980,7 +1013,7 @@
 <li><p>slug 是资源文件夹下的图片名</p>
 </li>
 <li><p>Embedding an image using markdown：allows you to embed an image in markdown without using asset_img tag plugin.</p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">post_asset_folder: true</span><br><span class="line">marked:</span><br><span class="line">  prependRoot: true</span><br><span class="line">  postAsset: true</span><br></pre></td></tr></table></figure>
+  <figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">post_asset_folder:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">marked:</span></span><br><span class="line">  <span class="attr">prependRoot:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">postAsset:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
 
 <p>  <code>![](image.jpg)</code> will be rendered as <code>&lt;img src=&quot;/2020/01/02/foo/image.jpg&quot;&gt;</code>.</p>
 </li>
@@ -991,7 +1024,7 @@
 <li><p><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0QwbjlYMW4vaGV4by1ibG9nLWVuY3J5cHQ=">文章加密<i class="fa fa-external-link-alt"></i></span></p>
 <ul>
 <li><p>Install</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ npm install --save hexo-blog-encrypt</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install --save hexo-blog-encrypt</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Quick start: Add the “password” value to your post’s front matter like</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">password: mikemessi</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
@@ -1018,7 +1051,7 @@
 </ul>
 <h5 id="资源文件夹"><a href="#资源文件夹" class="headerlink" title="资源文件夹"></a>资源文件夹</h5><p>资源（Asset）代表 source 文件夹中除了文章以外的所有文件。</p>
 <p><strong>文章资源文件夹</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">post_asset_folder: true</span><br></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">post_asset_folder:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
 
 <p>当资源文件管理功能打开后，Hexo将会在你每一次通过 <code>hexo new [layout] &lt;title&gt;</code> 命令创建新文章时自动创建一个文件夹。这个资源文件夹将会有与这个文章文件一样的名字。将所有与你的文章有关的资源放在这个关联文件夹中之后，你可以通过相对路径来引用它们。</p>
 <h5 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h5><p><strong>持续集成（Continuous Integration，简称 CI）</strong></p>
@@ -1029,7 +1062,7 @@
 <li><p>Add your ssh key pair</p>
 <ul>
 <li><p>Run the following terminal command, replacing the email with one connected to your GitHub account.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;username@example.com&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;username@example.com&quot;</span><br></pre></td></tr></table></figure>
 
 <p>Windows 下自定义 ssh key 文件需写成 <code>GIT\BlogSrc/.ssh/id_rsa</code></p>
 </li>
@@ -1049,10 +1082,10 @@
 <li><p>新建一个空的 repository（没有init任何内容）。你的 repository 必须直接命名为 <code>&lt;你的 GitHub 用户名.github.io&gt;</code>。从而能通过 <code>&lt;你的 GitHub 用户名.github.io&gt;</code> 域名直接访问你的blog。</p>
 </li>
 <li><p>安装 hexo-deployer-git。</p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+  <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>修改<code>_config.yml</code>配置。</p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@github.com:yourname&#x2F;yourname.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+  <figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">git@github.com:yourname/yourname.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>生成站点文件并推送至远程库。执行 <code>hexo clean</code> &amp;  <code>hexo deploy</code>。</p>
 </li>
@@ -1064,32 +1097,34 @@
 </li>
 </ul>
 <h5 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h5><p>创建 Hexo 主题非常容易，您只要在 <code>themes</code> 文件夹内，新增一个任意名称的文件夹，并修改 <code>_config.yml</code> 内的 <code>theme</code> 设定，即可切换主题。</p>
-<p>_config.yml：主题的配置文件。和 Hexo 配置文件不同，主题配置文件修改时会自动更新，无需重启 Hexo Server。</p>
-<p>languages：语言文件夹。</p>
-<p>layout：布局文件夹。</p>
-<p>scripts：脚本文件夹。</p>
-<p>source：资源文件夹。</p>
+<ul>
+<li><code>_config.yml</code>：主题的配置文件。和 Hexo 配置文件不同，主题配置文件修改时会自动更新，无需重启 Hexo Server。</li>
+<li><code>languages</code>：语言文件夹。</li>
+<li><code>layout</code>：布局文件夹。</li>
+<li><code>scripts</code>：脚本文件夹。</li>
+<li><code>source</code>：资源文件夹。</li>
+</ul>
 <p>在 GitHub 搜索 Hexo 即可找到流行的 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlvL3RoZW1lcy8=">Hexo 主题<i class="fa fa-external-link-alt"></i></span>。各主题都有相应的使用文档。</p>
 <h3 id="NexT"><a href="#NexT" class="headerlink" title="NexT"></a><span class="exturl" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZy9kb2NzLw==">NexT<i class="fa fa-external-link-alt"></i></span></h3><h5 id="Getting-Started"><a href="#Getting-Started" class="headerlink" title="Getting Started"></a>Getting Started</h5><p><strong>Installation</strong></p>
 <ul>
 <li><p>Installation</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ cd hexo-site</span><br><span class="line">$ npm install hexo-theme-next</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd hexo-site</span><br><span class="line">npm install hexo-theme-next</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Usage, theme config file</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">theme: next</span><br></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">theme:</span> <span class="string">next</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Update</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ cd hexo-site</span><br><span class="line">$ npm update hexo-theme-next</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd hexo-site</span><br><span class="line">npm update hexo-theme-next</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
 <p><strong>Configuration</strong></p>
 <p>Installed through npm</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ cp node_modules&#x2F;hexo-theme-next&#x2F;_config.yml _config.next.yml</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cp node_modules/hexo-theme-next/_config.yml _config.next.yml</span><br></pre></td></tr></table></figure>
 
 <h5 id="Theme-Settings"><a href="#Theme-Settings" class="headerlink" title="Theme Settings"></a>Theme Settings</h5><p><em>Choosing Scheme</em>: </p>
 <p>By using Scheme NexT gives you different views. And nearly all config can be used by those Schemes. </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># next&#x2F;_config.yml</span><br><span class="line">scheme: Muse</span><br></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># next/_config.yml</span></span><br><span class="line"><span class="attr">scheme:</span> <span class="string">Muse</span></span><br></pre></td></tr></table></figure>
 
 <p><em>Configuring Favicon</em>: </p>
 <p>By default the Hexo site use NexT favicons in <code>hexo-site/themes/next/source/images/</code> directory with different size for different device. </p>
@@ -1097,7 +1132,7 @@
 <p>For example, you can put your favicons in <code>hexo-site/source/images/</code> directory. Then you need to rename them and change the settings in favicon section in theme config file.</p>
 <p><em>Creative Commons</em>:</p>
 <p>NexT supports the display of <em>Creative Commons 4.0 International License</em> in sidebar and post.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># next&#x2F;_config.yml</span><br><span class="line">creative_commons:</span><br><span class="line">  license: by-nc-sa</span><br><span class="line">  sidebar: true</span><br><span class="line">  post: false</span><br><span class="line">  language: en</span><br></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># next/_config.yml</span></span><br><span class="line"><span class="attr">creative_commons:</span></span><br><span class="line">  <span class="attr">license:</span> <span class="string">by-nc-sa</span></span><br><span class="line">  <span class="attr">sidebar:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">post:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">language:</span> <span class="string">en</span></span><br></pre></td></tr></table></figure>
 
 <p>通行的版权协议是一种限制性的协议，就是说，只有它明文许可你可以做的事，你才能做，否则就是侵权行为。</p>
 <p>而”开放内容许可证”（open content licenses）只明文禁止使用者不能做的事，除此以外，可以随意使用这些作品。创作共用许可证（Creative Commons licenses，简称cc），就是这样一种许可证。</p>
@@ -1116,20 +1151,20 @@
 <li>icon → is the name of <span class="exturl" data-url="aHR0cHM6Ly9mb250YXdlc29tZS5jb20v">Font Awesome icon<i class="fa fa-external-link-alt"></i></span>.</li>
 </ul>
 <p>To customize menu items, edit the following content in theme config file:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: &#x2F; || fa fa-home</span><br><span class="line">  about: &#x2F;about&#x2F; || fa fa-user</span><br><span class="line">  tags: &#x2F;tags&#x2F; || fa fa-tags</span><br><span class="line">  archives: &#x2F;archives&#x2F; || fa fa-archive</span><br></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">menu:</span></span><br><span class="line">  <span class="attr">home:</span> <span class="string">/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-home</span></span><br><span class="line">  <span class="attr">about:</span> <span class="string">/about/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-user</span></span><br><span class="line">  <span class="attr">tags:</span> <span class="string">/tags/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-tags</span></span><br><span class="line">  <span class="attr">archives:</span> <span class="string">/archives/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-archive</span></span><br></pre></td></tr></table></figure>
 
 <p><span class="exturl" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZy9kb2NzL3RoZW1lLXNldHRpbmdzL2N1c3RvbS1wYWdlcy5odG1s">Google Calendar Page<i class="fa fa-external-link-alt"></i></span></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">schedule: &#x2F;schedule&#x2F; || fa fa-calendar</span><br></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">schedule:</span> <span class="string">/schedule/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-calendar</span></span><br></pre></td></tr></table></figure>
 
 <p><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2hleG9qcy9oZXhvLWdlbmVyYXRvci1zaXRlbWFw">sitemap<i class="fa fa-external-link-alt"></i></span>：为了让博文被google或百度检索，需要使用hexo的sitemap功能。 </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sitemap: &#x2F;sitemap.xml || fa fa-sitemap</span><br></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">sitemap:</span> <span class="string">/sitemap.xml</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-sitemap</span></span><br></pre></td></tr></table></figure>
 
 <ul>
 <li><p>Install</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ npm install hexo-generator-sitemap --save</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-sitemap --save</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Hexo Config</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sitemap:</span><br><span class="line">  path: sitemap.xml</span><br></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">sitemap:</span></span><br><span class="line">  <span class="attr">path:</span> <span class="string">sitemap.xml</span></span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
@@ -1137,14 +1172,14 @@
 <p><strong>Sidebar Setting</strong></p>
 <p><em>Configuring Avatar</em>：</p>
 <p>Put your avatar under site directory <code>source/uploads/</code> (create directory if it doesn’t exists).And then change option to <code>url: /uploads/avatar.png</code>.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">avatar:</span><br><span class="line">  url: &#x2F;uploads&#x2F;avatar.png</span><br><span class="line">  rounded: true</span><br></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">avatar:</span></span><br><span class="line">  <span class="attr">url:</span> <span class="string">/uploads/avatar.png</span></span><br><span class="line">  <span class="attr">rounded:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
 
 <p>点击头像回到首页：</p>
 <p>主要是将<code>&lt;img class=&quot;site-author-image&quot; ... /&gt;</code>加入到<code>&lt;a href=&quot;/&quot;&gt;&lt;/a&gt;</code>。</p>
 <p><em>Sidebar Social Links</em>：</p>
 <ul>
 <li><p>Edit the <code>social</code> section in theme config file as following:</p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">social:</span><br><span class="line">  GitHub: https:&#x2F;&#x2F;github.com&#x2F;yourname || fab fa-github</span><br><span class="line">  E-Mail: mailto:yourname@example.com || fa fa-envelope</span><br></pre></td></tr></table></figure>
+  <figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">social:</span></span><br><span class="line">  <span class="attr">GitHub:</span> <span class="string">https://github.com/yourname</span> <span class="string">||</span> <span class="string">fab</span> <span class="string">fa-github</span></span><br><span class="line">  <span class="attr">E-Mail:</span> <span class="string">mailto:yourname@example.com</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-envelope</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>取消社交图标前的小圆点：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># create hexo-site&#x2F;source&#x2F;_data&#x2F;styles.styl</span><br><span class="line">.links-of-author a,</span><br><span class="line">.links-of-author .exturl &#123;</span><br><span class="line">  &amp;:before &#123;</span><br><span class="line">    display: none;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -1152,27 +1187,27 @@
 </li>
 </ul>
 <p><em>Sidebar Blogrolls</em> (友链):</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">links:</span><br><span class="line">  Title1: https:&#x2F;&#x2F;example.com&#x2F;</span><br></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">links:</span></span><br><span class="line">  <span class="attr">Title1:</span> <span class="string">https://example.com/</span></span><br></pre></td></tr></table></figure>
 
 <p><em>Sidebar TOC</em>:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">toc:</span><br><span class="line">  number: false</span><br><span class="line">  expand_all: true</span><br><span class="line">  max_depth: 5</span><br></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">toc:</span></span><br><span class="line">  <span class="attr">number:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">expand_all:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">max_depth:</span> <span class="number">5</span></span><br></pre></td></tr></table></figure>
 
 <p><strong>Footer</strong></p>
 <p><em>Site Footer Icon</em>:</p>
 <p>By default NexT shows red heart icon between year and copyright information in the footer. </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">footer:</span><br><span class="line">  icon:</span><br><span class="line">    animated: true</span><br></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">footer:</span></span><br><span class="line">  <span class="attr">icon:</span></span><br><span class="line">    <span class="attr">animated:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
 
 <p><em>Site Copyright Name</em>:</p>
 <p>By default NexT shows the name of author from site config file. </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">footer:</span><br><span class="line">  copyright: YourName</span><br></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">footer:</span></span><br><span class="line">  <span class="attr">copyright:</span> <span class="string">YourName</span></span><br></pre></td></tr></table></figure>
 
 <p><em>Site Platform Information</em>:</p>
 <p>By default NexT shows Hexo and Theme &amp; scheme information.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">footer:</span><br><span class="line">  powered: false</span><br></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">footer:</span></span><br><span class="line">  <span class="attr">powered:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
 
 <p><em>Site Beian Information</em>:</p>
 <p>Beian information is for Chinese users.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">footer:</span><br><span class="line">  beian:</span><br><span class="line">    enable: true</span><br><span class="line">    icp: 京ICP备 1234567890号-1</span><br><span class="line">    gongan_id: 1234567890</span><br><span class="line">    gongan_num: 京公网安备 1234567890号</span><br><span class="line">    gongan_icon_url: &#x2F;uploads&#x2F;beian.png</span><br></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">footer:</span></span><br><span class="line">  <span class="attr">beian:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">icp:</span> <span class="string">京ICP备</span> <span class="number">1234567890</span><span class="string">号-1</span></span><br><span class="line">    <span class="attr">gongan_id:</span> <span class="number">1234567890</span></span><br><span class="line">    <span class="attr">gongan_num:</span> <span class="string">京公网安备</span> <span class="number">1234567890</span><span class="string">号</span></span><br><span class="line">    <span class="attr">gongan_icon_url:</span> <span class="string">/uploads/beian.png</span></span><br></pre></td></tr></table></figure>
 
 <p><strong>Post Settings</strong></p>
 <p><em>Preamble Text</em>:</p>
@@ -1182,10 +1217,10 @@
 <p><em>Post Wordcount</em>:</p>
 <ul>
 <li><p>Installation</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ cd hexo-site</span><br><span class="line">$ npm install hexo-word-counter</span><br><span class="line">$ hexo clean</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd hexo-site</span><br><span class="line">npm install hexo-word-counter</span><br><span class="line">hexo clean</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Hexo Config</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">symbols_count_time:</span><br><span class="line">  total_symbols: false	# By default NexT shows the number of all posts words in footer section.</span><br><span class="line">  total_time: false		# By default NexT shows the estimated reading time of all posts in footer section. </span><br></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">symbols_count_time:</span></span><br><span class="line">  <span class="attr">total_symbols:</span> <span class="literal">false</span>	<span class="comment"># By default NexT shows the number of all posts words in footer section.</span></span><br><span class="line">  <span class="attr">total_time:</span> <span class="literal">false</span>		<span class="comment"># By default NexT shows the estimated reading time of all posts in footer section. </span></span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
@@ -1194,27 +1229,27 @@
 <li><p>Get your WeChat / Alipay receive money QRcode image(s) and put into <code>source/images</code> .</p>
 </li>
 <li><p>Set needed values in <code>theme config file</code>:</p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">reward_settings:</span><br><span class="line">  enable: true</span><br><span class="line">  animation: false</span><br><span class="line">  comment: Buy me a coffee</span><br><span class="line"></span><br><span class="line">reward:</span><br><span class="line">  wechatpay: &#x2F;images&#x2F;wechatpay.png</span><br><span class="line">  alipay: &#x2F;images&#x2F;alipay.png</span><br></pre></td></tr></table></figure>
+  <figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">reward_settings:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">animation:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">comment:</span> <span class="string">Buy</span> <span class="string">me</span> <span class="string">a</span> <span class="string">coffee</span></span><br><span class="line"></span><br><span class="line"><span class="attr">reward:</span></span><br><span class="line">  <span class="attr">wechatpay:</span> <span class="string">/images/wechatpay.png</span></span><br><span class="line">  <span class="attr">alipay:</span> <span class="string">/images/alipay.png</span></span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
 <p><em>Follow Me</em>:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">follow_me:</span><br><span class="line">  WeChat: &#x2F;images&#x2F;wechat_channel.jpg || fab fa-weixin</span><br><span class="line">  RSS: &#x2F;atom.xml || fa fa-rss</span><br></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">follow_me:</span></span><br><span class="line">  <span class="attr">WeChat:</span> <span class="string">/images/wechat_channel.jpg</span> <span class="string">||</span> <span class="string">fab</span> <span class="string">fa-weixin</span></span><br><span class="line">  <span class="attr">RSS:</span> <span class="string">/atom.xml</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-rss</span></span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>安装RSS插件</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm i hexo-generator-feed</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm i hexo-generator-feed</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>配置站点配置文件(/_config.yml)的Extensions</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">plugin:</span><br><span class="line">- hexo-generator-feed</span><br><span class="line"># Feed Atom</span><br><span class="line">feed:</span><br><span class="line">  type: atom</span><br><span class="line">  path: atom.xml</span><br><span class="line">  limit: 20</span><br></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">plugin:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">hexo-generator-feed</span></span><br><span class="line"><span class="comment"># Feed Atom</span></span><br><span class="line"><span class="attr">feed:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">atom</span></span><br><span class="line">  <span class="attr">path:</span> <span class="string">atom.xml</span></span><br><span class="line">  <span class="attr">limit:</span> <span class="number">20</span></span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>编辑主题配置文件(/theme/next/_config.yml)的<code>social links</code>，开启RSS的页面功能</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">rss: &#x2F;atom.xml</span><br></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">rss:</span> <span class="string">/atom.xml</span></span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>关注RSS：把 <code>https://vanehsiung.github.io/atom.xml</code> 复制到RSS阅读器上，就能关注了。</li>
@@ -1223,23 +1258,23 @@
 <p><em>Custom Page Support</em>:</p>
 <ul>
 <li><p>Adding New Page</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ cd hexo-site</span><br><span class="line">$ hexo new page tags</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd hexo-site</span><br><span class="line">hexo new page tags</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Setting Front-matter Values</p>
   <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">    ---</span><br><span class="line">    title: Tags</span><br><span class="line">    date: title: 2020-11-14 22:50:2</span><br><span class="line">type: &quot;tags&quot;</span><br><span class="line">    ---</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Editting Menu</p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">menu:</span><br><span class="line">  tags: &#x2F;tags&#x2F; || fa fa-tags</span><br></pre></td></tr></table></figure>
+  <figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">menu:</span></span><br><span class="line">  <span class="attr">tags:</span> <span class="string">/tags/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-tags</span></span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
 <p><em>Custom 404 Page</em>:</p>
 <ul>
 <li><p>Create a new page called 404</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ cd hexo-site</span><br><span class="line">$ hexo new page 404</span><br><span class="line">---</span><br><span class="line">title: 404</span><br><span class="line">permalink: &#x2F;404.html		# 在 Github Docs 中 Github Pages 章有写</span><br><span class="line">comments: false</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd hexo-site</span><br><span class="line">hexo new page 404</span><br><span class="line">---</span><br><span class="line">title: 404</span><br><span class="line">permalink: &#x2F;404.html		# 在 Github Docs 中 Github Pages 章有写</span><br><span class="line">comments: false</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Make sure relative_link is disabled in site config file</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">relative_link: false</span><br></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">relative_link:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Whether users can be redirected to the 404 page depends on the settings of the website hosting service or web server, not Hexo. </p>
 </li>
@@ -1249,17 +1284,29 @@
 <p><strong>Misc Theme Settings</strong></p>
 <p><em>Mobile Devices Adaptation</em>:</p>
 <p>reduce padding/margin indents on devices with narrow width</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mobile_layout_economy: true</span><br></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">mobile_layout_economy:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
 
 <p><em>Codeblock Style</em>:</p>
-<p>NexT supports the copy-and-paste functionality of codeblock.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">codeblock:</span><br><span class="line">  copy_button:</span><br><span class="line">    enable: true</span><br><span class="line">    style: mac		# Mac Panel风格代码块</span><br></pre></td></tr></table></figure>
+<p>NexT uses the <span class="exturl" data-url="aHR0cHM6Ly9oaWdobGlnaHRqcy5vcmcv">Highlight.js<i class="fa fa-external-link-alt"></i></span> and <span class="exturl" data-url="aHR0cHM6Ly9wcmlzbWpzLmNvbS8=">Prism<i class="fa fa-external-link-alt"></i></span> package to support code highlight</p>
+<ul>
+<li><p>Read Hexo’s documentation on <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlvL2RvY3Mvc3ludGF4LWhpZ2hsaWdodA==">Syntax Highlighting<i class="fa fa-external-link-alt"></i></span> first, and set it up in site config file（在 <code>_config.yml</code> 中开启 Highlight 或 Prism）</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">highlight:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Preview all available Code Highlight themes here: <span class="exturl" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZy9oaWdobGlnaHQv">NexT Highlight Theme Preview<i class="fa fa-external-link-alt"></i></span></p>
+</li>
+<li><p>Change the value of theme and prism to choose the highlight style you like</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">theme:</span></span><br><span class="line">  <span class="attr">light:</span> <span class="string">xcode</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>NexT supports the copy-and-paste functionality of codeblock</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">codeblock:</span></span><br><span class="line">  <span class="attr">copy_button:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">style:</span> <span class="string">mac</span>		<span class="comment"># Mac Panel风格代码块</span></span><br></pre></td></tr></table></figure>
 
 <p><em>Back To Top</em>:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">back2top:</span><br><span class="line">  scrollpercent: true</span><br></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">back2top:</span></span><br><span class="line">  <span class="attr">scrollpercent:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
 
 <p><em>Fonts Customization</em>：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">font:</span><br><span class="line">  enable: true</span><br><span class="line">  </span><br><span class="line">  host: https:&#x2F;&#x2F;fonts.loli.net</span><br><span class="line">  </span><br><span class="line">  global:</span><br><span class="line">    family: Roboto Slab, Noto Serif SC</span><br><span class="line">    size: 1.125</span><br></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">font:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  </span><br><span class="line">  <span class="attr">host:</span> <span class="string">https://fonts.loli.net</span></span><br><span class="line">  </span><br><span class="line">  <span class="attr">global:</span></span><br><span class="line">    <span class="attr">family:</span> <span class="string">Architects</span> <span class="string">Daughter,</span> <span class="string">Ma</span> <span class="string">Shan</span> <span class="string">Zheng</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">codes:</span></span><br><span class="line">    <span class="attr">family:</span> <span class="string">Share</span> <span class="string">Tech</span> <span class="string">Mono</span></span><br></pre></td></tr></table></figure>
 
 <ul>
 <li><p>host：查看字体与使用字体的网址是不一样的；可能不能查看字体，但可以使用字体</p>
@@ -1284,7 +1331,7 @@
 <p><strong>SEO</strong></p>
 <p><em>SEO Setting</em>:</p>
 <p>Next provides useful options for better Search Engine Optimization (SEO).</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># theme config file</span><br><span class="line">disable_baidu_transformation: true</span><br><span class="line">index_with_subtitle: true</span><br><span class="line">exturl: true</span><br></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># theme config file</span></span><br><span class="line"><span class="attr">disable_baidu_transformation:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">index_with_subtitle:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">exturl:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
 
 <p><em>Webmaster Tools</em>:</p>
 <ul>
@@ -1294,7 +1341,7 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;meta name&#x3D;&quot;google-site-verification&quot; content&#x3D;&quot;XXXXXXXXXXXXXXXXXXXXXXX&quot;&gt;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Copy <code>XXXXXXXXXXXXXXXXXXXXXXX</code> value of <code>content</code> key.Edit theme config file and add or change <code>google_site_verification</code> section:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">google_site_verification: XXXXXXXXXXXXXXXXXXXXXXX</span><br></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">google_site_verification:</span> <span class="string">XXXXXXXXXXXXXXXXXXXXXXX</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>submit sitemap</p>
 </li>
@@ -1310,7 +1357,7 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;meta name&#x3D;&quot;msvalidate.01&quot; content&#x3D;&quot;XXXXXXXXXXXXXXXXXXXXXXX&quot;&gt;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Copy <code>XXXXXXXXXXXXXXXXXXXXXXX</code> value of <code>content</code> key. Edit theme config file and add or change <code>bing_site_verification</code> section:</p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">bing_site_verification: XXXXXXXXXXXXXXXXXXXXXXX</span><br></pre></td></tr></table></figure>
+  <figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">bing_site_verification:</span> <span class="string">XXXXXXXXXXXXXXXXXXXXXXX</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>submit sitemap</p>
 </li>
@@ -1324,10 +1371,10 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;meta name&#x3D;&quot;baidu-site-verification&quot; content&#x3D;&quot;XXXXXXXXXXXXXXXXXXXXXXX&quot;&gt;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Copy <code>XXXXXXXXXXXXXXXXXXXXXXX</code> value of <code>content</code> key.Edit theme config file and add or change <code>baidu_site_verification</code> section:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">baidu_site_verification: XXXXXXXXXXXXXXXXXXXXXXX</span><br></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">baidu_site_verification:</span> <span class="string">XXXXXXXXXXXXXXXXXXXXXXX</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Push the url to baidu automatically</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">baidu_push: true</span><br></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">baidu_push:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>submit sitemap</p>
 </li>
@@ -1342,7 +1389,7 @@
 <li><p>Copy the <code>data-uid</code> field in the installation code to get your LiveRe UID.</p>
 </li>
 <li><p>Add the obtained LiveRe UID to the <code>livere_uid</code> section in the theme config file as following:</p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">livere_uid: </span><br></pre></td></tr></table></figure>
+  <figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">livere_uid:</span> </span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
@@ -1353,7 +1400,7 @@
 <li><p>Go to the application you just created, select <code>Settings → App Keys</code> in the lower left corner, and you will see your APP ID and APP Key.</p>
 </li>
 <li><p>Edit configurations in <code>valine</code> section in the theme config file as following:</p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">valine:</span><br><span class="line">  enable: true</span><br><span class="line">  appId: </span><br><span class="line">  appKey: </span><br></pre></td></tr></table></figure>
+  <figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">valine:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">appId:</span> </span><br><span class="line">  <span class="attr">appKey:</span> </span><br></pre></td></tr></table></figure>
 </li>
 <li><p>评论数据管理：请自行登录<code>Leancloud应用</code>管理。具体步骤：<code>登录</code>&gt;<code>选择你创建的应用</code>&gt;<code>存储</code>&gt;选择Class <code>Comment</code></p>
 </li>
@@ -1368,7 +1415,7 @@
 <li><p>Copy the script ID after <code>hm.js?</code>.</p>
 </li>
 <li><p>Edit theme config file and change section <code>baidu_analytics</code> to your script ID.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">baidu_analytics: </span><br></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">baidu_analytics:</span> </span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
@@ -1377,7 +1424,7 @@
 <li><p>Create an account and log into <span class="exturl" data-url="aHR0cHM6Ly9hbmFseXRpY3MuZ29vZ2xlLmNvbS8=">Google Analytics<i class="fa fa-external-link-alt"></i></span>.</p>
 </li>
 <li><p>Edit theme config file and fill <code>tracking_id</code> under section <code>google_analytics</code> with your Google track ID. Google track ID always starts with <code>UA-</code> (最新版 Google Analytics 是 <code>G-</code>).</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">google_analytics:</span><br><span class="line">  tracking_id: G-XXXXXXXX</span><br><span class="line">  only_pageview: false</span><br></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">google_analytics:</span></span><br><span class="line">  <span class="attr">tracking_id:</span> <span class="string">G-XXXXXXXX</span></span><br><span class="line">  <span class="attr">only_pageview:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
@@ -1386,20 +1433,20 @@
 <p><em>Counting Tools</em>:</p>
 <p>Busuanzi Counting (China), Edit busuanzi_count option in theme config file.</p>
 <p>不蒜子是基于域名来进行统计计算的。数据比百度统计多很多。网络不好的话，数据与图标不一定显示得出来。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">busuanzi_count:</span><br><span class="line">  enable: true</span><br></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">busuanzi_count:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
 
 <p><strong>Search Services</strong></p>
 <p><em>Local Search</em>:</p>
 <p>This search method is recommended for most users.</p>
 <ul>
 <li><p>Installation</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ npm install hexo-generator-searchdb</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-searchdb</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Hexo Config</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">search:</span><br><span class="line">  path: search.xml</span><br><span class="line">  field: post</span><br><span class="line">  content: true</span><br><span class="line">  format: html</span><br></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">search:</span></span><br><span class="line">  <span class="attr">path:</span> <span class="string">search.xml</span></span><br><span class="line">  <span class="attr">field:</span> <span class="string">post</span></span><br><span class="line">  <span class="attr">content:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">format:</span> <span class="string">html</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>NexT Config</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">local_search:</span><br><span class="line">  enable: true</span><br></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">local_search:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
@@ -1407,7 +1454,7 @@
 <p><em>PJAX</em>：</p>
 <ul>
 <li><p>You can enable it by setting value <code>pjax</code> to <code>true</code> in <code>theme config file</code>.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pjax: true</span><br></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">pjax:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>It listens to every click on links you want (by default all of them).When an internal link is clicked, Pjax fetches the page’s HTML via AJAX.</p>
 </li>
@@ -1418,18 +1465,18 @@
 </ul>
 <p><em>Fancybox</em>:</p>
 <p>A jQuery lightbox script for displaying images, videos and more.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">fancybox: true</span><br></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">fancybox:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
 
 <p><a href="https://github.com/ApoorvSaxena/lozad.js"><em>Lazyload</em></a>:</p>
 <p>It delays loading of images in long web pages. Images outside of viewport will not be loaded before user scrolls to them.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">lazyload: true</span><br></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">lazyload:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
 
 <p><em>Progress Bar</em>:</p>
 <p>NProgress will automatically monitor your Ajax requests, event loop lag, document ready state and elements on your page to decide on the progress.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nprogress:</span><br><span class="line">  enable: true</span><br><span class="line">  spinner: false</span><br></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">nprogress:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">spinner:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
 
 <p><em>Canvas Ribbon</em>：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">canvas_ribbon:</span><br><span class="line">  enable: true</span><br><span class="line">  size: 300		# The width of the ribbon.</span><br><span class="line">  alpha: 0.6		# The transparency of the ribbon.</span><br><span class="line">  zIndex: -1		# The display level of the ribbon.</span><br></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">canvas_ribbon:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">size:</span> <span class="number">300</span>			<span class="comment"># The width of the ribbon.</span></span><br><span class="line">  <span class="attr">alpha:</span> <span class="number">0.6</span>		<span class="comment"># The transparency of the ribbon.</span></span><br><span class="line">  <span class="attr">zIndex:</span> <span class="number">-1</span>		<span class="comment"># The display level of the ribbon.</span></span><br></pre></td></tr></table></figure>
 
 <p><em>粒子漂浮聚合</em>：</p>
 <p>该功能由 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3RoZW1lLW5leHQvdGhlbWUtbmV4dC1jYW52YXMtbmVzdA==">theme-next-canvas-nest<i class="fa fa-external-link-alt"></i></span> 插件提供：</p>
@@ -1438,14 +1485,14 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;script color&#x3D;&quot;0,0,255&quot; opacity&#x3D;&quot;0.5&quot; zIndex&#x3D;&quot;-1&quot; count&#x3D;&quot;99&quot; src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;canvas-nest.js@1&#x2F;dist&#x2F;canvas-nest.js&quot;&gt;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>In the NexT <code>_config.yml</code>, uncomment <code>footer</code> under the <code>custom_file_path</code> section.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">custom_file_path:</span><br><span class="line">  footer: source&#x2F;_data&#x2F;footer.njk</span><br></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">custom_file_path:</span></span><br><span class="line">  <span class="attr">footer:</span> <span class="string">source/_data/footer.njk</span></span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
 <h5 id="Tag-Plugins"><a href="#Tag-Plugins" class="headerlink" title="Tag Plugins"></a>Tag Plugins</h5><p><a href="https://github.com/mermaid-js/mermaid"><strong>Mermaid</strong></a></p>
 <ul>
 <li><p>Settings</p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mermaid:</span><br><span class="line">  enable: true</span><br></pre></td></tr></table></figure>
+  <figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">mermaid:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Usage</p>
   <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;% mermaid type %&#125;</span><br><span class="line">&#123;% endmermaid %&#125;</span><br></pre></td></tr></table></figure>
@@ -1455,7 +1502,7 @@
 <h5 id="Advanced-Settings"><a href="#Advanced-Settings" class="headerlink" title="Advanced Settings"></a>Advanced Settings</h5><p><strong>Custom Files</strong></p>
 <ul>
 <li><p>uncomment under the section in <code>theme config file</code>.<code>stylecustom_file_path</code>。</p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">custom_file_path:</span><br><span class="line">  head: source&#x2F;_data&#x2F;head.njk</span><br><span class="line">  header: source&#x2F;_data&#x2F;header.njk</span><br><span class="line">  ...</span><br></pre></td></tr></table></figure></li>
+  <figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">custom_file_path:</span></span><br><span class="line">  <span class="attr">head:</span> <span class="string">source/_data/head.njk</span></span><br><span class="line">  <span class="attr">header:</span> <span class="string">source/_data/header.njk</span></span><br><span class="line">  <span class="string">...</span></span><br></pre></td></tr></table></figure></li>
 <li><p>Edit in site root directory and add files:<code>source/_data/...</code>。</p>
 </li>
 <li><p>Then use it。</p>
@@ -1482,7 +1529,7 @@
 <li><p>借助 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL01vZVBsYXllci9oZXhvLXRhZy1hcGxheWVy">hexo-tag-aplayer<i class="fa fa-external-link-alt"></i></span> 插件，可以通过标签的形式方便快捷的插入音频组件。</p>
 </li>
 <li><p>Installation</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install --save hexo-tag-aplayer</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install --save hexo-tag-aplayer</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Usage</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;% aplayer &quot;title&quot; &quot;author&quot; &quot;url&quot; [&quot;picture_url&quot;, &quot;narrow&quot;, &quot;autoplay&quot;, &quot;width:xxx&quot;, &quot;lrc:xxx&quot;] %&#125;</span><br></pre></td></tr></table></figure>
@@ -1506,7 +1553,7 @@
 <p><strong><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0RJWWdvZC9EUGxheWVy">Dpalyer<i class="fa fa-external-link-alt"></i></span> 视频播放器</strong></p>
 <ul>
 <li><p><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL01vZVBsYXllci9oZXhvLXRhZy1kcGxheWVy">Installation<i class="fa fa-external-link-alt"></i></span></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install hexo-tag-dplayer --save</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install hexo-tag-dplayer --save</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Usage</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;% dplayer &quot;url&#x3D;video-url&quot; &quot;pic&#x3D;image-url&quot; ... [&quot;key&#x3D;value&quot;] %&#125;</span><br></pre></td></tr></table></figure>
@@ -1558,19 +1605,19 @@
 <p>该功能由 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0VZSE4vaGV4by1oZWxwZXItbGl2ZTJk">hexo-helper-live2d<i class="fa fa-external-link-alt"></i></span> 插件支持</p>
 <ul>
 <li><p>Installation</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install --save hexo-helper-live2d</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install --save hexo-helper-live2d</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Config：在站点配置文件中设置，主题配置文件中设置没用</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">live2d:</span><br><span class="line">  enable: true</span><br><span class="line">  scriptFrom: local</span><br><span class="line">  pluginRootPath: live2dw&#x2F;</span><br><span class="line">  pluginJsPath: lib&#x2F;</span><br><span class="line">  pluginModelPath: assets&#x2F;</span><br><span class="line">  tagMode: false</span><br><span class="line">  log: false</span><br><span class="line">  model:</span><br><span class="line">    use: live2d-widget-model-shizuku</span><br><span class="line">  display:</span><br><span class="line">    position: right</span><br><span class="line">    width: 150</span><br><span class="line">    height: 300</span><br><span class="line">  mobile:</span><br><span class="line">    show: true</span><br><span class="line">  react:</span><br><span class="line">    opacity: 0.7</span><br></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">live2d:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">scriptFrom:</span> <span class="string">local</span></span><br><span class="line">  <span class="attr">pluginRootPath:</span> <span class="string">live2dw/</span></span><br><span class="line">  <span class="attr">pluginJsPath:</span> <span class="string">lib/</span></span><br><span class="line">  <span class="attr">pluginModelPath:</span> <span class="string">assets/</span></span><br><span class="line">  <span class="attr">tagMode:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">log:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">model:</span></span><br><span class="line">    <span class="attr">use:</span> <span class="string">live2d-widget-model-shizuku</span></span><br><span class="line">  <span class="attr">display:</span></span><br><span class="line">    <span class="attr">position:</span> <span class="string">right</span></span><br><span class="line">    <span class="attr">width:</span> <span class="number">150</span></span><br><span class="line">    <span class="attr">height:</span> <span class="number">300</span></span><br><span class="line">  <span class="attr">mobile:</span></span><br><span class="line">    <span class="attr">show:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">react:</span></span><br><span class="line">    <span class="attr">opacity:</span> <span class="number">0.7</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Models：可以从 <span class="exturl" data-url="aHR0cHM6Ly9odWFqaTgudG9wL3Bvc3QvbGl2ZTJkLXBsdWdpbi0yLjAv">hexo live2d 模型预览<i class="fa fa-external-link-alt"></i></span> 里找到你喜欢的角色，然后根据 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3hpYXpleXUvbGl2ZTJkLXdpZGdldC1tb2RlbHM=">live2d-widget-models<i class="fa fa-external-link-alt"></i></span> 中提供的方法来下载模型数据.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ npm install live2d-widget-model-shizuku</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install live2d-widget-model-shizuku</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
 <p><a href="https://github.com/next-theme/hexo-next-fireworks"><strong>Fireworks</strong></a></p>
 <p>一个鼠标点击动画特效</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ npm install next-theme&#x2F;hexo-next-fireworks</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install next-theme/hexo-next-fireworks</span><br></pre></td></tr></table></figure>
 
 <p><a href="https://github.com/suyin-long/activate-power-mode"><strong>activate-power-mode</strong></a></p>
 <p>一个为博客添加酷炫打字特效的插件</p>
@@ -1587,7 +1634,7 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;# 搞怪网页标题 #&#125; &#123;% if theme.title_trick.enable %&#125;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">  var OriginTitile &#x3D; document.title;</span><br><span class="line">  var titleTime;</span><br><span class="line">  document.addEventListener(&quot;visibilitychange&quot;, function() &#123;</span><br><span class="line">    if (document.hidden) &#123;</span><br><span class="line">      document.title &#x3D; &quot;&#123;&#123; theme.title_trick.leave &#125;&#125;&quot;;</span><br><span class="line">      clearTimeout(titleTime);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      document.title &#x3D; &quot;&#123;&#123; theme.title_trick.enter &#125;&#125;&quot;;</span><br><span class="line">      titleTime &#x3D; setTimeout(function() &#123;</span><br><span class="line">        document.title &#x3D; OriginTitile;</span><br><span class="line">      &#125;, 2000);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>在主题配置文件中添加</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># a trick on website title</span><br><span class="line">title_trick:</span><br><span class="line">  enable: true</span><br><span class="line">  leave: &quot;(つェ⊂)我藏好了哦~&quot;</span><br><span class="line">  enter: &quot;(*´∇｀*) 被你发现啦~&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># a trick on website title</span></span><br><span class="line"><span class="attr">title_trick:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">leave:</span> <span class="string">&quot;(つェ⊂)我藏好了哦~&quot;</span></span><br><span class="line">  <span class="attr">enter:</span> <span class="string">&quot;(*´∇｀*) 被你发现啦~&quot;</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>我先是放在 <code>sorce/_data/head.njk</code> 中，问题是改变一次标题后就只显示网址。我认为 script 可能在 <code>&lt;title&gt;</code> 之前加载，所以就放在 <code>source/_data/header.njk</code>，正常运行。</p>
 </li>
@@ -1595,20 +1642,20 @@
 <p><a href="https://github.com/next-theme/hexo-next-three"><strong>Hexo NexT Three</strong></a></p>
 <ul>
 <li><p>Install</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install next-theme&#x2F;hexo-next-three</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install next-theme/hexo-next-three</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Configure</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># JavaScript 3D library.</span><br><span class="line"># Dependencies: https:&#x2F;&#x2F;github.com&#x2F;next-theme&#x2F;hexo-next-three</span><br><span class="line">three:</span><br><span class="line">  enable: true</span><br><span class="line">  defer: true</span><br><span class="line">  cdn:</span><br><span class="line">  waves:</span><br><span class="line">    enable: false</span><br><span class="line">    cdn:</span><br><span class="line">  lines:</span><br><span class="line">    enable: false</span><br><span class="line">    cdn:</span><br><span class="line">  sphere:</span><br><span class="line">    enable: false</span><br><span class="line">    cdn:</span><br></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># JavaScript 3D library.</span></span><br><span class="line"><span class="comment"># Dependencies: https://github.com/next-theme/hexo-next-three</span></span><br><span class="line"><span class="attr">three:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">defer:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">cdn:</span></span><br><span class="line">  <span class="attr">waves:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">false</span></span><br><span class="line">    <span class="attr">cdn:</span></span><br><span class="line">  <span class="attr">lines:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">false</span></span><br><span class="line">    <span class="attr">cdn:</span></span><br><span class="line">  <span class="attr">sphere:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">false</span></span><br><span class="line">    <span class="attr">cdn:</span></span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
 <p><a href="https://github.com/jiangtj-lab/hexo-cake-moon-menu"><strong>hexo-cake-moon-menu</strong></a></p>
 <ul>
 <li><p>How to use</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ npm install hexo-cake-moon-menu</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install hexo-cake-moon-menu</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Config: In hexo <code>_config.yml</code> </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">moon_menu:</span><br><span class="line">  back2top:</span><br><span class="line">    enable: true</span><br><span class="line">    icon: fas fa-chevron-up</span><br><span class="line">    func: back2top</span><br><span class="line">    order: -1</span><br><span class="line">  back2bottom:</span><br><span class="line">    enable: true</span><br><span class="line">    icon: fas fa-chevron-down</span><br><span class="line">    func: back2bottom</span><br><span class="line">    order: -2</span><br></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">moon_menu:</span></span><br><span class="line">  <span class="attr">back2top:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">icon:</span> <span class="string">fas</span> <span class="string">fa-chevron-up</span></span><br><span class="line">    <span class="attr">func:</span> <span class="string">back2top</span></span><br><span class="line">    <span class="attr">order:</span> <span class="number">-1</span></span><br><span class="line">  <span class="attr">back2bottom:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">icon:</span> <span class="string">fas</span> <span class="string">fa-chevron-down</span></span><br><span class="line">    <span class="attr">func:</span> <span class="string">back2bottom</span></span><br><span class="line">    <span class="attr">order:</span> <span class="number">-2</span></span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>

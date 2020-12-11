@@ -19,7 +19,7 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-<link rel="stylesheet" href="https://fonts.loli.net/css?family=Architects+Daughter:300,300italic,400,400italic,700,700italic|Ma+Shan+Zheng:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="https://fonts.loli.net/css?family=Architects+Daughter:300,300italic,400,400italic,700,700italic|Ma+Shan+Zheng:300,300italic,400,400italic,700,700italic|Share+Tech+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
@@ -39,7 +39,7 @@
 <meta property="og:description" content="FreeBSD 計劃的目標在於提供可作任意用途的軟體而不附帶任何限制條文。 我們之中許多人對程式碼 (以及計畫本身) 都有非常大的投入， 因此，當然不介意偶爾有一些資金上的補償，但我們並沒打算堅決地要求得到這類資助。 我們認為我們的首要“使命”是為任何人提供程式碼， 不管他們打算用這些程式碼做什麼， 因為這樣程式碼將能夠被更廣泛地使用，從而發揮其價值。 我認為這是自由軟體最基本的，同時也是我們所倡">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-11-17T11:55:35.000Z">
-<meta property="article:modified_time" content="2020-12-11T08:03:35.111Z">
+<meta property="article:modified_time" content="2020-12-11T11:16:34.156Z">
 <meta property="article:author" content="vane">
 <meta property="article:tag" content="Unix">
 <meta name="twitter:card" content="summary">
@@ -360,7 +360,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2020-12-11 16:03:35" itemprop="dateModified" datetime="2020-12-11T16:03:35+08:00">2020-12-11</time>
+        <time title="Modified: 2020-12-11 19:16:34" itemprop="dateModified" datetime="2020-12-11T19:16:34+08:00">2020-12-11</time>
       </span>
 
   
@@ -392,7 +392,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Symbols count in article: </span>
-      <span>10k</span>
+      <span>9.5k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -418,21 +418,21 @@
 
 <h3 id="Xorg-Configuration"><a href="#Xorg-Configuration" class="headerlink" title="Xorg Configuration"></a>Xorg Configuration</h3><p>顯示卡、顯示器以及輸入裝置會自動偵測，無須任何手動設置。除非自動設置失敗，否則請勿建立 xorg.conf 或執行 -configure 步驟。</p>
 <p>加入要執行 Xorg 的使用者到 <code>video</code> 或 <code>wheel</code> 群組，以便在可用時能開啟 3D 加速。要加入使用者 <em><code>jru</code></em> 到任一個可用的群組：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># pw groupmod video -m jru || pw groupmod wheel -m jru</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pw groupmod video -m jru || pw groupmod wheel -m jru</span><br></pre></td></tr></table></figure>
 
 <p>較舊版的 FreeBSD 使用的 sc 並不知到 KMS 系統的存在，這會導致關閉 X 之後即始仍在運作但系統 Console 卻呈現空白。較新版的 vt Console 可避免這個問題。</p>
 <p>加入此行到 <code>/boot/loader.conf</code> 來開啟 vt：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kern.vty&#x3D;vt</span><br></pre></td></tr></table></figure>
 
 <p>使用多檔，每一個檔案只設定一個指定項目會較傳統使用單一 <code>/etc/X11/xorg.conf</code> 設定來的簡單。完整路徑為 <code>/usr/local/etc/X11/xorg.conf.d/</code>。</p>
-<h5 id="在檔案中設定影像驅動程式"><a href="#在檔案中設定影像驅動程式" class="headerlink" title="在檔案中設定影像驅動程式"></a>在檔案中設定影像驅動程式</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># vi &#x2F;usr&#x2F;local&#x2F;etc&#x2F;X11&#x2F;xorg.conf.d&#x2F;driver-intel.conf</span><br><span class="line">Section &quot;Device&quot;</span><br><span class="line">	Identifier &quot;Card0&quot;</span><br><span class="line">	Driver     &quot;intel&quot;</span><br><span class="line">	# BusID    &quot;PCI:1:0:0&quot;</span><br><span class="line">EndSection</span><br></pre></td></tr></table></figure>
+<h5 id="在檔案中設定影像驅動程式"><a href="#在檔案中設定影像驅動程式" class="headerlink" title="在檔案中設定影像驅動程式"></a>在檔案中設定影像驅動程式</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vi /usr/local/etc/X11/xorg.conf.d/driver-intel.conf</span><br><span class="line">Section &quot;Device&quot;</span><br><span class="line">	Identifier &quot;Card0&quot;</span><br><span class="line">	Driver     &quot;intel&quot;</span><br><span class="line"><span class="meta">	#</span><span class="bash"> BusID    <span class="string">&quot;PCI:1:0:0&quot;</span></span></span><br><span class="line">EndSection</span><br></pre></td></tr></table></figure>
 
 <p>若有多張顯示卡，可取消註解 <code>BusID</code> identifier 然後設定為想要的顯示卡，顯示卡的 Bus ID 清單可以使用 <code>pciconf -lv | grep -B3 display</code> 取得。</p>
 <h5 id="手動設定"><a href="#手動設定" class="headerlink" title="手動設定"></a>手動設定</h5><p>設定檔可由 Xorg 根據偵測到的硬體產生，這個檔案對一開始自訂設定很有幫助。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># Xorg -configure</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Xorg -configure</span><br></pre></td></tr></table></figure>
 
 <p>設定檔會儲存至 <code>/root/xorg.conf.new</code>，做任何需要的更改，然後使用以下指令測試該檔案：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># Xorg -config &#x2F;root&#x2F;xorg.conf.new</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Xorg -config /root/xorg.conf.new</span><br></pre></td></tr></table></figure>
 
 <p>在新設定檔調整與測試過後，便可分開成較小的檔案放置到正常的位置 <code>/usr/local/etc/X11/xorg.conf.d/</code>。</p>
 <h3 id="Install-Desktop-Enviroment"><a href="#Install-Desktop-Enviroment" class="headerlink" title="Install Desktop Enviroment"></a>Install Desktop Enviroment</h3><ul>
@@ -449,19 +449,28 @@
 <p>KDE 與 GNOME 會被稱作桌面環境是因為包含了完整常用桌面作業的應用程式。</p>
 <ul>
 <li><p>Install X Window System</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo pkg install xorg</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pkg install xorg</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Install Desktop Environment</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ sudo pkg install gnome3</span><br><span class="line">$ sudo pkg install gnome3-lite</span><br><span class="line">$ sudo pkg install x11&#x2F;kde5</span><br><span class="line">$ sudo pkg install xfce</span><br><span class="line">$ sudo pkg install mate</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo pkg install gnome3</span><br><span class="line">sudo pkg install gnome3-lite</span><br><span class="line">sudo pkg install x11/kde5</span><br><span class="line">sudo pkg install xfce</span><br><span class="line">sudo pkg install mate</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Install/Enable Display Manager</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo pkg install xdm</span><br><span class="line">$ sudo pkg install slim			# xfce,mate</span><br><span class="line">$ sudo pkg install x11&#x2F;sddm		# kde</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo pkg install xdm</span><br><span class="line">sudo pkg install slim			# xfce,mate</span><br><span class="line">sudo pkg install x11/sddm		# kde</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Setting</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vi &#x2F;etc&#x2F;ttys</span><br><span class="line">ttyv8   &quot;&#x2F;usr&#x2F;local&#x2F;bin&#x2F;xdm -nodaemon&quot;  xterm  on secure</span><br><span class="line"></span><br><span class="line">$ sudo vi &#x2F;etc&#x2F;fstab gnome, kde</span><br><span class="line">proc           &#x2F;proc       procfs  rw  0   0</span><br><span class="line"></span><br><span class="line">$ sudo vi &#x2F;etc&#x2F;rc.conf</span><br><span class="line">moused_enalbe&#x3D;&quot;YES&quot;</span><br><span class="line">dbus_enable&#x3D;&quot;YES&quot;		# gnome, kde, xfce</span><br><span class="line">hald_enable&#x3D;&quot;YES&quot;		# gnome, kde, mate</span><br><span class="line">gdm_enalbe&#x3D;&quot;YES&quot;		# gnome启动</span><br><span class="line">sddm_enable&#x3D;&quot;YES&quot;		# kde启动</span><br><span class="line">slim_enable&#x3D;&quot;YES&quot;		# xfce,mate</span><br><span class="line">gnome_enable&#x3D;&quot;YES&quot;		# gnome服务</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/ttys</span><br><span class="line">ttyv8   &quot;/usr/local/bin/xdm -nodaemon&quot;  xterm  on secure</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/fstab gnome, kde</span><br><span class="line">proc           /proc       procfs  rw  0   0</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/rc.conf</span><br><span class="line">moused_enalbe=&quot;YES&quot;</span><br><span class="line">dbus_enable=&quot;YES&quot;		# gnome, kde, xfce</span><br><span class="line">hald_enable=&quot;YES&quot;		# gnome, kde, mate</span><br><span class="line">gdm_enalbe=&quot;YES&quot;		# gnome启动</span><br><span class="line">sddm_enable=&quot;YES&quot;		# kde启动</span><br><span class="line">slim_enable=&quot;YES&quot;		# xfce,mate</span><br><span class="line">gnome_enable=&quot;YES&quot;		# gnome服务</span><br></pre></td></tr></table></figure>
+
+
+
 </li>
+</ul>
+<ul>
 <li><p>slim Usage:failed to execute login command</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vi ~&#x2F;.xinitrc</span><br><span class="line">exec mate-session		# mate</span><br><span class="line">exec xfce4-session		# xfce</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo vi ~/.xinitrc</span><br><span class="line">exec mate-session		# mate</span><br><span class="line">exec xfce4-session		# xfce</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
@@ -469,61 +478,61 @@
 <p>因編譯選項不同，有些 Port 會有多個版本可使用。</p>
 <ul>
 <li><p><span class="exturl" data-url="aHR0cHM6Ly9taXJyb3JzLnVzdGMuZWR1LmNuL2hlbHAvZnJlZWJzZC1wa2cuaHRtbA==">USTC Mirrors<i class="fa fa-external-link-alt"></i></span>：注意使用 Latest 源，有很多流行软件。创建 <code>/usr/local/etc/pkg/repos/FreeBSD.conf</code> 覆盖官方源 <code>/etc/pkg/FreeBSD.conf</code> 配置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vi &#x2F;usr&#x2F;local&#x2F;etc&#x2F;pkg&#x2F;repos&#x2F;FreeBSD.conf</span><br><span class="line">FreeBSD: &#123;</span><br><span class="line">  url: &quot;pkg+http:&#x2F;&#x2F;mirrors.ustc.edu.cn&#x2F;freebsd-pkg&#x2F;$&#123;ABI&#125;&#x2F;latest&quot;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$ sudo pkg update -f		# 更新索引</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /usr/local/etc/pkg/repos/FreeBSD.conf</span><br><span class="line">FreeBSD: &#123;</span><br><span class="line">  url: &quot;pkg+http://mirrors.ustc.edu.cn/freebsd-pkg/$&#123;ABI&#125;/latest&quot;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">sudo pkg update -f		# 更新索引</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><span class="exturl" data-url="aHR0cDovL21pcnJvcnMuMTYzLmNvbS9mcmVlYnNkLXBrZy9GcmVlQlNEJTNhMTIlM2FhbWQ2NC9sYXRlc3Qv">163 Mirrors<i class="fa fa-external-link-alt"></i></span></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">url: &quot;pkg+http:&#x2F;&#x2F;mirrors.163.com&#x2F;freebsd-pkg&#x2F;$&#123;ABI&#125;&#x2F;latest&quot;,</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>要啟動 (Bootstrap) 系統，請執行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo &#x2F;usr&#x2F;sbin&#x2F;pkg</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /usr/sbin/pkg</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>當升級原使用舊版 pkg_* 工具的既有系統時，必須將資料庫轉換成新的格式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo pkg2ng</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pkg2ng</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Update the available remote repositories as listed in pkg.conf</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo pkg update</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pkg update</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Search for a package</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo pkg search perl</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pkg search perl</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>在指定要安裝的套件時，最好使用 Port 來源來指定該應用程式，Port 來源是指應用程式在 Port 樹中的路徑</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo pkg search -o perl</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pkg search -o perl</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Install a package: Installing must specify a unique origin or version otherwise it will try installing all matches</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo pkg install perl-5.14</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pkg install perl-5.14</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>列出已經安裝的 Port 中有那些已過時</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo pkg version -l &quot;&lt;&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pkg version -l &quot;&lt;&quot;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Upgrade from remote repository</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo pkg upgrade</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pkg upgrade</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Delete an installed package</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo pkg delete perl-5.14</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pkg delete perl-5.14</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Remove unneeded dependencies</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo pkg autoremove</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pkg autoremove</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>List installed packages</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo pkg info</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pkg info</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Display information about installed packages</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo pkg info perl-5.14</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pkg info perl-5.14</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Show the pkg-message of a package</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo pkg info -D perl-5.14</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pkg info -D perl-5.14</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>要查詢已安在系統上的軟體是否有任何已知的漏洞</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo pkg audit -F</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pkg audit -F</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>因為相依所安裝的套件稱作自動 (Automatic) 套件，而非自動套件即套件被安裝的原因不是因為其他套件所相依</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo pkg prime-list		# deprecated</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pkg prime-list		# deprecated</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Clean the local cache of fetched remote packages</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo pkg clean</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pkg clean</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Example</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ sudo pkg install vim atom linux-sublime3</span><br><span class="line">$ sudo pkg install git node npm		# Node.js</span><br><span class="line">$ sudo pkg install plank telegram-desktop firefox-esr</span><br><span class="line">$ sudo pkg install intellij tomcat mysql180-server mysql180-client		# Intellij IDEA use openjdk8</span><br><span class="line">$ sudo pkg install p7zip</span><br><span class="line">$ sudo pkg install zsh		# ZSH_THEME&#x3D;&quot;agnoster&quot;</span><br><span class="line">$ pip install NetEase-MusicBox		# export PATH&#x3D;&quot;your-dir:$PATH&quot;</span><br><span class="line">$ sudo pkg install you-get youtube_dl</span><br><span class="line">$ sudo pkg install vlc mplayer</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sudo pkg install vim atom linux-sublime3</span><br><span class="line">sudo pkg install git node npm		# Node.js</span><br><span class="line">sudo pkg install plank telegram-desktop firefox-esr</span><br><span class="line">sudo pkg install intellij tomcat mysql180-server mysql180-client		# Intellij IDEA use openjdk8</span><br><span class="line">sudo pkg install p7zip</span><br><span class="line">sudo pkg install zsh		# ZSH_THEME=&quot;agnoster&quot;</span><br><span class="line">pip install NetEase-MusicBox		# export PATH=&quot;your-dir:$PATH&quot;</span><br><span class="line">sudo pkg install you-get youtube_dl</span><br><span class="line">sudo pkg install vlc mplayer</span><br></pre></td></tr></table></figure>
 
 
 </li>
@@ -543,43 +552,43 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MASTER_SITE_OVERRIDE?&#x3D;http:&#x2F;&#x2F;mirrors.163.com&#x2F;freebsd-ports&#x2F;distfiles&#x2F;$&#123;DIST_SUBDIR&#125;&#x2F;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>安裝 Port 套件集：下載壓縮後的 Port 套件集快照 (Snapshot) 到 /var/db/portsnap</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo portsnap fetch</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo portsnap fetch</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>第一次執行 Portsnap 時，要先解壓縮快照到 /usr/ports</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo portsnap extract</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo portsnap extract</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>執行以下指令來更新 /usr/ports</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo portsnap fetch</span><br><span class="line">$ sudo portsnap update</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo portsnap fetch</span><br><span class="line">sudo portsnap update</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>要找到 Port 所在的分類</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo whereis lsof</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo whereis lsof</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>使用 Port 套件集內建的搜尋機制來找軟體</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo cd &#x2F;usr&#x2F;ports</span><br><span class="line">$ sudo make search name&#x3D;lsof</span><br><span class="line">$ sudo make quicksearch name&#x3D;lsof		# 不接受多資訊</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo cd /usr/ports</span><br><span class="line">sudo make search name=lsof</span><br><span class="line">sudo make quicksearch name=lsof		# 不接受多資訊</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>若要進行更有深度的搜尋</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo make search key&#x3D;string</span><br><span class="line">$ sudo make quicksearch key&#x3D;string</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo make search key=string</span><br><span class="line">sudo make quicksearch key=string</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>一次設定所有Port 編譯選項</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo make config-recursive</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo make config-recursive</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>重新進入 Port 的編譯選項清單</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo make config			# or</span><br><span class="line">$ sudo make showconfig		# or</span><br><span class="line">$ sudo make rmconfig</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo make config			# or</span><br><span class="line">sudo make showconfig		# or</span><br><span class="line">sudo make rmconfig</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>編譯並安裝 Port</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo cd &#x2F;usr&#x2F;ports&#x2F;sysutils&#x2F;lsof</span><br><span class="line">$ sudo make install</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo cd /usr/ports/sysutils/lsof</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>編譯在 /usr/ports Port 並安裝到 /usr/home/example/local</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo make WRKDIRPREFIX&#x3D;..&#x2F;ports PREFIX&#x3D;..&#x2F;local install</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo make WRKDIRPREFIX=../ports PREFIX=../local install</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>安裝過程中會建立工作用的子目錄用來儲存編譯時暫存的檔案。可移除此目錄來節省磁碟空間並漸少往後升級新版 Port 時造成問題</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo make clean</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo make clean</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>移除已安裝的 Port</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo cd &#x2F;usr&#x2F;ports&#x2F;sysutils&#x2F;lsof</span><br><span class="line">$ sudo make deinstall</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo cd /usr/ports/sysutils/lsof</span><br><span class="line">sudo make deinstall</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Example</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;usr&#x2F;ports&#x2F;java&#x2F;linux-oracle-jdk18$ sudo make install</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/ports/java/linux-oracle-jdk18</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
@@ -593,35 +602,35 @@
 <p>最好不要直接安装 Linux 的软件，而使用 FreeBSD 源中的 Linux 软件，一般以 <code>linux-package</code> 命名。</p>
 <ul>
 <li><p>載入 Linux® 核心模組</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo kldload linux</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo kldload linux</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>對 64-位元的相容性</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo kldload linux64</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo kldload linux64</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>確認模組已載入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo kldstat</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo kldstat</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>安裝基本的 Linux® 程式庫和 Binary</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo pkg install emulators&#x2F;linux_base-c7</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pkg install emulators/linux_base-c7</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Add the following line</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vi &#x2F;etc&#x2F;fstab</span><br><span class="line">linprocfs   &#x2F;compat&#x2F;linux&#x2F;proc	linprocfs	rw	0	0</span><br><span class="line">linsysfs    &#x2F;compat&#x2F;linux&#x2F;sys	linsysfs	rw	0	0</span><br><span class="line">tmpfs    &#x2F;compat&#x2F;linux&#x2F;dev&#x2F;shm	tmpfs	rw,mode&#x3D;1777	0	0</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/fstab</span><br><span class="line">linprocfs   /compat/linux/proc	linprocfs	rw	0	0</span><br><span class="line">linsysfs    /compat/linux/sys	linsysfs	rw	0	0</span><br><span class="line">tmpfs    /compat/linux/dev/shm	tmpfs	rw,mode=1777	0	0</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>開機時開啟 Linux® 相容性</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vi &#x2F;etc&#x2F;rc.conf</span><br><span class="line">linux_enable&#x3D;&quot;YES&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/rc.conf</span><br><span class="line">linux_enable=&quot;YES&quot;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>安裝 Linux® ELF Binary</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo brandelf -t Linux my-linux-elf-binary</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo brandelf -t Linux my-linux-elf-binary</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>安裝以 Linux® RPM 為基礎的應用程式,需先安裝 archivers/rpm4 套件或 Port</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo pkg install rpm4</span><br><span class="line">$ sudo cd &#x2F;compat&#x2F;linux</span><br><span class="line">$ sudo rpm2cpio &lt; &#x2F;path&#x2F;to&#x2F;linux.archive.rpm | cpio -id</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo pkg install rpm4</span><br><span class="line">sudo cd /compat/linux</span><br><span class="line">sudo rpm2cpio &lt; /path/to/linux.archive.rpm | cpio -id</span><br></pre></td></tr></table></figure>
 
 
 </li>
 </ul>
 <h5 id="手動安裝其他程式庫"><a href="#手動安裝其他程式庫" class="headerlink" title="手動安裝其他程式庫"></a>手動安裝其他程式庫</h5><ul>
 <li><p>在 Linux® 系統，可使用 ldd 來找出應用程式需要哪個共用程式庫</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">% ldd linuxdoom</span><br><span class="line">libXt.so.3 (DLL Jump 3.1) &#x3D;&gt; &#x2F;usr&#x2F;X11&#x2F;lib&#x2F;libXt.so.3.1.0</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ldd linuxdoom</span><br><span class="line">libXt.so.3 (DLL Jump 3.1) =&gt; /usr/X11/lib/libXt.so.3.1.0</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>複製 Linux® 系統輸出結果中最後一欄需要的的檔案到 FreeBSD 系統的 /compat/linux。 複製完後，建立符號連結 (Symbolic link) 至輸出結果第一欄的名稱</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;compat&#x2F;linux&#x2F;usr&#x2F;X11&#x2F;lib&#x2F;libXt.so.3.1.0</span><br><span class="line">&#x2F;compat&#x2F;linux&#x2F;usr&#x2F;X11&#x2F;lib&#x2F;libXt.so.3 -&gt; libXt.so.3.1.0</span><br></pre></td></tr></table></figure>
@@ -645,31 +654,31 @@
 <h5 id="設定檔"><a href="#設定檔" class="headerlink" title="設定檔"></a>設定檔</h5><p><code>/usr/src/sys</code> 下子目錄代表著支援的硬體架構 (Architecture)，每個支援的硬體架構中會有 <code>conf</code> 子目錄，裡面含有供該架構使用的 <code>GENERIC</code> 核心設定檔。</p>
 <p>說明在<code>GENERIC</code> 同目錄的 <code>NOTES</code> 檔案中。所有架構通用選項，參考 <code>/usr/src/sys/conf/NOTES</code>。</p>
 <h3 id="Others"><a href="#Others" class="headerlink" title="Others"></a>Others</h3><h5 id="Screen-resolution-on-FreeBSD-on-VirtualBox"><a href="#Screen-resolution-on-FreeBSD-on-VirtualBox" class="headerlink" title="Screen resolution on FreeBSD on VirtualBox"></a>Screen resolution on FreeBSD on VirtualBox</h5><p>问题描述：在virtualbox虚拟机下，无法改变桌面分辨率为1366x768</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ VBoxManage setextradata &quot;FreeBSD&quot; VBoxInternal2&#x2F;EfiGraphicsResolution 1366x768</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">VBoxManage setextradata &quot;FreeBSD&quot; VBoxInternal2/EfiGraphicsResolution 1366x768</span><br></pre></td></tr></table></figure>
 
 <h5 id="Disable-the-Forward-Back-buttons-on-my-mouse"><a href="#Disable-the-Forward-Back-buttons-on-my-mouse" class="headerlink" title="Disable the Forward/Back buttons on my mouse"></a>Disable the Forward/Back buttons on my mouse</h5><p>问题描述：浏览网页时，鼠标滑轮滚动浏览器就会前进后退。</p>
 <p><span class="exturl" data-url="aHR0cHM6Ly91bml4LnN0YWNrZXhjaGFuZ2UuY29tL3F1ZXN0aW9ucy8yMDU1MC9ob3ctdG8tZGlzYWJsZS10aGUtZm9yd2FyZC1iYWNrLWJ1dHRvbnMtb24tbXktbW91c2U=">Salved<i class="fa fa-external-link-alt"></i></span>：</p>
 <ul>
 <li><p>执行下面命令后，上下滑动鼠标滑轮，看看映射到那些button，一般是buttons 8 and 9</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo xev | grep -A2 ButtonPress</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo xev | grep -A2 ButtonPress</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>then disable button 8 and 9（前提是有上面的问题，否则就不要禁）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vi ~&#x2F;.Xmodmap</span><br><span class="line">pointer &#x3D; 1 2 3 4 5 6 7 0 0 0 0 0</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo vi ~/.Xmodmap</span><br><span class="line">pointer = 1 2 3 4 5 6 7 0 0 0 0 0</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>test it with the command,command automatically when you log in; if yours doesn’t, arrange for it to run when X starts.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo xmodmap ~&#x2F;.Xmodmap</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo xmodmap ~/.Xmodmap</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
-<h5 id="Install-chinese-font"><a href="#Install-chinese-font" class="headerlink" title="Install chinese font"></a>Install chinese font</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo pkg install zh-CJKUnifonts		# CJK（中日韩统一表意文字）</span><br></pre></td></tr></table></figure>
+<h5 id="Install-chinese-font"><a href="#Install-chinese-font" class="headerlink" title="Install chinese font"></a>Install chinese font</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pkg install zh-CJKUnifonts		# CJK（中日韩统一表意文字）</span><br></pre></td></tr></table></figure>
 
-<h5 id="设单使用模式为不安全"><a href="#设单使用模式为不安全" class="headerlink" title="设单使用模式为不安全"></a>设单使用模式为不安全</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vi &#x2F;etc&#x2F;ttys</span><br><span class="line">console none	unknown off insecure</span><br></pre></td></tr></table></figure>
+<h5 id="设单使用模式为不安全"><a href="#设单使用模式为不安全" class="headerlink" title="设单使用模式为不安全"></a>设单使用模式为不安全</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/ttys</span><br><span class="line">console none	unknown off insecure</span><br></pre></td></tr></table></figure>
 
 <h5 id="No-space-left-on-device"><a href="#No-space-left-on-device" class="headerlink" title="No space left on device"></a>No space left on device</h5><p>问题描述：使用 pkg update 时提示这个问题。原因是 /tmp is too small。</p>
 <p><span class="exturl" data-url="aHR0cHM6Ly9mb3J1bXMuZnJlZWJzZC5vcmcvdGhyZWFkcy9uby1zcGFjZS1sZWZ0LW9uLWRldmljZS42MTIzMi8=">Salved<i class="fa fa-external-link-alt"></i></span>: </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vi &#x2F;etc&#x2F;fstab</span><br><span class="line">tmpfs	&#x2F;tmp	tmpfs	rw,size&#x3D;256000000	0	0		# size 以Byte为单位</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/fstab</span><br><span class="line">tmpfs	/tmp	tmpfs	rw,size=256000000	0	0		# size 以Byte为单位</span><br></pre></td></tr></table></figure>
 
-<h5 id="VirtualBox™-guest-additions"><a href="#VirtualBox™-guest-additions" class="headerlink" title="VirtualBox™ guest additions"></a>VirtualBox™ guest additions</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ sudo cd &#x2F;usr&#x2F;ports&#x2F;emulators&#x2F;virtualbox-ose-additions &amp;&amp; make install clean</span><br><span class="line"></span><br><span class="line">$ sudo vi &#x2F;etc&#x2F;rc.conf</span><br><span class="line">vboxguest_enable&#x3D;&quot;YES&quot;</span><br><span class="line">vboxservice_enable&#x3D;&quot;YES&quot;</span><br><span class="line">vboxservice_flags&#x3D;&quot;--disable-timesync&quot;		# 若有使用 ntpd或 ntpdate，便可關閉主機時間同步功能</span><br></pre></td></tr></table></figure>
+<h5 id="VirtualBox™-guest-additions"><a href="#VirtualBox™-guest-additions" class="headerlink" title="VirtualBox™ guest additions"></a>VirtualBox™ guest additions</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo cd /usr/ports/emulators/virtualbox-ose-additions &amp;&amp; make install clean</span><br><span class="line"></span><br><span class="line">sudo vi /etc/rc.conf</span><br><span class="line">vboxguest_enable=&quot;YES&quot;</span><br><span class="line">vboxservice_enable=&quot;YES&quot;</span><br><span class="line">vboxservice_flags=&quot;--disable-timesync&quot;		# 若有使用 ntpd或 ntpdate，便可關閉主機時間同步功能</span><br></pre></td></tr></table></figure>
 
 <h5 id="Fish"><a href="#Fish" class="headerlink" title="Fish"></a>Fish</h5><p>Fish 是”the <strong>f</strong>riendly <strong>i</strong>nteractive <strong>sh</strong>ell”的简称，最大特点就是方便易用。</p>
 <p>Fish 会自动在光标后面给出建议，表示可能的选项，颜色为灰色。如果采纳建议，可以按下<code>→</code>或<code>Control + F</code>。如果只采纳一部分，可以按下<code>Alt + →</code>。</p>
@@ -678,9 +687,7 @@
 <li><p>These directories are defined in <code>/etc/defaults/rc.conf</code>（主要是运行脚本）</p>
 <ul>
 <li><p>Default startup directory is <code>/usr/local/etc/rc.d/</code>. if you need the files to be executed in a specific order, try numbering the files. For example:</p>
-<blockquote>
-<p>000This.Will.Run.First.sh<br>020This.Will.Run.Next.sh<br>030And.Then.This.sh</p>
-</blockquote>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">000This.Will.Run.First.sh</span><br><span class="line">020This.Will.Run.Next.sh</span><br><span class="line">030And.Then.This.sh</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>deprecated: <code>/etc/rc.local</code>        </p>
 </li>
@@ -692,20 +699,20 @@
 <p>（本质就是在 <code>.xinitrc</code> 调用程序指令，GUI 程序开机启动都需放入 <code>.xinitrc</code>，在 Xorg 启动后运行）</p>
 <ul>
 <li><p>Installation</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># cd &#x2F;usr&#x2F;ports&#x2F;x11&#x2F;dsbautostart &amp;&amp; make install distclean</span><br></pre></td></tr></table></figure>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/ports/x11/dsbautostart &amp;&amp; make install distclean</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Usage</p>
 <ul>
 <li><p>Manual</p>
-<pre><code>- Setup: Add the following command to your `~/.xinitrc`, or to your window manager&#39;s startup script (e.g. ~/.config/openbox/autostart.sh)
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh ~&#x2F;.config&#x2F;DSB&#x2F;autostart.sh&amp;</span><br></pre></td></tr></table></figure>
-
-- `~/.config/DSB/autostart.sh`
-
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plank&amp;</span><br></pre></td></tr></table></figure></code></pre>
 <ul>
-<li>GUI: <code>Setting -&gt; DSBAutostart -&gt; Add Command</code>, example <code>plank</code>, then <code>Save</code> and <code>Quit</code></li>
+<li><p>Setup: Add the following command to your <code>~/.xinitrc</code>, or to your window manager’s startup script (e.g. ~/.config/openbox/autostart.sh)</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh ~&#x2F;.config&#x2F;DSB&#x2F;autostart.sh&amp;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>~/.config/DSB/autostart.sh</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plank&amp;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>GUI: <code>Setting -&gt; DSBAutostart -&gt; Add Command</code>, example <code>plank</code>, then <code>Save</code> and <code>Quit</code></p>
+</li>
 </ul>
 </li>
 </ul>
@@ -719,7 +726,7 @@
 <li>根据提示在 <span class="exturl" data-url="aHR0cHM6Ly93d3cub3JhY2xlLmNvbS9qYXZhL3RlY2hub2xvZ2llcy9vcmFjbGUtamF2YS1hcmNoaXZlLWRvd25sb2Fkcy5odG1s">Oracle Java Archive<i class="fa fa-external-link-alt"></i></span> 下载需要的 JDK 版本安装包，复制到 <code>/usr/ports/distfiles</code></li>
 <li>在 <code>/usr/ports/java/linux-oracle-jdk18</code> 运行 <code>sudo make install</code>，安装成功</li>
 </ul>
-<h5 id="FreeBSD-Install-Python-and-pip"><a href="#FreeBSD-Install-Python-and-pip" class="headerlink" title="FreeBSD Install Python and pip"></a>FreeBSD Install Python and pip</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ sudo pkg install python</span><br><span class="line"></span><br><span class="line">$ python --version</span><br><span class="line">Python 3.7.9</span><br><span class="line"></span><br><span class="line">$ sudo pkg install py37-pip</span><br></pre></td></tr></table></figure>
+<h5 id="FreeBSD-Install-Python-and-pip"><a href="#FreeBSD-Install-Python-and-pip" class="headerlink" title="FreeBSD Install Python and pip"></a>FreeBSD Install Python and pip</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo pkg install python</span><br><span class="line"></span><br><span class="line">python --version</span><br><span class="line">Python 3.7.9</span><br><span class="line"></span><br><span class="line">sudo pkg install py37-pip</span><br></pre></td></tr></table></figure>
 
 <h3 id="BSDs"><a href="#BSDs" class="headerlink" title="BSDs"></a>BSDs</h3><p>NetBSD: <span class="exturl" data-url="aHR0cHM6Ly9taXJyb3JzLmh1YXdlaWNsb3VkLmNvbS9OZXRCU0Qv">huaweicloud<i class="fa fa-external-link-alt"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly9taXJyb3JzLmFsaXl1bi5jb20vbmV0YnNkLz9zcG09YTJjNmguMTM2NTExMDQuMC4wLjRkODQzYmY0QXpKWVRY">aliyun<i class="fa fa-external-link-alt"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly9taXJyb3JzLnR1bmEudHNpbmdodWEuZWR1LmNuLw==">tsinghua<i class="fa fa-external-link-alt"></i></span></p>
 <p>OpenBSD: <span class="exturl" data-url="aHR0cHM6Ly9taXJyb3JzLmh1YXdlaWNsb3VkLmNvbS9PcGVuQlNELw==">huaweicloud<i class="fa fa-external-link-alt"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly9taXJyb3JzLmFsaXl1bi5jb20vb3BlbmJzZC8/c3BtPWEyYzZoLjEzNjUxMTA0LjAuMC4xNGRiNWE1MHFGblhsNg==">aliyun<i class="fa fa-external-link-alt"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly9taXJyb3JzLnR1bmEudHNpbmdodWEuZWR1LmNuLw==">tsinghua<i class="fa fa-external-link-alt"></i></span></p>

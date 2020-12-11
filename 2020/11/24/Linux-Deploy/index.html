@@ -19,7 +19,7 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-<link rel="stylesheet" href="https://fonts.loli.net/css?family=Architects+Daughter:300,300italic,400,400italic,700,700italic|Ma+Shan+Zheng:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="https://fonts.loli.net/css?family=Architects+Daughter:300,300italic,400,400italic,700,700italic|Ma+Shan+Zheng:300,300italic,400,400italic,700,700italic|Share+Tech+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
@@ -39,7 +39,7 @@
 <meta property="og:description" content="这是一篇旧文章，做个记录。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-11-24T07:44:19.000Z">
-<meta property="article:modified_time" content="2020-12-11T08:03:35.111Z">
+<meta property="article:modified_time" content="2020-12-11T11:16:34.156Z">
 <meta property="article:author" content="vane">
 <meta property="article:tag" content="Unix">
 <meta name="twitter:card" content="summary">
@@ -360,7 +360,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2020-12-11 16:03:35" itemprop="dateModified" datetime="2020-12-11T16:03:35+08:00">2020-12-11</time>
+        <time title="Modified: 2020-12-11 19:16:34" itemprop="dateModified" datetime="2020-12-11T19:16:34+08:00">2020-12-11</time>
       </span>
 
   
@@ -447,12 +447,12 @@
 <li><p>安装后如果用 vnc viewer 只有一个点的话，可以换一个发行版，我尝试的 CentOS 有这个问题。</p>
 </li>
 <li><p>Linux连的时候出现 <code>WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!</code>：</p>
-   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -R + 输入服务器的IP</span><br></pre></td></tr></table></figure>
+   <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -R + 输入服务器的IP</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>altarch 架构的手机 CentOS 系统换源</p>
-   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ cp CentOS-7-armhfp.repo CentOS-Base.repo</span><br><span class="line">$ mv CentOS-7-armhfp.repo CentOS-7-armhfp.repo.backup</span><br><span class="line">$ vi CentOS-Base.repo</span><br><span class="line">baseurl&#x3D;https:&#x2F;&#x2F;mirrors.ustc.edu.cn&#x2F;centos-altarch&#x2F;7.6.1810&#x2F;os&#x2F;armhfp&#x2F;</span><br><span class="line">$ yum makecache</span><br><span class="line">$ yum update</span><br></pre></td></tr></table></figure></li>
+   <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cp CentOS-7-armhfp.repo CentOS-Base.repo</span><br><span class="line">mv CentOS-7-armhfp.repo CentOS-7-armhfp.repo.backup</span><br><span class="line">vi CentOS-Base.repo</span><br><span class="line">baseurl=https://mirrors.ustc.edu.cn/centos-altarch/7.6.1810/os/armhfp/</span><br><span class="line">yum makecache</span><br><span class="line">yum update</span><br></pre></td></tr></table></figure></li>
 <li><p><strong>如果你之前没有安装VNC的话，现在又想装：</strong></p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yum -y install tigervnc-server</span><br></pre></td></tr></table></figure></li>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install tigervnc-server</span><br></pre></td></tr></table></figure></li>
 </ul>
 
     </div>
