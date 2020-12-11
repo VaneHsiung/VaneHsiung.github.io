@@ -2,13 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://vanehsiung.github.io/about/index.html</loc>
-    
-    <lastmod>2020-12-11</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://vanehsiung.github.io/links/index.html</loc>
     
     <lastmod>2020-12-11</lastmod>
@@ -17,6 +10,13 @@
   
   <url>
     <loc>https://vanehsiung.github.io/tags/index.html</loc>
+    
+    <lastmod>2020-12-11</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://vanehsiung.github.io/about/index.html</loc>
     
     <lastmod>2020-12-11</lastmod>
     
@@ -51,13 +51,6 @@
   </url>
   
   <url>
-    <loc>https://vanehsiung.github.io/2020/11/28/FreeBSD-Desktop/</loc>
-    
-    <lastmod>2020-12-11</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://vanehsiung.github.io/2020/11/21/Conversation/</loc>
     
     <lastmod>2020-12-11</lastmod>
@@ -65,7 +58,7 @@
   </url>
   
   <url>
-    <loc>https://vanehsiung.github.io/2020/12/09/Foreign-Time/</loc>
+    <loc>https://vanehsiung.github.io/2020/11/28/FreeBSD-Desktop/</loc>
     
     <lastmod>2020-12-11</lastmod>
     
