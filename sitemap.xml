@@ -2,70 +2,70 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://vanehsiung.github.io/links/index.html</loc>
+    <loc>https://vanehsiung.netlify.app/about/index.html</loc>
     
     <lastmod>2020-12-11</lastmod>
     
   </url>
   
   <url>
-    <loc>https://vanehsiung.github.io/tags/index.html</loc>
+    <loc>https://vanehsiung.netlify.app/links/index.html</loc>
     
     <lastmod>2020-12-11</lastmod>
     
   </url>
   
   <url>
-    <loc>https://vanehsiung.github.io/about/index.html</loc>
+    <loc>https://vanehsiung.netlify.app/tags/index.html</loc>
     
     <lastmod>2020-12-11</lastmod>
     
   </url>
   
   <url>
-    <loc>https://vanehsiung.github.io/2020/11/24/Linux-Deploy/</loc>
+    <loc>https://vanehsiung.netlify.app/2020/11/24/Linux-Deploy/</loc>
     
     <lastmod>2020-12-11</lastmod>
     
   </url>
   
   <url>
-    <loc>https://vanehsiung.github.io/2020/11/26/Microservices/</loc>
+    <loc>https://vanehsiung.netlify.app/2020/11/26/Microservices/</loc>
     
     <lastmod>2020-12-11</lastmod>
     
   </url>
   
   <url>
-    <loc>https://vanehsiung.github.io/2020/11/17/FreeBSD/</loc>
+    <loc>https://vanehsiung.netlify.app/2020/11/17/FreeBSD/</loc>
     
     <lastmod>2020-12-11</lastmod>
     
   </url>
   
   <url>
-    <loc>https://vanehsiung.github.io/2020/12/10/Hexo/</loc>
+    <loc>https://vanehsiung.netlify.app/2020/12/10/Hexo/</loc>
     
     <lastmod>2020-12-11</lastmod>
     
   </url>
   
   <url>
-    <loc>https://vanehsiung.github.io/2020/11/21/Conversation/</loc>
+    <loc>https://vanehsiung.netlify.app/2020/11/21/Conversation/</loc>
     
     <lastmod>2020-12-11</lastmod>
     
   </url>
   
   <url>
-    <loc>https://vanehsiung.github.io/2020/11/28/FreeBSD-Desktop/</loc>
+    <loc>https://vanehsiung.netlify.app/2020/11/28/FreeBSD-Desktop/</loc>
     
     <lastmod>2020-12-11</lastmod>
     
   </url>
   
   <url>
-    <loc>https://vanehsiung.github.io/404.html</loc>
+    <loc>https://vanehsiung.netlify.app/404.html</loc>
     
     <lastmod>2020-12-11</lastmod>
     
@@ -73,7 +73,7 @@
   
 
   <url>
-    <loc>https://vanehsiung.github.io/</loc>
+    <loc>https://vanehsiung.netlify.app/</loc>
     <lastmod>2020-12-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
@@ -81,28 +81,28 @@
 
   
   <url>
-    <loc>https://vanehsiung.github.io/tags/Lyrics/</loc>
+    <loc>https://vanehsiung.netlify.app/tags/Lyrics/</loc>
     <lastmod>2020-12-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://vanehsiung.github.io/tags/Unix/</loc>
+    <loc>https://vanehsiung.netlify.app/tags/Unix/</loc>
     <lastmod>2020-12-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://vanehsiung.github.io/tags/Architecture/</loc>
+    <loc>https://vanehsiung.netlify.app/tags/Architecture/</loc>
     <lastmod>2020-12-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://vanehsiung.github.io/tags/Hexo/</loc>
+    <loc>https://vanehsiung.netlify.app/tags/Hexo/</loc>
     <lastmod>2020-12-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
