@@ -1316,6 +1316,7 @@
 <p><strong>SEO</strong></p>
 <p><em>SEO Setting</em>:</p>
 <p>Next provides useful options for better Search Engine Optimization (SEO).</p>
+<p>By default a canonical link tag is created in Hexo after you have set up your URL <code>url: http://example.com</code> in site config file.</p>
 <figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># theme config file</span></span><br><span class="line"><span class="attr">disable_baidu_transformation:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">index_with_subtitle:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">exturl:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
 
 <p><em>Webmaster Tools</em>:</p>
@@ -1712,6 +1713,803 @@
 ]]></content>
       <tags>
         <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Android 移动开发基础案例教程</title>
+    <url>/2020/12/14/Android/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="Android-基础入门"><a href="#Android-基础入门" class="headerlink" title="Android 基础入门"></a>Android 基础入门</h3><h5 id="Android-简介"><a href="#Android-简介" class="headerlink" title="Android 简介"></a>Android 简介</h5><p>Android 是一款基于 Linux 平台的开源操作系统，主要用于移动设备中，由 Google 公司和开放手机联盟领导及开发。Android 一词最早出现于法国作家利尔亚当在 1886 年发表的科幻小说《未来夏娃》中，将外表像人的机器起名为 Android。从 Android 1.5 版本开始， Android 用甜点作为系统版本的代号。</p>
+<p>Android 系统采用分层架构，由高到低分为 4 层，依次是应用程序层、应用程序框架层 、核心类库层和 Linux 内核层：</p>
+<ul>
+<li>应用程序层是一个应用程序的集合，所有安装在手机上的应用程序都属于这一层。</li>
+<li>应用程序框架层主要提供了构建应用程序时用到的各种 API。</li>
+<li>核心类库中包含了系统库及 Android 运行时库，系统库主要是通过 C/C++ 库来为 Android 系统提供主要的特性支持；Android 运行时库主要提供了一些核心库，能够允许开发者使用 Java 语言来编写 Android 应用程序，Android 运行时库中还包括了 Dalvik 虚拟机。</li>
+<li>Linux 内核层为 Android 设备的各种硬件提供了底层的驱动。</li>
+</ul>
+<p>Dalvik 是 Google 公司自己设计用于 Android 平台的虚拟机，它可以简单地完成进程隔离和线程管理，并且可以提高内存的使用效率。每—个 Android 应用程序在底层都会对应一个独立的 Dalvik 虚拟机实例，其代码在虚拟机的解析下得以执行。Java 虚拟机和 Dalvik 虚拟机区别：Java 虚拟机运行的是 .class 字节码文件 ，而 Dalvik 虚拟机运行的则是其专有的 .dex 文件；Java 虚拟机是基于栈的架构，而 Dalvik 是基于寄存器的架构。</p>
+<p>ART 模式英文全称为 Android Runtime，是谷歌 Android 4.4 系统增加的一种应用运行模式。ART 模式与 Dalvik 模式最大的不同在于，在启用 ART 模式后，系统在安装应用的时候会进行一次预编译，在安装应用程序时会先将代码转换为机器语言存储在本地，这样在运行程序时就不会每次都进行编译了，执行效率也大大提升。</p>
+<h5 id="Android-开发环境搭建"><a href="#Android-开发环境搭建" class="headerlink" title="Android 开发环境搭建"></a>Android 开发环境搭建</h5><p>Android Studio 是 Google 提供的一个 Android 开发环境，基于 lntelliJ IDEA。</p>
+<p>DDMS：在使用模拟器或者手机进行程序测试时，通常会查看设备的内存使用情况，或者查看正在运行的进程等，这时就需要使用 Android Studio 提供的 DDMS（Dalvik Debug Monitor Service）（已分解为不同部分）。</p>
+<p>ADB ( Android Debug Bridge ) 调试桥：ADB 调试桥位于 SDK 的 platform-tools 目录中，它与 DDMS 工具的作用相同，只不过是通过命令行的方式管理模拟器和真机的调试。</p>
+<h5 id="开发第一个-Android-程序"><a href="#开发第一个-Android-程序" class="headerlink" title="开发第一个 Android 程序"></a>开发第一个 Android 程序</h5><p>Android 程序在创建时，Android Studio 就为其构建了基本结构，设计者可以在此结构上开发应用程序：</p>
+<ul>
+<li>manifests: 用于存放 <code>AndroidManifest.xml</code> 文件。在清单文件中配置的信息会添加到 Android 系统中，当程序运行时，系统会找到清单文件中的配置信息，然后根据配置信息打开相应组件。</li>
+<li>java：用于存放所有的 Java 代码， 在该文件夹中可以创建多个包， 每个包中可以存放不同的文件或 Activity。</li>
+<li>res: 用于存放 Android 程序所用到的资源。drawable 目录用于存放图片及 XML 文件，layout 目录用于存放布局文件，mipmap 目录通常用于存放应用程序图标，values 目录用于放置定义的字符串。</li>
+<li>Gradle Scripts: 用于存放项目创建的相关文件。</li>
+</ul>
+<p>当项目创建成功后，Android Studio 会自动生成布局文件 <code>.xml</code> 和 Activity 文件 <code>.java</code>，布局文件主要用于展示 Android 项目的界面， Activity 文件主要用于完成界面的交互功能。</p>
+<p>Activity 继承自 AppCompatActivity，当 Activity 执行时会调用 <code>onCreate()</code> 方法，在该方法中通过 <code>setContentView(R.layout.activity_main)</code> 将布局文件转换成 View 对象，显示在界面上。</p>
+<p>清单文件 AndroidManifest.xml，是整个项目的配置文件，程序中定义的四大组 Activity 、BroadcastReceiver 、Service 、ContentProvider 都需要在该文件中进行注册。<code>&lt;activity android:name=&quot;.MainActivity&quot; &gt;</code> 标签用于注册—个 Activity。</p>
+<p>在 Android Studio 开发工具中更强调 Project 中项目的关联性，关联性比较大的项目就放在一起，关联性不大的项 目就单独放在一个 Project 中；一个 Project 可以包含多个 Module, 并且在 Project 创建时会默认创建一个名为 App 的 Module。</p>
+<p>Android 程序开发完成后 ，如果要发布到互联网上供别人使用，就需要将自己的程序打包成正式的 Android 安装包 ( Android Package 简称 APK )。</p>
+<h3 id="Android-UI-开发"><a href="#Android-UI-开发" class="headerlink" title="Android UI 开发"></a>Android UI 开发</h3><h5 id="布局的创建"><a href="#布局的创建" class="headerlink" title="布局的创建"></a>布局的创建</h5><p>Layout File Name 只能包含小写字母 a ~ z，数字 0~9 或下划线 ”_＂。</p>
+<h5 id="布局的类型"><a href="#布局的类型" class="headerlink" title="布局的类型"></a>布局的类型</h5><ul>
+<li><p>线性布局 (LinearLayout)</p>
+<p>orientation 属性用于控制控件的排列方向，值 vertical 表示线性布局垂直显示，值 horizontal 表示线性布局水平显示。</p>
+</li>
+<li><p>相对布局 (RelativeLayout)</p>
+<p>通过相对定位的方式指定控件位置，即以其他控件或父容器为参照物，摆放控件位置。在设计相对布局时要遵循控件之间的依赖关系，后放入控件的位置依赖于先放入的控件。</p>
+</li>
+<li><p>帧布局 (Framelayout)</p>
+<p>为每个加入其中的控件创建一个空白区域（称为—帧，每个控件占据—帧）。所有控件都默认显示在屏幕左上角，并按照先后放入的顺序重叠摆放，先放入的控件显示在最底层，后放入的控件显示在最顶层。前景图片是通过 FrameLayout 标签中的 foreground 属性设置的，并使用 foregroundGravity 属性设置图片居左，前景图片始终保持在最上层 。</p>
+</li>
+<li><p>表格布局 (TableLayout)</p>
+<p>以表格形式排列控件，表格布局每一行都由 TableRow 对象组成，每个单元格都是控件。在 TableRow 标签中设置 layout_width 和 layout_height 属性是没有作用的， 其宽度 layout_width 和高度 layout_height 会自动根据单元格控件决定。 如果其他控件在 TableRow 标签外，会自成一行。</p>
+</li>
+<li><p>绝对布局 (Absolutelayout)</p>
+<p>通过指定 X, y坐标来控制每—个控件位置的。此类已弃用。</p>
+</li>
+</ul>
+<p>@+id 新增一个资源 id，@id 引用现有资源。</p>
+<p>控件 layout_width 属性，值 <code>wrap_content</code> 包裹内容让当前控件根据控件内容大小自动伸缩，值 <code>match_parent</code> 填充父窗体由父容器大小决定控件大小。</p>
+<p>控件 <code>layout_weight</code> 属性称为权重，通过比例调整布局中所有控件的大小。原理是 Android 先会把布局内所有控件 layout_weight 属性值相加得到总值，然后用该控件 layout_weight 属性值除以总值，得到每个控件的占比，根据占比分配控件所占大小。当标签中使用 layout _weight 时，控件宽度不再由 layout_width 来决定，指定为 0dp 是一种规范。</p>
+<p><code>dp</code>: 一种基于屏幕密度的抽象单位。不同设备有不同的显示效果，它是根据设备分辨率的不同来确定控件的尺寸。</p>
+<p><code>sp</code>: 代表可伸缩像素，采用与 dp 相同的设计理念。设置文字大小时使用，原因是当修改系统字体大小时，字体大小以dp为单位时，大小不变；当修改系统字体大小时，字体大小以sp为单位时，大小跟随变化。</p>
+<h5 id="常用控件"><a href="#常用控件" class="headerlink" title="常用控件"></a>常用控件</h5><ul>
+<li><p>TextView</p>
+<table>
+<thead>
+<tr>
+<th>控件属性</th>
+<th>功能描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>android:text</td>
+<td>设置显示文本</td>
+</tr>
+<tr>
+<td>android:textColor</td>
+<td>设置文本的颜色</td>
+</tr>
+<tr>
+<td>android:textSize</td>
+<td>设置文字大小</td>
+</tr>
+</tbody></table>
+<p>  layout_width、 laylout_height 和 widhth、height 属性的区别：带 “layout” 前缀的属性通常是相对父控件而言的， 而 width、height 属性是相对于控件本身而言的。</p>
+</li>
+<li><p>EditText</p>
+<table>
+<thead>
+<tr>
+<th>控件属性</th>
+<th>功能描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>android:hint</td>
+<td>设置 EditText 没有输入内容时显示的提示文本</td>
+</tr>
+<tr>
+<td>android:maxlines</td>
+<td>设置最大行数</td>
+</tr>
+<tr>
+<td>android:password</td>
+<td>设置文本以密码形式 “.” 显示</td>
+</tr>
+<tr>
+<td>android:phoneNumber</td>
+<td>设置文本以电话号码方式输入</td>
+</tr>
+<tr>
+<td>android:editable</td>
+<td>设置是否可编辑</td>
+</tr>
+<tr>
+<td>EditText 高度设置为 wrap_content，如果输入内容过多， EditText 会被拉伸，使用 maxlines 属性，如果输入的内容超过了，文本就会出现上下滚动的效果。</td>
+<td></td>
+</tr>
+</tbody></table>
+</li>
+<li><p>Button 点击事件</p>
+<ul>
+<li>在布局中指定 <code>onClick=&quot;click&quot;</code> 属性，然后再 Acitivity 添加 click() 方法。布局代码中 onClick 属性的值( click ) 必须与 Activity 代码中定义的方法名保持一致， 否则 Android系统找不到绑定的点击事件。</li>
+<li>使用匿名内部类。 通过 <code>findViewById()</code> 方法初始化控件，使用 <code>setOnClickListener(new View.OnclickListener()&#123; public void onClick(View v) &#123;...&#125;&#125;）</code>方法对控件进行绑定同时实现 onClick(）方法。</li>
+<li>在当前 Activity 中实现 OnClickListener 接口并重写 onClick(）方法。然后使用 <code>setOnClickListener(this)</code> 方法对控件进行绑定。</li>
+<li>创建内部类。 </li>
+</ul>
+</li>
+<li><p>RadioButton</p>
+<p>RadioButton 为单选按钮，它需要与 RadioGroup 配合使用，提供两个或多个互斥的选项集。RadioButton checked 属性值如果设置为 true, 按钮会默认选中。</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">RadioGroup</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">RadioButton</span>/&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">RadioButton</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">RadioGroup</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>ImageView</p>
+<p>ImageView 是视图控件，它继承自 View， 其功能是在屏幕中显示图像。引用图片属性的区别在于 background 属性是背景，会根据 ImageView 控件大小进行伸缩，而 src 属性是前景，以原图大小显示。</p>
+</li>
+</ul>
+<h5 id="常见对话框"><a href="#常见对话框" class="headerlink" title="常见对话框"></a>常见对话框</h5><p>对话框—般以小窗口的形式展示在 Activity 之上，当对话框显示时，处在下层的 Activity 失去焦点，对话框便可以接收用户的交互信息。</p>
+<ul>
+<li><p>普通对话框</p>
+  <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">AlertDialog dialog;</span><br><span class="line"><span class="comment">// 在 AlertDialog.Builder() 中参数是 context ( 上 下 文 ） 类型，指向当前 Acitivity</span></span><br><span class="line">dialog = <span class="keyword">new</span> AlertDialog.Builder(<span class="keyword">this</span>)</span><br><span class="line">    .setTitle(<span class="string">&quot;Dialog&quot;</span>)</span><br><span class="line">    .setMessage(<span class="string">&quot;Quit?&quot;</span>)</span><br><span class="line">    .setIcon(R.mipmap.ic_launcher)</span><br><span class="line">    .setPositiveButton(<span class="string">&quot;Yes&quot;</span>, <span class="keyword">null</span>)		<span class="comment">// 第二个参数为是否设置监听， 没有则设为 &quot;null&quot;</span></span><br><span class="line">    .setNegativeButton(<span class="string">&quot;NO&quot;</span>, <span class="keyword">null</span>)</span><br><span class="line">    .create();</span><br><span class="line">dialog.show();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>单选对话框：setSingleChoiceItems()</p>
+  <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">new</span> AlertDialog.Builder(<span class="keyword">this</span>)</span><br><span class="line">    .setTitle(<span class="string">&quot;Select&quot;</span>)</span><br><span class="line">    .setIcon(R.mipmap.ic_launcher)</span><br><span class="line"><span class="comment">// 第 1 个参数建立数组，用于显示选项内容</span></span><br><span class="line"><span class="comment">// 第 2 个参数设置是否默认选中， “O&quot; 表示默认选中第一个选项， 如果默认未选中，参数填写－1</span></span><br><span class="line"><span class="comment">// 第 3 个参数是设立监听</span></span><br><span class="line">    .setSingleChoiceItems(<span class="keyword">new</span> String[] &#123; <span class="string">&quot;Male&quot;</span>, <span class="string">&quot;Female&quot;</span>&#125;, <span class="number">0</span>,</span><br><span class="line">        <span class="keyword">new</span> DialogInterface.OnClickListener() &#123;</span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(DialogInterface dialog, <span class="keyword">int</span> which)</span> </span>&#123;&#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    .setPositiveButton(<span class="string">&quot;Sure&quot;</span>, <span class="keyword">null</span>);</span><br><span class="line">    .show();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>多选对话框：setMultiChoiceItems()</p>
+  <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">new</span> AlertDialog.Builder(<span class="keyword">this</span>)</span><br><span class="line">    .setTitle(<span class="string">&quot;Hobby&quot;</span>)</span><br><span class="line">    .setIcon(R.mipmap.ic_launcher)</span><br><span class="line"><span class="comment">// 第 1 个参数建立数组，用于显示选项内容</span></span><br><span class="line"><span class="comment">// 第 2 个参数是 boolean 数组，用来判断哪个选项需要勾选，如果没有选项选中则用 “null&quot;。定义的长度要对应第 1 个参数设置的选项个数,如 new boolean[]&#123;true, true, true, true)</span></span><br><span class="line"><span class="comment">// 第 3 个参数是建立监听</span></span><br><span class="line">    .setMultiChoiceItems(<span class="keyword">new</span> String[]&#123;<span class="string">&quot;Travle&quot;</span>, <span class="string">&quot;Food&quot;</span>, <span class="string">&quot;Car&quot;</span>, <span class="string">&quot;Pet&quot;</span>&#125;), <span class="keyword">null</span>, <span class="keyword">null</span>)</span><br><span class="line">    .setPositiveButton(<span class="string">&quot;Sure&quot;</span>, <span class="keyword">null</span>)</span><br><span class="line">    .show();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>进度条对话框</p>
+<p>  Deprecated, to <code>&lt;ProgressBar&gt;</code></p>
+</li>
+<li><p>消息对话框：Toast</p>
+<p>  消息对话框 ( Toast ) 是 Android 系统提供的轻量级信息提醒机制，用于向用户提示即时消息，Toast 对话显示在应用程序界面的最上层，显示—段时间后自动消失，不会打断当前操作，也不获得焦点。</p>
+  <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//第 1 个参数为当前类的 Context( 上下文 ）对象</span></span><br><span class="line"><span class="comment">//第 2 个参数为文本显示内容</span></span><br><span class="line"><span class="comment">//第 3 个参数为 Toast 显示的时间，有Toast.LENGTH_SHORT 和 ToastLENGTH_LONG</span></span><br><span class="line">Toast.makeText(<span class="keyword">this</span>, <span class="string">&quot;Hello, Toast&quot;</span>, Toast.LENGTH_SHORT).show();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>自定义对话框</p>
+<ul>
+<li>创建自定义对话框布局</li>
+<li>创建自定义对话框：创建—个类继承自 Dialog 类，引入自定义对话框布局</li>
+<li>使用自定义对话框</li>
+</ul>
+</li>
+</ul>
+<h5 id="样式和主题"><a href="#样式和主题" class="headerlink" title="样式和主题"></a>样式和主题</h5><p>样式 ( style ) 是包含一种或多种控件的属性集合。Android 中的样式类似于网页中 CSS 样式，可以让设计与内容分离。</p>
+<ul>
+<li><p>创建样式：在 <code>res\values\style</code> 目录创建 <code>.xml</code> 文件，<code>&lt;resource&gt;</code> 是根标签；<code>&lt;style&gt;</code> 标签定义样式，它包含多个 <code>&lt;item&gt;</code> 来声明样式名称和属性，parent 属性表示继承某个样式</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">resource</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">style</span> <span class="attr">name</span>=<span class="string">&quot;textStyle_one&quot;</span>&gt;</span> </span><br><span class="line"><span class="xml">		<span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">&quot;android:layout_width&quot;</span>&gt;</span>match_parent<span class="tag">&lt;/<span class="name">item</span>&gt;</span> </span></span><br><span class="line"><span class="xml">		<span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">&quot;android:layout_height&quot;</span>&gt;</span>wrap_content<span class="tag">&lt;/<span class="name">item</span>&gt;</span> </span></span><br><span class="line"><span class="xml">		<span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">&quot;android:textColor&quot;</span>&gt;</span>#999999<span class="tag">&lt;/<span class="name">item</span>&gt;</span> </span></span><br><span class="line"><span class="xml">		<span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">&quot;android:textSize&quot;</span>&gt;</span>35sp<span class="tag">&lt;/<span class="name">item</span>&gt;</span> </span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">style</span>&gt;</span> </span><br><span class="line">	<span class="tag">&lt;<span class="name">style</span> <span class="attr">name</span>=<span class="string">&quot;textStyle_two&quot;</span> <span class="attr">parent</span>=<span class="string">&quot;@style/textStyle_one&quot;</span>&gt;</span> </span><br><span class="line"><span class="xml">		<span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">&quot;android:textSize&quot;</span>&gt;</span>25sp<span class="tag">&lt;/<span class="name">item</span>&gt;</span> </span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">style</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>引用样式：以 <code>style=&quot;@style/xxx&quot;</code> 引用</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">TextView</span> </span></span><br><span class="line"><span class="tag">	<span class="attr">style</span>=<span class="string">&quot;@style/textStyle_one&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>主题 (theme) 是应用到整个 Activity 和 Application 的样式，当主题和样式中的属性发生冲突时，样式的优先级要高于主题。</p>
+<ul>
+<li><p>创建主题：主题与样式在代码结构上是一样的，在定义主题时，需要用 parent 属性继承 <code>ThemeAppCompat.Light.DarkActionBar</code> 保证它的兼容性，否则运行时会出现异常</p>
+  <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">resources</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">style</span> <span class="attr">name</span>=<span class="string">&quot;grayTheme&quot;</span> <span class="attr">parent</span>=<span class="string">&quot;ThemeAppCompat.Light.DarkActionBar&quot;</span>&gt;</span></span><br><span class="line"><span class="xml">		<span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>= <span class="string">&quot;android:background&quot;</span>&gt;</span>#999999<span class="tag">&lt;/<span class="name">item</span>&gt;</span> </span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">style</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>引用主题：</p>
+<ul>
+<li><p>在 AndroidManifest.xml 文件中引用自定义主题：</p>
+<ul>
+<li><p>在 <code>&lt;activity&gt;</code> 标签中添加 <code>android:theme=&quot;@style/xxxx&quot;</code> 属性，此处是改变当前界面的主题样式 </p>
+  <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">    <span class="tag">&lt;<span class="name">activity</span> </span></span><br><span class="line"><span class="tag">        <span class="attr">android:name</span>=<span class="string">&quot;.MainActivity&quot;</span> </span></span><br><span class="line"><span class="tag">        <span class="attr">android:theme</span>=<span class="string">&quot;@style/grayTheme&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">activity</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>改变 <code>&lt;application&gt;</code> 标签 <code>android:theme</code> 属性，此处是整个应用程序主题的样式</p>
+</li>
+</ul>
+</li>
+<li><p>在 Activity 代码中引用自定义主题：在 onCreate() 方法内 setContentView() 方法之后添加 setTheme() 方法，</p>
+  <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">setTheme(R.style.grayTheme);</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="国际化（i18n）"><a href="#国际化（i18n）" class="headerlink" title="国际化（i18n）"></a>国际化（i18n）</h5><p>国际化的应用具备支持多种语言功能，能被不同国家或地区用户访问，提供符合访问者阅读习惯的页面和数据。</p>
+<p>实现国际化：</p>
+<ul>
+<li><p>在程序的 <code>res/values/</code> 目录下创建用于国际化的文件 <code>strings.xml</code>，单击右键，选择 New -&gt; Values resource file 选项，在 Available qualifiers 区域中选择 Locale, 单击中间的向右图标，在 Language 语言区域中选择语言， 在 Specific Region Only 中选择区域，此时 Directory name 名称会根据选择的语言以及区域自动变化，其命名规则为 <code>values­-语言代码－r国家或地区代码</code>。由于每个程序都自带一个 strings.xml 文件，Android Studio 会自动创建一个文件夹存放这些同名文件，并且会根据语言和地区区分这些文件。</p>
+</li>
+<li><p>来在创建好的 strings.xml 文件中编写支持的语言内容</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;l.0&quot; encoding=&quot;utf-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">resources</span>&gt;</span> </span><br><span class="line">	<span class="tag">&lt;<span class="name">string</span> <span class="attr">name</span>=<span class="string">&quot;app_name&quot;</span>&gt;</span>安卓＿il8n<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">string</span> <span class="attr">name</span>=<span class="string">&quot;hello_world&quot;</span>&gt;</span>你好，世界！&lt;／string&gt;</span><br><span class="line"><span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>通过 <code>android:text=&quot;@string/xxxx&quot;</code> 引用 strings.xml 中定义的文本信息</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Button</span> </span></span><br><span class="line"><span class="tag">	<span class="attr">android:text</span>=<span class="string">&quot;@string/hello_world&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>改变模拟器语言为对应的语言，即可实现国际化。其原理是，当用 <code>＠string/xxxx</code> 方式引用一个文本资源时，Android 系统会首先判断手机设置的语言和地区，然后通过这些信息寻找 values 目录下对应的 strings.xml 文件，引用其中的内容。</p>
+</li>
+</ul>
+<h5 id="程序调试"><a href="#程序调试" class="headerlink" title="程序调试"></a>程序调试</h5><ul>
+<li>单元测试：是指在应用程序开发过程中对最小的功能模块进行测试，可以在完成某个功能之后对该功能进行单独测试， 而不需要把应用程序安装到手机或启动模拟器再对各项功能进行测试，这样会提高开发效率和质量。在项目创建时 Android Studio 就巳经默认创建了一个androidTest 包和 ApplicationTest 类，所有测试的功能模块写入此类即可。所有的测试方法必须以 test 开头。</li>
+<li>LogCat：是 Android 中的命令行工具，用于获取程序从启动到关闭的日志信息。Android 采用 <code>android.util.Log</code> 类的静态方法实现输出程序信息。Log 类所输出的日志内容级别由低到高分别是 Verbose、Debug 、Info、 Warning、Error、Assert，分别对应 Log 类中的 Log.v()、Log.d()、Log.i()、Log.w()、Log.e() 静态方法，Assert 没有对应的静态方法。</li>
+<li>Debug：是跟踪程序流程的一种模式，可以通过在代码处设置断点， 再利用 Debug 窗口查看。所谓断点是在代码行加入停止点，当程序执行到该行时会暂停。</li>
+</ul>
+<h3 id="Activity"><a href="#Activity" class="headerlink" title="Activity"></a>Activity</h3><h5 id="Activity-的创建"><a href="#Activity-的创建" class="headerlink" title="Activity 的创建"></a>Activity 的创建</h5><p>一个应用程序通常包含多个 Activity, 每个 Activity 负责管理一个用户界面。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Activity 需要在 AndroidManifest.xml 文件（清单文件）中注册，添加一行 <code>&lt;activity android:name=&quot; .MainActivity&quot;/&gt;</code> 代码。</p>
+<h5 id="Activity-的生命周期"><a href="#Activity-的生命周期" class="headerlink" title="Activity 的生命周期"></a>Activity 的生命周期</h5><p>Activity 的生命周期分为 5 种状态：</p>
+<ul>
+<li>启动状态：Activity 的启动状态很短暂<ul>
+<li>onCreate() 方法</li>
+<li>onStart() 方法</li>
+<li>onRestart() 方法</li>
+</ul>
+</li>
+<li>运行状态：Activity 在此状态时处于屏幕最前端，它是可见、有焦点的，可以与用户进行交互<ul>
+<li>onResume() 方法</li>
+</ul>
+</li>
+<li>暂停状态：无法获取焦点，用户对它操作没有响应，此时就处于暂停状态<ul>
+<li>onPause() 方法</li>
+</ul>
+</li>
+<li>停止状态：当 Activity 完全不可见时<ul>
+<li>onStop() 方法</li>
+</ul>
+</li>
+<li>销毁状态：被清理出内存<ul>
+<li>onDestroy() 方法</li>
+</ul>
+</li>
+</ul>
+<p>横竖屏切换时的生命周期会有不同。</p>
+<h5 id="Activity-的启动模式"><a href="#Activity-的启动模式" class="headerlink" title="Activity 的启动模式"></a>Activity 的启动模式</h5><p>Android 中，采用任务栈的形式来管理 Activity。这个栈又被称为返回栈，栈中 Activity 的顺序就是按照它们被打开的顺序依次存放。用户操作的永远是栈顶的 Activity。</p>
+<p>Activity 启动模式：在 AndroidManifest.xml 中通过 <code>&lt;activity&gt;</code> 标签 android:launchMode 属性设置启动模式 </p>
+<ul>
+<li>standard 模式：每启动一个 Activity 就会在栈顶创建一个新的实例</li>
+<li>singleTop 模式：判断要启动的 Activity 实例是否位于栈顶，如果位于栈顶则直接复用，否则创建新的实例</li>
+<li>singleTask 模式：则每次启动 Activity 时，系统首先会检查栈中是否存在当前 Activity 实例，如果存在 则直接使用，并把当前 Activity 之上的所有实例全部出栈，否则重新创建一个实例</li>
+<li>singlelnstance 模式： 每一个 Activity 独占一个任务栈。一种是要启动的 Activity 不存在，则系统会<br>先创建一个新的任务栈，然后再创建 Activity 实例； 一种是要启动的 Activity 已存在，则直接复用（<span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vRVgzMi9wLzQ2MjM3NjQuaHRtbA==">ref<i class="fa fa-external-link-alt"></i></span>）</li>
+</ul>
+<h5 id="Activity-之间的跳转"><a href="#Activity-之间的跳转" class="headerlink" title="Activity 之间的跳转"></a>Activity 之间的跳转</h5><p>Activity 之间的跳转通过 Intent 实现：</p>
+<ul>
+<li><p>显式意图：目标 Activity 需在 AndroidManifest.xml 注册了</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 其中第1个参数为当前的 Activity 对象， 第2个参数为启动的目标 Activity</span></span><br><span class="line">Intent intent = <span class="keyword">new</span> Intent(<span class="keyword">this</span>, ActivityName.class);</span><br><span class="line">startActivity(intent);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>隐式意图：系统通过分析指定的属性信息，寻找目标 Activity</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Intent intent = <span class="keyword">new</span> Intent(); </span><br><span class="line"><span class="comment">// 设置 action 动作，该动作要和清单文件中设置的一样</span></span><br><span class="line">intent.setAction(<span class="string">&quot;example.START_ACTIVITY&quot;</span>); </span><br><span class="line">startActivity(intent); </span><br></pre></td></tr></table></figure>
+
+<p>在目标 Activity 的清单文件中配置 <code>&lt;intent-filter&gt;</code></p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">activity</span> <span class="attr">android:name</span>=<span class="string">&quot;example.MainActivity&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">&quot;example.START_ACTIVITY&quot;</span>/&gt;</span> </span><br><span class="line">	<span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">activity</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h5 id="Activity-中的数据传递"><a href="#Activity-中的数据传递" class="headerlink" title="Activity 中的数据传递"></a>Activity 中的数据传递</h5><ul>
+<li><p>数据传递：Intent 提供了一系列重载的 putExtra(String name, String value)方法，通过该方法可以将要传递的数据暂存到 Intent 中，然后从目标 Activity 中取出。</p>
+  <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Intent intent = <span class="keyword">new</span> Intent(<span class="keyword">this</span>, ActivityName.class); </span><br><span class="line">intent.putExtra(<span class="string">&quot;extra_key&quot;</span>, <span class="string">&quot;extra_data&quot;</span>); </span><br><span class="line">startActivity(intent);</span><br></pre></td></tr></table></figure>
+
+  <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Intent intent = getIntent(); </span><br><span class="line">String extra_data = intent.getStringExtra(<span class="string">&quot;extra_key&quot;</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>数据回传：startActivityForResult(Intent intent, int requestCode)方法在目标 Activity 销毁时返回一个结果给调用 Activity。</p>
+  <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Intent intent = <span class="keyword">new</span> Intent(<span class="keyword">this</span>, ActivityName.class); </span><br><span class="line"><span class="comment">// 第1个参数是 Intent 对象；第2个参数是请求码，用于判断数据的来源，输入一个唯一值即可</span></span><br><span class="line">startActivityForResult(intent, <span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+
+  <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Intent intent = <span class="keyword">new</span> Intent(); </span><br><span class="line">intent.putExtra(<span class="string">&quot;extra_key&quot;</span>, <span class="string">&quot;extra_data&quot;</span>); </span><br><span class="line"><span class="comment">// setResult(int resultCode, Intent intent)，resultCode 一般是 0 或 1</span></span><br><span class="line">setResult(l, intent) ;</span><br></pre></td></tr></table></figure>
+
+<p>  在目标 Activity 被销毁之后会回调调用 Activity 的 onActivityResult()方法</p>
+  <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onActivityResult</span><span class="params">(<span class="keyword">int</span> requestCode, <span class="keyword">int</span> resultCode, Intent intent)</span> </span>&#123; </span><br><span class="line">    <span class="keyword">super</span>.onActivityResult(requestCode, resultCode, intent); </span><br><span class="line">    <span class="keyword">if</span> (requestCode == <span class="number">1</span>) &#123; </span><br><span class="line">        <span class="keyword">if</span> (resultCode == <span class="number">1</span>) &#123; </span><br><span class="line">            String string = intent.getStringExtra(<span class="string">&quot;extra_key&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>  在一个 Activity 中可能多个调用 startActivityForResult()方法，每一个 Activity 返回的数据都会回调onActivityResult()方法，因此，要通过 requestCode 的值来判断数据来源。</p>
+</li>
+</ul>
+<h3 id="数据存储"><a href="#数据存储" class="headerlink" title="数据存储"></a>数据存储</h3><h5 id="数据存储方式"><a href="#数据存储方式" class="headerlink" title="数据存储方式"></a>数据存储方式</h5><ul>
+<li>文件存储：存储大数据，如文本、图片、音频等。</li>
+<li>SharedPreferences：存储应用程序的各种配置信息，如用户名、密码等。</li>
+<li>SOLite 数据库：作为复杂数据的存储引擎，可以存储用户信息等。</li>
+<li>ContentProvider：用于应用程序之间的数据交换。</li>
+<li>网络存储：通过网络提供的存储空间来存储／获取数据信息。</li>
+</ul>
+<h5 id="文件存储"><a href="#文件存储" class="headerlink" title="文件存储"></a>文件存储</h5><ul>
+<li><p>内部存储：将应用程序数据以文件方式存储到设备的内部（默认位于 <code>data/data/&lt;packagename&gt;/files／</code> 下），文件为其所创建的应用程序私有，其他应用程序访问需要权限。应用程序卸载时，其内部存储文件也随之被删除。</p>
+  <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">FileOutputStream fos = openFileOutput(String name, <span class="keyword">int</span> mode); </span><br><span class="line">FileinputStream fis = openFileInput(String name);</span><br></pre></td></tr></table></figure>
+
+<p>  “mode” 是读写文件的方式：默认情况下任何应用创建的文件都是私有的</p>
+<ul>
+<li><p>MODE_PRIVATE: 该文件只能被当前程序读写</p>
+</li>
+<li><p>MODE_APPEND: 该文件的内容可以追加</p>
+</li>
+<li><p>MODE_WORLD_READABLE: 该文件的内容可以被其他程序读</p>
+</li>
+<li><p>MODE_WORLD_WRITEABLE: 该文件的内容可以被其他程序写</p>
+<p>存储数据：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">String fileName = <span class="string">&quot;data.txt&quot;</span>;	<span class="comment">// 文件名称</span></span><br><span class="line">String content = <span class="string">&quot;helloworld&quot;</span>;	<span class="comment">// 保存数据</span></span><br><span class="line">FileOutputStream fos; </span><br><span class="line"><span class="keyword">try</span> &#123; </span><br><span class="line">    fos = openFileOutput(fileName, MODE_PRIVATE); </span><br><span class="line">    fos.write(content.getBytes());	<span class="comment">// 将了数据写入文件中</span></span><br><span class="line">    fas.close(); <span class="comment">// 关闭输出流</span></span><br><span class="line">&#125; <span class="keyword">catch</span> (Exception e) &#123; </span><br><span class="line">    e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>取出数据：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">String content = <span class="string">&quot;&quot;</span>; </span><br><span class="line">FileinputStream fis; </span><br><span class="line"><span class="keyword">try</span> &#123; </span><br><span class="line">    fis = openFileinput(<span class="string">&quot;data.txt&quot;</span>);	<span class="comment">// 获得文件输入流对象</span></span><br><span class="line">    <span class="keyword">byte</span>[] buffer = <span class="keyword">new</span> <span class="keyword">byte</span>[fis.available()];	<span class="comment">// 创建缓冲区，并获取文件长度</span></span><br><span class="line">    fis.read(buffer);	<span class="comment">// 将文件内容读取到 buffer 缓冲区</span></span><br><span class="line">    content = <span class="keyword">new</span> String(buffer );	<span class="comment">// 转换成字符串</span></span><br><span class="line">    fis.close();	<span class="comment">// 关闭输入流</span></span><br><span class="line">&#125; <span class="keyword">catch</span> (Exception e) &#123; </span><br><span class="line">    e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>外部存储：将文件存储到外部设备上，如 SD 卡（该文件通常位于 <code>mnt/sdcard</code> 下）。外部存储的文件被其他应用程序共享。</p>
+<p>  向 SD 卡存储数据：</p>
+  <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">String state = Environment.getExternalStorageState();	<span class="comment">// 获取外部设备</span></span><br><span class="line"><span class="keyword">if</span> (state.equals(Environment.MEDIA_MOUNTED)) &#123;	<span class="comment">// 判断外部设备是否可用</span></span><br><span class="line">    File SDPath = Environment.getExternalStorageDirectory();	<span class="comment">// 获取 SD 卡目录，deprecated</span></span><br><span class="line">    File file = <span class="keyword">new</span> File(SDPath, <span class="string">&quot;data.txt&quot;</span>); </span><br><span class="line">    String data = <span class="string">&quot;HelloWorld&quot;</span>; </span><br><span class="line">    FileOutputStream fos; </span><br><span class="line">    <span class="keyword">try</span> &#123; </span><br><span class="line">        fos = <span class="keyword">new</span> FileOutputStream(file); </span><br><span class="line">        fos.write(data.getBytes()); </span><br><span class="line">        fos.close();</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123; </span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>  从 SD卡 读取数据:</p>
+  <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">String state = Environment.getExternalStorageState(); </span><br><span class="line"><span class="keyword">if</span> (state.equals(Environment.MEDIA_MOUNTED)) &#123; </span><br><span class="line">    File SDPath = Environment.getExternalStorageDirectory(); </span><br><span class="line">    File file = <span class="keyword">new</span> File(SDPath, <span class="string">&quot;data.txt&quot;</span>); </span><br><span class="line">    FileinputStream fis; </span><br><span class="line">    <span class="keyword">try</span> &#123; </span><br><span class="line">        fis = <span class="keyword">new</span> FileinputStream(file); </span><br><span class="line">        BufferedReader br = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(fis)); </span><br><span class="line">        String data = br.readLine();</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123; </span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>  读取 SD 卡需要在清单文件的 <code>&lt;manifest&gt;</code> 节点中添加读写权限：</p>
+  <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">&quot;android.permission.READ_EXTERNAL_STORAGE&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h5 id="XML-解析"><a href="#XML-解析" class="headerlink" title="XML 解析"></a>XML 解析</h5><p>在 Android 中最常用的解析方式是 PULL 解析。</p>
+<p>XmlPullParser 解析器的常用属性：</p>
+<ul>
+<li>XmlPullParser.START_DOCUMENT: XML 文档的开始</li>
+<li>XmlPullParser.END_DOCUMENT: XML 文档的结束</li>
+<li>XmlPullParser.START_TAG: 开始节点，带有 <code>＜ ＞</code> 的都是开始节点</li>
+<li>XmlPullParser.END_TAG：结束节点，带有 <code>&lt;/ &gt;</code> 的都是结束节点</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">XmlPullParser parser = Xml.newPullParser();</span><br><span class="line">parser.setinput(is, <span class="string">&quot;utf-8&quot;</span>);</span><br><span class="line"><span class="keyword">int</span> type = parser.getEventType();</span><br><span class="line"><span class="keyword">while</span> (type != XmlPullParser.END_DOCUMENT) &#123;</span><br><span class="line">    <span class="keyword">switch</span> (type) &#123;</span><br><span class="line">        <span class="keyword">case</span> XmlPullParser.START_TAG:</span><br><span class="line">            String temp = parser.nextText();	<span class="comment">// 得到该 tag 节点中的内容</span></span><br><span class="line">            ...</span><br><span class="line">        <span class="keyword">case</span> XmlPullPaser.END_TAG:</span><br><span class="line">            ...</span><br><span class="line">    &#125;</span><br><span class="line">    type = parser.next();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="JSON-解析"><a href="#JSON-解析" class="headerlink" title="JSON 解析"></a>JSON 解析</h5><p>JSON 即 Java Script Object Notation，JSON 有两种数据结构：</p>
+<ul>
+<li><p>对象结构：以 “{“ 开始，以 “}” 结束。中间部分由 0 个或多个以 “,” 分隔的 key:value 对构成</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	key1:value1,</span><br><span class="line">	key2:value2,</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>数组结构：以 “[“ 开始，以 “]” 结束。中间部分由 0 个或多个以 “,” 分隔的值组成</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">[</span><br><span class="line">    value1,</span><br><span class="line">    value2,</span><br><span class="line">    ...</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>JSON 解析：</p>
+<ul>
+<li><p>使用内置的 org.json 包解析 JSON 数据</p>
+<ul>
+<li><p>使用 JSONObject 解析 JSON 对象</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">JSONObject jsonObj = new JSONObject(json);	# json 是字符串</span><br><span class="line">String name = jsonObj.optString(<span class="string">&quot;name&quot;</span>); </span><br><span class="line"><span class="keyword">int</span> age = jsonObj.optInt(<span class="string">&quot;age&quot;</span>); </span><br><span class="line"><span class="keyword">boolean</span> married = jsonObj.optBoolean(<span class="string">&quot;married&quot;</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用 JSONArray 解析 JSON 数组</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">JSONArray jsonArray = <span class="keyword">new</span> JSONArray(json); </span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = O; i &lt; jsonArray.length(); i++) &#123;</span><br><span class="line">	<span class="keyword">int</span> age = jsonArray.optInt (i) ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>使用开源的 Gson 库解析 JSON 数据：需将 gson.jar 添加到项目中</p>
+<ul>
+<li><p>使用 Gson 解析 JSON 对象：需创建 JSON 数据对应的实体类，实体类中的成员名称与 JSON 数据的 key 值一致</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Gson gson = <span class="keyword">new</span> Gson(); </span><br><span class="line">Person person = gson.fromJson(json, Person.class);	<span class="comment">// Person 为对应实体类</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用 Gson 解析 JSON 数组</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">byte</span>[] buffer = <span class="keyword">new</span> <span class="keyword">byte</span>[is.available()]; </span><br><span class="line">is.read(buffer); </span><br><span class="line">String json = <span class="keyword">new</span> String(buffer, <span class="string">&quot;utf-8&quot;</span>);</span><br><span class="line">Gson gson = <span class="keyword">new</span> Gson(); </span><br><span class="line">Type listType = <span class="keyword">new</span> TypeToken&lt;List&lt;Interger&gt;&gt;()&#123;&#125;.getType();</span><br><span class="line">List&lt;Integer&gt; ages = gson.fromJson(json, listType);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="SharedPreferences"><a href="#SharedPreferences" class="headerlink" title="SharedPreferences"></a>SharedPreferences</h5><p>SharedPreferences 通过 key/value 的形式将数据保存在 XML 文件中，该文件位于 <code>data/data/</code><br><code>&lt;packagename&gt;/shared_prefs</code> 文件夹中。value 值只能是 Float、Int、Long、Boolean、String、StringSet 类型数据。</p>
+<ul>
+<li><p>存储数据</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 参数 data 表示文件名， MODE_PRIVATE 表示文件操作模式</span></span><br><span class="line">SharedPreferences sp = getSharedPreferences(<span class="string">&quot;data&quot;</span>, MODE_PRIVATE); </span><br><span class="line">SharedPreferences.Editor editor = sp.edit ();	<span class="comment">// 获取编辑器</span></span><br><span class="line">editor.putString(<span class="string">&quot;name&quot;</span>, <span class="string">&quot;value&quot;</span>);	<span class="comment">// 存入 String 类型数据</span></span><br><span class="line">editor.putlnt(<span class="string">&quot;age&quot;</span>, <span class="number">8</span>);	<span class="comment">// 存入 Int 类型数据</span></span><br><span class="line">editor.remove(<span class="string">&quot;name&quot;</span>);	<span class="comment">// 删除一条数据</span></span><br><span class="line">editor.clear();	<span class="comment">// 删除所有数据</span></span><br><span class="line">editor.commit();	<span class="comment">// 提交修改</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取数据</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">SharedPreferences sp = getSharedPreferences(<span class="string">&quot;data&quot;</span>, MODE_PRIVATE); </span><br><span class="line">String data = sp.getString(<span class="string">&quot;name&quot;</span>, <span class="string">&quot; &quot;</span>);	<span class="comment">// 第二个参数为缺省值，如果不存在该 key, 将返回缺省值</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="SQLite-数据库"><a href="#SQLite-数据库" class="headerlink" title="SQLite 数据库"></a>SQLite 数据库</h3><h5 id="SQLite-数据库简介"><a href="#SQLite-数据库简介" class="headerlink" title="SQLite 数据库简介"></a>SQLite 数据库简介</h5><p>SQLite 是 D.Richard Hipp 建立的公有领域项目，它的设计目标是嵌入式的。SQLite 是遵守 ACID 的关系型数据库管理系统。</p>
+<p>SQLite 没有服务器进程，它通过文件保存数据，该文件是跨平台的。支持 null（零）、integer（整数）、real（浮点数字）、text（字符串文本）和 blob（二进制对象）5 种数据类型，其他数据类型在运算或保存时会转换成对应的 5 种数据类型。</p>
+<h5 id="数据库的创建"><a href="#数据库的创建" class="headerlink" title="数据库的创建"></a>数据库的创建</h5><p>Android 系统推荐使用 SOLiteOpenHelper 的子类创建数据库</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyHelper</span> <span class="keyword">extends</span> <span class="title">SQLiteOpenHelper</span> </span>&#123; </span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">MyHelper</span><span class="params">(Context context)</span> </span>&#123; </span><br><span class="line">        <span class="comment">// 分别为上下文对象、数据库名称、游标工厂（通常是 null）、数据库版本</span></span><br><span class="line">		<span class="keyword">super</span>(context, <span class="string">&quot;example.db&quot;</span>, <span class="keyword">null</span>, <span class="number">2</span>); </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">	<span class="comment">// 数据库第一次被创建时调用该方法</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(SQLiteDatabase db)</span> </span>&#123; </span><br><span class="line">		<span class="comment">// 初始化数据库的表结构， 执行一条建表的 SQL 语句</span></span><br><span class="line">		db.execSQL(<span class="string">&quot;CREATE TABLE information(_id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR(20), price INTEGER)&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">	<span class="comment">// 当数据库的版本号增加时调用</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onUpgrade</span><span class="params">(SQLiteDatabase db, <span class="keyword">int</span> oldVersion, <span class="keyword">int</span> newVersion)</span> </span>&#123; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="数据库的使用"><a href="#数据库的使用" class="headerlink" title="数据库的使用"></a>数据库的使用</h5><ul>
+<li><p>SQLite 的基本操作</p>
+<ul>
+<li><p>增加一条数据</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(String name, String price)</span> </span>&#123; </span><br><span class="line">	SQLiteDatabase db = helper.getWritableDatabase();</span><br><span class="line">	ContentValues values = <span class="keyword">new</span> ContentValues();</span><br><span class="line">	values.put(<span class="string">&quot;name&quot;</span>, name);</span><br><span class="line">	values.put(<span class="string">&quot;price&quot;</span>, price); </span><br><span class="line">    <span class="comment">// 第一个参数表名，第二个参数为缺省值 null，第三个参数为 ContentValues 对象</span></span><br><span class="line">	<span class="keyword">long</span> id = db.insert(<span class="string">&quot;information&quot;</span>, <span class="keyword">null</span>, values);</span><br><span class="line">	db.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改一条数据</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">update</span><span class="params">(String name, String price)</span> </span>&#123; </span><br><span class="line">	SQLiteDatabase db = helper.getWritableDatabase(); </span><br><span class="line">	ContentValues values = <span class="keyword">new</span> ContentValues(); </span><br><span class="line">	values.put(<span class="string">&quot;price&quot;</span>, price); </span><br><span class="line">    <span class="comment">// 第一个参数表名，第二个参数 ContentValues 对象，第三个参数 where 语句，第四个参数字符串会替换掉 where 条件中的 &quot;?&quot;</span></span><br><span class="line">	<span class="keyword">int</span> number = db.update(<span class="string">&quot;information&quot;</span>, values, <span class="string">&quot;name =?&quot;</span>, <span class="keyword">new</span> String[]&#123; name &#125;); </span><br><span class="line">	db.close () ; </span><br><span class="line">	<span class="keyword">return</span> number;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除一条数据</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">delete</span><span class="params">(<span class="keyword">long</span> id)</span> </span>&#123; </span><br><span class="line">	SQLiteDatabase db = helper.getWritableDatabase(); </span><br><span class="line">	<span class="keyword">int</span> number = db.delete(<span class="string">&quot;information&quot;</span>, <span class="string">&quot;_id=?&quot;</span>, <span class="keyword">new</span> String[]&#123; id+<span class="string">&quot;&quot;</span> &#125;); </span><br><span class="line">	db.close(); </span><br><span class="line">	<span class="keyword">return</span> number;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查询一条数据</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">find</span><span class="params">(<span class="keyword">long</span> id)</span> </span>&#123; </span><br><span class="line">	SQLiteDatabase db = helper.getReadableDatabase();</span><br><span class="line">    <span class="comment">// 第一个参数表名，第二个参数查询的列名，第三个参数查询条件子句，第四个参数查询子句对应的条件值，第五个参数分组方式，第六个参数 having 条件，第七个参数排序方式</span></span><br><span class="line">	Cursor cursor = db.query(<span class="string">&quot;information&quot;</span>, <span class="keyword">null</span>, <span class="string">&quot;_id=?&quot;</span>, <span class="keyword">new</span> String[]&#123; id+<span class="string">&quot;&quot;</span> &#125;, <span class="keyword">null</span>, <span class="keyword">null</span>, <span class="keyword">null</span>); </span><br><span class="line">	<span class="keyword">boolean</span> result = cursor.moveToNext(); </span><br><span class="line">	cursor.close();</span><br><span class="line">	db.close(); </span><br><span class="line">	<span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用 SQL 语句</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 增加一条数据</span></span><br><span class="line">db.execSQL(<span class="string">&quot;insert into information(name, price) values (?, ?)&quot;</span>, <span class="keyword">new</span> Object[]&#123; name, price &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 修改一条数据</span></span><br><span class="line">db.execSQL(<span class="string">&quot;update information set name= ? where price = ?&quot;</span>, <span class="keyword">new</span> Object[]&#123; name , price &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 删除一条数据</span></span><br><span class="line">db.execSQL(<span class="string">&quot;delete from information where _id = 1&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 执行查询的 SQL 语句</span></span><br><span class="line">Cursor cursor = db.rawQuery(<span class="string">&quot;select * from person where name= ?&quot;</span>, <span class="keyword">new</span> String[]&#123; name &#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>SQLite 中的事务：事务由一条或多条 SQL 语句组成，如果其中有一条语句无法执行，那么所有的语句都不会执行</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">MyHelper helper = <span class="keyword">new</span> MyHelper(getContext());</span><br><span class="line">SQLiteDatabase db = helper.getWritableDatabase(); </span><br><span class="line"><span class="comment">// 开始数据库的事务</span></span><br><span class="line">db.beginTransaction(); </span><br><span class="line"><span class="keyword">try</span> &#123; </span><br><span class="line">	db.execSQL(<span class="string">&quot;update person set account = account-1000 where name = ?&quot;</span>, <span class="keyword">new</span> Object[]&#123; <span class="string">&quot;zhangsan&quot;</span> &#125;); </span><br><span class="line">	db.execSQL(<span class="string">&quot;update person set account = account+lOOO where name = ?&quot;</span>, <span class="keyword">new</span> Object[]&#123; <span class="string">&quot;wangwu&quot;</span> &#125;) ; </span><br><span class="line">	<span class="comment">// 标记数据库事务执行成功</span></span><br><span class="line">	db.setTransactionSuccessful(); </span><br><span class="line">&#125; <span class="keyword">catch</span> (Exception e) &#123; </span><br><span class="line">	Log.i( <span class="string">&quot;事务处理失败&quot;</span>, e.toString());</span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">    <span class="comment">// 检查是否有事务执行成功标记，有则提交数据，无则回滚数据</span></span><br><span class="line">	db.endTransaction(); </span><br><span class="line">	db.close(); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h5 id="数据展示控件"><a href="#数据展示控件" class="headerlink" title="数据展示控件"></a>数据展示控件</h5><p>ListView 是一个列表视图，由很多 Item（条目）组成，每个 Item 的布局都相同，这个 Item 布局会单独使用一个 XML 进行定义。</p>
+<p>常用数据适配器：使用 ListView 控件需要进行数据适配，在进行数据适配时会用到数据适配器，数据适配器将复杂的数据转换成用户可以接受的方式呈现</p>
+<ul>
+<li><p>BaseAdapter：是一个抽象类</p>
+<table>
+<thead>
+<tr>
+<th>方法名称</th>
+<th>功能描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public int getCount()</td>
+<td>得到 Item 条目的总数</td>
+</tr>
+<tr>
+<td>public Object getltem(int position)</td>
+<td>根据 position（ 位置 ）得到某个 Item 的对象</td>
+</tr>
+<tr>
+<td>public long getItemId(int position)</td>
+<td>根据 position（ 位置 ）得到某个 Item 的 id</td>
+</tr>
+<tr>
+<td>public View getView(int position, View convertView, ViewGroup parent)</td>
+<td>得到相应 position 对应的 Item 视图，position 是当 Item 的位置，conbertView 用于复用旧视图，parent 用于加载 XML 布局</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>SimpleAdapter：SimpleAdapter 继承自 BaseAdapter，使用 SimpleAdapter 只需要在构造方法里传入相应的参数即可</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">SimpleAdapter</span><span class="params">(Context context, List&lt;? extends Map&lt;String, ?&gt;&gt; data, <span class="keyword">int</span> resource , String[] from, <span class="keyword">int</span>[] to)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Context context: Context 上下文对象</li>
+<li><code>List&lt;? extends Map&lt;String, ?&gt;&gt;</code> data：data 中的每一项对应着 ListView 中的每一项的数据</li>
+<li>int resource: Item 布局的资源 id</li>
+<li>String[] from: Map 集合里面的 key 值</li>
+<li>int[] to： Item 布局相应的控件 id</li>
+</ul>
+</li>
+<li><p>ArrayAdapter：与 SimpleAdapte 类似</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">ArrayAdapter</span><span class="params">(Context context, <span class="keyword">int</span> resource)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">ArrayAdapter</span><span class="params">(Context context, <span class="keyword">int</span> resource, <span class="keyword">int</span> textViewResourceId)</span></span>; </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">ArrayAdapter</span><span class="params">(Context context, <span class="keyword">int</span> resource, T[] objects)</span></span>; </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">ArrayAdapter</span><span class="params">(Context context, <span class="keyword">int</span> resource, <span class="keyword">int</span> textViewResourceId, T[] objects)</span></span>; </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">ArrayAdapter</span><span class="params">(Context context, <span class="keyword">int</span> resource, List&lt;T&gt; objects)</span></span>; </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">ArrayAdapter</span><span class="params">(Context context, <span class="keyword">int</span> resource, <span class="keyword">int</span> textViewResourceId, List&lt;T&gt; objects)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Context context: Context 上下文对象</li>
+<li>int resource：Item 布局的资源 id</li>
+<li>int textViewResourceId: Item 布局中相应 TextView 的 id</li>
+<li>T[] objects: 需要适配的数据数组，数组类型数据</li>
+<li><code>List&lt;T&gt; objects</code>: 需要适配的数据数组，List 类型数据</li>
+</ul>
+</li>
+</ul>
+<p>ListView 的优化：</p>
+<ul>
+<li><p>复用 convertView：在使用 ListView 展示数据时需要创建对应的 Item 条目展示每条数据。如果展示的数据有成千上万条，那么就需要创建成千上万个 Item, 这样会大大增加内存的消耗。解决办法是底部滑入的 Item 复用顶部划出的 Item</p>
+</li>
+<li><p>使用 ViewHolder 类：在加载 Item 布局时，会使用 findViewById(）方法找到 Item 布局中的各个控件，在每一次加载新的 Item 数据时都会进行控件寻找，这会产生耗时操作。解决办法是将要加载的子 View 放在 ViewHolder 类中，当第一次创建 convertView 时将这些控件找出，在第二次重用 convertView 时就可直接通过 convertView 中的 getTag(）方法获得这些控件</p>
+</li>
+<li><pre><code class="java">public View getView(int position, View convertView, ViewGroup parent) &#123;
+    ViewHolder holder; 
+    if (convertView == null) &#123; 
+        convertView = LayoutInflater.from(getApplicationContext()).inflate(R.layout.list_item, parent，false);
+        holder = new ViewHolder(); 
+        holder.mTextView = (TextView) convertView.findViewById(R.id.itern_tv); 
+        holder.imageView = (ImageView) convertView.findViewById(R.id.itern_image); 
+        convertView.setTag(holder);
+    &#125; else &#123; 
+        holder = (ViewHolder) convertView.getTag();
+    &#125;
+    holder.mTextView.setText(names[position]);
+    holder.imageView.setBackgroundResource(icons[position]);
+    return convertView; 
+&#125;
+
+class ViewHolder &#123; 
+    TextView mTextView; 
+    ImageView imageView;
+&#125;
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">### BroadcastReceiver（广播接收者）</span><br><span class="line"></span><br><span class="line">通过广播接收者可以监听系统中的广播消息，并实现在不同组件之间的通信。</span><br><span class="line"></span><br><span class="line">##### 广播接收者入门</span><br><span class="line"></span><br><span class="line">广播接收者的静态注册：在清单文件进行注册并指定要接收的广播事件。静态注册的特点是无论应用程序是否处于运行状态，广播接收者都会对程序进行监听</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;xml</span><br><span class="line">&lt;application&gt; </span><br><span class="line">    &lt;!-- Exported 复选框用于选择是否接收当前程序之外的广播，Enabled 复选框用于选择广播接收者是否可以由系统实例化 --&gt;</span><br><span class="line">	&lt;receiver</span><br><span class="line">		android:name&#x3D;&quot;.MyReceiver&quot; </span><br><span class="line">		android:enabled&#x3D;&quot;true&quot; </span><br><span class="line">		android:exported&#x3D;&quot;true&quot;&gt;</span><br><span class="line">		&lt;intent-filter&gt; </span><br><span class="line">			&lt;action android:name&#x3D;&quot;android.provider.Telephony.SMS_RECEIVED&quot;&#x2F;&gt;</span><br><span class="line">		&lt;&#x2F;intent-filter&gt;</span><br><span class="line">    &lt;&#x2F;receiver&gt;</span><br><span class="line">&lt;&#x2F;application&gt;</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+</ul>
+<p>广播接收者的动态注册：动态注册的广播接收者的生命周期依赖于注册广播的组件，当组件销毁时，广播接收者也随之被移除</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Override</span> </span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedinstanceState)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">super</span>.onCreate(savedinstanceState); </span><br><span class="line">	MyReceiver receiver = <span class="keyword">new</span> MyReceiver(); </span><br><span class="line">	String action = <span class="string">&quot;android.provider.Telephony.SMS_RECEIVED&quot;</span>; </span><br><span class="line">	IntentFilter intentFilter = <span class="keyword">new</span> IntentFilter(action);</span><br><span class="line">	registerReceiver(receiver, intentfilter);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span> </span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">super</span>.onDestroy(); </span><br><span class="line">	<span class="comment">// 当 Activity 销毁时取消注册 Broadca stReceiver</span></span><br><span class="line">	unregisterReceiver(receiver);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>创建一个类继承自 BroadcastReceiver 类，重写 onReceive()方法，在方法中处理广播事件</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyReceiver</span> <span class="keyword">extends</span> <span class="title">BroadcastReceiver</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">MyReceiver</span><span class="params">()</span></span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">	<span class="meta">@Override</span> </span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onReceive</span><span class="params">(Context context, Intent intent)</span> </span>&#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="自定义广播"><a href="#自定义广播" class="headerlink" title="自定义广播"></a>自定义广播</h5><p>自定义广播发送消息会储存到公共消息区中，公共消息区中如果存在对应的广播接收者，就会及时地接收这条信息。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Intent intent = <span class="keyword">new</span> Intent();</span><br><span class="line"><span class="comment">// 自定义广播的事件类型</span></span><br><span class="line">intent.setAction(<span class="string">&quot;Help_Stitch&quot;</span>);</span><br><span class="line"><span class="comment">// 发送广播</span></span><br><span class="line">sendBroadcast(intent);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">receiver</span> <span class="attr">android:name</span>=<span class="string">&quot;.MyBroadcastReceiver&quot;</span>&gt;</span> </span><br><span class="line">	<span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span> </span><br><span class="line">		<span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">&quot;Help_Stitch&quot;</span>/&gt;</span> </span><br><span class="line">	<span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">receiver</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="广播的类型"><a href="#广播的类型" class="headerlink" title="广播的类型"></a>广播的类型</h5><p>无序广播：发送广播时，所有监听这个广播的广播接收者都会接收到此广播消息，但接收和执行的顺序不确定。无法被拦截。</p>
+<p>有序广播：按照接收者声明的优先级别被依次接收。通过 abortBroadcast()方法拦截有序广播。在 <code>&lt;intent-filter&gt;</code> 标签中使用 priority 属性设置优先级别，属性值越大优先级越高。如果两个广播接收者的优先级相同，则先注册的广播接收者优先级高。两个程序监听了同一个广播事件，同时都设置了优先级属性，则先安装的程序优先接收。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Intent intent = <span class="keyword">new</span> Intent();</span><br><span class="line">intent.setAction(<span class="string">&quot;Intercept_Stitch&quot;</span>);</span><br><span class="line"><span class="comment">// 发送有序广播，第 2 个参数指定接收者的权限</span></span><br><span class="line">sendOrderedBroadcast(intent , <span class="keyword">null</span>);</span><br></pre></td></tr></table></figure>
+
+<p>指定广播接收者：保证一个广播接收者必须接收到此广播， 无论此广播接收者的优先级高低</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// receiver 即指定广播接收者</span></span><br><span class="line">sendOrderedBroadcast(intent, <span class="keyword">null</span>, receiver, <span class="keyword">null</span>, <span class="number">0</span>, <span class="keyword">null</span>, <span class="keyword">null</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Service（服务）"><a href="#Service（服务）" class="headerlink" title="Service（服务）"></a>Service（服务）</h3><p>Service（服务）是一个即使切换到另一个程序依旧运行在后台的用户组件，没有用户界面。</p>
+<h5 id="服务的创建"><a href="#服务的创建" class="headerlink" title="服务的创建"></a>服务的创建</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyService</span> <span class="keyword">extends</span> <span class="title">Service</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">MyService</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">	<span class="meta">@Override</span> </span><br><span class="line">	<span class="function"><span class="keyword">public</span> IBinder <span class="title">onBind</span><span class="params">(Intent intent)</span> </span>&#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">application</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- enabled 属性表示系统是否能够实例化该组件，exported 属性表示该服务是否能够被其他应用程序组件调用或交互 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">service</span> </span></span><br><span class="line"><span class="tag">		<span class="attr">android:name</span>=<span class="string">&quot;.MyService&quot;</span></span></span><br><span class="line"><span class="tag">		<span class="attr">android:enabled</span>=<span class="string">&quot;true&quot;</span> </span></span><br><span class="line"><span class="tag">		<span class="attr">android:exported</span>=<span class="string">&quot;true&quot;</span>&gt;</span> </span><br><span class="line">	<span class="tag">&lt;/<span class="name">service</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">application</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="服务的生命周期"><a href="#服务的生命周期" class="headerlink" title="服务的生命周期"></a>服务的生命周期</h5><ul>
+<li><p>通过 startService()方法启动服务时，执行的生命周期方法为 onCreate()、onStartCommand()，然后服务处于运行状态，直到自身调用 stopSelf()方法或者其他组件调用 stopService()方法时服务停止，执行 onDestory()方法销毁服务</p>
+</li>
+<li><p>通过 bindService()方法启动服务时，执行的生命周期方法为 onCreate()、onBind()，然后服务处于运行状态，直到客户端调用 unBindService()方法执行 onUnbind()方法断开服务绑定，执行 onDestory()方法销毁服务</p>
+</li>
+</ul>
+<h5 id="服务的启动方式"><a href="#服务的启动方式" class="headerlink" title="服务的启动方式"></a>服务的启动方式</h5><p>startService 方式启动：服务会长期在后台运行，并且服务的状态与开启者的状态没有关系，即使启动服务的组件已经被销毁，服务也会依旧运行</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 开启服务</span></span><br><span class="line">Intent intent = <span class="keyword">new</span> Intent(<span class="keyword">this</span>, MyService.class); </span><br><span class="line">startService(intent);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 关闭服务</span></span><br><span class="line">Intent intent = <span class="keyword">new</span> Intent(<span class="keyword">this</span>, MyService.class); </span><br><span class="line">stopService(intent);</span><br></pre></td></tr></table></figure>
+
+<p>bindService 方式启动：服务与组件绑定，允许组件与服务交互，多个组件可以绑定一个服务，当组件销毁后服务也会随之解绑销毁</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">MyConn</span> <span class="keyword">implements</span> <span class="title">ServiceConnection</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 当服务连接时调用的方法</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onServiceConnected</span><span class="params">(ComponentName name, IBinder service)</span> </span>&#123; </span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">// 当服务失去连接时调用的方法</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onServiceDisconnected</span><span class="params">(ComponentName name)</span> </span>&#123; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 绑定服务</span></span><br><span class="line">Intent intent = <span class="keyword">new</span> Intent(<span class="keyword">this</span>, MyService.class);</span><br><span class="line">MyConn myconn = <span class="keyword">new</span> MyConn();</span><br><span class="line"><span class="comment">// 第一个参数用于指定要启动的 Service</span></span><br><span class="line"><span class="comment">// 第二个参数为 ServiceConnection 对象，用于监听调用者与 Service 之间的连接状态</span></span><br><span class="line"><span class="comment">// 第三个参数指定为 0, 不自动创建 Service；指定为 BIND_AUTO_CREATE, 自动创建 Service</span></span><br><span class="line">bindService(intent, myconn, BIND_AUTO_CREATE);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 解绑服务</span></span><br><span class="line">unbindService(myconn);</span><br></pre></td></tr></table></figure>
+
+<h5 id="服务的通信"><a href="#服务的通信" class="headerlink" title="服务的通信"></a>服务的通信</h5><p>本地服务通信是指应用程序内部的通信，远程服务通信是指两个应用程序之间的通信。须保证服务是以绑定方式开启。</p>
+<p>本地服务通信：Service 类的 onBind()方法返回一个 IBinder 对象，IBinder 对象会作为参数传递给 ServiceConnection 类中的 onServiceConnected(ComponentName name,IBinder service)方法，这样访问者就可以通过 IBinder 对象与 Service 进行通信。</p>
+<p>远程服务通信：远程服务通信通过 AIDL(Android Interface Definition Language) 实现。</p>
+<h3 id="ContentProvider（内容提供者）"><a href="#ContentProvider（内容提供者）" class="headerlink" title="ContentProvider（内容提供者）"></a>ContentProvider（内容提供者）</h3><h5 id="内容提供者简介"><a href="#内容提供者简介" class="headerlink" title="内容提供者简介"></a>内容提供者简介</h5><p>B 程序通过 Context 中的 getContentResolver()方法获取 ContentResolver 类访问 A 程序通过 ContentProvider 共享的数据。</p>
+<p>ContentResolver 以 Uri 的形式对外提供数据增、删、改、查操作</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">content:&#x2F;&#x2F;com.example.mycontentprovider&#x2F;person</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>scheme：”content://“，是一个标准的前缀</li>
+<li>authority：”com.example.mycontentprovider”，是在创建内容提供者时指定的 authorities 属性值，主要用来区分不同的应用程序，一般采用程序包名</li>
+<li>path：”/person”，代表资源或者数据</li>
+</ul>
+<h5 id="内容提供者的创建"><a href="#内容提供者的创建" class="headerlink" title="内容提供者的创建"></a>内容提供者的创建</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyContentProvider</span> <span class="keyword">extends</span> <span class="title">ContentProvider</span> </span>&#123; </span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">MyContentProvider</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 在内容提供者创建时调用</span></span><br><span class="line">	<span class="meta">@Override</span> </span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onCreate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 返回指定 Uri 代表的数据的 MIME 类型</span></span><br><span class="line">    <span class="meta">@Override</span> </span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getType</span><span class="params">(Uri uri)</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 增</span></span><br><span class="line">	<span class="meta">@Override</span> </span><br><span class="line">	<span class="function"><span class="keyword">public</span> Uri <span class="title">insert</span><span class="params">(Uri uri, ContentValues values)</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 删</span></span><br><span class="line">    <span class="meta">@Override</span> </span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">delete</span><span class="params">(Uri uri, String selection, String[] selectionArgs)</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 改</span></span><br><span class="line">	<span class="meta">@Override</span> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> Cursor <span class="title">query</span><span class="params">(Uri uri, String[] projection, String selection, String [] selectionArgs, String sortOrder)</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 查</span></span><br><span class="line">	<span class="meta">@Override</span> </span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">update</span><span class="params">(Uri uri, ContentValues values, String selection, String[] select)</span> </span>&#123; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">application</span>&gt;</span> </span><br><span class="line">	<span class="tag">&lt;<span class="name">provider</span> </span></span><br><span class="line"><span class="tag">		<span class="attr">android:name</span>=<span class="string">&quot;.MyContentProvider&quot;</span></span></span><br><span class="line"><span class="tag">		<span class="attr">android:authorities</span>=<span class="string">&quot;com.example.mycontentprovider&quot;</span> </span></span><br><span class="line"><span class="tag">		<span class="attr">android:enabled</span>=<span class="string">&quot;true&quot;</span> </span></span><br><span class="line"><span class="tag">		<span class="attr">android:exported</span>=<span class="string">&quot;true&quot;</span>&gt;</span> </span><br><span class="line">	<span class="tag">&lt;/<span class="name">provider</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">application</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="内容提供者的使用"><a href="#内容提供者的使用" class="headerlink" title="内容提供者的使用"></a>内容提供者的使用</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 将字符串转化成 Uri 对象</span></span><br><span class="line">Uri uri = Uri.parse(<span class="string">&quot;content://com.example.mycontentprovider/person&quot;</span>); </span><br><span class="line"><span class="comment">// 获取到 ContentResolver 对象</span></span><br><span class="line">ContentResolver resolver = context.getContentResolver(); </span><br><span class="line"><span class="comment">// 通过 ContentResolver 对象查询数据</span></span><br><span class="line">Cursor cursor = resolver.query(uri , <span class="keyword">new</span> String[]&#123;<span class="string">&quot;address&quot;</span>, <span class="string">&quot;date&quot;</span>, <span class="string">&quot;type&quot;</span>, <span class="string">&quot;body&quot;</span>&#125;, <span class="keyword">null</span>, <span class="keyword">null</span>, <span class="keyword">null</span>); </span><br><span class="line"><span class="keyword">while</span> (cursor.moveToNext()) &#123;</span><br><span class="line">	String address = cursor.getString(<span class="number">0</span>); </span><br><span class="line">	<span class="keyword">long</span> date = cursor.getLong(<span class="number">1</span>); </span><br><span class="line">	<span class="keyword">int</span> type = cursor.getint(<span class="number">2</span>); </span><br><span class="line">	String body = cursor.getString(<span class="number">3</span>);</span><br><span class="line">&#125;</span><br><span class="line">cursor.close();</span><br></pre></td></tr></table></figure>
+
+<p>工具类 UriMatcher 用于匹配 Uri：</p>
+<ul>
+<li>public UriMatcher(int code)：创建 UriMatcher 对象时调用，参数通常使用 UriMatcher.NO_MATCH, 表示路径不满足条件返回－1</li>
+<li>public void addURI(String authority, String path, int code)：添加一组匹配规则，authority 即 Uri 的 authoritites 部分，path 即 Uri 的 path 部分， code 即 Uri 匹配成功后返回的匹配码</li>
+<li>public int match(Uri uri)：匹配 Uri，与 addURI(）方法相对应，匹配成功则返回 addURI()方法中传入的参数 code 的值</li>
+</ul>
+<h5 id="内容观察者的使用"><a href="#内容观察者的使用" class="headerlink" title="内容观察者的使用"></a>内容观察者的使用</h5><p>B 程序操作 A 程序中的数据时，A 程序的 ContentProvider 调用 ContentResolver 的 notifyChange()方法向 “消息中心” 发送数据变化的消息，C 程序收到消息，就会触发 ContentObserver 的 onChange()方法。</p>
+<p>在 ContentProvider 中调用 ContentResolver 的 notifyChange()方法：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 第一个参数表示更改内容的 Uri 对象 ， 第二个参数表示指定某个观察者接收消息</span></span><br><span class="line">getContext().getContentResolver().notifyChange(PersonDao.messageuri, <span class="keyword">null</span>);</span><br></pre></td></tr></table></figure>
+
+<p>注册内容观察者：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">ContentResolver resolver = getContentResolver(); </span><br><span class="line">Uri uri = Uri.parse(<span class="string">&quot;content://com.example.mycontentprovider/person&quot;</span>) ; </span><br><span class="line">resolver.registerContentObserver(uri, <span class="keyword">true</span>, <span class="keyword">new</span> MyObserver(<span class="keyword">new</span> Handler()));</span><br></pre></td></tr></table></figure>
+
+<h3 id="网络编程"><a href="#网络编程" class="headerlink" title="网络编程"></a>网络编程</h3><h5 id="HTTP-协议简介"><a href="#HTTP-协议简介" class="headerlink" title="HTTP 协议简介"></a>HTTP 协议简介</h5><p>HTTP(Hyper Text Transfer Protocol)即超文本传输协议，是一种请求／响应式的协议。</p>
+<h5 id="访问网络"><a href="#访问网络" class="headerlink" title="访问网络"></a>访问网络</h5><p>GET 方式提交数据：向服务器提交的参数跟在请求 URL 后面</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 将用户名和密码拼在指定资源路径后面， 并对用户名和密码进行编码</span></span><br><span class="line">String path = <span class="string">&quot;http://192.168.1.100:8080/web/LoginServlet?username=&quot;</span> + URLEncoder.encode(<span class="string">&quot;zhangsan&quot;</span>) + <span class="string">&quot;&amp;password=&quot;</span> + URLEncoder.encode(<span class="string">&quot;123&quot;</span>); </span><br><span class="line">URL url = <span class="keyword">new</span> URL(path);	<span class="comment">// 创建 URL 对象</span></span><br><span class="line">HttpURLConnection conn = (HttpURLConnection) url.openConnection(); </span><br><span class="line">conn.setRequestMethod(<span class="string">&quot;GET&quot;</span>);	<span class="comment">// 设置请求方式</span></span><br><span class="line">conn.setConnectTimeout(<span class="number">5000</span>);	<span class="comment">// 设置超时时间</span></span><br><span class="line"><span class="keyword">int</span> responseCode = conn.getResponseCode();	<span class="comment">// 获取状态码</span></span><br><span class="line"><span class="keyword">if</span> (responseCode == <span class="number">200</span>) &#123;	<span class="comment">// 访问成功</span></span><br><span class="line">	InputStream is = conn.getInputStream ();	<span class="comment">//获取服务器返回的输入流</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>POST 方式提交数据：向服务器提交的参数在请求实体中</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">String path = <span class="string">&quot;http://192.168.1.l00:8080/web/LoginServlet&quot;</span>; </span><br><span class="line">URL url = <span class="keyword">new</span> URL(path);</span><br><span class="line">HttpURLConnection conn = (HttpURLConnection) url.openConnection();</span><br><span class="line">conn.setConnectTimeout(<span class="number">5000</span>);	<span class="comment">// 设置超时时间</span></span><br><span class="line">conn.setRequestMethod(<span class="string">&quot;POST&quot;</span>);	<span class="comment">// 设置请求方式</span></span><br><span class="line"><span class="comment">// 准备数据并给参数进行编码</span></span><br><span class="line">String data = <span class="string">&quot;username=&quot;</span> + URLEncoder.encode(<span class="string">&quot;zhangsan&quot;</span>) + <span class="string">&quot;&amp;password=&quot;</span> + URLEncoder.encode (<span class="string">&quot;123&quot;</span>);</span><br><span class="line"><span class="comment">// 设置请求头数据提交方式，这里是以 form 表单的方式提交</span></span><br><span class="line">conn.setRequestProperty(<span class="string">&quot;Content-Type&quot;</span>, <span class="string">&quot;applicationlx-www-form-urlencoded&quot;</span>);</span><br><span class="line"><span class="comment">// 设置请求头，设置提交数据的长度</span></span><br><span class="line">conn.setRequestProperty(<span class="string">&quot;Content-Length&quot;</span>, data.length() + <span class="string">&quot;&quot;</span>); </span><br><span class="line"><span class="comment">// post 方式，实际上是浏览器把数据写给了服务器</span></span><br><span class="line">conn.setDoOutput(<span class="keyword">true</span>); 	<span class="comment">// 设置允许向外写数据</span></span><br><span class="line">OutputStream os = conn.getOutputStream();	<span class="comment">// 利用输出流往服务器写数据</span></span><br><span class="line">os.write(data.getBytes());	<span class="comment">// 将数据写给服务器</span></span><br><span class="line"><span class="keyword">int</span> code = conn.getResponseCode();	<span class="comment">// 获取状态码</span></span><br><span class="line"><span class="keyword">if</span> ( code == <span class="number">200</span>) &#123;	<span class="comment">// 请求成功</span></span><br><span class="line">	InputStream is = conn.getInputStream();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Handler 消息机制：首先在 UI 主线程创建一个 Handler 对象，然后在子线程中调用 Hanlder 的 sendMessage()方法，这个消息会存放在 UI 线程的 MessageQueue 中，通过 Looper 对象取出 MessageQueue 中的消息，最后分发给 Hanlder 的 handleMessage()方法</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 在主线程中创建 Handler 对象时，系统已经默认存在一个 Looper 对象</span></span><br><span class="line"><span class="keyword">private</span> Handler handler = <span class="keyword">new</span> Handler()&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span><span class="params">(android.os.Message msg)</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Thread() &#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		Message msg = <span class="keyword">new</span> Message();</span><br><span class="line">        <span class="comment">// what 字段携带一些整型数据</span></span><br><span class="line">		msg.what = CHANGE_UI;</span><br><span class="line">        <span class="comment">// obj 字段携带一个 Object 对象</span></span><br><span class="line">		msg.obj = bitmap;</span><br><span class="line">		handler.sendMessage(msg);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;.start();</span><br></pre></td></tr></table></figure>
+
+<h5 id="开源项目"><a href="#开源项目" class="headerlink" title="开源项目"></a>开源项目</h5><p>AsyncHttpClient</p>
+<p>SmartImageView</p>
+<h3 id="高级编程"><a href="#高级编程" class="headerlink" title="高级编程"></a>高级编程</h3><h5 id="图形图像处理"><a href="#图形图像处理" class="headerlink" title="图形图像处理"></a>图形图像处理</h5><p>Bitmap 类：图像处理</p>
+<table>
+<thead>
+<tr>
+<th>方法名称</th>
+<th>功能描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>createBitmap(int width, int height, Config config)</td>
+<td>创建位图，width 代表要创建的图片的宽度，height 代表高度，Config 是 Bitmap 的内部类，用于指定 Bitmap 的配置信息</td>
+</tr>
+<tr>
+<td>createBitmap(int colors[], int offset, int stride, int width, int height, Config config)</td>
+<td>使用颜色数组创建以个指定宽高的位图，颜色数组的个数为 width x height</td>
+</tr>
+<tr>
+<td>createBitmap(Bitmap src)</td>
+<td>使用源位图创建一个新的 Bitmap</td>
+</tr>
+<tr>
+<td>createBitmap(Bitmap source, int x, int y, int width, int height)</td>
+<td>从源位图的指定坐标开始 “挖取” 指定宽高的一块图像来创建新的 Bitmap 对象</td>
+</tr>
+<tr>
+<td>createBitmap(Bitmap source, int x, int y, int width, int height, Matrix m, boolean filter)</td>
+<td>从源位图的指定坐标开始 “挖取” 指定宽高的一块图像来创建新的 Bitmap 对象， 并按照 Matrix 规则进行变换</td>
+</tr>
+<tr>
+<td>isRecycled()</td>
+<td>判断 Bitmap 对象是否被回收</td>
+</tr>
+<tr>
+<td>recycle()</td>
+<td>回收 Bitmap 对象</td>
+</tr>
+</tbody></table>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Bitmap.Config config = Config.ARGB_4444; </span><br><span class="line">Bitmap bitmap = Bitmap.createBitmap (width, height, config);</span><br></pre></td></tr></table></figure>
+
+<p>BitmapFactory 类：用于从数据源来解析、创建 Bitmap 对象</p>
+<table>
+<thead>
+<tr>
+<th>方法名称</th>
+<th>功能描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>decodeFile(String pathName)</td>
+<td>从指定文件中解析、创建 Bitmap 对象</td>
+</tr>
+<tr>
+<td>decodeStream(InputStream is)</td>
+<td>从指定输入流中解析、创建 Bitmap 对象</td>
+</tr>
+<tr>
+<td>decodeResource(Resources res, int id)</td>
+<td>根据给定的资源 id，从指定资源中解析、创建 Bitmap 对象</td>
+</tr>
+</tbody></table>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);</span><br></pre></td></tr></table></figure>
+
+<p>Paint 类：描述图形的颜色和风格</p>
+<table>
+<thead>
+<tr>
+<th>方法名称</th>
+<th>功能描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Paint()</td>
+<td>创建一个 Paint 对象，并使用默认属性</td>
+</tr>
+<tr>
+<td>Paint(int flags)</td>
+<td>创建一个 Paint 对象，并使用指定属性</td>
+</tr>
+<tr>
+<td>setARGB(int a, int r, int g, int b)</td>
+<td>设置颜色，各参数值均为 0-255 之间的整数，几个参数分别用于表示透明度、红色、绿色和蓝色的值</td>
+</tr>
+<tr>
+<td>setColor(int color)</td>
+<td>设置颜色</td>
+</tr>
+<tr>
+<td>setAlpha(int a)</td>
+<td>设置透明度</td>
+</tr>
+<tr>
+<td>setAntiAlias(boolean aa)</td>
+<td>指定是否使用抗锯齿功能，如果使用会使绘图速度变慢</td>
+</tr>
+<tr>
+<td>setDither(boolean dither)</td>
+<td>指定是否使用图像抖动处理，如果使用会使图像颜色更加平滑、饱满、清晰</td>
+</tr>
+<tr>
+<td>setShadowLayer(float radius, float dx, float dy, int color)</td>
+<td>设置阴影，参数 radius 为阴影的角度；dx 和 dy 为阴影在 x 轴和 y 轴上的距离，color 为阴影的颜色</td>
+</tr>
+<tr>
+<td>setTextAlign(Align align)</td>
+<td>设置绘制文本时的文字对齐方式， 参数值为 Align.CENTER、Align.LEFT 或 Align.RIGHT</td>
+</tr>
+<tr>
+<td>setTextSize(float textSize)</td>
+<td>设置绘制文本时的文字大小</td>
+</tr>
+<tr>
+<td>setFakeBoldText(boolean fakeBoldT ext)</td>
+<td>设置绘制文字时是否为粗体文字</td>
+</tr>
+<tr>
+<td>setXfermode(Xfermode xfermode)</td>
+<td>设置图形重叠时的处理方式，如合并、取交集或并集，经常用来制作橡皮的擦除效果</td>
+</tr>
+</tbody></table>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Paint paint = <span class="keyword">new</span> Paint(); </span><br><span class="line">paint.setColor(Color.RED);</span><br></pre></td></tr></table></figure>
+
+<p>Canvas 类：绘制图形</p>
+<table>
+<thead>
+<tr>
+<th>方法名称</th>
+<th>功能描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>drawRect(Rect r, Paint paint)</td>
+<td>使用画笔画出指定矩形</td>
+</tr>
+<tr>
+<td>drawOval(RectF oval, Paint paint)</td>
+<td>使用画笔画出指定椭圆</td>
+</tr>
+<tr>
+<td>drawCircle(float ex, float cy, float radius, Paint paint)</td>
+<td>使用画笔在指定位置画出指定半径的圆</td>
+</tr>
+<tr>
+<td>drawline(float startX, float startY, float stopX, float stopY, Paint paint)</td>
+<td>使用画笔在指定位置画线</td>
+</tr>
+<tr>
+<td>drawRoundRect(RectF rect, float rx, float ry, Paint paint)</td>
+<td>使用画笔绘制指定圆角矩形，其中 rx 表示 x 轴圆角半径，ry 表示 y 轴圆角半径</td>
+</tr>
+</tbody></table>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Canvas 类在创建时需要继承自 View 类，并且在该类中重写 onDraw() 方法</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDraw</span><span class="params">(Canvas canvas)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">super</span>.onDraw(canvas); </span><br><span class="line">	Paint paint = <span class="keyword">new</span> Paint();</span><br><span class="line">	paint.setColor(Color.RED); </span><br><span class="line">	Rect r = <span class="keyword">new</span> Rect(<span class="number">40</span>, <span class="number">40</span>, <span class="number">200</span>, <span class="number">100</span>);</span><br><span class="line">	canvas.drawRect(r, paint);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Matrix 类：给图片添加特效</p>
+<table>
+<thead>
+<tr>
+<th>方法名称</th>
+<th>功能描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Matrix()</td>
+<td>创建一个唯一的 Matrix 对象</td>
+</tr>
+<tr>
+<td>setRotate(float degrees)</td>
+<td>将 Matrix 对象围绕 (0, 0) 旋转 degrees 度</td>
+</tr>
+<tr>
+<td>setRotate(float degrees, float px, float py)</td>
+<td>将 Matrix 对象图绕指定位置 (px, py) 旋转 degrees 度</td>
+</tr>
+<tr>
+<td>setScale(float sx, float sy)</td>
+<td>对 Matrix 对象进行缩放， 参数 sx 代表 x 轴上的缩放比例 ，sy 代表 y 轴上的缩放比例</td>
+</tr>
+<tr>
+<td>setScale(float sx, float sy, float px, float py)</td>
+<td>让 Matrix 对象以 (px, py) 为轴心，在 x 轴上缩放 sx, 在 y轴上缩放 sy</td>
+</tr>
+</tbody></table>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Matrix matrix = <span class="keyword">new</span> Matrix();</span><br><span class="line">matrix.setRotate(<span class="number">30</span>)</span><br></pre></td></tr></table></figure>
+
+<h5 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h5><p>补间动画：通过对 View 中的内容进行一系列的图形变换来实现动画效果。以 XML 形式定义的动画放置在 <code>res/anim</code></p>
+<ul>
+<li><p>透明度渐变动画 (AlphaAnimation)</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">set</span> <span class="attr">xmlns:android</span>=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span>&gt;</span> </span><br><span class="line">	&lt;alpha</span><br><span class="line">	android:interpolator=&quot;@android:anim/linear_interpolator&quot; </span><br><span class="line">	android:repeatMode=&quot;reverse&quot;</span><br><span class="line">	android:repeatCount=&quot;infinite&quot; </span><br><span class="line">	android:duration=&quot;lOOO&quot; </span><br><span class="line">	android:fromAlpha=&quot;l.0&quot; </span><br><span class="line">	android:toAlpha=&quot;0.0&quot;/&gt; </span><br><span class="line"><span class="tag">&lt;/<span class="name">set</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>interpolator: 控制动画的变化速度，值为 <code>＠android:anim/linear_interpolator</code> 匀速改变、<code>＠android:anim/accelerate_interpolator</code> 开始慢，后来加速</li>
+<li>repeatMode: 指定动画重复的方式，值为 reverse 反向、restart 重新开始</li>
+<li>repeatCount: 指定动画重复次数，可以为正整数，为 infinite 无限循环</li>
+<li>duration: 指定动画播放时长，单位 ms</li>
+<li>fromAlpha: 指定动画开始时的透明度，0.0 为完全透明， 1.0 为不透明</li>
+<li>toAlpha: 指定动画结束时的透明度</li>
+</ul>
+</li>
+<li><p>旋转动画 (RotateAnimation)</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;l.0&quot; encoding=&quot;utf-8&quot;?&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">set</span> <span class="attr">xmlns:android</span>=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span>&gt;</span></span><br><span class="line">	&lt;rotate</span><br><span class="line">		android:fromDegrees=&quot;O&quot; </span><br><span class="line">		android:toDegrees= &quot;360&quot; </span><br><span class="line">		android:pivotX=&quot;50%&quot;</span><br><span class="line">		android:pivotY=&quot;50%&quot;</span><br><span class="line">		android:repeatMode=&quot;reverse&quot; </span><br><span class="line">		android:repeatCount=&quot;infinite&quot; </span><br><span class="line">		android:duration=&quot;l000&quot;/&gt;</span><br><span class="line"><span class="tag">&lt;/<span class="name">set</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>fromDegrees: 指定动画开始时的角度</li>
+<li>toDegrees: 指定动画结束时的角度</li>
+<li>pivotX: 指定轴心的 x 坐标</li>
+<li>pivotY: 指定轴心的 y 坐标</li>
+</ul>
+</li>
+<li><p>缩放动画 (ScaleAnimation)</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;l.0&quot; encoding=&quot;utf-8&quot;?&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">set</span> <span class="attr">xmlns:android</span>=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span>&gt;</span></span><br><span class="line">	&lt;scale</span><br><span class="line">		android:repeatMode=&quot;reverse&quot; </span><br><span class="line">		android:repeatCount=&quot;infinite&quot;</span><br><span class="line">		android:duration=&quot;3000&quot; </span><br><span class="line">		android:fromXScale=&quot;1.0&quot; </span><br><span class="line">		android:fromYScale=&quot;1.0&quot; </span><br><span class="line">		android:toXScale=&quot;0.5&quot; </span><br><span class="line">		android:toYScale=&quot;0.5&quot; </span><br><span class="line">		android:pivotX=&quot;50%&quot;</span><br><span class="line">		android:pivotY=&quot;50%&quot;/&gt;</span><br><span class="line"><span class="tag">&lt;/<span class="name">set</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>fromXScale: 指定动画开始时 x 轴上的缩放系数，值为 1.0 表示不变化</li>
+<li>fromYScale: 指定动画开始时 y 轴上的缩放系数</li>
+<li>toXScale： 指定动画结束时 x 轴上的缩放系数</li>
+<li>toYScale: 指定动画结束时 y 轴上的缩放系数</li>
+</ul>
+</li>
+<li><p>平移动画 (TranslateAnimation)</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;l.0&quot; encoding=&quot;utf-8&quot;?&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">set</span> <span class="attr">xmlns:android</span>=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">translate</span> </span></span><br><span class="line"><span class="tag">		<span class="attr">android:fromXDelta</span>=<span class="string">&quot;0.0&quot;</span> </span></span><br><span class="line"><span class="tag">		<span class="attr">android:fromYDelta</span>=<span class="string">&quot;0.0&quot;</span> </span></span><br><span class="line"><span class="tag">		<span class="attr">android:toXDelta</span>=<span class="string">&quot;lOO&quot;</span> </span></span><br><span class="line"><span class="tag">		<span class="attr">android:toYDelta</span>=<span class="string">&quot;0.0&quot;</span> </span></span><br><span class="line"><span class="tag">		<span class="attr">android:repeatCount</span>=<span class="string">&quot;infinite&quot;</span> </span></span><br><span class="line"><span class="tag">		<span class="attr">android:repeatMode</span>=<span class="string">&quot;reverse&quot;</span></span></span><br><span class="line"><span class="tag">		<span class="attr">android:duration</span>=<span class="string">&quot;4000&quot;</span>/&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">set</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>fromXDelta: 指定动画开始时 View 的 x 轴坐标，这里的坐标是相对于 View 的所在位置的坐标，0.0 表示在 View 最开始的地方</li>
+<li>fromYDelta: 指定动画开始时 View 的 y 轴坐标</li>
+<li>toXDelta: 指定动画结束时 View 的 x 轴坐标</li>
+<li>toYDelta: 指定动画结束时 View 的 y 轴坐标</li>
+</ul>
+</li>
+<li><p>在代码中定义 4 种补间动画时，需要用到 AlphaAnimation、ScaleAnimation、TranslateAnimation 和 RotateAnimation 类</p>
+</li>
+</ul>
+<p>逐帧动画：一张一张地播放事先准备好的静态图像。在 <code>res/drawable</code> 目录下创建逐帧动画的 XML 文件并在 <code>&lt;animation-list&gt;</code> 节点的 <code>&lt;item&gt;</code> 子节点中指定图片出现的顺序以及每帧的持续时间</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">animation-list</span> <span class="attr">xmlns:android</span>=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span>&gt;</span> </span><br><span class="line">	<span class="tag">&lt;<span class="name">item</span> <span class="attr">android:drawable</span>=<span class="string">&quot;@drawable/img0l&quot;</span> <span class="attr">android:duration</span>=<span class="string">&quot;200&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">item</span>&gt;</span> </span><br><span class="line">	<span class="tag">&lt;<span class="name">item</span> <span class="attr">android:drawable</span>=<span class="string">&quot;@drawable/img02&quot;</span> <span class="attr">android:duration</span>=<span class="string">&quot;200&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">item</span>&gt;</span> </span><br><span class="line">	<span class="tag">&lt;<span class="name">item</span> <span class="attr">android:drawable</span>=<span class="string">&quot;@drawable/img03&quot;</span> <span class="attr">android:duration</span>=<span class="string">&quot;200&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">item</span>&gt;</span> </span><br><span class="line">	<span class="tag">&lt;<span class="name">item</span> <span class="attr">android:drawable</span>=<span class="string">&quot;@drawable/img04&quot;</span> <span class="attr">android:duration</span>=<span class="string">&quot;200&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">item</span>&gt;</span> </span><br><span class="line">	<span class="tag">&lt;<span class="name">item</span> <span class="attr">android:drawable</span>=<span class="string">&quot;@drawable/img05&quot;</span> <span class="attr">android:duration</span>=<span class="string">&quot;200&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">item</span>&gt;</span> </span><br><span class="line">	<span class="tag">&lt;<span class="name">item</span> <span class="attr">android:drawable</span>=<span class="string">&quot;@drawable/img06&quot;</span> <span class="attr">android:duration</span>=<span class="string">&quot;200&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">item</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">animation-list</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>在代码中定义逐帧动画需要用到 AnimationDrawable 中的 addFrame() 方法来添加图片</p>
+<h5 id="多媒体"><a href="#多媒体" class="headerlink" title="多媒体"></a>多媒体</h5>]]></content>
+      <tags>
+        <tag>Android</tag>
       </tags>
   </entry>
 </search>
