@@ -1719,6 +1719,8 @@
     <title>Android 移动开发基础案例教程</title>
     <url>/2020/12/14/Android/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="Android-基础入门"><a href="#Android-基础入门" class="headerlink" title="Android 基础入门"></a>Android 基础入门</h3><h5 id="Android-简介"><a href="#Android-简介" class="headerlink" title="Android 简介"></a>Android 简介</h5><p>Android 是一款基于 Linux 平台的开源操作系统，主要用于移动设备中，由 Google 公司和开放手机联盟领导及开发。Android 一词最早出现于法国作家利尔亚当在 1886 年发表的科幻小说《未来夏娃》中，将外表像人的机器起名为 Android。从 Android 1.5 版本开始， Android 用甜点作为系统版本的代号。</p>
+<a id="more"></a>
+
 <p>Android 系统采用分层架构，由高到低分为 4 层，依次是应用程序层、应用程序框架层 、核心类库层和 Linux 内核层：</p>
 <ul>
 <li>应用程序层是一个应用程序的集合，所有安装在手机上的应用程序都属于这一层。</li>
