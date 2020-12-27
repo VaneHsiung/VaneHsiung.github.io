@@ -589,7 +589,7 @@
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo pkg clean</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Example</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo pkg install vim atom linux-sublime3</span><br><span class="line">sudo pkg install git node npm		# Node.js</span><br><span class="line">sudo pkg install plank telegram-desktop firefox-esr</span><br><span class="line">sudo pkg install intellij tomcat mysql180-server mysql180-client		# Intellij IDEA use openjdk8</span><br><span class="line">sudo pkg install p7zip</span><br><span class="line">sudo pkg install zsh		# ZSH_THEME=&quot;agnoster&quot;</span><br><span class="line">pip install NetEase-MusicBox		# export PATH=&quot;your-dir:$PATH&quot;</span><br><span class="line">sudo pkg install you-get youtube_dl</span><br><span class="line">sudo pkg install vlc mplayer</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo pkg install vim atom linux-sublime3</span><br><span class="line">sudo pkg install git node npm		# Node.js</span><br><span class="line">sudo pkg install plank telegram-desktop firefox-esr</span><br><span class="line">sudo pkg install intellij tomcat mysql180-server mysql180-client		# Intellij IDEA use openjdk8</span><br><span class="line">sudo pkg install p7zip</span><br><span class="line">sudo pkg install zsh		# ZSH_THEME=&quot;agnoster&quot;</span><br><span class="line">pip install NetEase-MusicBox		# export PATH=&quot;your-dir:$PATH&quot;，网易云音乐命令行版</span><br><span class="line">sudo pkg install you-get youtube_dl		# 视频下载</span><br><span class="line">sudo pkg install vlc mplayer		# 视频播放</span><br></pre></td></tr></table></figure>
 
 
 </li>
@@ -1728,7 +1728,7 @@
 <li>核心类库中包含了系统库及 Android 运行时库，系统库主要是通过 C/C++ 库来为 Android 系统提供主要的特性支持；Android 运行时库主要提供了一些核心库，能够允许开发者使用 Java 语言来编写 Android 应用程序，Android 运行时库中还包括了 Dalvik 虚拟机。</li>
 <li>Linux 内核层为 Android 设备的各种硬件提供了底层的驱动。</li>
 </ul>
-<p>Dalvik 是 Google 公司自己设计用于 Android 平台的虚拟机，它可以简单地完成进程隔离和线程管理，并且可以提高内存的使用效率。每—个 Android 应用程序在底层都会对应一个独立的 Dalvik 虚拟机实例，其代码在虚拟机的解析下得以执行。Java 虚拟机和 Dalvik 虚拟机区别：Java 虚拟机运行的是 .class 字节码文件 ，而 Dalvik 虚拟机运行的则是其专有的 .dex 文件；Java 虚拟机是基于栈的架构，而 Dalvik 是基于寄存器的架构。</p>
+<p>Dalvik 是 Google 公司自己设计用于 Android 平台的虚拟机，它可以简单地完成进程隔离和线程管理，并且可以提高内存的使用效率。每一个 Android 应用程序在底层都会对应一个独立的 Dalvik 虚拟机实例，其代码在虚拟机的解析下得以执行。Java 虚拟机和 Dalvik 虚拟机区别：Java 虚拟机运行的是 .class 字节码文件 ，而 Dalvik 虚拟机运行的则是其专有的 .dex 文件；Java 虚拟机是基于栈的架构，而 Dalvik 是基于寄存器的架构。</p>
 <p>ART 模式英文全称为 Android Runtime，是谷歌 Android 4.4 系统增加的一种应用运行模式。ART 模式与 Dalvik 模式最大的不同在于，在启用 ART 模式后，系统在安装应用的时候会进行一次预编译，在安装应用程序时会先将代码转换为机器语言存储在本地，这样在运行程序时就不会每次都进行编译了，执行效率也大大提升。</p>
 <h5 id="Android-开发环境搭建"><a href="#Android-开发环境搭建" class="headerlink" title="Android 开发环境搭建"></a>Android 开发环境搭建</h5><p>Android Studio 是 Google 提供的一个 Android 开发环境，基于 lntelliJ IDEA。</p>
 <p>DDMS：在使用模拟器或者手机进行程序测试时，通常会查看设备的内存使用情况，或者查看正在运行的进程等，这时就需要使用 Android Studio 提供的 DDMS（Dalvik Debug Monitor Service）（已分解为不同部分）。</p>
