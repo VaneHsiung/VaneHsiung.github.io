@@ -39,7 +39,7 @@
 <meta property="og:description" content="FreeBSD 計劃的目標在於提供可作任意用途的軟體而不附帶任何限制條文。 我們之中許多人對程式碼 (以及計畫本身) 都有非常大的投入， 因此，當然不介意偶爾有一些資金上的補償，但我們並沒打算堅決地要求得到這類資助。 我們認為我們的首要“使命”是為任何人提供程式碼， 不管他們打算用這些程式碼做什麼， 因為這樣程式碼將能夠被更廣泛地使用，從而發揮其價值。 我認為這是自由軟體最基本的，同時也是我們所倡">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-11-17T11:55:35.000Z">
-<meta property="article:modified_time" content="2020-12-30T02:44:40.557Z">
+<meta property="article:modified_time" content="2020-12-30T08:08:33.407Z">
 <meta property="article:author" content="vane">
 <meta property="article:tag" content="Unix">
 <meta name="twitter:card" content="summary">
@@ -253,7 +253,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <section class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Xorg-Configuration"><span class="nav-text">Xorg Configuration</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9C%A8%E6%AA%94%E6%A1%88%E4%B8%AD%E8%A8%AD%E5%AE%9A%E5%BD%B1%E5%83%8F%E9%A9%85%E5%8B%95%E7%A8%8B%E5%BC%8F"><span class="nav-text">在檔案中設定影像驅動程式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%89%8B%E5%8B%95%E8%A8%AD%E5%AE%9A"><span class="nav-text">手動設定</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Install-Desktop-Enviroment"><span class="nav-text">Install Desktop Enviroment</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Binary-%E5%A5%97%E4%BB%B6"><span class="nav-text">Binary 套件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Port-%E5%A5%97%E4%BB%B6"><span class="nav-text">Port 套件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux%C2%AE-Binary-%E7%9B%B8%E5%AE%B9%E6%80%A7"><span class="nav-text">Linux® Binary 相容性</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%89%8B%E5%8B%95%E5%AE%89%E8%A3%9D%E5%85%B6%E4%BB%96%E7%A8%8B%E5%BC%8F%E5%BA%AB"><span class="nav-text">手動安裝其他程式庫</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E8%A8%82%E6%A0%B8%E5%BF%83"><span class="nav-text">自訂核心</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%82%BA%E4%BD%95%E8%A6%81%E7%B7%A8%E8%AD%AF%E8%87%AA%E8%A8%82%E7%9A%84%E6%A0%B8%E5%BF%83"><span class="nav-text">為何要編譯自訂的核心?</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%81%B5%E6%B8%AC%E7%B3%BB%E7%B5%B1%E7%A1%AC%E9%AB%94"><span class="nav-text">偵測系統硬體</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A8%AD%E5%AE%9A%E6%AA%94"><span class="nav-text">設定檔</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Others"><span class="nav-text">Others</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Screen-resolution-on-FreeBSD-on-VirtualBox"><span class="nav-text">Screen resolution on FreeBSD on VirtualBox</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Disable-the-Forward-Back-buttons-on-my-mouse"><span class="nav-text">Disable the Forward&#x2F;Back buttons on my mouse</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Install-chinese-font"><span class="nav-text">Install chinese font</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%BE%E5%8D%95%E4%BD%BF%E7%94%A8%E6%A8%A1%E5%BC%8F%E4%B8%BA%E4%B8%8D%E5%AE%89%E5%85%A8"><span class="nav-text">设单使用模式为不安全</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#No-space-left-on-device"><span class="nav-text">No space left on device</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#VirtualBox%E2%84%A2-guest-additions"><span class="nav-text">VirtualBox™ guest additions</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Fish"><span class="nav-text">Fish</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#How-to-start-things-at-boot-time"><span class="nav-text">How to start things at boot time</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#FreeBSD-Insall-Oracle-JDK"><span class="nav-text">FreeBSD Insall Oracle JDK</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#FreeBSD-Install-Python-and-pip"><span class="nav-text">FreeBSD Install Python and pip</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BSDs"><span class="nav-text">BSDs</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Xorg-Configuration"><span class="nav-text">Xorg Configuration</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9C%A8%E6%AA%94%E6%A1%88%E4%B8%AD%E8%A8%AD%E5%AE%9A%E5%BD%B1%E5%83%8F%E9%A9%85%E5%8B%95%E7%A8%8B%E5%BC%8F"><span class="nav-text">在檔案中設定影像驅動程式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%89%8B%E5%8B%95%E8%A8%AD%E5%AE%9A"><span class="nav-text">手動設定</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Install-Desktop-Enviroment"><span class="nav-text">Install Desktop Enviroment</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Binary-%E5%A5%97%E4%BB%B6"><span class="nav-text">Binary 套件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Port-%E5%A5%97%E4%BB%B6"><span class="nav-text">Port 套件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux%C2%AE-Binary-%E7%9B%B8%E5%AE%B9%E6%80%A7"><span class="nav-text">Linux® Binary 相容性</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%89%8B%E5%8B%95%E5%AE%89%E8%A3%9D%E5%85%B6%E4%BB%96%E7%A8%8B%E5%BC%8F%E5%BA%AB"><span class="nav-text">手動安裝其他程式庫</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E8%A8%82%E6%A0%B8%E5%BF%83"><span class="nav-text">自訂核心</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%82%BA%E4%BD%95%E8%A6%81%E7%B7%A8%E8%AD%AF%E8%87%AA%E8%A8%82%E7%9A%84%E6%A0%B8%E5%BF%83"><span class="nav-text">為何要編譯自訂的核心?</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%81%B5%E6%B8%AC%E7%B3%BB%E7%B5%B1%E7%A1%AC%E9%AB%94"><span class="nav-text">偵測系統硬體</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A8%AD%E5%AE%9A%E6%AA%94"><span class="nav-text">設定檔</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%87%E4%BB%BD%E4%B8%8E%E6%81%A2%E5%A4%8D"><span class="nav-text">备份与恢复</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#dump-amp-restore"><span class="nav-text">dump &amp; restore</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#rsync%EF%BC%88remote-sync%EF%BC%89"><span class="nav-text">rsync（remote sync）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Z-%E6%AA%94%E6%A1%88%E7%B3%BB%E7%B5%B1-ZFS"><span class="nav-text">Z 檔案系統 (ZFS)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Others"><span class="nav-text">Others</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Screen-resolution-on-FreeBSD-on-VirtualBox"><span class="nav-text">Screen resolution on FreeBSD on VirtualBox</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Disable-the-Forward-Back-buttons-on-my-mouse"><span class="nav-text">Disable the Forward&#x2F;Back buttons on my mouse</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Install-chinese-font"><span class="nav-text">Install chinese font</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%BE%E5%8D%95%E4%BD%BF%E7%94%A8%E6%A8%A1%E5%BC%8F%E4%B8%BA%E4%B8%8D%E5%AE%89%E5%85%A8"><span class="nav-text">设单使用模式为不安全</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#No-space-left-on-device"><span class="nav-text">No space left on device</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#VirtualBox%E2%84%A2-guest-additions"><span class="nav-text">VirtualBox™ guest additions</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Fish"><span class="nav-text">Fish</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#How-to-start-things-at-boot-time"><span class="nav-text">How to start things at boot time</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#FreeBSD-Insall-Oracle-JDK"><span class="nav-text">FreeBSD Insall Oracle JDK</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#FreeBSD-Install-Python-and-pip"><span class="nav-text">FreeBSD Install Python and pip</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BSDs"><span class="nav-text">BSDs</span></a></li></ol></div>
         </section>
         <!--/noindex-->
 
@@ -360,7 +360,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2020-12-30 10:44:40" itemprop="dateModified" datetime="2020-12-30T10:44:40+08:00">2020-12-30</time>
+        <time title="Modified: 2020-12-30 16:08:33" itemprop="dateModified" datetime="2020-12-30T16:08:33+08:00">2020-12-30</time>
       </span>
 
   
@@ -392,14 +392,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Symbols count in article: </span>
-      <span>9.6k</span>
+      <span>12k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>9 mins.</span>
+      <span>11 mins.</span>
     </span>
 </div>
 
@@ -653,6 +653,84 @@
 </ul>
 <h5 id="設定檔"><a href="#設定檔" class="headerlink" title="設定檔"></a>設定檔</h5><p><code>/usr/src/sys</code> 下子目錄代表著支援的硬體架構 (Architecture)，每個支援的硬體架構中會有 <code>conf</code> 子目錄，裡面含有供該架構使用的 <code>GENERIC</code> 核心設定檔。</p>
 <p>說明在<code>GENERIC</code> 同目錄的 <code>NOTES</code> 檔案中。所有架構通用選項，參考 <code>/usr/src/sys/conf/NOTES</code>。</p>
+<h3 id="备份与恢复"><a href="#备份与恢复" class="headerlink" title="备份与恢复"></a><span class="exturl" data-url="aHR0cHM6Ly93d3cuZnJlZWJzZC5vcmcvZG9jL2hhbmRib29rL2JhY2t1cC1iYXNpY3MuaHRtbA==">备份与恢复<i class="fa fa-external-link-alt"></i></span></h3><h5 id="dump-amp-restore"><a href="#dump-amp-restore" class="headerlink" title="dump &amp; restore"></a>dump &amp; restore</h5><p>FreeBSD 系统的备份就是对系统文件的打包，然后放到一个安全的地方，使用的打包工具是 <code>dump</code>；FreeBSD 系统的恢复就是把你保存好的系统文件从安全的地方里面拿出来放到你的硬盘上去，使用的恢复工具是 <code>restore</code>；</p>
+<ul>
+<li><p>需要备份的目录：</p>
+<ul>
+<li><code>/</code> 这个目录存放很多基本工具，包括内核，需要备份；</li>
+<li><code>/home</code> 用户数据，需要备份；</li>
+<li><code>/usr</code> 很多工具以及系统的源代码都放在这里面，需要备份；</li>
+<li><code>/usr/local</code> 所有安装的软件基本上都在这里，需要备份；</li>
+<li><code>/var</code> 系统的日志，ports系统的数据库，需要备份；</li>
+</ul>
+</li>
+<li><p>备份方法：以 <code>/</code> 目录为例，把移动硬盘挂载在 <code>/mnt/fender_01</code> 目录，<code>/</code> 目录对应硬盘上面的 <code>/dev/ad12s1a</code> 分区，备份整个目录的命令如下：</p>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dump -0Lauf /mnt/fender_01/dump/ad12sa1.dump /dev/ad12s1a</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>-0 备份所有的文件系统中的内容，也就是不使用增量备份；</li>
+<li>-f 指定备份结果存放的文件名；</li>
+<li>-a 告诉 dump 不考虑备份的介质的大小问题，早期备份使用磁带，dump 会预先计算一下需要的空间，使用这个选项告诉 dump 忽略这个问题；</li>
+<li>-u 告诉 dump 更新一下 /etc/dumpdates，这个文件记录了你在系统上搜有的备份活动；</li>
+<li>-L 备份已经挂载的文件系统时需要，这个选项会使用 UFS2 的 snapshot 功能来保证文件系统的一致性。</li>
+</ul>
+</li>
+<li><p>恢复方法</p>
+<ul>
+<li><p>恢复 <code>/</code> 以外的目录：以恢复  <code>/home</code> 目录为例，重启系统进入单用户模式，挂载 <code>/tmp</code> 分区，挂载移动硬盘，这时备份生成的文件保存在 <code>/mnt/01/dump/dev/ad12s1h.dump</code>，格式化 <code>/dev/ad12s1h</code>：</p>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">newfs -U /dev/ad12s1h		# -U 选型来打开 softupdate</span><br></pre></td></tr></table></figure>
+
+<p>  挂载这个分区，例如 <code>/mnt/02/</code>，恢复目录：</p>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /mnt/02</span><br><span class="line">restore -rf /mnt/01/dump/ad12s1h.dump</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>恢复 <code>/</code>：因为 restore 在 <code>/</code> 目录中，所以不能使用上面方法恢复 <code>/</code> 目录。解决办法是使用 freebsd_livefs_cd 启动系统。</p>
+</li>
+</ul>
+</li>
+<li><p>备份 MBR</p>
+<ul>
+<li><p>备份</p>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dd if=/dev/da0 of=/path/to/mbr.img bs=512 count=1</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>恢复</p>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dd if=/path/to/mbr.img of=/dev/da0 bs=512 count=1</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+</li>
+</ul>
+<p>参考：<span class="exturl" data-url="aHR0cDovL2Jsb2cuY2hpbmF1bml4Lm5ldC91aWQtMjAzMDYxNjYtaWQtMzE2MDM3Lmh0bWw=">FreeBSD dump 备份<i class="fa fa-external-link-alt"></i></span></p>
+<h5 id="rsync（remote-sync）"><a href="#rsync（remote-sync）" class="headerlink" title="rsync（remote sync）"></a>rsync（remote sync）</h5><p>可以在本地计算机与远程计算机之间，或者两个本地目录之间同步文件，且仅传输有变动的部分。</p>
+<ul>
+<li><p>将源目录同步到目标目录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rsync -r source1 source2 destination		# -r 表示递归，即包含子目录</span><br><span class="line">rsync -a source/ destination		# -a 除了可以递归同步以外，还可以同步元信息（比如修改时间、权限等）</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>排除文件：同步时排除某些文件或目录，这时可以用 <code>--exclude</code> 参数指定排除模式，多个排除模式，可以用多个 <code>--exclude</code> 参数</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rsync -av --exclude dir source/ destination		# 排除所有 TXT 文件</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>增量备份：除了源目录与目标目录直接比较，rsync 还支持使用基准目录，即将源目录与基准目录之间变动的部分，同步到目标目录。<code>--link-dest</code> 参数用来指定同步时的基准目录。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rsync -a --delete --link-dest /compare/path /source/path /target/path</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>远程同步：rsync 默认使用 SSH 进行远程登录和数据传输</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rsync -av source/ username@remote_host:destination		# 将本地内容同步到远程服务器</span><br><span class="line">rsync -av username@remote_host:source/ destination		# 将远程内容同步到本地</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用 rsync 来备份系统</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rsync -aH --delete --exclude dir --link-dest /compare/path source destination</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>-H</code> 选项用来保持硬链接</li>
+<li>默认情况下，rsync 只确保源目录的所有内容（明确排除的文件除外）都复制到目标目录。它不会使两个目录保持相同，并且不会删除文件。如果你想让那些在源目录里被删除的文件在目标目录里也被删除，那么你可以加上 <code>--delete</code> 选项来删除。<code>--delete</code> 参数会使得 <code>destination</code> 成为 <code>source</code> 的一个镜像。</li>
+</ul>
+</li>
+</ul>
+<p>参考：<span class="exturl" data-url="aHR0cDovL3d3dy5ydWFueWlmZW5nLmNvbS9ibG9nLzIwMjAvMDgvcnN5bmMuaHRtbA==">rsync 用法教程<i class="fa fa-external-link-alt"></i></span>，<span class="exturl" data-url="aHR0cHM6Ly9saW51eC5jbi9hcnRpY2xlLTgyMzctMS5odG1s">使用 rsync 来备份 Linux 系统<i class="fa fa-external-link-alt"></i></span></p>
+<h3 id="Z-檔案系統-ZFS"><a href="#Z-檔案系統-ZFS" class="headerlink" title="Z 檔案系統 (ZFS)"></a>Z 檔案系統 (ZFS)</h3><p>ZFS 的設計目標主要有三個：</p>
+<ul>
+<li>資料完整性：所有資料都會有一個資料的校驗碼 (checksum)，資料寫入時會計算校驗碼然後一併寫入，往後讀取資料時會再計算一次校驗碼，若校驗碼與當初寫入時不相符，便可偵測到資料錯誤，此時若有可用的資料備援 (Data redundancy)，ZFS 會嘗試自動修正錯誤。</li>
+<li>儲存池：實體的儲存裝置都會先被加入到一個儲存池 (Pool)，這個共用的儲存池可用來配置儲存空間，儲存池的空間可被所有的檔案系統使用且透過加入新的儲存裝置來增加空間。</li>
+<li>效能：提供多個快取機制來增加效能。先進、以記憶體為基礎的讀取快取可使用 ARC。第二層以磁碟為基礎的讀取快取可使用 L2ARC，以磁碟為基礎的同步寫入快取則可使用 ZIL。</li>
+</ul>
 <h3 id="Others"><a href="#Others" class="headerlink" title="Others"></a>Others</h3><h5 id="Screen-resolution-on-FreeBSD-on-VirtualBox"><a href="#Screen-resolution-on-FreeBSD-on-VirtualBox" class="headerlink" title="Screen resolution on FreeBSD on VirtualBox"></a>Screen resolution on FreeBSD on VirtualBox</h5><p>问题描述：在virtualbox虚拟机下，无法改变桌面分辨率为1366x768</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">VBoxManage setextradata &quot;FreeBSD&quot; VBoxInternal2/EfiGraphicsResolution 1366x768</span><br></pre></td></tr></table></figure>
 

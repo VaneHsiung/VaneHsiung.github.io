@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://vanehsiung.netlify.app/about/index.html</loc>
+    
+    <lastmod>2020-12-30</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://vanehsiung.netlify.app/links/index.html</loc>
     
     <lastmod>2020-12-30</lastmod>
@@ -24,13 +31,6 @@
   
   <url>
     <loc>https://vanehsiung.netlify.app/2020/11/26/Microservices/</loc>
-    
-    <lastmod>2020-12-30</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://vanehsiung.netlify.app/about/index.html</loc>
     
     <lastmod>2020-12-30</lastmod>
     

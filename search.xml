@@ -710,6 +710,84 @@
 </ul>
 <h5 id="設定檔"><a href="#設定檔" class="headerlink" title="設定檔"></a>設定檔</h5><p><code>/usr/src/sys</code> 下子目錄代表著支援的硬體架構 (Architecture)，每個支援的硬體架構中會有 <code>conf</code> 子目錄，裡面含有供該架構使用的 <code>GENERIC</code> 核心設定檔。</p>
 <p>說明在<code>GENERIC</code> 同目錄的 <code>NOTES</code> 檔案中。所有架構通用選項，參考 <code>/usr/src/sys/conf/NOTES</code>。</p>
+<h3 id="备份与恢复"><a href="#备份与恢复" class="headerlink" title="备份与恢复"></a><span class="exturl" data-url="aHR0cHM6Ly93d3cuZnJlZWJzZC5vcmcvZG9jL2hhbmRib29rL2JhY2t1cC1iYXNpY3MuaHRtbA==">备份与恢复<i class="fa fa-external-link-alt"></i></span></h3><h5 id="dump-amp-restore"><a href="#dump-amp-restore" class="headerlink" title="dump &amp; restore"></a>dump &amp; restore</h5><p>FreeBSD 系统的备份就是对系统文件的打包，然后放到一个安全的地方，使用的打包工具是 <code>dump</code>；FreeBSD 系统的恢复就是把你保存好的系统文件从安全的地方里面拿出来放到你的硬盘上去，使用的恢复工具是 <code>restore</code>；</p>
+<ul>
+<li><p>需要备份的目录：</p>
+<ul>
+<li><code>/</code> 这个目录存放很多基本工具，包括内核，需要备份；</li>
+<li><code>/home</code> 用户数据，需要备份；</li>
+<li><code>/usr</code> 很多工具以及系统的源代码都放在这里面，需要备份；</li>
+<li><code>/usr/local</code> 所有安装的软件基本上都在这里，需要备份；</li>
+<li><code>/var</code> 系统的日志，ports系统的数据库，需要备份；</li>
+</ul>
+</li>
+<li><p>备份方法：以 <code>/</code> 目录为例，把移动硬盘挂载在 <code>/mnt/fender_01</code> 目录，<code>/</code> 目录对应硬盘上面的 <code>/dev/ad12s1a</code> 分区，备份整个目录的命令如下：</p>
+  <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">dump -0Lauf /mnt/fender_01/dump/ad12sa1.dump /dev/ad12s1a</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>-0 备份所有的文件系统中的内容，也就是不使用增量备份；</li>
+<li>-f 指定备份结果存放的文件名；</li>
+<li>-a 告诉 dump 不考虑备份的介质的大小问题，早期备份使用磁带，dump 会预先计算一下需要的空间，使用这个选项告诉 dump 忽略这个问题；</li>
+<li>-u 告诉 dump 更新一下 /etc/dumpdates，这个文件记录了你在系统上搜有的备份活动；</li>
+<li>-L 备份已经挂载的文件系统时需要，这个选项会使用 UFS2 的 snapshot 功能来保证文件系统的一致性。</li>
+</ul>
+</li>
+<li><p>恢复方法</p>
+<ul>
+<li><p>恢复 <code>/</code> 以外的目录：以恢复  <code>/home</code> 目录为例，重启系统进入单用户模式，挂载 <code>/tmp</code> 分区，挂载移动硬盘，这时备份生成的文件保存在 <code>/mnt/01/dump/dev/ad12s1h.dump</code>，格式化 <code>/dev/ad12s1h</code>：</p>
+  <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">newfs -U /dev/ad12s1h		# -U 选型来打开 softupdate</span><br></pre></td></tr></table></figure>
+
+<p>  挂载这个分区，例如 <code>/mnt/02/</code>，恢复目录：</p>
+  <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd /mnt/02</span><br><span class="line">restore -rf /mnt/01/dump/ad12s1h.dump</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>恢复 <code>/</code>：因为 restore 在 <code>/</code> 目录中，所以不能使用上面方法恢复 <code>/</code> 目录。解决办法是使用 freebsd_livefs_cd 启动系统。</p>
+</li>
+</ul>
+</li>
+<li><p>备份 MBR</p>
+<ul>
+<li><p>备份</p>
+  <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">dd if=/dev/da0 of=/path/to/mbr.img bs=512 count=1</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>恢复</p>
+  <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">dd if=/path/to/mbr.img of=/dev/da0 bs=512 count=1</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+</li>
+</ul>
+<p>参考：<span class="exturl" data-url="aHR0cDovL2Jsb2cuY2hpbmF1bml4Lm5ldC91aWQtMjAzMDYxNjYtaWQtMzE2MDM3Lmh0bWw=">FreeBSD dump 备份<i class="fa fa-external-link-alt"></i></span></p>
+<h5 id="rsync（remote-sync）"><a href="#rsync（remote-sync）" class="headerlink" title="rsync（remote sync）"></a>rsync（remote sync）</h5><p>可以在本地计算机与远程计算机之间，或者两个本地目录之间同步文件，且仅传输有变动的部分。</p>
+<ul>
+<li><p>将源目录同步到目标目录</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">rsync -r source1 source2 destination		# -r 表示递归，即包含子目录</span><br><span class="line">rsync -a source/ destination		# -a 除了可以递归同步以外，还可以同步元信息（比如修改时间、权限等）</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>排除文件：同步时排除某些文件或目录，这时可以用 <code>--exclude</code> 参数指定排除模式，多个排除模式，可以用多个 <code>--exclude</code> 参数</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">rsync -av --exclude dir source/ destination		# 排除所有 TXT 文件</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>增量备份：除了源目录与目标目录直接比较，rsync 还支持使用基准目录，即将源目录与基准目录之间变动的部分，同步到目标目录。<code>--link-dest</code> 参数用来指定同步时的基准目录。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">rsync -a --delete --link-dest /compare/path /source/path /target/path</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>远程同步：rsync 默认使用 SSH 进行远程登录和数据传输</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">rsync -av source/ username@remote_host:destination		# 将本地内容同步到远程服务器</span><br><span class="line">rsync -av username@remote_host:source/ destination		# 将远程内容同步到本地</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用 rsync 来备份系统</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">rsync -aH --delete --exclude dir --link-dest /compare/path source destination</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>-H</code> 选项用来保持硬链接</li>
+<li>默认情况下，rsync 只确保源目录的所有内容（明确排除的文件除外）都复制到目标目录。它不会使两个目录保持相同，并且不会删除文件。如果你想让那些在源目录里被删除的文件在目标目录里也被删除，那么你可以加上 <code>--delete</code> 选项来删除。<code>--delete</code> 参数会使得 <code>destination</code> 成为 <code>source</code> 的一个镜像。</li>
+</ul>
+</li>
+</ul>
+<p>参考：<span class="exturl" data-url="aHR0cDovL3d3dy5ydWFueWlmZW5nLmNvbS9ibG9nLzIwMjAvMDgvcnN5bmMuaHRtbA==">rsync 用法教程<i class="fa fa-external-link-alt"></i></span>，<span class="exturl" data-url="aHR0cHM6Ly9saW51eC5jbi9hcnRpY2xlLTgyMzctMS5odG1s">使用 rsync 来备份 Linux 系统<i class="fa fa-external-link-alt"></i></span></p>
+<h3 id="Z-檔案系統-ZFS"><a href="#Z-檔案系統-ZFS" class="headerlink" title="Z 檔案系統 (ZFS)"></a>Z 檔案系統 (ZFS)</h3><p>ZFS 的設計目標主要有三個：</p>
+<ul>
+<li>資料完整性：所有資料都會有一個資料的校驗碼 (checksum)，資料寫入時會計算校驗碼然後一併寫入，往後讀取資料時會再計算一次校驗碼，若校驗碼與當初寫入時不相符，便可偵測到資料錯誤，此時若有可用的資料備援 (Data redundancy)，ZFS 會嘗試自動修正錯誤。</li>
+<li>儲存池：實體的儲存裝置都會先被加入到一個儲存池 (Pool)，這個共用的儲存池可用來配置儲存空間，儲存池的空間可被所有的檔案系統使用且透過加入新的儲存裝置來增加空間。</li>
+<li>效能：提供多個快取機制來增加效能。先進、以記憶體為基礎的讀取快取可使用 ARC。第二層以磁碟為基礎的讀取快取可使用 L2ARC，以磁碟為基礎的同步寫入快取則可使用 ZIL。</li>
+</ul>
 <h3 id="Others"><a href="#Others" class="headerlink" title="Others"></a>Others</h3><h5 id="Screen-resolution-on-FreeBSD-on-VirtualBox"><a href="#Screen-resolution-on-FreeBSD-on-VirtualBox" class="headerlink" title="Screen resolution on FreeBSD on VirtualBox"></a>Screen resolution on FreeBSD on VirtualBox</h5><p>问题描述：在virtualbox虚拟机下，无法改变桌面分辨率为1366x768</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">VBoxManage setextradata &quot;FreeBSD&quot; VBoxInternal2/EfiGraphicsResolution 1366x768</span><br></pre></td></tr></table></figure>
 
