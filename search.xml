@@ -167,64 +167,25 @@
       </tags>
   </entry>
   <entry>
-    <title>FreeBSD Desktop</title>
-    <url>/2020/11/28/FreeBSD-Desktop/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>The FreeBSD Desktop series are about creating efficient desktop environment on the FreeBSD system.</p>
+    <title>FreeBSD</title>
+    <url>/2020/11/17/FreeBSD/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote><p>FreeBSD 計劃的目標在於提供可作任意用途的軟體而不附帶任何限制條文。 我們之中許多人對程式碼 (以及計畫本身) 都有非常大的投入， 因此，當然不介意偶爾有一些資金上的補償，但我們並沒打算堅決地要求得到這類資助。 我們認為我們的首要“使命”是為任何人提供程式碼， 不管他們打算用這些程式碼做什麼， 因為這樣程式碼將能夠被更廣泛地使用，從而發揮其價值。 我認為這是自由軟體最基本的，同時也是我們所倡導的一個目標。</p>
+<p>我們程式碼樹中，有若干是以 GNU 通用公共授權條款 (GPL) 或者 GNU 較寬鬆通用公共授權條款 (LGPL) 發佈的那些程式碼帶有少許的附加限制，還好只是強制性的要求開放程式碼而不是別的。 由於使用 GPL 的軟體在商業用途上會增加若干複雜性，因此，如果可以選擇的話， 我們會比較喜歡使用限制相對更寬鬆的 BSD 版權來發佈軟體。</p>
+<footer><strong>Jordan Hubbard</strong><cite><span class="exturl" data-url="aHR0cHM6Ly93d3cuZnJlZWJzZC5vcmcvZG9jL3poX1RXL2Jvb2tzL2hhbmRib29rLw==">FreeBSD Handbook<i class="fa fa-external-link-alt"></i></span></cite></footer></blockquote>
+
 <a id="more"></a>
 
-<h3 id="Simplified-Boot"><a href="#Simplified-Boot" class="headerlink" title="Simplified Boot"></a>Simplified Boot</h3><p>The default FreeBSD boot process is quite verbose with a lot of debugging information along with kernel messages.</p>
-<p>This verbose information is usually useful for servers but not that much for laptops and/or desktop/workstation systems. The UNIX philosophy is to not ‘say’ anything to stdout if everything is OK, so stdout/stderr should only be used when something is wrong.</p>
-<p>Rules: prompt in less then 10 lines</p>
-<ul>
-<li><p>First add the <code>boot_mute=YES</code> option to the <code>/boot/loader.conf</code> file. As we are here, You may as well add <code>autoboot_delay=2</code> parameter to the <code>/boot/loader.conf</code> file to speed up boot process by 8 seconds. Default delay is 10 seconds.</p>
-</li>
-<li><p>In most cases its just adding <code>1&gt; /dev/null</code> or <code>1&gt; /dev/null 2&gt; /dev/null</code> to not display unneeded information at boot process.</p>
-<ul>
-<li><p><code>/etc/rc.d/ldconfig</code></p>
-<figure class="highlight diff"><table><tr><td class="code"><pre><span class="line"><span class="deletion">-		check_startmsgs &amp;&amp; echo &#x27;ELF ldconfig path:&#x27; $&#123;_LDC&#125;</span></span><br><span class="line"><span class="addition">+		check_startmsgs &amp;&amp; echo &#x27;ELF ldconfig path:&#x27; $&#123;_LDC&#125; 1&gt; /dev/null</span></span><br><span class="line"><span class="deletion">-		echo &#x27;32-bit compatibility ldconfig path:&#x27; $&#123;_LDC&#125;</span></span><br><span class="line"><span class="addition">+		echo &#x27;32-bit compatibility ldconfig path:&#x27; $&#123;_LDC&#125; 1&gt; /dev/null</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p><code>/etc/rc.d/netif</code></p>
-<figure class="highlight diff"><table><tr><td class="code"><pre><span class="line"><span class="deletion">-		/sbin/ifconfig $&#123;ifn&#125;</span></span><br><span class="line"><span class="addition">+		/sbin/ifconfig $&#123;ifn&#125; 1&gt; /dev/null 2&gt; /dev/null</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p><code>/etc/rc.d/nfsclient</code></p>
-<figure class="highlight diff"><table><tr><td class="code"><pre><span class="line"><span class="deletion">-		rpc.umntall -k</span></span><br><span class="line"><span class="addition">+		rpc.umntall -k 2&gt; /dev/null</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p><code>/etc/rc.d/random</code></p>
-<figure class="highlight diff"><table><tr><td class="code"><pre><span class="line"><span class="deletion">-       if [ $&#123;harvest_mask&#125; -gt 0 ]; then</span></span><br><span class="line"><span class="deletion">-               echo -n &#x27;Setting up harvesting: &#x27;</span></span><br><span class="line"><span class="deletion">-               $&#123;SYSCTL&#125; kern.random.harvest.mask=$&#123;harvest_mask&#125; &gt; /dev/null</span></span><br><span class="line"><span class="deletion">-               $&#123;SYSCTL_N&#125; kern.random.harvest.mask_symbolic</span></span><br><span class="line"><span class="deletion">-       fi</span></span><br><span class="line"><span class="addition">+       #if [ $&#123;harvest_mask&#125; -gt 0 ]; then</span></span><br><span class="line"><span class="addition">+       #      echo -n &#x27;Setting up harvesting: &#x27;</span></span><br><span class="line"><span class="addition">+       #      $&#123;SYSCTL&#125; kern.random.harvest.mask=$&#123;harvest_mask&#125; &gt; /dev/null</span></span><br><span class="line"><span class="addition">+       #      $&#123;SYSCTL_N&#125; kern.random.harvest.mask_symbolic</span></span><br><span class="line"><span class="addition">+       #fi</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p><code>/etc/rc.d/routing</code></p>
-<figure class="highlight diff"><table><tr><td class="code"><pre><span class="line"><span class="deletion">-		eval static_$&#123;_a&#125; delete $_if</span></span><br><span class="line"><span class="addition">+		eval static_$&#123;_a&#125; delete $_if 1&gt; /dev/null 2&gt; /dev/null</span></span><br><span class="line"><span class="deletion">-		static_$2 add $3</span></span><br><span class="line"><span class="addition">+		static_$2 add $3 1&gt; /dev/null 2&gt; /dev/null</span></span><br><span class="line"><span class="deletion">-		static_$2 add $3</span></span><br><span class="line"><span class="addition">+		static_$2 add $3 1&gt; /dev/null 2&gt; /dev/null</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p><code>/etc/rc.d/devmatch</code></p>
-<figure class="highlight diff"><table><tr><td class="code"><pre><span class="line"><span class="deletion">-		echo &quot;Autoloading module: $&#123;m&#125;&quot;</span></span><br><span class="line"><span class="addition">+		#echo &quot;Autoloading module: $&#123;m&#125;&quot;</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>I prefer not to use a login manager so I have an alias named <code>x</code> to <code>xinit</code> command. This way after I login I type <code>x</code> press [ENTER] and x11 desktop is started.</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">x: aliased to xinit ~/.xinitrc -- -dpi 75 -nolisten tcp 1&gt; /dev/null 2&gt; /dev/null</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>we can silence the FreeBSD boot process even more. Just add <code>rc_startmsgs=&quot;NO&quot;</code> to your <code>/etc/rc.conf</code> file.</p>
-</li>
-</ul>
-<h5 id="Reply"><a href="#Reply" class="headerlink" title="Reply"></a>Reply</h5><p>For troubleshooting issues, Most boot messages can be found under:</p>
-<ul>
-<li>dmesg</li>
-<li>(cat|tail|grep|less|more..) /var/log/messages</li>
-</ul>
-<p>Also don’t really need it printing the default routes, netstat -r works great.</p>
-<p>Tmux is useful.</p>
-<p>(dislike)To disable the boot menu, put the following line in <code>/boot/loader.conf</code>: <code>beastie_disable=&quot;YES&quot;</code></p>
-<h3 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h3><h5 id="BIOS"><a href="#BIOS" class="headerlink" title="BIOS"></a>BIOS</h5><p>Disable unused (Express Card/Bluetooth/Camera/Fingerprint Reader/…) and unwanted options (Intel AMT/Security Chip/UEFI/…).</p>
-<h5 id="Install-1"><a href="#Install-1" class="headerlink" title="Install"></a>Install</h5><ul>
-<li><p>To put the image on the pendrive we will use the dd tool available on almost any Mac OS X (macOS) and Linux system. For Windows You will have to download it from here – <span class="exturl" data-url="aHR0cDovL3d3dy5jaHJ5c29jb21lLm5ldC9kZA==">dd for windows<i class="fa fa-external-link-alt"></i></span>( bs=1M on Linux/Windows ).</p>
-  <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo dd if=FreeBSD-11.1-RELEASE-amd64-memstick.img of=/dev/da1 bs=1m</span><br></pre></td></tr></table></figure>
+<h3 id="Install-FreeBSD"><a href="#Install-FreeBSD" class="headerlink" title="Install FreeBSD"></a>Install FreeBSD</h3><h5 id="BIOS"><a href="#BIOS" class="headerlink" title="BIOS"></a>BIOS</h5><p>Disable unused and unwanted options.</p>
+<h5 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h5><ul>
+<li><p>To put the image on the pendrive we will use the dd tool available on almost any Mac OS X (macOS) and Linux system. For Windows You will have to download it from here – <span class="exturl" data-url="aHR0cDovL3d3dy5jaHJ5c29jb21lLm5ldC9kZA==">dd for windows<i class="fa fa-external-link-alt"></i></span>( bs=1M on Linux/Windows ).（可用 Rufus 替代）</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo dd if=FreeBSD-11.1-RELEASE-amd64-memstick.img of=/dev/da1 bs=1m</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>When we have a new machine there is always a problem with new name for it. The RFC 1178 <span class="exturl" data-url="aHR0cHM6Ly90b29scy5pZXRmLm9yZy9odG1sL3JmYzExNzg=">Choosing a Name for Your Computer<i class="fa fa-external-link-alt"></i></span> from 1990 year tries to address that issue </p>
 </li>
 <li><p>We do not need any additional components, with all deselected as shown below only the (not shown) base and kernel will be installed.</p>
 </li>
 </ul>
-<img data-src="/2020/11/28/FreeBSD-Desktop/freebsd-11-1-laptop-install-04.png" class="" title="FreeBSD">
+<img data-src="/2020/11/17/FreeBSD/freebsd-11-1-laptop-install-04.png" class="" title="FreeBSD">
 
 <ul>
 <li>We will use ZFS because we want to use Boot Environments with sysutils/beadm port.<ul>
@@ -235,61 +196,65 @@
 </ul>
 </li>
 </ul>
-<img data-src="/2020/11/28/FreeBSD-Desktop/freebsd-install-03.png" class="" title="FreeBSD">
+<img data-src="/2020/11/17/FreeBSD/freebsd-install-03.png" class="" title="FreeBSD">
 
 <ul>
 <li>Select services as shown below.</li>
 </ul>
-<img data-src="/2020/11/28/FreeBSD-Desktop/freebsd-11-1-laptop-install-23.png" class="" title="FreeBSD">
+<img data-src="/2020/11/17/FreeBSD/freebsd-11-1-laptop-install-23.png" class="" title="FreeBSD">
 
 <ul>
 <li>Enable all security hardening features as shown below.</li>
 </ul>
-<img data-src="/2020/11/28/FreeBSD-Desktop/freebsd-11-1-laptop-install-24.png" class="" title="FreeBSD">
+<img data-src="/2020/11/17/FreeBSD/freebsd-11-1-laptop-install-24.png" class="" title="FreeBSD">
 
-<h5 id="Boot"><a href="#Boot" class="headerlink" title="Boot"></a>Boot</h5><p>If You will have attached LAN cable and your interface is <code>em0</code> (check <code>ifconfig</code> command output) then <code>dhclient em0</code> command should grant You the working connection to the Internet – assuming that You have DHCP server on that network. </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ifconfig em0 up</span><br><span class="line">dhclient em0</span><br></pre></td></tr></table></figure>
+<h3 id="X11-Window-System"><a href="#X11-Window-System" class="headerlink" title="X11 Window System"></a>X11 Window System</h3><p>X 最初設計是以網路為中心，採用 “client-server” 架構。在此架構下 “X 伺服器” 在有鍵盤、螢幕、滑鼠的電腦上運作。該伺服器負責的工作包含管理顯示、處理來自鍵盤、滑鼠的輸入及來自其他設備)的輸入或輸出。</p>
+<p>每個 X 應用程式，如 XTerm、Firefox 都是 “客戶端”。</p>
+<p>視窗管理程式規定螢幕上的視窗該長什麼樣、要如何移動滑鼠指標、 要用什麼鍵來在視窗切換、每個視窗的標題列長相，及是否該有關閉按鈕，等等。視窗管理程式負責滑鼠指標的聚焦政策。 聚焦政策指的是如何決定使用中及接收鍵盤輸入的視窗。通常較為人熟悉的聚焦政策叫做 “click-to-focus”，這個模式中，滑鼠點選到的視窗便會處於作用中 (Active) 的狀態。</p>
+<p>KDE 與 GNOME 會被稱作桌面環境是因為包含了完整常用桌面作業的應用程式。</p>
+<h5 id="BIOS-or-UEFI"><a href="#BIOS-or-UEFI" class="headerlink" title="BIOS or UEFI"></a>BIOS or UEFI</h5><p>First things first, if You find a device that is not supported by any ‘accelerated’ driver like <code>intel</code> or <code>nvidia</code>. You would use <code>vesa</code> driver (Video Electronics Standards Association) while booting in BIOS mode and You will use <code>scfb</code> driver (System Console Frame Buffer) while booting on UEFI mode. This can be checked by </p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo sysctl machdep.bootmethod</span><br></pre></td></tr></table></figure>
 
-<p>To test the network connectivity use the <code>ping</code> command.</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ping -c 3 freebsd.org</span><br></pre></td></tr></table></figure>
+<h5 id="Packages"><a href="#Packages" class="headerlink" title="Packages"></a>Packages</h5><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo pkg install xorg</span><br></pre></td></tr></table></figure>
 
-<p>If You would like to connect to the World with wireless connection then here are the needed commands. First lets check what wireless card You have.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sysctl net.wlan.devices</span><br></pre></td></tr></table></figure>
+<h5 id="Xorg-Configuration"><a href="#Xorg-Configuration" class="headerlink" title="Xorg Configuration"></a>Xorg Configuration</h5><ul>
+<li><p>顯示卡、顯示器以及輸入裝置會自動偵測，無須任何手動設置。除非自動設置失敗，否則請勿建立 xorg.conf 或執行 -configure 步驟。</p>
+</li>
+<li><p>加入要執行 Xorg 的使用者到 <code>video</code> 或 <code>wheel</code> 群組，以便在可用時能開啟 3D 加速。要加入使用者 <em><code>jru</code></em> 到任一個可用的群組：</p>
+  <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo pw groupmod video -m jru || pw groupmod wheel -m jru</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>較舊版的 FreeBSD 使用的 sc 並不知到 KMS 系統的存在，這會導致關閉 X 之後即始仍在運作但系統 Console 卻呈現空白。較新版的 vt Console 可避免這個問題。加入此行到 <code>/boot/loader.conf</code> 來開啟 vt：</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">kern.vty&#x3D;vt</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Login Class(可解决中文乱码，powershell 字符显示方形)</p>
+<p>  Add this login class to the <code>/etc/login.conf</code> file.</p>
+  <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">video:\</span><br><span class="line">        :charset=UTF-8:\</span><br><span class="line">        :lang=en_US.UTF-8:\</span><br><span class="line">        :tc=default:</span><br></pre></td></tr></table></figure>
 
-<p>We will now create <code>wlan</code> virtual device on top of our <code>iwn0</code> device and bring it up.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ifconfig wlan0 create wlandev iwn0</span><br><span class="line">ifconfig wlan0 up</span><br></pre></td></tr></table></figure>
+<p>  Rebuild the login class database.</p>
+  <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo cap_mkdb /etc/login.conf</span><br></pre></td></tr></table></figure>
 
-<p>We can scan for existing nearby WiFi access points if needed.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ifconfig wlan0 scan</span><br></pre></td></tr></table></figure>
+<p>  Lets set the login class to video for the vuk user.</p>
+  <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo pw usermod -L video -n vuk</span><br></pre></td></tr></table></figure>
 
-<p>Now we need to add the desired WiFi network to the /etc/wpa_supplicant.conf file as shown below.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">network&#x3D;&#123;</span><br><span class="line">  ssid&#x3D;&quot;WIFI-NETWORK-NAME&quot;</span><br><span class="line">  psk&#x3D;&quot;PASSWORD&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  How the account looks after setting the login class.</p>
+  <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo grep vuk /etc/master.passwd</span><br><span class="line">vuk:&#123;REMOVED&#125;:1000:1000:video:0:0:vuk:/home/vuk:/bin/sh</span><br></pre></td></tr></table></figure>
 
-<p>Then You may connect to it using the <code>wpa_supplicant</code> daemon. Hit the <code>[CTRL]+[Z]</code> key combination to put the process into suspended state. Then we type the <code>bg</code> command to put it back into running state, but in the background so we can continue to type next commands.</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">wpa_supplicant -i wlan0 -c /etc/wpa_supplicant.conf</span><br></pre></td></tr></table></figure>
-
-<p>Now we will request for the IP address from the access point DHCP server.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dhclient wlan0</span><br></pre></td></tr></table></figure>
-
-<h3 id="X11-Window-System"><a href="#X11-Window-System" class="headerlink" title="X11 Window System"></a>X11 Window System</h3><h5 id="BIOS-or-UEFI"><a href="#BIOS-or-UEFI" class="headerlink" title="BIOS or UEFI"></a>BIOS or UEFI</h5><p>First things first, if You find a device that is not supported by any ‘accelerated’ driver like <code>intel</code> or <code>nvidia</code>. You would use <code>vesa</code> driver (Video Electronics Standards Association) while booting in BIOS mode and You will use <code>scfb</code> driver (System Console Frame Buffer) while booting on UEFI mode. This can be checked by </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sysctl machdep.bootmethod</span><br></pre></td></tr></table></figure>
-
-<h5 id="Packages"><a href="#Packages" class="headerlink" title="Packages"></a>Packages</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pkg install xorg xdm xterm openbox xf86-video-intel</span><br></pre></td></tr></table></figure>
-
-<h5 id="Group"><a href="#Group" class="headerlink" title="Group"></a>Group</h5><p>To have hardware accelerated X11 You will also need to add your regular user to the <code>video</code> group.</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pw groupmod video -m username</span><br></pre></td></tr></table></figure>
-
-<h5 id="Login-Class"><a href="#Login-Class" class="headerlink" title="Login Class"></a>Login Class</h5><p>Remember to also add UTF-8 as the default encoding in the <code>/etc/login.conf</code> file as show below. Also, after adding them, run the <code>cap_mkdb /etc/login.conf</code> command as root and relogin with your regular user.</p>
-<figure class="highlight diff"><table><tr><td class="code"><pre><span class="line"><span class="addition">+		:charset=UTF-8:\</span></span><br><span class="line"><span class="addition">+		:lang=en_US.UTF-8:\</span></span><br></pre></td></tr></table></figure>
-
-<p>The UTF-8 encoding – same as in the <code>lang</code> parameter in the <code>/etc/login.conf</code> file – must be added at the begining of your <code>~/.xinitrc</code> file, like that:</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> LC_ALL=en_US.UTF-8</span><br></pre></td></tr></table></figure>
-
-<h5 id="Kernel-Module"><a href="#Kernel-Module" class="headerlink" title="Kernel Module"></a>Kernel Module</h5><p>Most computers/laptops/servers will have integrated GPU which should be supported by the X11 <code>intel</code> driver and:</p>
+<p>  Now logout and login again to make that work. View the changes through the <code>locale</code> command.</p>
+</li>
+<li><p>显卡驱动：使用多檔，每一個檔案只設定一個指定項目會較傳統使用單一 <code>/etc/X11/xorg.conf</code> 設定來的簡單。完整路徑為 <code>/usr/local/etc/X11/xorg.conf.d/</code>。</p>
 <ul>
-<li><code>/boot/kernel/i915kms.ko</code> from base system</li>
-<li><code>/boot/modules/i915kms.ko</code> from <code>drm-next-kmod</code> package (port moved to graphics/drm-fbsd12.0-kmod on 2018-12-09)</li>
-</ul>
+<li><p>Intel 驱动程式：</p>
+  <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo pkg install xf86-video-intel</span><br></pre></td></tr></table></figure>
+
+  <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo vi /usr/local/etc/X11/xorg.conf.d/driver-intel.conf</span><br><span class="line">Section &quot;Device&quot;</span><br><span class="line">    Identifier &quot;Card0&quot;</span><br><span class="line">    Driver     &quot;intel&quot;</span><br><span class="line">    # BusID    &quot;PCI:1:0:0&quot;</span><br><span class="line">EndSection</span><br></pre></td></tr></table></figure>
+
+<p>  若有多張顯示卡，可取消註解 <code>BusID</code> identifier 然後設定為想要的顯示卡，顯示卡的 Bus ID 清單可以使用 <code>pciconf -lv | grep -B3 display</code> 取得。</p>
+</li>
+<li><p>Intel KMS 驅動程式: If you use <code>i915kms</code> kernel module, you don’t need to install <code>xf86-video-intel</code>, Most computers/laptops/servers will have integrated GPU which should be supported by the X11 intel driver and:</p>
+<ul>
+<li><p><code>/boot/kernel/i915kms.ko</code> from base system</p>
+</li>
+<li><p><code>/boot/modules/i915kms.ko</code> from <code>drm-next-kmod</code> package (port moved to graphics/drm-fbsd12.0-kmod on 2018-12-09)</p>
 <p>To add the KMS (Kernel Mode Setting) Intel module loading into the <code>/etc/rc.conf</code> file put the line below into it.</p>
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">kld_list=<span class="string">&quot;<span class="variable">$&#123;kld_list&#125;</span> i915kms&quot;</span></span><br></pre></td></tr></table></figure>
 
@@ -297,144 +262,100 @@
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">kld_list=<span class="string">&quot;<span class="variable">$&#123;kld_list&#125;</span> /boot/modules/i915kms.ko&quot;</span></span><br></pre></td></tr></table></figure>
 
 <p>If you find yourself in the situation that the <code>drm-next-kmod</code> would still not support your latest graphics card then you may try the latest version of the <code>drm-next-kmod</code>.</p>
-<h5 id="X11-Window-System-Configuration"><a href="#X11-Window-System-Configuration" class="headerlink" title="X11 Window System Configuration"></a>X11 Window System Configuration</h5><p>You can just configure these parts of X11 server that You need without touching other parts. This individual configuration is done in the <code>/usr/local/etc/X11/xorg.conf.d</code> directory with individual files for each setting.</p>
-<ul>
-<li><p>The DontZap option is to enable the X11 server abort with <code>[CTRL] + [ALT] + [BACKSPACE]</code> shortcut.</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cat /usr/local/etc/X11/xorg.conf.d/flags.conf</span><br><span class="line">Section &quot;ServerFlags&quot;</span><br><span class="line">  Option &quot;DontZap&quot; &quot;off&quot;</span><br><span class="line">EndSection</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><code>terminate:ctrl_alt_bksp</code> to allow termination of the X11 server with <code>[CTRL] + [ALT] + [BACKSPACE]</code> shortcut and <code>ctrl:nocaps</code> to ignore the Caps Lock key as I also find that useful.</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cat /usr/local/etc/X11/xorg.conf.d/keyboard.conf</span><br><span class="line">Section &quot;InputDevice&quot;</span><br><span class="line">  Identifier &quot;Keyboard0&quot;</span><br><span class="line">  Driver &quot;kbd&quot;</span><br><span class="line">  Option &quot;XkbLayout&quot; &quot;us&quot;</span><br><span class="line">  Option &quot;XkbOptions&quot; &quot;terminate:ctrl_alt_bksp,ctrl:nocaps&quot;</span><br><span class="line">EndSection</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>graphics card configuration</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cat /usr/local/etc/X11/xorg.conf.d/card.conf</span><br><span class="line">Section &quot;Device&quot;</span><br><span class="line">  Identifier &quot;Card0&quot;</span><br><span class="line">  Option &quot;DPMS&quot;</span><br><span class="line">  Driver &quot;intel&quot;</span><br><span class="line">EndSection</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo vi /usr/local/etc/X11/xorg.conf.d/driver-intel.conf</span><br><span class="line">Section &quot;Device&quot;</span><br><span class="line">    Identifier &quot;Card0&quot;</span><br><span class="line">    Driver     &quot;i915kms&quot;</span><br><span class="line">EndSection</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h5 id="XDM-or-XINIT-STARTX"><a href="#XDM-or-XINIT-STARTX" class="headerlink" title="XDM or XINIT/STARTX"></a>XDM or XINIT/STARTX</h5><p>You will also have to decide how You want to start your X11 Window Server, you may login in plan text console and then type <code>xinit</code> or <code>startx</code> to read your <code>~/.xinitrc</code> configuration and daemons or You may want to use X11 Login manager such as <code>xdm/sddm/slim</code> with <code>~/.xsession</code> configuration to load after successful login. The difference between <code>xinit</code> and <code>startx</code> is that <code>startx</code> command executes <code>xinit</code> command with arguments.</p>
-<p>When I use <code>xinit</code> to directly start the X11 server I use an alias to <code>xinit</code> with these parameters:</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">alias</span> x=<span class="string">&#x27;xinit ~/.xinitrc -- -dpi 75 -nolisten tcp&#x27;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Using modesetting Driver: The <code>modesetting</code> generic DDX driver that is built in the X server, will do just well. The xf86-video-intel might even cause you troubles.</p>
+  <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo cat /usr/local/etc/X11/xorg.conf.d/card.conf</span><br><span class="line">Section &quot;Device&quot;</span><br><span class="line">  Identifier &quot;Card0&quot;</span><br><span class="line">  Option &quot;DPMS&quot;		# 显示电源管理信号，简称DPMS</span><br><span class="line">  Driver &quot;modesetting&quot;</span><br><span class="line">EndSection</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>手動設定</p>
+<ul>
+<li><p>設定檔可由 Xorg 根據偵測到的硬體產生，這個檔案對一開始自訂設定很有幫助。</p>
+  <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Xorg -configure</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>設定檔會儲存至 <code>/root/xorg.conf.new</code>，做任何需要的更改，然後使用以下指令測試該檔案：</p>
+  <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Xorg -config /root/xorg.conf.new</span><br></pre></td></tr></table></figure>
 
-<p>I keep that alias in the <code>~/.zshrc</code> file.</p>
+<p>  在新設定檔調整與測試過後，便可分開成較小的檔案放置到正常的位置 <code>/usr/local/etc/X11/xorg.conf.d/</code>。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="Install-Desktop-Enviroment"><a href="#Install-Desktop-Enviroment" class="headerlink" title="Install Desktop Enviroment"></a>Install Desktop Enviroment</h5><ul>
+<li><p>FreeBSD 桌面发行版</p>
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuZ2hvc3Ric2Qub3JnLw==">GhostBSD<i class="fa fa-external-link-alt"></i></span> 是 FreeBSD 桌面发行版，注意使用 Official 版本，不能直接使用 FreeBSD 源升级。</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9ub21hZGJzZC5vcmcv">nomadbsd<i class="fa fa-external-link-alt"></i></span> 是个非常漂亮的 FreeBSD 桌面发行版 ，德国产。</li>
+<li>可以在虚拟机里面安装 FreeBSD 桌面发行版，然后找到自己想用的桌面工具，再定制自己的 FreeBSD 桌面。</li>
+</ul>
+</li>
+<li><p>Install Desktop Environment</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo pkg install gnome3</span><br><span class="line">sudo pkg install gnome3-lite</span><br><span class="line">sudo pkg install x11/kde5</span><br><span class="line">sudo pkg install xfce</span><br><span class="line">sudo pkg install mate</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Install/Enable Display Manager: You have to decide how You want to start your X11 Window Server, you may login in plan text console and then type <code>xinit</code> or <code>startx</code> to read your <code>~/.xinitrc</code> configuration and daemons (The difference between <code>xinit</code> and <code>startx</code> is that <code>startx</code> command executes <code>xinit</code> command with arguments.) or You may want to use X11 Login manager such as <code>xdm/sddm/slim</code> with <code>~/.xsession</code> configuration to load after successful login. </p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo pkg install xdm</span><br><span class="line">sudo pkg install slim			# xfce,mate</span><br><span class="line">sudo pkg install x11/sddm		# kde</span><br></pre></td></tr></table></figure>
+
 <p>While <code>xinit</code> run commands based on the <code>~/.xinitrc</code> file the XDM login manager looks for the <code>~/.xsession</code> file. As You will be loading same stuff regardless of the startup method we will create a link of <code>~/.xsession</code> pointing to the <code>~/.xinitrc</code> file. This way either method You choose You will always end with started X11 session.</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ln -s ~/.xinitrc ~/.xsession</span><br></pre></td></tr></table></figure>
 
 <p>One more case about the <code>~/.xinitrc</code> (or <code>~/.xsession</code>) file. It is interpreted as a shell script (and yes you can do <code>if/then/else/fi</code> and <code>case/esac</code> or <code>for/while</code> POSIX shell scripting in it) but it does not need to be executable. The last command in this file MUST NOT to be put in the background (must be without the <code>&amp;</code> char at the end) because the X11 session will end.</p>
-<h5 id="XDM-Black-Theme"><a href="#XDM-Black-Theme" class="headerlink" title="XDM Black Theme"></a>XDM Black Theme</h5><p>To configure this black XDM theme You will need to modify contents of two files as show below.</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cat /usr/local/etc/X11/xdm/Xsetup_0</span><br><span class="line">xsetroot -solid black</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Setting</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo vi /etc/ttys</span><br><span class="line">ttyv8   &quot;/usr/local/bin/xdm -nodaemon&quot;  xterm  on secure</span><br></pre></td></tr></table></figure>
 
-<p>This we will set black background on the login screen on the :<code>0</code> X11 server – the default one.</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cat /usr/local/etc/X11/xdm/Xresources</span><br><span class="line">xlogin.Login.greeting:</span><br><span class="line">xlogin.Login.unsecureGreeting:</span><br><span class="line">xlogin.Login.fail:                Fail.</span><br><span class="line">xlogin.Login.changePasswdMessage: Change.</span><br><span class="line">xlogin.Login.namePrompt:          Username:</span><br><span class="line">xlogin.Login.passwdPrompt:        Password:</span><br><span class="line">xlogin.Login.echoPasswd:          true</span><br><span class="line">xlogin.Login.background:          black</span><br><span class="line">xlogin.Login.foreground:          white</span><br><span class="line">xlogin.Login.failColor:           #cccccc</span><br><span class="line">xlogin.Login.inpColor:            black</span><br><span class="line">xlogin.Login.promptColor:         #aaaaaa</span><br><span class="line">xlogin.Login.face:                courier:size=13:style=Bold</span><br><span class="line">xlogin.Login.failFace:            courier:size=13:style=Bold</span><br><span class="line">xlogin.Login.promptFace:          courier:size=13:style=Normal</span><br><span class="line">xlogin.Login.greetFace:           courier:size=13</span><br><span class="line">xlogin.Login.width:               400</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo vi /etc/fstab gnome, kde</span><br><span class="line">proc           /proc       procfs  rw  0   0</span><br></pre></td></tr></table></figure>
 
-<img data-src="/2020/11/28/FreeBSD-Desktop/xdm-black.png" class="" title="FreeBSD">
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo vi /etc/rc.conf</span><br><span class="line">moused_enalbe=&quot;YES&quot;</span><br><span class="line">dbus_enable=&quot;YES&quot;		# gnome, kde, xfce</span><br><span class="line">hald_enable=&quot;YES&quot;		# gnome, kde, mate</span><br><span class="line">gdm_enalbe=&quot;YES&quot;		# gnome启动</span><br><span class="line">sddm_enable=&quot;YES&quot;		# kde启动</span><br><span class="line">slim_enable=&quot;YES&quot;		# xfce,mate</span><br><span class="line">gnome_enable=&quot;YES&quot;		# gnome服务</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>slim Usage(Failed to execute login command)</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo vi ~/.xinitrc</span><br><span class="line">exec mate-session		# mate</span><br><span class="line">exec xfce4-session		# xfce</span><br></pre></td></tr></table></figure>
 
-<h5 id="Client-Configuration"><a href="#Client-Configuration" class="headerlink" title="Client Configuration"></a>Client Configuration</h5><p> the simple <code>~/.xinitrc</code> file with <code>Openbox</code> window manager, prestarted <code>xterm</code> terminal and black background for our simple session.</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cat ~/.xinitrc</span><br><span class="line"><span class="meta">#</span><span class="bash"> SET PROPER locale(1) with LC_ALL VARIABLE.</span></span><br><span class="line">  export LC_ALL=en_US.UTF-8</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> PRESTARTED APPS</span></span><br><span class="line">  xterm &amp;</span><br><span class="line">  xsetroot -solid black &amp;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> WINDOW MANAGER</span></span><br><span class="line">  openbox</span><br></pre></td></tr></table></figure>
-
-<img data-src="/2020/11/28/FreeBSD-Desktop/desktop.png" class="" title="FreeBSD">
-
-<h5 id="Using-modesetting-Driver"><a href="#Using-modesetting-Driver" class="headerlink" title="Using modesetting Driver"></a>Using modesetting Driver</h5><p>If you use <code>i915kms</code> kernel module, you don’t need to install <code>xf86-video-intel</code>, the <code>modesetting</code> generic DDX driver that is built in the X server, will do just well. The xf86-video-intel might even cause you troubles.</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cat /usr/local/etc/X11/xorg.conf.d/card.conf</span><br><span class="line">Section &quot;Device&quot;</span><br><span class="line">  Identifier &quot;Card0&quot;</span><br><span class="line">  Option &quot;DPMS&quot;</span><br><span class="line">  Driver &quot;modesetting&quot;</span><br><span class="line">EndSection</span><br></pre></td></tr></table></figure>
-
-<h5 id="Using-Dedicated-video-Login-Class-Instead-of-Global-One"><a href="#Using-Dedicated-video-Login-Class-Instead-of-Global-One" class="headerlink" title="Using Dedicated video: Login Class Instead of Global One"></a>Using Dedicated video: Login Class Instead of Global One</h5><p>（可解决中文乱码）</p>
-<p>If you modify <code>/etc/login.conf</code>, you are modifying the systemwide locale for the default login class to which all users belong (also user www for Apache, for example).</p>
-<p>Add this login class to the <code>/etc/login.conf</code> file.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">video:\</span><br><span class="line">        :charset&#x3D;UTF-8:\</span><br><span class="line">        :lang&#x3D;en_US.UTF-8:\</span><br><span class="line">        :tc&#x3D;default:</span><br></pre></td></tr></table></figure>
-
-<p>Rebuild the login class database.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cap_mkdb &#x2F;etc&#x2F;login.conf</span><br></pre></td></tr></table></figure>
-
-<p>Lets set the login class to video for the vuk user.</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pw usermod -L video -n vuk</span><br></pre></td></tr></table></figure>
-
-<p>How the account looks after setting the login class.</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">grep vuk /etc/master.passwd</span><br><span class="line">vuk:&#123;REMOVED&#125;:1000:1000:video:0:0:vuk:/home/vuk:/bin/sh</span><br></pre></td></tr></table></figure>
-
-<p>Now logout and login again to make that work. View the changes through the <code>locale</code> command.</p>
-<h5 id="Tap-to-Click-on-Synaptics-Touchpad"><a href="#Tap-to-Click-on-Synaptics-Touchpad" class="headerlink" title="Tap to Click on Synaptics Touchpad"></a>Tap to Click on Synaptics Touchpad</h5><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pkg install xf86-input-synaptics</span><br><span class="line"></span><br><span class="line">cat /usr/local/etc/X11/xorg.conf.d/touchpad.conf</span><br><span class="line">Section &quot;InputClass&quot;</span><br><span class="line">  Identifier &quot;touchpad&quot;</span><br><span class="line">  MatchIsTouchpad &quot;on&quot;</span><br><span class="line">  Driver &quot;libinput&quot;</span><br><span class="line">  Option &quot;Tapping&quot; &quot;on&quot;</span><br><span class="line">EndSection</span><br></pre></td></tr></table></figure>
-
-<h3 id="Key-Components"><a href="#Key-Components" class="headerlink" title="Key Components"></a>Key Components</h3><h5 id="Window-Manager"><a href="#Window-Manager" class="headerlink" title="Window Manager"></a>Window Manager</h5><p>The <span class="exturl" data-url="aHR0cHM6Ly93d3cuYm94LWxvb2sub3JnL3AvMTAxNzgzMi8=">TWM<i class="fa fa-external-link-alt"></i></span> <em>Openbox</em> theme.</p>
-<img data-src="/2020/11/28/FreeBSD-Desktop/openbox-theme-twm.png" class="" title="FreeBSD">
-
-<p>If You would like to increase your knowledge about Openbox then check the official documentation: <span class="exturl" data-url="aHR0cDovL29wZW5ib3gub3JnL3dpa2kvTWFpbl9QYWdl">Openbox<i class="fa fa-external-link-alt"></i></span></p>
-<h5 id="Status-Bar"><a href="#Status-Bar" class="headerlink" title="Status Bar"></a>Status Bar</h5><p>Also known as information bar, the place on the screen that would provide You needed information such as current date and time, CPU, RAM and storage usage, current network information or battery status.</p>
-<ul>
-<li>While <code>Xmobar</code> is nice solution it comes with about 2 GB of dependencies of Haskell and Haskell libraries.</li>
-<li>While <code>Polybar</code> can look very nice on screenshots it is a lot more heavy on resources and is limited only to modules/features that were implemented in it.</li>
+</li>
 </ul>
-<img data-src="/2020/11/28/FreeBSD-Desktop/openbox-polybar.jpg" class="" title="FreeBSD">
-
+<h5 id="Components"><a href="#Components" class="headerlink" title="Components"></a>Components</h5><ul>
+<li><p>Window Manager: <span class="exturl" data-url="aHR0cDovL29wZW5ib3gub3JnL3dpa2kvTWFpbl9QYWdl">Openbox<i class="fa fa-external-link-alt"></i></span>…</p>
+</li>
+<li><p>Status Bar: Also known as information bar, the place on the screen that would provide You needed information such as current date and time, CPU, RAM and storage usage, current network information or battery status.</p>
 <ul>
-<li>I have used <code>Conky</code> for quite long time but after recent tests I made <code>Dzen2</code> is a lot less on resources then Conky while doing the same thing. </li>
+<li><p>While <code>Xmobar</code> is nice solution it comes with about 2 GB of dependencies of Haskell and Haskell libraries.</p>
+</li>
+<li><p>While <code>Polybar</code> can look very nice on screenshots it is a lot more heavy on resources and is limited only to modules/features that were implemented in it.</p>
+<img data-src="/2020/11/17/FreeBSD/openbox-polybar.jpg" class="" title="FreeBSD">
+</li>
+<li><p>I have used <code>Conky</code> for quite long time but after recent tests I made <code>Dzen2</code> is a lot less on resources then Conky while doing the same thing. </p>
+</li>
 </ul>
-<h5 id="Task-Bar"><a href="#Task-Bar" class="headerlink" title="Task Bar"></a>Task Bar</h5><p>A taskbar is an element of a graphical user interface which has various purposes. It typically shows which programs are currently running.</p>
+</li>
+<li><p>Task Bar: A taskbar is an element of a graphical user interface which has various purposes. It typically shows which programs are currently running.</p>
 <ul>
-<li>You can use classic taskbar like <code>XFCE Panel</code> used in the XFCE desktop environment.</li>
+<li><p>You can use classic taskbar like <code>XFCE Panel</code> used in the XFCE desktop environment.</p>
+<img data-src="/2020/11/17/FreeBSD/taskbar-xfce.png" class="" title="FreeBSD">
+</li>
+<li><p>You can also configure <code>Tint2</code> that way. But it only shows applications that are active on the current desktop.</p>
+<img data-src="/2020/11/17/FreeBSD/taskbar-tint-classic.jpg" class="" title="FreeBSD">
+</li>
+<li><p>One of the greatest taskbars of all time was/is the Mac OS X Dock (now macOS Dock).  It also has an indicator showing if application is launched. Currently the best and lightest solution for providing the dock-like functionality on open desktops seems to be <code>Plank</code>.</p>
+<img data-src="/2020/11/17/FreeBSD/taskbar-plank-eos.png" class="" title="FreeBSD">
+</li>
 </ul>
-<img data-src="/2020/11/28/FreeBSD-Desktop/taskbar-xfce.png" class="" title="FreeBSD">
-
-<ul>
-<li>You can also configure <code>Tint2</code> that way. But it only shows applications that are active on the current desktop.</li>
-</ul>
-<img data-src="/2020/11/28/FreeBSD-Desktop/taskbar-tint-classic.jpg" class="" title="FreeBSD">
-
-<ul>
-<li>One of the greatest taskbars of all time was/is the Mac OS X Dock (now macOS Dock).  It also has an indicator showing if application is launched. Currently the best and lightest solution for providing the dock-like functionality on open desktops seems to be <code>Plank</code>.</li>
-</ul>
-<img data-src="/2020/11/28/FreeBSD-Desktop/taskbar-plank-eos.png" class="" title="FreeBSD">
-
-<h5 id="Wallpaper-Handling"><a href="#Wallpaper-Handling" class="headerlink" title="Wallpaper Handling"></a>Wallpaper Handling</h5><p>Some people have a set of favorite wallpapers and setup random wallpaper from this set of favorites to show up every once in a while.</p>
-<p>While <code>Feh</code> main/original function is to be ultra fast image viewer it also has an option to properly setup a wallpaper on a X11 desktop.</p>
-<h5 id="Application-Launcher"><a href="#Application-Launcher" class="headerlink" title="Application Launcher"></a>Application Launcher</h5><p>While not being any crucial role of the desktop environment it have its uses and sometimes save time.</p>
+</li>
+<li><p>Application Launcher: While not being any crucial role of the desktop environment it have its uses and sometimes save time.</p>
 <p>Lets start with resources, the <code>Rofi</code> implementation of application launcher uses almost 3 times more RAM  then <code>Dmenu</code> solution.</p>
 <ul>
-<li>Desktop with Dmenu launched and with <code>alc</code> characters inserted to ‘filter’ commands in the search of a calculator application.</li>
-</ul>
-<img data-src="/2020/11/28/FreeBSD-Desktop/launcher-dmenu-run.jpg" class="" title="FreeBSD">
-
-<ul>
+<li><p>Desktop with Dmenu launched and with <code>alc</code> characters inserted to ‘filter’ commands in the search of a calculator application.</p>
+<img data-src="/2020/11/17/FreeBSD/launcher-dmenu-run.jpg" class="" title="FreeBSD">
+</li>
 <li><p>The Rofi requires simple command.</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">rofi -show run -theme solarized_alternate -font &quot;Monaco 8&quot;</span><br></pre></td></tr></table></figure>
 
+<img data-src="/2020/11/17/FreeBSD/launcher-rofi.jpg" class="" title="FreeBSD">
 </li>
 </ul>
-<img data-src="/2020/11/28/FreeBSD-Desktop/launcher-rofi.jpg" class="" title="FreeBSD">
-
-<h5 id="Keyboard-Mouse-Shortcuts"><a href="#Keyboard-Mouse-Shortcuts" class="headerlink" title="Keyboard/Mouse Shortcuts"></a>Keyboard/Mouse Shortcuts</h5><p>While most window managers and desktop environments offer some kind of shortcuts or tools to define your own ones. its often quite complicated to force them to do exactly what you want. </p>
-<ul>
-<li>The <code>xev</code> is used to read what has keyboard key has been pressed or which mouse button was used.</li>
-</ul>
-<img data-src="/2020/11/28/FreeBSD-Desktop/keyboard-xev.jpg" class="" title="FreeBSD">
-
-<ul>
-<li>The <code>Xmodmap</code> is used to assign or rename keys to make something different.</li>
-<li>Similarly like xev the <code>xbindkeys</code> comes with its own window to catch events.</li>
-</ul>
-<img data-src="/2020/11/28/FreeBSD-Desktop/keyboard-xbindkeys.jpg" class="" title="FreeBSD">
-
-<ul>
-<li>Sometimes you want to fake that some keys were pressed – but without pressing them. This is where <code>xdotool</code> comes handy – it can generate any keyboard shortcut and send it to and application in X11 environment. </li>
-</ul>
-<h5 id="Locking-Solution"><a href="#Locking-Solution" class="headerlink" title="Locking Solution"></a>Locking Solution</h5><ul>
-<li>From all the nice looking solutions providing screen lock on the X11 I found <code>mate-screensaver</code> the best choice for this task ( saves battery time ). The mate-screensaver has to be started and run in the background with, well <code>mate-screensaver</code> command – placed somewhere in the <code>~/.xinitrc</code> or <code>~/.xsession</code> file. Then we would be able to invoke <code>mate-screensaver-command --lock</code> command to make the actual screen lock.</li>
-</ul>
-<img data-src="/2020/11/28/FreeBSD-Desktop/locker-mate-screensaver.png" class="" title="FreeBSD">
-
-<ul>
-<li><p>When mate-screensaver will not be available or functional we will use <code>xlock</code> as failover solution. The xlock tool appearance can be configured by specifying arguments.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">FONT&#x3D;&#39;-*-fixed-*-*-*-*-10-*-*-*-*-*-iso8859-2&#39;</span><br><span class="line">xlock \</span><br><span class="line">  -mode image \</span><br><span class="line">  -planfont &quot;$&#123;FONT&#125;&quot; \</span><br><span class="line">  -font     &quot;$&#123;FONT&#125;&quot; \</span><br><span class="line">  -username &#39;user: &#39; \</span><br><span class="line">  -password &#39;pass:&#39; \</span><br><span class="line">  -info &#39; &#39; \</span><br><span class="line">  -validate &#39;Checking.&#39; \</span><br><span class="line">  -invalid &#39;Nope. &#39; \</span><br><span class="line">  -background gray20 \</span><br><span class="line">  -foreground gray60 \</span><br><span class="line">  -dpmsoff 1 \</span><br><span class="line">  -icongeometry 64x64 \</span><br><span class="line">  -echokeys \</span><br><span class="line">  -echokey &#39;*&#39; \</span><br><span class="line">  -bitmap &#x2F;home&#x2F;vermaden&#x2F;.icons&#x2F;vermaden&#x2F;xlock.xpm \</span><br><span class="line">  -count 1 \</span><br><span class="line">  -delay 10000000 \</span><br><span class="line">  -erasemode no_fade \</span><br><span class="line">  +showdate \</span><br><span class="line">  +description</span><br></pre></td></tr></table></figure>
-
 </li>
-</ul>
-<img data-src="/2020/11/28/FreeBSD-Desktop/xlock-user-pass.png" class="" title="FreeBSD">
-
-<ul>
-<li><p>The <code>xautolock</code> will be used to automatically lock the screen (invoke mate-screensaver or xlock command) after defined period of inactivity time.</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">xautolock \</span><br><span class="line">    -time 1 \</span><br><span class="line">    -locker \</span><br><span class="line">    ~/bin/example-lock-handler.sh \</span><br><span class="line">    -resetsaver</span><br></pre></td></tr></table></figure>
-
-<p>The xautolock also has to be started and run in the background using the <code>~/.xinitrc</code> or <code>~/.xsession</code> file.</p>
-</li>
-</ul>
-<h5 id="Blue-Light-Spectrum-Suppress"><a href="#Blue-Light-Spectrum-Suppress" class="headerlink" title="Blue Light Spectrum Suppress"></a>Blue Light Spectrum Suppress</h5><p>Automatically adjusts color temperature of the screen according to your current time in your location.</p>
+<li><p>Blue Light Spectrum Suppress: Automatically adjusts color temperature of the screen according to your current time in your location.</p>
 <ul>
 <li><p>While <span class="exturl" data-url="aHR0cHM6Ly9qdXN0Z2V0Zmx1eC5jb20v">F.lux<i class="fa fa-external-link-alt"></i></span>  (closed source) does not provide a native binary for FreeBSD it does offer such binary for Linux and as FreeBSD provides Linux Binary Compatibility its possible to use it on FreeBSD. To use F.lux just start it in the <code>~/.xinitrc</code> or <code>~/.xsession</code> file like that.</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">~/path/to/bin/xflux -l 33.54321 -g 11.12345 &amp;</span><br></pre></td></tr></table></figure>
@@ -447,88 +368,6 @@
 <li><p>Someone else suggested trying <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtaXIvc2N0ZA==">sctd<i class="fa fa-external-link-alt"></i></span> which is sct but rewritten/modified to be a daemon that will automatically change the color temperature during the day (or night). The sctd uses smaller about of RAM memory, uses less libraries and size of these libraries is smaller then what redshfit needs. </p>
 </li>
 </ul>
-<h3 id="Configuration"><a href="#Configuration" class="headerlink" title="Configuration"></a>Configuration</h3><h5 id="Openbox"><a href="#Openbox" class="headerlink" title="Openbox"></a>Openbox</h5><ul>
-<li><p><code>doas</code> (sudo equivalent) </p>
-</li>
-<li><p>Font: Download them and extract them like that into the <code>~/.fonts</code> directory, if if does not exists, create it. To make sure that Openbox will see them you can verify it using the <code>fc-match</code> command like below.</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">fc-match &#x27;Ubuntu Mono&#x27;</span><br><span class="line">ubuntu-mono-regular.ttf: &quot;Ubuntu Mono&quot; &quot;Regular&quot;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Openbox: Openbox consists mostly of two files. <code>~/.config/openbox/menu.xml</code> and <code>~/.config/openbox/rc.xml</code>. The icons for the Openbox menu are kept under <code>~/.config/openbox/icons</code> directory.</p>
-</li>
-<li><p>Openbox Theme:  Unpack file like that into the <code>~/.themes</code> directory, create it if it does not exists.</p>
-</li>
-</ul>
-<h3 id="参见"><a href="#参见" class="headerlink" title="参见"></a>参见</h3><p><span class="exturl" data-url="aHR0cHM6Ly92ZXJtYWRlbi53b3JkcHJlc3MuY29tL2ZyZWVic2QtZGVza3RvcC8=">FreeBSD Desktop | 𝚟𝚎𝚛𝚖𝚊𝚍𝚎𝚗 (wordpress.com)<i class="fa fa-external-link-alt"></i></span></p>
-]]></content>
-      <tags>
-        <tag>Unix</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>FreeBSD</title>
-    <url>/2020/11/17/FreeBSD/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote><p>FreeBSD 計劃的目標在於提供可作任意用途的軟體而不附帶任何限制條文。 我們之中許多人對程式碼 (以及計畫本身) 都有非常大的投入， 因此，當然不介意偶爾有一些資金上的補償，但我們並沒打算堅決地要求得到這類資助。 我們認為我們的首要“使命”是為任何人提供程式碼， 不管他們打算用這些程式碼做什麼， 因為這樣程式碼將能夠被更廣泛地使用，從而發揮其價值。 我認為這是自由軟體最基本的，同時也是我們所倡導的一個目標。</p>
-<p>我們程式碼樹中，有若干是以 GNU 通用公共授權條款 (GPL) 或者 GNU 較寬鬆通用公共授權條款 (LGPL) 發佈的那些程式碼帶有少許的附加限制，還好只是強制性的要求開放程式碼而不是別的。 由於使用 GPL 的軟體在商業用途上會增加若干複雜性，因此，如果可以選擇的話， 我們會比較喜歡使用限制相對更寬鬆的 BSD 版權來發佈軟體。</p>
-<footer><strong>Jordan Hubbard</strong><cite><span class="exturl" data-url="aHR0cHM6Ly93d3cuZnJlZWJzZC5vcmcvZG9jL3poX1RXL2Jvb2tzL2hhbmRib29rLw==">FreeBSD Handbook<i class="fa fa-external-link-alt"></i></span></cite></footer></blockquote>
-
-<a id="more"></a>
-
-<h3 id="Xorg-Configuration"><a href="#Xorg-Configuration" class="headerlink" title="Xorg Configuration"></a>Xorg Configuration</h3><p>顯示卡、顯示器以及輸入裝置會自動偵測，無須任何手動設置。除非自動設置失敗，否則請勿建立 xorg.conf 或執行 -configure 步驟。</p>
-<p>加入要執行 Xorg 的使用者到 <code>video</code> 或 <code>wheel</code> 群組，以便在可用時能開啟 3D 加速。要加入使用者 <em><code>jru</code></em> 到任一個可用的群組：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pw groupmod video -m jru || pw groupmod wheel -m jru</span><br></pre></td></tr></table></figure>
-
-<p>較舊版的 FreeBSD 使用的 sc 並不知到 KMS 系統的存在，這會導致關閉 X 之後即始仍在運作但系統 Console 卻呈現空白。較新版的 vt Console 可避免這個問題。</p>
-<p>加入此行到 <code>/boot/loader.conf</code> 來開啟 vt：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">kern.vty&#x3D;vt</span><br></pre></td></tr></table></figure>
-
-<p>使用多檔，每一個檔案只設定一個指定項目會較傳統使用單一 <code>/etc/X11/xorg.conf</code> 設定來的簡單。完整路徑為 <code>/usr/local/etc/X11/xorg.conf.d/</code>。</p>
-<h5 id="在檔案中設定影像驅動程式"><a href="#在檔案中設定影像驅動程式" class="headerlink" title="在檔案中設定影像驅動程式"></a>在檔案中設定影像驅動程式</h5><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vi /usr/local/etc/X11/xorg.conf.d/driver-intel.conf</span><br><span class="line">Section &quot;Device&quot;</span><br><span class="line">	Identifier &quot;Card0&quot;</span><br><span class="line">	Driver     &quot;intel&quot;</span><br><span class="line"><span class="meta">	#</span><span class="bash"> BusID    <span class="string">&quot;PCI:1:0:0&quot;</span></span></span><br><span class="line">EndSection</span><br></pre></td></tr></table></figure>
-
-<p>若有多張顯示卡，可取消註解 <code>BusID</code> identifier 然後設定為想要的顯示卡，顯示卡的 Bus ID 清單可以使用 <code>pciconf -lv | grep -B3 display</code> 取得。</p>
-<h5 id="手動設定"><a href="#手動設定" class="headerlink" title="手動設定"></a>手動設定</h5><p>設定檔可由 Xorg 根據偵測到的硬體產生，這個檔案對一開始自訂設定很有幫助。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Xorg -configure</span><br></pre></td></tr></table></figure>
-
-<p>設定檔會儲存至 <code>/root/xorg.conf.new</code>，做任何需要的更改，然後使用以下指令測試該檔案：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Xorg -config /root/xorg.conf.new</span><br></pre></td></tr></table></figure>
-
-<p>在新設定檔調整與測試過後，便可分開成較小的檔案放置到正常的位置 <code>/usr/local/etc/X11/xorg.conf.d/</code>。</p>
-<h3 id="Install-Desktop-Enviroment"><a href="#Install-Desktop-Enviroment" class="headerlink" title="Install Desktop Enviroment"></a>Install Desktop Enviroment</h3><ul>
-<li><p><span class="exturl" data-url="aHR0cHM6Ly93d3cuZ2hvc3Ric2Qub3JnLw==">GhostBSD<i class="fa fa-external-link-alt"></i></span> 是 FreeBSD 桌面发行版，注意使用 Official 版本，不能直接使用 FreeBSD 源升级。</p>
-</li>
-<li><p><span class="exturl" data-url="aHR0cHM6Ly9ub21hZGJzZC5vcmcv">nomadbsd<i class="fa fa-external-link-alt"></i></span> 是个非常漂亮的 FreeBSD 桌面发行版 ，德国产。</p>
-</li>
-<li><p>可以在虚拟机里面安装 FreeBSD 桌面发行版，然后找到自己想用的桌面工具，再定制自己的 FreeBSD 桌面。</p>
-</li>
-</ul>
-<p>X 最初設計是以網路為中心，採用 “client-server” 架構。在此架構下 “X 伺服器” 在有鍵盤、螢幕、滑鼠的電腦上運作。該伺服器負責的工作包含管理顯示、處理來自鍵盤、滑鼠的輸入及來自其他設備)的輸入或輸出。</p>
-<p>每個 X 應用程式，如 XTerm、Firefox 都是 “客戶端”。</p>
-<p>視窗管理程式規定螢幕上的視窗該長什麼樣、要如何移動滑鼠指標、 要用什麼鍵來在視窗切換、每個視窗的標題列長相，及是否該有關閉按鈕，等等。視窗管理程式負責滑鼠指標的聚焦政策。 聚焦政策指的是如何決定使用中及接收鍵盤輸入的視窗。通常較為人熟悉的聚焦政策叫做 “click-to-focus”，這個模式中，滑鼠點選到的視窗便會處於作用中 (Active) 的狀態。</p>
-<p>KDE 與 GNOME 會被稱作桌面環境是因為包含了完整常用桌面作業的應用程式。</p>
-<ul>
-<li><p>Install X Window System</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo pkg install xorg</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Install Desktop Environment</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo pkg install gnome3</span><br><span class="line">sudo pkg install gnome3-lite</span><br><span class="line">sudo pkg install x11/kde5</span><br><span class="line">sudo pkg install xfce</span><br><span class="line">sudo pkg install mate</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Install/Enable Display Manager</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo pkg install xdm</span><br><span class="line">sudo pkg install slim			# xfce,mate</span><br><span class="line">sudo pkg install x11/sddm		# kde</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Setting</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo vi /etc/ttys</span><br><span class="line">ttyv8   &quot;/usr/local/bin/xdm -nodaemon&quot;  xterm  on secure</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo vi /etc/fstab gnome, kde</span><br><span class="line">proc           /proc       procfs  rw  0   0</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo vi /etc/rc.conf</span><br><span class="line">moused_enalbe=&quot;YES&quot;</span><br><span class="line">dbus_enable=&quot;YES&quot;		# gnome, kde, xfce</span><br><span class="line">hald_enable=&quot;YES&quot;		# gnome, kde, mate</span><br><span class="line">gdm_enalbe=&quot;YES&quot;		# gnome启动</span><br><span class="line">sddm_enable=&quot;YES&quot;		# kde启动</span><br><span class="line">slim_enable=&quot;YES&quot;		# xfce,mate</span><br><span class="line">gnome_enable=&quot;YES&quot;		# gnome服务</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ul>
-<ul>
-<li><p>slim Usage:failed to execute login command</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo vi ~/.xinitrc</span><br><span class="line">exec mate-session		# mate</span><br><span class="line">exec xfce4-session		# xfce</span><br></pre></td></tr></table></figure>
-
 </li>
 </ul>
 <h3 id="Binary-套件"><a href="#Binary-套件" class="headerlink" title="Binary 套件"></a>Binary 套件</h3><p>搜寻软件：<span class="exturl" data-url="aHR0cHM6Ly93d3cuZnJlZWJzZC5vcmcvcG9ydHMvaW5kZXguaHRtbA==">FreeBSD Ports<i class="fa fa-external-link-alt"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly93d3cuZnJlc2hwb3J0cy5vcmcv">FreshPorts<i class="fa fa-external-link-alt"></i></span></p>
@@ -588,7 +427,7 @@
 <li><p>Clean the local cache of fetched remote packages</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo pkg clean</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>Example</p>
+<li><p>Packages</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo pkg install vim atom linux-sublime3</span><br><span class="line">sudo pkg install git node npm		# Node.js</span><br><span class="line">sudo pkg install plank telegram-desktop firefox-esr</span><br><span class="line">sudo pkg install intellij tomcat mysql180-server mysql180-client		# Intellij IDEA use openjdk8</span><br><span class="line">sudo pkg install p7zip</span><br><span class="line">sudo pkg install zsh		# ZSH_THEME=&quot;agnoster&quot;</span><br><span class="line">pip install NetEase-MusicBox		# export PATH=&quot;your-dir:$PATH&quot;，网易云音乐命令行版</span><br><span class="line">sudo pkg install you-get youtube_dl		# 视频下载</span><br><span class="line">sudo pkg install vlc mplayer		# 视频播放</span><br></pre></td></tr></table></figure>
 
 
@@ -701,7 +540,7 @@
 <li>支援額外的硬體，自訂的核心可以增加一些 <code>GENERIC</code> 核心沒有提供的硬體支援。</li>
 </ul>
 <h5 id="偵測系統硬體"><a href="#偵測系統硬體" class="headerlink" title="偵測系統硬體"></a>偵測系統硬體</h5><ul>
-<li><p> <code>dmesg</code>  or <code>/var/run/dmesg.boot</code> </p>
+<li><p> <code>dmesg</code>  or <code>/var/run/dmesg.boot</code> or <code>/var/log/messages</code></p>
 </li>
 <li><p><code>pciconf -lv</code></p>
 </li>
@@ -840,7 +679,7 @@
 <ul>
 <li><p>Manual</p>
 <ul>
-<li><p>Setup: Add the following command to your <code>~/.xinitrc</code>, or to your window manager’s startup script (e.g. ~/.config/openbox/autostart.sh)</p>
+<li><p>Setup: Add the following command to your <code>~/.xinitrc</code>, or to your window manager’s startup script (e.g. <code>~/.config/openbox/autostart.sh</code>)</p>
   <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sh ~&#x2F;.config&#x2F;DSB&#x2F;autostart.sh&amp;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>~/.config/DSB/autostart.sh</code></p>
@@ -863,9 +702,41 @@
 </ul>
 <h5 id="FreeBSD-Install-Python-and-pip"><a href="#FreeBSD-Install-Python-and-pip" class="headerlink" title="FreeBSD Install Python and pip"></a>FreeBSD Install Python and pip</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo pkg install python</span><br><span class="line"></span><br><span class="line">python --version</span><br><span class="line">Python 3.7.9</span><br><span class="line"></span><br><span class="line">sudo pkg install py37-pip</span><br></pre></td></tr></table></figure>
 
-<h3 id="BSDs"><a href="#BSDs" class="headerlink" title="BSDs"></a>BSDs</h3><p>NetBSD: <span class="exturl" data-url="aHR0cHM6Ly9taXJyb3JzLmh1YXdlaWNsb3VkLmNvbS9OZXRCU0Qv">huaweicloud<i class="fa fa-external-link-alt"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly9taXJyb3JzLmFsaXl1bi5jb20vbmV0YnNkLz9zcG09YTJjNmguMTM2NTExMDQuMC4wLjRkODQzYmY0QXpKWVRY">aliyun<i class="fa fa-external-link-alt"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly9taXJyb3JzLnR1bmEudHNpbmdodWEuZWR1LmNuLw==">tsinghua<i class="fa fa-external-link-alt"></i></span></p>
+<h5 id="简化启动"><a href="#简化启动" class="headerlink" title="简化启动"></a>简化启动</h5><p>FreeBSD 默认启动过程相当详细，包含大量调试信息以及内核消息。</p>
+<ul>
+<li>Add the <code>boot_mute=YES</code> option to the <code>/boot/loader.conf</code> file. </li>
+<li>Add <code>autoboot_delay=2</code> parameter to the <code>/boot/loader.conf</code> file.</li>
+<li>Add <code>rc_startmsgs=&quot;NO&quot;</code> to your <code>/etc/rc.conf</code> file.</li>
+</ul>
+<h5 id="连接网络"><a href="#连接网络" class="headerlink" title="连接网络"></a>连接网络</h5><p>If You will have attached LAN cable and your interface is <code>em0</code> (check <code>ifconfig</code> command output) then <code>dhclient em0</code> command should grant You the working connection to the Internet – assuming that You have DHCP server on that network. </p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ifconfig em0 up</span><br><span class="line">dhclient em0</span><br></pre></td></tr></table></figure>
+
+<p>To test the network connectivity use the <code>ping</code> command.</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ping -c 3 freebsd.org</span><br></pre></td></tr></table></figure>
+
+<p>If You would like to connect to the World with wireless connection then here are the needed commands. First lets check what wireless card You have.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sysctl net.wlan.devices</span><br></pre></td></tr></table></figure>
+
+<p>We will now create <code>wlan</code> virtual device on top of our <code>iwn0</code> device and bring it up.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ifconfig wlan0 create wlandev iwn0</span><br><span class="line">ifconfig wlan0 up</span><br></pre></td></tr></table></figure>
+
+<p>We can scan for existing nearby WiFi access points if needed.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ifconfig wlan0 scan</span><br></pre></td></tr></table></figure>
+
+<p>Now we need to add the desired WiFi network to the <code>/etc/wpa_supplicant.conf</code> file as shown below.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">network&#x3D;&#123;</span><br><span class="line">  ssid&#x3D;&quot;WIFI-NETWORK-NAME&quot;</span><br><span class="line">  psk&#x3D;&quot;PASSWORD&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Then You may connect to it using the <code>wpa_supplicant</code> daemon. Hit the <code>[CTRL]+[Z]</code> key combination to put the process into suspended state. Then we type the <code>bg</code> command to put it back into running state, but in the background so we can continue to type next commands.</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">wpa_supplicant -i wlan0 -c /etc/wpa_supplicant.conf</span><br></pre></td></tr></table></figure>
+
+<p>Now we will request for the IP address from the access point DHCP server.</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">dhclient wlan0</span><br></pre></td></tr></table></figure>
+
+<h3 id="参见"><a href="#参见" class="headerlink" title="参见"></a>参见</h3><p>NetBSD: <span class="exturl" data-url="aHR0cHM6Ly9taXJyb3JzLmh1YXdlaWNsb3VkLmNvbS9OZXRCU0Qv">huaweicloud<i class="fa fa-external-link-alt"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly9taXJyb3JzLmFsaXl1bi5jb20vbmV0YnNkLz9zcG09YTJjNmguMTM2NTExMDQuMC4wLjRkODQzYmY0QXpKWVRY">aliyun<i class="fa fa-external-link-alt"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly9taXJyb3JzLnR1bmEudHNpbmdodWEuZWR1LmNuLw==">tsinghua<i class="fa fa-external-link-alt"></i></span></p>
 <p>OpenBSD: <span class="exturl" data-url="aHR0cHM6Ly9taXJyb3JzLmh1YXdlaWNsb3VkLmNvbS9PcGVuQlNELw==">huaweicloud<i class="fa fa-external-link-alt"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly9taXJyb3JzLmFsaXl1bi5jb20vb3BlbmJzZC8/c3BtPWEyYzZoLjEzNjUxMTA0LjAuMC4xNGRiNWE1MHFGblhsNg==">aliyun<i class="fa fa-external-link-alt"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly9taXJyb3JzLnR1bmEudHNpbmdodWEuZWR1LmNuLw==">tsinghua<i class="fa fa-external-link-alt"></i></span></p>
 <p>一篇好文：<span class="exturl" data-url="aHR0cHM6Ly9teS5vc2NoaW5hLm5ldC9xaWhoL2Jsb2cvNzg3NDM=">FreeBSD的现状和未来<i class="fa fa-external-link-alt"></i></span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly92ZXJtYWRlbi53b3JkcHJlc3MuY29tL2ZyZWVic2QtZGVza3RvcC8=">FreeBSD Desktop<i class="fa fa-external-link-alt"></i></span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly93d3cuZnJlZWJzZC5vcmcvZG9jL3poX1RXL2Jvb2tzL2hhbmRib29rLw==">FreeBSD 使用手冊<i class="fa fa-external-link-alt"></i></span></p>
 ]]></content>
       <tags>
         <tag>Unix</tag>
