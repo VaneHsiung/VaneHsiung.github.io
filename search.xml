@@ -182,11 +182,7 @@
 </li>
 <li><p>When we have a new machine there is always a problem with new name for it. The RFC 1178 <span class="exturl" data-url="aHR0cHM6Ly90b29scy5pZXRmLm9yZy9odG1sL3JmYzExNzg=">Choosing a Name for Your Computer<i class="fa fa-external-link-alt"></i></span> from 1990 year tries to address that issue </p>
 </li>
-<li><p>We do not need any additional components, with all deselected as shown below only the (not shown) base and kernel will be installed.</p>
-</li>
 </ul>
-<img data-src="/2020/11/17/FreeBSD/freebsd-11-1-laptop-install-04.png" class="" title="FreeBSD">
-
 <ul>
 <li>We will use ZFS because we want to use Boot Environments with sysutils/beadm port.<ul>
 <li>Hit [ENTER] on the <code>Pool Type/Disks</code> to select target disk to install FreeBSD on.</li>
@@ -212,7 +208,7 @@
 <p>每個 X 應用程式，如 XTerm、Firefox 都是 “客戶端”。</p>
 <p>視窗管理程式規定螢幕上的視窗該長什麼樣、要如何移動滑鼠指標、 要用什麼鍵來在視窗切換、每個視窗的標題列長相，及是否該有關閉按鈕，等等。視窗管理程式負責滑鼠指標的聚焦政策。 聚焦政策指的是如何決定使用中及接收鍵盤輸入的視窗。通常較為人熟悉的聚焦政策叫做 “click-to-focus”，這個模式中，滑鼠點選到的視窗便會處於作用中 (Active) 的狀態。</p>
 <p>KDE 與 GNOME 會被稱作桌面環境是因為包含了完整常用桌面作業的應用程式。</p>
-<h5 id="BIOS-or-UEFI"><a href="#BIOS-or-UEFI" class="headerlink" title="BIOS or UEFI"></a>BIOS or UEFI</h5><p>First things first, if You find a device that is not supported by any ‘accelerated’ driver like <code>intel</code> or <code>nvidia</code>. You would use <code>vesa</code> driver (Video Electronics Standards Association) while booting in BIOS mode and You will use <code>scfb</code> driver (System Console Frame Buffer) while booting on UEFI mode. This can be checked by </p>
+<h5 id="BIOS-or-UEFI"><a href="#BIOS-or-UEFI" class="headerlink" title="BIOS or UEFI"></a>BIOS or UEFI</h5><p>If you find a device that is not supported by any ‘accelerated’driver like <code>intel</code> or <code>nvidia</code>. You would use <code>vesa</code> driver (Video Electronics Standards Association) while booting in BIOS mode and You will use <code>scfb</code> driver (System Console Frame Buffer) while booting on UEFI mode. This can be checked by </p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo sysctl machdep.bootmethod</span><br></pre></td></tr></table></figure>
 
 <h5 id="Packages"><a href="#Packages" class="headerlink" title="Packages"></a>Packages</h5><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo pkg install xorg</span><br></pre></td></tr></table></figure>
@@ -222,9 +218,6 @@
 </li>
 <li><p>加入要執行 Xorg 的使用者到 <code>video</code> 或 <code>wheel</code> 群組，以便在可用時能開啟 3D 加速。要加入使用者 <em><code>jru</code></em> 到任一個可用的群組：</p>
   <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo pw groupmod video -m jru || pw groupmod wheel -m jru</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>較舊版的 FreeBSD 使用的 sc 並不知到 KMS 系統的存在，這會導致關閉 X 之後即始仍在運作但系統 Console 卻呈現空白。較新版的 vt Console 可避免這個問題。加入此行到 <code>/boot/loader.conf</code> 來開啟 vt：</p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">kern.vty&#x3D;vt</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Login Class(可解决中文乱码，powershell 字符显示方形)</p>
 <p>  Add this login class to the <code>/etc/login.conf</code> file.</p>
@@ -242,34 +235,9 @@
 <p>  Now logout and login again to make that work. View the changes through the <code>locale</code> command.</p>
 </li>
 <li><p>显卡驱动：使用多檔，每一個檔案只設定一個指定項目會較傳統使用單一 <code>/etc/X11/xorg.conf</code> 設定來的簡單。完整路徑為 <code>/usr/local/etc/X11/xorg.conf.d/</code>。</p>
-<ul>
-<li><p>Intel 驱动程式：</p>
-  <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo pkg install xf86-video-intel</span><br></pre></td></tr></table></figure>
-
-  <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo vi /usr/local/etc/X11/xorg.conf.d/driver-intel.conf</span><br><span class="line">Section &quot;Device&quot;</span><br><span class="line">    Identifier &quot;Card0&quot;</span><br><span class="line">    Driver     &quot;intel&quot;</span><br><span class="line">    # BusID    &quot;PCI:1:0:0&quot;</span><br><span class="line">EndSection</span><br></pre></td></tr></table></figure>
+  <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo vi /usr/local/etc/X11/xorg.conf.d/driver-intel.conf</span><br><span class="line">Section &quot;Device&quot;</span><br><span class="line">    Identifier &quot;Card0&quot;</span><br><span class="line">    Driver     &quot;scfb&quot;</span><br><span class="line">    BusID    &quot;PCI:0:2:0&quot;</span><br><span class="line">EndSection</span><br></pre></td></tr></table></figure>
 
 <p>  若有多張顯示卡，可取消註解 <code>BusID</code> identifier 然後設定為想要的顯示卡，顯示卡的 Bus ID 清單可以使用 <code>pciconf -lv | grep -B3 display</code> 取得。</p>
-</li>
-<li><p>Intel KMS 驅動程式: If you use <code>i915kms</code> kernel module, you don’t need to install <code>xf86-video-intel</code>, Most computers/laptops/servers will have integrated GPU which should be supported by the X11 intel driver and:</p>
-<ul>
-<li><p><code>/boot/kernel/i915kms.ko</code> from base system</p>
-</li>
-<li><p><code>/boot/modules/i915kms.ko</code> from <code>drm-next-kmod</code> package (port moved to graphics/drm-fbsd12.0-kmod on 2018-12-09)</p>
-<p>To add the KMS (Kernel Mode Setting) Intel module loading into the <code>/etc/rc.conf</code> file put the line below into it.</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">kld_list=<span class="string">&quot;<span class="variable">$&#123;kld_list&#125;</span> i915kms&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>In case of need to use <code>drm-next-kmod</code> module instead of the base system one, your <code>/etc/rc.conf</code> file would look like that one below.</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">kld_list=<span class="string">&quot;<span class="variable">$&#123;kld_list&#125;</span> /boot/modules/i915kms.ko&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>If you find yourself in the situation that the <code>drm-next-kmod</code> would still not support your latest graphics card then you may try the latest version of the <code>drm-next-kmod</code>.</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo vi /usr/local/etc/X11/xorg.conf.d/driver-intel.conf</span><br><span class="line">Section &quot;Device&quot;</span><br><span class="line">    Identifier &quot;Card0&quot;</span><br><span class="line">    Driver     &quot;i915kms&quot;</span><br><span class="line">EndSection</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>Using modesetting Driver: The <code>modesetting</code> generic DDX driver that is built in the X server, will do just well. The xf86-video-intel might even cause you troubles.</p>
-  <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo cat /usr/local/etc/X11/xorg.conf.d/card.conf</span><br><span class="line">Section &quot;Device&quot;</span><br><span class="line">  Identifier &quot;Card0&quot;</span><br><span class="line">  Option &quot;DPMS&quot;		# 显示电源管理信号，简称DPMS</span><br><span class="line">  Driver &quot;modesetting&quot;</span><br><span class="line">EndSection</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
 </li>
 <li><p>手動設定</p>
 <ul>
