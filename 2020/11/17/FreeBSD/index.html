@@ -4,22 +4,20 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.2.0">
+<meta name="generator" content="Hexo 5.3.0">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
   <link rel="mask-icon" href="/images/logo.svg" color="#222">
-  <meta http-equiv="Cache-Control" content="no-transform">
-  <meta http-equiv="Cache-Control" content="no-siteapp">
   <meta name="google-site-verification" content="uXmcnam1s6y-h_YGHukGYhDQ8zMBAOHTHrJ6RfsDN6I">
   <meta name="msvalidate.01" content="687D92122214353CF2ACE3AEA2977A9C">
   <meta name="baidu-site-verification" content="code-YLfzApd8ZX">
 
 <link rel="stylesheet" href="/css/main.css">
 
-<link rel="stylesheet" href="https://fonts.loli.net/css?family=Architects+Daughter:300,300italic,400,400italic,700,700italic|Ma+Shan+Zheng:300,300italic,400,400italic,700,700italic|Share+Tech+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="https://fonts.loli.net/css?family=Architects+Daughter:300,300italic,400,400italic,700,700italic%7CMa+Shan+Zheng:300,300italic,400,400italic,700,700italic%7CShare+Tech+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
@@ -29,7 +27,7 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"vanehsiung.netlify.app","root":"/","images":"/images","scheme":"Muse","version":"8.1.0","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+    var CONFIG = {"hostname":"vanehsiung.netlify.app","root":"/","images":"/images","scheme":"Muse","version":"8.2.0","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
 <meta name="description" content="FreeBSD 計劃的目標在於提供可作任意用途的軟體而不附帶任何限制條文。 我們之中許多人對程式碼 (以及計畫本身) 都有非常大的投入， 因此，當然不介意偶爾有一些資金上的補償，但我們並沒打算堅決地要求得到這類資助。 我們認為我們的首要“使命”是為任何人提供程式碼， 不管他們打算用這些程式碼做什麼， 因為這樣程式碼將能夠被更廣泛地使用，從而發揮其價值。 我認為這是自由軟體最基本的，同時也是我們所倡">
 <meta property="og:type" content="article">
@@ -48,7 +46,7 @@
 <meta property="og:image" content="https://vanehsiung.netlify.app/2020/11/17/FreeBSD/launcher-dmenu-run.jpg">
 <meta property="og:image" content="https://vanehsiung.netlify.app/2020/11/17/FreeBSD/launcher-rofi.jpg">
 <meta property="article:published_time" content="2020-11-17T11:55:35.000Z">
-<meta property="article:modified_time" content="2021-01-01T06:45:35.524Z">
+<meta property="article:modified_time" content="2021-01-01T07:06:40.365Z">
 <meta property="article:author" content="vane">
 <meta property="article:tag" content="Unix">
 <meta name="twitter:card" content="summary">
@@ -88,6 +86,7 @@
       s.parentNode.insertBefore(hm, s);
     })();
   </script>
+
 
 
   <noscript>
@@ -135,7 +134,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
         <span class="toggle-line"></span>
         <span class="toggle-line"></span>
         <span class="toggle-line"></span>
@@ -163,31 +162,11 @@
 
 <nav class="site-nav">
   <ul class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
-
-  </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
-
-  </li>
-        <li class="menu-item menu-item-links">
-
-    <a href="/links/" rel="section"><i class="fas fa-link fa-fw"></i>Links</a>
-
-  </li>
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+        <li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fas fa-link fa-fw"></i>Links</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
@@ -207,7 +186,7 @@
            placeholder="Searching..." spellcheck="false"
            type="search" class="search-input">
   </div>
-  <span class="popup-btn-close">
+  <span class="popup-btn-close" role="button">
     <i class="fa fa-times-circle"></i>
   </span>
 </div>
@@ -242,7 +221,7 @@
 </div>
         
   
-  <div class="toggle sidebar-toggle">
+  <div class="toggle sidebar-toggle" role="button">
     <span class="toggle-line"></span>
     <span class="toggle-line"></span>
     <span class="toggle-line"></span>
@@ -262,12 +241,12 @@
 
       <div class="sidebar-panel-container">
         <!--noindex-->
-        <section class="post-toc-wrap sidebar-panel">
+        <div class="post-toc-wrap sidebar-panel">
             <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Install-FreeBSD"><span class="nav-text">Install FreeBSD</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#BIOS"><span class="nav-text">BIOS</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Install"><span class="nav-text">Install</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#X11-Window-System"><span class="nav-text">X11 Window System</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#BIOS-or-UEFI"><span class="nav-text">BIOS or UEFI</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Packages"><span class="nav-text">Packages</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Xorg-Configuration"><span class="nav-text">Xorg Configuration</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Install-Desktop-Enviroment"><span class="nav-text">Install Desktop Enviroment</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Components"><span class="nav-text">Components</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Binary-%E5%A5%97%E4%BB%B6"><span class="nav-text">Binary 套件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Port-%E5%A5%97%E4%BB%B6"><span class="nav-text">Port 套件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux%C2%AE-Binary-%E7%9B%B8%E5%AE%B9%E6%80%A7"><span class="nav-text">Linux® Binary 相容性</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%89%8B%E5%8B%95%E5%AE%89%E8%A3%9D%E5%85%B6%E4%BB%96%E7%A8%8B%E5%BC%8F%E5%BA%AB"><span class="nav-text">手動安裝其他程式庫</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E8%A8%82%E6%A0%B8%E5%BF%83"><span class="nav-text">自訂核心</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%82%BA%E4%BD%95%E8%A6%81%E7%B7%A8%E8%AD%AF%E8%87%AA%E8%A8%82%E7%9A%84%E6%A0%B8%E5%BF%83"><span class="nav-text">為何要編譯自訂的核心?</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%81%B5%E6%B8%AC%E7%B3%BB%E7%B5%B1%E7%A1%AC%E9%AB%94"><span class="nav-text">偵測系統硬體</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A8%AD%E5%AE%9A%E6%AA%94"><span class="nav-text">設定檔</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%87%E4%BB%BD%E4%B8%8E%E6%81%A2%E5%A4%8D"><span class="nav-text">备份与恢复</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#dump-amp-restore"><span class="nav-text">dump &amp; restore</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#rsync%EF%BC%88remote-sync%EF%BC%89"><span class="nav-text">rsync（remote sync）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Z-%E6%AA%94%E6%A1%88%E7%B3%BB%E7%B5%B1-ZFS"><span class="nav-text">Z 檔案系統 (ZFS)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Others"><span class="nav-text">Others</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Screen-resolution-on-FreeBSD-on-VirtualBox"><span class="nav-text">Screen resolution on FreeBSD on VirtualBox</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Disable-the-Forward-Back-buttons-on-my-mouse"><span class="nav-text">Disable the Forward&#x2F;Back buttons on my mouse</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Install-chinese-font"><span class="nav-text">Install chinese font</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%BE%E5%8D%95%E4%BD%BF%E7%94%A8%E6%A8%A1%E5%BC%8F%E4%B8%BA%E4%B8%8D%E5%AE%89%E5%85%A8"><span class="nav-text">设单使用模式为不安全</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#No-space-left-on-device"><span class="nav-text">No space left on device</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#VirtualBox%E2%84%A2-guest-additions"><span class="nav-text">VirtualBox™ guest additions</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Fish"><span class="nav-text">Fish</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#How-to-start-things-at-boot-time"><span class="nav-text">How to start things at boot time</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#FreeBSD-Insall-Oracle-JDK"><span class="nav-text">FreeBSD Insall Oracle JDK</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#FreeBSD-Install-Python-and-pip"><span class="nav-text">FreeBSD Install Python and pip</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AE%80%E5%8C%96%E5%90%AF%E5%8A%A8"><span class="nav-text">简化启动</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5%E7%BD%91%E7%BB%9C"><span class="nav-text">连接网络</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#How-To-Add-and-Remove-Users-on-FreeBSD"><span class="nav-text">How To Add and Remove Users on FreeBSD</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E8%A7%81"><span class="nav-text">参见</span></a></li></ol></div>
-        </section>
+        </div>
         <!--/noindex-->
 
-        <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview-wrap sidebar-panel">
           <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="vane"
       src="/uploads/avatar.png">
@@ -308,7 +287,7 @@
 
 
 
-        </section>
+        </div>
       </div>
     </div>
   </aside>
@@ -318,7 +297,7 @@
     </header>
 
     
-  <div class="back-to-top">
+  <div class="back-to-top" role="button">
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
@@ -370,7 +349,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-01-01 14:45:35" itemprop="dateModified" datetime="2021-01-01T14:45:35+08:00">2021-01-01</time>
+        <time title="Modified: 2021-01-01 15:06:40" itemprop="dateModified" datetime="2021-01-01T15:06:40+08:00">2021-01-01</time>
       </span>
 
   
@@ -381,20 +360,6 @@
       <span class="post-meta-item-text">Views: </span>
       <span id="busuanzi_value_page_pv"></span>
     </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2020/11/17/FreeBSD/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/11/17/FreeBSD/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
       </div>
       <div class="post-meta">
     <span class="post-meta-item" title="Symbols count in article">
@@ -429,8 +394,7 @@
 <h3 id="Install-FreeBSD"><a href="#Install-FreeBSD" class="headerlink" title="Install FreeBSD"></a>Install FreeBSD</h3><h5 id="BIOS"><a href="#BIOS" class="headerlink" title="BIOS"></a>BIOS</h5><p>Disable unused and unwanted options.</p>
 <h5 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h5><ul>
 <li><p>To put the image on the pendrive we will use the dd tool available on almost any Mac OS X (macOS) and Linux system. For Windows You will have to download it from here – <span class="exturl" data-url="aHR0cDovL3d3dy5jaHJ5c29jb21lLm5ldC9kZA==">dd for windows<i class="fa fa-external-link-alt"></i></span>( bs=1M on Linux/Windows ).（可用 Rufus 替代）</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dd if=FreeBSD-11.1-RELEASE-amd64-memstick.img of=/dev/da1 bs=1m</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dd if=FreeBSD-11.1-RELEASE-amd64-memstick.img of=/dev/da1 bs=1m</span><br></pre></td></tr></table></figure></li>
 <li><p>When we have a new machine there is always a problem with new name for it. The RFC 1178 <span class="exturl" data-url="aHR0cHM6Ly90b29scy5pZXRmLm9yZy9odG1sL3JmYzExNzg=">Choosing a Name for Your Computer<i class="fa fa-external-link-alt"></i></span> from 1990 year tries to address that issue </p>
 </li>
 </ul>
@@ -461,40 +425,31 @@
 <p>KDE 與 GNOME 會被稱作桌面環境是因為包含了完整常用桌面作業的應用程式。</p>
 <h5 id="BIOS-or-UEFI"><a href="#BIOS-or-UEFI" class="headerlink" title="BIOS or UEFI"></a>BIOS or UEFI</h5><p>If you find a device that is not supported by any ‘accelerated’driver like <code>intel</code> or <code>nvidia</code>. You would use <code>vesa</code> driver (Video Electronics Standards Association) while booting in BIOS mode and You will use <code>scfb</code> driver (System Console Frame Buffer) while booting on UEFI mode. This can be checked by </p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo sysctl machdep.bootmethod</span><br></pre></td></tr></table></figure>
-
 <h5 id="Packages"><a href="#Packages" class="headerlink" title="Packages"></a>Packages</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pkg install xorg</span><br></pre></td></tr></table></figure>
-
 <h5 id="Xorg-Configuration"><a href="#Xorg-Configuration" class="headerlink" title="Xorg Configuration"></a>Xorg Configuration</h5><ul>
 <li><p>顯示卡、顯示器以及輸入裝置會自動偵測，無須任何手動設置。除非自動設置失敗，否則請勿建立 xorg.conf 或執行 -configure 步驟。</p>
 </li>
 <li><p>加入要執行 Xorg 的使用者到 <code>video</code> 或 <code>wheel</code> 群組，以便在可用時能開啟 3D 加速。要加入使用者 <em><code>jru</code></em> 到任一個可用的群組：</p>
-  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pw groupmod video -m jru || pw groupmod wheel -m jru</span><br></pre></td></tr></table></figure>
-</li>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pw groupmod video -m jru || pw groupmod wheel -m jru</span><br></pre></td></tr></table></figure></li>
 <li><p>Login Class(可解决中文乱码，powershell 字符显示方形)</p>
 <p>  Add this login class to the <code>/etc/login.conf</code> file.</p>
   <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">video:\</span><br><span class="line">        :charset=UTF-8:\</span><br><span class="line">        :lang=en_US.UTF-8:\</span><br><span class="line">        :tc=default:</span><br></pre></td></tr></table></figure>
-
 <p>  Rebuild the login class database.</p>
   <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cap_mkdb /etc/login.conf</span><br></pre></td></tr></table></figure>
-
 <p>  Lets set the login class to video for the vuk user.</p>
   <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pw usermod -L video -n vuk</span><br></pre></td></tr></table></figure>
-
 <p>  How the account looks after setting the login class.</p>
   <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo grep vuk /etc/master.passwd</span><br><span class="line">vuk:&#123;REMOVED&#125;:1000:1000:video:0:0:vuk:/home/vuk:/bin/sh</span><br></pre></td></tr></table></figure>
-
 <p>  Now logout and login again to make that work. View the changes through the <code>locale</code> command.</p>
 </li>
 <li><p>显卡驱动：使用多檔，每一個檔案只設定一個指定項目會較傳統使用單一 <code>/etc/X11/xorg.conf</code> 設定來的簡單。完整路徑為 <code>/usr/local/etc/X11/xorg.conf.d/</code>。（安装 intel 显卡驱动与 nvidia 驱动难，scfb 与 vesa 驱动无法调整分辨率）</p>
   <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /usr/local/etc/X11/xorg.conf.d/driver-intel.conf</span><br><span class="line">Section &quot;Device&quot;</span><br><span class="line">    Identifier &quot;Card0&quot;</span><br><span class="line">    Driver     &quot;scfb&quot;</span><br><span class="line">    BusID    &quot;PCI:0:2:0&quot;</span><br><span class="line">EndSection</span><br></pre></td></tr></table></figure>
-
 <p>  若有多張顯示卡，可取消註解 <code>BusID</code> identifier 然後設定為想要的顯示卡，顯示卡的 Bus ID 清單可以使用 <code>pciconf -lv | grep -B3 display</code> 取得。</p>
 </li>
 <li><p>手動設定</p>
 <ul>
 <li><p>設定檔可由 Xorg 根據偵測到的硬體產生，這個檔案對一開始自訂設定很有幫助。</p>
-  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Xorg -configure</span><br></pre></td></tr></table></figure>
-</li>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Xorg -configure</span><br></pre></td></tr></table></figure></li>
 <li><p>設定檔會儲存至 <code>/root/xorg.conf.new</code>，做任何需要的更改，然後使用以下指令測試該檔案：</p>
   <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Xorg -config /root/xorg.conf.new</span><br></pre></td></tr></table></figure>
 
@@ -512,29 +467,20 @@
 </ul>
 </li>
 <li><p>Install Desktop Environment</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo pkg install gnome3</span><br><span class="line">sudo pkg install gnome3-lite</span><br><span class="line">sudo pkg install x11/kde5</span><br><span class="line">sudo pkg install xfce</span><br><span class="line">sudo pkg install mate</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo pkg install gnome3</span><br><span class="line">sudo pkg install gnome3-lite</span><br><span class="line">sudo pkg install x11/kde5</span><br><span class="line">sudo pkg install xfce</span><br><span class="line">sudo pkg install mate</span><br></pre></td></tr></table></figure></li>
 <li><p>Install/Enable Display Manager: You have to decide how You want to start your X11 Window Server, you may login in plan text console and then type <code>xinit</code> or <code>startx</code> to read your <code>~/.xinitrc</code> configuration and daemons (The difference between <code>xinit</code> and <code>startx</code> is that <code>startx</code> command executes <code>xinit</code> command with arguments.) or You may want to use X11 Login manager such as <code>xdm/sddm/slim</code> with <code>~/.xsession</code> configuration to load after successful login. </p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo pkg install xdm</span><br><span class="line">sudo pkg install slim			# xfce,mate，slim 有个 slim-themes 软件包</span><br><span class="line">sudo pkg install x11/sddm		# kde</span><br></pre></td></tr></table></figure>
-
 <p>While <code>xinit</code> run commands based on the <code>~/.xinitrc</code> file the XDM login manager looks for the <code>~/.xsession</code> file. As You will be loading same stuff regardless of the startup method we will create a link of <code>~/.xsession</code> pointing to the <code>~/.xinitrc</code> file. This way either method You choose You will always end with started X11 session.</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s ~/.xinitrc ~/.xsession</span><br></pre></td></tr></table></figure>
-
 <p>One more case about the <code>~/.xinitrc</code> (or <code>~/.xsession</code>) file. It is interpreted as a shell script (and yes you can do <code>if/then/else/fi</code> and <code>case/esac</code> or <code>for/while</code> POSIX shell scripting in it) but it does not need to be executable. The last command in this file MUST NOT to be put in the background (must be without the <code>&amp;</code> char at the end) because the X11 session will end.</p>
 </li>
 <li><p>Setting</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/ttys		# xdm</span><br><span class="line">ttyv8   &quot;/usr/local/bin/xdm -nodaemon&quot;  xterm  on secure</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/fstab		# gnome, kde</span><br><span class="line">proc           /proc       procfs  rw  0   0</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/rc.conf</span><br><span class="line">moused_enalbe=&quot;YES&quot;</span><br><span class="line">dbus_enable=&quot;YES&quot;		# gnome, kde, xfce</span><br><span class="line">hald_enable=&quot;YES&quot;		# gnome, kde, mate</span><br><span class="line">gdm_enalbe=&quot;YES&quot;		# gnome 启动</span><br><span class="line">sddm_enable=&quot;YES&quot;		# kde 启动</span><br><span class="line">slim_enable=&quot;YES&quot;		# xfce,mate</span><br><span class="line">gnome_enable=&quot;YES&quot;		# gnome 服务</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/rc.conf</span><br><span class="line">moused_enalbe=&quot;YES&quot;</span><br><span class="line">dbus_enable=&quot;YES&quot;		# gnome, kde, xfce</span><br><span class="line">hald_enable=&quot;YES&quot;		# gnome, kde, mate</span><br><span class="line">gdm_enalbe=&quot;YES&quot;		# gnome 启动</span><br><span class="line">sddm_enable=&quot;YES&quot;		# kde 启动</span><br><span class="line">slim_enable=&quot;YES&quot;		# xfce,mate</span><br><span class="line">gnome_enable=&quot;YES&quot;		# gnome 服务</span><br></pre></td></tr></table></figure></li>
 <li><p>slim Usage(Failed to execute login command)</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo vi ~/.xinitrc</span><br><span class="line">exec mate-session		# mate</span><br><span class="line">exec xfce4-session		# xfce</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h5 id="Components"><a href="#Components" class="headerlink" title="Components"></a>Components</h5><ul>
+<h5 id="Components"><a href="#Components" class="headerlink" title="Components"></a>Components</h5></li>
 <li><p>Window Manager: <span class="exturl" data-url="aHR0cDovL29wZW5ib3gub3JnL3dpa2kvTWFpbl9QYWdl">Openbox<i class="fa fa-external-link-alt"></i></span>…</p>
 </li>
 <li><p>Status Bar: Also known as information bar, the place on the screen that would provide You needed information such as current date and time, CPU, RAM and storage usage, current network information or battery status.</p>
@@ -569,7 +515,6 @@
 </li>
 <li><p>The Rofi requires simple command.</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rofi -show run -theme solarized_alternate -font &quot;Monaco 8&quot;</span><br></pre></td></tr></table></figure>
-
 <img data-src="/2020/11/17/FreeBSD/launcher-rofi.jpg" class="" title="FreeBSD">
 </li>
 </ul>
@@ -578,12 +523,10 @@
 <ul>
 <li><p>While <span class="exturl" data-url="aHR0cHM6Ly9qdXN0Z2V0Zmx1eC5jb20v">F.lux<i class="fa fa-external-link-alt"></i></span>  (closed source) does not provide a native binary for FreeBSD it does offer such binary for Linux and as FreeBSD provides Linux Binary Compatibility its possible to use it on FreeBSD. To use F.lux just start it in the <code>~/.xinitrc</code> or <code>~/.xsession</code> file like that.</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~/path/to/bin/xflux -l 33.54321 -g 11.12345 &amp;</span><br></pre></td></tr></table></figure>
-
 <p>Of course 33.54321 is latitude and 11.12345 is longitude of your localization.</p>
 </li>
 <li><p><code>Redshift</code> is the solution that I propose to use as open source blue light spectrum suppressor. Similarly like with the F.lux to start Redshift just put it in the <code>~/.xinitrc</code> or <code>~/.xsession</code> file like that.</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redshift -l 33.54321:11.12345 -g 0.9 &amp;</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redshift -l 33.54321:11.12345 -g 0.9 &amp;</span><br></pre></td></tr></table></figure></li>
 <li><p>Someone else suggested trying <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtaXIvc2N0ZA==">sctd<i class="fa fa-external-link-alt"></i></span> which is sct but rewritten/modified to be a daemon that will automatically change the color temperature during the day (or night). The sctd uses smaller about of RAM memory, uses less libraries and size of these libraries is smaller then what redshfit needs. </p>
 </li>
 </ul>
@@ -593,62 +536,44 @@
 <p>因編譯選項不同，有些 Port 會有多個版本可使用。</p>
 <ul>
 <li><p><span class="exturl" data-url="aHR0cHM6Ly9taXJyb3JzLnVzdGMuZWR1LmNuL2hlbHAvZnJlZWJzZC1wa2cuaHRtbA==">USTC Mirrors<i class="fa fa-external-link-alt"></i></span>：注意使用 Latest 源，有很多流行软件。创建 <code>/usr/local/etc/pkg/repos/FreeBSD.conf</code> 覆盖官方源 <code>/etc/pkg/FreeBSD.conf</code> 配置</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /usr/local/etc/pkg/repos/FreeBSD.conf</span><br><span class="line">FreeBSD: &#123;</span><br><span class="line">  url: &quot;pkg+http://mirrors.ustc.edu.cn/freebsd-pkg/$&#123;ABI&#125;/latest&quot;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">sudo pkg update -f		# 更新索引</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /usr/local/etc/pkg/repos/FreeBSD.conf</span><br><span class="line">FreeBSD: &#123;</span><br><span class="line">  url: &quot;pkg+http://mirrors.ustc.edu.cn/freebsd-pkg/$&#123;ABI&#125;/latest&quot;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">sudo pkg update -f		# 更新索引</span><br></pre></td></tr></table></figure></li>
 <li><p><span class="exturl" data-url="aHR0cDovL21pcnJvcnMuMTYzLmNvbS9mcmVlYnNkLXBrZy9GcmVlQlNEJTNhMTIlM2FhbWQ2NC9sYXRlc3Qv">163 Mirrors<i class="fa fa-external-link-alt"></i></span></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">url: &quot;pkg+http:&#x2F;&#x2F;mirrors.163.com&#x2F;freebsd-pkg&#x2F;$&#123;ABI&#125;&#x2F;latest&quot;,</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">url: &quot;pkg+http:&#x2F;&#x2F;mirrors.163.com&#x2F;freebsd-pkg&#x2F;$&#123;ABI&#125;&#x2F;latest&quot;,</span><br></pre></td></tr></table></figure></li>
 <li><p>要啟動 (Bootstrap) 系統，請執行</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /usr/sbin/pkg</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /usr/sbin/pkg</span><br></pre></td></tr></table></figure></li>
 <li><p>當升級原使用舊版 pkg_* 工具的既有系統時，必須將資料庫轉換成新的格式</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pkg2ng</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pkg2ng</span><br></pre></td></tr></table></figure></li>
 <li><p>Update the available remote repositories as listed in pkg.conf</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pkg update</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pkg update</span><br></pre></td></tr></table></figure></li>
 <li><p>Search for a package</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pkg search perl</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pkg search perl</span><br></pre></td></tr></table></figure></li>
 <li><p>在指定要安裝的套件時，最好使用 Port 來源來指定該應用程式，Port 來源是指應用程式在 Port 樹中的路徑</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pkg search -o perl</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pkg search -o perl</span><br></pre></td></tr></table></figure></li>
 <li><p>Install a package: Installing must specify a unique origin or version otherwise it will try installing all matches</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pkg install perl-5.14</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pkg install perl-5.14</span><br></pre></td></tr></table></figure></li>
 <li><p>列出已經安裝的 Port 中有那些已過時</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pkg version -l &quot;&lt;&quot;</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pkg version -l &quot;&lt;&quot;</span><br></pre></td></tr></table></figure></li>
 <li><p>Upgrade from remote repository</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pkg upgrade</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pkg upgrade</span><br></pre></td></tr></table></figure></li>
 <li><p>Delete an installed package</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pkg delete perl-5.14</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pkg delete perl-5.14</span><br></pre></td></tr></table></figure></li>
 <li><p>Remove unneeded dependencies</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pkg autoremove</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pkg autoremove</span><br></pre></td></tr></table></figure></li>
 <li><p>List installed packages</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pkg info</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pkg info</span><br></pre></td></tr></table></figure></li>
 <li><p>Display information about installed packages</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pkg info perl-5.14</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pkg info perl-5.14</span><br></pre></td></tr></table></figure></li>
 <li><p>Show the pkg-message of a package</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pkg info -D perl-5.14</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pkg info -D perl-5.14</span><br></pre></td></tr></table></figure></li>
 <li><p>要查詢已安在系統上的軟體是否有任何已知的漏洞</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pkg audit -F</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pkg audit -F</span><br></pre></td></tr></table></figure></li>
 <li><p>因為相依所安裝的套件稱作自動 (Automatic) 套件，而非自動套件即套件被安裝的原因不是因為其他套件所相依</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pkg prime-list		# deprecated</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pkg prime-list		# deprecated</span><br></pre></td></tr></table></figure></li>
 <li><p>Clean the local cache of fetched remote packages</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pkg clean</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Packages</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sudo pkg install vim atom linux-sublime3</span><br><span class="line">sudo pkg install git node npm		# Node.js</span><br><span class="line">sudo pkg install plank telegram-desktop firefox-esr</span><br><span class="line">sudo pkg install intellij tomcat mysql180-server mysql180-client		# Intellij IDEA use openjdk8</span><br><span class="line">sudo pkg install p7zip</span><br><span class="line">sudo pkg install zsh		# ZSH_THEME=&quot;agnoster&quot;</span><br><span class="line">pip install NetEase-MusicBox		# export PATH=&quot;your-dir:$PATH&quot;，网易云音乐命令行版</span><br><span class="line">sudo pkg install you-get youtube_dl		# 视频下载</span><br><span class="line">sudo pkg install vlc mplayer		# 视频播放</span><br></pre></td></tr></table></figure>
-
 
 </li>
 </ul>
@@ -661,82 +586,62 @@
 <p>Port 中並不含實際的原始碼，在編譯 Port 解壓縮時會自動下載的原始碼到 <code>/usr/ports/distfiles</code>。</p>
 <ul>
 <li><p><span class="exturl" data-url="aHR0cHM6Ly9taXJyb3JzLnVzdGMuZWR1LmNuL2hlbHAvZnJlZWJzZC1wb3J0cy5odG1s">USTC Mirrors<i class="fa fa-external-link-alt"></i></span>：在 <code>/etc/make.conf</code> 中添加以下内容</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MASTER_SITE_OVERRIDE?&#x3D;http:&#x2F;&#x2F;mirrors.ustc.edu.cn&#x2F;freebsd-ports&#x2F;distfiles&#x2F;$&#123;DIST_SUBDIR&#125;&#x2F;</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MASTER_SITE_OVERRIDE?&#x3D;http:&#x2F;&#x2F;mirrors.ustc.edu.cn&#x2F;freebsd-ports&#x2F;distfiles&#x2F;$&#123;DIST_SUBDIR&#125;&#x2F;</span><br></pre></td></tr></table></figure></li>
 <li><p><span class="exturl" data-url="aHR0cDovL21pcnJvcnMuMTYzLmNvbS9mcmVlYnNkLXBvcnRzL2Rpc3RmaWxlcy8=">163 Mirrors<i class="fa fa-external-link-alt"></i></span></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MASTER_SITE_OVERRIDE?&#x3D;http:&#x2F;&#x2F;mirrors.163.com&#x2F;freebsd-ports&#x2F;distfiles&#x2F;$&#123;DIST_SUBDIR&#125;&#x2F;</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MASTER_SITE_OVERRIDE?&#x3D;http:&#x2F;&#x2F;mirrors.163.com&#x2F;freebsd-ports&#x2F;distfiles&#x2F;$&#123;DIST_SUBDIR&#125;&#x2F;</span><br></pre></td></tr></table></figure></li>
 <li><p>安裝 Port 套件集：下載壓縮後的 Port 套件集快照 (Snapshot) 到 /var/db/portsnap</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo portsnap fetch</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo portsnap fetch</span><br></pre></td></tr></table></figure></li>
 <li><p>第一次執行 Portsnap 時，要先解壓縮快照到 /usr/ports</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo portsnap extract</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo portsnap extract</span><br></pre></td></tr></table></figure></li>
 <li><p>執行以下指令來更新 /usr/ports</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo portsnap fetch</span><br><span class="line">sudo portsnap update</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo portsnap fetch</span><br><span class="line">sudo portsnap update</span><br></pre></td></tr></table></figure></li>
 <li><p>要找到 Port 所在的分類</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo whereis lsof</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo whereis lsof</span><br></pre></td></tr></table></figure></li>
 <li><p>使用 Port 套件集內建的搜尋機制來找軟體</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo cd /usr/ports</span><br><span class="line">sudo make search name=lsof</span><br><span class="line">sudo make quicksearch name=lsof		# 不接受多資訊</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo cd /usr/ports</span><br><span class="line">sudo make search name=lsof</span><br><span class="line">sudo make quicksearch name=lsof		# 不接受多資訊</span><br></pre></td></tr></table></figure></li>
 <li><p>若要進行更有深度的搜尋</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo make search key=string</span><br><span class="line">sudo make quicksearch key=string</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo make search key=string</span><br><span class="line">sudo make quicksearch key=string</span><br></pre></td></tr></table></figure></li>
 <li><p>一次設定所有Port 編譯選項</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo make config-recursive</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo make config-recursive</span><br></pre></td></tr></table></figure></li>
 <li><p>重新進入 Port 的編譯選項清單</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo make config			# or</span><br><span class="line">sudo make showconfig		# or</span><br><span class="line">sudo make rmconfig</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo make config			# or</span><br><span class="line">sudo make showconfig		# or</span><br><span class="line">sudo make rmconfig</span><br></pre></td></tr></table></figure></li>
 <li><p>編譯並安裝 Port</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo cd /usr/ports/sysutils/lsof</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo cd /usr/ports/sysutils/lsof</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure></li>
 <li><p>編譯在 /usr/ports Port 並安裝到 /usr/home/example/local</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo make WRKDIRPREFIX=../ports PREFIX=../local install</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo make WRKDIRPREFIX=../ports PREFIX=../local install</span><br></pre></td></tr></table></figure></li>
 <li><p>安裝過程中會建立工作用的子目錄用來儲存編譯時暫存的檔案。可移除此目錄來節省磁碟空間並漸少往後升級新版 Port 時造成問題</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo make clean</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo make clean</span><br></pre></td></tr></table></figure></li>
 <li><p>移除已安裝的 Port</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo cd /usr/ports/sysutils/lsof</span><br><span class="line">sudo make deinstall</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Example</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/ports/java/linux-oracle-jdk18</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
 <p>安裝後的注意事項：</p>
-<ul>
-<li>大部份應用程式安裝會在 <code>/usr/local/etc</code> 安裝至少一個預設的設定檔。</li>
-<li>應用程式提供的文件會安裝到 <code>/usr/local/share/doc</code>。</li>
-<li>部份應用程式會以服務的方式執行，在啟動應用程式前前需要加入設定到 <code>/etc/rc.conf</code>。這些應用程式通常會安裝啟動 Script 到 <code>/usr/local/etc/rc.d</code>。</li>
+</li>
+<li><p>大部份應用程式安裝會在 <code>/usr/local/etc</code> 安裝至少一個預設的設定檔。</p>
+</li>
+<li><p>應用程式提供的文件會安裝到 <code>/usr/local/share/doc</code>。</p>
+</li>
+<li><p>部份應用程式會以服務的方式執行，在啟動應用程式前前需要加入設定到 <code>/etc/rc.conf</code>。這些應用程式通常會安裝啟動 Script 到 <code>/usr/local/etc/rc.d</code>。</p>
+</li>
 </ul>
 <h3 id="Linux®-Binary-相容性"><a href="#Linux®-Binary-相容性" class="headerlink" title="Linux® Binary 相容性"></a>Linux® Binary 相容性</h3><p>FreeBSD 提供 Linux® Binary 的相容性，允許使用者在 FreeBSD 系統上不需要修改就可以安裝和執行大部份的 Linux® Binary。</p>
 <p>最好不要直接安装 Linux 的软件，而使用 FreeBSD 源中的 Linux 软件，一般以 <code>linux-package</code> 命名。</p>
 <ul>
 <li><p>載入 Linux® 核心模組</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo kldload linux</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo kldload linux</span><br></pre></td></tr></table></figure></li>
 <li><p>對 64-位元的相容性</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo kldload linux64</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo kldload linux64</span><br></pre></td></tr></table></figure></li>
 <li><p>確認模組已載入</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo kldstat</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo kldstat</span><br></pre></td></tr></table></figure></li>
 <li><p>安裝基本的 Linux® 程式庫和 Binary</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pkg install emulators/linux_base-c7</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pkg install emulators/linux_base-c7</span><br></pre></td></tr></table></figure></li>
 <li><p>Add the following line</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/fstab</span><br><span class="line">linprocfs   /compat/linux/proc	linprocfs	rw	0	0</span><br><span class="line">linsysfs    /compat/linux/sys	linsysfs	rw	0	0</span><br><span class="line">tmpfs    /compat/linux/dev/shm	tmpfs	rw,mode=1777	0	0</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/fstab</span><br><span class="line">linprocfs   /compat/linux/proc	linprocfs	rw	0	0</span><br><span class="line">linsysfs    /compat/linux/sys	linsysfs	rw	0	0</span><br><span class="line">tmpfs    /compat/linux/dev/shm	tmpfs	rw,mode=1777	0	0</span><br></pre></td></tr></table></figure></li>
 <li><p>開機時開啟 Linux® 相容性</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/rc.conf</span><br><span class="line">linux_enable=&quot;YES&quot;</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/rc.conf</span><br><span class="line">linux_enable=&quot;YES&quot;</span><br></pre></td></tr></table></figure></li>
 <li><p>安裝 Linux® ELF Binary</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo brandelf -t Linux my-linux-elf-binary</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo brandelf -t Linux my-linux-elf-binary</span><br></pre></td></tr></table></figure></li>
 <li><p>安裝以 Linux® RPM 為基礎的應用程式,需先安裝 archivers/rpm4 套件或 Port</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo pkg install rpm4</span><br><span class="line">sudo cd /compat/linux</span><br><span class="line">sudo rpm2cpio &lt; /path/to/linux.archive.rpm | cpio -id</span><br></pre></td></tr></table></figure>
 
@@ -745,14 +650,12 @@
 </ul>
 <h5 id="手動安裝其他程式庫"><a href="#手動安裝其他程式庫" class="headerlink" title="手動安裝其他程式庫"></a>手動安裝其他程式庫</h5><ul>
 <li><p>在 Linux® 系統，可使用 ldd 來找出應用程式需要哪個共用程式庫</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ldd linuxdoom</span><br><span class="line">libXt.so.3 (DLL Jump 3.1) =&gt; /usr/X11/lib/libXt.so.3.1.0</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ldd linuxdoom</span><br><span class="line">libXt.so.3 (DLL Jump 3.1) =&gt; /usr/X11/lib/libXt.so.3.1.0</span><br></pre></td></tr></table></figure></li>
 <li><p>複製 Linux® 系統輸出結果中最後一欄需要的的檔案到 FreeBSD 系統的 /compat/linux。 複製完後，建立符號連結 (Symbolic link) 至輸出結果第一欄的名稱</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;compat&#x2F;linux&#x2F;usr&#x2F;X11&#x2F;lib&#x2F;libXt.so.3.1.0</span><br><span class="line">&#x2F;compat&#x2F;linux&#x2F;usr&#x2F;X11&#x2F;lib&#x2F;libXt.so.3 -&gt; libXt.so.3.1.0</span><br></pre></td></tr></table></figure>
-
-</li>
+<h3 id="自訂核心"><a href="#自訂核心" class="headerlink" title="自訂核心"></a>自訂核心</h3></li>
 </ul>
-<h3 id="自訂核心"><a href="#自訂核心" class="headerlink" title="自訂核心"></a>自訂核心</h3><h5 id="為何要編譯自訂的核心"><a href="#為何要編譯自訂的核心" class="headerlink" title="為何要編譯自訂的核心?"></a>為何要編譯自訂的核心?</h5><p> 自訂核心有許多項優點，如：</p>
+<h5 id="為何要編譯自訂的核心"><a href="#為何要編譯自訂的核心" class="headerlink" title="為何要編譯自訂的核心?"></a>為何要編譯自訂的核心?</h5><p> 自訂核心有許多項優點，如：</p>
 <ul>
 <li>加速開機，因為自訂的核心只需要偵測您系統上存在的硬體，所以讓啟動所花的過程更流暢快速。</li>
 <li>減少記憶體使用，自訂的核心通常會比 <code>GENERIC</code> 核心使用更少的記憶體，這很重要，因為核心必須一直存放在實體記憶體內。</li>
@@ -794,10 +697,8 @@
 <ul>
 <li><p>恢复 <code>/</code> 以外的目录：以恢复  <code>/home</code> 目录为例，重启系统进入单用户模式，挂载 <code>/tmp</code> 分区，挂载移动硬盘，这时备份生成的文件保存在 <code>/mnt/01/dump/dev/ad12s1h.dump</code>，格式化 <code>/dev/ad12s1h</code>：</p>
   <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">newfs -U /dev/ad12s1h		# -U 选型来打开 softupdate</span><br></pre></td></tr></table></figure>
-
 <p>  挂载这个分区，例如 <code>/mnt/02/</code>，恢复目录：</p>
-  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /mnt/02</span><br><span class="line">restore -rf /mnt/01/dump/ad12s1h.dump</span><br></pre></td></tr></table></figure>
-</li>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /mnt/02</span><br><span class="line">restore -rf /mnt/01/dump/ad12s1h.dump</span><br></pre></td></tr></table></figure></li>
 <li><p>恢复 <code>/</code>：因为 restore 在 <code>/</code> 目录中，所以不能使用上面方法恢复 <code>/</code> 目录。解决办法是使用 freebsd_livefs_cd 启动系统。</p>
 </li>
 </ul>
@@ -805,11 +706,9 @@
 <li><p>备份 MBR</p>
 <ul>
 <li><p>备份</p>
-  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dd if=/dev/da0 of=/path/to/mbr.img bs=512 count=1</span><br></pre></td></tr></table></figure>
-</li>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dd if=/dev/da0 of=/path/to/mbr.img bs=512 count=1</span><br></pre></td></tr></table></figure></li>
 <li><p>恢复</p>
   <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dd if=/path/to/mbr.img of=/dev/da0 bs=512 count=1</span><br></pre></td></tr></table></figure>
-
 
 </li>
 </ul>
@@ -819,20 +718,15 @@
 <h5 id="rsync（remote-sync）"><a href="#rsync（remote-sync）" class="headerlink" title="rsync（remote sync）"></a>rsync（remote sync）</h5><p>可以在本地计算机与远程计算机之间，或者两个本地目录之间同步文件，且仅传输有变动的部分。</p>
 <ul>
 <li><p>将源目录同步到目标目录</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rsync -r source1 source2 destination		# -r 表示递归，即包含子目录</span><br><span class="line">rsync -a source/ destination		# -a 除了可以递归同步以外，还可以同步元信息（比如修改时间、权限等）</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rsync -r source1 source2 destination		# -r 表示递归，即包含子目录</span><br><span class="line">rsync -a source/ destination		# -a 除了可以递归同步以外，还可以同步元信息（比如修改时间、权限等）</span><br></pre></td></tr></table></figure></li>
 <li><p>排除文件：同步时排除某些文件或目录，这时可以用 <code>--exclude</code> 参数指定排除模式，多个排除模式，可以用多个 <code>--exclude</code> 参数</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rsync -av --exclude dir source/ destination		# 排除所有 TXT 文件</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rsync -av --exclude dir source/ destination		# 排除所有 TXT 文件</span><br></pre></td></tr></table></figure></li>
 <li><p>增量备份：除了源目录与目标目录直接比较，rsync 还支持使用基准目录，即将源目录与基准目录之间变动的部分，同步到目标目录。<code>--link-dest</code> 参数用来指定同步时的基准目录。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rsync -a --delete --link-dest /compare/path /source/path /target/path</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rsync -a --delete --link-dest /compare/path /source/path /target/path</span><br></pre></td></tr></table></figure></li>
 <li><p>远程同步：rsync 默认使用 SSH 进行远程登录和数据传输</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rsync -av source/ username@remote_host:destination		# 将本地内容同步到远程服务器</span><br><span class="line">rsync -av username@remote_host:source/ destination		# 将远程内容同步到本地</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rsync -av source/ username@remote_host:destination		# 将本地内容同步到远程服务器</span><br><span class="line">rsync -av username@remote_host:source/ destination		# 将远程内容同步到本地</span><br></pre></td></tr></table></figure></li>
 <li><p>使用 rsync 来备份系统</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rsync -aH --delete --exclude dir --link-dest /compare/path source destination</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li><code>-H</code> 选项用来保持硬链接</li>
 <li>默认情况下，rsync 只确保源目录的所有内容（明确排除的文件除外）都复制到目标目录。它不会使两个目录保持相同，并且不会删除文件。如果你想让那些在源目录里被删除的文件在目标目录里也被删除，那么你可以加上 <code>--delete</code> 选项来删除。<code>--delete</code> 参数会使得 <code>destination</code> 成为 <code>source</code> 的一个镜像。</li>
@@ -848,31 +742,23 @@
 </ul>
 <h3 id="Others"><a href="#Others" class="headerlink" title="Others"></a>Others</h3><h5 id="Screen-resolution-on-FreeBSD-on-VirtualBox"><a href="#Screen-resolution-on-FreeBSD-on-VirtualBox" class="headerlink" title="Screen resolution on FreeBSD on VirtualBox"></a>Screen resolution on FreeBSD on VirtualBox</h5><p>问题描述：在virtualbox虚拟机下，无法改变桌面分辨率为1366x768</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">VBoxManage setextradata &quot;FreeBSD&quot; VBoxInternal2/EfiGraphicsResolution 1366x768</span><br></pre></td></tr></table></figure>
-
 <h5 id="Disable-the-Forward-Back-buttons-on-my-mouse"><a href="#Disable-the-Forward-Back-buttons-on-my-mouse" class="headerlink" title="Disable the Forward/Back buttons on my mouse"></a>Disable the Forward/Back buttons on my mouse</h5><p>问题描述：浏览网页时，鼠标滑轮滚动浏览器就会前进后退。</p>
 <p><span class="exturl" data-url="aHR0cHM6Ly91bml4LnN0YWNrZXhjaGFuZ2UuY29tL3F1ZXN0aW9ucy8yMDU1MC9ob3ctdG8tZGlzYWJsZS10aGUtZm9yd2FyZC1iYWNrLWJ1dHRvbnMtb24tbXktbW91c2U=">Salved<i class="fa fa-external-link-alt"></i></span>：</p>
 <ul>
 <li><p>执行下面命令后，上下滑动鼠标滑轮，看看映射到那些button，一般是buttons 8 and 9</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo xev | grep -A2 ButtonPress</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo xev | grep -A2 ButtonPress</span><br></pre></td></tr></table></figure></li>
 <li><p>then disable button 8 and 9（前提是有上面的问题，否则就不要禁）</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo vi ~/.Xmodmap</span><br><span class="line">pointer = 1 2 3 4 5 6 7 0 0 0 0 0</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo vi ~/.Xmodmap</span><br><span class="line">pointer = 1 2 3 4 5 6 7 0 0 0 0 0</span><br></pre></td></tr></table></figure></li>
 <li><p>test it with the command,command automatically when you log in; if yours doesn’t, arrange for it to run when X starts.</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo xmodmap ~/.Xmodmap</span><br></pre></td></tr></table></figure>
-
-</li>
+<h5 id="Install-chinese-font"><a href="#Install-chinese-font" class="headerlink" title="Install chinese font"></a>Install chinese font</h5></li>
 </ul>
-<h5 id="Install-chinese-font"><a href="#Install-chinese-font" class="headerlink" title="Install chinese font"></a>Install chinese font</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pkg install zh-CJKUnifonts		# CJK（中日韩统一表意文字）</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pkg install zh-CJKUnifonts		# CJK（中日韩统一表意文字）</span><br></pre></td></tr></table></figure>
 <h5 id="设单使用模式为不安全"><a href="#设单使用模式为不安全" class="headerlink" title="设单使用模式为不安全"></a>设单使用模式为不安全</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/ttys</span><br><span class="line">console none	unknown off insecure</span><br></pre></td></tr></table></figure>
-
 <h5 id="No-space-left-on-device"><a href="#No-space-left-on-device" class="headerlink" title="No space left on device"></a>No space left on device</h5><p>问题描述：使用 pkg update 时提示这个问题。原因是 /tmp is too small。</p>
 <p><span class="exturl" data-url="aHR0cHM6Ly9mb3J1bXMuZnJlZWJzZC5vcmcvdGhyZWFkcy9uby1zcGFjZS1sZWZ0LW9uLWRldmljZS42MTIzMi8=">Salved<i class="fa fa-external-link-alt"></i></span>: </p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/fstab</span><br><span class="line">tmpfs	/tmp	tmpfs	rw,size=256000000	0	0		# size 以Byte为单位</span><br></pre></td></tr></table></figure>
-
 <h5 id="VirtualBox™-guest-additions"><a href="#VirtualBox™-guest-additions" class="headerlink" title="VirtualBox™ guest additions"></a>VirtualBox™ guest additions</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo cd /usr/ports/emulators/virtualbox-ose-additions &amp;&amp; make install clean</span><br><span class="line"></span><br><span class="line">sudo vi /etc/rc.conf</span><br><span class="line">vboxguest_enable=&quot;YES&quot;</span><br><span class="line">vboxservice_enable=&quot;YES&quot;</span><br><span class="line">vboxservice_flags=&quot;--disable-timesync&quot;		# 若有使用 ntpd或 ntpdate，便可關閉主機時間同步功能</span><br></pre></td></tr></table></figure>
-
 <h5 id="Fish"><a href="#Fish" class="headerlink" title="Fish"></a>Fish</h5><p>Fish 是”the <strong>f</strong>riendly <strong>i</strong>nteractive <strong>sh</strong>ell”的简称，最大特点就是方便易用。</p>
 <p>Fish 会自动在光标后面给出建议，表示可能的选项，颜色为灰色。如果采纳建议，可以按下<code>→</code>或<code>Control + F</code>。如果只采纳一部分，可以按下<code>Alt + →</code>。</p>
 <p>输入命令时，Fish 会自动显示匹配的上一条历史记录。如果没有匹配的历史记录，Fish 会猜测可能的结果，自动补全各种输入。</p>
@@ -880,8 +766,7 @@
 <li><p>These directories are defined in <code>/etc/defaults/rc.conf</code>（主要是运行脚本）</p>
 <ul>
 <li><p>Default startup directory is <code>/usr/local/etc/rc.d/</code>. if you need the files to be executed in a specific order, try numbering the files. For example:</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">000This.Will.Run.First.sh</span><br><span class="line">020This.Will.Run.Next.sh</span><br><span class="line">030And.Then.This.sh</span><br></pre></td></tr></table></figure>
-</li>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">000This.Will.Run.First.sh</span><br><span class="line">020This.Will.Run.Next.sh</span><br><span class="line">030And.Then.This.sh</span><br></pre></td></tr></table></figure></li>
 <li><p>deprecated: <code>/etc/rc.local</code>        </p>
 </li>
 </ul>
@@ -920,7 +805,6 @@
 <li>在 <code>/usr/ports/java/linux-oracle-jdk18</code> 运行 <code>sudo make install</code>，安装成功</li>
 </ul>
 <h5 id="FreeBSD-Install-Python-and-pip"><a href="#FreeBSD-Install-Python-and-pip" class="headerlink" title="FreeBSD Install Python and pip"></a>FreeBSD Install Python and pip</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo pkg install python</span><br><span class="line"></span><br><span class="line">python --version</span><br><span class="line">Python 3.7.9</span><br><span class="line"></span><br><span class="line">sudo pkg install py37-pip</span><br></pre></td></tr></table></figure>
-
 <h5 id="简化启动"><a href="#简化启动" class="headerlink" title="简化启动"></a>简化启动</h5><p>FreeBSD 默认启动过程相当详细，包含大量调试信息以及内核消息。</p>
 <ul>
 <li>Add the <code>boot_mute=YES</code> option to the <code>/boot/loader.conf</code> file. </li>
@@ -929,34 +813,25 @@
 </ul>
 <h5 id="连接网络"><a href="#连接网络" class="headerlink" title="连接网络"></a>连接网络</h5><p>If You will have attached LAN cable and your interface is <code>em0</code> (check <code>ifconfig</code> command output) then <code>dhclient em0</code> command should grant You the working connection to the Internet – assuming that You have DHCP server on that network. </p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ifconfig em0 up</span><br><span class="line">dhclient em0</span><br></pre></td></tr></table></figure>
-
 <p>To test the network connectivity use the <code>ping</code> command.</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ping -c 3 freebsd.org</span><br></pre></td></tr></table></figure>
-
 <p>If You would like to connect to the World with wireless connection then here are the needed commands. First lets check what wireless card You have.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sysctl net.wlan.devices</span><br></pre></td></tr></table></figure>
-
 <p>We will now create <code>wlan</code> virtual device on top of our <code>iwn0</code> device and bring it up.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ifconfig wlan0 create wlandev iwn0</span><br><span class="line">ifconfig wlan0 up</span><br></pre></td></tr></table></figure>
-
 <p>We can scan for existing nearby WiFi access points if needed.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifconfig wlan0 scan</span><br></pre></td></tr></table></figure>
-
 <p>Now we need to add the desired WiFi network to the <code>/etc/wpa_supplicant.conf</code> file as shown below.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">network&#x3D;&#123;</span><br><span class="line">  ssid&#x3D;&quot;WIFI-NETWORK-NAME&quot;</span><br><span class="line">  psk&#x3D;&quot;PASSWORD&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>Then You may connect to it using the <code>wpa_supplicant</code> daemon. Hit the <code>[CTRL]+[Z]</code> key combination to put the process into suspended state. Then we type the <code>bg</code> command to put it back into running state, but in the background so we can continue to type next commands.</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wpa_supplicant -i wlan0 -c /etc/wpa_supplicant.conf</span><br></pre></td></tr></table></figure>
-
 <p>Now we will request for the IP address from the access point DHCP server.</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dhclient wlan0</span><br></pre></td></tr></table></figure>
-
 <h5 id="How-To-Add-and-Remove-Users-on-FreeBSD"><a href="#How-To-Add-and-Remove-Users-on-FreeBSD" class="headerlink" title="How To Add and Remove Users on FreeBSD"></a>How To Add and Remove Users on FreeBSD</h5><ul>
 <li><p>Add a User: <code>adduser</code></p>
 </li>
 <li><p>Grant Sudo Privileges: On FreeBSD, users that are members of the <code>wheel</code> group are allowed to use <code>sudo</code>. This is due to the following line in the default <strong>sudoers</strong> file, <code>/usr/local/etc/sudoers</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%wheel ALL&#x3D;(ALL) NOPASSWD: ALL</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%wheel ALL&#x3D;(ALL) NOPASSWD: ALL</span><br></pre></td></tr></table></figure></li>
 <li><p>Remove a User: <code>rmuser</code></p>
 </li>
 <li><p>Lock a User Account: <code>pw lock username</code></p>
@@ -1020,7 +895,6 @@
 
 
 
-    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -1134,16 +1008,6 @@ document.addEventListener('pjax:success', () => {
 
 
   
-  <script data-pjax>
-    (function(){
-      var bp = document.createElement('script');
-      var curProtocol = window.location.protocol.split(':')[0];
-      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(bp, s);
-    })();
-  </script>
-
 <script src="/js/local-search.js"></script>
 
 
@@ -1151,7 +1015,7 @@ document.addEventListener('pjax:success', () => {
 
 <script data-pjax>
 if (document.querySelectorAll('.mermaid').length) {
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8.8.3/dist/mermaid.min.js', () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8.8.4/dist/mermaid.min.js', () => {
     mermaid.init({
       theme    : 'forest',
       logLevel : 3,
@@ -1189,21 +1053,8 @@ if (document.querySelectorAll('.mermaid').length) {
 
 
 
-
     <div class="pjax">
 
-
-<script>
-NexT.utils.loadComments('#valine-comments', () => {
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', () => {
-    new Valine(Object.assign({"enable":true,"appId":"G67MmfRxl5TjCAtFep67L5uE-MdYXbMMI","appKey":"VOboVn8MgICLoqhs8exvJGLc","serverURLs":null,"placeholder":"Just go go","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"lang":null,"visitor":false,"comment_count":true,"recordIP":false,"enableQQ":false,"requiredFields":[]}, {
-      el: '#valine-comments',
-      path: "/2020/11/17/FreeBSD/",
-      serverURLs: "https://g67mmfrx.api.lncldglobal.com"
-    }));
-  }, window.Valine);
-});
-</script>
 
     </div>
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
