@@ -234,7 +234,7 @@
 
 <p>  Now logout and login again to make that work. View the changes through the <code>locale</code> command.</p>
 </li>
-<li><p>显卡驱动：使用多檔，每一個檔案只設定一個指定項目會較傳統使用單一 <code>/etc/X11/xorg.conf</code> 設定來的簡單。完整路徑為 <code>/usr/local/etc/X11/xorg.conf.d/</code>。</p>
+<li><p>显卡驱动：使用多檔，每一個檔案只設定一個指定項目會較傳統使用單一 <code>/etc/X11/xorg.conf</code> 設定來的簡單。完整路徑為 <code>/usr/local/etc/X11/xorg.conf.d/</code>。（安装 intel 显卡驱动与 nvidia 驱动难，scfb 与 vesa 驱动无法调整分辨率）</p>
   <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo vi /usr/local/etc/X11/xorg.conf.d/driver-intel.conf</span><br><span class="line">Section &quot;Device&quot;</span><br><span class="line">    Identifier &quot;Card0&quot;</span><br><span class="line">    Driver     &quot;scfb&quot;</span><br><span class="line">    BusID    &quot;PCI:0:2:0&quot;</span><br><span class="line">EndSection</span><br></pre></td></tr></table></figure>
 
 <p>  若有多張顯示卡，可取消註解 <code>BusID</code> identifier 然後設定為想要的顯示卡，顯示卡的 Bus ID 清單可以使用 <code>pciconf -lv | grep -B3 display</code> 取得。</p>
@@ -264,7 +264,7 @@
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo pkg install gnome3</span><br><span class="line">sudo pkg install gnome3-lite</span><br><span class="line">sudo pkg install x11/kde5</span><br><span class="line">sudo pkg install xfce</span><br><span class="line">sudo pkg install mate</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Install/Enable Display Manager: You have to decide how You want to start your X11 Window Server, you may login in plan text console and then type <code>xinit</code> or <code>startx</code> to read your <code>~/.xinitrc</code> configuration and daemons (The difference between <code>xinit</code> and <code>startx</code> is that <code>startx</code> command executes <code>xinit</code> command with arguments.) or You may want to use X11 Login manager such as <code>xdm/sddm/slim</code> with <code>~/.xsession</code> configuration to load after successful login. </p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo pkg install xdm</span><br><span class="line">sudo pkg install slim			# xfce,mate</span><br><span class="line">sudo pkg install x11/sddm		# kde</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo pkg install xdm</span><br><span class="line">sudo pkg install slim			# xfce,mate，slim 有个 slim-themes 软件包</span><br><span class="line">sudo pkg install x11/sddm		# kde</span><br></pre></td></tr></table></figure>
 
 <p>While <code>xinit</code> run commands based on the <code>~/.xinitrc</code> file the XDM login manager looks for the <code>~/.xsession</code> file. As You will be loading same stuff regardless of the startup method we will create a link of <code>~/.xsession</code> pointing to the <code>~/.xinitrc</code> file. This way either method You choose You will always end with started X11 session.</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ln -s ~/.xinitrc ~/.xsession</span><br></pre></td></tr></table></figure>
@@ -272,11 +272,11 @@
 <p>One more case about the <code>~/.xinitrc</code> (or <code>~/.xsession</code>) file. It is interpreted as a shell script (and yes you can do <code>if/then/else/fi</code> and <code>case/esac</code> or <code>for/while</code> POSIX shell scripting in it) but it does not need to be executable. The last command in this file MUST NOT to be put in the background (must be without the <code>&amp;</code> char at the end) because the X11 session will end.</p>
 </li>
 <li><p>Setting</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo vi /etc/ttys</span><br><span class="line">ttyv8   &quot;/usr/local/bin/xdm -nodaemon&quot;  xterm  on secure</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo vi /etc/ttys		# xdm</span><br><span class="line">ttyv8   &quot;/usr/local/bin/xdm -nodaemon&quot;  xterm  on secure</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo vi /etc/fstab gnome, kde</span><br><span class="line">proc           /proc       procfs  rw  0   0</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo vi /etc/fstab		# gnome, kde</span><br><span class="line">proc           /proc       procfs  rw  0   0</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo vi /etc/rc.conf</span><br><span class="line">moused_enalbe=&quot;YES&quot;</span><br><span class="line">dbus_enable=&quot;YES&quot;		# gnome, kde, xfce</span><br><span class="line">hald_enable=&quot;YES&quot;		# gnome, kde, mate</span><br><span class="line">gdm_enalbe=&quot;YES&quot;		# gnome启动</span><br><span class="line">sddm_enable=&quot;YES&quot;		# kde启动</span><br><span class="line">slim_enable=&quot;YES&quot;		# xfce,mate</span><br><span class="line">gnome_enable=&quot;YES&quot;		# gnome服务</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo vi /etc/rc.conf</span><br><span class="line">moused_enalbe=&quot;YES&quot;</span><br><span class="line">dbus_enable=&quot;YES&quot;		# gnome, kde, xfce</span><br><span class="line">hald_enable=&quot;YES&quot;		# gnome, kde, mate</span><br><span class="line">gdm_enalbe=&quot;YES&quot;		# gnome 启动</span><br><span class="line">sddm_enable=&quot;YES&quot;		# kde 启动</span><br><span class="line">slim_enable=&quot;YES&quot;		# xfce,mate</span><br><span class="line">gnome_enable=&quot;YES&quot;		# gnome 服务</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>slim Usage(Failed to execute login command)</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo vi ~/.xinitrc</span><br><span class="line">exec mate-session		# mate</span><br><span class="line">exec xfce4-session		# xfce</span><br></pre></td></tr></table></figure>
@@ -700,6 +700,19 @@
 <p>Now we will request for the IP address from the access point DHCP server.</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">dhclient wlan0</span><br></pre></td></tr></table></figure>
 
+<h5 id="How-To-Add-and-Remove-Users-on-FreeBSD"><a href="#How-To-Add-and-Remove-Users-on-FreeBSD" class="headerlink" title="How To Add and Remove Users on FreeBSD"></a>How To Add and Remove Users on FreeBSD</h5><ul>
+<li><p>Add a User: <code>adduser</code></p>
+</li>
+<li><p>Grant Sudo Privileges: On FreeBSD, users that are members of the <code>wheel</code> group are allowed to use <code>sudo</code>. This is due to the following line in the default <strong>sudoers</strong> file, <code>/usr/local/etc/sudoers</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">%wheel ALL&#x3D;(ALL) NOPASSWD: ALL</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Remove a User: <code>rmuser</code></p>
+</li>
+<li><p>Lock a User Account: <code>pw lock username</code></p>
+</li>
+<li><p>Unlock a User: <code>pw unlock username</code></p>
+</li>
+</ul>
 <h3 id="参见"><a href="#参见" class="headerlink" title="参见"></a>参见</h3><p>NetBSD: <span class="exturl" data-url="aHR0cHM6Ly9taXJyb3JzLmh1YXdlaWNsb3VkLmNvbS9OZXRCU0Qv">huaweicloud<i class="fa fa-external-link-alt"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly9taXJyb3JzLmFsaXl1bi5jb20vbmV0YnNkLz9zcG09YTJjNmguMTM2NTExMDQuMC4wLjRkODQzYmY0QXpKWVRY">aliyun<i class="fa fa-external-link-alt"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly9taXJyb3JzLnR1bmEudHNpbmdodWEuZWR1LmNuLw==">tsinghua<i class="fa fa-external-link-alt"></i></span></p>
 <p>OpenBSD: <span class="exturl" data-url="aHR0cHM6Ly9taXJyb3JzLmh1YXdlaWNsb3VkLmNvbS9PcGVuQlNELw==">huaweicloud<i class="fa fa-external-link-alt"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly9taXJyb3JzLmFsaXl1bi5jb20vb3BlbmJzZC8/c3BtPWEyYzZoLjEzNjUxMTA0LjAuMC4xNGRiNWE1MHFGblhsNg==">aliyun<i class="fa fa-external-link-alt"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly9taXJyb3JzLnR1bmEudHNpbmdodWEuZWR1LmNuLw==">tsinghua<i class="fa fa-external-link-alt"></i></span></p>
 <p>一篇好文：<span class="exturl" data-url="aHR0cHM6Ly9teS5vc2NoaW5hLm5ldC9xaWhoL2Jsb2cvNzg3NDM=">FreeBSD的现状和未来<i class="fa fa-external-link-alt"></i></span></p>
