@@ -3,7 +3,7 @@
   <entry>
     <title>Conversation</title>
     <url>/2020/11/21/Conversation/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><img data-src="/2020/11/21/Conversation/The%20Silent%20League.jpg" class="" title="The Silent League">
+    <content><![CDATA[<img data-src="/2020/11/21/Conversation/The%20Silent%20League.jpg" class="" title="The Silent League">
 
 <blockquote class="blockquote-center">
 <p>Just a little conversation<br>About give me your picture<br>On the cover of a magazine<br>On the cover of a magazine<br>Just a little conversation<br>But how long it might take one?<br>To get along with such thing?<br>To get along with such thing?<br>But everybody knows<br>It’s easier to fall apart<br>Just a little conversation<br>About give me your picture<br>On the cover of a magazine<br>On the cover of a magazine</p>
@@ -18,7 +18,7 @@
   <entry>
     <title>Linux Deploy</title>
     <url>/2020/11/24/Linux-Deploy/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>这是一篇旧文章，做个记录。</p>
+    <content><![CDATA[<p>这是一篇旧文章，做个记录。</p>
 <a id="more"></a>
 
 <h3 id="通过-Linux-Deploy-在-Android-上安装-Linux"><a href="#通过-Linux-Deploy-在-Android-上安装-Linux" class="headerlink" title="通过 Linux Deploy 在 Android 上安装 Linux"></a>通过 Linux Deploy 在 Android 上安装 Linux</h3><h5 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h5><p>一个 Root 了的 Android 手机</p>
@@ -69,7 +69,7 @@
   <entry>
     <title>Microservices</title>
     <url>/2020/11/26/Microservices/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>定义：“微服务架构”这个术语描述这样一种特定的软件设计方法，即以若干组可独立部署的服务的方式进行软件应用系统的设计。</p>
+    <content><![CDATA[<p>定义：“微服务架构”这个术语描述这样一种特定的软件设计方法，即以若干组可独立部署的服务的方式进行软件应用系统的设计。</p>
 <a id="more"></a>
 
 <h3 id="单体应用"><a href="#单体应用" class="headerlink" title="单体应用"></a>单体应用</h3><p>一个单体应用系统（即服务端应用系统，一个单个可执行的逻辑程序）是以一个单个单元的方式来构建的。处理用户请求的所有逻辑都运行在一个单个的进程内。通过精心设计，就能在开发人员的笔记本电脑上运行和测试这样的应用系统，并且使用一个部署流水线来确保变更被很好地进行了测试，然后部署到生产环境中。但是渐渐地，特别是随着越来越多的应用系统正被部署到云端，软件变更受到了很大的限制，应用系统的一个很小的部分的一处变更，也需要将整个单体应用系统进行重新构建和部署。这导致了微服务架构风格的诞生：以构建一组小型服务的方式来构建应用系统。</p>
@@ -168,7 +168,7 @@
   <entry>
     <title>FreeBSD</title>
     <url>/2020/11/17/FreeBSD/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote><p>FreeBSD 計劃的目標在於提供可作任意用途的軟體而不附帶任何限制條文。 我們之中許多人對程式碼 (以及計畫本身) 都有非常大的投入， 因此，當然不介意偶爾有一些資金上的補償，但我們並沒打算堅決地要求得到這類資助。 我們認為我們的首要“使命”是為任何人提供程式碼， 不管他們打算用這些程式碼做什麼， 因為這樣程式碼將能夠被更廣泛地使用，從而發揮其價值。 我認為這是自由軟體最基本的，同時也是我們所倡導的一個目標。</p>
+    <content><![CDATA[<blockquote><p>FreeBSD 計劃的目標在於提供可作任意用途的軟體而不附帶任何限制條文。 我們之中許多人對程式碼 (以及計畫本身) 都有非常大的投入， 因此，當然不介意偶爾有一些資金上的補償，但我們並沒打算堅決地要求得到這類資助。 我們認為我們的首要“使命”是為任何人提供程式碼， 不管他們打算用這些程式碼做什麼， 因為這樣程式碼將能夠被更廣泛地使用，從而發揮其價值。 我認為這是自由軟體最基本的，同時也是我們所倡導的一個目標。</p>
 <p>我們程式碼樹中，有若干是以 GNU 通用公共授權條款 (GPL) 或者 GNU 較寬鬆通用公共授權條款 (LGPL) 發佈的那些程式碼帶有少許的附加限制，還好只是強制性的要求開放程式碼而不是別的。 由於使用 GPL 的軟體在商業用途上會增加若干複雜性，因此，如果可以選擇的話， 我們會比較喜歡使用限制相對更寬鬆的 BSD 版權來發佈軟體。</p>
 <footer><strong>Jordan Hubbard</strong><cite><span class="exturl" data-url="aHR0cHM6Ly93d3cuZnJlZWJzZC5vcmcvZG9jL3poX1RXL2Jvb2tzL2hhbmRib29rLw==">FreeBSD Handbook<i class="fa fa-external-link-alt"></i></span></cite></footer></blockquote>
 
@@ -635,7 +635,7 @@
   <entry>
     <title>Hexo</title>
     <url>/2020/12/10/Hexo/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a><span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlvL3poLWNuL2RvY3MvaW5kZXguaHRtbA==">Hexo<i class="fa fa-external-link-alt"></i></span></h3><p>Hexo 是一个快速、简洁且高效的博客框架。</p>
+    <content><![CDATA[<h3 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a><span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlvL3poLWNuL2RvY3MvaW5kZXguaHRtbA==">Hexo<i class="fa fa-external-link-alt"></i></span></h3><p>Hexo 是一个快速、简洁且高效的博客框架。</p>
 <a id="more"></a>
 
 <h5 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h5><ul>
@@ -643,24 +643,13 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">scoop install git</span><br></pre></td></tr></table></figure></li>
 <li><p>安装 node.js：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">scoop install nodejs</span><br></pre></td></tr></table></figure></li>
-<li><p>NPM</p>
-<ul>
-<li><p>查看 npm 配置</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm config list -l</span><br><span class="line">npm config ls</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>配置镜像（有淘宝镜像）</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm config set registry https:&#x2F;&#x2F;registry.npmjs.org --global</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>配置 NPM 不做严格的 SSL 校验</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm config set strict-ssl false</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
 <li><p>安装 Hexo：-g 表示全局安装，会将 Hexo 命令加入环境变量中。</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-<h5 id="建站"><a href="#建站" class="headerlink" title="建站"></a>建站</h5></li>
+
+
+</li>
 </ul>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo init [folder]</span><br><span class="line">cd &lt;folder&gt;</span><br><span class="line">npm install	 # 不必执行，在执行 hexo init 的过程中就已经自动安装好了项目依赖。</span><br></pre></td></tr></table></figure>
+<h5 id="建站"><a href="#建站" class="headerlink" title="建站"></a>建站</h5><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo init [folder]</span><br><span class="line">cd &lt;folder&gt;</span><br><span class="line">npm install	 # 不必执行，在执行 hexo init 的过程中就已经自动安装好了项目依赖。</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.</span><br><span class="line">├── node_modules		&#x2F;&#x2F;依赖安装目录</span><br><span class="line">├── scaffolds			&#x2F;&#x2F;模板文件夹，Hexo的模板是指在新建的文章文件中默认填充的内容。</span><br><span class="line">|   ├── draft.md		&#x2F;&#x2F;草稿模板</span><br><span class="line">|   ├── page.md			&#x2F;&#x2F;页面模板</span><br><span class="line">|   └── post.md			&#x2F;&#x2F;文章模板</span><br><span class="line">├── source				&#x2F;&#x2F;资源文件夹</span><br><span class="line">|   └── _posts			&#x2F;&#x2F;文章目录</span><br><span class="line">├── themes				&#x2F;&#x2F;主题文件夹，Hexo 会根据主题来生成静态页面。</span><br><span class="line">|   └── landscape		&#x2F;&#x2F;默认主题</span><br><span class="line">├── .gitignore			&#x2F;&#x2F;指定不纳入git版本控制的文件</span><br><span class="line">├── _config.yml			&#x2F;&#x2F;站点配置文件</span><br><span class="line">├── db.json            </span><br><span class="line">├── package.json		&#x2F;&#x2F;应用程序的信息</span><br><span class="line">└── package-lock.json</span><br></pre></td></tr></table></figure>
 <p>source：资源文件夹是存放用户资源的地方。除 _posts 文件夹之外，开头命名为 _ (下划线)的文件 / 文件夹和隐藏的文件将会被忽略。</p>
 <h5 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h5><p>您可以在 <code>_config.yml</code> 中修改大部分的配置。</p>
@@ -1414,6 +1403,46 @@
 <li>CDN 节点服务器应答请求，将内容返回给客户端</li>
 </ol>
 <h5 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h5><p><span class="exturl" data-url="aHR0cHM6Ly93d3cuamlhbnNodS5jb20vcC8xZGFlNmUxNjgwZmY=">CDN加速原理<i class="fa fa-external-link-alt"></i></span></p>
+<h3 id="NPM"><a href="#NPM" class="headerlink" title="NPM"></a>NPM</h3><p>npm makes it easy for JavaScript developers to share and reuse code, and it makes it easy to update the code that you’re sharing.</p>
+<p>基本：</p>
+<ul>
+<li><p>package.json 和 package-lock.json</p>
+<ul>
+<li>package.json 执行 npm init 命令生成，描述项目模块信息</li>
+<li>package-lock.json 执行 npm install 命令生成，描述模块来源及依赖信息，可删除</li>
+</ul>
+</li>
+<li><p>安装模块：读取 package.json 并下载模块到 <code>node_modules</code> 的目录，模块分为两类 dependencies 和devDependencies，分别对应生产环境需要的安装包和开发环境需要的安装包</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install &lt;package_name&gt;</span><br><span class="line"></span><br><span class="line"># 在安装模块的时候，可以通过指定参数来修改 package.json 文件</span><br><span class="line">npm install &lt;package_name&gt; --save</span><br><span class="line">npm install &lt;package_name&gt; --save-dev</span><br></pre></td></tr></table></figure></li>
+<li><p>更新模块</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm update</span><br></pre></td></tr></table></figure></li>
+<li><p>卸载模块</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm uninstall &lt;package_name&gt;</span><br><span class="line"></span><br><span class="line"># 卸载模块的同时，也从 package.json 文件中移除</span><br><span class="line">$ npm uninstall --save &lt;package_name&gt;</span><br></pre></td></tr></table></figure>
+<p>解决问题：</p>
+</li>
+<li><p>Ubuntu 安装最新 LTS 版本：<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL25vZGVqcy9oZWxwL3dpa2kvSW5zdGFsbGF0aW9u">官方教程<i class="fa fa-external-link-alt"></i></span>，Windows 版本更好</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo mkdir -p &#x2F;usr&#x2F;local&#x2F;lib&#x2F;nodejs</span><br><span class="line">sudo tar -xJvf node-$VERSION-$DISTRO.tar.xz -C &#x2F;usr&#x2F;local&#x2F;lib&#x2F;nodejs</span><br><span class="line">vi ~&#x2F;.profile</span><br><span class="line"># Nodejs</span><br><span class="line">VERSION&#x3D;v10.15.0</span><br><span class="line">DISTRO&#x3D;linux-x64</span><br><span class="line">export PATH&#x3D;&#x2F;usr&#x2F;local&#x2F;lib&#x2F;nodejs&#x2F;node-$VERSION-$DISTRO&#x2F;bin:$PATH</span><br><span class="line">. ~&#x2F;.profile		# Refresh profile</span><br><span class="line">sudo ln -s &#x2F;usr&#x2F;local&#x2F;lib&#x2F;nodejs&#x2F;node-$VERSION-$DISTRO&#x2F;bin&#x2F;node  &#x2F;usr&#x2F;bin&#x2F;node</span><br></pre></td></tr></table></figure></li>
+<li><p>查看 npm 配置</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm config list -l</span><br><span class="line">npm config ls</span><br></pre></td></tr></table></figure></li>
+<li><p>配置镜像：淘宝镜像不好用，特对对于 update</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm config set registry https:&#x2F;&#x2F;registry.npmjs.org --global</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置 NPM 不做严格的 SSL 校验</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm config set strict-ssl false</span><br></pre></td></tr></table></figure></li>
+<li><p>npm ERR! Unexpected end of JSON input while parsing near …</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm cache clean --force</span><br></pre></td></tr></table></figure></li>
+<li><p>npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents：不管</p>
+</li>
+<li><p>npm ERR! code EINTEGRITY</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">grep -ir &quot;sha1-WYr+VHVbKGilMw0q&#x2F;51Ou1Mgm2U&quot; ~&#x2F;.npm		# wanted sha1</span><br><span class="line">npm cache clean --force</span><br><span class="line">grep -ir &quot;sha1-WYr+VHVbKGilMw0q&#x2F;51Ou1Mgm2U&quot; ~&#x2F;.npm</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>getaddrinfo EAI_AGAIN registry.npmjs.org：网络问题，重新运行 <code>npm install</code></p>
+</li>
+<li><p>升级为最新稳定版本的 node.js：超慢</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo npm cache clean -f</span><br><span class="line">sudo npm install -g n		# n 是 Node版本管理控制器</span><br><span class="line">sudo n stable</span><br></pre></td></tr></table></figure>
+<p><span class="exturl" data-url="aHR0cHM6Ly93d3cua2FuY2xvdWQuY24vc2hlbGx3YXkvbnBtLWRvYw==">NPM 中文文档<i class="fa fa-external-link-alt"></i></span></p>
+</li>
+</ul>
 <h3 id="Great-Blogs"><a href="#Great-Blogs" class="headerlink" title="Great Blogs"></a>Great Blogs</h3><p><span class="exturl" data-url="aHR0cDovL3llYXJpdG8uY24vdGFncy9IZXhvLw==">yearito<i class="fa fa-external-link-alt"></i></span> ，<span class="exturl" data-url="aHR0cHM6Ly9zdXlpbi1ibG9nLmNsdWIvMjAyMC8zMjNFSDJZLw==">suyin<i class="fa fa-external-link-alt"></i></span> ，<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLnlsZWFvLmNvbS9jYXRlZ29yaWVzL0hleG8lRTYlOEElOTglRTglODUlQkUv">yleao<i class="fa fa-external-link-alt"></i></span> ，<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmRsemhhbmcuY29tL3Bvc3RzLzM2Lz9oaWdobGlnaHQ9aGV4bw==">dlzhang<i class="fa fa-external-link-alt"></i></span></p>
 <h3 id="Version"><a href="#Version" class="headerlink" title="Version"></a>Version</h3><table>
 <thead>
@@ -1443,7 +1472,7 @@
   <entry>
     <title>Android 移动开发基础案例教程</title>
     <url>/2020/12/14/Android/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="Android-基础入门"><a href="#Android-基础入门" class="headerlink" title="Android 基础入门"></a>Android 基础入门</h3><h5 id="Android-简介"><a href="#Android-简介" class="headerlink" title="Android 简介"></a>Android 简介</h5><p>Android 是一款基于 Linux 平台的开源操作系统，主要用于移动设备中，由 Google 公司和开放手机联盟领导及开发。Android 一词最早出现于法国作家利尔亚当在 1886 年发表的科幻小说《未来夏娃》中，将外表像人的机器起名为 Android。从 Android 1.5 版本开始， Android 用甜点作为系统版本的代号。</p>
+    <content><![CDATA[<h3 id="Android-基础入门"><a href="#Android-基础入门" class="headerlink" title="Android 基础入门"></a>Android 基础入门</h3><h5 id="Android-简介"><a href="#Android-简介" class="headerlink" title="Android 简介"></a>Android 简介</h5><p>Android 是一款基于 Linux 平台的开源操作系统，主要用于移动设备中，由 Google 公司和开放手机联盟领导及开发。Android 一词最早出现于法国作家利尔亚当在 1886 年发表的科幻小说《未来夏娃》中，将外表像人的机器起名为 Android。从 Android 1.5 版本开始， Android 用甜点作为系统版本的代号。</p>
 <a id="more"></a>
 
 <p>Android 系统采用分层架构，由高到低分为 4 层，依次是应用程序层、应用程序框架层 、核心类库层和 Linux 内核层：</p>
