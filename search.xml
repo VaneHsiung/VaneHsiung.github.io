@@ -356,7 +356,7 @@
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo pkg clean</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Packages</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo pkg install vim atom linux-sublime3</span><br><span class="line">sudo pkg install git node npm		# Node.js</span><br><span class="line">sudo pkg install plank telegram-desktop firefox-esr</span><br><span class="line">sudo pkg install intellij tomcat mysql180-server mysql180-client		# Intellij IDEA use openjdk8</span><br><span class="line">sudo pkg install p7zip</span><br><span class="line">sudo pkg install zsh		# ZSH_THEME=&quot;agnoster&quot;</span><br><span class="line">pip install NetEase-MusicBox		# export PATH=&quot;your-dir:$PATH&quot;，网易云音乐命令行版</span><br><span class="line">sudo pkg install you-get youtube_dl		# 视频下载</span><br><span class="line">sudo pkg install vlc mplayer		# 视频播放</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo pkg install linux-sublime3</span><br><span class="line">sudo pkg install mysql180-server mysql180-client</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
