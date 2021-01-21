@@ -46,7 +46,7 @@
 <meta property="og:image" content="https://vanehsiung.netlify.app/2020/11/17/FreeBSD/launcher-dmenu-run.jpg">
 <meta property="og:image" content="https://vanehsiung.netlify.app/2020/11/17/FreeBSD/launcher-rofi.jpg">
 <meta property="article:published_time" content="2020-11-17T11:55:35.000Z">
-<meta property="article:modified_time" content="2021-01-19T06:30:52.326Z">
+<meta property="article:modified_time" content="2021-01-21T00:17:18.915Z">
 <meta property="article:author" content="vane">
 <meta property="article:tag" content="Unix">
 <meta name="twitter:card" content="summary">
@@ -349,7 +349,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-01-19 14:30:52" itemprop="dateModified" datetime="2021-01-19T14:30:52+08:00">2021-01-19</time>
+        <time title="Modified: 2021-01-21 08:17:18" itemprop="dateModified" datetime="2021-01-21T08:17:18+08:00">2021-01-21</time>
       </span>
 
   
@@ -763,6 +763,8 @@
 <p>Fish 会自动在光标后面给出建议，表示可能的选项，颜色为灰色。如果采纳建议，可以按下<code>→</code>或<code>Control + F</code>。如果只采纳一部分，可以按下<code>Alt + →</code>。</p>
 <p>输入命令时，Fish 会自动显示匹配的上一条历史记录。如果没有匹配的历史记录，Fish 会猜测可能的结果，自动补全各种输入。</p>
 <h5 id="How-to-start-things-at-boot-time"><a href="#How-to-start-things-at-boot-time" class="headerlink" title="How to start things at boot time"></a><span class="exturl" data-url="aHR0cDovL3d3dy5mcmVlYnNkZGlhcnkub3JnLw==">How to start things at boot time<i class="fa fa-external-link-alt"></i></span></h5><ul>
+<li><p>主流的桌面环境都自带应用程序自启动设置程序。</p>
+</li>
 <li><p>These directories are defined in <code>/etc/defaults/rc.conf</code>（主要是运行脚本）</p>
 <ul>
 <li><p>Default startup directory is <code>/usr/local/etc/rc.d/</code>. if you need the files to be executed in a specific order, try numbering the files. For example:</p>
@@ -773,7 +775,7 @@
 </li>
 </ul>
 <ul>
-<li><p>: DSBAutostart is a Qt program that allows you to add commands to be executed at session start.</p>
+<li><p>DSBAutostart is a Qt program that allows you to add commands to be executed at session start.</p>
 <p>（本质就是在 <code>.xinitrc</code> 调用程序指令，GUI 程序开机启动都需放入 <code>.xinitrc</code>，在 Xorg 启动后运行）</p>
 <ul>
 <li><p>Installation</p>
@@ -784,14 +786,12 @@
 <li><p>Manual</p>
 <ul>
 <li><p>Setup: Add the following command to your <code>~/.xinitrc</code>, or to your window manager’s startup script (e.g. <code>~/.config/openbox/autostart.sh</code>)</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh ~&#x2F;.config&#x2F;DSB&#x2F;autostart.sh&amp;</span><br></pre></td></tr></table></figure>
-</li>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh ~&#x2F;.config&#x2F;DSB&#x2F;autostart.sh&amp;</span><br></pre></td></tr></table></figure></li>
 <li><p><code>~/.config/DSB/autostart.sh</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plank&amp;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Plank&amp;</span><br></pre></td></tr></table></figure></li>
+</ul>
 </li>
 <li><p>GUI: <code>Setting -&gt; DSBAutostart -&gt; Add Command</code>, example <code>plank</code>, then <code>Save</code> and <code>Quit</code></p>
-</li>
-</ul>
 </li>
 </ul>
 </li>
