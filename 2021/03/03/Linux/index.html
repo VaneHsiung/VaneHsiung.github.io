@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="uXmcnam1s6y-h_YGHukGYhDQ8zMBAOHTHrJ6RfsDN6I">
+  <meta name="msvalidate.01" content="687D92122214353CF2ACE3AEA2977A9C">
+  <meta name="baidu-site-verification" content="code-lURpXjbL6l">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Architects+Daughter:300,300italic,400,400italic,700,700italic%7CMa+Shan+Zheng:300,300italic,400,400italic,700,700italic%7CShare+Tech+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css">
+  <script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"vanehsiung.netlify.app","root":"/","images":"/images","scheme":"Muse","version":"8.2.0","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+<meta name="description" content="Linux 使用笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux">
+<meta property="og:url" content="https://vanehsiung.netlify.app/2021/03/03/Linux/index.html">
+<meta property="og:site_name" content="vBlog">
+<meta property="og:description" content="Linux 使用笔记">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://vanehsiung.netlify.app/2021/03/03/Linux/XServer.png">
+<meta property="og:image" content="https://vanehsiung.netlify.app/2021/03/03/Linux/Wayland.png">
+<meta property="article:published_time" content="2021-03-03T14:48:56.000Z">
+<meta property="article:modified_time" content="2021-03-04T01:55:44.810Z">
+<meta property="article:author" content="vane">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://vanehsiung.netlify.app/2021/03/03/Linux/XServer.png">
+
+
+<link rel="canonical" href="https://vanehsiung.netlify.app/2021/03/03/Linux/">
+
+
+<script data-pjax class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+<title>Linux | vBlog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=sG-KKYP310LB0"></script>
+    <script data-pjax>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'sG-KKYP310LB0');
+      }
+    </script>
+
+  <script data-pjax>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?f3032f7a989f15a8faf91348571efe03";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="vBlog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">vBlog</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Vane Hsiung's Blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+        <li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fas fa-link fa-fw"></i>Links</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+
+ 
+<script>
+  var OriginTitile = document.title;
+  var titleTime;
+  document.addEventListener("visibilitychange", function() {
+    if (document.hidden) {
+      document.title = "(つェ⊂)我藏好了哦~";
+      clearTimeout(titleTime);
+    } else {
+      document.title = "(*´∇｀*) 被你发现啦~";
+      titleTime = setTimeout(function() {
+        document.title = OriginTitile;
+      }, 2000);
+    }
+  });
+</script>
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#IRC"><span class="nav-text">IRC</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%80%82%E5%90%88%E7%A8%8B%E5%BA%8F%E5%91%98%E7%BC%96%E7%A8%8B%E7%9A%8410%E6%AC%BE%E5%AD%97%E4%BD%93"><span class="nav-text">适合程序员编程的10款字体</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Wayland"><span class="nav-text">Wayland</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CentOS"><span class="nav-text">CentOS</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5%E7%83%AD%E7%82%B9"><span class="nav-text">连接热点</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#PPPOE-%EF%BC%88ADSL%EF%BC%89%E6%8B%A8%E5%8F%B7%E4%B8%8A%E7%BD%91"><span class="nav-text">PPPOE （ADSL）拨号上网</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E6%B3%95"><span class="nav-text">安装中文输入法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%85%B3%E9%97%AD%E8%A7%A6%E6%91%B8%E6%9D%BF"><span class="nav-text">关闭触摸板</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%85%B3%E9%97%AD-SELinux"><span class="nav-text">关闭 SELinux</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-Oracle-JDK"><span class="nav-text">安装 Oracle JDK</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%94%A8-MTP-%E6%8C%82%E8%BD%BD%E6%89%8B%E6%9C%BA"><span class="nav-text">用 MTP 挂载手机</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#dd-%E5%88%B6%E4%BD%9CU%E7%9B%98%E5%90%AF%E5%8A%A8%E7%9B%98"><span class="nav-text">dd 制作U盘启动盘</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9F%A5%E6%89%BE%E4%BE%9D%E8%B5%96"><span class="nav-text">查找依赖</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E9%BB%98%E8%AE%A4%E5%85%B3%E8%81%94%E7%9A%84%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F"><span class="nav-text">修改文件默认关联的应用程序</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Firefox-%E5%AE%89%E8%A3%85-Adobe-Flash"><span class="nav-text">Firefox 安装 Adobe Flash</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#wine-exe%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%8D%B8%E8%BD%BD"><span class="nav-text">wine exe程序的卸载</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%BB%98%E8%AE%A4%E5%AD%97%E4%BD%93"><span class="nav-text">默认字体</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#CentOS-Minimal-Xfce"><span class="nav-text">CentOS Minimal + Xfce</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#DNF-%E4%B8%8E-YUM-%E5%8C%BA%E5%88%AB"><span class="nav-text">DNF 与 YUM 区别</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#DNF-%E5%91%BD%E4%BB%A4"><span class="nav-text">DNF 命令</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ubuntu"><span class="nav-text">Ubuntu</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#GNOME-%E4%BD%BF%E7%94%A8"><span class="nav-text">GNOME 使用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Ubuntu-Software-amp-Update-%E5%8D%A1%E5%9C%A8-cache-refresh"><span class="nav-text">Ubuntu Software &amp; Update 卡在 cache refresh</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ubuntu%E4%B8%8B%E5%A6%82%E4%BD%95%E8%8E%B7%E5%8F%96%E6%BA%90%E7%A0%81%E5%8C%85%E5%92%8C%E6%BA%90%E7%A0%81"><span class="nav-text">ubuntu下如何获取源码包和源码</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Ubuntu-%E8%87%AA%E5%8A%A8%E5%88%87%E6%8D%A2%E5%A3%81%E7%BA%B8"><span class="nav-text">Ubuntu 自动切换壁纸</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Ubuntu-%E6%A1%8C%E9%9D%A2%E5%8D%A1%E6%AD%BB"><span class="nav-text">Ubuntu 桌面卡死</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#snap-%E2%80%9Ccanonical-livepatch%E2%80%9D-has-%E2%80%9Cinstall-snap%E2%80%9D-change-in-progress"><span class="nav-text">snap “canonical-livepatch” has “install-snap” change in progress</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Ubuntu-%E7%B3%BB%E7%BB%9F%E4%B8%AD%E4%BD%BF%E7%94%A8-Firefox-%E6%92%AD%E6%94%BE-HTML5-%E8%A7%86%E9%A2%91"><span class="nav-text">Ubuntu 系统中使用 Firefox 播放 HTML5 视频</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#apt-%E4%B8%8E-apt-get"><span class="nav-text">apt 与 apt-get</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Ubuntu-Repositories-should-enable"><span class="nav-text">Ubuntu Repositories(should enable)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Backup-And-Restore-Linux"><span class="nav-text">Backup And Restore Linux</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="vane"
+      src="/uploads/avatar.png">
+  <p class="site-author-name" itemprop="name">vane</p>
+  <div class="site-description" itemprop="description">"Try not to become a man of success. Rather become a man of value."</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL1ZhbmVIc2l1bmc=" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;VaneHsiung"><i class="fab fa-github fa-fw"></i>GitHub</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOm1pY3JvZnV0Y3NAb3V0bG9vay5jb20=" title="E-Mail → mailto:microfutcs@outlook.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</span>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9lbg=="><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://vanehsiung.netlify.app/2021/03/03/Linux/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="vane">
+      <meta itemprop="description" content=""Try not to become a man of success. Rather become a man of value."">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="vBlog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Linux
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-03-03 22:48:56" itemprop="dateCreated datePublished" datetime="2021-03-03T22:48:56+08:00">2021-03-03</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-03-04 09:55:44" itemprop="dateModified" datetime="2021-03-04T09:55:44+08:00">2021-03-04</time>
+      </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>11k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>10 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>Linux 使用笔记</p>
+<a id="more"></a>
+
+<h5 id="IRC"><a href="#IRC" class="headerlink" title="IRC"></a>IRC</h5><ul>
+<li><p>运行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ irssi</span><br></pre></td></tr></table></figure></li>
+<li><p>列出服务器列表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;network list</span><br></pre></td></tr></table></figure></li>
+<li><p>翻页记录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pgUP, pgDN</span><br></pre></td></tr></table></figure></li>
+<li><p>添加服务器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;network add freenode</span><br></pre></td></tr></table></figure></li>
+<li><p>添加服务器地址</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;server add -network freenode irc.freenode.net</span><br></pre></td></tr></table></figure></li>
+<li><p>新建窗口</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;window new</span><br></pre></td></tr></table></figure></li>
+<li><p>隐藏窗口</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;window hide</span><br></pre></td></tr></table></figure></li>
+<li><p>关闭窗口</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;window close</span><br></pre></td></tr></table></figure></li>
+<li><p>关闭指定窗口</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;window close number</span><br></pre></td></tr></table></figure></li>
+<li><p>窗口列表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;window list</span><br></pre></td></tr></table></figure></li>
+<li><p>连接服务器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;connect freenode</span><br></pre></td></tr></table></figure></li>
+<li><p>修改昵称，这个昵称就是用户名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;nick newname</span><br></pre></td></tr></table></figure></li>
+<li><p>注册</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;msg NickServ register password e-mail</span><br></pre></td></tr></table></figure></li>
+<li><p>登陆</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;msg NickServ identify name password</span><br></pre></td></tr></table></figure></li>
+<li><p>服务器信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;info</span><br></pre></td></tr></table></figure></li>
+<li><p>查询服务器admin</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;admin</span><br></pre></td></tr></table></figure></li>
+<li><p>服务器统计信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;lusers</span><br></pre></td></tr></table></figure></li>
+<li><p>服务器今日统计信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;motd</span><br></pre></td></tr></table></figure></li>
+<li><p>解析当前有几个服务器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;links</span><br></pre></td></tr></table></figure></li>
+<li><p>频道列表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;list</span><br></pre></td></tr></table></figure></li>
+<li><p>列出当前服务器或指定频道人员名字</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;names centos-social</span><br></pre></td></tr></table></figure></li>
+<li><p>加入频道</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;join centos-social</span><br></pre></td></tr></table></figure></li>
+<li><p>提示频道对话情况</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Act:</span><br></pre></td></tr></table></figure></li>
+<li><p>切换到1-10编号的频道</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Alt+1~0</span><br></pre></td></tr></table></figure></li>
+<li><p>切换到11-20编号的频道</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Alt+q~p</span><br></pre></td></tr></table></figure></li>
+<li><p>切换上/下频道</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ctrl+n&#x2F;p</span><br></pre></td></tr></table></figure></li>
+<li><p>查看频道所有人</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;who</span><br></pre></td></tr></table></figure></li>
+<li><p>看某人资料</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;whois name</span><br></pre></td></tr></table></figure></li>
+<li><p>查询是否在线</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;ison name</span><br></pre></td></tr></table></figure></li>
+<li><p>向某人说话</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;say name message</span><br></pre></td></tr></table></figure></li>
+<li><p>发动作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;me action</span><br></pre></td></tr></table></figure></li>
+<li><p>查看name所说的话</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;lastlog name</span><br></pre></td></tr></table></figure></li>
+<li><p>忽略某人聊天内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;ignore name</span><br></pre></td></tr></table></figure></li>
+<li><p>向某人发注意消息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;notice name message</span><br></pre></td></tr></table></figure></li>
+<li><p>向某人发私信</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;msg name message</span><br><span class="line">&#x2F;query name message</span><br></pre></td></tr></table></figure></li>
+<li><p>暂时离开</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;away reason</span><br></pre></td></tr></table></figure></li>
+<li><p>解除离开</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;away</span><br></pre></td></tr></table></figure></li>
+<li><p>离开频道</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;wc</span><br><span class="line">&#x2F;part centos-social message</span><br></pre></td></tr></table></figure></li>
+<li><p>离开服务器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;disconnect freenode</span><br></pre></td></tr></table></figure></li>
+<li><p>离开irssi</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;quit</span><br><span class="line">&#x2F;exit</span><br></pre></td></tr></table></figure></li>
+<li><p>自动保存聊天内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;set autolog on</span><br></pre></td></tr></table></figure>
+<h5 id="适合程序员编程的10款字体"><a href="#适合程序员编程的10款字体" class="headerlink" title="适合程序员编程的10款字体"></a>适合程序员编程的10款字体</h5></li>
+<li><p>Inconsolata</p>
+</li>
+<li><p>Consolas：消除锯齿。</p>
+</li>
+<li><p>Deja Vu Sans Mono：消除锯齿。</p>
+</li>
+<li><p>Droid Sans Mono：Droid 字体家族适合手机等小屏幕的移动平台。</p>
+</li>
+<li><p>Proggy：把字体调小点，不要消除锯齿。</p>
+</li>
+<li><p>Profont：Profont是一种类Monaco的位图字体。把字体调小一点为好。</p>
+</li>
+<li><p>Monofur：设置为消除锯齿。</p>
+</li>
+<li><p>Monaco：Mac的默认字体，使用它时，把字体设置为9号或者10号时会更好。</p>
+</li>
+<li><p>Andale Mono</p>
+</li>
+<li><p>Courier：调整一下字体大小并消除锯齿。</p>
+</li>
+</ul>
+<h5 id="Wayland"><a href="#Wayland" class="headerlink" title="Wayland"></a>Wayland</h5><p>X即X11、X Window System，是用于在类UNIX的操作系统上的位图显示的窗口系统，提供了GUI环境的基本框架。X由X.Org Foundation维护，遵守MIT协议，当前参考实现为X.Org Server。在架构方面，X使用了C/S模型，客户端和服务器可以在同一个机器上，也可以在不同的机器上，X作为Server为应用程序这个Client提供显示和I/O服务。</p>
+<img data-src="/2021/03/03/Linux/XServer.png" class="" title="XServer">
+
+<p>Wayland是一个显示服务协议，服务端为Wayland Compositor，把X的X Server和Compositor合二为一，旨在替换X，作为类Unix操作系统上更现代、简介的窗口系统，遵守MIT协议，提供了Wayland Compositor的参考C语言实现Weston。</p>
+<img data-src="/2021/03/03/Linux/Wayland.png" class="" title="Wayland">
+
+<p>时至今日，原本在X Server中做的事很多已被移到kernel或者单独的库中，因此X Server就显得比较累赘了。Wayland在架构上去掉了这个中间层，将compositor作为display server，使client与compositor直接通信，从而在灵活性和性能等方面上能够比前辈更加出色。</p>
+<p>查看是否使用 wayland</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo $XDG_SESSION_TYPE</span><br></pre></td></tr></table></figure>
+<h3 id="CentOS"><a href="#CentOS" class="headerlink" title="CentOS"></a>CentOS</h3><h5 id="连接热点"><a href="#连接热点" class="headerlink" title="连接热点"></a>连接热点</h5><ul>
+<li><p>打开WIFI</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifconfig interface up </span><br></pre></td></tr></table></figure></li>
+<li><p>查看所有可用的无线网络信号</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iw wlp2s0 scan | grep SSID</span><br></pre></td></tr></table></figure></li>
+<li><p>连接无线网</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wpa_supplicant -B -i wlp2s0 -c &lt;(wpa_passphrase &quot;SSID&quot; &quot;passwd&quot;) </span><br></pre></td></tr></table></figure></li>
+<li><p>分配IP地址</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dhclient interface</span><br></pre></td></tr></table></figure></li>
+<li><p>查看无线网卡地址信息，有ip地址表示网络连接成功</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifconfig interface</span><br></pre></td></tr></table></figure>
+<h5 id="PPPOE-（ADSL）拨号上网"><a href="#PPPOE-（ADSL）拨号上网" class="headerlink" title="PPPOE （ADSL）拨号上网"></a>PPPOE （ADSL）拨号上网</h5></li>
+<li><p>安装拨号软件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnf install  rp-pppoe* ppp*</span><br></pre></td></tr></table></figure></li>
+<li><p>设定</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pppoe-setup</span><br></pre></td></tr></table></figure></li>
+<li><p>拨号上网</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pppoe-stop</span><br><span class="line">pppoe-start</span><br></pre></td></tr></table></figure>
+<h5 id="安装中文输入法"><a href="#安装中文输入法" class="headerlink" title="安装中文输入法"></a>安装中文输入法</h5></li>
+<li><p>安装 fcitx </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnf install fcitx-im fcitx-configtool fcitx-googlepinyin</span><br></pre></td></tr></table></figure></li>
+<li><p>配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ nano ~&#x2F;.xprofile</span><br><span class="line">export GTK_MODULE&#x3D;fcitx</span><br><span class="line">export QT_IM_MODULE&#x3D;fcitx</span><br><span class="line">export XMODIFIERS&#x3D;&quot;@im&#x3D;fcitx&quot;</span><br></pre></td></tr></table></figure></li>
+<li><p>fictx 没图标：重装fcitx，在fcitx配置里关掉Kimpanel</p>
+</li>
+</ul>
+<h5 id="关闭触摸板"><a href="#关闭触摸板" class="headerlink" title="关闭触摸板"></a>关闭触摸板</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dnf install xorg-x11-apps</span><br><span class="line">synclient TouchpadOff&#x3D;1		# 关闭</span><br><span class="line">synclient TouchpadOff&#x3D;0		# 开启</span><br></pre></td></tr></table></figure>
+<h5 id="关闭-SELinux"><a href="#关闭-SELinux" class="headerlink" title="关闭 SELinux"></a>关闭 SELinux</h5><ul>
+<li><p>查看是否运行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;usr&#x2F;sbin&#x2F;sestatus -v</span><br></pre></td></tr></table></figure></li>
+<li><p>关闭 SELinux </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># vi &#x2F;etc&#x2F;selinux&#x2F;config</span><br><span class="line">SELINUX&#x3D;disabled</span><br></pre></td></tr></table></figure>
+<h5 id="安装-Oracle-JDK"><a href="#安装-Oracle-JDK" class="headerlink" title="安装 Oracle JDK"></a>安装 Oracle JDK</h5></li>
+<li><p>解压缩到目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf jdk-7u60-linux-x64.gz -C dir</span><br></pre></td></tr></table></figure></li>
+<li><p>修改环境变量</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># vim ~&#x2F;.bashrc</span><br><span class="line">set oracle jdk environment</span><br><span class="line">export JAVA_HOME&#x3D;&#x2F;usr&#x2F;lib&#x2F;jvm&#x2F;jdk1.7.0_60 		# 这里换成自己解压的jdk 目录</span><br><span class="line">export JRE_HOME&#x3D;$&#123;JAVA_HOME&#125;&#x2F;jre  </span><br><span class="line">export CLASSPATH&#x3D;.:$&#123;JAVA_HOME&#125;&#x2F;lib:$&#123;JRE_HOME&#125;&#x2F;lib  </span><br><span class="line">export PATH&#x3D;$&#123;JAVA_HOME&#125;&#x2F;bin:$PATH</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使环境变量生效</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ~&#x2F;.bashrc</span><br></pre></td></tr></table></figure>
+<h5 id="用-MTP-挂载手机"><a href="#用-MTP-挂载手机" class="headerlink" title="用 MTP 挂载手机"></a>用 MTP 挂载手机</h5></li>
+<li><p>安装jmtpfs</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnf install jmtpfs</span><br></pre></td></tr></table></figure></li>
+<li><p>查看手机 “busnum”和“devnum”</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jmptfs -l</span><br></pre></td></tr></table></figure></li>
+<li><p>建立挂载点</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir &#x2F;media&#x2F;dir</span><br></pre></td></tr></table></figure></li>
+<li><p>挂载手机</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jmtpfs -device&#x3D;busnum,devnum &#x2F;media&#x2F;dir&#x2F;</span><br></pre></td></tr></table></figure>
+<h5 id="dd-制作U盘启动盘"><a href="#dd-制作U盘启动盘" class="headerlink" title="dd 制作U盘启动盘"></a>dd 制作U盘启动盘</h5></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dd bs&#x3D;4M if&#x3D;fileName.iso of&#x3D;&#x2F;dev&#x2F;sdx status&#x3D;progress &amp;&amp; sync</span><br></pre></td></tr></table></figure>
+<p>Windows 下用Rufus 且 dd 写入模式</p>
+<h5 id="查找依赖"><a href="#查找依赖" class="headerlink" title="查找依赖"></a>查找依赖</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum whatprovide package</span><br><span class="line">dnf provides package</span><br></pre></td></tr></table></figure>
+<h5 id="修改文件默认关联的应用程序"><a href="#修改文件默认关联的应用程序" class="headerlink" title="修改文件默认关联的应用程序"></a>修改文件默认关联的应用程序</h5><ul>
+<li>mime类型文件存在于以下的两个路径：<ul>
+<li>/usr/share/mime</li>
+<li>~/.local/share/mime</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;usr&#x2F;share&#x2F;mime&#x2F;text&#x2F;makrdown.xml</span><br></pre></td></tr></table></figure>
+<ul>
+<li>应用程序的desktop文件，存在于以下的两个路径：<ul>
+<li>/usr/share/applications</li>
+<li>~/.local/share/applications</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Desktop Entry</span><br><span class="line">Type&#x3D;Application</span><br><span class="line">Name&#x3D;name		# 应用名称，即开始菜单中的名称</span><br><span class="line">Exec&#x3D;appPath		# 应用执行文件位置</span><br><span class="line">Icon&#x3D;default48.png		# 应用图标位置</span><br><span class="line">Terminal&#x3D;false		# 是否显示终端</span><br><span class="line">StartupNotify&#x3D;true</span><br><span class="line">Categories&#x3D;Office		# 所属分类</span><br><span class="line">MimeType&#x3D;text&#x2F;x-markdown		# MIME 类型</span><br></pre></td></tr></table></figure>
+<ul>
+<li>应用程序默认关联文件，存在于以下的两个路径：<ul>
+<li>/usr/share/applications/mimeapps.list</li>
+<li>~/.local/share/applications/mimeapps.list</li>
+</ul>
+</li>
+</ul>
+<h5 id="Firefox-安装-Adobe-Flash"><a href="#Firefox-安装-Adobe-Flash" class="headerlink" title="Firefox 安装 Adobe Flash"></a>Firefox 安装 Adobe Flash</h5><p>Firefox 不要在网页下载，直接通过源下载。</p>
+<h5 id="wine-exe程序的卸载"><a href="#wine-exe程序的卸载" class="headerlink" title="wine exe程序的卸载"></a>wine exe程序的卸载</h5><ol>
+<li>wine 会在 /home 下的用户名目录生成三个隐藏的文件夹 .wine、.local、.config 等文件夹，快捷键 ctrl+H 可以显示出来;</li>
+<li>进入 .wine 文件夹可以看到 drive_c 文件夹，这是wine自动生成的虚拟windows  C盘，里面有类似windows系统盘的目录结构，在里面找到需要卸载的软件文件夹删除即可；</li>
+<li>找到 /home/用户名/.local/share/applications/wine/Programs，将软件对应的文件删除；</li>
+<li>找到 /home/用户名/.config/menus/applications-merged，将软件对应的文件删除；</li>
+<li>这时候已经删除完毕，但是可能还会看到桌面图标或软件列表，重启系统即可。</li>
+</ol>
+<h5 id="默认字体"><a href="#默认字体" class="headerlink" title="默认字体"></a>默认字体</h5><p>CentOS 默认字体目录 /lib/kbd/consolefonts </p>
+<p>纯命令行是不能使用系统之外的字体的。</p>
+<h5 id="CentOS-Minimal-Xfce"><a href="#CentOS-Minimal-Xfce" class="headerlink" title="CentOS Minimal + Xfce"></a>CentOS Minimal + Xfce</h5><p>base 源与 epel 源，使用用阿里镜像: <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYWxpeXVuLmNvbS9taXJyb3Iv">https://developer.aliyun.com/mirror/<i class="fa fa-external-link-alt"></i></span></p>
+<ul>
+<li><p>安装Xfce4，先安装 Xfce 可以保证不安装多余的包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dnf group list</span><br><span class="line">dnf groupinstall Xfce</span><br></pre></td></tr></table></figure></li>
+<li><p>安装 X Window system</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnf groupinstall &quot;X Window system&quot;</span><br></pre></td></tr></table></figure></li>
+<li><p>验证</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl isolate graphical.target</span><br></pre></td></tr></table></figure></li>
+<li><p>设置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl set-default multi-user.target		# 设置成命令模式</span><br><span class="line">systemctl set-default graphical.target		# 设置成图形模式</span><br></pre></td></tr></table></figure></li>
+<li><p>安装中文字体和中文输入法楷体字体</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnf install cjkuni-ukai-fonts</span><br></pre></td></tr></table></figure></li>
+<li><p>输入法需要安装如下包：</p>
+<ul>
+<li>ibus， 这个包里有ibus-daemon这个平台服务器程序和ibus这个配置助手。</li>
+<li>ibus-libpinyin， 这个是ibus平台下具体的拼音输入法。</li>
+<li>im-chooser,这个是输入法平台选择助手程序。</li>
+<li>执行im-chooser，选择输入法平台和输入法。重新登录系统。</li>
+</ul>
+</li>
+<li><p>xfce 主题</p>
+<ul>
+<li>网站：xfce-look.org</li>
+<li>主题目录： /usr/share/themes 或 ~/.themes</li>
+<li>图标鼠标目录： /usr/share/icons 或 ~/.icons</li>
+<li>壁纸： /usr/share/background , /usr/share/wallpapers</li>
+<li><span class="exturl" data-url="aHR0cDovL2xpLm51eC5yby8=">Plank<i class="fa fa-external-link-alt"></i></span></li>
+</ul>
+</li>
+</ul>
+<h5 id="DNF-与-YUM-区别"><a href="#DNF-与-YUM-区别" class="headerlink" title="DNF 与 YUM 区别"></a>DNF 与 YUM 区别</h5><table>
+<thead>
+<tr>
+<th>编号</th>
+<th>DNF（Dandified YUM）</th>
+<th>YUM（Yellowdog Updater, Modified）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>DNF 使用 libsolv 来解析依赖关系，由 SUSE 开发和维护</td>
+<td>YUM 使用公开的 API 来解析依赖关系</td>
+</tr>
+<tr>
+<td>2</td>
+<td>API 有完整的文档</td>
+<td>API 没有完整的文档</td>
+</tr>
+<tr>
+<td>3</td>
+<td>由 C、C++、Python 编写的</td>
+<td>只用 Python 编写</td>
+</tr>
+<tr>
+<td>4</td>
+<td>DNF 目前在 Fedora、RHEL 8、CentOS 8、OEL 8 和 Mageia 6/7 中使用</td>
+<td>YUM 目前在 RHEL 6/7、CentOS 6/7、OEL 6/7 中使用</td>
+</tr>
+<tr>
+<td>5</td>
+<td>DNF 支持各种扩展</td>
+<td>Yum 只支持基于 Python 的扩展</td>
+</tr>
+<tr>
+<td>6</td>
+<td>API 有良好的文档，因此很容易创建新的功能</td>
+<td>因为 API 没有正确的文档化，所以创建新功能非常困难</td>
+</tr>
+<tr>
+<td>7</td>
+<td>DNF 在同步存储库的元数据时，使用的内存较少</td>
+<td>在同步存储库的元数据时，YUM 使用了过多的内存</td>
+</tr>
+<tr>
+<td>8</td>
+<td>DNF 使用满足性算法来解决依赖关系解析（它是用字典的方法来存储和检索包和依赖信息）</td>
+<td>由于使用公开 API 的原因，Yum 依赖性解析变得迟钝</td>
+</tr>
+<tr>
+<td>9</td>
+<td>从内存使用量和版本库元数据的依赖性解析来看，性能都不错</td>
+<td>总的来说，在很多因素的影响下，表现不佳</td>
+</tr>
+<tr>
+<td>10</td>
+<td>DNF 更新：在 DNF 更新过程中，如果包中包含不相关的依赖，则不会更新</td>
+<td>YUM 将在没有验证的情况下更新软件包</td>
+</tr>
+<tr>
+<td>11</td>
+<td>如果启用的存储库没有响应，DNF 将跳过它，并继续使用可用的存储库处理事务</td>
+<td>如果有存储库不可用，YUM 会立即停止</td>
+</tr>
+<tr>
+<td>12</td>
+<td><code>dnf update</code> 和 <code>dnf upgrade</code> 是等价的</td>
+<td>在 Yum 中则不同</td>
+</tr>
+<tr>
+<td>13</td>
+<td>安装包的依赖关系不更新</td>
+<td>Yum 为这种行为提供了一个选项</td>
+</tr>
+<tr>
+<td>14</td>
+<td>清理删除的包：当删除一个包时，DNF 会自动删除任何没有被用户明确安装的依赖包</td>
+<td>Yum 不会这样做</td>
+</tr>
+<tr>
+<td>15</td>
+<td>存储库缓存更新计划：默认情况下，系统启动后 10 分钟后，DNF 每小时会对配置的存储库检查一次更新。这个动作由系统定时器单元 <code>dnf-makecache.timer</code> 控制</td>
+<td>Yum 也会这样做</td>
+</tr>
+<tr>
+<td>16</td>
+<td>内核包不受 DNF 保护。不像 Yum，你可以删除所有的内核包，包括运行中的内核包</td>
+<td>Yum 不允许你删除运行中的内核</td>
+</tr>
+<tr>
+<td>17</td>
+<td>libsolv：用于解包和读取资源库。hawkey: 为 libsolv 提供简化的 C 和 Python API 库。librepo: 提供 C 和 Python（类似 libcURL）API 的库，用于下载 Linux 存储库元数据和软件包。libcomps: 是 yum.comps 库的替代品。它是用纯 C 语言编写的库，有 Python 2 和 Python 3 的绑定。</td>
+<td>Yum 不使用单独的库来执行这些功能</td>
+</tr>
+<tr>
+<td>18</td>
+<td>DNF 包含 29000 行代码</td>
+<td>Yum 包含 56000 行代码</td>
+</tr>
+<tr>
+<td>19</td>
+<td>DNF 由 Ales Kozumplik 开发</td>
+<td>YUM 由 Zdenek Pavlas、Jan Silhan 和团队成员开发</td>
+</tr>
+</tbody></table>
+<h5 id="DNF-命令"><a href="#DNF-命令" class="headerlink" title="DNF 命令"></a>DNF 命令</h5><ul>
+<li><p>查看 DNF 包管理器版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnf –version</span><br></pre></td></tr></table></figure></li>
+<li><p>查看系统中可用的 DNF 软件库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnf repolist</span><br></pre></td></tr></table></figure></li>
+<li><p>查看系统中可用和不可用的所有的 DNF 软件库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnf repolist all</span><br></pre></td></tr></table></figure></li>
+<li><p>列出所有 RPM 包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnf list</span><br></pre></td></tr></table></figure></li>
+<li><p>列出所有安装了的 RPM 包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnf list installed</span><br></pre></td></tr></table></figure></li>
+<li><p>列出所有可供安装的 RPM 包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnf list available</span><br></pre></td></tr></table></figure></li>
+<li><p>搜索软件库中的 RPM 包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnf search nano</span><br></pre></td></tr></table></figure></li>
+<li><p>查找某一文件的提供者</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnf provides &#x2F;bin&#x2F;bash</span><br></pre></td></tr></table></figure></li>
+<li><p>查看软件包详情</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnf info nano</span><br></pre></td></tr></table></figure></li>
+<li><p>安装软件包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnf install nano</span><br></pre></td></tr></table></figure></li>
+<li><p>升级软件包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnf update systemd</span><br></pre></td></tr></table></figure></li>
+<li><p>检查系统软件包的更新</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnf check-update</span><br></pre></td></tr></table></figure></li>
+<li><p>升级所有系统软件包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnf update 或  dnf upgrade</span><br></pre></td></tr></table></figure></li>
+<li><p>删除软件包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnf remove nano 或  dnf erase nano</span><br></pre></td></tr></table></figure></li>
+<li><p>删除无用孤立的软件包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnf autoremove</span><br></pre></td></tr></table></figure></li>
+<li><p>删除缓存的无用软件包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnf clean all</span><br></pre></td></tr></table></figure></li>
+<li><p>获取有关某条命令的使用帮助</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnf help clean</span><br></pre></td></tr></table></figure></li>
+<li><p>查看所有的 DNF 命令及其用途</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnf help</span><br></pre></td></tr></table></figure></li>
+<li><p>查看 DNF 命令的执行历史</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnf history</span><br></pre></td></tr></table></figure></li>
+<li><p>查看所有的软件包组</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnf grouplist</span><br></pre></td></tr></table></figure></li>
+<li><p>安装一个软件包组</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnf groupinstall ‘Educational Software’</span><br></pre></td></tr></table></figure></li>
+<li><p>升级一个软件包组中的软件包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnf groupupdate ‘Educational Software’</span><br></pre></td></tr></table></figure></li>
+<li><p>删除一个软件包组</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnf groupremove ‘Educational Software’</span><br></pre></td></tr></table></figure></li>
+<li><p>从特定的软件包库安装特定的软件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnf –enablerepo&#x3D;epel install phpmyadmin</span><br></pre></td></tr></table></figure></li>
+<li><p>更新软件包到最新的稳定发行版</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnf distro-sync</span><br></pre></td></tr></table></figure></li>
+<li><p>重新安装特定软件包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnf reinstall nano</span><br></pre></td></tr></table></figure></li>
+<li><p>回滚某个特定软件的版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnf downgrade acpid</span><br></pre></td></tr></table></figure>
+<h3 id="Ubuntu"><a href="#Ubuntu" class="headerlink" title="Ubuntu"></a>Ubuntu</h3></li>
+</ul>
+<h5 id="GNOME-使用"><a href="#GNOME-使用" class="headerlink" title="GNOME 使用"></a>GNOME 使用</h5><ul>
+<li><p>Ubuntu 自动下载并安装对你的系统至关重要的安全更新。而这个自动更新经常导致你“无法锁定管理目录”错误(<span class="exturl" data-url="aHR0cHM6Ly9pdHNmb3NzLmNvbS9jb3VsZC1ub3QtZ2V0LWxvY2stZXJyb3IvKSVFMyU4MCU4MiVFNSU5QiVBMCVFNiVBRCVBNCVFOSU4MCU4OSVFNiU4QiVBOQ==">https://itsfoss.com/could-not-get-lock-error/)。因此选择<i class="fa fa-external-link-alt"></i></span> Display immediately。同时把其他 Updates 都改为 Every two weeks，免得烦。</p>
+</li>
+<li><p>Gnome 3 自带自动切换壁纸的功能，选择有时间小图标的壁纸。</p>
+</li>
+<li><p>GNOME 桌面拥有强大的搜索功能，按 <code>Super</code> 键并搜索一些东西，可以进入“设置”中来控制可以搜索的内容和顺序。</p>
+</li>
+<li><p>GNOME 桌面有称为“扩展”的小插件或附加组件，学会使用 GNOME 扩展来扩展系统的可用性。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install gnome-tweaks		# GNOME 设置工具</span><br></pre></td></tr></table></figure>
+<p>同时会安装新的 GNOME Shell extensions，可以禁用桌面图标、Ubuntu Dock。可从浏览器安装 <span class="exturl" data-url="aHR0cHM6Ly9leHRlbnNpb25zLmdub21lLm9yZy8=">GNOME Shell extensions<i class="fa fa-external-link-alt"></i></span>。</p>
+<ul>
+<li>OpenWeather<ul>
+<li>Location</li>
+<li>Units：中国使用公制单位</li>
+<li>Layout: Right</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Do Not Disturb 使通知只在消息栏中，不会在桌面上弹出。</p>
+</li>
+<li><p>清理系统</p>
+<ul>
+<li><p>apt autoremove，删除不再需要的包</p>
+</li>
+<li><p>APT cache</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">du -sh &#x2F;var&#x2F;cache&#x2F;apt		# see the size of this cache</span><br><span class="line">apt-get autoclean		# remove only the outdated packages</span><br><span class="line">apt-get clean		# delete apt cache in its entirety </span><br></pre></td></tr></table></figure>
+<p>  apt-get 和软件中心下载的软件包一般放在 <code>/var/cache/apt/archives/</code> 目录，一般都安装在 <code>/usr/</code></p>
+</li>
+<li><p>journal logs</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">journalctl --disk-usage		# check the log size</span><br><span class="line">journalctl --vacuum-time&#x3D;3d		# clear the logs that are older than a certain days</span><br></pre></td></tr></table></figure></li>
+<li><p>thumbnail cache</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">du -sh ~&#x2F;.cache&#x2F;thumbnails		# check the size of thumbnail cache </span><br><span class="line">rm -rf ~&#x2F;.cache&#x2F;thumbnails&#x2F;*</span><br></pre></td></tr></table></figure></li>
+<li><p>Find and remove duplicate files：You can use a GUI tool like <span class="exturl" data-url="aHR0cHM6Ly93d3cucGl4ZWxiZWF0Lm9yZy9mc2xpbnQv">FSlint<i class="fa fa-external-link-alt"></i></span> or a command line tool like <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FkcmlhbmxvcGV6cm9jaGUvZmR1cGVz">FDUPES<i class="fa fa-external-link-alt"></i></span> for this task</p>
+</li>
+<li><p>Remove old Linux kernels</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dpkg --list &#39;linux-image*&#39;		# List all installed Linux kernels </span><br><span class="line">apt-get remove linux-image-VERSION</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>快捷键</p>
+<ul>
+<li><code>Super</code> + <code>m</code>： 显示消息托盘</li>
+<li><code>Super</code> + <code>a</code>：显示应用程序菜单</li>
+<li><code>Alt</code> + <code>F2</code>：输入命令以快速启动应用</li>
+<li><code>Alt</code> + <code>F2</code>，然后输入 <code>r</code> 或 <code>restart</code>，再 <code>Enter</code>：重启 GNOME shell。</li>
+</ul>
+</li>
+</ul>
+<p>参考：<span class="exturl" data-url="aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC8xMzgxNTczNDg=">安装完 Ubuntu 20.04 后要做的 16 件事<i class="fa fa-external-link-alt"></i></span></p>
+<h5 id="Ubuntu-Software-amp-Update-卡在-cache-refresh"><a href="#Ubuntu-Software-amp-Update-卡在-cache-refresh" class="headerlink" title="Ubuntu Software &amp; Update 卡在 cache refresh"></a>Ubuntu Software &amp; Update 卡在 cache refresh</h5><p>通过 <code>apt update</code> 可以看见是 Connecting to security.ubuntu.com Failed，解决办法是更改 /etc/hosts 文件添加其 IP，可通过 <span class="exturl" data-url="aHR0cHM6Ly93d3cuZWFzeWNvdW50ZXIuY29tLw==">EASYCOUNTER<i class="fa fa-external-link-alt"></i></span> 查找：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># security.ubuntu.com DNS Records</span><br><span class="line">91.189.88.142 security.ubuntu.com</span><br><span class="line">91.189.88.152 security.ubuntu.com</span><br><span class="line">91.189.91.38 security.ubuntu.com</span><br><span class="line">91.189.91.39 security.ubuntu.com</span><br></pre></td></tr></table></figure>
+<h5 id="ubuntu下如何获取源码包和源码"><a href="#ubuntu下如何获取源码包和源码" class="headerlink" title="ubuntu下如何获取源码包和源码"></a>ubuntu下如何获取源码包和源码</h5><ul>
+<li><p>在 Software &amp; Updates 中选中 Source code，不要 Reload，因为很慢，在命令行中 update。或者在软件源配置文件 /etc/apt/sources.list 中添加 deb-src 项。</p>
+</li>
+<li><p>获取 xxx 源码包的详细信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-cache showsrc xxx</span><br></pre></td></tr></table></figure></li>
+<li><p>获取源码包，并将源码包解压到同名目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get source  xxx </span><br></pre></td></tr></table></figure>
+<h5 id="Ubuntu-自动切换壁纸"><a href="#Ubuntu-自动切换壁纸" class="headerlink" title="Ubuntu 自动切换壁纸"></a>Ubuntu 自动切换壁纸</h5></li>
+<li><p>安装 Shotwell</p>
+</li>
+<li><p>在侧边栏 Photos 中 Ctrl + A，在菜单栏 File 中选择 Set as Desktop SlideShow…</p>
+</li>
+<li><p>这会把图片复制到 .local/share/shotwell/wallpaper，并在该目录生成 wallpaper.xml，wallpaper.xml 定义自动切换壁纸动画。</p>
+</li>
+<li><p>替代软件 Variety 等</p>
+</li>
+</ul>
+<h5 id="Ubuntu-桌面卡死"><a href="#Ubuntu-桌面卡死" class="headerlink" title="Ubuntu 桌面卡死"></a>Ubuntu 桌面卡死</h5><ul>
+<li><p>选择其他 tty：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pkill Xorg </span><br></pre></td></tr></table></figure>
+<p>pkill 用于杀死一个进程，与 kill 不同的是它会杀死指定名字的所有进程。kill 命令杀死指定进程 PID，需要配合 ps 使用。</p>
+</li>
+<li><p>安全重启：同时按住 Ctrl 和 Alt 键，按住不要放，按一下 SysRq 键（有的键盘是PrtSc），按一下 R 键，按一下 E 键，依次按下 I , S , U , B 键。</p>
+</li>
+</ul>
+<p><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1NvbmdHdTE5OTYvYXJ0aWNsZS9kZXRhaWxzLzg3NzEyNTQ2">参考<i class="fa fa-external-link-alt"></i></span></p>
+<h5 id="snap-“canonical-livepatch”-has-“install-snap”-change-in-progress"><a href="#snap-“canonical-livepatch”-has-“install-snap”-change-in-progress" class="headerlink" title="snap “canonical-livepatch” has “install-snap” change in progress"></a>snap “canonical-livepatch” has “install-snap” change in progress</h5><p>Snap 包是 Ubuntu 16.04 LTS 发布时引入的新应用格式包。目前已流行在很多 Linux 发行版上。</p>
+<p>当你在安装完 Snap 后，你会发现在在根目录下会出现如 /dev/loop0 的挂载点，这些挂载点正是 Snap 软件包的目录。</p>
+<ul>
+<li><p>原因是软件之前安装了一次，只是安装失败。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">snap changes</span><br><span class="line">snap abort 5		# 5 为安装失败软件的 ID</span><br></pre></td></tr></table></figure></li>
+<li><p>现在重新安装</p>
+</li>
+</ul>
+<p>一些软件最好在官网下载或在 Snap 中下载，官方 Repository 可能并不新，比如 VLC。</p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTE4NzAyODAvYXJ0aWNsZS9kZXRhaWxzLzgwMjEzODY2">参考<i class="fa fa-external-link-alt"></i></span></p>
+<h5 id="Ubuntu-系统中使用-Firefox-播放-HTML5-视频"><a href="#Ubuntu-系统中使用-Firefox-播放-HTML5-视频" class="headerlink" title="Ubuntu 系统中使用 Firefox 播放 HTML5 视频"></a>Ubuntu 系统中使用 Firefox 播放 HTML5 视频</h5><p>安装媒体解码器来播放 MP3、MPEG4 和其他格式媒体文件。由于各个国家的版权问题， Ubuntu 在默认情况下不会安装它。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install ubuntu-restricted-extras</span><br></pre></td></tr></table></figure>
+<h5 id="apt-与-apt-get"><a href="#apt-与-apt-get" class="headerlink" title="apt 与 apt-get"></a>apt 与 apt-get</h5><p>Debian 使用一套名为 Advanced Packaging Tool（APT）的工具来管理包系统。在基于 Debian 的 Linux 发行版中，有各种工具可以与 APT 进行交互，以方便用户安装、删除和管理的软件包。apt-get 便是其中一款广受欢迎的命令行工具，但是最常用的命令都被分散在了 apt-get、apt-cache 和 apt-config 这三条命令当中，apt 命令的引入就是为了解决命令过于分散的问题。（简单来说就是：apt = apt-get、apt-cache 和 apt-config 中最常用命令选项的集合）</p>
+<table>
+<thead>
+<tr>
+<th align="center">apt 命令</th>
+<th align="center">取代的命令</th>
+<th align="center">命令的功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">apt install</td>
+<td align="center">apt-get install</td>
+<td align="center">安装软件包</td>
+</tr>
+<tr>
+<td align="center">apt remove</td>
+<td align="center">apt-get remove</td>
+<td align="center">移除软件包</td>
+</tr>
+<tr>
+<td align="center">apt purge</td>
+<td align="center">apt-get purge</td>
+<td align="center">移除软件包及配置文件</td>
+</tr>
+<tr>
+<td align="center">apt update</td>
+<td align="center">apt-get update</td>
+<td align="center">刷新存储库索引</td>
+</tr>
+<tr>
+<td align="center">apt upgrade</td>
+<td align="center">apt-get upgrade</td>
+<td align="center">升级所有可升级的软件包</td>
+</tr>
+<tr>
+<td align="center">apt autoremove</td>
+<td align="center">apt-get autoremove</td>
+<td align="center">自动删除不需要的包</td>
+</tr>
+<tr>
+<td align="center">apt full-upgrade</td>
+<td align="center">apt-get dist-upgrade</td>
+<td align="center">在升级软件包时自动处理依赖关系</td>
+</tr>
+<tr>
+<td align="center">apt search</td>
+<td align="center">apt-cache search</td>
+<td align="center">搜索应用程序</td>
+</tr>
+<tr>
+<td align="center">apt show</td>
+<td align="center">apt-cache show</td>
+<td align="center">显示装细节</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="center">新的apt命令</th>
+<th align="center">命令的功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">apt list</td>
+<td align="center">列出包含条件的包（已安装，可升级等）</td>
+</tr>
+<tr>
+<td align="center">apt edit-sources</td>
+<td align="center">编辑源列表</td>
+</tr>
+</tbody></table>
+<h5 id="Ubuntu-Repositories-should-enable"><a href="#Ubuntu-Repositories-should-enable" class="headerlink" title="Ubuntu Repositories(should enable)"></a>Ubuntu Repositories(should enable)</h5><ul>
+<li><p>Main - Canonical-supported free and open-source software.</p>
+</li>
+<li><p>Universe - Community-maintained free and open-source software.</p>
+</li>
+<li><p>Restricted - Proprietary drivers for devices.</p>
+</li>
+<li><p>Multiverse - Software restricted by copyright or legal issues. </p>
+</li>
+<li><p>Canonical Partner - The partner repositories offer access to proprietary and closed-source software</p>
+<p>Repositories/Ubuntu( Repositories/Ubuntu)</p>
+</li>
+</ul>
+<h5 id="Backup-And-Restore-Linux"><a href="#Backup-And-Restore-Linux" class="headerlink" title="Backup And Restore Linux"></a>Backup And Restore Linux</h5><ul>
+<li><pre><code>apt-get install timeshift
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- Making a backup of your Linux system</span><br><span class="line"></span><br><span class="line">- Restoring your Linux system</span><br><span class="line"></span><br><span class="line">  - log onto to your OS, launch Timeshift and select a Restore Image and hit restore</span><br><span class="line">  - when you can’t log into your Linux system, boot into a live session(need a Live USB) and download and install Timeshift(yes, you can install applications in live sessions).After installation, launch the application and browse to your backup location and select restore (yes, you can access your hard drive using a live session).</span><br><span class="line"></span><br><span class="line">##### Linux 添加 exFAT 支持</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+  apt install exfat-fuse exfat-utils
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">##### 制作 windows U盘启动盘</span><br><span class="line"></span><br><span class="line">Ubuntu 下安装 WoeUSB</span><br><span class="line"></span><br><span class="line">##### libguestfs</span><br><span class="line"></span><br><span class="line">libguestfs 支持几乎所有类型的磁盘镜像。</span><br><span class="line"></span><br><span class="line">在基于 Debian 的系统上：</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+$ apt-get install libguestfs-tools
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">我们可以像下面这样挂载一个 qcow2 格式的磁盘镜像：</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+$ guestmount -a /path/to/qcow2/image -m &lt;device&gt; /path/to/mount/point
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">要卸载它，则执行：</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+$ guestunmount qcow2_mount_point</code></pre>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>vane
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://vanehsiung.netlify.app/2021/03/03/Linux/" title="Linux">https://vanehsiung.netlify.app/2021/03/03/Linux/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9lbg=="><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Linux/" rel="tag"># Linux</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/03/03/GitHub/" rel="prev" title="GitHub">
+                  <i class="fa fa-chevron-left"></i> GitHub
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Vane Hsiung</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZy9tdXNlLw==">NexT.Muse</span>
+  </div>
+
+<script src="https://cdn.jsdelivr.net/gh/suyin-long/activate-power-mode@1.0/dist/activate-power-mode.js"></script>
+<script>
+POWERMODE.colorful = true; // make power mode colorful
+POWERMODE.shake = false; // turn off shake
+document.body.addEventListener('input', POWERMODE);
+</script>
+
+
+
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/@next-theme/pjax@0.4.0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '.page-configurations',
+    '.main-inner',
+    '.post-toc-wrap',
+    '.languages',
+    '.pjax'
+  ],
+  analytics: false,
+  cacheBust: false,
+  scrollRestoration: false,
+  scrollTo: !CONFIG.bookmark.enable
+});
+
+document.addEventListener('pjax:success', () => {
+  pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  const hasTOC = document.querySelector('.post-toc');
+  document.querySelector('.sidebar-inner').classList.toggle('sidebar-nav-active', hasTOC);
+  document.querySelector(hasTOC ? '.sidebar-nav-toc' : '.sidebar-nav-overview').click();
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+<script data-pjax>
+if (document.querySelectorAll('.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8.8.4/dist/mermaid.min.js', () => {
+    mermaid.init({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    }, '.mermaid');
+  }, window.mermaid);
+}
+</script>
+
+  <script>
+    NProgress.configure({
+      showSpinner: false
+    });
+    NProgress.start();
+    document.addEventListener('readystatechange', () => {
+      if (document.readyState === 'interactive') {
+        NProgress.inc(0.8);
+      }
+      if (document.readyState === 'complete') {
+        NProgress.done();
+      }
+    });
+    document.addEventListener('pjax:send', () => {
+      NProgress.start();
+    });
+    document.addEventListener('pjax:success', () => {
+      NProgress.done();
+    });
+  </script>
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    <div class="pjax">
+
+
+    </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>
