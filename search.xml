@@ -841,7 +841,7 @@
 </ul>
 </li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Desktop Entry</span><br><span class="line">Type&#x3D;Application</span><br><span class="line">Name&#x3D;name		# 应用名称，即开始菜单中的名称</span><br><span class="line">Exec&#x3D;appPath		# 应用执行文件位置</span><br><span class="line">Icon&#x3D;default48.png		# 应用图标位置</span><br><span class="line">Terminal&#x3D;false		# 是否显示终端</span><br><span class="line">StartupNotify&#x3D;true</span><br><span class="line">Categories&#x3D;Office		# 所属分类</span><br><span class="line">MimeType&#x3D;text&#x2F;x-markdown		# MIME 类型</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[Desktop Entry]</span><br><span class="line">Type&#x3D;Application</span><br><span class="line">Name&#x3D;name		# 应用名称，即开始菜单中的名称</span><br><span class="line">Exec&#x3D;appPath		# 应用执行文件位置</span><br><span class="line">Icon&#x3D;default48.png		# 应用图标位置</span><br><span class="line">Terminal&#x3D;false		# 是否显示终端</span><br><span class="line">StartupNotify&#x3D;true</span><br><span class="line">Categories&#x3D;Office		# 所属分类</span><br><span class="line">MimeType&#x3D;text&#x2F;x-markdown		# MIME 类型</span><br></pre></td></tr></table></figure>
 <ul>
 <li>应用程序默认关联文件，存在于以下的两个路径：<ul>
 <li>/usr/share/applications/mimeapps.list</li>
