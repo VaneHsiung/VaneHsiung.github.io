@@ -658,7 +658,8 @@
     <content><![CDATA[<p>Linux 使用笔记</p>
 <a id="more"></a>
 
-<h5 id="IRC"><a href="#IRC" class="headerlink" title="IRC"></a>IRC</h5><ul>
+<p><strong>IRC</strong></p>
+<ul>
 <li><p>运行</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ irssi</span><br></pre></td></tr></table></figure></li>
 <li><p>列出服务器列表</p>
@@ -740,30 +741,23 @@
 <li><p>离开irssi</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;quit</span><br><span class="line">&#x2F;exit</span><br></pre></td></tr></table></figure></li>
 <li><p>自动保存聊天内容</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;set autolog on</span><br></pre></td></tr></table></figure>
-<h5 id="适合程序员编程的10款字体"><a href="#适合程序员编程的10款字体" class="headerlink" title="适合程序员编程的10款字体"></a>适合程序员编程的10款字体</h5></li>
-<li><p>Inconsolata</p>
-</li>
-<li><p>Consolas：消除锯齿。</p>
-</li>
-<li><p>Deja Vu Sans Mono：消除锯齿。</p>
-</li>
-<li><p>Droid Sans Mono：Droid 字体家族适合手机等小屏幕的移动平台。</p>
-</li>
-<li><p>Proggy：把字体调小点，不要消除锯齿。</p>
-</li>
-<li><p>Profont：Profont是一种类Monaco的位图字体。把字体调小一点为好。</p>
-</li>
-<li><p>Monofur：设置为消除锯齿。</p>
-</li>
-<li><p>Monaco：Mac的默认字体，使用它时，把字体设置为9号或者10号时会更好。</p>
-</li>
-<li><p>Andale Mono</p>
-</li>
-<li><p>Courier：调整一下字体大小并消除锯齿。</p>
-</li>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;set autolog on</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h5 id="Wayland"><a href="#Wayland" class="headerlink" title="Wayland"></a>Wayland</h5><p>X即X11、X Window System，是用于在类UNIX的操作系统上的位图显示的窗口系统，提供了GUI环境的基本框架。X由X.Org Foundation维护，遵守MIT协议，当前参考实现为X.Org Server。在架构方面，X使用了C/S模型，客户端和服务器可以在同一个机器上，也可以在不同的机器上，X作为Server为应用程序这个Client提供显示和I/O服务。</p>
+<p><strong>适合程序员编程的10款字体</strong></p>
+<ul>
+<li>Inconsolata</li>
+<li>Consolas：消除锯齿。</li>
+<li>Deja Vu Sans Mono：消除锯齿。</li>
+<li>Droid Sans Mono：Droid 字体家族适合手机等小屏幕的移动平台。</li>
+<li>Proggy：把字体调小点，不要消除锯齿。</li>
+<li>Profont：Profont是一种类Monaco的位图字体。把字体调小一点为好。</li>
+<li>Monofur：设置为消除锯齿。</li>
+<li>Monaco：Mac的默认字体，使用它时，把字体设置为9号或者10号时会更好。</li>
+<li>Andale Mono</li>
+<li>Courier：调整一下字体大小并消除锯齿。</li>
+</ul>
+<p><strong>Wayland</strong></p>
+<p>X即X11、X Window System，是用于在类UNIX的操作系统上的位图显示的窗口系统，提供了GUI环境的基本框架。X由X.Org Foundation维护，遵守MIT协议，当前参考实现为X.Org Server。在架构方面，X使用了C/S模型，客户端和服务器可以在同一个机器上，也可以在不同的机器上，X作为Server为应用程序这个Client提供显示和I/O服务。</p>
 <img data-src="/2021/03/03/Linux/XServer.png" class="" title="XServer">
 
 <p>Wayland是一个显示服务协议，服务端为Wayland Compositor，把X的X Server和Compositor合二为一，旨在替换X，作为类Unix操作系统上更现代、简介的窗口系统，遵守MIT协议，提供了Wayland Compositor的参考C语言实现Weston。</p>
@@ -772,7 +766,8 @@
 <p>时至今日，原本在X Server中做的事很多已被移到kernel或者单独的库中，因此X Server就显得比较累赘了。Wayland在架构上去掉了这个中间层，将compositor作为display server，使client与compositor直接通信，从而在灵活性和性能等方面上能够比前辈更加出色。</p>
 <p>查看是否使用 wayland</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">echo $XDG_SESSION_TYPE</span><br></pre></td></tr></table></figure>
-<h3 id="CentOS"><a href="#CentOS" class="headerlink" title="CentOS"></a>CentOS</h3><h5 id="连接热点"><a href="#连接热点" class="headerlink" title="连接热点"></a>连接热点</h5><ul>
+<h3 id="CentOS"><a href="#CentOS" class="headerlink" title="CentOS"></a>CentOS</h3><p><strong>连接热点</strong></p>
+<ul>
 <li><p>打开WIFI</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ifconfig interface up </span><br></pre></td></tr></table></figure></li>
 <li><p>查看所有可用的无线网络信号</p>
@@ -782,15 +777,19 @@
 <li><p>分配IP地址</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dhclient interface</span><br></pre></td></tr></table></figure></li>
 <li><p>查看无线网卡地址信息，有ip地址表示网络连接成功</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ifconfig interface</span><br></pre></td></tr></table></figure>
-<h5 id="PPPOE-（ADSL）拨号上网"><a href="#PPPOE-（ADSL）拨号上网" class="headerlink" title="PPPOE （ADSL）拨号上网"></a>PPPOE （ADSL）拨号上网</h5></li>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ifconfig interface</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><strong>PPPOE （ADSL）拨号上网</strong></p>
+<ul>
 <li><p>安装拨号软件</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dnf install  rp-pppoe* ppp*</span><br></pre></td></tr></table></figure></li>
 <li><p>设定</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pppoe-setup</span><br></pre></td></tr></table></figure></li>
 <li><p>拨号上网</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pppoe-stop</span><br><span class="line">pppoe-start</span><br></pre></td></tr></table></figure>
-<h5 id="安装中文输入法"><a href="#安装中文输入法" class="headerlink" title="安装中文输入法"></a>安装中文输入法</h5></li>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pppoe-stop</span><br><span class="line">pppoe-start</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><strong>安装中文输入法</strong></p>
+<ul>
 <li><p>安装 fcitx </p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dnf install fcitx-im fcitx-configtool fcitx-googlepinyin</span><br></pre></td></tr></table></figure></li>
 <li><p>配置</p>
@@ -798,21 +797,27 @@
 <li><p>fictx 没图标：重装fcitx，在fcitx配置里关掉Kimpanel</p>
 </li>
 </ul>
-<h5 id="关闭触摸板"><a href="#关闭触摸板" class="headerlink" title="关闭触摸板"></a>关闭触摸板</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dnf install xorg-x11-apps</span><br><span class="line">synclient TouchpadOff&#x3D;1		# 关闭</span><br><span class="line">synclient TouchpadOff&#x3D;0		# 开启</span><br></pre></td></tr></table></figure>
-<h5 id="关闭-SELinux"><a href="#关闭-SELinux" class="headerlink" title="关闭 SELinux"></a>关闭 SELinux</h5><ul>
+<p><strong>关闭触摸板</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dnf install xorg-x11-apps</span><br><span class="line">synclient TouchpadOff&#x3D;1		# 关闭</span><br><span class="line">synclient TouchpadOff&#x3D;0		# 开启</span><br></pre></td></tr></table></figure>
+<p><strong>关闭 SELinux</strong></p>
+<ul>
 <li><p>查看是否运行</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;usr&#x2F;sbin&#x2F;sestatus -v</span><br></pre></td></tr></table></figure></li>
 <li><p>关闭 SELinux </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># vi &#x2F;etc&#x2F;selinux&#x2F;config</span><br><span class="line">SELINUX&#x3D;disabled</span><br></pre></td></tr></table></figure>
-<h5 id="安装-Oracle-JDK"><a href="#安装-Oracle-JDK" class="headerlink" title="安装 Oracle JDK"></a>安装 Oracle JDK</h5></li>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># vi &#x2F;etc&#x2F;selinux&#x2F;config</span><br><span class="line">SELINUX&#x3D;disabled</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><strong>安装 Oracle JDK</strong></p>
+<ul>
 <li><p>解压缩到目录</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tar -zxvf jdk-7u60-linux-x64.gz -C dir</span><br></pre></td></tr></table></figure></li>
 <li><p>修改环境变量</p>
   <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># vim ~&#x2F;.bashrc</span><br><span class="line">set oracle jdk environment</span><br><span class="line">export JAVA_HOME&#x3D;&#x2F;usr&#x2F;lib&#x2F;jvm&#x2F;jdk1.7.0_60 		# 这里换成自己解压的jdk 目录</span><br><span class="line">export JRE_HOME&#x3D;$&#123;JAVA_HOME&#125;&#x2F;jre  </span><br><span class="line">export CLASSPATH&#x3D;.:$&#123;JAVA_HOME&#125;&#x2F;lib:$&#123;JRE_HOME&#125;&#x2F;lib  </span><br><span class="line">export PATH&#x3D;$&#123;JAVA_HOME&#125;&#x2F;bin:$PATH</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>使环境变量生效</p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">source ~&#x2F;.bashrc</span><br></pre></td></tr></table></figure>
-<h5 id="用-MTP-挂载手机"><a href="#用-MTP-挂载手机" class="headerlink" title="用 MTP 挂载手机"></a>用 MTP 挂载手机</h5></li>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">source ~&#x2F;.bashrc</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><strong>用 MTP 挂载手机</strong></p>
+<ul>
 <li><p>安装jmtpfs</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dnf install jmtpfs</span><br></pre></td></tr></table></figure></li>
 <li><p>查看手机 “busnum”和“devnum”</p>
@@ -820,13 +825,15 @@
 <li><p>建立挂载点</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mkdir &#x2F;media&#x2F;dir</span><br></pre></td></tr></table></figure></li>
 <li><p>挂载手机</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">jmtpfs -device&#x3D;busnum,devnum &#x2F;media&#x2F;dir&#x2F;</span><br></pre></td></tr></table></figure>
-<h5 id="dd-制作U盘启动盘"><a href="#dd-制作U盘启动盘" class="headerlink" title="dd 制作U盘启动盘"></a>dd 制作U盘启动盘</h5></li>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">jmtpfs -device&#x3D;busnum,devnum &#x2F;media&#x2F;dir&#x2F;</span><br></pre></td></tr></table></figure></li>
 </ul>
+<p><strong>dd 制作U盘启动盘</strong></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dd bs&#x3D;4M if&#x3D;fileName.iso of&#x3D;&#x2F;dev&#x2F;sdx status&#x3D;progress &amp;&amp; sync</span><br></pre></td></tr></table></figure>
 <p>Windows 下用Rufus 且 dd 写入模式</p>
-<h5 id="查找依赖"><a href="#查找依赖" class="headerlink" title="查找依赖"></a>查找依赖</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum whatprovide package</span><br><span class="line">dnf provides package</span><br></pre></td></tr></table></figure>
-<h5 id="修改文件默认关联的应用程序"><a href="#修改文件默认关联的应用程序" class="headerlink" title="修改文件默认关联的应用程序"></a>修改文件默认关联的应用程序</h5><ul>
+<p><strong>查找依赖</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum whatprovide package</span><br><span class="line">dnf provides package</span><br></pre></td></tr></table></figure>
+<p><strong>修改文件默认关联的应用程序</strong></p>
+<ul>
 <li>mime类型文件存在于以下的两个路径：<ul>
 <li>/usr/share/mime</li>
 <li>~/.local/share/mime</li>
@@ -849,17 +856,21 @@
 </ul>
 </li>
 </ul>
-<h5 id="Firefox-安装-Adobe-Flash"><a href="#Firefox-安装-Adobe-Flash" class="headerlink" title="Firefox 安装 Adobe Flash"></a>Firefox 安装 Adobe Flash</h5><p>Firefox 不要在网页下载，直接通过源下载。</p>
-<h5 id="wine-exe程序的卸载"><a href="#wine-exe程序的卸载" class="headerlink" title="wine exe程序的卸载"></a>wine exe程序的卸载</h5><ol>
+<p><strong>Firefox 安装 Adobe Flash</strong></p>
+<p>Firefox 不要在网页下载，直接通过源下载。</p>
+<p><strong>wine exe程序的卸载</strong></p>
+<ol>
 <li>wine 会在 /home 下的用户名目录生成三个隐藏的文件夹 .wine、.local、.config 等文件夹，快捷键 ctrl+H 可以显示出来;</li>
 <li>进入 .wine 文件夹可以看到 drive_c 文件夹，这是wine自动生成的虚拟windows  C盘，里面有类似windows系统盘的目录结构，在里面找到需要卸载的软件文件夹删除即可；</li>
 <li>找到 /home/用户名/.local/share/applications/wine/Programs，将软件对应的文件删除；</li>
 <li>找到 /home/用户名/.config/menus/applications-merged，将软件对应的文件删除；</li>
 <li>这时候已经删除完毕，但是可能还会看到桌面图标或软件列表，重启系统即可。</li>
 </ol>
-<h5 id="默认字体"><a href="#默认字体" class="headerlink" title="默认字体"></a>默认字体</h5><p>CentOS 默认字体目录 /lib/kbd/consolefonts </p>
+<p><strong>默认字体</strong></p>
+<p>CentOS 默认字体目录 /lib/kbd/consolefonts </p>
 <p>纯命令行是不能使用系统之外的字体的。</p>
-<h5 id="CentOS-Minimal-Xfce"><a href="#CentOS-Minimal-Xfce" class="headerlink" title="CentOS Minimal + Xfce"></a>CentOS Minimal + Xfce</h5><p>base 源与 epel 源，使用用阿里镜像: <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYWxpeXVuLmNvbS9taXJyb3Iv">https://developer.aliyun.com/mirror/<i class="fa fa-external-link-alt"></i></span></p>
+<p><strong>CentOS Minimal + Xfce</strong></p>
+<p>base 源与 epel 源，使用用阿里镜像: <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYWxpeXVuLmNvbS9taXJyb3Iv">https://developer.aliyun.com/mirror/<i class="fa fa-external-link-alt"></i></span></p>
 <ul>
 <li><p>安装Xfce4，先安装 Xfce 可以保证不安装多余的包</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dnf group list</span><br><span class="line">dnf groupinstall Xfce</span><br></pre></td></tr></table></figure></li>
@@ -889,7 +900,8 @@
 </ul>
 </li>
 </ul>
-<h5 id="DNF-与-YUM-区别"><a href="#DNF-与-YUM-区别" class="headerlink" title="DNF 与 YUM 区别"></a>DNF 与 YUM 区别</h5><table>
+<p><strong>DNF 与 YUM 区别</strong></p>
+<table>
 <thead>
 <tr>
 <th>编号</th>
@@ -993,7 +1005,8 @@
 <td>YUM 由 Zdenek Pavlas、Jan Silhan 和团队成员开发</td>
 </tr>
 </tbody></table>
-<h5 id="DNF-命令"><a href="#DNF-命令" class="headerlink" title="DNF 命令"></a>DNF 命令</h5><ul>
+<p><strong>DNF 命令</strong></p>
+<ul>
 <li><p>查看 DNF 包管理器版本</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dnf –version</span><br></pre></td></tr></table></figure></li>
 <li><p>查看系统中可用的 DNF 软件库</p>
@@ -1050,7 +1063,9 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dnf downgrade acpid</span><br></pre></td></tr></table></figure>
 <h3 id="Ubuntu"><a href="#Ubuntu" class="headerlink" title="Ubuntu"></a>Ubuntu</h3></li>
 </ul>
-<h5 id="GNOME-使用"><a href="#GNOME-使用" class="headerlink" title="GNOME 使用"></a>GNOME 使用</h5><ul>
+<p>(友邦拓)</p>
+<p><strong>GNOME 使用</strong></p>
+<ul>
 <li><p>Ubuntu 自动下载并安装对你的系统至关重要的安全更新。而这个自动更新经常导致你“无法锁定管理目录”错误(<span class="exturl" data-url="aHR0cHM6Ly9pdHNmb3NzLmNvbS9jb3VsZC1ub3QtZ2V0LWxvY2stZXJyb3IvKSVFMyU4MCU4MiVFNSU5QiVBMCVFNiVBRCVBNCVFOSU4MCU4OSVFNiU4QiVBOQ==">https://itsfoss.com/could-not-get-lock-error/)。因此选择<i class="fa fa-external-link-alt"></i></span> Display immediately。同时把其他 Updates 都改为 Every two weeks，免得烦。</p>
 </li>
 <li><p>Gnome 3 自带自动切换壁纸的功能，选择有时间小图标的壁纸。</p>
@@ -1099,26 +1114,27 @@
 </li>
 </ul>
 <p>参考：<span class="exturl" data-url="aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC8xMzgxNTczNDg=">安装完 Ubuntu 20.04 后要做的 16 件事<i class="fa fa-external-link-alt"></i></span></p>
-<h5 id="Ubuntu-Software-amp-Update-卡在-cache-refresh"><a href="#Ubuntu-Software-amp-Update-卡在-cache-refresh" class="headerlink" title="Ubuntu Software &amp; Update 卡在 cache refresh"></a>Ubuntu Software &amp; Update 卡在 cache refresh</h5><p>通过 <code>apt update</code> 可以看见是 Connecting to security.ubuntu.com Failed，解决办法是更改 /etc/hosts 文件添加其 IP，可通过 <span class="exturl" data-url="aHR0cHM6Ly93d3cuZWFzeWNvdW50ZXIuY29tLw==">EASYCOUNTER<i class="fa fa-external-link-alt"></i></span> 查找：</p>
+<p><strong>Ubuntu Software &amp; Update 卡在 cache refresh</strong></p>
+<p>通过 <code>apt update</code> 可以看见是 Connecting to security.ubuntu.com Failed，解决办法是更改 /etc/hosts 文件添加其 IP，可通过 <span class="exturl" data-url="aHR0cHM6Ly93d3cuZWFzeWNvdW50ZXIuY29tLw==">EASYCOUNTER<i class="fa fa-external-link-alt"></i></span> 查找：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># security.ubuntu.com DNS Records</span><br><span class="line">91.189.88.142 security.ubuntu.com</span><br><span class="line">91.189.88.152 security.ubuntu.com</span><br><span class="line">91.189.91.38 security.ubuntu.com</span><br><span class="line">91.189.91.39 security.ubuntu.com</span><br></pre></td></tr></table></figure>
-<h5 id="ubuntu下如何获取源码包和源码"><a href="#ubuntu下如何获取源码包和源码" class="headerlink" title="ubuntu下如何获取源码包和源码"></a>ubuntu下如何获取源码包和源码</h5><ul>
+<p><strong>ubuntu下如何获取源码包和源码</strong></p>
+<ul>
 <li><p>在 Software &amp; Updates 中选中 Source code，不要 Reload，因为很慢，在命令行中 update。或者在软件源配置文件 /etc/apt/sources.list 中添加 deb-src 项。</p>
 </li>
 <li><p>获取 xxx 源码包的详细信息</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">apt-cache showsrc xxx</span><br></pre></td></tr></table></figure></li>
 <li><p>获取源码包，并将源码包解压到同名目录</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">apt-get source  xxx </span><br></pre></td></tr></table></figure>
-<h5 id="Ubuntu-自动切换壁纸"><a href="#Ubuntu-自动切换壁纸" class="headerlink" title="Ubuntu 自动切换壁纸"></a>Ubuntu 自动切换壁纸</h5></li>
-<li><p>安装 Shotwell</p>
-</li>
-<li><p>在侧边栏 Photos 中 Ctrl + A，在菜单栏 File 中选择 Set as Desktop SlideShow…</p>
-</li>
-<li><p>这会把图片复制到 .local/share/shotwell/wallpaper，并在该目录生成 wallpaper.xml，wallpaper.xml 定义自动切换壁纸动画。</p>
-</li>
-<li><p>替代软件 Variety 等</p>
-</li>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">apt-get source  xxx </span><br></pre></td></tr></table></figure></li>
 </ul>
-<h5 id="Ubuntu-桌面卡死"><a href="#Ubuntu-桌面卡死" class="headerlink" title="Ubuntu 桌面卡死"></a>Ubuntu 桌面卡死</h5><ul>
+<p><strong>Ubuntu 自动切换壁纸</strong></p>
+<ul>
+<li>安装 Shotwell</li>
+<li>在侧边栏 Photos 中 Ctrl + A，在菜单栏 File 中选择 Set as Desktop SlideShow…</li>
+<li>这会把图片复制到 .local/share/shotwell/wallpaper，并在该目录生成 wallpaper.xml，wallpaper.xml 定义自动切换壁纸动画。</li>
+<li>替代软件 Variety 等</li>
+</ul>
+<p><strong>Ubuntu 桌面卡死</strong></p>
+<ul>
 <li><p>选择其他 tty：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pkill Xorg </span><br></pre></td></tr></table></figure>
 <p>pkill 用于杀死一个进程，与 kill 不同的是它会杀死指定名字的所有进程。kill 命令杀死指定进程 PID，需要配合 ps 使用。</p>
@@ -1127,7 +1143,8 @@
 </li>
 </ul>
 <p><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1NvbmdHdTE5OTYvYXJ0aWNsZS9kZXRhaWxzLzg3NzEyNTQ2">参考<i class="fa fa-external-link-alt"></i></span></p>
-<h5 id="snap-“canonical-livepatch”-has-“install-snap”-change-in-progress"><a href="#snap-“canonical-livepatch”-has-“install-snap”-change-in-progress" class="headerlink" title="snap “canonical-livepatch” has “install-snap” change in progress"></a>snap “canonical-livepatch” has “install-snap” change in progress</h5><p>Snap 包是 Ubuntu 16.04 LTS 发布时引入的新应用格式包。目前已流行在很多 Linux 发行版上。</p>
+<p><strong>snap “canonical-livepatch” has “install-snap” change in progress</strong></p>
+<p>Snap 包是 Ubuntu 16.04 LTS 发布时引入的新应用格式包。目前已流行在很多 Linux 发行版上。</p>
 <p>当你在安装完 Snap 后，你会发现在在根目录下会出现如 /dev/loop0 的挂载点，这些挂载点正是 Snap 软件包的目录。</p>
 <ul>
 <li><p>原因是软件之前安装了一次，只是安装失败。</p>
@@ -1137,9 +1154,11 @@
 </ul>
 <p>一些软件最好在官网下载或在 Snap 中下载，官方 Repository 可能并不新，比如 VLC。</p>
 <p><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTE4NzAyODAvYXJ0aWNsZS9kZXRhaWxzLzgwMjEzODY2">参考<i class="fa fa-external-link-alt"></i></span></p>
-<h5 id="Ubuntu-系统中使用-Firefox-播放-HTML5-视频"><a href="#Ubuntu-系统中使用-Firefox-播放-HTML5-视频" class="headerlink" title="Ubuntu 系统中使用 Firefox 播放 HTML5 视频"></a>Ubuntu 系统中使用 Firefox 播放 HTML5 视频</h5><p>安装媒体解码器来播放 MP3、MPEG4 和其他格式媒体文件。由于各个国家的版权问题， Ubuntu 在默认情况下不会安装它。</p>
+<p><strong>Ubuntu 系统中使用 Firefox 播放 HTML5 视频</strong></p>
+<p>安装媒体解码器来播放 MP3、MPEG4 和其他格式媒体文件。由于各个国家的版权问题， Ubuntu 在默认情况下不会安装它。</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">apt-get install ubuntu-restricted-extras</span><br></pre></td></tr></table></figure>
-<h5 id="apt-与-apt-get"><a href="#apt-与-apt-get" class="headerlink" title="apt 与 apt-get"></a>apt 与 apt-get</h5><p>Debian 使用一套名为 Advanced Packaging Tool（APT）的工具来管理包系统。在基于 Debian 的 Linux 发行版中，有各种工具可以与 APT 进行交互，以方便用户安装、删除和管理的软件包。apt-get 便是其中一款广受欢迎的命令行工具，但是最常用的命令都被分散在了 apt-get、apt-cache 和 apt-config 这三条命令当中，apt 命令的引入就是为了解决命令过于分散的问题。（简单来说就是：apt = apt-get、apt-cache 和 apt-config 中最常用命令选项的集合）</p>
+<p><strong>apt 与 apt-get</strong></p>
+<p>Debian 使用一套名为 Advanced Packaging Tool（APT）的工具来管理包系统。在基于 Debian 的 Linux 发行版中，有各种工具可以与 APT 进行交互，以方便用户安装、删除和管理的软件包。apt-get 便是其中一款广受欢迎的命令行工具，但是最常用的命令都被分散在了 apt-get、apt-cache 和 apt-config 这三条命令当中，apt 命令的引入就是为了解决命令过于分散的问题。（简单来说就是：apt = apt-get、apt-cache 和 apt-config 中最常用命令选项的集合）</p>
 <table>
 <thead>
 <tr>
@@ -1210,7 +1229,8 @@
 <td align="center">编辑源列表</td>
 </tr>
 </tbody></table>
-<h5 id="Ubuntu-Repositories-should-enable"><a href="#Ubuntu-Repositories-should-enable" class="headerlink" title="Ubuntu Repositories(should enable)"></a>Ubuntu Repositories(should enable)</h5><ul>
+<p><strong>Ubuntu Repositories(should enable)</strong></p>
+<ul>
 <li><p>Main - Canonical-supported free and open-source software.</p>
 </li>
 <li><p>Universe - Community-maintained free and open-source software.</p>
@@ -1223,19 +1243,46 @@
 <p>Repositories/Ubuntu( Repositories/Ubuntu)</p>
 </li>
 </ul>
-<h5 id="Backup-And-Restore-Linux"><a href="#Backup-And-Restore-Linux" class="headerlink" title="Backup And Restore Linux"></a>Backup And Restore Linux</h5><ul>
-<li><pre><code>apt-get install timeshift
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">- Making a backup of your Linux system</span><br><span class="line"></span><br><span class="line">- Restoring your Linux system</span><br><span class="line"></span><br><span class="line">  - log onto to your OS, launch Timeshift and select a Restore Image and hit restore</span><br><span class="line">  - when you can’t log into your Linux system, boot into a live session(need a Live USB) and download and install Timeshift(yes, you can install applications in live sessions).After installation, launch the application and browse to your backup location and select restore (yes, you can access your hard drive using a live session).</span><br><span class="line"></span><br><span class="line">##### Linux 添加 exFAT 支持</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-  apt install exfat-fuse exfat-utils
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">##### 制作 windows U盘启动盘</span><br><span class="line"></span><br><span class="line">Ubuntu 下安装 WoeUSB</span><br><span class="line"></span><br><span class="line">##### libguestfs</span><br><span class="line"></span><br><span class="line">libguestfs 支持几乎所有类型的磁盘镜像。</span><br><span class="line"></span><br><span class="line">在基于 Debian 的系统上：</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-$ apt-get install libguestfs-tools
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">我们可以像下面这样挂载一个 qcow2 格式的磁盘镜像：</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-$ guestmount -a /path/to/qcow2/image -m &lt;device&gt; /path/to/mount/point
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">要卸载它，则执行：</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-$ guestunmount qcow2_mount_point</code></pre>
-</li>
+<p><strong>Backup And Restore Linux</strong></p>
+<ul>
+<li>```<br>apt-get install timeshift<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">- Making a backup of your Linux system</span><br><span class="line"></span><br><span class="line">- Restoring your Linux system</span><br><span class="line"></span><br><span class="line">  - log onto to your OS, launch Timeshift and select a Restore Image and hit restore</span><br><span class="line">  - when you can’t log into your Linux system, boot into a live session(need a Live USB) and download and install Timeshift(yes, you can install applications in live sessions).After installation, launch the application and browse to your backup location and select restore (yes, you can access your hard drive using a live session).</span><br><span class="line"></span><br><span class="line">**Linux 添加 exFAT 支持**</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+  apt install exfat-fuse exfat-utils<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">**制作 windows U盘启动盘**</span><br><span class="line"></span><br><span class="line">Ubuntu 下安装 WoeUSB</span><br><span class="line"></span><br><span class="line">**libguestfs**</span><br><span class="line"></span><br><span class="line">libguestfs 支持几乎所有类型的磁盘镜像。</span><br><span class="line"></span><br><span class="line">在基于 Debian 的系统上：</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+$ apt-get install libguestfs-tools<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">我们可以像下面这样挂载一个 qcow2 格式的磁盘镜像：</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+$ guestmount -a /path/to/qcow2/image -m <device> /path/to/mount/point<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">要卸载它，则执行：</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+$ guestunmount qcow2_mount_point<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">### openSUSE</span><br><span class="line"></span><br><span class="line">（&#x2F;ˌoʊpənˈsuːzə&#x2F;）</span><br><span class="line"></span><br><span class="line">**YaST 系统配置**</span><br><span class="line"></span><br><span class="line">YaST 是 *Yet another Setup Tool*（又一个配置工具）的缩写。YaST 是 openSUSE 和 SUSE Linux 企业版的安装和配置工具。YaST 控制中心是 YaST 配置模块的统一入口。 </span><br><span class="line"></span><br><span class="line">区别于 kde 桌面系统配置。</span><br><span class="line"></span><br><span class="line">在 YaST 加入新语言支持时，会自动下载对应的字体与输入法。</span><br><span class="line"></span><br><span class="line">**Zypper 包管理器**</span><br><span class="line"></span><br><span class="line">Zypper 是个命令行形式的软件包管理器，以 libzypp 为处理引擎，提供诸如供应源管理、依赖关系解决和软件包安装等功能。 </span><br><span class="line"></span><br><span class="line">可以直接使用 &#96;rpm&#96; 命令。</span><br><span class="line"></span><br><span class="line"> **装入 NTFS 分区**</span><br><span class="line"></span><br><span class="line">1. 安装 &#96;ntfs-3g&#96;。</span><br><span class="line"></span><br><span class="line">   &#96;&#96;&#96;bash</span><br><span class="line">   sudo zypper in ntfs-3g</span><br></pre></td></tr></table></figure></li>
 </ul>
-]]></content>
+<ol start="2">
+<li><p>创建一个要充当安装点的目录，如 <code>~/mounts/windows</code>。    </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkdir ~/mounts/windows</span><br></pre></td></tr></table></figure></li>
+<li><p>确定所需的 Windows 分区。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo fdisk -l</span><br></pre></td></tr></table></figure></li>
+<li><p>以读写模式装入分区。使用相应的 Windows 分区替换占位符 <em>DEVICE</em>：   </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ntfs-3g &#x2F;dev&#x2F;DEVICE MOUNT POINT</span><br></pre></td></tr></table></figure>
+<p>要在只读模式下使用 Windows 分区，请追加 <code>-o ro</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ntfs-3g /dev/DEVICE MOUNT POINT -o ro</span><br></pre></td></tr></table></figure>
+<p><code>ntfs-3g</code> 命令使用当前用户 (UID) 和组 (GID) 装入给定设备。如果要为其他用户设置写权限，请使用命令 <code>id</code>     <code> USER</code> 获取 UID 和 GID 值的输出。设置方式：    </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">id username</span><br><span class="line">ntfs-3g /dev/DEVICE MOUNT POINT -o uid=1000,gid=100</span><br></pre></td></tr></table></figure></li>
+<li><p>要卸载资源，请运行 <code>fusermount -u 安装点</code>。  </p>
+</li>
+</ol>
+<p><strong>KDE</strong></p>
+<p>KDE 是一个为桌面和便携式计算机创造自由和开源软件的国际技术团队。由 KDE 开发的 Plasma 是 openSUSE 的默认图形桌面环境。</p>
+<p>KDE 上游有一份维护良好的 <span class="exturl" data-url="aHR0cHM6Ly91c2VyYmFzZS5rZGUub3JnLw==">UserBase Wiki<i class="fa fa-external-link-alt"></i></span>。大多数 KDE 应用程序的详细信息都可以在那里找到。</p>
+<p>尽量使用自带软件，因为与系统完美整合。比如播放媒体用自带的 VLC，可以通过 kde connect 控制。</p>
+<p><strong>KDE Connect</strong></p>
+<p>KDE Connect 是一款能够方便手机与电脑进行连接的应用。</p>
+<ul>
+<li>文件互传</li>
+<li>共享剪贴板</li>
+<li>远程输入</li>
+<li>响铃，即既可以用电脑来找手机，也可以用手机找电脑。</li>
+<li>幻灯片遥控器</li>
+<li>多媒体控制</li>
+<li>执行命令</li>
+<li>共享通知</li>
+</ul>
+<p>默认 kdeconnect 在防火墙那边是没放开的，要操作一下</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo firewall-cmd --zone=public --permanent --add-service=kdeconnect-kde</span><br><span class="line">sudo firewall-cmd --reload</span><br></pre></td></tr></table></figure>]]></content>
       <tags>
         <tag>Linux</tag>
       </tags>
