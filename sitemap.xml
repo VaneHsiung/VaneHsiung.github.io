@@ -2,13 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://vanehsiung.netlify.app/2020/11/26/Microservices/</loc>
-    
-    <lastmod>2021-04-20</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://vanehsiung.netlify.app/about/index.html</loc>
     
     <lastmod>2021-04-20</lastmod>
@@ -37,6 +30,13 @@
   </url>
   
   <url>
+    <loc>https://vanehsiung.netlify.app/2020/11/26/Microservices/</loc>
+    
+    <lastmod>2021-04-20</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://vanehsiung.netlify.app/2021/03/03/Linux/</loc>
     
     <lastmod>2021-04-20</lastmod>
@@ -51,14 +51,14 @@
   </url>
   
   <url>
-    <loc>https://vanehsiung.netlify.app/2020/11/21/Conversation/</loc>
+    <loc>https://vanehsiung.netlify.app/2021/03/03/GitHub/</loc>
     
     <lastmod>2021-04-20</lastmod>
     
   </url>
   
   <url>
-    <loc>https://vanehsiung.netlify.app/2021/03/03/GitHub/</loc>
+    <loc>https://vanehsiung.netlify.app/2020/11/21/Conversation/</loc>
     
     <lastmod>2021-04-20</lastmod>
     
@@ -95,49 +95,28 @@
 
   
   <url>
-    <loc>https://vanehsiung.netlify.app/tags/Lyrics/</loc>
+    <loc>https://vanehsiung.netlify.app/tags/Songs/</loc>
     <lastmod>2021-04-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://vanehsiung.netlify.app/tags/Unix/</loc>
+    <loc>https://vanehsiung.netlify.app/tags/Unix-like/</loc>
     <lastmod>2021-04-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://vanehsiung.netlify.app/tags/Architecture/</loc>
+    <loc>https://vanehsiung.netlify.app/tags/Others/</loc>
     <lastmod>2021-04-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://vanehsiung.netlify.app/tags/GitHub/</loc>
-    <lastmod>2021-04-20</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://vanehsiung.netlify.app/tags/Linux/</loc>
-    <lastmod>2021-04-20</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://vanehsiung.netlify.app/tags/Hexo/</loc>
-    <lastmod>2021-04-20</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://vanehsiung.netlify.app/tags/Android/</loc>
+    <loc>https://vanehsiung.netlify.app/tags/Tools/</loc>
     <lastmod>2021-04-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

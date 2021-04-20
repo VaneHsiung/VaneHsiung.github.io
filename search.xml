@@ -12,7 +12,7 @@
 
 <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="//music.163.com/outchain/player?type=2&id=3716423&auto=0&height=32"></iframe>]]></content>
       <tags>
-        <tag>Lyrics</tag>
+        <tag>Songs</tag>
       </tags>
   </entry>
   <entry>
@@ -63,7 +63,7 @@
 </ul>
 ]]></content>
       <tags>
-        <tag>Unix</tag>
+        <tag>Unix-like</tag>
       </tags>
   </entry>
   <entry>
@@ -162,7 +162,7 @@
 <p><span class="exturl" data-url="aHR0cHM6Ly93d3cuamlhbnNodS5jb20vcC83MjkzYjE0ODAyOGY=">微服务入门这一篇就够了<i class="fa fa-external-link-alt"></i></span></p>
 ]]></content>
       <tags>
-        <tag>Architecture</tag>
+        <tag>Others</tag>
       </tags>
   </entry>
   <entry>
@@ -649,7 +649,7 @@
 <p><span class="exturl" data-url="aHR0cHM6Ly93d3cucnVhbnlpZmVuZy5jb20vYmxvZy8yMDE1LzEyL2dpdC1jaGVhdC1zaGVldC5odG1s">常用 Git 命令清单<i class="fa fa-external-link-alt"></i></span></p>
 ]]></content>
       <tags>
-        <tag>GitHub</tag>
+        <tag>Tools</tag>
       </tags>
   </entry>
   <entry>
@@ -1284,7 +1284,7 @@ $ guestunmount qcow2_mount_point<figure class="highlight plain"><table><tr><td c
 <p>默认 kdeconnect 在防火墙那边是没放开的，要操作一下</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo firewall-cmd --zone=public --permanent --add-service=kdeconnect-kde</span><br><span class="line">sudo firewall-cmd --reload</span><br></pre></td></tr></table></figure>]]></content>
       <tags>
-        <tag>Linux</tag>
+        <tag>Unix-like</tag>
       </tags>
   </entry>
   <entry>
@@ -1751,7 +1751,7 @@ $ guestunmount qcow2_mount_point<figure class="highlight plain"><table><tr><td c
 <p><span class="exturl" data-url="aHR0cHM6Ly93d3cuZnJlZWJzZC5vcmcvZG9jL3poX1RXL2Jvb2tzL2hhbmRib29rLw==">FreeBSD 使用手冊<i class="fa fa-external-link-alt"></i></span></p>
 ]]></content>
       <tags>
-        <tag>Unix</tag>
+        <tag>Unix-like</tag>
       </tags>
   </entry>
   <entry>
@@ -2588,7 +2588,7 @@ $ guestunmount qcow2_mount_point<figure class="highlight plain"><table><tr><td c
 </tbody></table>
 ]]></content>
       <tags>
-        <tag>Hexo</tag>
+        <tag>Tools</tag>
       </tags>
   </entry>
   <entry>
@@ -3312,7 +3312,7 @@ class ViewHolder &#123;
 <p>在代码中定义逐帧动画需要用到 AnimationDrawable 中的 addFrame() 方法来添加图片</p>
 <h5 id="多媒体"><a href="#多媒体" class="headerlink" title="多媒体"></a>多媒体</h5>]]></content>
       <tags>
-        <tag>Android</tag>
+        <tag>Unix-like</tag>
       </tags>
   </entry>
 </search>
