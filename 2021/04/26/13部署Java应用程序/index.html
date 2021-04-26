@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="uXmcnam1s6y-h_YGHukGYhDQ8zMBAOHTHrJ6RfsDN6I">
+  <meta name="msvalidate.01" content="687D92122214353CF2ACE3AEA2977A9C">
+  <meta name="baidu-site-verification" content="code-lURpXjbL6l">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Architects+Daughter:300,300italic,400,400italic,700,700italic%7CShare+Tech+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css">
+  <script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"vanehsiung.netlify.app","root":"/","images":"/images","scheme":"Gemini","version":"8.2.0","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+<meta name="description" content="JAR 文件Java 归档（JAR) 文件既可以包含类文件，也可以包含诸如图像和声音这些其他类型的文件。 JAR 文件使用了大家熟悉的 ZIP 压缩格式。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="13部署Java应用程序">
+<meta property="og:url" content="https://vanehsiung.netlify.app/2021/04/26/13%E9%83%A8%E7%BD%B2Java%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/index.html">
+<meta property="og:site_name" content="vBlog">
+<meta property="og:description" content="JAR 文件Java 归档（JAR) 文件既可以包含类文件，也可以包含诸如图像和声音这些其他类型的文件。 JAR 文件使用了大家熟悉的 ZIP 压缩格式。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-04-26T02:23:26.000Z">
+<meta property="article:modified_time" content="2021-04-26T04:02:10.769Z">
+<meta property="article:author" content="vane">
+<meta property="article:tag" content="Programming">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://vanehsiung.netlify.app/2021/04/26/13%E9%83%A8%E7%BD%B2Java%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/">
+
+
+<script data-pjax class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+<title>13部署Java应用程序 | vBlog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=sG-KKYP310LB0"></script>
+    <script data-pjax>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'sG-KKYP310LB0');
+      }
+    </script>
+
+  <script data-pjax>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?f3032f7a989f15a8faf91348571efe03";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="vBlog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">vBlog</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Vane Hsiung's Blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fas fa-link fa-fw"></i>Links</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+
+ 
+<script>
+  var OriginTitile = document.title;
+  var titleTime;
+  document.addEventListener("visibilitychange", function() {
+    if (document.hidden) {
+      document.title = "(つェ⊂)我藏好了哦~";
+      clearTimeout(titleTime);
+    } else {
+      document.title = "(*´∇｀*) 被你发现啦~";
+      titleTime = setTimeout(function() {
+        document.title = OriginTitile;
+      }, 2000);
+    }
+  });
+</script>
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#JAR-%E6%96%87%E4%BB%B6"><span class="nav-text">JAR 文件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA-JAR-%E6%96%87%E4%BB%B6"><span class="nav-text">创建 JAR 文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B8%85%E5%8D%95%E6%96%87%E4%BB%B6"><span class="nav-text">清单文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8F%AF%E6%89%A7%E8%A1%8C-JAR-%E6%96%87%E4%BB%B6"><span class="nav-text">可执行 JAR 文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%B5%84%E6%BA%90"><span class="nav-text">资源</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AF%86%E5%B0%81"><span class="nav-text">密封</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E9%A6%96%E9%80%89%E9%A1%B9%E7%9A%84%E5%AD%98%E5%82%A8"><span class="nav-text">应用首选项的存储</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B1%9E%E6%80%A7%E6%98%A0%E5%B0%84"><span class="nav-text">属性映射</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%A6%96%E9%80%89%E9%A1%B9-API"><span class="nav-text">首选项 API</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E5%8A%A0%E8%BD%BD%E5%99%A8"><span class="nav-text">服务加载器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#applet"><span class="nav-text">applet</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84-applet"><span class="nav-text">一个简单的 applet</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#applet-HTML-%E6%A0%87%E8%AE%B0%E5%92%8C%E5%B1%9E%E6%80%A7"><span class="nav-text">applet HTML 标记和属性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%8F%82%E6%95%B0%E5%90%91-applet-%E4%BC%A0%E9%80%92%E4%BF%A1%E6%81%AF"><span class="nav-text">使用参数向 applet 传递信息</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%BF%E9%97%AE%E5%9B%BE%E5%83%8F%E5%92%8C%E9%9F%B3%E9%A2%91%E6%96%87%E4%BB%B6"><span class="nav-text">访问图像和音频文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#applet-%E4%B8%8A%E4%B8%8B%E6%96%87"><span class="nav-text">applet 上下文</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#applet-%E9%97%B4%E9%80%9A%E4%BF%A1"><span class="nav-text">applet 间通信</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E6%98%BE%E7%A4%BA%E4%BF%A1%E6%81%AF%E9%A1%B9"><span class="nav-text">在浏览器中显示信息项</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B2%99%E7%AE%B1"><span class="nav-text">沙箱</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AD%BE%E5%90%8D%E4%BB%A3%E7%A0%81"><span class="nav-text">签名代码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java-Web-Start"><span class="nav-text">Java Web Start</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8F%91%E5%B8%83-Java-Web-Start-%E5%BA%94%E7%94%A8"><span class="nav-text">发布 Java Web Start 应用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#JNLP-API"><span class="nav-text">JNLP API</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="vane"
+      src="/uploads/avatar.png">
+  <p class="site-author-name" itemprop="name">vane</p>
+  <div class="site-description" itemprop="description">"Life is 10% what happens to you and 90% how you react to it."</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL1ZhbmVIc2l1bmc=" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;VaneHsiung"><i class="fab fa-github fa-fw"></i>GitHub</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOm1pY3JvZnV0Y3NAb3V0bG9vay5jb20=" title="E-Mail → mailto:microfutcs@outlook.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</span>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9lbg=="><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://vanehsiung.netlify.app/2021/04/26/13%E9%83%A8%E7%BD%B2Java%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="vane">
+      <meta itemprop="description" content=""Life is 10% what happens to you and 90% how you react to it."">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="vBlog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          13部署Java应用程序
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-04-26 10:23:26 / Modified: 12:02:10" itemprop="dateCreated datePublished" datetime="2021-04-26T10:23:26+08:00">2021-04-26</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>12k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>11 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h3 id="JAR-文件"><a href="#JAR-文件" class="headerlink" title="JAR 文件"></a>JAR 文件</h3><p>Java 归档（JAR) 文件既可以包含类文件，也可以包含诸如图像和声音这些其他类型的文件。 JAR 文件使用了大家熟悉的 ZIP 压缩格式。</p>
+<a id="more"></a>
+
+<h5 id="创建-JAR-文件"><a href="#创建-JAR-文件" class="headerlink" title="创建 JAR 文件"></a>创建 JAR 文件</h5><p>使用 jar 工具制作 JAR 文件（位于 jdk/bin 目录下)。创建一个新的 JAR 文件应该使用的常见命令格式为：<br>jar cvf JARFileName File1 File2 . . .</p>
+<p>jar 命令的格式如下：<br>jar options File1 File2 . . .</p>
+<p>jar 程序选项：</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>c</td>
+<td>创建一个新的或者空的存档文件并加人文件。 如果指定的文件名是目录，jar程序将会对它们进行递归处理</td>
+</tr>
+<tr>
+<td>C</td>
+<td>暂时改变目录</td>
+</tr>
+<tr>
+<td>e</td>
+<td>在清单文件中创建一个条目</td>
+</tr>
+<tr>
+<td>f</td>
+<td>将 JAR 文件名指定为第二个命令行参数。如果没有这个参数，jar 命令会将结果写到标准输出上（在创建 JAR 文件时）或者从标准输入中读取它 （在解压或者列出 JAR 文件内容时）</td>
+</tr>
+<tr>
+<td>i</td>
+<td>建立索引文件（用于加快对大型归档的查找）</td>
+</tr>
+<tr>
+<td>m</td>
+<td>将一个清单文件（ manifest ) 添加到 JAR 文件中。清单是对存档内容和来源的说明每个归档有一个默认的清单文件。但是， 如果想验证归档文件的内容， 可以提供自己的清单文件</td>
+</tr>
+<tr>
+<td>M</td>
+<td>不为条目创建清单文件</td>
+</tr>
+<tr>
+<td>t</td>
+<td>显示内容表</td>
+</tr>
+<tr>
+<td>u</td>
+<td>更新一个已有的 JAR 文件</td>
+</tr>
+<tr>
+<td>v</td>
+<td>生成详细的输出结果</td>
+</tr>
+<tr>
+<td>x</td>
+<td>解压文件。 如果提供一个或多个文件名， 只解压这些文件；否则， 解压所有文件</td>
+</tr>
+<tr>
+<td>0</td>
+<td>存储，不进行 ZIP m缩</td>
+</tr>
+</tbody></table>
+<h5 id="清单文件"><a href="#清单文件" class="headerlink" title="清单文件"></a>清单文件</h5><p>清单文件 （manifest)用于描述归档特征。清单文件被命名为 MANIFEST.MF , 它位于 JAR 文件的一个特殊 META-INF 子目录中。最小的符合标准的清单文件：<br>Manifest-Version: 1.0<br>复杂的清单文件可能包含更多条目。这些清单条目被分成多个节。第一节被称为主节( main section ) 。它作用于整个 JAR 文件。随后的条目用来指定已命名条目的属性，这些已命名的条目可以是某个文件、 包或者 URL。它们都必须起始于名为 Name 的条目。节与节之间用空行分开：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Manifest-Version: 1.0</span><br><span class="line">描述这个归档文件的行</span><br><span class="line"></span><br><span class="line">Name: Woozle.class</span><br><span class="line">描述这个文件的行</span><br><span class="line">Name: cora&#x2F;mycompany&#x2F;mypkg&#x2F;</span><br><span class="line">描述这个包的行</span><br></pre></td></tr></table></figure>
+<p>要想编辑清单文件， 需要将希望添加到清单文件中的行放到文本文件中，然后运行：<br>jar cfm JARFileName ManifestFileName …<br>要想更新一个已有的 JAR 文件的清单，则需要将增加的部分放置到一个文本文件中，然后执行下列命令：<br>jar ufin JARFileName ManifestFileName</p>
+<p>清单文件的最后一行必须以换行符结束。 否则， 清单文件将无法被正确地读取。</p>
+<h5 id="可执行-JAR-文件"><a href="#可执行-JAR-文件" class="headerlink" title="可执行 JAR 文件"></a>可执行 JAR 文件</h5><p>可以使用jar 命令中的 e 选项指定程序的人口点， 即通常需要在调用java 程序加载器时指定的类：<br>jar cvfe MyProgram.jar com.mycompany.mypkg.MainAppClass files to add<br>或者， 可以在清单中指定应用程序的主类，包括以下形式的语句：<br>Main-Class: com.mycompany.mypkg.MainAppClass<br>不要将扩展名 .class 添加到主类名中。<br>用户可以通过下面命令来启动应用程序：<br>java -jar MyProgram.jar<br>根据操作系统的配置， 用户可以通过双击 JAR 文件图标来启动应用程序。在 Windows 平台中， 可以使用第三方的包装器工具（Launch4J、IzPack）将 JAR 文件转换成 Windows 可执行文件（.exe）。</p>
+<h5 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h5><p>在 applet 和应用程序中使用的类通常需要使用一些相关的数据文件，这些关联的文件被称为资源（resource)。Java 资源作为单独的文件存储， 并不是作为类文件的一部分存储。对资源的访问和解释由每个程序自己完成。</p>
+<p>类加载器知道如何搜索类文件，直到在类路径、 存档文件或 web 服务器上找到为止。利用资源机制， 对于非类文件也可以同样方便地进行操作。步骤：<br>1 ) 获得具有资源的 Class 对象。<br>2 ) 如果资源是一个图像或声音文件， 就需要调用 getResource (filename) 获得作为URL 的资源位置，然后利用 getlmage 或 getAudioClip 方法进行读取。<br>3 ) 其他资源使用 getResourceAsStream 方法读取文件中的数据。<br>重点在于类加载器可以记住如何定位类，然后在同一位置査找关联的资源。<br>除了可以将资源文件与类文件放在同一个目录中外，还可以将它放在子目录中。可以使用相对资源名（相对路径），它会被解释为相对于加载这个资源的类所在的包。 必须使用“ /” 作为分隔符。一个以“ /”开头的资源名被称为绝对资源名，它的定位方式与类在包中的定位方式一样。</p>
+<p>文件的自动装载是利用资源加载特性完成的。没有标准的方法来解释资源文件的内容。每个程序必须拥有解释资源文件的方法。</p>
+<p>与语言相关的字符串，都存放在资源文件中，每种语言对应一个文件。 国际化 API 提供了组织和访问本地化文件的标准方法。</p>
+<h5 id="密封"><a href="#密封" class="headerlink" title="密封"></a>密封</h5><p>如果在代码中使用了包可见的类、方法和域，就可能希望密封包。如果不密封， 其他类就有可能放在这个包中，进而访问包可见的特性。</p>
+<p>在默认情况下，JAR 文件中的包是没有密封的。可以在清单文件的主节中加人下面一行：<br>Sealed: true<br>来改变全局的默认设定。对于每个单独的包，可以通过在 JAR 文件的清单中增加一节， 来指定是否想要密封这个包：<br>Name: com/mycoinpany/util/<br>Sealed: true</p>
+<h3 id="应用首选项的存储"><a href="#应用首选项的存储" class="headerlink" title="应用首选项的存储"></a>应用首选项的存储</h3><p>应用用户通常希望能保存他们的首选项和定制信息， 以后再次启动应用时再恢复这些配置。</p>
+<h5 id="属性映射"><a href="#属性映射" class="headerlink" title="属性映射"></a>属性映射</h5><p>属性映射（ property map) 是一种存储键 / 值对的数据结构。属性映射通常用来存储配置信息，它有 3 个特性：</p>
+<ul>
+<li>键和值是字符串。</li>
+<li>映射可以很容易地存人文件以及从文件加载。</li>
+<li>有一个二级表保存默认值。</li>
+</ul>
+<p>实现属性映射的 Java 类名为 Properties。可以使用 store方法将属性映射列表保存到一个文件中：<br>OutputStream out = new FileOutputStream(“program.properties”);<br>settings.store(out, “Program Properties”);<br>要从文件加载属性，可以使用以下调用：<br>InputStrean in = new FileInputStream(“program.properties”);<br>settings.load(in);</p>
+<p>习惯上， 会把程序属性存储在用户主目录的一个子目录中。目录名通常以一个点号开头(在 UNIX 系统中) ，这个约定说明这是一个对用户隐藏的系统目录。要找出用户的主目录，可以调用System.getProperties 方法，它恰好也使用一个 Properties 对象描述系统信息。主目录包含键”user.home”。还有一个便利方法可以读取单个键：<br>String userDir = System.getProperty(“user.home”)；</p>
+<p>可以为程序属性提供默认值。Properties 类有两种提供默认值的机制。第一种方法是， 查找一个字符串的值时可以指定一个默认值，这样当键不存在时就会自动使用这个默认值：<br>String title = settings.getProperty(“title”, “Default title”);<br>第二种方法是把所有默认值都放在一个二级属性映射中，并在主属性映射的构造器中提供这个二级映射：<br>Properties settings = new Properties(defaultSettings);<br>如果为 defaultSettings 构造器提供另一个属性映射参数，甚至可以为默认值指定默认值。</p>
+<p>出于历史上的原因，Properties 类实现了 Map&lt;Object,Object&gt;。 因此， 可以使用 Map 接口的 get 和 put 方法。不过，get 方法会返回类型 Object, 而 put 方法允许插入任何对象。 最好坚持使用 getProperty 和 setProperty 方法，这些方法会处理字符串，而不是对象。</p>
+<p>属性映射是没有层次结构的简单表。 通常会用类似 window.main.color、window.main.title 等键名引入一个伪层次结构 。不过 Properties 类没有提供方法来组织这样一个层次结构。如果存储复杂的配置信息， 就应当使用 Preferences 类。</p>
+<p>使用属性文件有以下缺点：</p>
+<ul>
+<li>有些操作系统没有主目录的概念， 所以很难找到一个统一的配置文件位置。</li>
+<li>关于配置文件的命名没有标准约定， 用户安装多个 Java 应用时，就更容易发生命名冲突。</li>
+</ul>
+<h5 id="首选项-API"><a href="#首选项-API" class="headerlink" title="首选项 API"></a>首选项 API</h5><p>Preferences 类以一种平台无关的方式提供了一个中心存储库。Preferences 存储库有一个树状结构， 节点路径名类似于 /com/mycompany/myapp。建议配置节点路径要与程序中的包名一致。存储库的各个节点分别有一个单独的键 / 值对表，可以用来存储数值、字符串或字节数组，但不能存储可串行化的对象。为了增加灵活性，可以有多个并行的树。每个程序用户分别有一棵树；另外还有一棵系统树， 可以用于存放所有用户的公共信息。 Preferences 类使用操作系统的“ 当前用户” 概念来访问适当的用户树。</p>
+<p>若要访问树中的一个节点，需要从用户或系统根开始：<br>Preferences root = Preferences.userRoot();<br>Preferences root = Preferences.systemRoot();</p>
+<p>访问节点。可以直接提供一个节点路径名:<br>Preferences node = root.node(“/com/mycompany/myapp”);<br>如果节点的路径名等于类的包名。只需要得到这个类的一个对象，然后调用：<br>Preferences node = Preferences.userNodeForPackage (obj.getClass());<br>Preferences node = Preferences.systemNodeForPackage(obj.getClass());</p>
+<p>一旦得到了节点，可以用以下方法访问键 / 值表：<br>String get(String key, String defval)<br>int getInt(String key, int defval)<br>long getLong(String key, long defval)<br>float get FIoat(String key, float defval)<br>double getDouble(String key, double defval)<br>boolean getBoolean(String key, boolean defval)<br>byte[] getByteArray(String key, byte[] defval)<br>读取信息时必须指定一个默认值， 以防止没有可用的存储库数据。</p>
+<p>可以用如下的 put 方法向存储库写数据：<br>put(String key, String value)<br>putInt(String key, int value)<br>…</p>
+<p>可以用以下方法枚举一个节点中存储的所有键：<br>String[] keys()<br>目前没有办法找出一个特定键对应的值的类型。</p>
+<p>可以通过调用以下方法导出一个子树(或者比较少见的，也可以是一个节点）的首选项：<br>void exportSubtree(OutputStream out)<br>void exportNode(OutputStream out)<br>数据用 XML 格式保存。可以通过调用以下方法将数据导人到另一个存储库：<br>void importPreferences(InputStreain in)</p>
+<h3 id="服务加载器"><a href="#服务加载器" class="headerlink" title="服务加载器"></a>服务加载器</h3><p>利用 ServiceLoader 类可以很容易地加载符合一个公共接口的插件。</p>
+<p>定义一个接口（或者， 如果愿意也可以定义一个超类)， 其中包含服务的各个实例应当提供的方法：<br>package serviceLoader;<br>public interface Cipher {}</p>
+<p>服务提供者可以提供一个或多个实现这个服务的类：<br>package serviceLoader.impl ;<br>public class CaesarCipher implements Cipher {}<br>每个实现类必须有一个无参数构造器。现在把这些类的类名增加到 META-INF/services 目录下的一个 UTF-8 编码文本文件中，文件名必须与完全限定类名一致：<br>文件 META-INF/services/serviceLoader.Cipher 必须包含这样一行：<br>serviceLoader.impl.CaesarCipher</p>
+<p>程序可以如下初始化一个服务加载器：<br>public static ServiceLoader&lt;Cipher&gt; cipherLoader = ServiceLoader.load(Cipher.class);<br>这个初始化工作只在程序中完成一次。服务加载器的 iterator 方法会对服务提供的所有实现返冋一个迭代器。</p>
+<h3 id="applet"><a href="#applet" class="headerlink" title="applet"></a>applet</h3><p>applet 是包含在 HTML 页面中的 Java 程序。需要使用 applet 的标记( tag) 告诉浏览器从哪里得到类文件， 以及这个 applet 在 Web 页面上如何定位（大小、位置等)。然后浏览器再从 Internet (或者从用户机器上的某个目录）获取类文件， 并自动运行 applet。</p>
+<p>最初开发 applet 时， 必须使用 Sun 的 HotJava 浏览器才能査看包含 applet 的 Web 页面。<br>Netscape 在它的 Navigator 浏览器中包含了一个 Java 虚拟机，那时 Java applet 才开始流行。<br>Sun Microsystems 开发了“ Java Plug-in”。通过使用浏览器扩展机制，可以把插件插人不同的浏览器， 允许这些浏览器使用外部 Java 运行时环境执行 Java applet。<br>尽管不时会发现 Java 虚拟机的安全漏洞并被恶意利用， 但 Sun Microsystems 和后来的 Oracle 在修补这些漏洞方面却动作迟缓， 举措不力。如今，开发人员要部署 Java applet 会很困难， 用户运行 applet 也不容易。</p>
+<h5 id="一个简单的-applet"><a href="#一个简单的-applet" class="headerlink" title="一个简单的 applet"></a>一个简单的 applet</h5><p>applet 就是一个扩展了 java.applet.Applet 类的 Java 类。如果你的 applet 包含 Swing 组件， 必须扩展 JApplet 类。普通 Applet 中的 Swing组件不能正确绘制。</p>
+<p>Applet 继承图：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Object &lt;- Component &lt;- Container &lt;- Panel &lt;- Applet &lt;- JApplet</span><br></pre></td></tr></table></figure>
+<p>HTML文件的内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;applet class&#x3D;&quot;applet&#x2F;NotHel1olilorld.class&quot; archive&#x3D;&quot;NotHelloWorld.jar&quot; width&#x3D;&quot;300&quot; height&#x3D;&quot;300&quot;&gt;</span><br><span class="line">&lt;&#x2F;applet&gt;</span><br></pre></td></tr></table></figure>
+<p>在浏览器中査看 applet 之前， 最好先在 JDK 自带的 applet viewer ( applet 查看器）程序中进行测试：<br>appletviewer NotHelloWorldApplet.html<br>applet 査看器程序只会显示 applet , 而 不 会 显 示周 围 的 HTML 文本。 如果你的 HTML 文件包含多个 applet 标记， applet 查 看 器 就 会 弹 出 多 个窗口。</p>
+<p>要正确地査看 applet, 只 需 要 把 HTML 文件加载到浏览器。如果 applet 没有出现， 则需要安装 JavaPlug-in，并允许它加载无签名的本地 applet。如果修改了 applet 并重新编译， 就需要重新启动浏览器， 这样才会加载新的类文件。可以利用 Java控制台避免烦人的浏览器重启。</p>
+<p>把一个图形化 Java 应用转换为可以嵌入在 Web 页面中的 applet 的具体的步骤：</p>
+<ol>
+<li>建立一个HTML 页面， 其中包含加载 applet 代码的适当标记。</li>
+<li>提供 JApplet 类的一个子类。将这个类标记为 public。否则 applet 将无法加载。</li>
+<li>删去应用中的 main 方法。不要为应用构造框架窗口。应用将在浏览器中显示。</li>
+<li>把所有初始化代码从框架窗口移至 applet 的 init 方法。不需要明确构造 applet 对象，浏览器会实例化 applet 对象并调用 init 方法。</li>
+<li>删除 setSize 调用；对 applet 来说， 用 HTML 文件中的 width 和 height 参数就可以指定大小。</li>
+<li>删除 setDefaultCloseOperation 调用。applet 不能关闭；浏览器退出时 applet 就会终止运行。</li>
+<li>删除 setTitle调用。applet 没有标题栏。（当然，可以用 HTML title 标记为 Web 页面本身指定标题。）</li>
+<li>删除 setVisible(true)调用。applet 会自动显示。</li>
+</ol>
+<h5 id="applet-HTML-标记和属性"><a href="#applet-HTML-标记和属性" class="headerlink" title="applet HTML 标记和属性"></a>applet HTML 标记和属性</h5><p>可以在 applet 标记中使用以下属性：</p>
+<ul>
+<li>width, height：指定了 applet 的宽度和高度（单位为像素）。</li>
+<li>align：这个属性指定了 applet 的对齐方式。</li>
+<li>vspace, hspace：指定了 applet 上下的像素数（ vspace) 以及左右两边的像素数（hspace ) 。</li>
+<li>code：这个属性指定了 applet 的类文件名。路径名必须与 applet 类的包一致。这个属性可以是 code=”com/mycompany/MyApplet.class”， 也可以是 code=”com.mycompany.MyApplet.class”。浏览器会自动加载applet 包含的其他类文件。</li>
+<li>archive：这个属性会列出包含 applet 的类以及其他资源的 JAR 文件。这些文件会在加载 applet 之前从 Web 服务器获。可能有多个 JAR 文件，JAR 文件用逗号分隔。</li>
+<li>codebase：这个属性是加载 JAR 文件（早期还可以加载类文件）的 URL。</li>
+<li>object：这个属性已经过时， 可以指定包含串行化 applet 对象的文件的文件名，这个文件用于持久存储 applet 状态。由于没有办法对一个串行化文件签名，所以这个特性已经没有用了。</li>
+<li>alt：Java 禁用时，可以使用 alt 属性来显示一个消息。如果一个浏览器根本无法处理 applet, 它会忽略未知的 applet 和 param 标记。浏览器会显示标记之间的所有文本。与之相反，支持 Java 的浏览器不会显示标记之间的任何文本。</li>
+<li>name：编写脚本的人可以为applet 指定一 个 name 属性， 用来指示所编写的 applet。希望同一个页面上的两个 applet 相互直接通信时 name 属性也很重要。</li>
+</ul>
+<h5 id="使用参数向-applet-传递信息"><a href="#使用参数向-applet-传递信息" class="headerlink" title="使用参数向 applet 传递信息"></a>使用参数向 applet 传递信息</h5><p>applet 可以使用内嵌在 HTML 文件中的参数。这是利用 HTML param 标记以及所定义的属性来完成的。</p>
+<p>使用以下 HTML 标记：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;applet code&#x3D;&quot;FontParamApplet.class&quot; ...&gt;</span><br><span class="line">	&lt;param name&#x3D;&quot;font&quot; value&#x3D;&quot;Helvetica&quot;&#x2F;&gt;</span><br><span class="line">&lt;&#x2F;applet&gt;</span><br></pre></td></tr></table></figure>
+<p>然后使用 Applet 类的 getParameter 方法得到参数的值。只能在 applet 的 init 方法中调用getParameter 方法， 而不能在构造器中调用。执行applet 构造器时， 参数还没有准备好。参数总是作为字符串返回。如果需要数值类型， 则需要将字符串转换为数值。param 标记中的 name 属性值与 getParameter 方法的参数匹配时， 会使用不区分大小写的比较。除了要确保代码中的参数匹配之外， 还要检查是否缺少参数。可以简单地测试是否为 null来达到目的。</p>
+<h5 id="访问图像和音频文件"><a href="#访问图像和音频文件" class="headerlink" title="访问图像和音频文件"></a>访问图像和音频文件</h5><p>applet 可以处理图像和音频。图像必须是 GIF、 PNG 或 JPEG 格式，音频文件必须是 AU、AIFF、 WAV 或 MIDI。另外也支持动画 GIF。</p>
+<p>要用相对 URL 指定图像和音频文件的位置。通常可以通过调用 getDocumentBase 或 getCodeBase 方法得到基 URL , 前一个方法会得到包含这个 applet 的 HTML 页面的 URL, 后者会得到 applet 的 codebase 属性指定的 URL。可以为 getlmage 或 getAudioClip 方法提供基 URL 和文件位置。</p>
+<p>要播放一段音频， 只需要调用它的 play 方法。还可以调用 Applet 类的 play 方法而无须先加载这段音频。</p>
+<h5 id="applet-上下文"><a href="#applet-上下文" class="headerlink" title="applet 上下文"></a>applet 上下文</h5><p>applet 可以要求浏览器为它做些事情，浏览器可能会执行这些请求，也可能将其忽略。</p>
+<p>要与浏览器通信，applet 可以调用 getAppletContext 方法。这个方法会返回一个实现 AppletContext 接口的对象。</p>
+<h5 id="applet-间通信"><a href="#applet-间通信" class="headerlink" title="applet 间通信"></a>applet 间通信</h5><p>如果一个 Web 页面包含来自同一个 codebase 的多个 applet，它们可以相互通信。</p>
+<p>如果为 HTML 文件中的各个 applet 指定 name 属性，可以使用 AppletContext 接口的 getApplet 方法来得到这个 applet 的一个引用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;applet code&#x3D;&quot;Chart.class&quot; width&#x3D;&quot;100&quot; height&#x3D;&quot;100&quot; name&#x3D;&quot;Chart1&quot;&gt;</span><br><span class="line">Applet chartl &#x3D; getAppletContext().getApplet(&quot;Chartl&quot;);</span><br></pre></td></tr></table></figure>
+<p>通过适当的类型转换来使用这个引用。</p>
+<p>getApplets 方法会返回一个枚举对象。可以列出一个 Web 页面上的所有 applet, 不论它们是否有 name 属性。</p>
+<p>applet 不能与不同 Web 页面上的其他 applet 通信。</p>
+<h5 id="在浏览器中显示信息项"><a href="#在浏览器中显示信息项" class="headerlink" title="在浏览器中显示信息项"></a>在浏览器中显示信息项</h5><p>可以访问外围浏览器的两个区域：状态栏和 Web 页面显示区， 这都要使用 AppletContext 接口的方法。可以用 showStatus 方法在浏览器底部的状态栏中显示一个字符串。showStatus 的作用有限。浏览器也会经常使用状态栏， 它会覆盖原先的消息。可以使用状态栏显示不太重要的消息， 而不能显示用户不能遗漏的消息。可以用 showDocument 方法告诉浏览器显示一个不同的 Web 页面。提供一个要显示的 URL，它会在当前页面所在的同一个窗口中打开新 Web 页面。可以提供第二个参数（<code>&quot;_blank&quot;</code>）告诉浏览器在另一个窗口中显示文档。</p>
+<p>showDocument 方法：</p>
+<table>
+<thead>
+<tr>
+<th>目标参数</th>
+<th>位置</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>“_self”或无</td>
+<td>在当前框架中显示文档</td>
+</tr>
+<tr>
+<td>“_parent”</td>
+<td>在父框架中显示文档</td>
+</tr>
+<tr>
+<td>“_top”</td>
+<td>在最顶层框架中显示文档</td>
+</tr>
+<tr>
+<td>“_blank”</td>
+<td>在新的未命名顶层窗口中显示文档</td>
+</tr>
+<tr>
+<td>其他字符串</td>
+<td>在指定框架中显示。如果不存在指定名字的框架，则打开一个新窗口， 并指定为这个窗口的名字</td>
+</tr>
+</tbody></table>
+<h5 id="沙箱"><a href="#沙箱" class="headerlink" title="沙箱"></a>沙箱</h5><p>受限的执行环境通常称为“ 沙箱”。沙箱中的程序有以下限制：</p>
+<ul>
+<li>它们绝对不能运行任何本地可执行程序。</li>
+<li>它们不能读写本地计算机的文件系统。</li>
+<li>它们不能査找有关本地计算机的信息， 不过所用的 Java 版本和一些无害的操作系统细节除外。</li>
+<li>远程加载的程序需要用户同意与下载这个程序的服务器以外的主机通信；这个服务器称为源主机（originating host) 。这个规则通常称为“ 远程代码只能与家人通话”。这个规则可以保护用户防止代码刺探内部网资源。</li>
+<li>所有弹出窗口都带有一个警告消息。这个消息是一个安全特性， 确保用户不会把这个窗口误认为一个本地应用。</li>
+</ul>
+<p>如今，不论是否在沙箱中运行，通过 Java Plug-in执行的所有代码都必须有数字签名。</p>
+<h5 id="签名代码"><a href="#签名代码" class="headerlink" title="签名代码"></a>签名代码</h5><p>applet 或 Java Web Start 应用的 JAR 文件必须有数字签名。签名的 JAR 文件带有一个证书，指示签名者的身份。加密技术可以确保这个证书不可伪造，而且能检测出对签名文件的任何篡改。</p>
+<p>现在已经不再支持不安全的证书。必须从 Java Plug-in 支持的一个证书发行商得到一个证书， 用它对你的 JAR 文件签名。</p>
+<h3 id="Java-Web-Start"><a href="#Java-Web-Start" class="headerlink" title="Java Web Start"></a>Java Web Start</h3><p>Java Web Start 是一项在 Internet 上发布应用程序的技术。包含下列主要特性：</p>
+<ul>
+<li>Java Web Start 应用程序一般通过浏览器发布。只要 Java Web Start 应用程序下载到本地就可以启动它，而不需要浏览器。</li>
+<li>Java Web Start 应用程序并不在浏览器窗口内。它将显示在浏览器外的一个属于自己的框架中。</li>
+<li>Java Web Start 应用程序不使用浏览器的 Java 实现。浏览器只是在加载 Java Web Start应用程序描述符时启动一个外部应用程序。</li>
+<li>数字签名应用程序可以被赋予访问本地机器的任意权限。未签名的应用程序只能运行在“ 沙箱” 中。</li>
+</ul>
+<h5 id="发布-Java-Web-Start-应用"><a href="#发布-Java-Web-Start-应用" class="headerlink" title="发布 Java Web Start 应用"></a>发布 Java Web Start 应用</h5><p>要想准备一个通过 Java Web Start 发布的应用程序， 应该将其打包到一个或多个 JAR 文件中。然后创建一个 Java Network Launch Protocol ( JNLP ) 格式的描述符文件。将这些文件放置在 Web 服务器上，要确保 Web 服务器对扩展名为 .jnlp 的文件报告一个 application/x-java-jnlp-file 的MIME 类型（浏览器利用 MIME 类型确定启动哪一种辅助应用程序)，可以安装tomcat。</p>
+<h5 id="JNLP-API"><a href="#JNLP-API" class="headerlink" title="JNLP API"></a>JNLP API</h5><p>JNLP API 允许未签名的应用程序在沙箱中运行，同时通过一种安全的途径访问本地资源。</p>
+<p>API 提供了下面的服务：</p>
+<ul>
+<li>加载和保存文件</li>
+<li>访问剪贴板</li>
+<li>打印</li>
+<li>下载文件</li>
+<li>在默认的浏览器中显示一个文档</li>
+<li>保存和获取持久性配置信息</li>
+<li>确信只运行一个应用程序的实例</li>
+</ul>
+<p>要访问服务， 需要使用 ServiceManager：<br>FileSaveService service = (FileSaveService) ServiceManager.lookup(“javax. jnlp.FileSaveService”);<br>如果服务不可用， 调用将拋出 UnavailableServiceException。</p>
+<p>如果想要编译使用了 JNLP API 的程序， 那就必须在类路径中包含 javaws.jar 文件。这个文件在 JDK 的 jre/lib 子目录下。</p>
+<p>要保存文件，需要为文件对话框提供文件的初始路径名和文件扩展类型、要保存的数据和建议的文件名：<br>service.saveFileDialog(“.”, new String[] { “txt” }, data, “calc.txt”);<br>数据必须由 InputStream 传递。</p>
+<p>要想从文件中读取数据， 需要使用 FileOpenService。 它的 openFileDialog 对话框接收应用程序提供的初始路径名和文件扩展名， 并返回一个 FileContents 对象。 然后调用 getlnputStream 和 getOuputStream 方法来读写文件数据。 如果用户没有选择文件，openFileDialog 方法将返回 null：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">FileOpenService service &#x3D; (FileOpenService) ServiceManager.lookup(&quot;javax.jnlp.FileOpenService&quot;);</span><br><span class="line">FileContents contents &#x3D; service.openFileDialog(&quot;.&quot;, new String[]&#123; &quot;txt&quot; &#125;);</span><br><span class="line">if (contents !&#x3D; null) &#123;</span><br><span class="line">	InputStream in &#x3D; contents.getInputStream();</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果想要打开一个特定的文件， 需要使用 ExtendedService：<br>ExtendedService service = (ExtendedService) ServiceManager.lookup(“ javax.jnlp.ExtendedService”);<br>FileContents contents = service.openFile(new File(“c:\autoexec.bat”));<br>程序的用户必须同意文件访问。</p>
+<p>要想在默认浏览器中显示一个文档， 就需要使用 BasicService 接口：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">BasicService service &#x3D; (BasicService) ServiceManager.lookup(&quot; javax.jnlp.Basi cService&quot;);</span><br><span class="line">if (service.isWebBrowserSupported())</span><br><span class="line">	service.showDocument(url);</span><br><span class="line">else . . .</span><br></pre></td></tr></table></figure>
+<p>PersistenceService 允许应用程序保存少量的配置信息， 并且应用程序下次运行时恢复。使用 URL 键 进行持久性存储。URL 并不需要指向一个真正的web 资源， 服务仅仅使用它们来构造一个方便的具有层次结构的命名机制。对于任何给定的 URL 键，应用程序可以存储任意的二进制数据（存储可能会限制数据块的大小)。因为应用程序是彼此分离的， 一个特定的应用程序只能使用从 codebase 开始的 URL 键值。应用程序可以调用 BasicService 类的 getCodeBase 方法查看它的 codebase。可以调用 PersistenceService 中的 create 方法建立一个新的键：<br>URL url = new URL(CodeBase, “key”);<br>service.create(url, value);<br>要想访问与某个特定键关联的信息， 需要调用 get 方法。 这个方法将返回一个 FileContents 对象， 通过这个对象可以对键数据进行读写：<br>FileContents contents = service.get(url);<br>InputStream in = contents.getlnputStream();<br>OutputStream out = contents.getOutputStream(true); // true = overwrite<br>无法轻而易举地知道这个键是已经存在还是需要创建。可以假定这个键已经存在， 并调用 get 方法。如果抛出 FileNotFoundException， 就说明需要创建。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>vane
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://vanehsiung.netlify.app/2021/04/26/13%E9%83%A8%E7%BD%B2Java%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/" title="13部署Java应用程序">https://vanehsiung.netlify.app/2021/04/26/13部署Java应用程序/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9lbg=="><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Programming/" rel="tag"># Programming</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/04/26/12Swing%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2%E7%BB%84%E4%BB%B6/" rel="prev" title="12Swing用户界面组件">
+                  <i class="fa fa-chevron-left"></i> 12Swing用户界面组件
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/04/26/14%E5%B9%B6%E5%8F%91/" rel="next" title="14并发">
+                  14并发 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Vane Hsiung</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZw==">NexT.Gemini</span>
+  </div>
+
+<script src="https://cdn.jsdelivr.net/gh/suyin-long/activate-power-mode@1.0/dist/activate-power-mode.js"></script>
+<script>
+POWERMODE.colorful = true; // make power mode colorful
+POWERMODE.shake = false; // turn off shake
+document.body.addEventListener('input', POWERMODE);
+</script>
+
+
+
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/@next-theme/pjax@0.4.0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '.page-configurations',
+    '.main-inner',
+    '.post-toc-wrap',
+    '.languages',
+    '.pjax'
+  ],
+  analytics: false,
+  cacheBust: false,
+  scrollRestoration: false,
+  scrollTo: !CONFIG.bookmark.enable
+});
+
+document.addEventListener('pjax:success', () => {
+  pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  const hasTOC = document.querySelector('.post-toc');
+  document.querySelector('.sidebar-inner').classList.toggle('sidebar-nav-active', hasTOC);
+  document.querySelector(hasTOC ? '.sidebar-nav-toc' : '.sidebar-nav-overview').click();
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+<script data-pjax>
+if (document.querySelectorAll('.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8.8.4/dist/mermaid.min.js', () => {
+    mermaid.init({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    }, '.mermaid');
+  }, window.mermaid);
+}
+</script>
+
+  <script>
+    NProgress.configure({
+      showSpinner: false
+    });
+    NProgress.start();
+    document.addEventListener('readystatechange', () => {
+      if (document.readyState === 'interactive') {
+        NProgress.inc(0.8);
+      }
+      if (document.readyState === 'complete') {
+        NProgress.done();
+      }
+    });
+    document.addEventListener('pjax:send', () => {
+      NProgress.start();
+    });
+    document.addEventListener('pjax:success', () => {
+      NProgress.done();
+    });
+  </script>
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    <div class="pjax">
+
+
+    </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>

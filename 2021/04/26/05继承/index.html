@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="uXmcnam1s6y-h_YGHukGYhDQ8zMBAOHTHrJ6RfsDN6I">
+  <meta name="msvalidate.01" content="687D92122214353CF2ACE3AEA2977A9C">
+  <meta name="baidu-site-verification" content="code-lURpXjbL6l">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Architects+Daughter:300,300italic,400,400italic,700,700italic%7CShare+Tech+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css">
+  <script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"vanehsiung.netlify.app","root":"/","images":"/images","scheme":"Gemini","version":"8.2.0","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+<meta name="description" content="继承（inheritance)。继承已存在的类就是复用（继承）这些类的方法和域。在此基础上，还可以添加一些新的方法和域， 以满足新的需求。 反射（ reflection) 是指在程序运行期间发现更多的类及其属性的能力。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="05继承">
+<meta property="og:url" content="https://vanehsiung.netlify.app/2021/04/26/05%E7%BB%A7%E6%89%BF/index.html">
+<meta property="og:site_name" content="vBlog">
+<meta property="og:description" content="继承（inheritance)。继承已存在的类就是复用（继承）这些类的方法和域。在此基础上，还可以添加一些新的方法和域， 以满足新的需求。 反射（ reflection) 是指在程序运行期间发现更多的类及其属性的能力。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-04-26T02:12:09.000Z">
+<meta property="article:modified_time" content="2021-04-26T04:02:10.769Z">
+<meta property="article:author" content="vane">
+<meta property="article:tag" content="Programming">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://vanehsiung.netlify.app/2021/04/26/05%E7%BB%A7%E6%89%BF/">
+
+
+<script data-pjax class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+<title>05继承 | vBlog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=sG-KKYP310LB0"></script>
+    <script data-pjax>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'sG-KKYP310LB0');
+      }
+    </script>
+
+  <script data-pjax>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?f3032f7a989f15a8faf91348571efe03";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="vBlog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">vBlog</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Vane Hsiung's Blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fas fa-link fa-fw"></i>Links</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+
+ 
+<script>
+  var OriginTitile = document.title;
+  var titleTime;
+  document.addEventListener("visibilitychange", function() {
+    if (document.hidden) {
+      document.title = "(つェ⊂)我藏好了哦~";
+      clearTimeout(titleTime);
+    } else {
+      document.title = "(*´∇｀*) 被你发现啦~";
+      titleTime = setTimeout(function() {
+        document.title = OriginTitile;
+      }, 2000);
+    }
+  });
+</script>
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B1%BB%E3%80%81%E8%B6%85%E7%B1%BB%E5%92%8C%E5%AD%90%E7%B1%BB"><span class="nav-text">类、超类和子类</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E5%AD%90%E7%B1%BB"><span class="nav-text">定义子类</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A6%86%E7%9B%96%E6%96%B9%E6%B3%95"><span class="nav-text">覆盖方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AD%90%E7%B1%BB%E6%9E%84%E9%80%A0%E5%99%A8"><span class="nav-text">子类构造器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BB%A7%E6%89%BF%E5%B1%82%E6%AC%A1"><span class="nav-text">继承层次</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A4%9A%E6%80%81"><span class="nav-text">多态</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%90%86%E8%A7%A3%E6%96%B9%E6%B3%95%E8%B0%83%E7%94%A8"><span class="nav-text">理解方法调用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%98%BB%E6%AD%A2%E7%BB%A7%E6%89%BF%EF%BC%9Afinal-%E7%B1%BB%E5%92%8C%E6%96%B9%E6%B3%95"><span class="nav-text">阻止继承：final 类和方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BC%BA%E5%88%B6%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="nav-text">强制类型转换</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8A%BD%E8%B1%A1%E7%B1%BB"><span class="nav-text">抽象类</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8F%97%E4%BF%9D%E6%8A%A4%E8%AE%BF%E9%97%AE"><span class="nav-text">受保护访问</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Object%EF%BC%9A-%E6%89%80%E6%9C%89%E7%B1%BB%E7%9A%84%E8%B6%85%E7%B1%BB"><span class="nav-text">Object： 所有类的超类</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#equals-%E6%96%B9%E6%B3%95"><span class="nav-text">equals 方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%9B%B8%E7%AD%89%E6%B5%8B%E8%AF%95%E4%B8%8E%E7%BB%A7%E6%89%BF"><span class="nav-text">相等测试与继承</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#hashCode-%E6%96%B9%E6%B3%95"><span class="nav-text">hashCode 方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#toString-%E6%96%B9%E6%B3%95"><span class="nav-text">toString 方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%9B%E5%9E%8B%E6%95%B0%E7%BB%84%E5%88%97%E8%A1%A8"><span class="nav-text">泛型数组列表</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%BF%E9%97%AE%E6%95%B0%E7%BB%84%E5%88%97%E8%A1%A8%E5%85%83%E7%B4%A0"><span class="nav-text">访问数组列表元素</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%B1%BB%E5%9E%8B%E5%8C%96%E4%B8%8E%E5%8E%9F%E5%A7%8B%E6%95%B0%E7%BB%84%E5%88%97%E8%A1%A8%E7%9A%84%E5%85%BC%E5%AE%B9%E6%80%A7"><span class="nav-text">类型化与原始数组列表的兼容性</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E5%8C%85%E8%A3%85%E5%99%A8%E4%B8%8E%E8%87%AA%E5%8A%A8%E8%A3%85%E7%AE%B1"><span class="nav-text">对象包装器与自动装箱</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E6%95%B0%E9%87%8F%E5%8F%AF%E5%8F%98%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-text">参数数量可变的方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9E%9A%E4%B8%BE%E7%B1%BB"><span class="nav-text">枚举类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8D%E5%B0%84"><span class="nav-text">反射</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Class-%E7%B1%BB"><span class="nav-text">Class 类</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8D%95%E8%8E%B7%E5%BC%82%E5%B8%B8"><span class="nav-text">捕获异常</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%A9%E7%94%A8%E5%8F%8D%E5%B0%84%E5%88%86%E6%9E%90%E7%B1%BB%E7%9A%84%E8%83%BD%E5%8A%9B"><span class="nav-text">利用反射分析类的能力</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9C%A8%E8%BF%90%E8%A1%8C%E6%97%B6%E4%BD%BF%E7%94%A8%E5%8F%8D%E5%B0%84%E5%88%86%E6%9E%90%E5%AF%B9%E8%B1%A1"><span class="nav-text">在运行时使用反射分析对象</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%8F%8D%E5%B0%84%E7%BC%96%E5%86%99%E6%B3%9B%E5%9E%8B%E6%95%B0%E7%BB%84%E4%BB%A3%E7%A0%81"><span class="nav-text">使用反射编写泛型数组代码</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%B0%83%E7%94%A8%E4%BB%BB%E6%84%8F%E6%96%B9%E6%B3%95"><span class="nav-text">调用任意方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%A7%E6%89%BF%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%8A%80%E5%B7%A7"><span class="nav-text">继承的设计技巧</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="vane"
+      src="/uploads/avatar.png">
+  <p class="site-author-name" itemprop="name">vane</p>
+  <div class="site-description" itemprop="description">"Life is 10% what happens to you and 90% how you react to it."</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL1ZhbmVIc2l1bmc=" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;VaneHsiung"><i class="fab fa-github fa-fw"></i>GitHub</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOm1pY3JvZnV0Y3NAb3V0bG9vay5jb20=" title="E-Mail → mailto:microfutcs@outlook.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</span>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9lbg=="><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://vanehsiung.netlify.app/2021/04/26/05%E7%BB%A7%E6%89%BF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="vane">
+      <meta itemprop="description" content=""Life is 10% what happens to you and 90% how you react to it."">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="vBlog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          05继承
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-04-26 10:12:09 / Modified: 12:02:10" itemprop="dateCreated datePublished" datetime="2021-04-26T10:12:09+08:00">2021-04-26</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>11k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>10 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>继承（inheritance)。继承已存在的类就是复用（继承）这些类的方法和域。在此基础上，还可以添加一些新的方法和域， 以满足新的需求。</p>
+<p>反射（ reflection) 是指在程序运行期间发现更多的类及其属性的能力。</p>
+<a id="more"></a>
+
+<h3 id="类、超类和子类"><a href="#类、超类和子类" class="headerlink" title="类、超类和子类"></a>类、超类和子类</h3><h5 id="定义子类"><a href="#定义子类" class="headerlink" title="定义子类"></a>定义子类</h5><p>关键字 extends 表明正在构造的新类派生于一个已存在的类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">subClassName</span> <span class="keyword">extends</span> <span class="title">superClassName</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	添加方法和域</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>已存在的类称为超类( superclass)、 基类（ base class) 或父类（parent class); 新类称为子类（subclass) 、派生类( derived class) 或孩子类（child class)。 超类和子类是 Java 程序员最常用的两个术语。</p>
+<p>前缀“ 超” 和“ 子” 来源于计算机科学和数学理论中的集合语言的术语。即超集与子集。</p>
+<p>在通过扩展超类定义子类的时候，仅需要指出子类与超类的不同之处。因此在设计类的时候，应该将通用的方法放在超类中， 而将具有特殊用途的方法放在子类中。</p>
+<h5 id="覆盖方法"><a href="#覆盖方法" class="headerlink" title="覆盖方法"></a>覆盖方法</h5><p>子类方法不能够直接地访问超类的私有域，必须借助于超类的公有的接口，可以使用关键字 super 调用超类的公有接口。</p>
+<p>super 与 this 引用是不同概念。 super 不是一个对象的引用， 不能将 super 赋给另一个对象变量， 它只是一个指示编译器调用超类方法的特殊关键字。</p>
+<p>在子类中可以增加域、 增加方法或覆盖超类的方法，然而无法删除继承的任何域和方法。</p>
+<h5 id="子类构造器"><a href="#子类构造器" class="headerlink" title="子类构造器"></a>子类构造器</h5><p>由于子类的构造器不能访问超类的私有域， 所以必须利用超类的构造器对这部分私有域进行初始化，可以通过 super 实现对超类构造器的调用。使用 super 调用构造器的语句必须是子类构造器的第一条语句。</p>
+<p>如果子类的构造器没有显式地调用超类的构造器， 则将自动地调用超类默认（没有参数 )的构造器。</p>
+<p>一个对象变量可以指示多种实际类型的现象被称为多态（polymorphism)。在运行时能够自动地选择调用哪个方法的现象称为动态绑定（dynamic binding）。</p>
+<h5 id="继承层次"><a href="#继承层次" class="headerlink" title="继承层次"></a>继承层次</h5><p>由一个公共超类派生出来的所有类的集合被称为继承层次（ inheritance hierarchy )。在继承层次中， 从某个特定的类到其祖先的路径被称为该类的继承链 ( inheritance chain) 。</p>
+<h5 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h5><p>“is-a” 规则， 它表明子类的每个对象也是超类的对象。</p>
+<p>”is-a” 规则的另一种表述法是置换法则。它表明程序中出现超类对象的任何地方都可以用子类对象置换。</p>
+<p>在 Java 程序设计语言中，对象变量是多态的。 一个对象变量既可以引用一个类的对象， 也可以引用一个该类的任何一个子类的对象。</p>
+<p>不能将一个超类的引用赋给子类变量。 如果赋值成功，后面调用子类添加的方法时就会发生运行时错误。</p>
+<p>在 Java 中，子类数组的引用可以转换成超类数组的引用。然后可以向其中添加超类的对象，这是一种很忌讳发生的情形，当该对象调用子类添加的方法的时候，将会导致调用一个不存在的实例域， 进而搅乱相邻存储空间的内容。为了确保不发生这类错误， 所有数组都要牢记创建它们的元素类型， 并负责监督仅将类型兼容的引用存储到数组中。否则引发 ArrayStoreException 异常。</p>
+<h5 id="理解方法调用"><a href="#理解方法调用" class="headerlink" title="理解方法调用"></a>理解方法调用</h5><p>下面假设要调用 x.f(args) ，隐式参数 x 声明为类 C 的一个对象。下面是调用过程的详细描述：</p>
+<ol>
+<li>编译器査看对象的声明类型和方法名。编译器将会一一列举所有 C 类中名为 f 的方法和其超类中可以访问且名为 f 的方法。</li>
+<li>编译器将査看调用方法时提供的参数类型。如果在所有名为 f 的方法中存在一个与提供的参数类型完全匹配，就选择这个方法。这个过程被称为重栽解析（ overloading resolution)。</li>
+<li>如果是 private 方法、 static 方法、 final 方法或者构造器， 那么编译器将可以准确地知道应该调用哪个方法，这种调用方式称为静态绑定（ static binding )。 与此对应的是，调用的方法依赖于隐式参数的实际类型， 并且在运行时实现动态绑定。</li>
+<li>当程序运行，并且采用动态绑定调用方法时， 虚拟机一定调用与 x 所引用对象的实际类型最合适的那个类的方法。</li>
+</ol>
+<p>返回类型不是签名的一部分， 因此，在覆盖方法时， 一定要保证返回类型的兼容性。 允许子类将覆盖方法的返回类型定义为原返回类型的子类型，称为可协变的返回类型。</p>
+<p>每次调用方法都要进行搜索，时间开销相当大。虚拟机预先为每个类创建了一个方法表（method table), 其中列出了所有方法的签名和实际调用的方法。在真正调用方法的时候， 虚拟机仅查找这个表就行了。</p>
+<p>在覆盖一个方法的时候，子类方法不能低于超类方法的可见性。</p>
+<h5 id="阻止继承：final-类和方法"><a href="#阻止继承：final-类和方法" class="headerlink" title="阻止继承：final 类和方法"></a>阻止继承：final 类和方法</h5><p>不允许继承的类被称为 final 类。如果将一个类声明为 final， 只有其中的方法自动地成为 final,而不包括域。</p>
+<p>类中的特定方法声明为 final，子类就不能覆盖这个方法。</p>
+<p>如果一个方法没有被覆盖并且很短， 编译器就能够对它进行优化处理， 这个过程为称为内联( inlining )。</p>
+<h5 id="强制类型转换"><a href="#强制类型转换" class="headerlink" title="强制类型转换"></a>强制类型转换</h5><p>用一对圆括号将目标类型括起来，并放置在需要转换的变量之前就可以了。</p>
+<p>只能在继承层次内进行类型转换。在将超类转换成子类之前，应该使用 instanceof 进行检查。</p>
+<p>如果 x 为 null ,  x instanceof C，会返回 false。</p>
+<h5 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h5><p>使用abstract 关键字，声明抽象方法，抽象方法不需要实现。包含一个或多个抽象方法的类本身必须被声明为抽象的。除了抽象方法之外， 抽象类还可以包含具体数据和具体方法。</p>
+<p>抽象方法充当着占位的角色， 它们的具体实现在子类中。扩展抽象类可以有两种选择。一种是在抽象类中实现部分抽象类方法或不实现抽象类方法，这样就必须将子类也标记为抽象类；另一种是实现全部的抽象方法，这样一来，子类就不是抽象的了。</p>
+<p>类即使不含抽象方法，也可以将类声明为抽象类。</p>
+<p>抽象类不能被实例化。也就是说， 如果将一个类声明为abstract , 就不能创建这个类的对象。可以定义一个抽象类的对象变量， 但是它只能引用非抽象子类的对象。</p>
+<h5 id="受保护访问"><a href="#受保护访问" class="headerlink" title="受保护访问"></a>受保护访问</h5><p>若要超类中的某些方法允许被子类直接访问， 或者允许子类的方法直接访问超类的某个域。可将这些方法或域声明为protected。</p>
+<p>在实际应用中，要谨慎使用protected 属性的域。假设需要将设计的类提供给其他程序员使用， 而在这个类中设置了一些受保护域， 由于其他程序员可以由这个类再派生出新类，并访问其中的受保护域。在这种情况下， 如果需要对这个类的实现进行修改， 就必须通知所有使用这个类的程序员。这违背了OOP 提倡的数据封装原则。</p>
+<p>受保护的方法更具有实际意义。这表明子类（可能很熟悉祖先类）得到信任， 可以正确地使用这个方法， 而其他类则不行。</p>
+<p>Java 用于控制可见性的4 个访问修饰符：</p>
+<ol>
+<li>仅对本类可见private。</li>
+<li>对所有类可见public：</li>
+<li>对本包和所有子类可见protected。</li>
+<li>对本包可见——默认，不需要修饰符。</li>
+</ol>
+<h3 id="Object：-所有类的超类"><a href="#Object：-所有类的超类" class="headerlink" title="Object： 所有类的超类"></a>Object： 所有类的超类</h3><p>Object 类是 Java 中所有类的始祖， 在Java 中每个类都是由它扩展而来的。</p>
+<p>一个类如果没有明确地指出超类，Object 就被认为是这个类的超类。</p>
+<p>所有的数组类型，不管是对象数组还是基本类型的数组都扩展了Object 类。</p>
+<h5 id="equals-方法"><a href="#equals-方法" class="headerlink" title="equals 方法"></a>equals 方法</h5><p>Object 类中的equals 方法用于检测一个对象是否等于另外一个对象。这个方法将判断两个对象是否具有相同的引用。</p>
+<p>经常需要覆盖equals方法，检测两个对象状态的相等性， 如果两个对象的状态相等， 就认为这两个对象是相等的。</p>
+<p>为了防备两个参数可能为null 的情况，需要使用Objects.equals 方法。如果两个参数都为null，Objects.equals(a，b) 调用将返回true ; 如果其中一个参数为null ，则返回false ; 否则， 如果两个参数都不为null， 则调用a.equals(b)。</p>
+<h5 id="相等测试与继承"><a href="#相等测试与继承" class="headerlink" title="相等测试与继承"></a>相等测试与继承</h5><p>Java 语言规范要求equals 方法具有下面的特性：</p>
+<ol>
+<li>自反性： 对于任何非空引用x, x.equals(x)， 应该返回true。</li>
+<li>对称性: 对于任何引用x 和y, 当且仅当y.equals(x) 返回true, x.equals(y) 也应该返回true。</li>
+<li>传递性： 对于任何引用x、y 和z, 如果x.equals(y) 返回 true， y.equals(z) 返回true，x.equals(z) 也应该返回true。</li>
+<li>一致性： 如果x 和y 引用的对象没有发生变化， 反复调用x.equals(y) 应该返回同样的结果。</li>
+<li>对于任意非空引用x, x.equals(null) 应该返回false.</li>
+</ol>
+<p>如果隐式和显式的参数不属于同一个类， equals 方法将如何处理：<br>如果子类能够拥有自己的相等概念， 则对称性需求将强制采用 getClass 进行检测。<br>如果由超类决定等的概念，那么就可以使用 instanceof 进行检测， 这样可以在不同子类的对象之间进行相等的比较，同时应该将超类equals方法声明为final。</p>
+<p>下面给出编写一个完美的 equals 方法的建议：</p>
+<ol>
+<li>显式参数为Object otherObject。</li>
+<li>检测 this 与 otherObject 是否引用同一个对象：<br>if (this == otherObject) return true;</li>
+<li>检测 otherObject 是否为 null, 如果为null, 返回false：<br>if (otherObject = null ) return false;</li>
+<li>比较 this 与 otherObject 是否属于同一个类：<br>如果 equals 的语义在每个子类中有所改变，就使用 getClass 检测：<br>if (getClass() != otherObject.getCIass()) return false;<br>如果所有的子类都拥有统一的语义，就使用 instanceof 检测：<br>if (!(otherObject instanceof ClassName)) return false;</li>
+<li>otherObject 转换为相应的类类型变量：<br>ClassName other = (ClassName) otherObject;</li>
+<li>对所有需要比较的域进行比较。使用 == 比较基本类型域，使用 equals 比较对象域，使用Arrays.equals 比较数组域。如果所有的域都匹配， 就返回true; 否则返回false：<br>return field1 == other.field1<br>&amp;&amp; Objects.equa1s(field2, other.field2)<br>&amp;&amp; …;</li>
+</ol>
+<p>为了避免发生错误，可以使用 @Override 对覆盖超类的方法进行标记，如果出现了错误， 并且正在定义一个新方法， 编译器就会给出错误报告。</p>
+<h5 id="hashCode-方法"><a href="#hashCode-方法" class="headerlink" title="hashCode 方法"></a>hashCode 方法</h5><p>散列码（ hash code ) 是由对象导出的一个整型值。</p>
+<p>由于hashCode 方法定义在Object 类中， 因此每个对象都有一个默认的散列码，其值为对象的存储地址。</p>
+<p>字符串的散列码是由内容导出的。</p>
+<p>hashCode 方法应该返回一个整型数值（也可以是负数)，并合理地组合实例域的散列码,以便能够让各个不同的对象产生的散列码更加均匀。</p>
+<p>需要组合多个散列值时， 可以调用ObjeCtS.hash 并提供多个参数。这个方法会对各个参数调用Objects.hashCode， 并组合这些散列值。</p>
+<p>Equals 与 hashCode 的定义必须一致：如果x.equals(y) 返回true, 那么x.hashCode( ) 就必须与y.hashCode( ) 具有相同的值。</p>
+<p>如果存在数组类型的域， 那么可以使用静态的Arrays.hashCode 方法计算一个散列码， 这个散列码由数组元素的散列码组成。</p>
+<h5 id="toString-方法"><a href="#toString-方法" class="headerlink" title="toString 方法"></a>toString 方法</h5><p>toString用于返回表示对象值的字符串。</p>
+<p>绝大多数（但不是全部）的toString 方法返回结果都遵循这样的格式：类的名字，随后是一对方括号括起来的域值。</p>
+<p>最好通过调用getClass( ).getName( ) 获得类名的字符串，而不要将类名硬加到toString 方法中。</p>
+<p>随处可见toString 方法的主要原因是： 只要对象与一个字符串通过操作符“ +” 连接起来，Java 编译就会自动地调用toString 方法，以便获得这个对象的字符串描述。</p>
+<p>Object 类定义了toString 方法， 用来打印输出对象所属的类名和散列码。</p>
+<p>数组继承了object 类的 toString 方法， 数组类型将按照旧的格式打印。生成字符串“ [I@hashCode” （前缀[I 表明是一个整型数组）。修正的方式是调用静态方法Arrays.toString。要想打印多维数组（即， 数组的数组）则需要调用Arrays.deepToString 方法。</p>
+<p>强烈建议为自定义的每一个类增加toString 方法。这样做不仅自己受益， 而且所有使用这个类的程序员也会从这个日志记录支持中受益匪浅。</p>
+<h3 id="泛型数组列表"><a href="#泛型数组列表" class="headerlink" title="泛型数组列表"></a>泛型数组列表</h3><p>在Java 中，允许在运行时确定数组的大小。</p>
+<p>ArrayList 类。使用起来有点像数组，但在添加或删除元素时， 具有自动调节数组容量的功能，而不需要为此编写任何代码。</p>
+<p>ArrayList 是一个采用类型参数（ type parameter ) 的泛型类（ generic class )。为了指定数组列表保存的元素对象类型， 需要用一对尖括号将类名括起来加在后面。Java SE 7 中， 可以省去右边的类型参数：<br><code>ArrayList&lt;className&gt; a = new ArrayListo&lt;&gt;；</code><br>这被称为“ 菱形” 语法， 因为空尖括号&lt;&gt;就像是一个菱形。编译器会检查新值是什么，如果赋值给一个变量， 或传递到某个方法， 或者从某个方法返回， 编译器会检査这个变量、参数或方法的泛型类型， 然后将这个类型放在&lt;&gt;中。</p>
+<p>Java SE 5.0 以前的版本没有提供泛型类， 而是有一个ArrayList 类， 其中保存类型为Object 的元素， 它是“ 自适应大小” 的集合。如果使用老版本的Java, 则需要将所有的后缀 &lt;…&gt; 删掉,， 在Java SE 5.0 以后的版本中， 没有后缀&lt;…&gt; 仍然可以使用ArrayList, 它将被认为是一个删去了类型参數的“ 原始” 类型。</p>
+<p>使用add 方法可以将元素添加到数组列表中。</p>
+<p>数组列表管理着对象引用的一个内部数组。如果调用 add 且内部数组已经满了， 数组列表就将自动地创建一个更大的数组，并将所有的对象从较小的数组中拷贝到较大的数组中。</p>
+<p>如果已经清楚或能够估计出数组可能存储的元素数量， 就可以在填充数组之前调用ensureCapacity 方法。<br>还可以把初始容量传递给ArrayList 构造器：<br><code>ArrayList&lt;className&gt; a = new ArrayListo(100) ;</code></p>
+<p>分配数组列表，它与为新数组分配空间有所不同：如果为数组分配100 个元素的存储空间， 数组就有100 个空位置可以使用。而容量为100 个元素的数组列表只是拥有保存100 个元素的潜力, 但是在最初，甚至完成初始化构造之后， 数组列表根本就不含有任何元素。</p>
+<p>size 方法将返回数组列表中包含的实际元素数目。</p>
+<p>一旦能够确认数组列表的大小不再发生变化， 就可以调用trimToSize 方法。这个方法将存储区域的大小调整为当前元素数量所需要的存储空间数目。垃圾回收器将回收多余的存储空间。一旦整理了数组列表的大小，添加新元素就需要花时间再次移动存储块。</p>
+<h5 id="访问数组列表元素"><a href="#访问数组列表元素" class="headerlink" title="访问数组列表元素"></a>访问数组列表元素</h5><p>数组列表自动扩展容量的便利增加了访问元素语法的复杂程度。其原因是ArrayList 类并不是Java 程序设计语言的一部分；它只是一个由某些人编写且被放在标准库中的一个实用类。</p>
+<p>使用get 和set 方法实现访问或改变数组元素的操作，而不使用人们喜爱的[ ] 语法格式。set 方法只能替换数组中已经存在的元素内容。</p>
+<p>下面这个技巧可以一举两得， 既可以灵活地扩展数组， 又可以方便地访问数组元素：</p>
+<ol>
+<li>创建一个数组列表， 并添加所有的元素。</li>
+<li>执行完上述操作后，使用toArray 方法将数组元素拷贝到一个数组中。</li>
+</ol>
+<p>除了在数组列表的尾部追加元素之外，还可以在数组列表的中间插入元素， 使用带索引参数的add 方法。为了插人一个新元素，位于n 之后的所有元素都要向后移动一个位置。如果插人新元素后， 数组列表的大小超过了容量， 数组列表就会被重新分配存储空间。</p>
+<p>可以使用“ foreach” 循环遍历数组列表。</p>
+<h5 id="类型化与原始数组列表的兼容性"><a href="#类型化与原始数组列表的兼容性" class="headerlink" title="类型化与原始数组列表的兼容性"></a>类型化与原始数组列表的兼容性</h5><p>可以将一个类型化的数组列表传递给原始数组列表， 而并不需要进行任何类型换。尽管编译器没有给出任何错误信息或警告， 但是这样调用并不太安全，在原始数组列表中， 添加到数组列表中的元素可能不是类型化的数组列表类型。</p>
+<p>将一个原始ArrayList 赋给一个类型化ArrayList 会得到一个警告。为了能够看到警告性错误的文字信息，要将编译选项置为-Xlint:unchecked。使用类型转换并不能避免出现警告。一旦能确保不会造成严重的后果， 可以用@SuppressWarnings(“unchecked”) 标注来标记这个变量能够接受类型转换。</p>
+<h3 id="对象包装器与自动装箱"><a href="#对象包装器与自动装箱" class="headerlink" title="对象包装器与自动装箱"></a>对象包装器与自动装箱</h3><p>所有的基本类型都有一个与之对应的类。这些类称为包装器（ wrapper ) 。</p>
+<p>对象包装器类是不可变的， 即一旦构造了包装器， 就不允许更改包装在其中的值。同时， 对象包装器类还是final , 因此不能定义它们的子类。</p>
+<p>由于每个值分别包装在对象中， 所以<code>ArrayList&lt;lnteger&gt; </code>的效率远远低于int[ ] 数组。因此， 应该用它构造小型集合， 其原因是此时程序员操作的方便性要比执行效率更加重要。</p>
+<p>将一个int 值赋给一个Integer 对象时， 将会自动地装箱（autoboxing)。将一个Integer 对象赋给一个int 值时， 将会自动地拆箱。在算术表达式中也能够自动地装箱和拆箱。</p>
+<p>== 运算符也可以应用于对象包装器对象，只不过检测的是对象是否指向同一个存储区域， 因此，一个值的两个包装器对象比较通常不会成立。但自动装箱规范要求boolean、byte、char &lt;= 127， 介于-128 ~ 127 之间的short 和int 被包装到固定的对象中，所以会使一定范围的一个值的两个包装器对象相等。解决这个问题的办法是在两个包装器对象比较时调用equals 方法。</p>
+<p>由于包装器类引用可以为null , 所以自动装箱有可能会抛出一个NullPointerException 异常。</p>
+<p>如果在一个条件表达式中混合使用Integer 和Double 类型， Integer 值就会拆箱，提升为double, 再装箱为Double。</p>
+<p>装箱和拆箱是编译器认可的， 而不是虚拟机。编译器在生成类的字节码时， 插人必要的方法调用。虚拟机只是执行这些字节码。</p>
+<p>使用数值对象包装器还有另外一个好处。Java 设计者发现，可以将某些基本方法放置在包装器中。</p>
+<p>如果想编写一个修改数值参数值的方法， 就需要使用在org.omg.CORBA 包中定义的持有者（ holder ) 类型。每个持有者类型都包含一个公有域值， 通过它可以访问存储在其中的值。</p>
+<h3 id="参数数量可变的方法"><a href="#参数数量可变的方法" class="headerlink" title="参数数量可变的方法"></a>参数数量可变的方法</h3><p>省略号. . . 是Java 代码的一部分，它表明这个方法可以接收任意数量的对象。</p>
+<p>className… 参数类型与className[ ] 完全一样。</p>
+<p>允许将一个数组传递给可变参数方法的最后一个参数。因此， 可以将已经存在且最后一个参数是数组的方法重新定义为可变参数的方法，而不会破坏任何已经存在的代码。</p>
+<h3 id="枚举类"><a href="#枚举类" class="headerlink" title="枚举类"></a>枚举类</h3><p>enum 声明定义的类型是一个类， 它刚好有n 个实例， 在此尽量不要构造新对象。</p>
+<p>在比较两个枚举类型的值时, 直接使用“ ==” 就可以了。</p>
+<p>如果需要的话， 可以在枚举类型中添加一些构造器、方法和域。</p>
+<p>所有的枚举类型都是Enum 类的子类。toString方法能够返回枚举常量名。方法valueOf将变量设置成枚举常量。每个枚举类型都有一个静态的values 方法， 它将返回一个包含全部枚举值的数组。ordinal 方法返 回 enum 声明中枚举常量的位置， 位置从0 开始计数。</p>
+<p>如同Class 类一样， 鉴于简化的考虑， Enum 类省略了一个类型参数。</p>
+<h3 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h3><p>反射库（ reflection library ) 提供了一个非常丰富且精心设计的工具集， 以便编写能够动态操纵 Java 代码的程序。</p>
+<p>能够分析类能力的程序称为反射（ reflective )。</p>
+<h5 id="Class-类"><a href="#Class-类" class="headerlink" title="Class 类"></a>Class 类</h5><p>在程序运行期间，Java 运行时系统始终为所有的对象维护一个被称为运行时的类型标识。这个信息跟踪着每个对象所属的类。虚拟机利用运行时类型信息选择相应的方法执行。</p>
+<p>可以通过专门的Java 类访问这些信息。保存这些信息的类被称为Class。Object 类中的getClass( ) 方法将会返回一个Class 类型的实例。</p>
+<p>最常用的Class 方法是getName。这个方法将返回类的名字。如果类在一个包里，包的名字也作为类名的一部分。还可以调用静态方法forName 获得类名对应的Class 对象。</p>
+<p>在启动时， 包含 main 方法的类被加载。它会加载所有需要的类。这些被加栽的类又要加载它们需要的类， 以此类推。对于一个大型的应用程序来说， 这将会消耗很多时间， 用户会因此感到不耐烦。可以使用下面这个技巧给用户一种启动速度比较快的幻觉。不过，要确保包含 main 方法的类没有显式地引用其他的类。首先， 显示一个启动画面；然后， 通过调用 Class.forName 手工地加载其他的类。</p>
+<p>如果 T 是任意的Java 类型（或void 关键字)，T.class 将代表匹配的类对象。</p>
+<p>一个Class 对象实际上表示的是一个类型， 而这个类型未必一定是一种类。例如，int 不是类， 但 int.class 是一个Class 类型的对象。</p>
+<p>Class 类实际上是一个泛型类。在大多数实际问题中， 可以忽略类型参数， 而使用原始的 Class 类。</p>
+<p>鉴于历史原getName 方法在应用于数组类型的时候会返回一个很奇怪的名字：<br>Double[ ].class.getName( ) 返回“ [Ljava.lang.Double;”。<br>int[ ].class.getName( ) 返回“ [I ”。</p>
+<p>虚拟机为每个类型管理一个Class 对象。因此， 可以利用 == 运算符实现两个类对象比较的操作。</p>
+<p>方法 newlnstance( ) 可以用来动态地创建一个类的实例。newlnstance 方法调用默认的构造器（没有参数的构造器）初始化新创建的对象。如果这个类没有默认的构造器， 就会抛出一个异常。如果需要以这种方式向按名称创建的类的构造器提供参数， 就必须使用Constructor 类中的newlnstance 方法。</p>
+<h5 id="捕获异常"><a href="#捕获异常" class="headerlink" title="捕获异常"></a>捕获异常</h5><p>当程序运行过程中发生错误时， 就会“抛出异常”。抛出异常比终止程序要灵活得多，这是因为可以提供一个“捕获” 异常的处理器（handler ) 对异常情况进行处理。</p>
+<p>如果没有提供处理器， 程序就会终止，并在控制台上打印出一条信息， 其中给出了异常的类型。</p>
+<p>异常有两种类型： 未检查异常和已检查异常。对于已检查异常， 编译器将会检查是否提供了处理器。编译器不会査看是否为未检查异常提供了处理器。</p>
+<p>将可能抛出已检査异常的一个或多个方法调用代码放在try 块中，然后在catch 子句中提供处理器代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">try &#123;</span><br><span class="line">	statements that might throw exceptions</span><br><span class="line">&#125; catch (Exception e) &#123;</span><br><span class="line">	handler action</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="利用反射分析类的能力"><a href="#利用反射分析类的能力" class="headerlink" title="利用反射分析类的能力"></a>利用反射分析类的能力</h5><p>在java.lang.reflect 包中有三个类Field、Method 和Constructor 分别用于描述类的域、方法和构造器。这三个类都有一个叫做getName 的方法， 用来返回项目的名称。Field 类有一个getType 方法， 用来返回描述域所属类型的Class 对象。Method 和Constructor 类有能够报告参数类型的方法， Method 类还有一个可以报告返回类型的方法。这三个类还有一个叫做 getModifiers 的方法， 它将返回一个整型数值， 用不同的位开关描述public 和 static 这样的修饰符使用状况。另外， 还可以利用 java.lang.reflect 包中的 Modifier类的静态方法分析 getModifiers 返回的整型数值。</p>
+<p>Class 类中的 getFields、getMethods 和getConstructors 方法将分别返回类提供的public 域、方法和构造器数组， 其中包括超类的公有成员。Class 类的getDeclareFields、getDeclareMethods 和getDeclaredConstructors 方法将分别返回类中声明的全部域、方法和构造器， 其中包括私有和受保护成员，但不包括超类的成员。</p>
+<h5 id="在运行时使用反射分析对象"><a href="#在运行时使用反射分析对象" class="headerlink" title="在运行时使用反射分析对象"></a>在运行时使用反射分析对象</h5><p>利用反射机制可以查看在编译时还不清楚的对象域。</p>
+<p>查看对象域的关键方法是Field 类中的get 方法。如果f 是一个Field 类型的对象，obj 是某个包含f 域的类的对象，f.get(obj) 将返回一个对象，其值为obj 的f 域的当前值。但反射机制的默认行为受限于Java 的访问控制。如果一个Java 程序没有受到安全管理器的控制， 就可以覆盖访问控制。为了达到这个目的， 需要调用Field、Method 或Constructor 对象的setAccessible 方法。如果要查看基本类型的域，就调用Field 类中的getDouble 等方法，也可以调用get方法， 此时，将会自动地将这个域值打包到相应的对象包装器中。调用f.set(obj，value) 可以将obj 对象的f 域设置成新值。</p>
+<p>可以使用通用的toString 方法实现自己类中的toString 方法，这是一种公认的提供toString 方法的手段。</p>
+<h5 id="使用反射编写泛型数组代码"><a href="#使用反射编写泛型数组代码" class="headerlink" title="使用反射编写泛型数组代码"></a>使用反射编写泛型数组代码</h5><p>java.lang.reflect 包中的Array 类允许动态地创建数组。</p>
+<p>Array 类中的静态方法newlnstance,它能够构造新数组。在调用它时必须提供两个参数，一个是数组的元素类型，一个是数组的长度：<br>Object newArray = Array.newInstance(componentType, newLength) ;<br>可以通过调用Array.getLength(a) 获得数组的长度， 也可以通过Array 类的静态getLength方法的返回值得到任意数组的长度。使用Class 类（能定义为数组的类对象）的getComponentType 方法确定数组对应的类型。</p>
+<h5 id="调用任意方法"><a href="#调用任意方法" class="headerlink" title="调用任意方法"></a>调用任意方法</h5><p>反射机制允许你调用任意方法。</p>
+<p>在Method 类中有一个invoke 方法， 它允许调用包装在当前Method 对象中的方法。invoke 方法的签名是：<br>Object invoke(Object obj, Object… args)<br>第一个参数是隐式参数， 其余的对象提供了显式参数（在Java SE 5.0 以前的版本中， 必须传递一个对象数组， 如果没有显式参数就传递一个null )。对于静态方法，第一个参数可以被忽略， 即可以将它设置为null。如果返回类型是基本类型， invoke 方法会返回其包装器类型。</p>
+<p>可以通过调用getDeclareMethods 方法， 然后对返回的Method 对象数组进行查找， 直到发现想要的方法为止。也可以通过调用Class 类中的getMethod 方法得到想要的方法。getMethod 的签名是：<br>Method getMethod(String name, Class… parameterTypes)</p>
+<h3 id="继承的设计技巧"><a href="#继承的设计技巧" class="headerlink" title="继承的设计技巧"></a>继承的设计技巧</h3><ol>
+<li>将公共操作和域放在超类</li>
+<li>不要使用受保护的域</li>
+<li>使用继承实现“ is-a” 关系</li>
+<li>除非所有继承的方法都有意义， 否则不要使用继承</li>
+<li>在覆盖方法时， 不要改变预期的行为</li>
+<li>使用多态， 而非类型信息</li>
+<li>不要过多地使用反射</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>vane
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://vanehsiung.netlify.app/2021/04/26/05%E7%BB%A7%E6%89%BF/" title="05继承">https://vanehsiung.netlify.app/2021/04/26/05继承/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9lbg=="><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Programming/" rel="tag"># Programming</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/04/26/04%E5%AF%B9%E8%B1%A1%E4%B8%8E%E7%B1%BB/" rel="prev" title="04对象与类">
+                  <i class="fa fa-chevron-left"></i> 04对象与类
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/04/26/06%E6%8E%A5%E5%8F%A3%E3%80%81lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E5%86%85%E9%83%A8%E7%B1%BB/" rel="next" title="06接口、lambda表达式与内部类">
+                  06接口、lambda表达式与内部类 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Vane Hsiung</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZw==">NexT.Gemini</span>
+  </div>
+
+<script src="https://cdn.jsdelivr.net/gh/suyin-long/activate-power-mode@1.0/dist/activate-power-mode.js"></script>
+<script>
+POWERMODE.colorful = true; // make power mode colorful
+POWERMODE.shake = false; // turn off shake
+document.body.addEventListener('input', POWERMODE);
+</script>
+
+
+
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/@next-theme/pjax@0.4.0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '.page-configurations',
+    '.main-inner',
+    '.post-toc-wrap',
+    '.languages',
+    '.pjax'
+  ],
+  analytics: false,
+  cacheBust: false,
+  scrollRestoration: false,
+  scrollTo: !CONFIG.bookmark.enable
+});
+
+document.addEventListener('pjax:success', () => {
+  pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  const hasTOC = document.querySelector('.post-toc');
+  document.querySelector('.sidebar-inner').classList.toggle('sidebar-nav-active', hasTOC);
+  document.querySelector(hasTOC ? '.sidebar-nav-toc' : '.sidebar-nav-overview').click();
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+<script data-pjax>
+if (document.querySelectorAll('.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8.8.4/dist/mermaid.min.js', () => {
+    mermaid.init({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    }, '.mermaid');
+  }, window.mermaid);
+}
+</script>
+
+  <script>
+    NProgress.configure({
+      showSpinner: false
+    });
+    NProgress.start();
+    document.addEventListener('readystatechange', () => {
+      if (document.readyState === 'interactive') {
+        NProgress.inc(0.8);
+      }
+      if (document.readyState === 'complete') {
+        NProgress.done();
+      }
+    });
+    document.addEventListener('pjax:send', () => {
+      NProgress.start();
+    });
+    document.addEventListener('pjax:success', () => {
+      NProgress.done();
+    });
+  </script>
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    <div class="pjax">
+
+
+    </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>

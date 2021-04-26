@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="uXmcnam1s6y-h_YGHukGYhDQ8zMBAOHTHrJ6RfsDN6I">
+  <meta name="msvalidate.01" content="687D92122214353CF2ACE3AEA2977A9C">
+  <meta name="baidu-site-verification" content="code-lURpXjbL6l">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Architects+Daughter:300,300italic,400,400italic,700,700italic%7CShare+Tech+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css">
+  <script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"vanehsiung.netlify.app","root":"/","images":"/images","scheme":"Gemini","version":"8.2.0","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+<meta name="description" content="事件处理基础在 AWT 所知的事件范围内， 完全可以控制事件从事件源( event source) 到事件监听器（event listener) 的传递过程， 并将任何对象指派给事件监听器。不过事实上，应该选择一个能够便于响应事件的对象。这种称为事件委托模型（event delegation model) 。 事件源有一些向其注册事件监听器的方法。当某个事件源产生事件时， 事件源会向为事件注册的所">
+<meta property="og:type" content="article">
+<meta property="og:title" content="11事件处理">
+<meta property="og:url" content="https://vanehsiung.netlify.app/2021/04/26/11%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86/index.html">
+<meta property="og:site_name" content="vBlog">
+<meta property="og:description" content="事件处理基础在 AWT 所知的事件范围内， 完全可以控制事件从事件源( event source) 到事件监听器（event listener) 的传递过程， 并将任何对象指派给事件监听器。不过事实上，应该选择一个能够便于响应事件的对象。这种称为事件委托模型（event delegation model) 。 事件源有一些向其注册事件监听器的方法。当某个事件源产生事件时， 事件源会向为事件注册的所">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-04-26T02:19:51.000Z">
+<meta property="article:modified_time" content="2021-04-26T04:02:10.769Z">
+<meta property="article:author" content="vane">
+<meta property="article:tag" content="Programming">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://vanehsiung.netlify.app/2021/04/26/11%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86/">
+
+
+<script data-pjax class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+<title>11事件处理 | vBlog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=sG-KKYP310LB0"></script>
+    <script data-pjax>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'sG-KKYP310LB0');
+      }
+    </script>
+
+  <script data-pjax>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?f3032f7a989f15a8faf91348571efe03";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="vBlog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">vBlog</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Vane Hsiung's Blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fas fa-link fa-fw"></i>Links</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+
+ 
+<script>
+  var OriginTitile = document.title;
+  var titleTime;
+  document.addEventListener("visibilitychange", function() {
+    if (document.hidden) {
+      document.title = "(つェ⊂)我藏好了哦~";
+      clearTimeout(titleTime);
+    } else {
+      document.title = "(*´∇｀*) 被你发现啦~";
+      titleTime = setTimeout(function() {
+        document.title = OriginTitile;
+      }, 2000);
+    }
+  });
+</script>
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86%E5%9F%BA%E7%A1%80"><span class="nav-text">事件处理基础</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AE%80%E6%B4%81%E5%9C%B0%E6%8C%87%E5%AE%9A%E7%9B%91%E5%90%AC%E5%99%A8"><span class="nav-text">简洁地指定监听器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%94%B9%E5%8F%98%E8%A7%82%E6%84%9F"><span class="nav-text">改变观感</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%80%82%E9%85%8D%E5%99%A8%E7%B1%BB"><span class="nav-text">适配器类</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A8%E4%BD%9C"><span class="nav-text">动作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%BC%A0%E6%A0%87%E4%BA%8B%E4%BB%B6"><span class="nav-text">鼠标事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AWT-%E4%BA%8B%E4%BB%B6%E7%BB%A7%E6%89%BF%E5%B1%82%E6%AC%A1"><span class="nav-text">AWT 事件继承层次</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AF%AD%E4%B9%89%E4%BA%8B%E4%BB%B6%E5%92%8C%E5%BA%95%E5%B1%82%E4%BA%8B%E4%BB%B6"><span class="nav-text">语义事件和底层事件</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="vane"
+      src="/uploads/avatar.png">
+  <p class="site-author-name" itemprop="name">vane</p>
+  <div class="site-description" itemprop="description">"Life is 10% what happens to you and 90% how you react to it."</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL1ZhbmVIc2l1bmc=" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;VaneHsiung"><i class="fab fa-github fa-fw"></i>GitHub</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOm1pY3JvZnV0Y3NAb3V0bG9vay5jb20=" title="E-Mail → mailto:microfutcs@outlook.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</span>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9lbg=="><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://vanehsiung.netlify.app/2021/04/26/11%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="vane">
+      <meta itemprop="description" content=""Life is 10% what happens to you and 90% how you react to it."">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="vBlog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          11事件处理
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-04-26 10:19:51 / Modified: 12:02:10" itemprop="dateCreated datePublished" datetime="2021-04-26T10:19:51+08:00">2021-04-26</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>7.3k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>7 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h3 id="事件处理基础"><a href="#事件处理基础" class="headerlink" title="事件处理基础"></a>事件处理基础</h3><p>在 AWT 所知的事件范围内， 完全可以控制事件从事件源( event source) 到事件监听器（event listener) 的传递过程， 并将任何对象指派给事件监听器。不过事实上，应该选择一个能够便于响应事件的对象。这种称为事件委托模型（event delegation model) 。</p>
+<p>事件源有一些向其注册事件监听器的方法。当某个事件源产生事件时， 事件源会向为事件注册的所有事件监听器对象发送一个通告。</p>
+<p> Java 将事件的相关信息封装在一个事件对象（event object)中。在 Java 中，所有的事件对象都最终派生于java.util.EventObject 类。</p>
+<p>AWT 事件处理机制的概要：</p>
+<ul>
+<li>监听器对象是一个实现了特定监听器接口（listener interface) 的类的实例。</li>
+<li>事件源是一个能够注册监听器对象并发送事件对象的对象。</li>
+<li>当事件发生时，事件源将事件对象传递给所有注册的监听器。</li>
+<li>监听器对象将利用事件对象中的信息决定如何对事件做出响应。</li>
+</ul>
+<p>为了实现 ActionListener 接口，监听器类必须有一个被称为 actionPerformed 的方法，该方法接收一个 ActionEvent 对象参数。只要用户触发事件，事件源对象就会创建一个 ActionEvent 对象， 然后调用 listener.actionPerformed (event) 传递事件对象。</p>
+<h5 id="简洁地指定监听器"><a href="#简洁地指定监听器" class="headerlink" title="简洁地指定监听器"></a>简洁地指定监听器</h5><p>lambda 表达式。匿名类。内部类。</p>
+<p>创建实现了 ActionListener接口的事件源容器 ， 然后这个容器再设置自身作为监听器。</p>
+<p>EventHandler 类可以用下面的调用创建这样一个监听器：<br>EventHandler.create (ActionListener.class, frame , “loadData”);<br>它使用反射来调用方法。出于这个原因， EventHandler.create 调用的第二个参数必须属于一个公有类。否则，反射机制就无法确定和调用目标方法。</p>
+<h5 id="改变观感"><a href="#改变观感" class="headerlink" title="改变观感"></a>改变观感</h5><p>在默认情况下，Swing 程序使用 Metal 观感，可以采用两种方式改变观感。</p>
+<p>第一种方式是在 Java 安装的子目录 jre/lib 下有一个文件 swing.properties。在这个文件中，将属性swing.defaultlaf 设置为所希望的观感类名。Metal 和 Nimbus 观感位于 javax.swing 包中。其他的观感包位于 com.sun.java 包中， 并且不是在每个 Java 实现中都提供。采用这种方式开启观感时必须重新启动程序。Swing 程序只在启动时读取一次 swing.properties 文件。</p>
+<p>第二种方式是动态地改变观感。这需要调用静态的 UIManager.setLookAndFeel 方法，并提供所想要的观感类名， 然后再调用静态方法 SwingUtilities.updateComponentTreeUI 来刷新全部的组件集。这里需要向这个方法提供一个组件，并由此找到其他的所有组件。<br>UIManager.setLookAndFeel (className) ;<br>SwingUtilities.updateComponentTreeUI(frame);</p>
+<p>使用匿名内部类来定义这个监听器。 要特别注意向 SwingUtilities.updateComponentTreeUI 传递 PlafFrame.this。而在一个 lambda 表达式中， this 就指示外围的对象。</p>
+<h5 id="适配器类"><a href="#适配器类" class="headerlink" title="适配器类"></a>适配器类</h5><p>窗口监听器必须是实现 WindowListener 接口的类的一个对象。在 WindowListener 接口中包含 7 个方法。当发生窗口事件时，框架将调用这些方法响应 7 个不同的事件。在 Windows 下，通常将 iconified (图标化）称为minimized (最小化)。下面是完整的 WindowListener 接口：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public interface WindowListener &#123;</span><br><span class="line">	void windowOpened(WindowEvent e);</span><br><span class="line">	void windowClosing(WindowEvent e):</span><br><span class="line">	void windowClosed(WindowEvent e);</span><br><span class="line">	void windowIconified(WindowEvent e);</span><br><span class="line">	void windowDeiconified(WindowEvent e);</span><br><span class="line">	void windowActivated(WindowEvent e);</span><br><span class="line">	void windowDeactivated(WindowEvent e);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>为了能够查看窗口是否被最大化， 需要实现 WindowStateListener 并覆盖 windowStateChanged 方法。</p>
+<p>在 Java 中， 实现一个接口的任何类都必须实现其中的所有方法，在这里， 意味着需要实现 7 个方法。当然，可以这样定义实现这个接口的类：实现一个方法，其他 6个方法不做任何事情。书写 6 个没有任何操作的方法代码显然是一种乏味的工作。鉴于简化的目的，每个含有多个方法的 AWT 监听器接口都配有一个适配器（adapter) 类，这个类实现了接口中的所有方法， 但每个方法没有做任何事情。这意味着适配器类自动地满足了 Java 实现相关监听器接口的技术需求。可以通过扩展适配器类来指定对某些事件的响应动作，而不必实现接口中的每个方法。</p>
+<p>最简练的代码是将适配器类定义为框架的匿名内部类：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">frame.addWindowListener(newWindowAdapter()&#123;</span><br><span class="line">	public void windowClosing(WindowEvent e) &#123;</span><br><span class="line">		if (user agrees)</span><br><span class="line">			System.exit(0);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)；</span><br></pre></td></tr></table></figure>
+<h3 id="动作"><a href="#动作" class="headerlink" title="动作"></a>动作</h3><p>Swing 包提供了一种非常实用的机制来封装命令，并将它们连接到多个事件源，这就是Action 接口。</p>
+<p>Action 接口包含下列方法：<br>void actionPerformed(ActionEvent event)<br>Action 接口扩展于 ActionListener 接口</p>
+<p>void setEnabled(boolean b)<br>boolean isEnabled()<br>启用或禁用这个动作，并检査这个动作当前是否启用。当一个连接到菜单或工具栏上的动作被禁用时， 这个选项就会变成灰色。</p>
+<p>void putValue(String key, Object value)<br>Object getValue(String key)<br>putValue 和 getvalue 方法允许存储和检索动作对象中的任意名 / 值。有两个重要的预定义字符串：Action.NAME 和 Action.SMALL_ICON，用于将动作的名字和图标存储到一个动作对象中。如果动作对象添加到菜单或工具栏上，它的名称和图标就会被自动地提取出来， 并显示在菜单项或工具栏项中。</p>
+<p>预定义动作表名称:</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>NAME</td>
+<td>动作名称，显示在按钮和菜单上</td>
+</tr>
+<tr>
+<td>SMALL_ICON</td>
+<td>存储小图标的地方；显示在按钮、菜单项或工具栏中</td>
+</tr>
+<tr>
+<td>SHORT-DESCRIPTION</td>
+<td>图标的简要说明；显示在工具提示中</td>
+</tr>
+<tr>
+<td>LONG_DESCRIPTION</td>
+<td>图标的详细说明；使用在在线帮助中。没有 Swing 组件使用这个值</td>
+</tr>
+<tr>
+<td>MNEONIC_KEY</td>
+<td>快捷键缩写；显示在菜单项中</td>
+</tr>
+<tr>
+<td>ACCELERATOR_KEY</td>
+<td>存储加速击键的地方；Swing 组件不使用这个值</td>
+</tr>
+<tr>
+<td>ACTION_COMMAND_KEY</td>
+<td>历史遗留；仅在旧版本的 registerKeyboardAction 方法中使用</td>
+</tr>
+<tr>
+<td>DEFAULT</td>
+<td>可能有用的综合属性；Swing 组件不使用这个值</td>
+</tr>
+</tbody></table>
+<p>void addPropertyChangeListener(PropertyChangeListener listener)<br>void removePropertyChangeListener(PropertyChangeListener listener)<br>让其他对象在动作对象的属性发生变化时得到通告，尤其是菜单或工具栏触发的动作。</p>
+<p>有一个类实现了这个接口除 actionPerformed 方法之外的所有方法，它就是 AbstractAction。这个类存储了所有名 / 值对， 并管理着属性变更监听器。</p>
+<p>为了将动作与击键关联起来， 首先需要生成 Keystroke 类对象。这是一个很有用的类， 它封装了对键的说明。要想生成一个 Keystroke 对象，要调用 Keystroke 类中的静态 getKeyStroke 方法：<br>Keystroke ctrlBKey = Keystroke.getKeyStroke(“Ctrl B”);<br>keyboard focus是指当用户敲击键盘时， 这个动作会被发送给拥有焦点的组件。有时并不希望将击键发送给拥有焦点的组件。Swing 设计者给出了一种很便捷的解决方案。每个 JComponent 有三个输入映射（imputmap，) 每一个映射的 Keystroke 对象都与动作关联。三个输人映射对应着三个不同的条件。</p>
+<table>
+<thead>
+<tr>
+<th>标志</th>
+<th>激活动作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>WHEN_FOCUSED</td>
+<td>当这个组件拥有键盘焦点时</td>
+</tr>
+<tr>
+<td>WHEN_ANCESTOR_OF_FOCUSED_COMPONENT</td>
+<td>当这个组件包含了拥有键盘焦点的组件时</td>
+</tr>
+<tr>
+<td>WHEN_IN_FOCUSED_WINDOW</td>
+<td>当这个组件被包含在一个拥有键盘焦点组件的窗口中时</td>
+</tr>
+</tbody></table>
+<p>按键处理将按照下列顺序检査这些映射：</p>
+<ol>
+<li>检查具有输入焦点组件的 WHEN_FOCUSED 映射。如果这个按键存在， 将执行对应的动作。如果动作已启用，则停止处理。</li>
+<li>从具有输人焦点的组件开始， 检査其父组件的 WHEN_ANCESTOR_OF_FOCUSED_COMPONENT 映射。一旦找到按键对应的映射， 就执行对应的动作。如果动作已启用， 将停止处理。</li>
+<li>査看具有输人焦点的窗口中的所有可视的和启用的组件， 这个按键被注册到 WHEN_IN_FOCUSED_WINDOW 映射中。给这些组件（按照按键注册的顺序）一个执行对应动作的机会。一旦第一个启用的动作被执行， 就停止处理。</li>
+</ol>
+<p>可以使用 getlnputMap 方法从组件中得到输人映射:<br>InputMap imap = panel.getInputMap(JComponent.WHEN_FOCUSED);</p>
+<p>InputMap 不能直接地将 Keystroke 对象映射到 Action 对象。而是先映射到任意对象上，然后由 ActionMap 类实现将对象映射到动作上的第 2 个映射。这样很容易实现来自不同输入映射的按键共享一个动作的目的。<br>imap.put(KeyStroke.getKeyStroke(“ctrl Y”), “panel.yellow”)；<br>ActionMap amap = panel.getActionMap();<br>amap.put(“panel.yellow”, yellowAction);</p>
+<p>使用字符串 none 表示空动作。这样可以轻松地取消一个按键动作：<br>imap.put(KeyStroke.getKeyStroke(“ctrl C”), “none”);</p>
+<h3 id="鼠标事件"><a href="#鼠标事件" class="headerlink" title="鼠标事件"></a>鼠标事件</h3><p>当用户点击鼠标按钮时， 将会调用三个监听器方法： 鼠标第一次被按下时调用 mousePressed ; 鼠标被释放时调用mouseReleased； 最后调用 mouseClicked。用 MouseEvent 类对象作为参数， 调用 getX 和 getY 方法可以获得鼠标被按下时鼠标指针所在的 x 和 y 坐标。 要想区分单击、 双击和三击，需要使用 getClickCount方法。</p>
+<p>可以采用位掩码来测试已经设置了哪个修饰符。在最初的 API 中，有两个按钮的掩码与两个键盘修饰符的掩码一样， 即：<br>BUH0N2_MASK == ALT_MASK<br>BUTT0N3_MASK = META_MASK<br>这样做是为了能够让用户使用仅有一个按钮的鼠标通过按下修饰符键来模拟按下其他鼠标键的操作。然而， 在 Java SE 1.4中， 建议使用一种不同的方式。有下列掩码：<br>BUTT0N1_D0WN_MASK<br>BUTT0N2_D0WN_MASK<br>BUTT0N3_D0WN_MASK<br>SHIFT_DOWN_MASK<br>CTRL_DOWN_MASK<br>ALT_DOWN_MASK<br>ALT_CRAPH_DOWN_MASK<br>META_DOWN_MASK<br>getModifiersEx方法能够准确地报告鼠标事件的鼠标按钮和键盘修饰符。</p>
+<p>有两个独立的接口 MouseListener 和 MouseMotionListener。这样做有利于提高效率。当用户移动鼠标时，只关心鼠标点击 (clicks) 的监听器就不会被多余的鼠标移动 (moves) 所困扰。</p>
+<p>捕获鼠标动作事件， 以便在光标位于一个小方块之上时变成另外一种形状（十字)。实现这项操作需要使用 Cursor 类中的 getPredefinedCursor 方法。还可以利用 Toolkit 类中的 createCustomCursor 方法自定义光标类型。</p>
+<p>mouseEntered 和 mouseExited。这两个方法是在鼠标进入或移出组件时被调用。</p>
+<h3 id="AWT-事件继承层次"><a href="#AWT-事件继承层次" class="headerlink" title="AWT 事件继承层次"></a>AWT 事件继承层次</h3><p>所有的事件都是由 java.util 包中的 EventObject 类扩展而来的（公共超类不是 Event, 它是旧事件模型中的事件类名。尽管现在不赞成使用旧的事件模型，但这些类仍然保留在 Java 库中。)EventObject 类有一个子类 AWTEvent，它是所有 AWT 事件类的父类。有些 Swing 组件将生成其他事件类型的事件对象；它们都直接扩展于 EventObject, 而不是 AWTEvent。</p>
+<p>AWT事件类的继承关系图：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">EventObject &lt;- AWTEvent &lt;- ActionEvent, AdiustmentEvent, ComponentEvent, ItemEvent</span><br><span class="line">ComponentEvent &lt;- FocusEvent, InputEvent, PaintEvent, WindowEvent</span><br><span class="line">InputEvent &lt;- KeyEvent, MouseEvent</span><br><span class="line">MouseEvent &lt;- MouseWheelEvent</span><br></pre></td></tr></table></figure>
+<p>事件对象封装了事件源与监听器彼此通信的事件信息。在必要的时候， 可以对传递给监听器对象的事件对象进行分析。</p>
+<p>对于有些 AWT 事件类来说，Java 程序员并不会实际地使用它们。</p>
+<h5 id="语义事件和底层事件"><a href="#语义事件和底层事件" class="headerlink" title="语义事件和底层事件"></a>语义事件和底层事件</h5><p>AWT 将事件分为底层（ low-level) 事件和语义（semantic ) 事件。语义事件是表示用户动作的事件。底层事件是形成那些事件的事件。调节滚动条是一种语义事件， 但拖动鼠标是底层事件。</p>
+<p>下面是 java.awt.event 包中最常用的语义事件类：</p>
+<ul>
+<li>ActionEvent (对应按钮点击、 菜单选择、 选择列表项或在文本框中 ENTER );</li>
+<li>AdjustmentEvent (用户调节滚动条；)</li>
+<li>ItemEvent (用户从复选框或列表框中选择一项）。</li>
+</ul>
+<p>常用的 5 个底层事件类是：</p>
+<ul>
+<li>KeyEvent (一个键被按下或释放；)</li>
+<li>MouseEvent ( 鼠标键被按下、 释放、 移动或拖动；)</li>
+<li>MouseWheelEvent ( 鼠标滚轮被转动；)</li>
+<li>FocusEvent (某个组件获得焦点或失去焦点；)</li>
+<li>WindowEvent ( 窗口状态被改变）。</li>
+</ul>
+<p>下列接口将监听这些事件：</p>
+<table>
+<thead>
+<tr>
+<th>接口</th>
+<th>方法</th>
+<th>参数/访问方法</th>
+<th>事件源</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ActionListener</td>
+<td>actionPerformed</td>
+<td>ActionEvent:getActionCommand、getModifiers</td>
+<td>AbstractButton、JComboBox、JTextField、Timer</td>
+</tr>
+<tr>
+<td>AdjustmentListener</td>
+<td>adjustmentValueChanged</td>
+<td>AdjustmentEvnet:getAdjustable、getAdjustmentType、getValue</td>
+<td>JScrollbar</td>
+</tr>
+<tr>
+<td>ItemListener</td>
+<td>itemStateChanged</td>
+<td>ItemEvent:getItem、getItemSelectable、getStateChange</td>
+<td>AbstractButton、JcomboxBox</td>
+</tr>
+<tr>
+<td>FocusListener</td>
+<td>focusGained、FocusLost</td>
+<td>FocusEvent:isTemporary</td>
+<td>Component</td>
+</tr>
+<tr>
+<td>KeyListener</td>
+<td>keyPress、keyReleased、keyTyped</td>
+<td>KeyEvent:getKeyChar、getKeyCode、getKeyModifiersText、getKeyText、isActionKey</td>
+<td>Component</td>
+</tr>
+<tr>
+<td>MouseListener</td>
+<td>mousePress、mouseReleased、mouseEntered、mouseExited、mouseClicked</td>
+<td>MouseEvent:getClickCount、getX、getY、getPoint、translatePoint</td>
+<td>Component</td>
+</tr>
+<tr>
+<td>MouseMotionListener</td>
+<td>mouseDragged、mouseMoved</td>
+<td>MouseEvent</td>
+<td>Component</td>
+</tr>
+<tr>
+<td>MouseWheelListener</td>
+<td>mouseWheelMoved</td>
+<td>MouseWheelEvent:getWheelRotation、getScrollAmount</td>
+<td>Component</td>
+</tr>
+<tr>
+<td>WindowListener</td>
+<td>windowClosing、windowOpened、windowIconified、windowDeiconified、windowClosed、windowActivated、windowDeactivated</td>
+<td>WindowEvent:getWindow</td>
+<td>Window</td>
+</tr>
+<tr>
+<td>WindowFocusListener</td>
+<td>windowGainedFocus、windowLostFocus</td>
+<td>WindowEvent:getOppositeWindow</td>
+<td>Window</td>
+</tr>
+<tr>
+<td>WindowStateListener</td>
+<td>windowStateChanged</td>
+<td>WindowEvent:getOldState、getNewState</td>
+<td>Window</td>
+</tr>
+</tbody></table>
+<p>下面是常用的适配器类：<br>FocusAdapter<br>MouseMotionAdapter<br>KeyAdapter<br>WindowAdapter<br>MouseAdapter</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>vane
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://vanehsiung.netlify.app/2021/04/26/11%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86/" title="11事件处理">https://vanehsiung.netlify.app/2021/04/26/11事件处理/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9lbg=="><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Programming/" rel="tag"># Programming</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/04/26/10%E5%9B%BE%E5%BD%A2%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" rel="prev" title="10图形程序设计">
+                  <i class="fa fa-chevron-left"></i> 10图形程序设计
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/04/26/12Swing%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2%E7%BB%84%E4%BB%B6/" rel="next" title="12Swing用户界面组件">
+                  12Swing用户界面组件 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Vane Hsiung</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZw==">NexT.Gemini</span>
+  </div>
+
+<script src="https://cdn.jsdelivr.net/gh/suyin-long/activate-power-mode@1.0/dist/activate-power-mode.js"></script>
+<script>
+POWERMODE.colorful = true; // make power mode colorful
+POWERMODE.shake = false; // turn off shake
+document.body.addEventListener('input', POWERMODE);
+</script>
+
+
+
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/@next-theme/pjax@0.4.0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '.page-configurations',
+    '.main-inner',
+    '.post-toc-wrap',
+    '.languages',
+    '.pjax'
+  ],
+  analytics: false,
+  cacheBust: false,
+  scrollRestoration: false,
+  scrollTo: !CONFIG.bookmark.enable
+});
+
+document.addEventListener('pjax:success', () => {
+  pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  const hasTOC = document.querySelector('.post-toc');
+  document.querySelector('.sidebar-inner').classList.toggle('sidebar-nav-active', hasTOC);
+  document.querySelector(hasTOC ? '.sidebar-nav-toc' : '.sidebar-nav-overview').click();
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+<script data-pjax>
+if (document.querySelectorAll('.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8.8.4/dist/mermaid.min.js', () => {
+    mermaid.init({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    }, '.mermaid');
+  }, window.mermaid);
+}
+</script>
+
+  <script>
+    NProgress.configure({
+      showSpinner: false
+    });
+    NProgress.start();
+    document.addEventListener('readystatechange', () => {
+      if (document.readyState === 'interactive') {
+        NProgress.inc(0.8);
+      }
+      if (document.readyState === 'complete') {
+        NProgress.done();
+      }
+    });
+    document.addEventListener('pjax:send', () => {
+      NProgress.start();
+    });
+    document.addEventListener('pjax:success', () => {
+      NProgress.done();
+    });
+  </script>
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    <div class="pjax">
+
+
+    </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>

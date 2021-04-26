@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="uXmcnam1s6y-h_YGHukGYhDQ8zMBAOHTHrJ6RfsDN6I">
+  <meta name="msvalidate.01" content="687D92122214353CF2ACE3AEA2977A9C">
+  <meta name="baidu-site-verification" content="code-lURpXjbL6l">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Architects+Daughter:300,300italic,400,400italic,700,700italic%7CShare+Tech+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css">
+  <script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"vanehsiung.netlify.app","root":"/","images":"/images","scheme":"Gemini","version":"8.2.0","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+<meta name="description" content="面向对象程序设计概述Java 是完全面向对象的， 必须熟悉 OOP 才能够编写 Java 程序。 面向对象的程序是由对象组成的， 每个对象包含对用户公开的特定功能部分和隐藏的实现部分。OOP 中， 不必关心对象的具体实现，只要能够满足用户的需求即可。 传统的结构化程序设计通过设计一系列的过程（即算法）来求解问题。一旦确定了这些过程， 就要开始考虑存储数据的方式。而 OOP 却调换了这个次序， 将数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="04对象与类">
+<meta property="og:url" content="https://vanehsiung.netlify.app/2021/04/26/04%E5%AF%B9%E8%B1%A1%E4%B8%8E%E7%B1%BB/index.html">
+<meta property="og:site_name" content="vBlog">
+<meta property="og:description" content="面向对象程序设计概述Java 是完全面向对象的， 必须熟悉 OOP 才能够编写 Java 程序。 面向对象的程序是由对象组成的， 每个对象包含对用户公开的特定功能部分和隐藏的实现部分。OOP 中， 不必关心对象的具体实现，只要能够满足用户的需求即可。 传统的结构化程序设计通过设计一系列的过程（即算法）来求解问题。一旦确定了这些过程， 就要开始考虑存储数据的方式。而 OOP 却调换了这个次序， 将数">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-04-26T02:10:56.000Z">
+<meta property="article:modified_time" content="2021-04-26T04:02:10.765Z">
+<meta property="article:author" content="vane">
+<meta property="article:tag" content="Programming">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://vanehsiung.netlify.app/2021/04/26/04%E5%AF%B9%E8%B1%A1%E4%B8%8E%E7%B1%BB/">
+
+
+<script data-pjax class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+<title>04对象与类 | vBlog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=sG-KKYP310LB0"></script>
+    <script data-pjax>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'sG-KKYP310LB0');
+      }
+    </script>
+
+  <script data-pjax>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?f3032f7a989f15a8faf91348571efe03";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="vBlog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">vBlog</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Vane Hsiung's Blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fas fa-link fa-fw"></i>Links</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+
+ 
+<script>
+  var OriginTitile = document.title;
+  var titleTime;
+  document.addEventListener("visibilitychange", function() {
+    if (document.hidden) {
+      document.title = "(つェ⊂)我藏好了哦~";
+      clearTimeout(titleTime);
+    } else {
+      document.title = "(*´∇｀*) 被你发现啦~";
+      titleTime = setTimeout(function() {
+        document.title = OriginTitile;
+      }, 2000);
+    }
+  });
+</script>
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E6%A6%82%E8%BF%B0"><span class="nav-text">面向对象程序设计概述</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%B1%BB"><span class="nav-text">类</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1"><span class="nav-text">对象</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AF%86%E5%88%AB%E7%B1%BB"><span class="nav-text">识别类</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%B1%BB%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-text">类之间的关系</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E9%A2%84%E5%AE%9A%E4%B9%89%E7%B1%BB"><span class="nav-text">使用预定义类</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E4%B8%8E%E5%AF%B9%E8%B1%A1%E5%8F%98%E9%87%8F"><span class="nav-text">对象与对象变量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Java-%E7%B1%BB%E5%BA%93%E4%B8%AD%E7%9A%84-LocalDate-%E7%B1%BB"><span class="nav-text">Java 类库中的 LocalDate 类</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9B%B4%E6%94%B9%E5%99%A8%E6%96%B9%E6%B3%95%E4%B8%8E%E8%AE%BF%E9%97%AE%E5%99%A8%E6%96%B9%E6%B3%95"><span class="nav-text">更改器方法与访问器方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB"><span class="nav-text">用户自定义类</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Employee-%E7%B1%BB"><span class="nav-text">Employee 类</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A4%9A%E4%B8%AA%E6%BA%90%E6%96%87%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-text">多个源文件的使用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%89%96%E6%9E%90-Employee-%E7%B1%BB"><span class="nav-text">剖析 Employee 类</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BB%8E%E6%9E%84%E9%80%A0%E5%99%A8%E5%BC%80%E5%A7%8B"><span class="nav-text">从构造器开始</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%9A%90%E5%BC%8F%E5%8F%82%E6%95%B0%E4%B8%8E%E6%98%BE%E5%BC%8F%E5%8F%82%E6%95%B0"><span class="nav-text">隐式参数与显式参数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B0%81%E8%A3%85%E7%9A%84%E4%BC%98%E7%82%B9"><span class="nav-text">封装的优点</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E7%B1%BB%E7%9A%84%E8%AE%BF%E9%97%AE%E6%9D%83%E9%99%90"><span class="nav-text">基于类的访问权限</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%A7%81%E6%9C%89%E6%96%B9%E6%B3%95"><span class="nav-text">私有方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#final-%E5%AE%9E%E4%BE%8B%E5%9F%9F"><span class="nav-text">final 实例域</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E5%9F%9F%E4%B8%8E%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95"><span class="nav-text">静态域与静态方法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E5%9F%9F"><span class="nav-text">静态域</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E5%B8%B8%E9%87%8F"><span class="nav-text">静态常量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95"><span class="nav-text">静态方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95"><span class="nav-text">工厂方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#main-%E6%96%B9%E6%B3%95"><span class="nav-text">main 方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E5%8F%82%E6%95%B0"><span class="nav-text">方法参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E6%9E%84%E9%80%A0"><span class="nav-text">对象构造</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%87%8D%E8%BD%BD"><span class="nav-text">重载</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%BB%98%E8%AE%A4%E5%9F%9F%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-text">默认域初始化</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%97%A0%E5%8F%82%E6%95%B0%E7%9A%84%E6%9E%84%E9%80%A0%E5%99%A8"><span class="nav-text">无参数的构造器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%98%BE%E5%BC%8F%E5%9F%9F%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-text">显式域初始化</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E5%90%8D"><span class="nav-text">参数名</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%B0%83%E7%94%A8%E5%8F%A6%E4%B8%80%E4%B8%AA%E6%9E%84%E9%80%A0%E5%99%A8"><span class="nav-text">调用另一个构造器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E5%9D%97"><span class="nav-text">初始化块</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E6%9E%90%E6%9E%84%E4%B8%8E-finalize-%E6%96%B9%E6%B3%95"><span class="nav-text">对象析构与 finalize 方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8C%85"><span class="nav-text">包</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%B1%BB%E7%9A%84%E5%AF%BC%E5%85%A5"><span class="nav-text">类的导入</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E5%AF%BC%E5%85%A5"><span class="nav-text">静态导入</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B0%86%E7%B1%BB%E6%94%BE%E5%85%A5%E5%8C%85%E4%B8%AD"><span class="nav-text">将类放入包中</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8C%85%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="nav-text">包作用域</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B1%BB%E8%B7%AF%E5%BE%84"><span class="nav-text">类路径</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E7%B1%BB%E8%B7%AF%E5%BE%84"><span class="nav-text">设置类路径</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E6%A1%A3%E6%B3%A8%E9%87%8A"><span class="nav-text">文档注释</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B3%A8%E9%87%8A%E7%9A%84%E6%8F%92%E5%85%A5"><span class="nav-text">注释的插入</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%B1%BB%E6%B3%A8%E9%87%8A"><span class="nav-text">类注释</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E6%B3%A8%E9%87%8A"><span class="nav-text">方法注释</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9F%9F%E6%B3%A8%E9%87%8A"><span class="nav-text">域注释</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%80%9A%E7%94%A8%E6%B3%A8%E9%87%8A"><span class="nav-text">通用注释</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8C%85%E4%B8%8E%E6%A6%82%E8%BF%B0%E6%B3%A8%E9%87%8A"><span class="nav-text">包与概述注释</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B3%A8%E9%87%8A%E7%9A%84%E6%8A%BD%E5%8F%96"><span class="nav-text">注释的抽取</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B1%BB%E8%AE%BE%E8%AE%A1%E6%8A%80%E5%B7%A7"><span class="nav-text">类设计技巧</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="vane"
+      src="/uploads/avatar.png">
+  <p class="site-author-name" itemprop="name">vane</p>
+  <div class="site-description" itemprop="description">"Life is 10% what happens to you and 90% how you react to it."</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL1ZhbmVIc2l1bmc=" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;VaneHsiung"><i class="fab fa-github fa-fw"></i>GitHub</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOm1pY3JvZnV0Y3NAb3V0bG9vay5jb20=" title="E-Mail → mailto:microfutcs@outlook.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</span>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9lbg=="><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://vanehsiung.netlify.app/2021/04/26/04%E5%AF%B9%E8%B1%A1%E4%B8%8E%E7%B1%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="vane">
+      <meta itemprop="description" content=""Life is 10% what happens to you and 90% how you react to it."">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="vBlog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          04对象与类
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-04-26 10:10:56 / Modified: 12:02:10" itemprop="dateCreated datePublished" datetime="2021-04-26T10:10:56+08:00">2021-04-26</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>9.9k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>9 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h3 id="面向对象程序设计概述"><a href="#面向对象程序设计概述" class="headerlink" title="面向对象程序设计概述"></a>面向对象程序设计概述</h3><p>Java 是完全面向对象的， 必须熟悉 OOP 才能够编写 Java 程序。</p>
+<p>面向对象的程序是由对象组成的， 每个对象包含对用户公开的特定功能部分和隐藏的实现部分。OOP 中， 不必关心对象的具体实现，只要能够满足用户的需求即可。</p>
+<p>传统的结构化程序设计通过设计一系列的过程（即算法）来求解问题。一旦确定了这些过程， 就要开始考虑存储数据的方式。而 OOP 却调换了这个次序， 将数据放在第一位，然后再考虑操作数据的算法。</p>
+<a id="more"></a>
+
+<h5 id="类"><a href="#类" class="headerlink" title="类"></a>类</h5><p>类（ class) 是构造对象的模板或蓝图。由类构造（construct) 对象的过程称为创建类的实例 （instance )。</p>
+<p>封装（ encapsulation , 有时称为数据隐藏） 是与对象有关的一个重要概念。从形式上看，封装不过是将数据和行为组合在一个包中， 并对对象的使用者隐藏了数据的实现方式。对象中的数据称为实例域（ instance field ), 操纵数据的过程称为方法（ method ）。对于每个特定的类实例（对象）都有一组特定的实例域值。这些值的集合就是这个对象的当前状态（ state )。无论何时，只要向对象发送一个消息，它的状态就有可能发生改变。实现封装的关键在于绝对不能让类中的方法直接地访问其他类的实例域。程序仅通过对象的方法与对象数据进行交互。封装给对象赋予了“ 黑盒” 特征， 这是提高重用性和可靠性的关键。 这意味着一个类可以全面地改变存储数据的方式，只要仍旧使用同样的方法操作数据， 其他对象就不会知道或介意所发生的变化。</p>
+<p>继承（inheritance）是通过扩展一个类来建立另外一个类的过程，这会让用户自定义 Java 类变得轻而易举。在扩展一个已有的类时， 这个扩展后的新类具有所扩展的类的全部属性和方法。在新类中，只需提供适用于这个新类的新方法和数据域就可以了。</p>
+<h5 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h5><p>对象的三个主要特性：<br>对象的行为（behavior)—可以对对象施加哪些方法？<br>对象的状态（state )—当施加那些方法时，对象如何响应？<br>对象标识（identity )—如何辨别具有相同行为与状态的不同对象？</p>
+<p>作为一个类的实例， 每个对象的标识永远是不同的，状态常常也存在着差异。</p>
+<h5 id="识别类"><a href="#识别类" class="headerlink" title="识别类"></a>识别类</h5><p>对于学习 OOP 的初学者来说：首先从设计类开始，然后再往每个类中添加方法。</p>
+<p>识别类的简单规则是在分析问题的过程中寻找名词，而方法对应着动词。</p>
+<h5 id="类之间的关系"><a href="#类之间的关系" class="headerlink" title="类之间的关系"></a>类之间的关系</h5><p>在类之间， 最常见的关系有：</p>
+<ol>
+<li><p>依赖（“ uses-a”）<br>如果一个类的方法操纵另一个类的对象，我们就说一个类依赖于另一个类。应该尽可能地将相互依赖的类减至最少。用软件工程的术语来说，就是让类之间的耦合度最小。</p>
+</li>
+<li><p>聚合（“ has-a”）<br>聚合关系意味着类 A 的对象包含类 B 的对象。</p>
+</li>
+<li><p>继承（“ is-a”）<br>继承是一种用于表示特殊与一般关系的。一般而言， 如果类 A 扩展类 B, 类 A 不但包含从类 B 继承的方法，还会拥有一些额外的功能。</p>
+</li>
+</ol>
+<h3 id="使用预定义类"><a href="#使用预定义类" class="headerlink" title="使用预定义类"></a>使用预定义类</h3><p>在 Java 中， 没有类就无法做任何事情。但并不是所有的类都具有面向对象特征。</p>
+<h5 id="对象与对象变量"><a href="#对象与对象变量" class="headerlink" title="对象与对象变量"></a>对象与对象变量</h5><p>要想使用对象，就必须首先构造对象， 并指定其初始状态。</p>
+<p>在 Java 程序设计语言中， 使用构造器（constructor ) 构造新实例。构造器是一种特殊的方法， 用来构造并初始化对象。构造器的名字应该与类名相同。要想构造一个对象， 需要在构造器前面加上new 操作符。</p>
+<p>一个对象变量并没有实际包含一个对象，而仅仅引用一个对象。可以显式地将对象变量设置为null，表明这个对象变量目前没有引用任何对象。</p>
+<p>局部变量不会自动地初始化为 null，而必须通过调用 new 或将它们设置为 null 进行初始化。</p>
+<p>为什么用类描述时间， 而不像其他语言那样用一个内置的 （ built-in）类型？因为内置类型的适应性不好；如果使用类， 这些设计任务就交给了类库的设计者。如果类设计的不完善， 其他的操作员可以很容易地编写自己的类， 以便增强或替代（ replace) 系统提供的类。</p>
+<h5 id="Java-类库中的-LocalDate-类"><a href="#Java-类库中的-LocalDate-类" class="headerlink" title="Java 类库中的 LocalDate 类"></a>Java 类库中的 LocalDate 类</h5><p>Date 类的实例有一个状态，即特定的时间点。是用距离一个固定时间点的毫秒数（可正可负） 表示的， 这个点就是所谓的纪元（epoch), 它 是 UTC 时间 1970 年 1 月 1 日 00:00:00。</p>
+<p>类库设计者决定将保存时间与给时间点命名分开。所以标准 Java 类库分别包含了两个类：一个是用来表示时间点的 Date 类；另一个是用来表示大家熟悉的日历表示法的 LocalDate 类。</p>
+<p>LocalDate 类使用静态工厂方法 (factorymethod) 调用构造器 ：LocalDate.now()<br>可以提供年、 月和日来构造对应一个特定日期的对象：LocalDate.of(year, month, day)<br>用方法 getYear、 getMonthValue 和 getDayOfMonth得到年、月和日<br>plusDays 方法会得到距当前对象指定天数的一个新日期</p>
+<p>最好不要使用废弃不用的方法， 因为将来的某个类库版本很有可能将它们完全删除。</p>
+<h5 id="更改器方法与访问器方法"><a href="#更改器方法与访问器方法" class="headerlink" title="更改器方法与访问器方法"></a>更改器方法与访问器方法</h5><p>plusDays 方法会生成一个新的 LocalDate 对象，而不是改变原来的对象。</p>
+<p>GregorianCalendar.add 方法是一个更改器方法 ( mutator method ) 调用这个方法后， 对象的状态会改变。</p>
+<p>只访问对象而不修改对象的方法称为访问器方法。</p>
+<h3 id="用户自定义类"><a href="#用户自定义类" class="headerlink" title="用户自定义类"></a>用户自定义类</h3><h5 id="Employee-类"><a href="#Employee-类" class="headerlink" title="Employee 类"></a>Employee 类</h5><p>在 Java 中， 最简单的类定义形式为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class ClassName</span><br><span class="line">&#123;</span><br><span class="line">	field1</span><br><span class="line">	field2</span><br><span class="line">	...</span><br><span class="line">	constructor1</span><br><span class="line">	constructor2</span><br><span class="line">	...</span><br><span class="line">	method1</span><br><span class="line">	method2</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>文件名必须与 public 类的名字相匹配。在一个源文件中， 只能有一个公有类，但可以有任意数目的非公有类。</p>
+<h5 id="多个源文件的使用"><a href="#多个源文件的使用" class="headerlink" title="多个源文件的使用"></a>多个源文件的使用</h5><p>将可以有两种编译源程序的方法，一种是使用通配符调用 Java 编译器；或者直接编译包含main方法的文件，编译器就会自动地搜索需要的类并对它进行编译，如果 java 文件较已有的 class 文件版本新，Java 编译器就会自动地重新编译这个文件。</p>
+<h5 id="剖析-Employee-类"><a href="#剖析-Employee-类" class="headerlink" title="剖析 Employee 类"></a>剖析 Employee 类</h5><p>关键字 public 意味着任何类的任何方法都可以调用这些方法。可以用 public 标记实例域，但破坏了封装，这是一种极为不提倡的做法 。</p>
+<p>关键字 private 确保只有类自身的方法能够访问实例域， 而其他类的方法不能够读写这些域。</p>
+<h5 id="从构造器开始"><a href="#从构造器开始" class="headerlink" title="从构造器开始"></a>从构造器开始</h5><p>构造器与类同名。在构造类的对象时， 构造器会运行，以便将实例域初始化为所希望的状态。</p>
+<p>构造器与其他的方法有一个重要的不同，构造器总是伴随着 new 操作符的执行被调用，不能对一个已经存在的对象调用构造器来达到重新设置实例域的目的。</p>
+<p>每个类可以有一个以上的构造器，构造器可以有 0 个、1 个或多个参数，构造器没有返回值。</p>
+<p>不要在构造器中定义与实例域重名的局部变量。</p>
+<h5 id="隐式参数与显式参数"><a href="#隐式参数与显式参数" class="headerlink" title="隐式参数与显式参数"></a>隐式参数与显式参数</h5><p>方法用于操作对象以及存取它们的实例域。</p>
+<p>方法有两个参数。 第一个参数称为隐式 （implicit) 参数， 是出现在方法名前的对象。第二个参数位于方法名后面括号中的数值，这是一个显式 （explicit) 参 数 （ 有些人把隐式参数称为方法调用的目标或接收者)。</p>
+<p>在每一个方法中， 关键字 this 表示隐式参数。</p>
+<h5 id="封装的优点"><a href="#封装的优点" class="headerlink" title="封装的优点"></a>封装的优点</h5><p>应该提供下面三项内容： </p>
+<ol>
+<li>私有的数据域；</li>
+<li>公有的域访问器方法；</li>
+<li>公有的域更改器方法。</li>
+</ol>
+<p>好处：<br>可以改变内部实现，除了该类的方法之外，不会影响其他代码。<br>更改器方法可以执行错误检查，直接对域进行赋值将不会进行这些处理。</p>
+<p>不要编写返回可变对象引用的访问器方法。一个外部对象变量a和一个对象b的私有域引用同一个对象c，对外部对象变量a调用c的更改器方法就可以改变对象b的私有域状态，而不是通过对象b的更改器方法。如果需要返回一个可变对象的引用， 应该首先对它进行克隆（clone )。对象 clone 是指存放在另一个位置上的对象副本。</p>
+<h5 id="基于类的访问权限"><a href="#基于类的访问权限" class="headerlink" title="基于类的访问权限"></a>基于类的访问权限</h5><p>一个方法可以访问所属类的所有对象的私有数据。</p>
+<h5 id="私有方法"><a href="#私有方法" class="headerlink" title="私有方法"></a>私有方法</h5><p>在实现一个类时，由于公有数据非常危险， 所以应该将所有的数据域都设置为私有的。</p>
+<p>若将一个计算代码划分成若干个独立的辅助方法， 这些辅助方法不应该成为公有接口的一部分，这是由于它们往往与当前的实现机制非常紧密， 或者需要一个特别的协议以及一个特别的调用次序，最好将这样的方法设计为 private 的，因为它不会被外部的其他类操作调用，可以随时将其更改或删去。</p>
+<h5 id="final-实例域"><a href="#final-实例域" class="headerlink" title="final 实例域"></a>final 实例域</h5><p>可以将实例域定义为 final，构建对象时必须初始化这样的域，之后不能够再对它进行修改。</p>
+<p>final 修饰符大都应用于基本 （primitive ) 类型域，或不可变（immutable) 类的域（如果类中的每个方法都不会改变其对象， 这种类就是不可变的类）。</p>
+<p>对于可变的类，final 关键字只是表示存储在变量中的对象引用不会再指向其他类的对象，但这个对象可以更改。</p>
+<h3 id="静态域与静态方法"><a href="#静态域与静态方法" class="headerlink" title="静态域与静态方法"></a>静态域与静态方法</h3><h5 id="静态域"><a href="#静态域" class="headerlink" title="静态域"></a>静态域</h5><p>如果将域定义为 static, 每个类中只有一个这样的域。即使没有一个对象， 静态域也存在。它属于类，而不属于任何独立的对象。静态域也称为类域。</p>
+<h5 id="静态常量"><a href="#静态常量" class="headerlink" title="静态常量"></a>静态常量</h5><p>用 public static final 修饰静态常量（类常量）。</p>
+<p>非 Java 语言实现的本地方法可以绕过 Java 语言的存取控制机制，修改静态常量。</p>
+<h5 id="静态方法"><a href="#静态方法" class="headerlink" title="静态方法"></a>静态方法</h5><p>静态方法是一种不能向对象施操作的方法。换句话说，没有隐式参数。静态方法可以访问自身类中的静态域。</p>
+<p>可以使用对象调用静态方法。不过，这种方式很容易造成混淆，其原因是方法计算的结果与对象毫无关系。建议使用类名， 而不是对象来调用静态方法。</p>
+<h5 id="工厂方法"><a href="#工厂方法" class="headerlink" title="工厂方法"></a>工厂方法</h5><p>静态方法可用于静态工厂方法 (factory method) 来构造对象。</p>
+<p>为什么不利用构造器而使用静态工厂方法呢？ 主要有两个原因：</p>
+<ol>
+<li>构造器无法重命名。但希望用不同名字构造对象。</li>
+<li>当使用构造器时，无法改变所构造的对象类型。而静态方法可以返回一个其他类对象。</li>
+</ol>
+<h5 id="main-方法"><a href="#main-方法" class="headerlink" title="main 方法"></a>main 方法</h5><p>启动程序时，静态的 main 方法将执行并创建程序所需要的对象。</p>
+<p>每一个类可以有一个 main 方法。这是一个常用于对类进行单元测试的技巧。</p>
+<h3 id="方法参数"><a href="#方法参数" class="headerlink" title="方法参数"></a>方法参数</h3><p>按值调用 （call by value) 表示方法接收的是调用者提供的值。而按引用调用 （ call by reference)表示方法接收的是调用者提供的变量地址。一个方法可以修改传递引用所对应的变量值，而不能修改传递值所对应的变量值。</p>
+<p>Java 程序设计语言总是采用按值调用。方法得到的是参数值的一个拷贝。</p>
+<p>方法参数共有两种类型：</p>
+<ol>
+<li>基本数据类型；</li>
+<li>对象引用。（不要将引用变量的值与对象本身混淆，对象的引用与对象本身是两个东西）</li>
+</ol>
+<p>总结方法参数的使用情况：<br>一个方法不能修改一个基本数据类型的参数。<br>一个方法可以改变一个对象参数的状态。<br>一个方法不能让对象参数引用一个新的对象。</p>
+<h3 id="对象构造"><a href="#对象构造" class="headerlink" title="对象构造"></a>对象构造</h3><h5 id="重载"><a href="#重载" class="headerlink" title="重载"></a>重载</h5><p>如果多个方法有相同的名字、 不同的参数，便产生了重载。</p>
+<p>编译器挑选出具体执行哪个方法过程被称为重载解析（overloading resolution)。</p>
+<p>Java 允许重载任何方法。要完整地描述一个方法，需要指出方法名以及参数类型，这叫做方法的签名（signature)。返回类型不是方法签名的一部分。</p>
+<h5 id="默认域初始化"><a href="#默认域初始化" class="headerlink" title="默认域初始化"></a>默认域初始化</h5><p>如果在构造器中没有显式地给域赋予初值，那么就会被自动地赋为默认值： 数值为 0、布尔值为 false、 对象引用为 null，但是，这并不是一种良好的编程习惯。局部变量不会自动初始化。</p>
+<h5 id="无参数的构造器"><a href="#无参数的构造器" class="headerlink" title="无参数的构造器"></a>无参数的构造器</h5><p>很多类都包含一个无参数的构造函数，对象由无参数构造函数创建时， 其状态会设置为适当的默认值。</p>
+<p>如果在编写一个类时没有编写构造器， 那么系统就会提供一个无参数构造器，这个构造器将所有的实例域设置为默认值。</p>
+<p>仅当类没有提供任何构造器的时候， 系统才会提供一个默认的构造器。</p>
+<h5 id="显式域初始化"><a href="#显式域初始化" class="headerlink" title="显式域初始化"></a>显式域初始化</h5><p>通过重载类的构造器方法，可以采用多种形式设置类的实例域的初始状态。确保不管怎样调用构造器，每个实例域都可以被设置为一个有意义的初值，这是一种很好的设计习惯。</p>
+<p>在执行构造器之前，先执行域的赋值操作。当一个类的所有构造器都希望把相同的值赋予某个特定的实例域时，这种方式特别有用。</p>
+<h5 id="参数名"><a href="#参数名" class="headerlink" title="参数名"></a>参数名</h5><p>技巧：</p>
+<ol>
+<li>在每个参数前面加上一个前缀“a”；</li>
+<li>它基于这样的事实：参数变量用同样的名字将实例域屏蔽起来。可以采用 this.var 的形式访问实例域。</li>
+</ol>
+<h5 id="调用另一个构造器"><a href="#调用另一个构造器" class="headerlink" title="调用另一个构造器"></a>调用另一个构造器</h5><p>如果构造器的第一个语句形如 this(…)， 这个构造器将调用同一个类的另一个构造器。采用这种方式使用 this 关键字非常有用， 这样对公共的构造器代码部分只编写一次即可。</p>
+<h5 id="初始化块"><a href="#初始化块" class="headerlink" title="初始化块"></a>初始化块</h5><p>初始化数据域的方法： </p>
+<ol>
+<li>在构造器中设置值</li>
+<li>在声明中赋值</li>
+<li>初始化块（initializationblock)。</li>
+</ol>
+<p>在一个类的声明中，可以包含多个代码块。只要构造类的对象，这些块就会被执行。先运行初始化块，然后才运行构造器的主体部分。但通常会直接将初始化代码放在构造器中。建议将初始化块放在域定义之后。</p>
+<p>调用构造器的具体处理步骤：</p>
+<ol>
+<li>所有数据域被初始化为默认值；</li>
+<li>按照在类声明中出现的次序， 依次执行所有域初始化语句和初始化块；</li>
+<li>如果构造器第一行调用了第二个构造器，则执行第二个构造器主体；</li>
+<li>执行这个构造器的主体。</li>
+</ol>
+<p>可以使用一个静态的初始化块来对静态域进行初始化。将代码放在一个块中，并标记关键字 static。在类第一次加载的时候， 将会进行静态域的初始化。所有的静态初始化语句以及静态初始化块都将依照类定义的顺序执行。</p>
+<p>在 JDK 6 之前， 都可以用 Java 编写一个没有 main 方法的“ Hello,World” 程序。当用 java 调用这个类时， 就会加栽这个类， 静态初始化块将会打印“ Hello,World”。在此之后，会显示一个消息指出main 未定义。 从 Java SE 7 以后，java 程序首先会检查是否有一个 main 方法。</p>
+<h5 id="对象析构与-finalize-方法"><a href="#对象析构与-finalize-方法" class="headerlink" title="对象析构与 finalize 方法"></a>对象析构与 finalize 方法</h5><p>由于 Java 有自动的垃圾回收器，不需要人工回收内存， 所以 Java 不支持析构器。</p>
+<p>某些对象使用了内存之外的其他资源，在这种情况下，当资源不再需要时， 将其回收和再利用将显得十分重要。可以为任何一个类添加 finalize 方法。finalize 方法将在垃圾回收器清除对象之前调用。在实际应用中，不要依赖于使用 finalize 方法回收任何短缺的资源， 这是因为很难知道这个方法什么时候才能够调用。 System.mnFinalizersOnExit(true) 的方法能够确保 finalizer 方法在 Java 关闭前被调用。不过，这个方法并不安全，也不鼓励大家使用。有一种代替的方法是使用 Runtime.addShutdownHook 添加“ 关闭钓” （shutdown hook)。</p>
+<h3 id="包"><a href="#包" class="headerlink" title="包"></a>包</h3><p>Java 允许使用包（ package ）将类组织起来。</p>
+<p>标准的 Java包具有一个层次结构。可以使用嵌套层次组织包。所有标准的 Java 包都处于java 和 javax 包层次中。</p>
+<p>使用包的主要原因是确保类名的唯一性。假如建立了两个同名类，只要将这些类放置在不同的包中， 就不会产生冲突。为了保证包名的绝对唯一性， Sun 公司建议将公司的因特网域名以逆序的形式作为包名，并且对于不同的项目使用不同的子包。从编译器的角度来看， 嵌套的包之间没有任何关系。</p>
+<h5 id="类的导入"><a href="#类的导入" class="headerlink" title="类的导入"></a>类的导入</h5><p>可以采用两种方式访问另一个包中的公有类：<br>第一种方式是在每个类名之前添加完整的包名。<br>更简单且更常用的方式是使用 import 语句，import 语句是一种引用包含在包中的类的简明描述。一旦使用了 import 语句，在使用类时，就不必写出包的全名了。</p>
+<p>可以使用 import 语句导人一个特定的类或者整个包。import 语句应该位于源文件的顶部(但位于 package 语句的后面。只能使用星号（*) 导入一个包， 而不能使用 import java.* 或 import java.<em>.</em> 导入以 java 为前缀的所有包。</p>
+<p>用 * 导入所需包在发生命名冲突的时候，可以采用增加一个特定的 import 语句来解决这个问题。如果这两个类都需要使用，就在每个类名的前面加上完整的包名。</p>
+<p>在包中定位类是编译器 （ compiler) 的工作。类文件中的字节码使用完整的包名来引用其他类。</p>
+<h5 id="静态导入"><a href="#静态导入" class="headerlink" title="静态导入"></a>静态导入</h5><p>import static 语句导人静态方法和静态域。</p>
+<h5 id="将类放入包中"><a href="#将类放入包中" class="headerlink" title="将类放入包中"></a>将类放入包中</h5><p>要想将一个类放人包中， 就必须将包的名字放在源文件的开头，包中定义类的代码之前。</p>
+<p>如果没有在源文件中放置 package 语句， 这个源文件中的类就被放置在一个默认包( defaulf package ) 中，默认包是一个没有名字的包。</p>
+<p>要将包中的文件放到与完整的包名匹配的子目录中。编译器将类文件也放在相同的目录结构中。</p>
+<p>要从基目录编译和运行类。编译器对文件 （带有文件分隔符和扩展名 .java 的文件）进行操作。而 Java 解释器加载类（带有 . 分隔符 )。编译器在编译源文件的时候不检查目录结构，但如果包与目录不匹配，虚拟机就找不到类。</p>
+<h5 id="包作用域"><a href="#包作用域" class="headerlink" title="包作用域"></a>包作用域</h5><p>标记为 public 的部分可以被任意的类使用；标记为 private 的部分只能被定义它们的类使用。如果没有指定 public 或 private , 这个部分可以被同一个包中的所有方法访问。</p>
+<p>默认情况下，包不是一个封闭的实体。也就是说， 任何人都可以向包中添加更多的类。可以通过包密封 ( package sealing) 机制来解决将各种包混杂在一起的问题。如果将一个包密封起来， 就不能再向这个包添加类了。</p>
+<p>从 1.2 版开始， JDK 的实现者修改了类加载器， 明确地禁止加载用户自定义的、 包名以“ java.” 开始的类。</p>
+<h3 id="类路径"><a href="#类路径" class="headerlink" title="类路径"></a>类路径</h3><p>类文件也可以存储在 JAR(Java 归档）文件中。在一个 JAR 文件中， 可以包含多个压缩形式的类文件和子目录， 这样既可以节省又可以改善性能。在程序中用到第三方( third-party ) 的库文件时，通常会给出一个或多个 JAR 文件。JAR 文件使用 ZIP 格式组织文件和子目录，可以使用所有 ZIP 实用程序查看 JAR 文件。</p>
+<p>为了使类能够被多个程序共享，需要做到下面几点：</p>
+<ol>
+<li>把类放到一个目录中，这个目录是包树状结构的基目录；</li>
+<li>将 JAR 文件放在一个目录中；</li>
+<li>设置类路径（classpath)。类路径是所有包含类文件的路径的集合。</li>
+</ol>
+<p>类路径包括：</p>
+<ol>
+<li>基目录；</li>
+<li>当前目录（.)；</li>
+<li>JAR 文件。从 Java SE 6 开始，可以在 JAR 文件目录中指定通配符，但在 UNIX 中，禁止使用 * 以防止 shell 命令进一步扩展。运行时库文件（ rt.jar 和在 jre/lib 与 jre/lib/ext 目录下的一些其他的 JAR 文件） 会被自动地搜索， 所以不必将它们显式地列在类路径中。</li>
+</ol>
+<p>javac 编译器总是在当前的目录中查找文件， 但 Java 虚拟机仅在类路径中有“.”目录的时候才查看当前目录。</p>
+<p>虚拟机要搜寻类文件。首先查看系统类文件。然后再按照类路径依次查找。</p>
+<p>编译器搜寻类，依次查找java.lang包，导入的包，以及当前包，然后对类路径中所有类逐一查看。</p>
+<h5 id="设置类路径"><a href="#设置类路径" class="headerlink" title="设置类路径"></a>设置类路径</h5><p>最好采用 -classpath (或 -cp) 选项指定类路径。也可以通过设置 CLASSPATH 环境变量完成这个操作。</p>
+<p>将 CLASSPATH 环境变量设置为永久不变的值是一个很糟糕的主意，人们有可能会忘记全局设置， 因此， 当使用的类没有正确地加载进来时，会感到很奇怪。</p>
+<h3 id="文档注释"><a href="#文档注释" class="headerlink" title="文档注释"></a>文档注释</h3><p>javadoc 可以由源文件生成一个 HTML 文档。联机 API 文档就是通过对标准 Java 类库的源代码运行 javadoc 生成的。</p>
+<p>在源代码中添加以定界符 /**开始的注释， 可以很容易地生成一个文档。这种方式可以将代码与注释保存在一个地方，在修改源代码的同时， 重新运行 javadoc 就可以轻而易举地保持代码和注释的一致性。</p>
+<h5 id="注释的插入"><a href="#注释的插入" class="headerlink" title="注释的插入"></a>注释的插入</h5><p>javadoc 实用程序（utility) 从下面几个特性中抽取信息：</p>
+<ol>
+<li>包 </li>
+<li>公有类与接口</li>
+<li>公有的和受保护的构造器及方法</li>
+<li>公有的和受保护的域</li>
+</ol>
+<p>应该为每个特性编写注释，注释应该放置在所描述特性的前面。注释以<code> /**</code>开始，并 以 <code>*/ </code>结束。每个<code>/**</code> …<code> */</code> 文档注释在标记之后紧跟着自由格式文本（ free-form text )，标记由@开始。自由格式文本的第一句应该是一个概要性的句子，javadoc 实用程序自动地将这些句子抽取出来形成概要页。</p>
+<p>在自由格式文本中，可以使用 HTML 修饰符。不要使用 <code>&lt;hl&gt; </code>或<code> &lt;hr&gt;</code>, 因为它们会与文档的格式产生冲突。若要键入等宽代码，需使用 {@code … } 而不是<code>&lt;code&gt;</code>…<code>&lt;/code&gt;</code>，这样就不用操心 &lt; 字符转义。</p>
+<p>如果文档中有到其他文件的链接，就应该将这些文件放到子目录 doc-files 中。javadoc 实用程序将从源目录拷贝这些目录及其中的文件到文档目录中。在链接中需要使用 doc-files 目录。</p>
+<h5 id="类注释"><a href="#类注释" class="headerlink" title="类注释"></a>类注释</h5><p>类注释必须放在 import 语句之后，类定义之前。</p>
+<h5 id="方法注释"><a href="#方法注释" class="headerlink" title="方法注释"></a>方法注释</h5><p>每一个方法注释必须放在所描述的方法之前。</p>
+<p>除了通用标记之外，还可以使用下面的标记：<br>@param 变量描述<br>这个标记将对当前方法的“ param” （参数）部分添加一个条目。这个描述可以占据多行， 并可以使用 HTML 标记。一个方法的所有 @param 标记必须放在一起。<br>@return 描述<br>这个标记将对当前方法添加“ return” （返回）部分。这个描述可以跨越多行， 并可以使用 HTML 标记。<br>@throws 类描述<br>这个标记将添加一个注释， 用于表示这个方法有可能抛出异常。</p>
+<h5 id="域注释"><a href="#域注释" class="headerlink" title="域注释"></a>域注释</h5><p>只需要对公有域（通常指的是静态常量）建立文档。</p>
+<h5 id="通用注释"><a href="#通用注释" class="headerlink" title="通用注释"></a>通用注释</h5><p>下面的标记可以用在类文档的注释中：<br>@author  姓名<br>这个标记将产生一个“author” (作者）条目。可以使用多个 @author 标记，每个 @author 标记对应一个作者。<br>@version 文本<br>这个标记将产生一个“version”（版本）条目。这里的文本可以是对当前版本的任何描述。</p>
+<p>下面的标记可以用于所有的文档注释中：<br>@since 文本<br>这个标记将产生一个“ since” （始于）条目。这里的 text 可以是对引人特性的版本描述。<br>@deprecated 文本<br>这个标记将对类、 方法或变量添加一个不再使用的注释。文本中给出了取代的建议。<br>@see 引用<br>这个标记将在 “see also” 部分增加一个超级链接。可以为一个特性添加多个 @see 标记，但必须将它们放在一起。<br>这里的引用可以选择下列情形之一：</p>
+<ol>
+<li>package.class#feature label<br>可以省略包名和类名。</li>
+<li><code>&lt;a href=&quot;...&quot;&gt;label&lt;/a&gt; </code><br>可以指定一个可选的标签（ label ) 作为链接锚（link anchor) 。如果省略了 label , 用户看到的锚的名称就是目标代码名或 URL。</li>
+<li>“text”<br>文本显示在 “see also” 部分。<br>{@link …} 超链接<br>这里的特性描述规则与 @see 标记规则一样。</li>
+</ol>
+<h5 id="包与概述注释"><a href="#包与概述注释" class="headerlink" title="包与概述注释"></a>包与概述注释</h5><p>要想产生包注释，就需要在每一个包目录中添加一个单独的文件。可以有如下两个选择：</p>
+<ol>
+<li>提供一个以 package.html 命名的 HTML 文件。在标记<code> &lt;body&gt;</code>—<code>&lt;/body&gt; </code>之间的所有文本都会被抽取出来。 </li>
+<li>提供一个以 package-info.java 命名的 Java 文件。这个文件必须包含一个初始的以 <code>/** </code>和 <code>*/</code> 界定的 Javadoc 注释，跟随在一个包语句之后。它不应该包含更多的代码或注释。</li>
+</ol>
+<p>可以为所有的源文件提供一个概述性的注释。这个注释将被放置在一个名为 overview.html 的文件中，这个文件位于包含所有源文件的父目录中。标记 <code>&lt;body&gt;</code>…<code>&lt;/body&gt;</code> 之间的所有文本将被抽取出来。当用户从导航栏中选择“ Overview ” 时，就会显示出这些注释内容。</p>
+<h5 id="注释的抽取"><a href="#注释的抽取" class="headerlink" title="注释的抽取"></a>注释的抽取</h5><p>执行以下步骤：</p>
+<ol>
+<li>切换到包含想要生成文档的源文件目录。 如果有嵌套的包要生成文档， 就必须切换到包含子目录的目录。</li>
+<li>生成文档 ：<br>一个包：javadoc -d docDirectory nameOfPackage<br>多个包：javadoc -d docDirectory nameOfPackage1 nameOfPackage2 …<br>文件在默认包中：javadoc -d docDirectory *.java</li>
+</ol>
+<p>如果省略了 -d docDirectory 选项， 那 HTML 文件就会被提取到当前目录下。这样有可能会带来混乱，因此不提倡这种做法。</p>
+<p>可以使用多种形式的命令行选项对 javadoc 程序进行调整。</p>
+<p>如果需要进一步的定制，可用 doclet, 以便生成想要的任何输出形式。</p>
+<h3 id="类设计技巧"><a href="#类设计技巧" class="headerlink" title="类设计技巧"></a>类设计技巧</h3><ol>
+<li>一定要保证数据私有</li>
+<li>一定要对数据初始化</li>
+<li>不要在类中使用过多的基本类型。用其他的类代替多个相关的基本类型的使用。这样会使类更加易于理解且易于修改。</li>
+<li>不是所有的域都需要独立的域访问器和域更改器</li>
+<li>将职责过多的类进行分解</li>
+<li>类名和方法名要能够体现它们的职责。命名类名的良好习惯是采用一个名词、前面有形容词修饰的名词或动名词修饰名词。对于方法来说，习惯是访问器方法用小写 get 开头, 更改器方法用小写的set 开头。</li>
+<li>优先使用不可变的类。更改对象的问题在于， 如果多个线程试图同时更新一个对象，就会发生并发更改。其结果是不可预料的。如果类是不可变的，就可以安全地在多个线程间共享其对象。</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>vane
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://vanehsiung.netlify.app/2021/04/26/04%E5%AF%B9%E8%B1%A1%E4%B8%8E%E7%B1%BB/" title="04对象与类">https://vanehsiung.netlify.app/2021/04/26/04对象与类/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9lbg=="><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Programming/" rel="tag"># Programming</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/04/26/03Java%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84/" rel="prev" title="03Java的基本程序设计结构">
+                  <i class="fa fa-chevron-left"></i> 03Java的基本程序设计结构
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/04/26/05%E7%BB%A7%E6%89%BF/" rel="next" title="05继承">
+                  05继承 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Vane Hsiung</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZw==">NexT.Gemini</span>
+  </div>
+
+<script src="https://cdn.jsdelivr.net/gh/suyin-long/activate-power-mode@1.0/dist/activate-power-mode.js"></script>
+<script>
+POWERMODE.colorful = true; // make power mode colorful
+POWERMODE.shake = false; // turn off shake
+document.body.addEventListener('input', POWERMODE);
+</script>
+
+
+
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/@next-theme/pjax@0.4.0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '.page-configurations',
+    '.main-inner',
+    '.post-toc-wrap',
+    '.languages',
+    '.pjax'
+  ],
+  analytics: false,
+  cacheBust: false,
+  scrollRestoration: false,
+  scrollTo: !CONFIG.bookmark.enable
+});
+
+document.addEventListener('pjax:success', () => {
+  pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  const hasTOC = document.querySelector('.post-toc');
+  document.querySelector('.sidebar-inner').classList.toggle('sidebar-nav-active', hasTOC);
+  document.querySelector(hasTOC ? '.sidebar-nav-toc' : '.sidebar-nav-overview').click();
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+<script data-pjax>
+if (document.querySelectorAll('.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8.8.4/dist/mermaid.min.js', () => {
+    mermaid.init({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    }, '.mermaid');
+  }, window.mermaid);
+}
+</script>
+
+  <script>
+    NProgress.configure({
+      showSpinner: false
+    });
+    NProgress.start();
+    document.addEventListener('readystatechange', () => {
+      if (document.readyState === 'interactive') {
+        NProgress.inc(0.8);
+      }
+      if (document.readyState === 'complete') {
+        NProgress.done();
+      }
+    });
+    document.addEventListener('pjax:send', () => {
+      NProgress.start();
+    });
+    document.addEventListener('pjax:success', () => {
+      NProgress.done();
+    });
+  </script>
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    <div class="pjax">
+
+
+    </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>

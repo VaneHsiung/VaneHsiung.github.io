@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="uXmcnam1s6y-h_YGHukGYhDQ8zMBAOHTHrJ6RfsDN6I">
+  <meta name="msvalidate.01" content="687D92122214353CF2ACE3AEA2977A9C">
+  <meta name="baidu-site-verification" content="code-lURpXjbL6l">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Architects+Daughter:300,300italic,400,400italic,700,700italic%7CShare+Tech+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css">
+  <script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"vanehsiung.netlify.app","root":"/","images":"/images","scheme":"Gemini","version":"8.2.0","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+<meta name="description" content="一个简单的 Java 应用程序12345public class ClassName &amp;#123;	public static void main(String[] args) &amp;#123;		program statements;		&amp;#125;&amp;#125; Java 区分大小写。如果出现了大小写拼写错误，程序将无法运行。 关键字 public 称为访问修饰符（access modifier),">
+<meta property="og:type" content="article">
+<meta property="og:title" content="03Java的基本程序设计结构">
+<meta property="og:url" content="https://vanehsiung.netlify.app/2021/04/26/03Java%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84/index.html">
+<meta property="og:site_name" content="vBlog">
+<meta property="og:description" content="一个简单的 Java 应用程序12345public class ClassName &amp;#123;	public static void main(String[] args) &amp;#123;		program statements;		&amp;#125;&amp;#125; Java 区分大小写。如果出现了大小写拼写错误，程序将无法运行。 关键字 public 称为访问修饰符（access modifier),">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-04-26T02:08:19.000Z">
+<meta property="article:modified_time" content="2021-04-26T04:02:10.765Z">
+<meta property="article:author" content="vane">
+<meta property="article:tag" content="Programming">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://vanehsiung.netlify.app/2021/04/26/03Java%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84/">
+
+
+<script data-pjax class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+<title>03Java的基本程序设计结构 | vBlog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=sG-KKYP310LB0"></script>
+    <script data-pjax>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'sG-KKYP310LB0');
+      }
+    </script>
+
+  <script data-pjax>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?f3032f7a989f15a8faf91348571efe03";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="vBlog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">vBlog</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Vane Hsiung's Blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fas fa-link fa-fw"></i>Links</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+
+ 
+<script>
+  var OriginTitile = document.title;
+  var titleTime;
+  document.addEventListener("visibilitychange", function() {
+    if (document.hidden) {
+      document.title = "(つェ⊂)我藏好了哦~";
+      clearTimeout(titleTime);
+    } else {
+      document.title = "(*´∇｀*) 被你发现啦~";
+      titleTime = setTimeout(function() {
+        document.title = OriginTitile;
+      }, 2000);
+    }
+  });
+</script>
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84-Java-%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F"><span class="nav-text">一个简单的 Java 应用程序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E9%87%8A"><span class="nav-text">注释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-text">数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%95%B4%E5%9E%8B"><span class="nav-text">整型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B5%AE%E7%82%B9%E7%B1%BB%E5%9E%8B"><span class="nav-text">浮点类型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#char-%E7%B1%BB%E5%9E%8B"><span class="nav-text">char 类型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Unicode-%E5%92%8C-char-%E7%B1%BB%E5%9E%8B"><span class="nav-text">Unicode 和 char 类型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#boolean-%E7%B1%BB%E5%9E%8B"><span class="nav-text">boolean 类型</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%98%E9%87%8F"><span class="nav-text">变量</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-text">变量初始化</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B8%B8%E9%87%8F"><span class="nav-text">常量</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-text">运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%95%B0%E5%AD%A6%E5%87%BD%E6%95%B0%E4%B8%8E%E5%B8%B8%E9%87%8F"><span class="nav-text">数学函数与常量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%95%B0%E5%80%BC%E7%B1%BB%E5%9E%8B%E4%B9%8B%E9%97%B4%E7%9A%84%E8%BD%AC%E6%8D%A2"><span class="nav-text">数值类型之间的转换</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BC%BA%E5%88%B6%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="nav-text">强制类型转换</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BB%93%E5%90%88%E8%B5%8B%E5%80%BC%E5%92%8C%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-text">结合赋值和运算符</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%87%AA%E5%A2%9E%E4%B8%8E%E8%87%AA%E5%87%8F%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-text">自增与自减运算符</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%85%B3%E7%B3%BB%E5%92%8C-boolean-%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-text">关系和 boolean 运算符</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-text">位运算符</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8B%AC%E5%8F%B7%E4%B8%8E%E8%BF%90%E7%AE%97%E7%AC%A6%E7%BA%A7%E5%88%AB"><span class="nav-text">括号与运算符级别</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9E%9A%E4%B8%BE%E7%B1%BB%E5%9E%8B"><span class="nav-text">枚举类型</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-text">字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AD%90%E4%B8%B2"><span class="nav-text">子串</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8B%BC%E6%8E%A5"><span class="nav-text">拼接</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%8D%E5%8F%AF%E5%8F%98%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-text">不可变字符串</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A3%80%E6%B5%8B%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%98%AF%E5%90%A6%E7%9B%B8%E7%AD%89"><span class="nav-text">检测字符串是否相等</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%A9%BA%E4%B8%B2%E4%B8%8E-Null-%E4%B8%B2"><span class="nav-text">空串与 Null 串</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%A0%81%E7%82%B9%E4%B8%8E%E4%BB%A3%E7%A0%81%E5%8D%95%E5%85%83"><span class="nav-text">码点与代码单元</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#String-API"><span class="nav-text">String API</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%98%85%E8%AF%BB%E8%81%94%E6%9C%BA-API-%E6%96%87%E6%A1%A3"><span class="nav-text">阅读联机 API 文档</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9E%84%E5%BB%BA%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-text">构建字符串</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA"><span class="nav-text">输入输出</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AF%BB%E5%8F%96%E8%BE%93%E5%85%A5"><span class="nav-text">读取输入</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%87%BA"><span class="nav-text">格式化输出</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA"><span class="nav-text">文件输入与输出</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8E%A7%E5%88%B6%E6%B5%81%E7%A8%8B"><span class="nav-text">控制流程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9D%97%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="nav-text">块作用域</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E8%AF%AD%E5%8F%A5"><span class="nav-text">条件语句</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BE%AA%E7%8E%AF"><span class="nav-text">循环</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%A1%AE%E5%AE%9A%E5%BE%AA%E7%8E%AF"><span class="nav-text">确定循环</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A4%9A%E9%87%8D%E9%80%89%E6%8B%A9%EF%BC%9Aswitch-%E8%AF%AD%E5%8F%A5"><span class="nav-text">多重选择：switch 语句</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%AD%E6%96%AD%E6%8E%A7%E5%88%B6%E6%B5%81%E7%A8%8B%E8%AF%AD%E5%8F%A5"><span class="nav-text">中断控制流程语句</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%A7%E6%95%B0%E5%80%BC"><span class="nav-text">大数值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E7%BB%84"><span class="nav-text">数组</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#for-each-%E5%BE%AA%E7%8E%AF"><span class="nav-text">for each 循环</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E5%88%9D%E5%A7%8B%E5%8C%96%E4%BB%A5%E5%8F%8A%E5%8C%BF%E5%90%8D%E6%95%B0%E7%BB%84"><span class="nav-text">数组初始化以及匿名数组</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E6%8B%B7%E8%B4%9D"><span class="nav-text">数组拷贝</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0"><span class="nav-text">命令行参数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E6%8E%92%E5%BA%8F"><span class="nav-text">数组排序</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A4%9A%E7%BB%B4%E6%95%B0%E7%BB%84"><span class="nav-text">多维数组</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%8D%E8%A7%84%E5%88%99%E6%95%B0%E7%BB%84"><span class="nav-text">不规则数组</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="vane"
+      src="/uploads/avatar.png">
+  <p class="site-author-name" itemprop="name">vane</p>
+  <div class="site-description" itemprop="description">"Life is 10% what happens to you and 90% how you react to it."</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL1ZhbmVIc2l1bmc=" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;VaneHsiung"><i class="fab fa-github fa-fw"></i>GitHub</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOm1pY3JvZnV0Y3NAb3V0bG9vay5jb20=" title="E-Mail → mailto:microfutcs@outlook.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</span>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9lbg=="><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://vanehsiung.netlify.app/2021/04/26/03Java%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="vane">
+      <meta itemprop="description" content=""Life is 10% what happens to you and 90% how you react to it."">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="vBlog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          03Java的基本程序设计结构
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-04-26 10:08:19 / Modified: 12:02:10" itemprop="dateCreated datePublished" datetime="2021-04-26T10:08:19+08:00">2021-04-26</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>13k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>11 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h3 id="一个简单的-Java-应用程序"><a href="#一个简单的-Java-应用程序" class="headerlink" title="一个简单的 Java 应用程序"></a>一个简单的 Java 应用程序</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ClassName</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		program statements;</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Java 区分大小写。如果出现了大小写拼写错误，程序将无法运行。</p>
+<p>关键字 public 称为访问修饰符（access modifier), 这些修饰符用于控制程序的其他部分对这段代码的访问级別。</p>
+<p>关键字 class 表明 Java 程序中的全部内容都包含在类中。类作为一个加载程序逻辑的容器，程序逻辑定义了应用程序的行为。</p>
+<p>关键字 class 后面紧跟类名。类名必须以大写字母开头，后面可以跟字母和数字的任意组合，如果类名由多个单词组成，每个单词的第一个字母都应该大写。长度基本上没有限制。不能使用 Java 保留字作为类名。源代码的文件名必须与公共类的名字相同，并用 .java 作为扩展名。</p>
+<p>运行已编译的程序时，Java 虚拟机将从指定类中的 main 方法开始执行。在 Java SE 1.4 及以后的版本中强制 main 方法是 public 的。每个 Java 应用程序都必须有一个 main 方法。</p>
+<p>在 Java 中，用大括号划分程序的各个部分（通常称为块)。Java 中任何方法的代码都用 “{” 开始，用结 ”}“ 束。</p>
+<p>在 Java 中，每条语句必须用分号结束。</p>
+<p>Java 函数调用通用语法是 object.method(parameters); 对于一个方法， 即使没有参数也需要用空括号。</p>
+<p>System.out的println()方法输出后换行，print()方法输出后不换行。</p>
+<a id="more"></a>
+
+<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><p>Java 中的注释不会出现在可执行程序中。</p>
+<p>在 Java 中，有 3 种标记注释的方式：</p>
+<ol>
+<li>使用 // ，其注释内容从 // 开始到本行结尾。</li>
+<li>使用 /* 和*/， 将一段比较长的注释括起来，/* */ 注释不能嵌套。</li>
+<li>使用 /** 和 */ ，可以用来自动地生成文档。</li>
+</ol>
+<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><p>Java 是 一种强类型语言。这就意味着必须为每一个变量声明一种类型。在 Java 中， 一共有 8 种基本类型（ primitive type )。</p>
+<h5 id="整型"><a href="#整型" class="headerlink" title="整型"></a>整型</h5><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>存储需求</th>
+<th>取值范围</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>int</td>
+<td>4 字节</td>
+<td>-2 147 483 648 ~ 2 147 483 647</td>
+</tr>
+<tr>
+<td>short</td>
+<td>2 字节</td>
+<td>-32 768 ~ 32 767</td>
+</tr>
+<tr>
+<td>long</td>
+<td>8 字节</td>
+<td>-9 223 372 036 854 775 808 ~ 9 223 372 036 854 775 807</td>
+</tr>
+<tr>
+<td>byte</td>
+<td>1 字节</td>
+<td>-128 ~ 127</td>
+</tr>
+</tbody></table>
+<p>长整型数值有一个后缀 L 或 l。 十六进制数值有一个前缀 0x 或 0X 。八进制有一个前缀 0 ,八进制表示法比较容易混淆， 所以最好不要使用八进制常数。从 Java 7 开始， 加上前缀 0b 或 0B 就可以写二进制数。从 Java 7 开始，还可以为数字字面量加下划线，如用 1_000_000表示一百万。这些下划线只是为了让人更易读。Java 编译器会去除这些下划线。</p>
+<h5 id="浮点类型"><a href="#浮点类型" class="headerlink" title="浮点类型"></a>浮点类型</h5><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>存储需求</th>
+<th>取值范围</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>float</td>
+<td>4 字节</td>
+<td>大约 ± 3.402 823 47E+38F</td>
+</tr>
+<tr>
+<td>double</td>
+<td>8 字节</td>
+<td>大约 ± 1.797 693 134 862 315 70E+308</td>
+</tr>
+</tbody></table>
+<p>float 类型的数值有一个后缀 F 或 f 。没有后缀 F 的浮点数值默认为 double 类型。当然，也可以在浮点数值后面添加后缀 D 或 d。</p>
+<p>用于表示溢出和出错情况的三个特殊的浮点数值：正无穷大、负无穷大、NaN (Not a Number）。常量 Double_POSITIVE_INFINITY、 Double.NEGATIVE_INFINITY 和 Double.NaN ( 以及相应的 Float 类型的常量） 分别表示这三个特殊的值。可以使用 Double.isNaN 方法检测一个特定值是否为Double.NaN。</p>
+<p>浮点数值不适用于无法接受舍入误差的金融计算中。这种舍入误差的主要原因是浮点数值采用二进制系统表示， 而在二进制系统中无法精确地表示分数 1/10。如果在数值计算中不允许有任何舍入误差，就应该使用 BigDecimal 类。</p>
+<h5 id="char-类型"><a href="#char-类型" class="headerlink" title="char 类型"></a>char 类型</h5><p>char 类型的字面量值要用单引号括起来。</p>
+<p>转义序列都可以出现在加引号的字符字面量或字符串中。转义序列 \u 还可以出现在加引号的字符常量或字符串之外。Unicode 转义序列会在解析代码之前得到处理。</p>
+<table>
+<thead>
+<tr>
+<th>转义序列</th>
+<th>名称</th>
+<th>Unicode 值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>\b</td>
+<td>退格</td>
+<td>\u0008</td>
+</tr>
+<tr>
+<td>\t</td>
+<td>制表</td>
+<td>\u0009</td>
+</tr>
+<tr>
+<td>\n</td>
+<td>换行</td>
+<td>\u000a</td>
+</tr>
+<tr>
+<td>\r</td>
+<td>回车</td>
+<td>\u000d</td>
+</tr>
+<tr>
+<td>\“</td>
+<td>双引号</td>
+<td>\u0022</td>
+</tr>
+<tr>
+<td>\‘</td>
+<td>单引号</td>
+<td>\u0027</td>
+</tr>
+<tr>
+<td>\\</td>
+<td>反斜杠</td>
+<td>\u005c</td>
+</tr>
+</tbody></table>
+<h5 id="Unicode-和-char-类型"><a href="#Unicode-和-char-类型" class="headerlink" title="Unicode 和 char 类型"></a>Unicode 和 char 类型</h5><p>码点（ code point ) 是指与一个编码表中的某个字符对应的代码值。在 Unicode 标准中，码点采用十六进制书写，并加上前缀 U+。第一个代码级别称为基本的多语言级别（ basic multilingual plane ), 码点从 U+0000 到 U+FFFF, 其中包括经典的 Unicode 代码；其余的 16个级别码点从 U+10000 到 U+10FFFF , 其中包括一些辅助字符（supplementary character)。</p>
+<p>UTF-16 编码采用不同长度的编码表示所有 Unicode 码点。在基本的多语言级别中，每个字符用 16 位表示，通常被称为代码单元（ code unit )；而辅助字符采用一对连续的代码单元进行编码。</p>
+<p>在 Java 中，char 类型描述了 UTF-16 编码中的一个代码单元。建议不要在程序中使用 char 类型，除非确实需要处理 UTF-16 代码单元。</p>
+<h5 id="boolean-类型"><a href="#boolean-类型" class="headerlink" title="boolean 类型"></a>boolean 类型</h5><p>boolean 类型有两个值：false 和 true, 用来判定逻辑条件，整型值和布尔值之间不能进行相互转换。</p>
+<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>在 Java 中，每个变量都有一个类型（ type )。在声明变量时，变量的类型位于变量名之前。由于声明是一条完整的 Java语句，所以必须以分号结束。</p>
+<p>变量名必须是一个以字母开头并由字母或数字构成的序列。与大多数程序设计语言相比，Java 中“ 字母” 和“ 数字” 的范围更大。字母包括 ’A’ ~ ’Z’、’a’ ~  ‘z’、’_’、’$’或在某种语言中表示字母的任何 Unicode 字符。如果想要知道哪些 Unicode 字符属于 Java 中的“ 字母”， 可以使用 Character 类的<br>isJavaldentifierStart 和 isJavaldentifierPart 方法来检查。尽管 $ 是一个合法的 Java 字符， 但不要在你自己的代码中使用这个字符。它只用在 Java 编译器或其他工具生成的名字中。变量名的长度基本上没有限制。不能使用 Java 保留字作为变量名。</p>
+<p>可以在一行中声明多个变量：int i, j; 不过，不提倡使用这种风格。逐一声明每一个变量可以提高程序的可读性。</p>
+<p>许多程序员将变量名命名为类型名，还有一些程序员更加喜欢在变量名前加上前缀 “a”。</p>
+<h5 id="变量初始化"><a href="#变量初始化" class="headerlink" title="变量初始化"></a>变量初始化</h5><p>声明一个变量之后，必须用赋值语句对变量进行显式初始化， 千万不要使用未初始化的变量。</p>
+<p>要想对一个已经声明过的变量进行赋值， 就需要将变量名放在等号（= ) 左侧， 相应取值的 Java 表达式放在等号的右侧。也可以将变量的声明和初始化放在同一行中。</p>
+<p>在 Java 中可以将声明放在代码中的任何地方。在 Java 中， 变量的声明尽可能地靠近变量第一次使用的地方， 这是一种良好的程序编写风格。</p>
+<h5 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h5><p>在 Java 中， 利用关键字 final 指示常量。关键字 final 表示这个变量只能被赋值一次。一旦被赋值之后，就不能够再更改了。习惯上,常量名使用全大写。</p>
+<p>在 Java 中，经常希望某个常量可以在一个类中的多个方法中使用，通常将这些常量称为类常量。可以使用关键字 static final 设置一个类常量，定义于 main 方法的外部。</p>
+<p>如果一个常量被声明为 public，那么其他类的方法也可以使用这个常量。</p>
+<h3 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h3><p>在 Java 中，使用算术运算符 +、-、 *、/ 表示加、减、 乘、除运算。整数的求余操作（有时称为取模） 用 ％ 表示。</p>
+<p>可移植性是 Java 语言的设计目标之一 ， 无论在哪个虚拟机上运行， 同一运算应该得到同样的结果。对于浮点数的算术运算， 实现这样的可移植性是相当困难的。double 类型使用 64 位存储一个数值， 而有些处理器使用 80 位浮点寄存器，这些寄存器增加了中间过程的计算精度。例如， 以下运算：double w = x * y / z; 很多 Intel 处理器计算 x * y，并且将结果存储在 80 位的寄存器中， 再除以 z 并将结果截断为 64 位， 这样可以得到一个更加精确的计算结果，并且还能够避免产生指数溢出。但是， 这个结果可能与始终在 64 位机器上计算的结果不一样。</p>
+<p>使用 strictfp 关键字标记的方法必须使用严格的浮点计算来生成可再生的结果。</p>
+<h5 id="数学函数与常量"><a href="#数学函数与常量" class="headerlink" title="数学函数与常量"></a>数学函数与常量</h5><p>在 Math类中，包含了各种各样的数学函数。</p>
+<p>平方根，使用 Math.sqrt() 方法。</p>
+<p>幂运算，使用 Math.pow() 方法，pow 方法有两个 double 类型的参数， 其返回结果也为 double 类型。</p>
+<p>floorMod 方法的目的是解决一个长期存在的有关整数余数的问题。 如果 n 为负，则 n 取余总为 -1。floorMod 方法使余数总 &gt;= 0，除非是负除数，floorMod 会得到负数结果。</p>
+<p>常用的三角函数：Math.sin、Math.cos、Math.tan、Math.atan、Math.atan2。</p>
+<p>指数函数以及它的反函数—自然对数以及以 10 为底的对数：Math.exp、Math.log、Math.log10。</p>
+<p>用于表示 pi 和 e 常量的近似值：Math.PI、Math.E。</p>
+<p>在 Math 类中， 为了达到最快的性能， 所有的方法都使用计算机浮点单元中的例程。如果得到一个完全可预测的结果比运行速度更重要的话， 那么就应该使用 StrictMath 类，它使用“ 自由发布的 Math 库”（fdlibm) 实现算法， 以确保在所有平台上得到相同的结果。</p>
+<h5 id="数值类型之间的转换"><a href="#数值类型之间的转换" class="headerlink" title="数值类型之间的转换"></a>数值类型之间的转换</h5><p>数值类型之间的合法转换:</p>
+<ol>
+<li>表示无信息丢失的转换：<br>byte -&gt; short<br>short -&gt; int<br>char -&gt; int<br>int -&gt; long<br>int -&gt; double<br>float -&gt; double</li>
+<li>可能有精度损失的转换：<br>int -&gt; float<br>long -&gt; float<br>long -&gt; double</li>
+</ol>
+<p>当使用两个数值进行二元操作时先要将两个操作数转换为同一种类型，然后再进行计算：</p>
+<ol>
+<li>如果两个操作数中有一个是 double 类型， 另一个操作数就会转换为 double 类型。 </li>
+<li>否则，如果其中一个操作数是 float 类型，另一个操作数将会转换为 float 类型。 </li>
+<li>否则， 如果其中一个操作数是 long 类型， 另一个操作数将会转换为 long 类型。</li>
+<li>否则， 两个操作数都将被转换为 int 类型。</li>
+</ol>
+<h5 id="强制类型转换"><a href="#强制类型转换" class="headerlink" title="强制类型转换"></a>强制类型转换</h5><p>强制类型转换的语法格式是在圆括号中给出想要转换的目标类型，后面紧跟待转换的变量名。</p>
+<p>如果想对浮点数进行舍人运算， 以便得到最接近的整数那就需要使用 Math.round 方法，round 方法返回的结果为 long 类型。</p>
+<h5 id="结合赋值和运算符"><a href="#结合赋值和运算符" class="headerlink" title="结合赋值和运算符"></a>结合赋值和运算符</h5><p>可以在赋值中使用二元运算符，这是一种很方便的简写形式。</p>
+<p>如果运算符得到一个值， 其类型与左侧操作数的类型不同， 就会发生强制类型转换。</p>
+<h5 id="自增与自减运算符"><a href="#自增与自减运算符" class="headerlink" title="自增与自减运算符"></a>自增与自减运算符</h5><p>n++ 将变量 n 的当前值加 1, n– 则将 n 的值减 1。由于这些运算符会改变变量的值，所以它们的操作数不能是数值。</p>
+<p>前缀形式会先完成加 1; 而后缀形式会使用变量原来的值。</p>
+<p>建议不要在表达式中使用 ++, 因为这样的代码很容易让人闲惑，而且会带来烦人的 bug。</p>
+<h5 id="关系和-boolean-运算符"><a href="#关系和-boolean-运算符" class="headerlink" title="关系和 boolean 运算符"></a>关系和 boolean 运算符</h5><p>要检测相等性，可以使用两个等号 ==。</p>
+<p>以使用 != 检测不相等。</p>
+<p>经常使用的 &lt; (小于、) &gt; (大于)、&lt;=(小于等于）和 &gt;= (大于等于）运算符。</p>
+<p>使用 &amp;&amp; 表示逻辑“ 与” 运算符，使用 || 表示逻辑“ 或” 运算符，感叹号！就是逻辑非运算符。&amp;&amp; 和 || 运算符是按照“ 短路” 方式来求值的： 如果第一个操作数已经能够确定表达式的值，第二个操作数就不必计算了。</p>
+<p>Java 支持三元操作符 ？：。如果条件为 true, 表达式 condition ? expression1 : expression2 就为第一个表达式的值，否则为第二个表达式的值。</p>
+<h5 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h5><p>处理整型类型时，可以直接对组成整型数值的各个位完成操作。</p>
+<p>位运算符包括：&amp; (“and”)| (“or”)  ^ (“xor”)  ~ (“not”)。</p>
+<p>应用在布尔值上时， &amp; 和丨运算符也会得到一个布尔值，不过 &amp; 和丨运算符不采用“ 短路” 方式来求值。</p>
+<p>还有 &gt;&gt; 和 &lt;&lt; 运算符将位模式左移或右移。&gt;&gt;&gt;  运算符会用 0 填充高位。</p>
+<h5 id="括号与运算符级别"><a href="#括号与运算符级别" class="headerlink" title="括号与运算符级别"></a>括号与运算符级别</h5><p>如果不使用圆括号， 就按照给出的运算符优先级次序进行计算。同一个级别的运算符按照从左到右的次序进行计算（除了表中给出的右结合运算符外）。</p>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>结合性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>[]  .  () (方法调用)</td>
+<td>从左向右</td>
+</tr>
+<tr>
+<td>!  ~  ++  –  + ( 一元运算） - ( 一元运算）  () ( 强制类型转换）new</td>
+<td>从右向左</td>
+</tr>
+<tr>
+<td>* /  %</td>
+<td>从左向右</td>
+</tr>
+<tr>
+<td>+  -</td>
+<td>从左向右</td>
+</tr>
+<tr>
+<td>&lt;&lt;  &gt;&gt;  &gt;&gt;&gt;</td>
+<td>从左向右</td>
+</tr>
+<tr>
+<td>&lt;  &lt;=  &gt;  &gt;=  instanceof</td>
+<td>从左向右</td>
+</tr>
+<tr>
+<td>==  !=</td>
+<td>从左向右</td>
+</tr>
+<tr>
+<td>&amp;</td>
+<td>从左向右</td>
+</tr>
+<tr>
+<td>^</td>
+<td>从左向右</td>
+</tr>
+<tr>
+<td>|</td>
+<td>从左向右</td>
+</tr>
+<tr>
+<td>&amp;&amp;</td>
+<td>从左向右</td>
+</tr>
+<tr>
+<td>||</td>
+<td>从左向右</td>
+</tr>
+<tr>
+<td>?:</td>
+<td>从右向左</td>
+</tr>
+<tr>
+<td>=  +=  -=  *=  /=  %=  &amp;=  ^=  &lt;&lt;=  &gt;&gt;=  &gt;&gt;&gt;=</td>
+<td>从右向左</td>
+</tr>
+</tbody></table>
+<h5 id="枚举类型"><a href="#枚举类型" class="headerlink" title="枚举类型"></a>枚举类型</h5><p>枚举类型包括有限个命名的值。例如， enum Size { SMALL, MEDIUM, LARGE, EXTRA.LARCE };<br>现在，可以声明这种类型的变量：Size s = Size.MEDIUM;Size 类型的变量只能存储这个类型声明中给定的某个枚举值，或者 null 值，null 表示这个变量没有设置任何值。</p>
+<h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3><p>Java 字符串就是 Unicode 字符序列。Java 没有内置的字符串类型， 而是在标准 Java 类库中提供了<br>一个预定义类，叫做 String。每个用双引号括起来的字符串都是 String 类的一个实例。</p>
+<h5 id="子串"><a href="#子串" class="headerlink" title="子串"></a>子串</h5><p>String 类的 substring 方法可以从一个较大的字符串提取出一个子串。substring 方法的第二个参数是不想复制的第一个位置。字符串 s.substring(a, b) 的长度为 b-a。</p>
+<h5 id="拼接"><a href="#拼接" class="headerlink" title="拼接"></a>拼接</h5><p>Java语言允许使用 + 号连接（拼接）两个字符串。当将一个字符串与一个非字符串的值进行拼接时，后者被转换成字符串。</p>
+<p>如果需要把多个字符串放在一起， 用一个定界符分隔，可以使用静态 join 方法。</p>
+<h5 id="不可变字符串"><a href="#不可变字符串" class="headerlink" title="不可变字符串"></a>不可变字符串</h5><p>String 类没有提供用于修改字符串的方法。由于不能修改 Java 字符串中的字符， 所以在 Java 文档中将 String 类对象称为不可变字符串。</p>
+<p>不可变字符串有一个优点：编译器可以让字符串共享。</p>
+<h5 id="检测字符串是否相等"><a href="#检测字符串是否相等" class="headerlink" title="检测字符串是否相等"></a>检测字符串是否相等</h5><p>可以使用 equals 方法检测两个字符串是否相等。</p>
+<p>要想检测两个字符串是否相等，而不区分大小写， 可以使用 equalsIgnoreCase 方法。</p>
+<p>一定不要使用 == 运算符检测两个字符串是否相等！ 这个运算符只能够确定两个字串是否放置在同一个位置上。当然， 如果字符串放置在同一个位置上， 它们必然相等。但是，完全有可能将内容相同的多个字符串的拷贝放置在不同的位置上。如果虚拟机始终将相同的字符串共享， 就可以使用 == 运算符检测是否相等。但实际上只有字符串常量是共享的，而 + 或 substring 等操作产生的结果并不是共享的。</p>
+<h5 id="空串与-Null-串"><a href="#空串与-Null-串" class="headerlink" title="空串与 Null 串"></a>空串与 Null 串</h5><p>空串 “” 是长度为 0 的字符串。空串是一个 Java 对象， 有自己的串长度（ 0 ) 和内容（空）。不过， String 变量还可以存放一个特殊的值， 名为 null, 这表示目前没有任何对象与该变量关联。要检查一个字符串是否为 null, 要使用以下条件：if (str == null) 。</p>
+<h5 id="码点与代码单元"><a href="#码点与代码单元" class="headerlink" title="码点与代码单元"></a>码点与代码单元</h5><p>char 数据类型是一个用 UTF-16 编码表示 Unicode 码点的代码单元。大多数的常用 Unicode 字符使用一个代码单元就可以表示，而辅助字符需要一对代码单元表示。</p>
+<p>length 方法将返回采用 UTF-16 编码表示的给定字符串所需要的代码单元数量。</p>
+<p>要想得到实际的长度，即码点数量，可以调用 codePointCount 方法。</p>
+<p>调用 s.charAt(n) 将返回位置 n 的代码单元，n 介于 0 ~ s.length()-l 之间。</p>
+<p>要想得到第 i 个码点，应该使用下列语句：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> index = s.offsetByCodePoints(<span class="number">0</span>, i);</span><br><span class="line"><span class="keyword">int</span> cp = s.codePointAt(index);</span><br></pre></td></tr></table></figure>
+<p>Java 对字符串中的代码单元和码点从 0 开始计数。</p>
+<p>如果想要遍历一个字符串，并且依次査看每一个码点， 可以使用下列语句：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> cp = s.codePointAt(i);</span><br><span class="line"><span class="keyword">if</span> (Character.isSupplementaryCodePoint(cp)) i += <span class="number">2</span>;</span><br><span class="line"><span class="keyword">else</span> i++;</span><br></pre></td></tr></table></figure>
+<p>可以使用下列语句实现回退操作：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">i--；</span><br><span class="line"><span class="keyword">if</span> (CharacterssSurrogate(s.charAt(i))) i--;</span><br><span class="line"><span class="keyword">int</span> cp = s.codePointAt(i);</span><br></pre></td></tr></table></figure>
+<p>更容易的办法是使用 codePoints 方法， 它会生成一个 int 值的“ 流”，每个 int 值对应一个码点。可以将它转换为一个数组再完成遍历：<br>int[] codePoints = str.codePoints().toArray()；<br>反之，要把一个码点数组转换为一个字符串， 可以使用构造函数：<br>String str = new String(codePoints, 0, codePoints.length);</p>
+<h5 id="String-API"><a href="#String-API" class="headerlink" title="String API"></a>String API</h5><p>Java 中的 String类包含了 50 多个方法。令人惊讶的是绝大多数都很有用， 可以设想使用的频繁非常高。</p>
+<h5 id="阅读联机-API-文档"><a href="#阅读联机-API-文档" class="headerlink" title="阅读联机 API 文档"></a>阅读联机 API 文档</h5><p>学会使用在线 API 文档十分重要，从中可以查阅到标准类库中的所有类和方法。API文档是 JDK 的一部分， 它是HTML 格式的。</p>
+<h5 id="构建字符串"><a href="#构建字符串" class="headerlink" title="构建字符串"></a>构建字符串</h5><p>如果需要用许多小段的字符串构建一个字符串， 那么应该按照下列步骤进行:</p>
+<ol>
+<li>构建一个空的字符串构建器：<br>StringBuilder builder = new StringBuilder();</li>
+<li>当每次需要添加一部分内容时， 就调用 append 方法:<br>bui1der.append(str);</li>
+<li>在需要构建字符串时就凋用 toString 方法， 将可以得到一个 String 对象， 其中包含了构建器中的字符序列:<br>String completedString = builder.toString();</li>
+</ol>
+<p>在 JDK5.0 中引入 StringBuilder 类。 这个类的前身是 StringBuffer, 其效率稍有些低， 但允许采用多线程的方式执行添加或删除字符的操作。如果所有字符串在一个单线程中编辑 ， 则应该用 StringBuilder 替代它。</p>
+<h3 id="输入输出"><a href="#输入输出" class="headerlink" title="输入输出"></a>输入输出</h3><h5 id="读取输入"><a href="#读取输入" class="headerlink" title="读取输入"></a>读取输入</h5><p>要想通过控制台进行输人，首先需要构造一个 Scanner 对象，并与“ 标准输人流” System.in 关联：<br>Scanner in = new Scanner(System.in);</p>
+<p>nextLine 方法将输入一行。要想读取一个单词（以空白符作为分隔符) ，就调用next方法。要想读取一个整数， 就调用 nextlnt 方法。要想读取下一个浮点数， 就调用 nextDouble 方法。</p>
+<p>Scanner 类定义在java.util 包中。 当使用的类不是定义在基本java.lang 包中时，一定要使用<br>import 指示字将相应的包加载进来。</p>
+<p>因为输入是可见的， 所以 Scanner 类不适用于从控制台读取密码。Java SE 6 特别引入了 Console 类实现这个目的。要想读取一个密码， 可以采用下列代码：<br>Console cons = System.console();<br>String username = cons.readLine(“User name: “)；<br>char[] passwd = cons.readPassword(“Password:”);<br>为了安全起见， 返回的密码存放在一维字符数组中， 而不是字符串中。在对密码进行处理之后，应该马上用一个填充值覆盖数组元素。</p>
+<h5 id="格式化输出"><a href="#格式化输出" class="headerlink" title="格式化输出"></a>格式化输出</h5><p>Java SE 5.0 沿用了 C 语言库函数中的 printf方法。</p>
+<p>每一个以 ％ 字符开始的格式说明符都用相应的参数替换。 格式说明符尾部的转换符将指示被格式化的数值类型。</p>
+<table>
+<thead>
+<tr>
+<th>转换符</th>
+<th>类型</th>
+<th>举例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>d</td>
+<td>十进制整数</td>
+<td>159</td>
+</tr>
+<tr>
+<td>x</td>
+<td>十六进制整数</td>
+<td>9f</td>
+</tr>
+<tr>
+<td>o</td>
+<td>八进制整数</td>
+<td>237</td>
+</tr>
+<tr>
+<td>f</td>
+<td>定点浮点数</td>
+<td>15.9</td>
+</tr>
+<tr>
+<td>e</td>
+<td>指数浮点数</td>
+<td>1.59e+01</td>
+</tr>
+<tr>
+<td>g</td>
+<td>通用浮点数</td>
+<td></td>
+</tr>
+<tr>
+<td>a</td>
+<td>十六进制浮点数</td>
+<td>0xl.fccdp3</td>
+</tr>
+<tr>
+<td>s</td>
+<td>字符串</td>
+<td>Hello</td>
+</tr>
+<tr>
+<td>c</td>
+<td>字符</td>
+<td>H</td>
+</tr>
+<tr>
+<td>b</td>
+<td>布尔</td>
+<td>True</td>
+</tr>
+<tr>
+<td>h</td>
+<td>散列码</td>
+<td>42628b2</td>
+</tr>
+<tr>
+<td>tx 或 Tx</td>
+<td>日期时间(T 强制大写）</td>
+<td>Date已经过时， 应当改为使用java.time 类</td>
+</tr>
+<tr>
+<td>%</td>
+<td>百分号</td>
+<td>%</td>
+</tr>
+<tr>
+<td>n</td>
+<td>与平台有关的行分隔符</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>还可以给出控制格式化输出的各种标志。</p>
+<table>
+<thead>
+<tr>
+<th>标志</th>
+<th>目的</th>
+<th>举例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>+</td>
+<td>打印正数和负数的符号</td>
+<td>+3333.33</td>
+</tr>
+<tr>
+<td>空格</td>
+<td>在正数之前添加空格</td>
+<td>| 3333.33|</td>
+</tr>
+<tr>
+<td>0</td>
+<td>数字前面补 0</td>
+<td>003333.33</td>
+</tr>
+<tr>
+<td>-</td>
+<td>左对齐</td>
+<td>|3333.33  |</td>
+</tr>
+<tr>
+<td>(</td>
+<td>将负数括在括号内</td>
+<td>( 3333.33 )</td>
+</tr>
+<tr>
+<td>,</td>
+<td>添加分组分隔符</td>
+<td>3,333.33</td>
+</tr>
+<tr>
+<td># ( 对于 f 格式）</td>
+<td>包含小数点</td>
+<td>3,333.</td>
+</tr>
+<tr>
+<td># (对于 x 或 0 格式）</td>
+<td>添加前缀 Ox 或 0</td>
+<td>Oxcafe</td>
+</tr>
+<tr>
+<td>$</td>
+<td>给定被格式化的参数索引。例如， ％1$d，％1$x 将以十进制和十六进制格式打印第 1 个参数</td>
+<td>159 9F</td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>格式化前面说明的数值。 例如，％d%&lt;x 以十进制和十六进制打印同一个数值</td>
+<td>159 9F</td>
+</tr>
+</tbody></table>
+<p>可以使用静态的 String.format 方法创建一个格式化的字符串， 而不打印输出。</p>
+<p>你可能会在遗留代码中看到Date 类和相关的格式化选项。格式包括两个字母， 以 t 开始，以表 中的任意字母结束。</p>
+<table>
+<thead>
+<tr>
+<th>转换符</th>
+<th>类型</th>
+<th>举例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>c</td>
+<td>完整的日期和时间</td>
+<td>Mon Feb 0918:05:19 PST2015</td>
+</tr>
+<tr>
+<td>F</td>
+<td>ISO 8601 日期</td>
+<td>2015-02-09</td>
+</tr>
+<tr>
+<td>D</td>
+<td>美国格式的日期 （月 / 日 / 年）</td>
+<td>02/09/2015</td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+</tbody></table>
+<p>可以采用一个格式化的字符串指出要被格式化的参数索引。索引必须紧跟在 ％ 后面， 并以 $ 终止。</p>
+<p>参数索引值从 1 开始，而不是从 0 开始，%1$… 对第1个参数格式化这就避免了与0标志混淆.</p>
+<p>printf 格式说明符的语法图：<br>% 参数索引值 $ 标志 宽度 . 精度 转换字符<br>% 参数索引值 $ 标志 宽度 t 转换字符</p>
+<p>许多格式化规则是本地环境特有的。例如，在德国，组分隔符是句号而不是逗号，Monday 被格式化为 Montag。</p>
+<h5 id="文件输入与输出"><a href="#文件输入与输出" class="headerlink" title="文件输入与输出"></a>文件输入与输出</h5><p>要想对文件进行读取，就需要一个用 File 对象构造一个 Scanner 对象，如下所示：<br>Scanner in = new Scanner(Paths.get(“niyflle.txt”), “UTF-8”);<br>如果文件名中包含反斜杠符号，就要记住在每个反斜杠之前再加一个额外的反斜杠：<br><code>“ c:\\mydirectory\\myfile.txt ”</code> 。<br>如果省略字符编码， 则会使用运行这个 Java 程序的机器的“ 默认编码”。 这不是一个好主意，如果在不同的机器上运行这个程序， 可能会有不同的表现。<br>可以构造一个带有字符串参数的 Scanner, 但这个 Scanner 将字符串解释为数据，而不是文件名。</p>
+<p>要想写入文件， 就需要构造一个 PrintWriter 对象。在构造器中，只需要提供文件名：<br>PrintWriter out = new PrintWriter(“myfile.txt”, “UTF-8”);<br>如果文件不存在，创建该文件。 可以使用 print、 println 以及 printf命令。</p>
+<p>当指定一个相对文件名时，文件位于 Java 虚拟机启动路径的相对位置。如果使用集成开发环境， 那么启动路<br>径将由 IDE 控制。 可以使用下面的调用方式找到路径的位置：<br>String dir = System.getProperty(“user.dir”);<br>如果觉得定位文件比较烦恼， 则可以考虑使用绝对路径。</p>
+<p>如果用一个不存在的文件构造一个 Scanner, 或者用一个不能被创建的文件名构造一个 PrintWriter,<br>那么就会发生异常。Java 编译器认为这些异常比“ 被零除” 异常更严重，应该告知编译器： 已经知道有可能出现“ 输人 / 输出” 异常。这需要在包含文件输入输出方法中用 throws 子句标记：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	Scanner in = <span class="keyword">new</span> Scanner(Paths.get(<span class="string">&quot;myfi1e.txt&quot;</span>), <span class="string">&quot;UTF-8&quot;</span>);</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当采用命令行方式启动一个程序时， 可以利用 Shell 的重定向语法将任意文件关联到 System.in 和 System.out:<br>java MyProg &lt; rayfile.txt &gt; output.txt<br>这样，就不必担心处理 IOException 异常了。</p>
+<h3 id="控制流程"><a href="#控制流程" class="headerlink" title="控制流程"></a>控制流程</h3><p>Java 使用条件语句和循环结构确定控制流程。</p>
+<h5 id="块作用域"><a href="#块作用域" class="headerlink" title="块作用域"></a>块作用域</h5><p>块（即复合语句）是指由一对大括号括起来的若干条简单的 Java 语句。块确定了变量的作用域。一个块可以嵌套在另一个块中。</p>
+<p>不能在嵌套的两个块中声明同名的变量。</p>
+<h5 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h5><p>条件语句的格式为：<br>if (condition) statement<br>希望在某个条件为真时执行多条语句。在这种情况下， 应该使用块语句 (block statement)。</p>
+<p>更一般的条件语句格式 :<br>if (condition) statement1 else statementi2<br>else 子句与最邻近的 if 构成一组。</p>
+<h5 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h5><p>一般格式为：<br>while ( condition ) statement<br>while 循环语句首先检测循环条件。因此， 循环体中的代码有可能不被执行。如果希望循环体至少执行一次， 则应该将检测条件放在最后:<br>do statement while (condition);</p>
+<h5 id="确定循环"><a href="#确定循环" class="headerlink" title="确定循环"></a>确定循环</h5><p>for 语句的 3 个部分应该对同一个计数器变量进行初始化、 检测和更新。若不遵守这一规则，编写的循环常常晦涩难懂。</p>
+<p>在循环中，检测两个浮点数是否相等需要格外小心，由于舍入的误差， 最终可能得不到精确值，循环可能永远不会结束。</p>
+<p>如果希望在 for 循环体之外使用循环计数器的最终值，就要确保这个变量在循环语句的前面且在外部声明。</p>
+<h5 id="多重选择：switch-语句"><a href="#多重选择：switch-语句" class="headerlink" title="多重选择：switch 语句"></a>多重选择：switch 语句</h5><p>switch语句将从与选项值相匹配的 case 标签处开始执行直到遇到 break 语句，或者执行到 switch 语句的结束处为止。如果没有相匹配的 case 标签， 而有 default 子句， 就执行这个子句。</p>
+<p>如果在 case 分支语句的末尾没有 break 语句， 那么就会接着执行下一个 case 分支语句。这种情况相当危险， 常常会引发错误。为此，我们在程序中从不使用 switch 语句。</p>
+<p>如果你比我们更喜欢 switch 语句， 编译代码时可以考虑加上 -Xlint:fallthrough 选项：<br>javac -Xlint:fallthrough Test.java<br>这样一来， 如果某个分支最后缺少一个 break 语句， 编译器就会给出一个警告消息。</p>
+<p>如果你确实正是想使用这种“ 直通式”（fallthrough) 行为， 可以为其外围方法加一个标注@SuppressWarnings(“fallthrough”)。 这样就不会对这个方法生成警告了 。</p>
+<p>case 标签可以是： </p>
+<ol>
+<li>类型为 char、byte、 short 或 int 的常量表达式。 </li>
+<li>枚举常量。 </li>
+<li>从 Java SE 7开始， case 标签还可以是字符串字面量。</li>
+</ol>
+<h5 id="中断控制流程语句"><a href="#中断控制流程语句" class="headerlink" title="中断控制流程语句"></a>中断控制流程语句</h5><p>尽管 Java 的设计者将 goto 作为保留字，但实际上并没有打算在语言中使用它。</p>
+<p>无限制地使用 goto 语句确实是导致错误的根源，但在有些情况下，偶尔使用 goto 跳出循环还是有益处的。Java 设计者同意这种看法，在Java语言中增加了一条带标签的 break， 以此来支持这种程序设计风格。</p>
+<p>带标签的 break语句，标签必须放在希望跳出的语句块前， 并且必须紧跟一个冒号，通过执行带标签的 break 跳转到带标签的语句块末尾。可以将标签应用到任何语句中，只能跳出语句块，而不能跳入语句块。</p>
+<p>continue 语句越过了当前循环体的剩余部分， 立刻跳到循环首部。还有一种带标签的 continue 语句，将跳到与标签匹配的循环首部。</p>
+<h3 id="大数值"><a href="#大数值" class="headerlink" title="大数值"></a>大数值</h3><p>java.math 包中的两个类：Biglnteger 和 BigDecimal 可以处理包含任意长度数字序列的数值。Biglnteger 类实现了任意精度的整数运算， BigDecimal 实现了任意精度的浮点数运算。使用静态的 valueOf方法可以将普通的数值转换为大数值。大数值使用 add 和 multiply 方法进行运算。</p>
+<h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><p>数组是一种数据结构， 用来存储同一类型值的集合。通过一个整型下标可以访问数组中的每一个值。在声明数组变量时， 需要指出数组类型 （ 数据元素类型紧跟 []) 和数组变量的名字。使用 new 运算符创建数组。</p>
+<p>可以使用下面两种形式声明数组 int[] a; 或 int a[]；大多数 Java 应用程序员喜欢使用第一种风格， 因为它将类型 int[] ( 整型数组）与变量名分开了。</p>
+<p>创建一个数字数组时， 所有元素都初始化为 0，boolean 数组的元素会初始化为 false， 对象数组的元素则初始化为 null。</p>
+<p>要想获得数组中的元素个数，可以使用 array.length。</p>
+<p>一旦创建了数组， 就不能再改变它的大小（尽管可以改变每一个数组元素）。 如果经常需要在运行过程中扩展数组的大小， 就应该使用另一种数据结构—数组列表（ array list )。</p>
+<h5 id="for-each-循环"><a href="#for-each-循环" class="headerlink" title="for each 循环"></a>for each 循环</h5><p>for each 循环语句的循环变量将会遍历数组中的每个元素， 而不需要使用下标值：<br>for (variable : collection) statement<br>collection 这一集合表达式必须是一个数组或者是一个实现了 Iterable 接口的类对象。</p>
+<h5 id="数组初始化以及匿名数组"><a href="#数组初始化以及匿名数组" class="headerlink" title="数组初始化以及匿名数组"></a>数组初始化以及匿名数组</h5><p>创建数组对象并同时赋予初始值的简化书写形式:<br>int[] a = {…};</p>
+<p>初始化一个匿名的数组：<br>new int[] {…}<br>使用这种语法形式可以在不创建新变量的情况下重新初始化一个数组：<br>a = new int[] {…}</p>
+<p>在 Java 中， 允许数组长度为 0。</p>
+<h5 id="数组拷贝"><a href="#数组拷贝" class="headerlink" title="数组拷贝"></a>数组拷贝</h5><p>在 Java 中，允许将一个数组变量拷贝给另一个数组变量。这时， 两个变量将引用同一个数组。</p>
+<p>如果希望将一个数组的所有值拷贝到一个新的数组中去，就要使用 Arrays 类的 copyOf方法。第 2 个参数是新数组的长度。这个方法通常用来增加数组的大小。如果长度小于原始数组的长度，则只拷贝最前面的数据元素。</p>
+<h5 id="命令行参数"><a href="#命令行参数" class="headerlink" title="命令行参数"></a>命令行参数</h5><p>每一个 Java 应用程序都有一个带 String arg[] 参数的 main 方法。这个参数表明 main 方法将接收一个字符串数组， 也就是命令行参数。</p>
+<h5 id="数组排序"><a href="#数组排序" class="headerlink" title="数组排序"></a>数组排序</h5><p>要想对数值型数组进行排序， 可以使用 Arrays 类中的 sort 方法，这个方法使用了优化的快速排序算法。</p>
+<h5 id="多维数组"><a href="#多维数组" class="headerlink" title="多维数组"></a>多维数组</h5><p>声明一个二维数组：<code>double[][] a</code>;<br>初始化：<code>a = new double[i][j]</code>:<br>使用简化的书写形式对多维数组进行初始化：<code>int[][] a = &#123; &#123;...&#125;, ... &#125;</code>；<br>访问元素：<code>a[i][j]</code>。</p>
+<p>for each 循环语句不能自动处理二维数组的每一个元素。它是按照一维教组处理的，要想访问二维教组 a 的所有元素， 需要使用两个嵌套的循环：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">double</span>[] row : a)</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">double</span> value : row)</span><br><span class="line">		<span class="keyword">do</span> something with value</span><br></pre></td></tr></table></figure>
+<p>要想快速地打印一个二维数组的数据元素列表， 可以调用：System.out.println(Arrays.deepToString(a));</p>
+<h5 id="不规则数组"><a href="#不规则数组" class="headerlink" title="不规则数组"></a>不规则数组</h5><p>Java 实际上没有多维数组，只有一维数组。多维数组被解释为“ 数组的数组”。可以方便地构造一个“ 不规则” 数组， 即数组的每一行有不同的长度。</p>
+<p>要想创建一个不规则的数组， 首先需要分配一个具有所含行数的数组：<br>int[][] a = new int[NMAX + 1] [] ;<br>接下来， 分配这些行。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>vane
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://vanehsiung.netlify.app/2021/04/26/03Java%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84/" title="03Java的基本程序设计结构">https://vanehsiung.netlify.app/2021/04/26/03Java的基本程序设计结构/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9lbg=="><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Programming/" rel="tag"># Programming</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/04/26/02Java%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%8E%AF%E5%A2%83/" rel="prev" title="02Java程序设计环境">
+                  <i class="fa fa-chevron-left"></i> 02Java程序设计环境
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/04/26/04%E5%AF%B9%E8%B1%A1%E4%B8%8E%E7%B1%BB/" rel="next" title="04对象与类">
+                  04对象与类 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Vane Hsiung</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZw==">NexT.Gemini</span>
+  </div>
+
+<script src="https://cdn.jsdelivr.net/gh/suyin-long/activate-power-mode@1.0/dist/activate-power-mode.js"></script>
+<script>
+POWERMODE.colorful = true; // make power mode colorful
+POWERMODE.shake = false; // turn off shake
+document.body.addEventListener('input', POWERMODE);
+</script>
+
+
+
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/@next-theme/pjax@0.4.0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '.page-configurations',
+    '.main-inner',
+    '.post-toc-wrap',
+    '.languages',
+    '.pjax'
+  ],
+  analytics: false,
+  cacheBust: false,
+  scrollRestoration: false,
+  scrollTo: !CONFIG.bookmark.enable
+});
+
+document.addEventListener('pjax:success', () => {
+  pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  const hasTOC = document.querySelector('.post-toc');
+  document.querySelector('.sidebar-inner').classList.toggle('sidebar-nav-active', hasTOC);
+  document.querySelector(hasTOC ? '.sidebar-nav-toc' : '.sidebar-nav-overview').click();
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+<script data-pjax>
+if (document.querySelectorAll('.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8.8.4/dist/mermaid.min.js', () => {
+    mermaid.init({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    }, '.mermaid');
+  }, window.mermaid);
+}
+</script>
+
+  <script>
+    NProgress.configure({
+      showSpinner: false
+    });
+    NProgress.start();
+    document.addEventListener('readystatechange', () => {
+      if (document.readyState === 'interactive') {
+        NProgress.inc(0.8);
+      }
+      if (document.readyState === 'complete') {
+        NProgress.done();
+      }
+    });
+    document.addEventListener('pjax:send', () => {
+      NProgress.start();
+    });
+    document.addEventListener('pjax:success', () => {
+      NProgress.done();
+    });
+  </script>
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    <div class="pjax">
+
+
+    </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>

@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="uXmcnam1s6y-h_YGHukGYhDQ8zMBAOHTHrJ6RfsDN6I">
+  <meta name="msvalidate.01" content="687D92122214353CF2ACE3AEA2977A9C">
+  <meta name="baidu-site-verification" content="code-lURpXjbL6l">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Architects+Daughter:300,300italic,400,400italic,700,700italic%7CShare+Tech+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css">
+  <script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"vanehsiung.netlify.app","root":"/","images":"/images","scheme":"Gemini","version":"8.2.0","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+<meta name="description" content="读者可能已经很熟悉操作系统中的多任务（multitasking)：在同一刻运行多个程序的能力。并发执行的进程数目并不是由 CPU 数目制约的。操作系统将 CPU 的时间片分配给每一个进程， 给人并行处理的感觉。 多线程程序在较低的层次上扩展了多任务的概念：一个程序同时执行多个任务。通常，每一个任务称为一个线程（ thread), 它是线程控制的简称。可以同时运行一个以上线程的程序称为多线程程序（m">
+<meta property="og:type" content="article">
+<meta property="og:title" content="14并发">
+<meta property="og:url" content="https://vanehsiung.netlify.app/2021/04/26/14%E5%B9%B6%E5%8F%91/index.html">
+<meta property="og:site_name" content="vBlog">
+<meta property="og:description" content="读者可能已经很熟悉操作系统中的多任务（multitasking)：在同一刻运行多个程序的能力。并发执行的进程数目并不是由 CPU 数目制约的。操作系统将 CPU 的时间片分配给每一个进程， 给人并行处理的感觉。 多线程程序在较低的层次上扩展了多任务的概念：一个程序同时执行多个任务。通常，每一个任务称为一个线程（ thread), 它是线程控制的简称。可以同时运行一个以上线程的程序称为多线程程序（m">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-04-26T02:24:25.000Z">
+<meta property="article:modified_time" content="2021-04-26T04:02:10.769Z">
+<meta property="article:author" content="vane">
+<meta property="article:tag" content="Programming">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://vanehsiung.netlify.app/2021/04/26/14%E5%B9%B6%E5%8F%91/">
+
+
+<script data-pjax class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+<title>14并发 | vBlog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=sG-KKYP310LB0"></script>
+    <script data-pjax>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'sG-KKYP310LB0');
+      }
+    </script>
+
+  <script data-pjax>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?f3032f7a989f15a8faf91348571efe03";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="vBlog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">vBlog</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Vane Hsiung's Blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fas fa-link fa-fw"></i>Links</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+
+ 
+<script>
+  var OriginTitile = document.title;
+  var titleTime;
+  document.addEventListener("visibilitychange", function() {
+    if (document.hidden) {
+      document.title = "(つェ⊂)我藏好了哦~";
+      clearTimeout(titleTime);
+    } else {
+      document.title = "(*´∇｀*) 被你发现啦~";
+      titleTime = setTimeout(function() {
+        document.title = OriginTitile;
+      }, 2000);
+    }
+  });
+</script>
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%BA%BF%E7%A8%8B"><span class="nav-text">什么是线程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E7%BA%BF%E7%A8%8B%E7%BB%99%E5%85%B6%E4%BB%96%E4%BB%BB%E5%8A%A1%E6%8F%90%E4%BE%9B%E6%9C%BA%E4%BC%9A"><span class="nav-text">使用线程给其他任务提供机会</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%AD%E6%96%AD%E7%BA%BF%E7%A8%8B"><span class="nav-text">中断线程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81"><span class="nav-text">线程状态</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%96%B0%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B"><span class="nav-text">新创建线程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8F%AF%E8%BF%90%E8%A1%8C%E7%BA%BF%E7%A8%8B"><span class="nav-text">可运行线程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A2%AB%E9%98%BB%E5%A1%9E%E7%BA%BF%E7%A8%8B%E5%92%8C%E7%AD%89%E5%BE%85%E7%BA%BF%E7%A8%8B"><span class="nav-text">被阻塞线程和等待线程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A2%AB%E7%BB%88%E6%AD%A2%E7%9A%84%E7%BA%BF%E7%A8%8B"><span class="nav-text">被终止的线程</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E5%B1%9E%E6%80%A7"><span class="nav-text">线程属性</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E4%BC%98%E5%85%88%E7%BA%A7"><span class="nav-text">线程优先级</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%88%E6%8A%A4%E7%BA%BF%E7%A8%8B"><span class="nav-text">守护线程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9C%AA%E6%8D%95%E8%8E%B7%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E5%99%A8"><span class="nav-text">未捕获异常处理器</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%8C%E6%AD%A5"><span class="nav-text">同步</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AB%9E%E4%BA%89%E6%9D%A1%E4%BB%B6%E7%9A%84%E4%B8%80%E4%B8%AA%E4%BE%8B%E5%AD%90"><span class="nav-text">竞争条件的一个例子</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AB%9E%E4%BA%89%E6%9D%A1%E4%BB%B6%E8%AF%A6%E8%A7%A3"><span class="nav-text">竞争条件详解</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%94%81%E5%AF%B9%E8%B1%A1"><span class="nav-text">锁对象</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E5%AF%B9%E8%B1%A1"><span class="nav-text">条件对象</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#synchronized-%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-text">synchronized 关键字</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%90%8C%E6%AD%A5%E9%98%BB%E5%A1%9E"><span class="nav-text">同步阻塞</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%9B%91%E8%A7%86%E5%99%A8%E6%A6%82%E5%BF%B5"><span class="nav-text">监视器概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Volatile-%E5%9F%9F"><span class="nav-text">Volatile 域</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#final-%E5%8F%98%E7%BD%AE"><span class="nav-text">final 变置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8E%9F%E5%AD%90%E6%80%A7"><span class="nav-text">原子性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%AD%BB%E9%94%81"><span class="nav-text">死锁</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F"><span class="nav-text">线程局部变量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%94%81%E6%B5%8B%E8%AF%95%E4%B8%8E%E8%B6%85%E6%97%B6"><span class="nav-text">锁测试与超时</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AF%BB-%E5%86%99%E9%94%81"><span class="nav-text">读 &#x2F; 写锁</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BC%83%E7%94%A8-stop-%E5%92%8C-suspend-%E6%96%B9%E6%B3%95"><span class="nav-text">为什么弃用 stop 和 suspend 方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%98%BB%E5%A1%9E%E9%98%9F%E5%88%97"><span class="nav-text">阻塞队列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E7%9A%84%E9%9B%86%E5%90%88"><span class="nav-text">线程安全的集合</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%AB%98%E6%95%88%E7%9A%84%E6%98%A0%E5%B0%84%E3%80%81%E9%9B%86%E5%92%8C%E9%98%9F%E5%88%97"><span class="nav-text">高效的映射、集和队列</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%98%A0%E5%B0%84%E6%9D%A1%E7%9B%AE%E7%9A%84%E5%8E%9F%E5%AD%90%E6%9B%B4%E6%96%B0"><span class="nav-text">映射条目的原子更新</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AF%B9%E5%B9%B6%E5%8F%91%E6%95%A3%E5%88%97%E6%98%A0%E5%B0%84%E7%9A%84%E6%89%B9%E6%93%8D%E4%BD%9C"><span class="nav-text">对并发散列映射的批操作</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B9%B6%E5%8F%91%E9%9B%86%E8%A7%86%E5%9B%BE"><span class="nav-text">并发集视图</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%86%99%E6%95%B0%E7%BB%84%E7%9A%84%E6%8B%B7%E8%B4%9D"><span class="nav-text">写数组的拷贝</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B9%B6%E8%A1%8C%E6%95%B0%E7%BB%84%E7%AE%97%E6%B3%95"><span class="nav-text">并行数组算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BE%83%E6%97%A9%E7%9A%84%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E9%9B%86%E5%90%88"><span class="nav-text">较早的线程安全集合</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Callable-%E4%B8%8E-Future"><span class="nav-text">Callable 与 Future</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%A7%E8%A1%8C%E5%99%A8"><span class="nav-text">执行器</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="nav-text">线程池</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8E%A7%E5%88%B6%E4%BB%BB%E5%8A%A1%E7%BB%84"><span class="nav-text">控制任务组</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Fork-Join-%E6%A1%86%E6%9E%B6"><span class="nav-text">Fork-Join 框架</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8F%AF%E5%AE%8C%E6%88%90-Future"><span class="nav-text">可完成 Future</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%8C%E6%AD%A5%E5%99%A8"><span class="nav-text">同步器</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BF%A1%E5%8F%B7%E9%87%8F"><span class="nav-text">信号量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%80%92%E8%AE%A1%E6%97%B6%E9%97%A8%E6%A0%93"><span class="nav-text">倒计时门栓</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%9A%9C%E6%A0%85"><span class="nav-text">障栅</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BA%A4%E6%8D%A2%E5%99%A8"><span class="nav-text">交换器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%90%8C%E6%AD%A5%E9%98%9F%E5%88%97"><span class="nav-text">同步队列</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E4%B8%8E-Swing"><span class="nav-text">线程与 Swing</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E8%80%97%E6%97%B6%E7%9A%84%E4%BB%BB%E5%8A%A1"><span class="nav-text">运行耗时的任务</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-Swing-%E5%B7%A5%E4%BD%9C%E7%BA%BF%E7%A8%8B"><span class="nav-text">使用 Swing 工作线程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8D%95%E4%B8%80%E7%BA%BF%E7%A8%8B%E8%A7%84%E5%88%99"><span class="nav-text">单一线程规则</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="vane"
+      src="/uploads/avatar.png">
+  <p class="site-author-name" itemprop="name">vane</p>
+  <div class="site-description" itemprop="description">"Life is 10% what happens to you and 90% how you react to it."</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL1ZhbmVIc2l1bmc=" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;VaneHsiung"><i class="fab fa-github fa-fw"></i>GitHub</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOm1pY3JvZnV0Y3NAb3V0bG9vay5jb20=" title="E-Mail → mailto:microfutcs@outlook.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</span>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9lbg=="><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://vanehsiung.netlify.app/2021/04/26/14%E5%B9%B6%E5%8F%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="vane">
+      <meta itemprop="description" content=""Life is 10% what happens to you and 90% how you react to it."">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="vBlog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          14并发
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-04-26 10:24:25 / Modified: 12:02:10" itemprop="dateCreated datePublished" datetime="2021-04-26T10:24:25+08:00">2021-04-26</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>25k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>23 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>读者可能已经很熟悉操作系统中的多任务（multitasking)：在同一刻运行多个程序的能力。并发执行的进程数目并不是由 CPU 数目制约的。操作系统将 CPU 的时间片分配给每一个进程， 给人并行处理的感觉。</p>
+<p>多线程程序在较低的层次上扩展了多任务的概念：一个程序同时执行多个任务。通常，每一个任务称为一个线程（ thread), 它是线程控制的简称。可以同时运行一个以上线程的程序称为多线程程序（multithreaded)。</p>
+<p>本质的区别在于每个进程拥有自己的一整套变量， 而线程则共享数据。这有些风险。然而，共享变量使线程之间的通信比进程之间的通信更有效、 更容易。 此外， 在有些操作系统中，与进程相比较， 线程更“ 轻量级”， 创建、 撤销一个线程比启动新进程的开销要小得多。</p>
+<a id="more"></a>
+
+<h3 id="什么是线程"><a href="#什么是线程" class="headerlink" title="什么是线程"></a>什么是线程</h3><p>sleep 是 Thread 类的静态方法，用于暂停当前线程的活动。sleep 方法可以抛出一个InterruptedException 异常。</p>
+<p>单线程完成一个非常耗时的工作时经常会阻塞其他任务，无法执行中断操作，失去对程序的控制权。</p>
+<h5 id="使用线程给其他任务提供机会"><a href="#使用线程给其他任务提供机会" class="headerlink" title="使用线程给其他任务提供机会"></a>使用线程给其他任务提供机会</h5><p>在多线程中，由于每个线程都有机会得以运行（并行），当用户点击 Close 按钮时，事件调度线程将有机会关注到这个事件， 并处理“ 关闭” 这一动作。如果需要执行一个比较耗时的任务，应当并发地运行任务。</p>
+<p>在一个单独的线程中执行一个任务的过程：</p>
+<ol>
+<li>将任务代码移到实现了 Runnable 接口的类的 run 方法中。Runnable 是一个函数式接口：Runnable r = () -&gt; { task code };</li>
+<li>由 Runnable 创建一个 Thread 对象：Thread t = new Thread(r);</li>
+<li>启动线程：t.start();</li>
+</ol>
+<p>也可以通过构建一个 Thread 类的子类定义一个线程，然后， 构造一个子类的对象， 并调用 start 方法。</p>
+<p>不要调用 Thread 类或 Runnable 对象的 run 方法。 直接调用 run 方法， 只会执行同一个线程中的任务， 而不会启动新线程。应该调用 Thread.start 方法。这个方法将创建一个执行 ran 方法的新线程。</p>
+<h3 id="中断线程"><a href="#中断线程" class="headerlink" title="中断线程"></a>中断线程</h3><p>线程的 run 方法执行方法体中最后一条语句后， 并经由执行 return 语句返冋时，或者出现了在方法中没有捕获的异常时，线程将终止。</p>
+<p>没有可以强制线程终止的方法。然而，interrupt 方法可以用来请求终止线程。</p>
+<p>当对一个线程调用interrupt 方法时，线程的中断状态将被置位。这是每一个线程都具有的 boolean 标志。</p>
+<p>要想弄清中断状态是否被置位，首先调用静态的 Thread.currentThread 方法获得当前线程， 然后调用 islnterrupted 方法。如果线程被阻塞， 就无法检测中断状态。当在一个被阻塞的线程（调用 sleep 或 wait) 上调用 interrupt 方法时，阻塞调用将会被Interrupted Exception 异常中断（存在不能被中断的阻塞 I/O 调用， 应该考虑选择可中断的调用）。</p>
+<p>没有任何语言方面的需求要求一个被中断的线程应该终止。中断一个线程不过是引起它的注意。被中断的线程可以决定如何响应中断。</p>
+<p>如果在中断状态被置位时调用 sleep 方法，它不会休眠。相反，它将清除这一状态并拋出 InterruptedException。</p>
+<p>Interrupted 方法是一个静态方法， 它检测当前的线程是否被中断的同时会清除该线程的中断状态。islnterrupted 方法是一个实例方法，只能检验是否有线程被中断。</p>
+<p>不要抑制InterruptedException 异常。两种合理的选择：</p>
+<ul>
+<li>在 catch 子句中调用 Thread.currentThread().interrupt() 来设置中断状态。于是，调用者可以对其进行检测。</li>
+<li>用 throws InterruptedException 标记你的方法， 不采用 try语句块捕获异常。于是，调用者（或者， 最终的 run 方法）可以捕获这一异常。</li>
+</ul>
+<h3 id="线程状态"><a href="#线程状态" class="headerlink" title="线程状态"></a>线程状态</h3><p>线程可以有如下 6 种状态：</p>
+<ul>
+<li>New (新创建）</li>
+<li>Runnable (可运行）</li>
+<li>Blocked (被阻塞）</li>
+<li>Waiting (等待）</li>
+<li>Timed waiting (计时等待）</li>
+<li>Terminated (被终止）</li>
+</ul>
+<p>要确定一个线程的当前状态， 可调用 getState 方法。</p>
+<h5 id="新创建线程"><a href="#新创建线程" class="headerlink" title="新创建线程"></a>新创建线程</h5><p>当用 new 操作符创建一个新线程时， 该线程还没有开始运行。这意味着它的状态是 new。</p>
+<h5 id="可运行线程"><a href="#可运行线程" class="headerlink" title="可运行线程"></a>可运行线程</h5><p>一旦调用 start 方法，线程处于 runnable 状态。一个可运行的线程可能正在运行也可能没有运行， 这取决于操作系统给线程提供运行的时间。</p>
+<p>线程调度的细节依赖于操作系统提供的服务。抢占式调度系统给每一个可运行线程一个时间片来执行任务。当时间片用完，操作系统剥夺该线程的运行权， 并给另一个线程运行机会。当选择下一个线程时， 操作系统考虑线程的优先级。</p>
+<p>在具有多个处理器的机器上，每一个处理器运行一个线程， 可以有多个线程并行运行。当然，如果线程的数目多于处理器的数目， 调度器依然采用时间片机制。</p>
+<h5 id="被阻塞线程和等待线程"><a href="#被阻塞线程和等待线程" class="headerlink" title="被阻塞线程和等待线程"></a>被阻塞线程和等待线程</h5><p>当线程处于被阻塞或等待状态时，它暂时不活动。它不运行任何代码且消耗最少的资源。直到线程调度器重新激活它。细节取决于它是怎样达到非活动状态的。</p>
+<ul>
+<li>当一个线程试图获取一个内部的对象锁， 而该锁被其他线程持有， 则该线程进人阻塞状态。当所有其他线程释放该锁，并且线程调度器允许本线程持有它的时候，该线程将变成非阻塞状态。</li>
+<li>当线程等待另一个线程通知调度器一个条件时，它自己进入等待状态。在调用 Object.wait 方法或 Thread.join 方法， 或者是等待 java.util.concurrent 库中的 Lock 或 Condition 时， 就会出现这种情况。</li>
+<li>有几个方法有一个超时参数。调用它们导致线程进人计时等待（ timed waiting ) 状态。这一状态将一直保持到超时期满或者接收到适当的通知。带有超时参数的方法有Thread.sleep 和 Object.wait、Thread.join、 Lock.tryLock 以及 Condition.await 的计时版。</li>
+</ul>
+<h5 id="被终止的线程"><a href="#被终止的线程" class="headerlink" title="被终止的线程"></a>被终止的线程</h5><p>线程因如下两个原因之一而被终止：</p>
+<ul>
+<li>因为 run 方法正常退出而自然死亡。</li>
+<li>因为一个没有捕获的异常终止了run方法而意外死亡。</li>
+</ul>
+<p>可以调用线程的 stop 方法杀死一个线程。 该方法抛出 ThreadDeath 错误对象,由此杀死线程。但是，stop 方法已过时， 不要在自己的代码中调用这个方法。</p>
+<p>线程状态：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">新创建 -开始-&gt; 可运行 -运行方法exits-&gt; 被终止</span><br><span class="line">可运行 -请求锁-&gt; 被阻塞 -得到锁-&gt; 可运行</span><br><span class="line">可运行 -等待通知-&gt; 等待 -出现通知-&gt; 可运行</span><br><span class="line">可运行 -等待超时或通知-&gt; 计时等待 -出现超时或通知-&gt; 可运行</span><br></pre></td></tr></table></figure>
+<h3 id="线程属性"><a href="#线程属性" class="headerlink" title="线程属性"></a>线程属性</h3><h5 id="线程优先级"><a href="#线程优先级" class="headerlink" title="线程优先级"></a>线程优先级</h5><p>在 Java 程序设计语言中，每一个线程有一个优先级。默认情况下， 一个线程继承它的父线程的优先级。可以用 setPriority 方法提高或降低任何一个线程的优先级。可以将优先级设置为在 MIN_PRIORITY (在 Thread 类中定义为 1 ) 与 MAX_PRIORITY (定义为 10 ) 之间的任何值。NORM_PRIORITY 被定义为 5。</p>
+<p>每当线程调度器有机会选择新线程时， 它首先选择具有较高优先级的线程。但是，线程优先级是高度依赖于系统的。当虚拟机依赖于宿主机平台的线程实现机制时， Java 线程的优先级被映射到宿主机平台的优先级上， 优先级个数也许更多，也许更少。</p>
+<p>不要将程序构建为功能的正确性依赖于优先级。如果有几个高优先级的线程没有进入非活动状态， 低优先级的线程可能永远也不能执行（饿死）。</p>
+<h5 id="守护线程"><a href="#守护线程" class="headerlink" title="守护线程"></a>守护线程</h5><p>可以通过调用 t.setDaemon(true); 将线程转换为守护线程（daemon thread）。守护线程的唯一用途是为其他线程提供服务。当只剩下守护线程时， 虚拟机就退出了。守护线程应该永远不去访问固有资源，因为它会在任何时候甚至在一个操作的中间发生中断。</p>
+<h5 id="未捕获异常处理器"><a href="#未捕获异常处理器" class="headerlink" title="未捕获异常处理器"></a>未捕获异常处理器</h5><p>线程的 run方法不能抛出任何受查异常。在线程死亡之前， 异常会被传递到一个用于未捕获异常的处理器。该处理器必须属于一个实现 Thread.UncaughtExceptionHandler 接口的类。这个接口只有—个方法：<br>void uncaughtException(Thread t, Throwable e)<br>可以用 setUncaughtExceptionHandler 方法为任何线程安装一个处理器。也可以用 Thread类的静态方法 setDefaultUncaughtExceptionHandler 为所有线程安装一个默认的处理器。如果不安装默认的处理器， 默认的处理器为空。 如果不为独立的线程安装处理器，此时的处理器就是该线程的 ThreadGroup 对象。ThreadGroup 类实现 Thread.UncaughtExceptionHandler 接口。它的 uncaughtException 方<br>法做如下操作：</p>
+<ol>
+<li>如果该线程组有父线程组， 那么父线程组的 uncaughtException 方法被调用。</li>
+<li>否则， 如果 Thread.getDefaultExceptionHandler 方法返回一个非空的处理器， 则调用该处理器。</li>
+<li>否则，如果 Throwable 是 ThreadDeath 的一个实例， 什么都不做。</li>
+<li>否则，线程的名字以及 Throwable 的栈轨迹被输出到 System.err 上。</li>
+</ol>
+<p>线程组是一个可以统一管理的线程集合。默认情况下，创建的所有线程属于相同的线程组， 但是， 也可能会建立其他的组。现在引入了更好的特性用于线程集合的操作，所以建议不要在自己的程序中使用线程组。</p>
+<h3 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h3><p>两个或两个以上的线程需要共享对同一数据的存取。根据各线程访问数据的次序，可能会产生讹误的对象。这样一个情况通常称为竞争条件（race condition）。</p>
+<h5 id="竞争条件的一个例子"><a href="#竞争条件的一个例子" class="headerlink" title="竞争条件的一个例子"></a>竞争条件的一个例子</h5><p>为了避免多线程引起的对共享数据的讹误，须学习如何同步存取。</p>
+<h5 id="竞争条件详解"><a href="#竞争条件详解" class="headerlink" title="竞争条件详解"></a>竞争条件详解</h5><p>问题在于不是原子操作。操作命令是由几条指令组成的， 执行它们的线程可以在任何一条指令点上被中断。如果能够确保线程在失去控制之前方法运行完成， 那么对象的状态永远不会出现讹误。</p>
+<p>运行行命令<br>javap -c -v Bank<br>对 Bank.class 文件进行反编译。</p>
+<h5 id="锁对象"><a href="#锁对象" class="headerlink" title="锁对象"></a>锁对象</h5><p>有两种机制防止代码块受并发访问的干扰。Java语言提供一个 synchronized 关键字达到这一目的，并且 Java SE 5.0 引入了 ReentrantLock 类。synchronized 关键字自动提供一个锁以及相关的“ 条件”。</p>
+<p>用 ReentrantLock 保护代码块的基本结构如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">myLock.lock(); <span class="comment">// a ReentrantLock object</span></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">	critical section</span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">	myLock.unlock（）；</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这一结构确保任何时刻只有一个线程进人临界区。一旦一个线程封锁了锁对象， 其他任何线程都无法通过 lock 语句。当其他线程调用 lock 时，它们被阻塞，直到第一个线程释放锁对象。</p>
+<p>把解锁操作括在 finally 子句之内是至关重要的。如果在临界区的代码抛出异常，锁必须被释放。否则， 其他线程将永远阻塞。</p>
+<p>如果使用锁， 就不能使用带资源的 try 语句。首先， 解锁方法名不是 close。不过，即使将它重命名， 带资源的 try 语句也无法正常工作。它的首部希望声明一个新变量。但是如果使用一个锁， 你可能想使用多个线程共享的那个变量（而不是新变量）。</p>
+<p>锁是可重入的， 因为线程可以重复地获得已经持有的锁。锁保持一个持有计数（ hold count) 来跟踪对 lock 方法的嵌套调用。线程在每一次调用 lock 都要调用 unlock 来释放锁。由于这一特性， 被一个锁保护的代码可以调用另一个使用相同的锁的方法。</p>
+<p>要留心临界区中的代码，不要因为异常的抛出而跳出临界区。如果在临界区代码结束之前抛出了异常，finally 子句将释放锁，但会使对象可能处于一种受损状态。</p>
+<h5 id="条件对象"><a href="#条件对象" class="headerlink" title="条件对象"></a>条件对象</h5><p>使用一个条件对象来管理那些已经获得了一个锁但是却不能做有用工作的线程。（由于历史的原因， 条件对象经常被称为条件变量（ conditional variable ）。）</p>
+<p>一个锁对象可以有一个或多个相关的条件对象。你可以用 newCondition 方法获得一个条件对象。习惯上给每一个条件对象命名为可以反映它所表达的条件的名字。如果线程发现条件不满足，它调用条件对象的 await 方法，阻塞当前线程，并放弃锁。</p>
+<p>一旦一个线程调用 await方法， 它进人该条件的等待集。它处于阻塞状态，直到另一个线程调用同一条件上的 signalAll 方法时为止。这一调用重新激活因为这一条件而等待的所有线程。当这些线程从等待集当中移出时，它们再次成为可运行的。一旦锁成为可用的，它们中的某个将从 await 调用返回， 获得该锁并从被阻塞的地方继续执行。此时， 线程应该再次测试该条件。（signalAll 方法仅仅是通知正在等待的线程：此时有可能已经满足条件， 值得再次去检测该条件。）（对 await 的调用应该在如下形式的循环体中 while ( ! (ok to proceed) ) condition.await();）</p>
+<p>如果没有其他线程来重新激活等待的线程，它就永远不再运行了。这将导致死锁（deadlock) 现象。所有线程都被阻塞，程序就会挂起。</p>
+<p>经验上讲， 在对象的状态有利于等待线程的方向改变时调用signalAll。</p>
+<p>signal 方法随机解除等待集中某个线程的阻塞状态。</p>
+<h5 id="synchronized-关键字"><a href="#synchronized-关键字" class="headerlink" title="synchronized 关键字"></a>synchronized 关键字</h5><p>从 1.0 版开始，Java中的每一个对象都有一个内部锁。如果一个方法用 synchronized关键字声明，那么对象的锁将保护整个方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	method body</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//等价于</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.intrinsicLock.lock();</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		method body</span><br><span class="line">	&#125; <span class="keyword">finally</span> &#123; <span class="keyword">this</span>.intrinsicLock.unlock(); &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>内部对象锁只有一个相关条件。wait 方法添加一个线程到等待集中，notifyAll /notify方法解除等待线程的阻塞状态。wait、notifyAll 以及 notify 方法是 Object 类的 final 方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">调用 wait 或 notityAll 等价于</span><br><span class="line">intrinsicCondition.await();</span><br><span class="line">intrinsicCondition.signalAll();</span><br></pre></td></tr></table></figure>
+<p>将静态方法声明为 synchronized 也是合法的。如果调用这种方法，该方法获得相关的类对象的内部锁。</p>
+<p>Lock 和 Condition 对象还是同步方法？一些建议：</p>
+<ul>
+<li>最好都不使用。在许多情况下你可以使用 java.util.concurrent 包中的一种机制，它会为你处理所有的加锁。</li>
+<li>如果 synchronized 关键字适合你的程序， 那么请尽量使用它，这样可以减少编写的代码数量，减少出错的几率。</li>
+<li>如果特别需要 Lock/Condition 结构提供的独有特性时，才使用 Lock/Condition。</li>
+</ul>
+<h5 id="同步阻塞"><a href="#同步阻塞" class="headerlink" title="同步阻塞"></a>同步阻塞</h5><p>还可以通过进入一个同步阻塞获得锁。当线程进入如下形式的阻塞：<br>synchronized (obj) { critical section }<br>它获得 Obj 的锁。obj对象可以被创建为仅仅用来使用每个 Java 对象持有的锁。</p>
+<p>使用一个对象的锁来实现额外的原子操作，称为客户端锁定（ client-side locking) 。但必须承诺该对象对自己的所有可修改方法都使用内部锁。</p>
+<h5 id="监视器概念"><a href="#监视器概念" class="headerlink" title="监视器概念"></a>监视器概念</h5><p>监视器（monitor)在不需要程序员考虑如何加锁的情况下，就可以保证多线程的安全性。监视器具有如下特性：</p>
+<ul>
+<li>监视器是只包含私有域的类。</li>
+<li>每个监视器类的对象有一个相关的锁。</li>
+<li>使用该锁对所有的方法进行加锁。</li>
+<li>该锁可以有任意多个相关条件。每一个显示的条件变量管理一个独立的线程集。</li>
+</ul>
+<p>Java 设计者以不是很精确的方式采用了监视器概念，如果一个方法用 synchronized 关键字声明，那么，它表现的就像是一个监视器方法。然而， 在下述的 3 个方面 Java 对象不同于监视器， 从而使得线程的安全性下降：</p>
+<ul>
+<li>域不要求必须是 private。</li>
+<li>方法不要求必须是 synchronized。</li>
+<li>内部锁对客户是可用的。</li>
+</ul>
+<h5 id="Volatile-域"><a href="#Volatile-域" class="headerlink" title="Volatile 域"></a>Volatile 域</h5><p>使用现代的处理器与编译器， 不同步读写实例域出错的可能性很大：</p>
+<ul>
+<li>多处理器的计算机能够暂时在寄存器或本地内存缓冲区中保存内存中的值。结果是，运行在不同处理器上的线程可能在同一个内存位置取到不同的值。</li>
+<li>编译器可以改变指令执行的顺序以使吞吐量最大化。这种顺序上的变化不会改变代码语义，但是编译器假定内存的值仅仅在代码中有显式的修改指令时才会改变。然而，内存的值可以被另一个线程改变。</li>
+</ul>
+<p>如果使用锁来保护可以被多个线程访问的代码，编译器被要求通过在必要的时候刷新本地缓存来保持锁的效应，并且不能不正当地重新排序指令。</p>
+<p>volatile 关键字为实例域的同步访问提供了一种免锁机制。如果声明一个域为 volatile ,那么编译器和虚拟机就知道该域是可能被另一个线程并发更新的。Volatile 变量不能提供原子性。</p>
+<h5 id="final-变置"><a href="#final-变置" class="headerlink" title="final 变置"></a>final 变置</h5><p>还有一种情况可以安全地访问一个共享域， 即这个域声明为 final 时。</p>
+<h5 id="原子性"><a href="#原子性" class="headerlink" title="原子性"></a>原子性</h5><p>java.util.concurrent.atomic 包中有很多类使用了很高效的机器级指令（而不是使用锁） 来保证其他操作的原子性。Atomiclnteger 类提供了方法 incrementAndGet 和 decrementAndGet, 它们分别以原子方式将一个整数自增或自减。如果希望完成更复杂的更新，就必须使用 compareAndSet 方法。应当在一个循环中计算新值和使用 compareAndSet:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">	oldValue = largest.get();</span><br><span class="line">	newValue = Math.max(oldValue, observed);</span><br><span class="line">&#125; <span class="keyword">while</span> (!largest.compareAndSet(oldValue, newValue));</span><br></pre></td></tr></table></figure>
+<p>如果另一个线程也在更新 largest，就可能阻止这个线程更新。这样一来，compareAndSet会返回 false, 而不会设置新值。在这种情况下，循环会更次尝试，读取更新后的值，并尝试修改。最终， 它会成功地用新值替换原来的值。compareAndSet 方法会映射到一个处理器操作， 比使用锁速度更快。</p>
+<p>在 Java SE 8 中，可以提供一个 lambda 表达式更新变量：<br>largest.updateAndGet(x -&gt; Math.max(x, observed)) ;<br>largest.accumulateAndCet(observed , Math::max);<br>accumulateAndGet 方法利用一个二元操作符来合并原子值和所提供的参数。还有 getAndUpdate 和 getAndAccumulate 方法可以返回原值。</p>
+<p>如果有大量线程要访问相同的原子值，性能会大幅下降，因为乐观更新需要太多次重试。Java SE 8 提供了 LongAdder 和 LongAccumulator 类来解决这个问题。LongAdder 包括多个变量（加数 )，其总和为当前值。可以有多个线程更新不同的加数，线程个数增加时会自动提供新的加数。通常情况下， 只有当所有工作都完成之后才需要总和的值， 对于这种情况，这种方法会很高效。调用 increment 让计数器自增，或者调用 add 来增加一个量， 或者调用 sum 来获取总和。</p>
+<p>LongAccumulator 将这种思想推广到任意的累加操作。在构造器中，可以提供这个操作以及它的零元素。要加人新的值， 可以调用 accumulate。调用 get 来获得当前值。在内部，这个累加器包含变量 a1, a2, …, an。每个变量初始化为零元素。调用 accumulate 并提供值 v 时，其中一个变量会以原子方式更新为ai = ai op v，这里 op是中缀形式的累加操作。get 的结果是 a1 op a2 op … op an。操作必须满足结合律和交换律， 最终结果必须独立于所结合的中间值的顺序。DoubleAdder 和 DoubleAccumulator 也采用同样的方式。</p>
+<h5 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h5><p>所有线程都被阻塞。这样的状态称为死锁（deadlock )。</p>
+<p>当程序挂起时， 键入 CTRL+, 将得到一个所有线程的列表。每一个线程有一个栈踪迹， 告诉你线程被阻塞的位置。运行 jconsole 并参考线程面板。</p>
+<p>Java 编程语言中没有任何东西可以避免或打破这种死锁现象。必须仔细设计程序， 以确保不会出现死锁。</p>
+<h5 id="线程局部变量"><a href="#线程局部变量" class="headerlink" title="线程局部变量"></a>线程局部变量</h5><p>要避免共享变量， 使用 ThreadLocal 辅助类为各个线程提供各自的实例。要为每个线程构造一个实例，可以使用以下代码：<br>public static final ThreadLocal&lt;ClassName&gt; anObject = ThreadLocal.withInitial(() -&gt; new ClassName(…));;<br>要访问具体的方法，可以调用：<br>anObject.get().method(…);<br>在一个给定线程中首次调用 get 时， 会调用 initialValue 方法。在此之后， get 方法会返回属于当前线程的那个实例。</p>
+<p>Java SE 7 中ThreadLocalRandom.current() 调用会返回特定于当前线程的 Random 类实例。</p>
+<h5 id="锁测试与超时"><a href="#锁测试与超时" class="headerlink" title="锁测试与超时"></a>锁测试与超时</h5><p>线程在调用 lock 方法来获得另一个线程所持有的锁的时候，很可能发生阻塞。tryLock 方法试图申请一个锁， 在成功获得锁后返回 true, 否则返回false, 而且线程可以立即离开去做其他事情。调用 tryLock 时，可使用超时参数：<br>if (myLock.tryLock(100, TimeUnit.MILLISECONDS)) . . .<br>TimeUnit 是一 枚举类型，可以取的值包括 SECONDS、MILLISECONDS, MICROSECONDS 和 NANOSECONDS。如果在等待期间被中断，将抛出InterruptedException 异常。也可以调用 locklnterruptibly 方法。它就相当于一个超时设为无限的 tryLock 方法。</p>
+<p>在等待一个条件时， 也可以提供一个超时：<br>myCondition.await(100, TineUniBILLISECONDS))<br>如果等待的线程被中断， await 方法将抛出一个 InterruptedException 异常。在你希望出现这种情况时线程继续等待，可以使用 awaitUninterruptibly 方法代替 await。</p>
+<h5 id="读-写锁"><a href="#读-写锁" class="headerlink" title="读 / 写锁"></a>读 / 写锁</h5><p>如果很多线程从一个数据结构读取数据而很少线程修改其中数据的话，ReentrantReadWriteLock 类十分有用。在这种情况下，读者线程共享访问，写者线程互斥访问。</p>
+<p>使用读 / 写锁的步骤：</p>
+<ol>
+<li>构 造 一 个 ReentrantReadWriteLock 对象：<br>private ReentrantReadWriteLock rwl = new ReentrantReadWriteLock():</li>
+<li>抽取读锁和写锁：<br>private Lock readLock = rwl.readLock();<br>private Lock writeLock = rwl.writeLock();</li>
+<li>对所有的获取方法加读锁：<br>public double getTotalBalance() {<br>  readLock.lock()；<br>  try { . . . }<br>  finally { readLock.unlock(); }<br>}</li>
+<li>对所有的修改方法加写锁：<br>public void transfer(. . .) {<br>  writeLock.lock();<br>  try { . . . }<br>  finally { writeLock.unlock(); }<br>}</li>
+</ol>
+<h5 id="为什么弃用-stop-和-suspend-方法"><a href="#为什么弃用-stop-和-suspend-方法" class="headerlink" title="为什么弃用 stop 和 suspend 方法"></a>为什么弃用 stop 和 suspend 方法</h5><p>初始的 Java 版本定义了一个 stop 方法用来终止一个线程， 以及一个 suspend 方法用来阻塞一个线程直至另一个线程调用 resume。</p>
+<p>stop 方法终止所有未结束的方法， 包括 run方法。当线程被终止，立即释放被它锁住的所有对象的锁。这会导致对象处于不一致的状态。当线程要终止另一个线程时， 无法知道什么时候调用 stop 方法是安全的， 什么时候导致对象被破坏。因此，该方法被弃用了。</p>
+<p>如果用 suspend 挂起一个持有一个锁的线程， 那么，该锁在恢复之前是不可用的。如果调用suspend 方法的线程试图获得同一个锁， 那么程序死锁： 被挂起的线程等着被恢复，而将其挂起的线程等待获得锁。</p>
+<h3 id="阻塞队列"><a href="#阻塞队列" class="headerlink" title="阻塞队列"></a>阻塞队列</h3><p>对于实际编程来说，应该尽可能远离底层结构。使用由并发处理的专业人士实现的较高层次的结构要方便得多、 要安全得多。</p>
+<p>对于许多线程问题， 可以通过使用一个或多个队列以优雅且安全的方式将其形式化。生产者线程向队列插人元素， 消费者线程则取出它们。使用队列，可以安全地从一个线程向另一个线程传递数据。</p>
+<p>当试图向队列添加元素而队列已满， 或是想从队列移出元素而队列为空的时候， 阻塞队列（blocking queue ) 导致线程阻塞。队列会自动地平衡负载。</p>
+<p>阻塞队列方法：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>正常动作</th>
+<th>特殊情况下的动作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>add</td>
+<td>添加一个元素</td>
+<td>如果队列满，则抛出 IllegalStateException 异常</td>
+</tr>
+<tr>
+<td>element</td>
+<td>返回队列的头元素</td>
+<td>如果队列空，抛出 NoSuchElementException 异常</td>
+</tr>
+<tr>
+<td>offer</td>
+<td>添加一个元素并返回 true</td>
+<td>如果队列满，返回 false</td>
+</tr>
+<tr>
+<td>peek</td>
+<td>返回队列的头元素</td>
+<td>如果队列空， 则返回 null</td>
+</tr>
+<tr>
+<td>poll</td>
+<td>移出并返回队列的头元素</td>
+<td>如果队列空， 则返回 null</td>
+</tr>
+<tr>
+<td>put</td>
+<td>添加一个元素</td>
+<td>如果队列满， 则阻塞</td>
+</tr>
+<tr>
+<td>remove</td>
+<td>移出并返回头元素</td>
+<td>如果队列空， 则抛出 NoSuchElementException 异常</td>
+</tr>
+<tr>
+<td>take</td>
+<td>移出并返回头元素</td>
+<td>如果队列空， 则阻塞</td>
+</tr>
+</tbody></table>
+<p>poll 和 peek 方法返回空来指示失败。 因此，向这些队列中插入 null 值是非法的。</p>
+<p>还有带有超时的 offer 方法和 poll 方法的变体：<br>boolean success = q.offer(x, 100, TimeUnit.MILLISECONDS);<br>Object head = q.poll(100, TimeUnit.MILLISECONDS)</p>
+<p>java.util.concurrent 包提供了阻塞队列的几个变种。<br>LinkedBlockingQueue默认情况下的容量是没有上边界的，也可以选择指定最大容量。它是一个双端的版本。<br>ArrayBlockingQueue 在构造时需要指定容量，并且有一个可选的参数来指定是否需要公平性。若设置了公平参数， 则那么等待了最长时间的线程会优先得到处理。<br>PriorityBlockingQueue 是一个带优先级的队列。元素按照它们的优先级顺序被移出。该队列是没有容量上限。<br>DelayQueue 包含实现 Delayed 接口的对象。getDelay方法返回对象的残留延迟。负值表示延迟已经结束。元素只有在延迟用完的情况下才能从 DelayQueue 移除。DelayQueue 使用compareTo方法对元素进行排序。<br>JavaSE 7增加了一个 TransferQueue 接口，允许生产者线程等待， 直到消费者准备就绪可以接收一个元素。LinkedTransferQueue 类实现了这个接口。</p>
+<h3 id="线程安全的集合"><a href="#线程安全的集合" class="headerlink" title="线程安全的集合"></a>线程安全的集合</h3><p>如果多线程要并发地修改一个数据结构， 那么很容易会破坏这个数据结构。可以通过提供锁来保护共享数据结构， 但是选择线程安全的实现作为替代可能更容易些。</p>
+<h5 id="高效的映射、集和队列"><a href="#高效的映射、集和队列" class="headerlink" title="高效的映射、集和队列"></a>高效的映射、集和队列</h5><p>java.util.concurrent 包提供了映射、 有序集和队列的高效实现：ConcurrentHashMap、<br>ConcurrentSkipListMap 、ConcurrentSkipListSet 和 ConcurrentLinkedQueue。这些集合使用复杂的算法，通过允许并发地访问数据结构的不同部分来使竞争极小化。</p>
+<p>与大多数集合不同，size 方法不必在常量时间内操作。确定这样的集合当前的大小通常需要遍历。有些应用使用庞大的并发散列映射，这些映射太过庞大， 以至于无法用 size 方法得到它的大小， 因为这个方法只能返回 int。JavaSE 8 引入了一个 mappingCount 方法可以把大小作为 long 返回。</p>
+<p>集合返回弱一致性（ weakly consistent) 的迭代器。这意味着迭代器不一定能反映出它们被构造之后的所有的修改，但是，它们不会将同一个值返回两次，也不会拋出 ConcurrentModificationException 异常。</p>
+<p>并发的散列映射表， 可高效地支持大量的读者和一定数量的写者。默认情况下，假定可以有多达 16 个写者线程同时执行。可以有更多的写者线程，但是， 如果同一时间多于 16个，其他线程将暂时被阻塞。</p>
+<p>在 JavaSE 8 中，并发散列映射将桶组织为树， 而不是列表， 键类型实现了 Comparable, 从而可以保证性能为 O(log(n))。</p>
+<h5 id="映射条目的原子更新"><a href="#映射条目的原子更新" class="headerlink" title="映射条目的原子更新"></a>映射条目的原子更新</h5><p>有些程序员很奇怪为什么原本线程安全的数据结构会允许非线程安全的操作。多线程操作会破坏普通数据结构而不会破坏线程安全的数据结构。不过，由于操作序列不是原子的，所以结果不可预知。</p>
+<p>使用 replace 操作， 它会以原子方式用一个新值替换原值，前提是之前没有其他线程把原值替换为其他值：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">	oldValue = map.get(word);</span><br><span class="line">	newValue = oldValue = <span class="keyword">null</span> ? <span class="number">1</span> : oldValue + <span class="number">1</span>;</span><br><span class="line">&#125; <span class="keyword">while</span> (!map.replace(word, oldValue, newValue));</span><br></pre></td></tr></table></figure>
+<p>可以使用一个 ConcurrentHashMap&lt;String，AtomicLong&gt;， 在 Java SE 8中，还可以使用 ConcurrentHashMap&lt;String，LongAdder&gt;， putIfAbsent 返回映射的的值（可能是原来的值， 或者是新设置的值)：<br>map.putlfAbsent(word, new LongAdder()).increment():</p>
+<p>Java SE 8 提供了一些可以更方便地完成原子更新的方法。调用 compute 方法时可以提供一个键和一个计算新值的函数。这个函数接收键和相关联的值（如果没有值，则为 null), 它会计算新值：<br>map.compute(word , (k, v) -&gt; v = null ? 1: v + 1);<br>ConcurrentHashMap 中不允许有 null 值。有很多方法都使用 null 值来指示映射中某个给定的键不存在。</p>
+<p>computeIfPresent 和 computeIfAbsent 方法，它们分别只在已经有原值的情况下计算新值，或者只有没有原值的情况下计算新值。</p>
+<p>merge 方法有一个参数表示键不存在时使用的初始值。否则， 就会调用你提供的函数来结合原值与初始值。（与 compute 不同，这个函数不处理键）：<br>map.merge(word, 1L, (existingValue, newValue) -&gt; existingValue + newValue);<br>map.merge(word, 1L, Long::sum);</p>
+<p>如果传入 compute 或 merge 的函数返回 null, 将从映射中删除现有的条目。使用 compute 或 merge 时， 要记住你提供的函数不能做太多工作。这个函数运行时，可能会阻塞对映射的其他更新。</p>
+<h5 id="对并发散列映射的批操作"><a href="#对并发散列映射的批操作" class="headerlink" title="对并发散列映射的批操作"></a>对并发散列映射的批操作</h5><p>Java SE 8 为并发散列映射提供了批操作，即使有其他线程在处理映射，这些操作也能安全地执行。批操作会遍历映射，处理遍历过程中找到的元素。无须冻结当前映射的快照。除非你恰好知道批操作运行时映射不会被修改， 否则就要把结果看作是映射状态的一个近似。</p>
+<p>有 3 种不同的操作：</p>
+<ul>
+<li>搜索（search) 为每个键或值提供一个函数，直到函数生成一个非 null 的结果。然后搜索终止，返回这个函数的结果。</li>
+<li>归约（reduce) 组合所有键或值， 这里要使用所提供的一个累加函数。</li>
+<li>forEach 为所有键或值提供一个函数。</li>
+</ul>
+<p>每个操作都有 4 个版本：</p>
+<ul>
+<li>operationKeys: 处理键。</li>
+<li>operatioriValues: 处理值。</li>
+<li>operation: 处理键和值。</li>
+<li>operatioriEntries: 处理 Map.Entry 对象。</li>
+</ul>
+<p>对于上述各个操作， 需要指定一个参数化阈值（/wa/Zefc/w /AresAoW)。如果映射包含的元素多于这个阈值， 就会并行完成批操作。如果希望批操作在一个线程中运行，可以使用阈值 Long.MAX_VALUE。如果希望用尽可能多的线程运行批操作，可以使用阈值 1。</p>
+<p>search方法。有以下版本：<br>U searchKeys(long threshold, BiFunction&lt;? super K , ? extends U&gt; f)<br>U searchValues(long threshold, BiFunction&lt;? super V, ? extends U&gt; f)<br>U search(long threshold, BiFunction&lt;? super K, ? super V,? extends U&gt; f)<br>U searchEntries(long threshold, BiFunction&lt;Map.Entry&lt;K, V&gt;, ? extends U&gt; f)</p>
+<p>forEach方法有两种形式。第一个只为各个映射条目提供一个消费者函数：<br>map.forEach(threshold, (k, v) -&gt; System.out.println(k + “ -&gt; “ + v));<br>第二种形式还有一个转换器函数， 这个函数要先提供， 其结果会传递到消费者：<br>map.forEach(threshold,<br>  (k, v) -&gt; k + “ -&gt; “ + v，// Transformer<br>  System.out::println); // Consumer<br>转换器可以用作为一个过滤器。只要转换器返回 null , 这个值就会被跳过。</p>
+<p>reduce 操作用一个累加函数组合其输入：<br>Long sum = map.reduceValues(threshold, Long::sum);<br>也可以提供一个转换器函数：<br>Integer maxlength = map.reduceKeys(threshold,<br>  String::length, // Transformer<br>  Integer::max); // Accumulator<br>转换器可以作为一个过滤器，通过返回 null 来排除不想要的输入。<br>如果映射为空， 或者所有条目都被过滤掉， reduce 操作会返回 null。如果只有一个元素， 则返回其转换结果， 不会应用累加器。<br>对于 int、 long 和 double 输出还有相应的特殊化操作， 分别有后缀 ToInt、 ToLong 和ToDouble。需要把输入转换为一个基本类型值，并指定一个默认值和一个累加器函数。映射为空时返回默认值：<br>long sum = map.reduceValuesToLong(threshold,<br>  Long::longValue, // Transformer to primitive type<br>  0, // Default value for empty map<br>  Long::sum); // Primitive type accumulator<br>这里不是返回转换得到的元素， 而是将与默认值累加。因此， 默认值必须是累加器的零元素。</p>
+<h5 id="并发集视图"><a href="#并发集视图" class="headerlink" title="并发集视图"></a>并发集视图</h5><p>静态 newKeySet 方法会生成一个 Set&lt;K&gt;, 这实际上是 ConcurrentHashMap&lt;K, Boolean&gt;的一个包装器。（所有映射值都为 Boolean.TRUE, 不过因为只是要把它用作一个集，所以并不关心具体的值。）：<br>Set&lt;String&gt; words = ConcurrentHashMap.&lt;String&gt;newKeySet();<br>如果原来有一个映射，keySet 方法可以生成这个映射的键集。这个集是可变的。如果删除这个集的元素，这个键（以及相应的值）会从映射中删除。不过，不能向键集增加元素，因为没有相应的值可以增加。Java SE 8 为 ConcurrentHashMap 增加了第二个 keySet 方法，包含一个默认值，可以在为集增加元素时使用：<br>Set&lt;String&gt; words = map.keySet(1L);<br>words.add(“Java”）；<br>如果 “Java”在 words 中不存在， 现在它会有一个值 1。</p>
+<h5 id="写数组的拷贝"><a href="#写数组的拷贝" class="headerlink" title="写数组的拷贝"></a>写数组的拷贝</h5><p>CopyOnWriteArrayList 和 CopyOnWriteArraySet 是线程安全的集合，其中所有的修改线程对底层数组进行复制。当构建一个迭代器的时候， 它包含一个对当前数组的引用。如果数组后来被修改了，迭代器仍然引用旧数组，旧的迭代器拥有一致的（可能过时的）视图，访问它无须任何同步开销。</p>
+<h5 id="并行数组算法"><a href="#并行数组算法" class="headerlink" title="并行数组算法"></a>并行数组算法</h5><p>在 Java SE 8中， Arrays 类提供了大量并行化操作。静态 Arrays.parallelSort 方法可以对一个基本类型值或对象的数组排序。对对象排序时，可以提供一个 Comparator：<br>Arrays.parallelSort(words, Comparator.comparing(String::length));<br>对于所有方法都可以提供一个范围的边界：<br>values.parallelSort(values.length / 2, values.length); // Sort the upper half</p>
+<p>parallelSetAll 方法会用由一个函数计算得到的值填充一个数组。这个函数接收元素索引，然后计算相应位置上的值：<br>Arrays.parallelSetAll(values, i -&gt; i % 10);<br>这个操作对于所有基本类型数组和对象数组都有相应的版本。</p>
+<p>parallelPrefix 方法，它会用对应一个给定结合操作的前缀的累加结果替换各个数组元素。考虑数组 [1，2, 3, 4, . . .] 和 x 操作。执行 Arrays.parallelPrefix(values, (x, y) -&gt; x * y) 之后，数组将包含：<br>[1, 1x 2, 1x 2 x 3, 1 x 2 x 3 x 4, . . .]</p>
+<h5 id="较早的线程安全集合"><a href="#较早的线程安全集合" class="headerlink" title="较早的线程安全集合"></a>较早的线程安全集合</h5><p>从 Java 的初始版本开始，Vector 和 Hashtable 类就提供了线程安全的动态数组和散列表的实现。</p>
+<p>现在集合库中提供了不同的机制。任何集合类都可以通过使用同步包装器（synchronization wrapper) 变成线程安全的：<br>List&lt;E&gt; synchArrayList = Col lections.synchronizedList(new ArrayList&lt;E&gt;());<br>Map&lt;K , V&gt; synchHashMap = Collections.synchronizedMap(new HashMap&lt;K , V&gt;())；<br>结果集合的方法使用锁加以保护，提供了线程安全访问。应该确保没有任何线程通过原始的非同步方法访问数据结构。最便利的方法是确保不保存任何指向原始对象的引用——简单地构造一个集合并立即传递给包装器。</p>
+<p>如果在另一个线程可能进行修改时要对集合进行迭代，仍然需要使用“ 客户端” 锁定。如果在迭代过程中，别的线程修改集合，迭代器会失效，抛出 ConcurrentModificationException 异常。同步仍然是需要的， 因此并发的修改可以被可靠地检测出来。</p>
+<p>最好使用 java.util.concurrent 包中定义的集合， 不使用同步包装器中的。有一个例外是经常被修改的数组列表。在那种情况下，同步的 ArrayList 可以胜过 CopyOnWriteArrayList 。</p>
+<h5 id="Callable-与-Future"><a href="#Callable-与-Future" class="headerlink" title="Callable 与 Future"></a>Callable 与 Future</h5><p>Callable 是一个没有参数，有返回值的异步方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Callable</span>&lt;<span class="title">V</span>&gt; </span>&#123;</span><br><span class="line">	<span class="function">V <span class="title">call</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Future 保存异步计算的结果。可以启动一个计算，将 Future 对象交给某个线程，Future 对象的所有者在结果计算好之后就可以获得它：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Future</span>&lt;<span class="title">V</span>&gt; </span>&#123;</span><br><span class="line">	<span class="function">V <span class="title">get</span><span class="params">()</span> <span class="keyword">throws</span> . .</span></span><br><span class="line"><span class="function">	V <span class="title">get</span><span class="params">(<span class="keyword">long</span> timeout, TimeUnit unit)</span> <span class="keyword">throws</span> . .</span></span><br><span class="line"><span class="function">	<span class="keyword">void</span> <span class="title">cancel</span><span class="params">(<span class="keyword">boolean</span> maylnterrupt)</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">boolean</span> <span class="title">isCancelled</span><span class="params">()</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">boolean</span> <span class="title">isDone</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>第一个 get 方法的调用被阻塞， 直到计算完成。如果在计算完成之前， 第二个方法的调用超时，拋出一个 TimeoutException 异常。如果运行该计算的线程被中断，两个方法都将拋出 IntermptedException。如果计算已经完成， 那么 get 方法立即返回。</p>
+<p>如果计算还在进行，isDone 方法返回 false; 如果完成了， 则返回 true。</p>
+<p>可以用 cancel 方法取消该计算。如果计算还没有开始，它被取消且不再开始。如果计算处于运行之中，那么如果 maylnterrupt 参数为 true, 它就被中断。</p>
+<p>FutureTask 包装器是一种非常便利的机制， 可将 Callable转换成 Future 和 Runnable, 它同时实现二者的接口：<br>Callable&lt;Integer&gt; myComputation = . . .;<br>FutureTask&lt;Integer&gt; task = new FutureTask&lt;Integer&gt;(myConiputation);<br>Thread t = new Thread(task); // it’s a Runnable<br>t.start()；<br>Integer result = task.get()；// it’s a Future</p>
+<h3 id="执行器"><a href="#执行器" class="headerlink" title="执行器"></a>执行器</h3><p>构建一个新的线程是有一定代价的， 因为涉及与操作系统的交互。如果程序中创建了大量的生命期很短的线程，应该使用线程池（ thread pool)。一个线程池中包含许多准备运行的空闲线程。将 Runnable 对象交给线程池， 就会有一个线程调用 run 方法。 当 run 方法退出时，线程不会死亡，而是在池中准备为下一个请求提供服务。</p>
+<p>另一个使用线程池的理由是减少并发线程的数目。创建大量线程会大大降低性能甚至使虚拟机崩溃， 应该使用一个线程数“ 固定的” 线程池以限制并发线程的总数。</p>
+<p>执行器（ Executor) 类有许多静态工厂方法用来构建线程池：</p>
+<table>
+<thead>
+<tr>
+<th align="left">方法</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">newCachedThreadPool</td>
+<td align="left">必要时创建新线程；空闲线程会被保留 60 秒</td>
+</tr>
+<tr>
+<td align="left">newFixedThreadPool</td>
+<td align="left">该池包含固定数量的线程；空闲线程会一直被保留</td>
+</tr>
+<tr>
+<td align="left">newSingleThreadExecutor</td>
+<td align="left">只有一个线程的 “ 池”， 该线程顺序执行每一个提交的任务（类似于Swing 事件分配线程）</td>
+</tr>
+<tr>
+<td align="left">newScheduledThreadPool</td>
+<td align="left">用于预定执行而构建的固定线程池， 替代 java.util.Timer</td>
+</tr>
+<tr>
+<td align="left">newSingleThreadScheduledExecutor</td>
+<td align="left">用于预定执行而构建的单线程 “ 池“</td>
+</tr>
+</tbody></table>
+<h5 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h5><p>newCachedThreadPool、newFixedThreadPool、newSingleThreadExecutor这 3 个方法返回实现了<br>ExecutorService 接口的 ThreadPoolExecutor 类的对象。</p>
+<p>可用下面的方法之一将一个 Runnable 对象或 Callable 对象提交给 ExecutorService：</p>
+<ul>
+<li>Future&lt;?&gt; submit(Runnable task)。get 方法在完成的时候只是简单地返回 null。</li>
+<li>Future&lt;T&gt; submit(Runnable task, T result)。Future 的 get 方法在完成的时候返回指定的 result 对象。</li>
+<li>Future&lt;T&gt; submit(Callable&lt;T&gt; task)。返回的 Future 对象将在计算结果准备好的时候得到它。</li>
+</ul>
+<p>该池会在方便的时候尽早执行提交的任务。调用 submit 时，会得到一个 Future 对象， 可用来查询该任务的状态。</p>
+<p>当用完一个线程池的时候， 调用 shutdown。该方法启动该池的关闭序列。被关闭的执行器不再接受新的任务。当所有任务都完成以后，线程池中的线程死亡。另一种方法是调用 shutdownNow。该池取消尚未开始的所有任务并试图中断正在运行的线程。</p>
+<h5 id="控制任务组"><a href="#控制任务组" class="headerlink" title="控制任务组"></a>控制任务组</h5><p>使用执行器有更有实际意义的原因， 控制一组相关任务。例如， 可以在执行器中使用 shutdownNow 方法取消所有的任务。</p>
+<p>invokeAny 方法提交所有对象到一个 Callable 对象的集合中，并返回某个已经完成了的任务的结果。无法知道返回的究竟是哪个任务的结果。对于搜索问题， 如果你愿意接受任何一种解决方案的话，你就可以使用这个方法。</p>
+<p>invokeAll 方法提交所有对象到一个 Callable 对象的集合中，并返回一个 Future 对象的列表，代表所有任务的解决方案。这个方法的缺点是如果第一个任务恰巧花去了很多时间，则可能不得不进行等待。</p>
+<p>可以用 ExecutorCompletionService 来进行排列。用常规的方法获得一个执行器。然后， 构建一个 ExecutorCompletionService， 提交任务给完成服务（ completion service。) 该服务管理 Future 对象的阻塞队列，其中包含已经提交的任务的执行结果（当这些结果成为可用时）：<br>ExecutorCompletionService&lt;T&gt; service = new ExecutorCompletionService&lt;&gt;(executor):<br>for (Callable&lt;T&gt; task : tasks) service.submit(task);<br>for (int i = 0; i &lt; tasks.size()；i ++) processFurther(service.take().get())；</p>
+<h5 id="Fork-Join-框架"><a href="#Fork-Join-框架" class="headerlink" title="Fork-Join 框架"></a>Fork-Join 框架</h5><p>一些应用可能对每个处理器内核分别使用一个线程，来完成计算密集型任务。Java SE 7中新引入了 fork-join 框架，专门用来支持这一类应用。</p>
+<p>要采用框架可用的一种方式完成递归计算， 需要提供一个扩展 RecursiveTask&lt;&gt; 的类（如果计算会生成一个类型为 T 的结果）或者提供一个扩展 RecursiveAction 的类（如果不生成任何结果)。再覆盖 compute 方法来生成并调用子任务， 然后合并其结果：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Counter</span> <span class="keyword">extends</span> <span class="title">RecursiveTask</span>&lt;<span class="title">Integer</span>&gt; </span>&#123;</span><br><span class="line">	...</span><br><span class="line">	<span class="function"><span class="keyword">protected</span> Integer <span class="title">compute</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (to - from &lt; THRESHOLD) &#123;</span><br><span class="line">			solve problem directly</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">int</span> mid = (from + to) / <span class="number">2</span>;</span><br><span class="line">			Counter first = <span class="keyword">new</span> Counter(va1ues, from, mid, filter);</span><br><span class="line">			Counter second = <span class="keyword">new</span> Counter(va1ues, mid, to, filter);</span><br><span class="line">			invokeAll(first, second);</span><br><span class="line">			<span class="keyword">return</span> first.join() + second.join()；</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>invokeAll 方法接收到很多任务并阻塞， 直到所有这些任务都已经完成。join 方法将生成结果。get 方法可以得到当前结果， 不过一般不太使用， 因为它可能抛出已检查异常， 而在 compute 方法中不允许抛出这些异常。</p>
+<p>在后台， fork-join 框架使用了一种有效的智能方法来平衡可用线程的工作负载，这种方法称为工作密取（work stealing)。每个工作线程都有一个双端队列 ( deque ) 来完成任务。一个工作线程将子任务压人其双端队列的队头。（只有一个线程可以访问队头，所以不需要加锁。）一个工作线程空闲时，它会从另一个双端队列的队尾“ 密取” 一个任务。由于大的子任务都在队尾， 这种密取很少出现。</p>
+<h5 id="可完成-Future"><a href="#可完成-Future" class="headerlink" title="可完成 Future"></a>可完成 Future</h5><p>处理非阻塞调用的传统方法是使用事件处理器， 程序员为任务完成之后要出现的动作注册一个处理器。当然， 如果下一个动作也是异步的， 在它之后的下一个动作会在一个不同的事件处理器中。尽管程序员会认为“ 先做步骤 1 , 然后是步骤 2, 再完成步骤 3”，但实际上程序逻辑会分散到不同的处理器中。如果必须增加错误处理，情况会更糟糕。假设步骤 2是“ 用户登录”。可能需要重复这个步骤， 因为用户输入凭据时可能会出错。要尝试在一组事件处理器中实现这样一个控制流，或者想要理解所实现的这样一组事件处理器，会很有难度。</p>
+<p>Java SE 8 的 CompletableFuture 类提供了一种候选方法。与事件处理器不同，“ 可完成future” 可以“ 组合”（composed )。利用可完成 future，可以指定你希望做什么， 以及希望以什么顺序执行这些工作。</p>
+<p>为CompletableFuture&lt;T&gt; 对象增加一个动作：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>thenApply</td>
+<td>T -&gt; U</td>
+<td>对结果应用一个函数</td>
+</tr>
+<tr>
+<td>thenCompose</td>
+<td>T -&gt; CompletableFuture&lt;U&gt;</td>
+<td>对结果调用函数并执行返回的 future</td>
+</tr>
+<tr>
+<td>handle</td>
+<td>(T, Throwable) -&gt; U</td>
+<td>处理结果或错误</td>
+</tr>
+<tr>
+<td>thenAccept</td>
+<td>T -&gt; void</td>
+<td>类似于 thenApply, 不过结果为 void</td>
+</tr>
+<tr>
+<td>whenComplete</td>
+<td>(T, Throwable) -&gt; void</td>
+<td>类似于 handle, 不过结果为 void</td>
+</tr>
+<tr>
+<td>thenRun</td>
+<td>Runnable</td>
+<td>执行 Runnable, 结果为 void</td>
+</tr>
+</tbody></table>
+<p>对于这里所示的每个方法，还有两个 Async 形式，其中一种形式使用一个共享 ForkJoinPool，另一种<br>形式有一个 Executor 参数。这里把 Function&lt;? super T，U&gt; 写为 T -&gt; U。</p>
+<p>以下调用：<br>CompletableFuture&lt;U&gt; future.thenApply(f);<br>CompletableFuture&lt;U&gt; future.thenApplyAsync(f) ;<br>会返回一个 future , 可用时会对 future 的结果应用 f。 第二个调用会在另一个线程中运行 。</p>
+<p>这 里 我 们 有 两 个 函 数 T -&gt; CompletableFuture&lt;U&gt; 和 U -&gt; CompletableFuture&lt;V&gt;。 如果第二个函数在第一个函数完成时调用， 它们就可以组合为一个函数 T -&gt; CompletableFuture&lt;V&gt;。这正是 thenCompose 所做的。</p>
+<p>CompletableFuture 中拋出一个异常时， 会捕获这个异常并在调用 get 方法时包装在一个受查异常 ExecutionException 中。 不过， 可能 get 永远也不会被调用。要处理异常， 可以使用 handle 方法。</p>
+<p>其余的方法结果都为 void， 通常用在处理管线的最后。</p>
+<p>组合多个组合对象：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>thenCombine</td>
+<td>CompletableFuture&lt;U&gt;, (T, U) -&gt; V</td>
+<td>执行两个动作并用给定函数组合结果</td>
+</tr>
+<tr>
+<td>thenAcceptBoth</td>
+<td>CompletableFuture&lt;U&gt;, (T, U) -&gt; void</td>
+<td>与 thenCombine 类似， 不过结果为void</td>
+</tr>
+<tr>
+<td>runAfterBoth</td>
+<td>CompletableFuture&lt;?&gt;, Runnable</td>
+<td>两个都完成后执行 Runnable</td>
+</tr>
+<tr>
+<td>applyToEither</td>
+<td>CompletableFuture&lt;T&gt;, T -&gt; V</td>
+<td>得到其中一个的结果时，传入给定的函数</td>
+</tr>
+<tr>
+<td>acceptEither</td>
+<td>CompletableFuture&lt;T&gt;, T -&gt; void</td>
+<td>与 applyToEither 类似，不过结果为void</td>
+</tr>
+<tr>
+<td>runAfterEither</td>
+<td>CompletableFuture&lt;?&gt;, Runnable</td>
+<td>其中一个完成后执行 runnable</td>
+</tr>
+<tr>
+<td>static allOf</td>
+<td>CompletableFuture&lt;?&gt;…</td>
+<td>所有给定的 future 都完成后完成，结果为 void</td>
+</tr>
+<tr>
+<td>static anyOf</td>
+<td>CompletableFuture&lt;?&gt;…</td>
+<td>任意给定的 future 完成后则完成，结果为 void</td>
+</tr>
+</tbody></table>
+<p>前 3 个方法并行运行一个 CompletableFuture&lt;T&gt; 和一个 CompletableFuture&lt;U&gt; 动作， 并组合结果。接下来 3 个方法并行运行两个 CompletableFuture&lt;T&gt; 动作。一旦其中一个动作完成，就传递它的结果，并忽略另一个结果。静 态 allOf 和 anyOf 方 法 取 一 组 可 完 成 future ( 数 目 可 变) 并 生 成 一 个CompletableFuture&lt;Void&gt; , 它会在所有这些 future 都完成时或者其中任意一个future完成时结束。不会传递任何结果。</p>
+<p>这些方法接受 CompletionStage 类型的参教。这个接口有几乎 40 个抽象方法， 只由CompletableFuture 实现。提供这个接口是为了让第三方框架可以实现这个接口。</p>
+<h3 id="同步器"><a href="#同步器" class="headerlink" title="同步器"></a>同步器</h3><p>java.util.concurrent 包包含了几个能帮助人们管理相互合作的线程集的类。这些机制具有为线程之间的共用集结点模式（common rendezvous patterns) 提供的“ 预置功能”( canned functionality ) 。</p>
+<p>同步器：</p>
+<table>
+<thead>
+<tr>
+<th>类</th>
+<th>它能做什么</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CyclicBarrier</td>
+<td>允许线程集等待直至其中预定数目的线程到达一个公共障栅（ barrier) ，然后可以选择执行一个处理障栅的动作</td>
+<td>当大量的线程需要在它们的结果可用之前完成时</td>
+</tr>
+<tr>
+<td>Phaser</td>
+<td>类似于循环障栅， 不过有一个可变的计数</td>
+<td>Java SE 7 中引人</td>
+</tr>
+<tr>
+<td>CountDownLatch</td>
+<td>允许线程集等待直到计数器减为 0</td>
+<td>当一个或多个线程需要等待直到指定数目的事件发生</td>
+</tr>
+<tr>
+<td>Exchanger</td>
+<td>允许两个线程在要交换的对象准备好时交换对象</td>
+<td>当两个线程工作在同一数据结构的两个实例上的时候， 一个向实例添加数据而另一个从实例清除数据</td>
+</tr>
+<tr>
+<td>Semaphore</td>
+<td>允许线程集等待直到被允许继续运行为止</td>
+<td>限制访问资源的线程总数。 如果许可数是 1，常常阻塞线程直到另一个线程给出许可为止</td>
+</tr>
+<tr>
+<td>SynchronousQueue</td>
+<td>允许一个线程把对象交给另一个线程</td>
+<td>在没有显式同步的情况下， 当两个线程准备好将一个对象从一个线程传递到另一个时</td>
+</tr>
+</tbody></table>
+<h5 id="信号量"><a href="#信号量" class="headerlink" title="信号量"></a>信号量</h5><p>一个信号量管理许多的许可证（permit)。为了通过信号量，线程通过调用acquire 请求许可。其实没有实际的许可对象， 信号量仅维护一个计数。许可的数目是固定的，由此限制了通过的线程数量。其他线程可以通过调用 release 释放许可。而且，许可不是必须由获取它的线程释放。事实上，任何线程都可以释放任意数目的许可，这可能会增加许可数目以至于超出初始数目。</p>
+<h5 id="倒计时门栓"><a href="#倒计时门栓" class="headerlink" title="倒计时门栓"></a>倒计时门栓</h5><p>一个倒计时门栓（ CountDownLatch) 让一个线程集等待直到计数变为 0。倒计时门栓是一次性的。一旦计数为 0, 就不能再重用了。</p>
+<p>一个有用的特例是计数值为 1 的门栓。实现一个只能通过一次的门。线程在门外等候直到另一个线程将计数器值置为0。</p>
+<h5 id="障栅"><a href="#障栅" class="headerlink" title="障栅"></a>障栅</h5><p>CyclicBarrier 类实现了一个集结点（rendezvous) 称为障栅（ barrier)。考虑大量线程运行在一次计算的不同部分的情形。当一个线程完成了它的那部分任务后， 我们让它运行到障栅处。一旦所有的线程都到达了这个障栅，障栅就撤销， 线程就可以继续运行。</p>
+<p>构造一个障栅， 并给出参与的线程数：<br>CyclicBarrier barrier = new CydicBarrier(nthreads);<br>每一个线程做一些工作，完成后在障栅上调用 await :<br>public void run() {<br>  doWork();<br>  bamer.await()；<br>}</p>
+<p>await 方法有一个可选的超时参数：<br>barrier.await(100, TineUnit.MILLISECONDS);<br>如果任何一个在障栅上等待的线程离开了障栅， 那么障栅就被破坏了。在这种情况下，所有其他线程的<br>await 方法抛出 BrokenBarrierException 异常。那些已经在等待的线程立即终止 await 的调用。</p>
+<p>可以提供一个可选的障栅动作（ barrier action), 当所有线程到达障栅的时候就会执行这一动作：<br>Runnable barrierAction = …<br>CyclicBarrier barrier = new CyclicBarrier(nthreads, barrierAction);<br>该动作可以收集那些单个线程的运行结果。</p>
+<p>障栅被称为是循环的（ cyclic), 因为可以在所有等待线程被释放后被重用。Phaser 类增加了更大的灵活性，允许改变不同阶段中参与线程的个数。</p>
+<h5 id="交换器"><a href="#交换器" class="headerlink" title="交换器"></a>交换器</h5><p>当两个线程在同一个数据缓冲区的两个实例上工作的时候， 就可以使用交换器( Exchanger) 典型的情况是， 一个线程向缓冲区填人数据， 另一个线程消耗这些数据。当它们都完成以后，相互交换缓冲区。</p>
+<h5 id="同步队列"><a href="#同步队列" class="headerlink" title="同步队列"></a>同步队列</h5><p>同步队列是一种将生产者与消费者线程配对的机制。当一个线程调用 SynchronousQueue的 put 方法时，它会阻塞直到另一个线程调用 take 方法为止，反之亦然。</p>
+<p>即使 SynchronousQueue 类实现了 BlockingQueue 接口， 概念上讲，它依然不是一个队列。它没有包含任何元素，它的 size方法总是返回 0。</p>
+<h3 id="线程与-Swing"><a href="#线程与-Swing" class="headerlink" title="线程与 Swing"></a>线程与 Swing</h3><p>在程序中使用线程的理由之一是提高程序的响应性能。当程序需要做某些耗时的工作时，应该启动另一个工作器线程而不是阻塞用户接口。</p>
+<p>Swing 不是线程安全的。如果你试图在多个线程中操纵用户界面的元素，那么用户界面可能崩溃。</p>
+<p>Swing 的设计者决定不再付出更多的努力实现 Swing 线程安全， 有两个原因：</p>
+<ul>
+<li><p>同步需要时间， 已经没有人想要降低 Swing 的速度。</p>
+</li>
+<li><p>Swing 小组调查了其他小组在线程安全的用户界面工具包方面的经验。使用线程安全包的程序员被同步命令搞昏了头， 常常编写出容易造成死锁的程序。</p>
+</li>
+</ul>
+<h5 id="运行耗时的任务"><a href="#运行耗时的任务" class="headerlink" title="运行耗时的任务"></a>运行耗时的任务</h5><p>将线程与 Swing—起使用时， 必须遵循两个简单的原则：</p>
+<ol>
+<li>如果一个动作需要花费很长时间，在一个独立的工作器线程中做这件事不要在事件分配线程中做。如果花很多时间在事件分配线程上，应用程序像“ 死了” 一样， 因为它不响应任何事件。特别是， 事件分配线程应该永远不要进行 input/output 调用，这有可能会阻塞， 并且应该永远不要调用 sleep。（如果需要等待指定的时间，使用定时器事件。）</li>
+<li>除了事件分配线程，不要在任何线程中接触 Swing 组件。这通常称为单一线程规则 （ single-thread rule )。</li>
+</ol>
+<p>在任何线程中，可以使用一种有效的方法向事件分配线程的事件队列添加任意的动作——将 Swing 代码放置到实现 Runnable 接口的类的 run 方法中。然后，创建该类的一个对象， 将其传递给静态的 invokeLater 或 invokeAndWait 方法：<br>EventQueue.invokeLater(()-&gt; {<br>  label.setText(percentage + “% complete”);<br>})；<br>当事件放人事件队列时，invokeLater 方法立即返回，而 run 方法被异步执行。invokeAndWait 方法等待直到 run 方法确实被执行过为止。</p>
+<h5 id="使用-Swing-工作线程"><a href="#使用-Swing-工作线程" class="headerlink" title="使用 Swing 工作线程"></a>使用 Swing 工作线程</h5><p>SwingWorker 类使后台任务的实现不那么繁琐。覆盖 doInBackground 方法来完成耗时的工作， 不时地调用 publish 来报告工作进度。这一方法在工作器线程中执行。publish 方法使得process 方法在事件分配线程中执行来处理进度数据。当工作完成时， done方法在事件分配线程中被调用以便完成 UI 的更新。</p>
+<p>每当要在工作器线程中做一些工作时， 构建一个新的工作器（每一个工作器对象只能被使用一次)。然后调用 execute 方法。典型的方式是在事件分配线程中调用 execute， 但没有这样的需求。</p>
+<p>假定工作器产生某种类型的结果，SwingWorker&lt;T，V&gt; 实现 Future&lt;T&gt;。这一结果可以通过 Future 接口的 get 方法获得。由于 get 方法阻塞直到结果成为可用，因此不要在调用 execute 之后马上调用它。只在已经知道工作完成时调用它，典型地，可以从 done方法调用 get。</p>
+<p>中间的进度数据以及最终的结果可以是任何类型。SwingWorker 类有 3 种类型作为类型参数。 SwingWorker&lt;T，V&gt; 产生类型为 T 的结果以及类型为 V 的进度数据。</p>
+<p>要取消正在进行的工作，使用 Future 接口的 cancel 方法。当该工作被取消的时候， get方法抛出 CancellationException 异常。</p>
+<p>为了提高效率， 几个对 publish 的调用结果， 可用对 process 的一次调用成批处理。process 方法接收一个包含所有中间结果的列表&lt;V&gt;。</p>
+<h5 id="单一线程规则"><a href="#单一线程规则" class="headerlink" title="单一线程规则"></a>单一线程规则</h5><p>对于单一线程规则存在一些例外情况：</p>
+<ul>
+<li>可在任一个线程里添加或移除事件监听器。 该监听器的方法会在事件分配线程中被触发。</li>
+<li>有很少的 Swing 方法是线程安全的。在这些线程安全的方法中最有用的是：<br>JTextComponent.setText、JTextArea.insert、JTextArea.append、JTextArea.replaceRange、JCouponent.repaint、JComponent.revalidat。</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>vane
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://vanehsiung.netlify.app/2021/04/26/14%E5%B9%B6%E5%8F%91/" title="14并发">https://vanehsiung.netlify.app/2021/04/26/14并发/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9lbg=="><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Programming/" rel="tag"># Programming</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/04/26/13%E9%83%A8%E7%BD%B2Java%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/" rel="prev" title="13部署Java应用程序">
+                  <i class="fa fa-chevron-left"></i> 13部署Java应用程序
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Vane Hsiung</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZw==">NexT.Gemini</span>
+  </div>
+
+<script src="https://cdn.jsdelivr.net/gh/suyin-long/activate-power-mode@1.0/dist/activate-power-mode.js"></script>
+<script>
+POWERMODE.colorful = true; // make power mode colorful
+POWERMODE.shake = false; // turn off shake
+document.body.addEventListener('input', POWERMODE);
+</script>
+
+
+
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/@next-theme/pjax@0.4.0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '.page-configurations',
+    '.main-inner',
+    '.post-toc-wrap',
+    '.languages',
+    '.pjax'
+  ],
+  analytics: false,
+  cacheBust: false,
+  scrollRestoration: false,
+  scrollTo: !CONFIG.bookmark.enable
+});
+
+document.addEventListener('pjax:success', () => {
+  pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  const hasTOC = document.querySelector('.post-toc');
+  document.querySelector('.sidebar-inner').classList.toggle('sidebar-nav-active', hasTOC);
+  document.querySelector(hasTOC ? '.sidebar-nav-toc' : '.sidebar-nav-overview').click();
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+<script data-pjax>
+if (document.querySelectorAll('.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8.8.4/dist/mermaid.min.js', () => {
+    mermaid.init({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    }, '.mermaid');
+  }, window.mermaid);
+}
+</script>
+
+  <script>
+    NProgress.configure({
+      showSpinner: false
+    });
+    NProgress.start();
+    document.addEventListener('readystatechange', () => {
+      if (document.readyState === 'interactive') {
+        NProgress.inc(0.8);
+      }
+      if (document.readyState === 'complete') {
+        NProgress.done();
+      }
+    });
+    document.addEventListener('pjax:send', () => {
+      NProgress.start();
+    });
+    document.addEventListener('pjax:success', () => {
+      NProgress.done();
+    });
+  </script>
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    <div class="pjax">
+
+
+    </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>
