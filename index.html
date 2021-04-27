@@ -331,7 +331,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2021-04-27 23:20:07 / Modified: 23:21:38" itemprop="dateCreated datePublished" datetime="2021-04-27T23:20:07+08:00">2021-04-27</time>
+      <time title="Created: 2021-04-27 23:20:07 / Modified: 23:24:41" itemprop="dateCreated datePublished" datetime="2021-04-27T23:20:07+08:00">2021-04-27</time>
     </span>
 
   
@@ -425,7 +425,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-27 23:21:38" itemprop="dateModified" datetime="2021-04-27T23:21:38+08:00">2021-04-27</time>
+        <time title="Modified: 2021-04-27 23:24:41" itemprop="dateModified" datetime="2021-04-27T23:24:41+08:00">2021-04-27</time>
       </span>
 
   
@@ -521,7 +521,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-27 23:21:38" itemprop="dateModified" datetime="2021-04-27T23:21:38+08:00">2021-04-27</time>
+        <time title="Modified: 2021-04-27 23:24:41" itemprop="dateModified" datetime="2021-04-27T23:24:41+08:00">2021-04-27</time>
       </span>
 
   
@@ -615,7 +615,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-27 23:21:38" itemprop="dateModified" datetime="2021-04-27T23:21:38+08:00">2021-04-27</time>
+        <time title="Modified: 2021-04-27 23:24:41" itemprop="dateModified" datetime="2021-04-27T23:24:41+08:00">2021-04-27</time>
       </span>
 
   
@@ -648,276 +648,14 @@
 <p>在软件模式的分类中，每种模式都遵循一种特定的格式。这些模式首先描述背景， 即引发设计问题的情形；接着解释问题， 通常这里会有几个冲突的因素；最终， 权衡这些冲突， 给出问题的解决方案。</p>
 <p>在“ 模型 -视图-控制器” 模式中， 背景是显示信息和接收用户输人的用户界面系统。这里有几个冲突因素，对于同一数据来说， 可能需要同时更新多个可视化表示。解决方案是将这些功能分布到三个独立的交互组件： 模型、视图和控制器。</p>
 <p>模型 -视图 -控制器模式并不是 AWT 和 Swing 设计中使用的唯一模式。下列是应用的另外几种模式：<br>容器和组件是“ 组合（composite )” 模式、带滚动条的面板是“ 装饰器（decorator)” 模式、布局管理器是“ 策略（strategy )” 模式。</p>
-<h5 id="模型-视图-控制器模式"><a href="#模型-视图-控制器模式" class="headerlink" title="模型 -视图 -控制器模式"></a>模型 -视图 -控制器模式</h5><p>构成用户界面组件都有三个要素：</p>
-<ul>
-<li>内容， 如： 按钮的状态（是否按下，) 或者文本框的文本。</li>
-<li>外观（颜色，大小等)。</li>
-<li>行为（对事件的反应)。</li>
-</ul>
-<p>Swing 设计者采用了模型 -视图 -控制器（ model-view-controller ) 模式。这种设计模式遵循面向对象设计中的一个基本原则： 限制一个对象拥有的功能数量。模型 -视图 -控制器（MVC) 模式实现三个独立的类：</p>
-<ul>
-<li>模型 （model): 存储内容。</li>
-<li>视图 （view): 显示内容。</li>
-<li>控制器（controller ): 处理用户输入。</li>
-</ul>
-<p>模型存储内容，它没有用户界面。模型必须实现改变内容和查找内容的方法。模型 -视图 -控制器模式的一个优点是一个模型可以有多个视图， 其中每个视图可以显示全部内容的不同部分或不同形式。</p>
-<p>控制器负责处理用户输入事件，然后决定是否把这些事件转化成对模型或视图的改变。</p>
-<p>在程序员使用 Swing 组件时， 通常不需要考虑模型 -视图 -控制器体系结构。每个用户界面元素都有一个包装器类（如 JButton 或 JTextField ) 来保存模型和视图。当需要查询内容时， 包装器类会向模型询问并且返回所要的结果。当想改变视图时， 包装器类会把此请求转发给视图。然而，有时候包装器转发命令并不得力。</p>
-<p>模式只能作为一种指导性的建议而并没有严格的戒律。没有一种模式能够适用于所有情况。</p>
-<h5 id="Swing-按钮的模型-视图-控制器分析"><a href="#Swing-按钮的模型-视图-控制器分析" class="headerlink" title="Swing 按钮的模型 -视图 -控制器分析"></a>Swing 按钮的模型 -视图 -控制器分析</h5><p>对于大多数组件来说， 模型类将实现一个名字以 Model 结尾的接口。实现了此接口的类可以定义各种组件的状态。在 Swing 库中有一个名为 DefaultButtonModel 的类就实现了ButtonModel接口。可以通过查看 ButtonModel 接口中的特征来了解按钮模型所维护的数据类别。</p>
-<p>每个 JButton 对象都存储了一个按钮模型对象， 可以用下列方式得到它的引用。<br>]Button button = new JButton(“Blue”);<br>ButtonModel model = button.getModel();</p>
-<p>模型不存储按钮标签或者图标。</p>
-<p>当使用 Metal 观感时，JButton 类用 BasicButtonUI 类作为其视图；用 ButtonUIListener 类作为其控制器。通常， 每个 Swing 组件都有一个相关的后缀为 UI 的视图对象， 但并不是所有的 Swing 组件都有专门的控制器对象。</p>
-<h3 id="布局管理概述"><a href="#布局管理概述" class="headerlink" title="布局管理概述"></a>布局管理概述</h3><p>流布局管理器（ flow layout manager)是面板的默认布局管理器。当一行的空间不够时，会将显示在新的一行上。组件总是位于容器的中央，即使用户对框架进行缩放也是如此。流布局管理器完全控制每个<br>组件的放置位置。流布局将维持每个组件的最佳尺寸。</p>
-<p>组件放置在容器中， 布局管理器决定容器中的组件具体放置的位置和大小。</p>
-<p>组件（Component）可以放置在面板这样的容器中。由于 Container 类继承于 Component 类，所以<br>容器也可以放置在另一个容器中。 </p>
-<p>Component 的类层次结构：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Object &lt;- Component &lt;- Container &lt;- Window, JComponent</span><br><span class="line">Window &lt;- Frame &lt;- JFrame</span><br><span class="line">Window &lt;- Dialog &lt;- JDialog</span><br><span class="line">JComponent &lt;- JPanel, JTextComponent, JLabel, JScrollPanel, JComboBox, AbstractButton, JMenuBar</span><br><span class="line">JTextComponent &lt;- JTextField, JTextArea</span><br><span class="line">AbstractButton &lt;- JButton, JToggleButton, JMenuItem</span><br></pre></td></tr></table></figure>
-<p>继承层次有两点显得有点混乱。首先， 像 JFrame 这样的顶层窗口是 Container 的子类， 所以也是 Component 的子类， 但却不能放在其他容器内。另外，JComponent 是 Container 的子类， 但不直接继承 Component, 因此， 可以将其他组件添置到 JButton 中。但无论如何， 这些组件无法显示出来。</p>
-<p>每个容器都有一个默认的布局管理器，可以用setLayout方法重新进行设置。容器的 add方法将把组件和放置的方位传递给布局管理器。</p>
-<h5 id="边框布局"><a href="#边框布局" class="headerlink" title="边框布局"></a>边框布局</h5><p>边框布局管理器（border layout manager) 是每个 JFrame 的内容窗格的默认布局管理器。它允许为每个组件选择一个放置位置。可以选择把组件放在内容窗格的中部、 北部、南部、 东部或者西部。</p>
-<p>先放置边缘组件，剩余的可用空间由中间组件占据。当边框布局容器被缩放时，边缘组件的尺寸不会改变，而中部组件的大小会发生变化。在添加组件时可以指定 BorderLayout 类中的 CENTER、 NORTH、SOUTH、EAST和 WEST 常量。并非需要占用所有的位置，如果没有提供任何值，系统默认为 CENTER。</p>
-<p>BorderLayout 常 量 定 义 为 字 符 串。 例 如： BorderLayout.SOUTH 定 义 为 字 符 串“ SOUTH”。很多程序员喜欢直接使用字符串， 因为这些字符串比较简短，例如， frame.add (component,“ SOUTH” ）。然而，如果字符串拼写有误， 编译器不会捕获错误。</p>
-<p>边框布局会扩展所有组件的尺寸以便填满可用空间，当将一个按钮添加到容器中时会出现问题，解决这个问题的常见方法是使用另外一个面板（panel)。</p>
-<h5 id="网格布局"><a href="#网格布局" class="headerlink" title="网格布局"></a>网格布局</h5><p>网格布局像电子数据表一样， 按行列排列所有的组件。不过，它的每个单元大小都是一样的。在网格布局对象的构造器中，需要指定行数和列数。添加组件， 从第一行的第一列开始， 然后是第一行的第二列， 以此类推。</p>
-<p> pack方法使用所有组件的最佳大小来计算框架的高度和宽度。</p>
-<h3 id="文本输入"><a href="#文本输入" class="headerlink" title="文本输入"></a>文本输入</h3><p>文本域（ JTextField) 和文本区（ JTextArea) 组件用于获取文本输人。文本域只能接收单行文本的输人，而文本区能够接收多行文本的输人。JPassword 也只能接收单行文本的输人，但不会将输入的内容显示出来。这三个类都继承于 JTextComponent 类。</p>
-<h5 id="文本域"><a href="#文本域" class="headerlink" title="文本域"></a>文本域</h5><p>文本域添加到窗口的常用办法是将它添加到面板或者其他容器中，这与添加按钮完全一样：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">JPanel panel &#x3D; new JPanel();</span><br><span class="line">JTextField textField &#x3D; new JTextField(&quot;Default input&quot;, 20);</span><br><span class="line">panel.add(textField);</span><br></pre></td></tr></table></figure>
-<p>设置了文本域的宽度。如果希望文本域最多能够输人 n 个字符，就应该把宽度设置为 n 列。一列就是在当前使用的字体下一个字符的宽度。在实际中，应该将最大输人长度再多设 1 ~ 2 个字符。列数只是给 AWT 设定首选（ preferred) 大小的一个提示。如果布局管理器需要缩放这个文本域，它会调整文本域的大小。在 JTextField 的构造器中设定的宽度并不是用户能输人的字符个数的上限，当文本长度超过文本域长度时输人就会滚动。用户通常不喜欢滚动文本域， 因此应该尽量把文本域设置的宽一些。</p>
-<p>如果需要在运行时重新设置列数，可以使用 setColumns 方法，之后需要调用包含这个文本框的容器的 revalidate 方法。revalidate 方法会重新计算容器内所有组件的大小，并且对它们重新进行布局。revalidate 方法是 JComponent 类中的方法。它并不是马上就改变组件大小， 而是给这个组件加一个需要改变大小的标记。这样就避免了多个组件改变大小时带来的重复计算。如果想重新计算一个 JFrame 中的所有组件（JFrame 没有扩展 JComponent）， 就调用 validate 方法。</p>
-<p>可以在任何时候调用 setText 方法改变文本域中的内容。可以调用 getText 方法来获取用户键人的文本，如果想要将 getText 方法返回的文本域中的内容的前后空格去掉，就应该调用 trim 方法。如果想要改变显示文本的字体，就调用 setFont 方法。</p>
-<h5 id="标签和标签组件"><a href="#标签和标签组件" class="headerlink" title="标签和标签组件"></a>标签和标签组件</h5><p>标签是容纳文本的组件，它们没有任何的修饰， 也不能响应用户输入。可以利用标签标识组件。要想用标识符标识这种不带标签的组件， 应该：</p>
-<ol>
-<li>用相应的文本构造一个 JLabel 组件。</li>
-<li>将标签组件放置在距离需要标识的组件足够近的地方， 以便用户可以知道标签所标识的组件。</li>
-</ol>
-<p>JLabel 的构造器允许指定初始文本和图标， 也可以选择内容的排列方式。可以用 SwingConstants 接口中的常量来指定排列方式。如 LEFT、RIGHT、CENTER、NORTH、 EAST 等。利用 setText 和 setlcon 方法可以在运行期间设置标签的文本和图标。</p>
-<p>可以在按钮、标签和菜单项上使用无格式文本或 HTML 文本。不推荐在按钮上使用 HTML 文本，这样会影响观感。 但是 HTML 文本在标签中是非常有效的。只要简单地将标签字符串放置在 <code>&lt;html&gt;...&lt;/html&gt;</code> 中即可。需要说明的是包含 HTML 标签的第一个组件需要延迟一段时间才能显示出来，这是因为需要加载相当复杂的 HTML 显示代码</p>
-<h5 id="密码域"><a href="#密码域" class="headerlink" title="密码域"></a>密码域</h5><p>密码域（JPasswordField）中用户输入的字符不显示出来。每个输人的字符都用回显字符（ echo character) 表示， 典型的回显字符是星号(*)。</p>
-<h5 id="文本区"><a href="#文本区" class="headerlink" title="文本区"></a>文本区</h5><p>当在程序中放置一个文本区组件（JTextArea）时，用户就可以输人多行文本，并用 ENTER 键换行，每行都以一个“\n” 结尾。</p>
-<p>在 JTextArea 组件的构造器中，可以指定文本区的行数和列数。出于稳妥的考虑，参数 columns 应该设置得大一些。用户并不受限于输人指定的行数和列数。当输人过长时，文本会滚动。还可以用setColumns 方法改变列数， 用 setRows 方法改变行数。这些数值只是首选大小——布局管理器可能会对文本区进行缩放。</p>
-<p>如果文本区的文本超出显示的范围， 那么剩下的文本就会被剪裁掉。可以通过开启换行特性来避免裁剪过长的行：<br>textArea.setLineWrap(true);<br>换行只是视觉效果；文档中的文本没有改变，在文本中并没有插入“ \n” 字符。</p>
-<p>JTextArea 组件只显示无格式的文本， 没有特殊字体或者格式设置。如果想要显示格式化文本（如 HTML ), 就需要使用 JEditorPane 类。</p>
-<h5 id="滚动窗格"><a href="#滚动窗格" class="headerlink" title="滚动窗格"></a>滚动窗格</h5><p>在 Swing 中， 文本区没有滚动条。 如果需要滚动条， 可以将文本区插人到滚动窗格(scroll pane) 中：<br>textArea = new JTextArea(8, 40);<br>JScrollPane scrollPane = new JScratlPane(textArea);<br>现在滚动窗格管理文本区的视图。如果文本超出了文本区可以显示的范围， 滚动条就会自动地出现， 并且在删除部分文本后，当文本能够显示在文本区范围内时， 滚动条会再次自动地消失。滚动是由滚动窗格内部处理的， 编写程序时无需处理滚动事件。这是一种为任意组件添加滚动功能的通用机制， 而不是文本区特有的。</p>
-<h3 id="选择组件"><a href="#选择组件" class="headerlink" title="选择组件"></a>选择组件</h3><h5 id="复选框"><a href="#复选框" class="headerlink" title="复选框"></a>复选框</h5><p>如果想要接收的输人只是“ 是” 或“ 非”，就可以使用复选框组件（JCheckBox）。复选框自动地带有标识标签。用户通过点击某个复选框来选择相应的选项， 再点击则取消选取。当复选框获得焦点时， 用户也可以通过按空格键来切换选择。</p>
-<p>在构造器中指定标签文本。可以使用 setSelected 方法来选定或取消选定复选框。isSelected方法将返回每个复选框的当前状态，如果没有选取则为 false, 否则为 true。当用户点击复选框时将触发一个动作事件，可以为复选框设置一个动作监听器。</p>
-<p>复选框为正方形， 并且如果被选择， 这个正方形中会出现一个对钩的符号。</p>
-<h5 id="单选钮"><a href="#单选钮" class="headerlink" title="单选钮"></a>单选钮</h5><p>用户只选择几个选项当中的一个。当用户选择另一项的时候， 前一项就自动地取消选择。这样一组选框通常称为单选钮组（Radio Button Group)。</p>
-<p>要实现单选钮组。需为单选钮组构造一个 ButtonGroup 的对象。然后，再将 JRadioButton 类型的对象添加到按钮组中。按钮组负责在新按钮被按下时，取消前一个被按下的按钮的选择状态。构造器的第二个参数为 true 表明这个按钮初始状态是被选择，其他按钮构造器的这个参数为 false。按钮组仅仅控制按钮的行为，如果想把这些按钮组织在一起布局， 需要把它们添加到容器中。</p>
-<p>单选钮是圆形，选择以后圈内出现一个圆点。</p>
-<p>当用户点击一个单选钮时， 这个按钮将产生一个动作事件。</p>
-<p>不查询组内所有的按钮就知道哪个按钮被选择：ButtonGroup 类中有一个 getSelection 方法，返回附加在那个按钮上的模型 ButtonModel 的引用。ButtonModel 接 口getActionCommand 方法，返回动作命令，一个单选钮的“ 动作命令” 是它的文本标签，但是它的模型的动作命令是 null。只有在通过 setActionCommand 命令明确地为所有单选钮设定动作命令后， 才能够通过调用方法 buttonGroup.getSelection().getActionCommand() 获得当前选择的按钮的动作命令。</p>
-<h5 id="边框"><a href="#边框" class="headerlink" title="边框"></a>边框</h5><p>如果在一个窗口中有多组单选按钮，就需要用可视化的形式指明哪些按钮属于同一组。Swing 提供了一组很有用的边框（ borders) 来解决这个问题。可以在任何继承了 JComponent的组件上应用边框。最常用的用途是在一个面板周围放置一个边框，然后用其他用户界面元素（如单选钮）填充面板。</p>
-<p>步骤：</p>
-<ol>
-<li><p>调用 BorderFactory 的静态方法创建边框。下面是几种可选的风格:</p>
-<ul>
-<li><p>凹斜面（Lowered bevel）</p>
-</li>
-<li><p>凸斜面（Raised bevel）</p>
-</li>
-<li><p>蚀刻（Etched）</p>
-</li>
-<li><p>直 线（Line）</p>
-</li>
-<li><p>蒙版（Matte）</p>
-</li>
-<li><p>空（Empty）（只是在组件外围创建一些空白空间）</p>
-</li>
-</ul>
-</li>
-<li><p>可以给边框添加标题：BroderFactory.createTitledBorder。</p>
-</li>
-<li><p>可以调用下列方法将几种边框组合起来使用：BorderFactory.createCompoundBorder。</p>
-</li>
-<li><p>调用 JComponent 类中 setBorder 方法将结果边框添加到组件中。</p>
-</li>
-</ol>
-<p>不同的边框有不同的用于设置边框的宽度和颜色的选项。</p>
-<h5 id="组合框"><a href="#组合框" class="headerlink" title="组合框"></a>组合框</h5><p>如果有多个选择项， 使用单选按钮就不太适宜了， 其原因是占据的屏幕空间太大。这时就可以选择组合框。当用户点击这个组件时， 选择列表就会下拉出来， 用户可以从中选择一项。</p>
-<p>如果下拉列表框被设置成可编辑 （setEditable 方法 ), 就可以像编辑文本一样编辑当前的选项内容。鉴于这个原因， 这种组件被称为组合框（ JComboBox )，它将文本域的灵活性与一组预定义的选项组合起来。</p>
-<p>在 Java SE 7中，JComboBox 类是一个泛型类。</p>
-<p>调用 getSelectedltem 方法获取当前的选项。对于可编辑组合框， 其中的选项可以是任何类型，这取决于编辑器（即由编辑器获取用户输人并将结果转换为一个对象)。如果你的组合框不是可编辑的， 最好调用：<br>combo.getltemAt(combo.getSelectedlndex());<br>这会为所选选项提供正确的类型。</p>
-<p>可以调用 addltem 方法增加选项。这个方法将字符串添加到列表的尾部。可以利用 insertltemAt 方法在列表的任何位置插人一个新选项：<br>combo.insertltemAt(“Monospaced”, 0); // add at the beginning<br>可以增加任何类型的选项，组合框可以调用每个选项的 toString 方法显示其内容。</p>
-<p>如果需要在运行时删除某些选项，可以使用 removeltem 或者 removeltemAt 方法。调用 removeAllltems 方法将立即移除所有的选项。</p>
-<p>如果需要往组合框中添加大量的选项，需构造一个 DefaultComboBoxModel。</p>
-<p>当用户从组合框中选择一个选项时，组合框就将产生一个动作事件。为了判断哪个选项被选择， 可以通过事件参数调用 getSource 方法来得到发送事件的组合框引用，接着调用getSelectedltem 方法获取当前选择的选项。需要把这个方法的返回值转化为相应的类型，通常是 String 型。</p>
-<p>如果希望持久地显示列表， 而不是下拉列表， 就应该使用 JList 组件。</p>
-<h5 id="滑动条"><a href="#滑动条" class="headerlink" title="滑动条"></a>滑动条</h5><p>滑动条允许进行连续值的选择。使用下列方式构造无格式滑动条：<br>JSlider slider = new JSlider(min, max, initialValue);<br>如果省略最小值、 最大值和初始值， 其默认值分别为 0、100 和 50。</p>
-<p>构造无格式垂直滑动条：<br>JSlider slider = new JSIider(SwingConstants.VERTICAL, min, max , initialValue);</p>
-<p>当用户滑动滑动条时， 滑动条的值就会在最小值和最大值之间变化。当值发生变化时， ChangeEvent 就会发送给所有变化的监听器。 为了得到这些改变的通知，需要调用 addChangeListener 方法并且安装一个实现了 ChangeListener 接口的对象。这个接口只有一个方法 StateChanged。在这个方法中，可以用方法获取滑动条的当前值：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ChangeListener listener &#x3D; event -&gt; &#123;</span><br><span class="line">	JSlider slider &#x3D; (JSlider) event.getSource()；</span><br><span class="line">    int value &#x3D; slider.getValue();</span><br><span class="line">    ...</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>可以通过显示标尺（ tick ) 对滑动条进行修饰：<br>slider.setMajorTickSpacing(20);<br>slider.setMinorTickSpacing(5);<br>slider.setPaintTicks(true);<br>滑动条在每 20 个单位的位置显示一个大标尺标记，每 5 个单位的位置显示一个小标尺标记，然后显示出来。单位是指滑动条值， 而不是像素。大标尺和小标尺标记是相互独立的。</p>
-<p>可以强制滑动条对齐标尺。这样一来，只要用户完成拖放滑动条的操作， 滑动条就会立即自动地移到最接近的标尺处：<br>slider.setSnapToTicks(true);</p>
-<p>可以调用下列方法为大标尺添加标尺标记标签（tick mark labels）：<br>slider.setPaintLabels(true);<br>还可以提供其他形式的标尺标记， 如字符串或者图标。 首先需要填充一个键为 Integer 类型且值为 Component 类型的散列表。 然后再调用setLabelTable 方法，组件就会放置在标尺标记处。通常组件使用的是JLabel对象：<br>labelTable.put(0, new JLabel(“A”));<br>labelTable.put(20, new JLabel(“B”));<br>…<br>labelTable.put(100, new Jabel(“F”));<br>slider.setLabelTable(labelTable);</p>
-<p>隐藏滑动条移动的轨迹：<br>slider.setPaintTrack(false);</p>
-<p>使滑动条逆向：<br>slider.setInverted(true)</p>
-<h3 id="菜单"><a href="#菜单" class="headerlink" title="菜单"></a>菜单</h3><p>位于窗口顶部的菜单栏 （menubar ) 包括了下拉菜单的名字。点击一个名字就可以打开包含菜单项 （ menu items) 和子菜单（ submenus) 的菜单。 当用户点击菜单项时， 所有的菜单都会被关闭并且将一条消息发送给程序。</p>
-<h5 id="菜单创建"><a href="#菜单创建" class="headerlink" title="菜单创建"></a>菜单创建</h5><p>首先要创建一个菜单栏：<br>JMenuBar menuBar = new JMenuBar();<br>通常放在框架的顶部：<br>frame.setJMenuBar(menuBar):<br>要为每个菜单建立一个菜单对象：<br>JMenu editMenu = new JMenu(“Edit”);<br>然后将顶层菜单添加到菜单栏中：<br>menuBar.add(editMenu);<br>向菜单对象中添加菜单项、分隔符和子菜单：<br>JMenuItem pasteltem = new JMenuItem(“Paste”)；<br>editMenu.add(pasteltem);<br>editMenu.addSeparator();<br>JMenu optionsMenu = . . .; // a submenu<br>editMenu.add(optionsMenu);</p>
-<p>当用户选择菜单时，将触发一个动作事件。需要为每个菜单项安装一个动作监听器。</p>
-<p>可以使用 JMenu.add(String s) 方法将菜单项插入到菜单的尾部：<br>editMenu.add(“Paste”);<br>add 方法返回创建的菜单项。</p>
-<p>在通常情况下， 菜单项触发的命令也可以通过其他用户界面元素（如工具栏上的按钮）激活。</p>
-<p>可在 AbstractAction 对象的构造器中指定菜单项标签并且覆盖 actionPerformed方法来获得菜单动作处理器。例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Action exitAction &#x3D; new AbstractAction(&quot;Exit&quot;) &#123;</span><br><span class="line">	public void actionPerformed(ActionEvent event) &#123;</span><br><span class="line">		&#x2F;&#x2F; action code goes here</span><br><span class="line">		System.exit(0);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>然后将动作添加到菜单中：<br>JMenuItem exitltem = fileMenu.add(exitAction);<br>这个命令利用动作名将一个菜单项添加到菜单中。这个动作对象将作为它的监听器。这条语句是下面两条语句的快捷形式：<br>JMenuItem exitltem = new JMenuItem(exitAction);<br>fileMenu.add(exitltem);</p>
-<h5 id="菜单项中的图标"><a href="#菜单项中的图标" class="headerlink" title="菜单项中的图标"></a>菜单项中的图标</h5><p>JMenuItem 类扩展了 AbstractButton 类。与按钮一样，菜单可以包含文本标签、 图标，也可以两者都包含。既可以利用 JMenuItem(String，Icon) 或者 JMenuItem(Icon) 构造器为菜单指定一个图标，也可以利用 JMenuItem 类中的 setlcon方法(继承自 AbstractButton 类）指定一个图标。</p>
-<p>在默认情况下，菜单项的文本被放置在图标的右侧。如果喜欢将文本放置在左侧， 可以调用 JMenuItem类中的 setHorizontalTextPosition方法（继承自 AbstractButton 类）设置。</p>
-<p>也可以将一个图标添加到一个动作上：<br>cutAction.putValue(Action.SMALL_ICON, new Imagelcon(“cut.gif”))；<br>当使用动作构造菜单项时，Action.NAME 值将会作为菜单项的文本，而 Action.SMALL_ICON 将会作为图标。</p>
-<p>可以利用 AbstractAction 构造器设置图标：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cutAction &#x3D; new AbstractAction(&quot;Cut&quot;, new ImageIcon(&quot;cut.gif&quot;)) &#123;</span><br><span class="line">	public void actionPerformed(ActionEvent event) &#123;</span><br><span class="line">		...</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h5 id="复选框和单选钮菜单项"><a href="#复选框和单选钮菜单项" class="headerlink" title="复选框和单选钮菜单项"></a>复选框和单选钮菜单项</h5><p>复选框菜单项（JCheckBoxMenuItem）和单选钮菜单项（JRadioButtonMenuItem）在文本旁边显示了一个复选框或一个单选钮。当用户选择一个菜单项时，菜单项就会自动地在选择和未选择间进行切换。除了按钮装饰外，同其他菜单项的处理一样。单选钮菜单项与普通单选钮的工作方式一样， 必须将它们加人到按钮组中。</p>
-<h5 id="弹出菜单"><a href="#弹出菜单" class="headerlink" title="弹出菜单"></a>弹出菜单</h5><p>弹出菜单（pop-up menu) 是不固定在菜单栏中随处浮动的菜单。弹出菜单没有标题：<br>JPopupMenu popup = new JPopupMenu();<br>然后用常规的方法添加菜单项。弹出菜单必须调用 show方法菜单才能显示出来。调用时需要给出父组件以及相对父组件坐标的显示位置：<br>popup.show(panel , x, y);</p>
-<p>通常， 当用户点击某个鼠标键时弹出菜单。 这就是所谓的弹出式触发器（pop-up trigger）。 在 Windows 或者 Linux中， 弹出式触发器是鼠标右键。要想在用户点击某一个组件时弹出菜单， 需要按照下列方式调用方法：<br>component.setComponentPopupMenu(popup);</p>
-<p>偶尔会遇到在一个含有弹出菜单的组件中放置一个组件的情况。这个子组件可以调用下列方法继承父组件的弹出菜单：<br>child.setInheritsPopupMenu(true);</p>
-<h5 id="快捷键和加速器"><a href="#快捷键和加速器" class="headerlink" title="快捷键和加速器"></a>快捷键和加速器</h5><p>可以通过在菜单项的构造器中指定一个快捷字母来为菜单项设置快捷键：<br>JMenuItem aboutltem = new JMenuItem(“About”, ‘A’);<br>快捷键会自动地显示在菜单项中， 并带有一条下划线。</p>
-<p>有时候不希望在菜单项的第一个快捷键字母下面加下划线。可以调用 setDisplayedMnemonicIndex 方法指定希望加下划线的字符。</p>
-<p>如果有一个 Action 对象， 就可以把快捷键作为 Action. MNEMONIC_KEY 的键值添加到对象中：<br>cutAction.putValue(Action.MNEMONIC_KEY, new Integer(‘A’)))；</p>
-<p>如果想为菜单设置快捷键， 需要调用 setMnemonic 方法：<br>JMenu helpMenu = new JMenu(“Help”);<br>helpMenu. setMnemonic(‘H’);<br>可以同时按下 ALT 键和菜单的快捷键来实现在菜单栏中选择一个顶层菜单的操作。</p>
-<p>加速器是在不打开菜单的情况下选择菜单项的快捷键。可以使用 setAccelerator 将加速器键关联到一个菜单项上。这个方法使用 Keystroke 类型的对象作为参数：<br>openItem.setAccelerator(KeyStroke.getKeyStroke(“ctrl O”));</p>
-<p>加速器只能关联到菜单项上， 不能关联到菜单上。加速器键并不实际打开菜单。它将直接地激活菜单关联的动作事件。当加速器添加到菜单项时， 对应的组合键就会自动地显示在相应的菜单上。</p>
-<p>在 Windows 下，ALT+F4 用于关闭窗口。 但这不是 Java 程序设定的加速键。这是操作系统定义的快捷键。这个组合键总会触发活动窗口的 WindowClosing 事件， 而不管菜单上是否有 Close 菜单项。</p>
-<h5 id="启用和禁用菜单项"><a href="#启用和禁用菜单项" class="headerlink" title="启用和禁用菜单项"></a>启用和禁用菜单项</h5><p>在有些时候， 某个特定的菜单项可能只能够在某种特定的环境下才可用。可以将这个菜单项设为禁用状态， 以便屏蔽掉这些暂时不适用的命令。被禁用的菜单项被显示为灰色，不能被选择它：<br>saveltem.setEnabled(false);</p>
-<p>启用和禁用菜单项有两种策略：</p>
-<ul>
-<li>每次环境发生变化就对相关的菜单项或动作调用 setEnabled。</li>
-<li>在显示菜单之前禁用这些菜单项。这里必须为“ 菜单选中” 事件注册监听器。javax.swing.event 包定义了 MenuListener 接口， 它包含三个方法：<br>void menuSelected(MenuEvent event)<br>void menuDeselected(MenuEvent event)<br>void menuCanceled(MenuEvent event)<br>由于在菜单显示之前调用 menuSelected 方法， 所以可以在这个方法中禁用或启用菜单项。</li>
-</ul>
-<p>在显示菜单之前禁用菜单项是一种明智的选择， 但这种方式不适用于带有加速键的菜单项。这是因为在按下加速键时并没有打开菜单， 因此动作没有被禁用， 致使加速键还会触发这个行为。</p>
-<h5 id="工具栏"><a href="#工具栏" class="headerlink" title="工具栏"></a>工具栏</h5><p>工具栏是在程序中提供的快速访问常用命令的按钮栏。工具栏的特殊之处在于可以将它随处移动。 可以将它拖拽到框架的四个边框上。释放鼠标按钮后， 工具栏将会停靠在新的位置上。工具栏可以完全脱离框架。 这样的工具栏将包含在自己的框架中。当关闭包含工具栏的框架时， 它会冋到原始的框架中。</p>
-<p>工具栏只有位于采用边框布局或者任何支持 North、 East、South 和 West 约束布局管理器的容器内才能够被拖拽。</p>
-<p>创建工具栏：<br>JToolBar bar = new JToolBar();<br>可以将组件或Action对象添加（add方法）到工具栏中。<br>可以用分隔符将按钮分组：<br>bar.addSeparator()；<br>当工具栏没有停靠时，可以指定工具栏的标题：<br>bar = new JToolBar(titleString) ;<br>工具栏最初为水平的。如果想要将工具栏垂直放置， 可以使用下列代码：<br>bar = new JToolBar(SwingConstants.VERTICAL)<br>bar = new JToolBar(titleString, SwingConstants.VERTICAL)</p>
-<h5 id="工具提示"><a href="#工具提示" class="headerlink" title="工具提示"></a>工具提示</h5><p>当光标停留在工具栏某个按钮上片刻时，工具提示就会被激活。工具提示文本显示在一个有颜色的矩形里。当用户移开鼠标时，工具提示就会自动地消失。</p>
-<p>调用 setToolText 方法将工具提示添加到 Component 上：<br>exitButton.setToolTipText(“Exit”);</p>
-<p>如果使用 Action 对象， 就可以用SHORT_DESCRIPTION 关联工具提示：<br>exitAction.putValue(Action.SHORT_DESCRIPTION , “Exit”);</p>
-<h3 id="复杂的布局管理"><a href="#复杂的布局管理" class="headerlink" title="复杂的布局管理"></a>复杂的布局管理</h3><p>自从 Java 1.0 以来，AWT 就含有网格组布局（grid bag layout), 这种布局将组件按行和列排列。行和列的大小可以灵活改变， 并且组件可以横跨多行多列。这种布局管理器非常灵活，但也非常复杂。</p>
-<p>在 2005 年， NetBeans 开发队伍发明了 Matisse 技术， 这种技术将布局工具与布局管理器结合起来。用户界面设计者可以使用工具将组件拖拽到容器中， 并指出组件的排列方式。工具将设计者的意图转换成组布局管理器的可以理解的指令，与手工地编写布局管理的代码相比，这样做要便捷得多。组布局管理器现在是 Java SE 6中的一部分。即使没有用 NetBeans作为 IDE, 也应该考虑使用它的 GUI 生成工具。可以用 NetBeans 设计 GUI, 然后再将得到的代码粘贴到所选择的 IDE 中。</p>
-<h5 id="网格组布局"><a href="#网格组布局" class="headerlink" title="网格组布局"></a>网格组布局</h5><p>网格组布局是所有布局管理器之母。可以将网格组布局看成是没有任何限制的网格布局。在网格组布局中，行和列的尺寸可以改变。可以将相邻的单元合并以适应较大的组件。组件不需要填充整个单元格区域， 并可以指定它们在单元格内的对齐方式。</p>
-<p>要想使用网格组管理器进行布局， 必须经过下列过程：</p>
-<ol>
-<li>建立一个 GridBagLayout 的对象。不需要指定网格的行数和列数。布局管理器会根据后面所给的信息猜测出来。</li>
-<li>将 GridBagLayout 对象设置成组件的布局管理器。</li>
-<li>为每个组件建立一个 GridBagConstraints 对象。设置 GridBagConstraints 对象的域以便指出组件在网格组中的布局方案。</li>
-<li>最后，通过下面的调用添加组件的约束：<br>add(component, constraints )；</li>
-</ol>
-<p>设置 GridBagConstraints 对象的状态:</p>
-<ul>
-<li>gridx、gridy、gridwidth 和 gridheight 参数：这些约束定义了组件在网格中的位置。gridx 和 gridy 指定了被添加组件左上角的行、列位置。gridwidth 和 gridheight 指定了组件占据的行数和列数。网格的坐标从 0 开始。gridx=0 和 gridy=0 代表最左上角。</li>
-<li>增量域：在网格布局中，需要为每个区域设置增量域（weightx 和 weighty)。如果将增量设置为0, 则这个区域将永远为初始尺寸。如果将所有区域的增量都设置为 0, 容器就会集聚在为它分配的区域中间， 而不是通过拉伸来填充它。增量并不实际给出列的相对大小。当容器超过首选大小时， 增量表示分配给每个区域的扩展比例值。</li>
-<li>fill 和 anchor 参数：如果不希望组件拉伸至整个区域， 就需要设置 fill 约束。它有四个有效值——GridBagConstraints.NONE、 GridBagConstraints.HORIZONTAL、GridBagConstraints. VERTICAL 和GridBagConstraints.BOTH。如 果 组 件 没 有 填 充 整 个 区 域， 可 以 通 过 设 置 anchor 域 指 定 其 位 置。 有 效 值 为GridBagConstraints.CENTER ( 默 认 值 ）、GridBagConstraints.NORTH、 GridBagConstraints.NORTHEAST 和 GridBagConstraints.EAST 等。</li>
-<li>填充：可以通过设置 GridBagLayout 的 insets 域在组件周围增加附加的空白区域。通过设置 Insets 对象的 left、top、right 和 bottom 指定组件周围的空间量。这被称作外部填充（或外边距 )<br>( external padding。)通过设置 ipadx 和 ipady 指定内部填充（或内外距)( internal padding )。这两个值被加到组件的最小宽度和最小高度上。这样可以保证组件不会收缩至最小尺寸之下。</li>
-<li>指定 gridx, gridy, gridwidth 和 gridheight 参數的另一种方法：AWT 文档建议不要将 gridx 和 gridy 设置为绝对位置，应该将它们设置为常量 GridBagConstraints.RELATIVE。 然后，按照标准的顺序，将组件添加到网格组布局中。即第一行从左向右，然后再开始新的一行，以此类推。还需要通过为 gridheight 和 gridwidth 域指定一个适当的值来设置组件横跨的行数和列数。除此之外，如果组件扩展至最后一行或最后一列，则不要给出一个实际的数值， 而是用常量 GridBagConstraints.REMAINDER 替代，这样会告诉布局管理器这个组件是本行上的最后一个组件。这种方案看起来能起作用，但似乎显得有点笨拙。这是因为这样做会将实际位置信息对布局管理器隐藏起来，而日后又希望它能够重新发现这些信息。</li>
-<li>使用帮助类来管理网格组约束：网格组布局最乏味的工作就是为设置约束编写代码。为此，很多程序员编写帮助函数或者帮助类来满足上面的目的。</li>
-</ul>
-<p>下面的策略可以让网格组布局的使用相对简单一些：</p>
-<ol>
-<li>在纸上画出组件布局草图。</li>
-<li>找出一种网格， 小组件被放置在一个单元格内，大组件将横跨多个单元格。</li>
-<li>用 0, 1 , 2 标识网格的行和列。现在可以读取 gridx, gridy, gridwidth 和 gridheight的值。</li>
-<li>对于每个组件，需要考虑下列问题： 是否需要水平或者垂直填充它所在的单元格？ 如果不需要， 希望如何排列？ 这些就是 fill 和 anchor 参数的设置。</li>
-<li>将所有的增量设置为 100。如果需要某行或某列始终保持默认的大小， 就将这行或这列中所有组件的 weightx 和 weighty 设置为 0。</li>
-<li>编写代码。仔细地检查 GridBagConstraints 的设置。错误的约束可能会破坏整个布局。</li>
-<li>编译、运行。</li>
-</ol>
-<h5 id="组布局"><a href="#组布局" class="headerlink" title="组布局"></a>组布局</h5><p>可以通过将组件放人 GroupLyout.SequentialGroup 或者 GroupLayout.ParallelGroup 对象中将它们组织起来。这些类是 GroupLayout.Group 的子类。在组中可以包含组件、 间距和内嵌的组。由于组类中的各种 add 方法都返回组对象， 因此可以将方法调用串联在一起。</p>
-<p>组布局分别对水平和垂直布局进行计算。为了能够看到水平计算的效果， 假设组件都被压平了， 因此高度为 0：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">.addCroup(layout.createSequentialCroup()</span><br><span class="line">    .addContainerCap()</span><br><span class="line">	.addCroup(layout.createParallelCroup(GroupLayout.Alignment.LEADING)</span><br><span class="line">		.addComponent(jLabel1, GroupLayout.Alignment.TRAILING)</span><br><span class="line">		.addComponent(jLabel2, GroupLayout.A1ignment.TRAILING))</span><br><span class="line">	.addPreferredCap(LayoutStyle.ComponentPlacement.RELATED)</span><br><span class="line">	.addGroup(layout.createParallelCroup(CroupLayout.Alignment.LEADING)</span><br><span class="line">		.addComponent(jTextFieldl)</span><br><span class="line">		.addComponent(jPasswordFieldl))</span><br></pre></td></tr></table></figure>
-<p>为了能够看到垂直计算的效果， 假设组件都被压扁了， 因此宽度为 0：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">layout.createSequentialGroup()</span><br><span class="line">	.addContainerCap()</span><br><span class="line">	.addGroup(layout.createParailelCroup(CroupLayout.Alignment.BASELINE)</span><br><span class="line">		.addComponent(jLabel1)</span><br><span class="line">		.addComponent(jTextFieldl))</span><br><span class="line">	.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)</span><br><span class="line">	.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)</span><br><span class="line">		.addComponent(jLabel2)</span><br><span class="line">		.addComponent(jPasswordFieldl))</span><br></pre></td></tr></table></figure>
-<h5 id="不使用布局管理器"><a href="#不使用布局管理器" class="headerlink" title="不使用布局管理器"></a>不使用布局管理器</h5><p>有时候用户可能不想使用任何布局管理器， 而只想把组件放在一个固定的位置上（通常称为绝对定位)。</p>
-<p>下面是将一个组件定位到某个绝对定位的步骤：</p>
-<ol>
-<li>将布局管理器设置为 null。</li>
-<li>将组件添加到容器中。</li>
-<li>指定想要放置的位置和大小。</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">frame.setLayout(null);</span><br><span class="line">JButton ok &#x3D; new JButton(&quot;OK&quot;)；</span><br><span class="line">frame.add(ok);</span><br><span class="line">ok.setBounds(1O, 10, 30, 15);</span><br></pre></td></tr></table></figure>
-<h5 id="定制布局管理器"><a href="#定制布局管理器" class="headerlink" title="定制布局管理器"></a>定制布局管理器</h5><p>可以通过自己设计 LayoutManager 类来实现特殊的布局方式。定制布局管理器必须实现 LayoutManager接口。</p>
-<p>AWT 还有第二个接口 LayoutManager2。这个接口的主要特点是允许用户使用带有约束的 add 方法。例如， BorderLayout 和 GridBagLayout 都实现了 LayoutManager2 接口。</p>
-<h5 id="遍历顺序"><a href="#遍历顺序" class="headerlink" title="遍历顺序"></a>遍历顺序</h5><p>当把很多组件添加到窗口中时， 需要考虑遍历顺序（ traversal order) 的问题。窗口被初次显示时，遍历序列的第一个组件会有键盘焦点。每次用户按下 TAB 键， 下一个组件就会获得焦点。</p>
-<p>遍历顺序很直观，它的顺序是从左至右，从上至下。当焦点给予另外一个容器时，那个容器左上角的组件就会自动地获得焦点，然后再遍历那个容器中的所有组件。最后，将焦点移交给紧跟着那个容器的组件。</p>
-<p>调用 component.setFocusable(false); 可以从焦点遍历中删除一个组件。</p>
-<h3 id="对话框"><a href="#对话框" class="headerlink" title="对话框"></a>对话框</h3><p>AWT 也分为模式对话框和无模式对话框。所谓模式对话框是指在结束对它的处理之前， 不允许用户与应用程序的其余窗口进行交互。所谓无模式对话框是指允许用户同时在对话框和应用程序的其他窗口中输入信息。</p>
-<h5 id="选项对话框"><a href="#选项对话框" class="headerlink" title="选项对话框"></a>选项对话框</h5><p>Swing 有一套简单的对话框， 用于获取用户的一些简单信息。JOptionPane 有 4 个用于显示这些对话框的静态方法：</p>
-<ul>
-<li><p>showMessageDialog: 显示一条消息并等待用户点击 OK</p>
-</li>
-<li><p>showConfirmDialog: 显示一条消息并等待用户确认（与 OK/Cancel 类似）</p>
-</li>
-<li><p>showOptionDialog: 显示一条消息并获得用户在一组选项中的选择</p>
-</li>
-<li><p>showInputDialog: 显示一条消息并获得用户输人的一行文本。文本域或组合框。</p>
-</li>
-</ul>
-<p>这些对话框的确切布局和为标准消息类型选择的图标都取决于具体的观感。</p>
-<p>左侧的图标将由下面 5 种消息类型决定：<br>ERROR.MESSAGE<br>INFORMATION_MESSAGE<br>WARNING_MESSAGE<br>QUESTION_MESSAGE<br>PLAIN_MESSAGE<br>PLAIN_MESSAGE 类型没有图标。每个对话框类型都有一个方法，可以用来提供自己的图标， 以替代原来的图标。</p>
-<p>可以为每个对话框类型指定一条消息。 下面是显示消息对象的基本方式:<br>String: 绘制字符串<br>Icon：显示图标<br>Component：显示组件<br>Object[]: 显示数组中的所有对象， 依次叠加<br>任何其他对象： 调用 toString 方法来显示结果字符串<br>消息字符串中可以包含换行符 （’\n’)。</p>
-<p>位于底部的按钮取决于对话框类型和选项类型。当调用 showMessageDialog 和 showInputDialog 时，只能看到一组标准按钮（分别是 OK/Cancel)。当调用 showConfirmDialog时， 可以选择下面四种选项类型之一：<br>DEFAULT_0PTI0N<br>YES_NO_OPTION<br>YES_N0_CANCEL_0PTI0N<br>OK_CANCEL_OPTION<br>使用 showOptionDialog 可以指定任意的选项。这里需要为选项提供一个对象数组。每个数组元素可以是下列类型之一：<br>String： 使用字符串标签创建一个按钮<br>Icon： 使用图标创建一个按钮<br>Component： 显示这个组件<br>其他类型的对象：使用 toString 方法，然后用结果字符串作为标签创建按钮</p>
-<p>下面是这些方法的返回值：<br>showMessageDialog 无<br>showConfirmDialog 表示被选项的一个整数<br>showOptionDialog 表示被选项的一个整数<br>showInputDialog 用户选择或输入的字符串<br>用户没有选择可选项， 而是关闭了对话框，返回值为CLOSED_OPTION。</p>
-<h5 id="创建对话框"><a href="#创建对话框" class="headerlink" title="创建对话框"></a>创建对话框</h5><p>要想实现一个对话框，需要从 JDialog 派生一个类。具体过程如下：</p>
-<ol>
-<li>在对话框构造器中，调用超类 JDialog 的构造器。在调用超类构造器时，需要提供拥有者框架（ownerframe、) 对话框标题及模式特征。拥有者框架控制对话框的显示位置，如果将拥有者标识为 null, 那么对话框将由一个隐藏框架所拥有。模式特征将指定对话框处于显示状态时，应用程序中其他窗口是否被锁住。</li>
-<li>添加对话框的用户界面组件。</li>
-<li>添加事件处理器。</li>
-<li>设置对话框的大小。</li>
-</ol>
-<p>在 Java SE 6 中， 有个额外的模式特征类型——文档 -模式对话框。</p>
-<p>要想显示对话框， 需要建立一个新的对话框对象， 并让它可见：<br>JDialog dialog = new AboutDialog(this);<br>dialog.setVisible(true);</p>
-<h5 id="数据交换"><a href="#数据交换" class="headerlink" title="数据交换"></a>数据交换</h5><p>对话框应该提供设置默认数据的方法。</p>
-<p>对于模式对话框。调用 setVisible(true) 阻塞。希望知道用户是接收对话框， 还是取消对话框。可设置了 OK 标志， 在对话框显示之前是 false。只有 OK 按钮的事件处理器可以将它设置为 true。这样， 就可以获得对话框中的用户输入。</p>
-<p>无模式对话框数据传输就没有那么简单了。当无模式对话框显示时， 调用 setVisible(true) 并不阻塞， 在对话框显示时， 其他程序仍继续运行。如果用户选择了无模式对话框中的一项， 并点击 OK , 对话框就会将一个事件发送给程序中的某个监听器。</p>
-<p>在构造一个 JDialog 对象时，需要指定拥有者框架。但是， 在很多情况下，一个对话框可能会有多个拥有者框架，所以最好在准备显示对话框时再确定拥有者框架。</p>
-<p>有时， 拥有者框架并不总是可用的。利用任意的 parent 组件可以很容易地得到它：<br>owner = (Frame) SwingUtilities.getAncestorOfClass(Frame.class, parent);</p>
-<p>很多对话框都有默认按钮。 如果用户按下一个触发器键（在大多数“ 观感” 实现中是 ENTER) 就自动地选择了它。默认按钮通常用加粗的轮廓给予特别标识。可以在对话框的根窗格（root pane ) 中设置默认按钮：<br>dialog.getRootPane().setDefaultButton(okButton);</p>
-<h5 id="文件对话框"><a href="#文件对话框" class="headerlink" title="文件对话框"></a>文件对话框</h5><p>Swing中提供了 JFileChooser 类，它可以显示一个文件对话框， 其外观与本地应用程序中使用的文件对话框基本一样。JFileChooser 是一个模式对话框。调用 showOpenDialog显示打开文件的对话框，调用 showSaveDialog 显示保存文件的对话框。接收文件的按钮被自动地标签为 Open 或者 Save。调用 showDialog 方法为按钮设定标签。</p>
-<p>建立文件对话框并且获取用户选择信息的步骤：</p>
-<ol>
-<li>建立一个 JFileChooser 对象。允许在多个框架中重用一个文件选择器。重用一个文件选择器对象是一个很好的想法，其原因是 JFileChooser 的构造器相当耗费时间。</li>
-<li>调用 setCurrentDirectory 方法设置当前目录。需要提供一个 File 对象。构造器 File (String fileName ) 能够将一个文件或目录名转化为一个 File 对象。</li>
-<li>如果有一个想要作为用户选择的默认文件名， 可以使用 setSelectedFile 方法进行指定。</li>
-<li>如果允许用户在对话框中选择多个文件，需要调用 setMultiSelectionEnabled 方法。</li>
-<li>如果想让对话框仅显示某一种类型的文件，需要设置文件过滤器（setFileFilter 方法）。需要创建一个实现了抽象类javax.swing.filechooser.FileFilter 的对象。文件选择器将每个文件传递给文件过滤器， 只有文件过滤器接受的文件才被最终显示出来。有两个子类可用：可以接受所有文件的默认过滤器和可以接受给定扩展名的所有文件的过滤器（FileNameExtensionFilter）。设计专用文件过滤器只要实现 FileFilter 超类中的两个方法即可：<br>public boolean accept(File f);<br>public String getDescription();<br>第一个方法检测是否应该接受一个文件，第二个方法返回显示在文件选择器对话框中显示的文件类型的描述信息。可以为一个文件选择器安装多个过滤器。用户可以从文件对话框底部的组合框中选择过滤器。在默认情况下， All files 过滤器总是显示在组合框中。如果你想禁用 All files 过滤器，需要调用：chooser.setAcceptAllFileFilterUsed(false); 如果为加载和保存不同类型的文件重用一个文件选择器， 就需要调用：chooser.resetChoosableFilters(); 这样可以在添加新文件过滤器之前清除旧文件过滤器。</li>
-<li>如果希望选择目录，需要调用setFileSelectionMode 方法。 参数值为：JFileChooser.FILES_ONLY ( 默认值）， JFileChooser.DIRECTORIES_ONLY 或者 JFileChooser.FILES_AND_DIRECTORIES。</li>
-<li>调用 showOpenDialog 或者 showSaveDialog 方法显示对话框。必须为这些调用提供父组件。返回值可以是 JFileChooser.APPROVE_OPTION、 JFileChooser.CANCEL_OPTION 或者 JFileChooser.ERROR_OPTION。</li>
-<li>调 用 getSelectedFile() 或者 getSelectedFiles() 方法获取用户选择的一个或多个文件。这些方法将返回一个文件对象或者一组文件对象。 如果需要知道文件对象名时，可以调用 getPath方法。</li>
-</ol>
-<p>可以通过为文件选择器显示的每个文件提供特定的图标和文件描述来定制文件选择器。这需要应用一个扩展于 javax.swing.filechooser 包中的 FileView 类的对象。然后，调用 setFileView 方法将文件视图安装到文件选择器中。文件选择器为每个希望显示的文件或目录调用这些方法。如果方法返回的图标、名字或描述信息为 null, 那么文件选择器将会构造当前观感的默认文件视图。这样处理很好，其原因是这样只需处理具有不同显示的文件类型。文件选择器调用 isTraversable 方法来决定是否在用户点击一个目录的时候打开这个目录。</p>
-<p>可以通过添加一个附件组件来定制文件对话框。附件可以是任何 Swing组件。</p>
-<h5 id="颜色选择器"><a href="#颜色选择器" class="headerlink" title="颜色选择器"></a>颜色选择器</h5><p>Swing提供了一种颜色选择器—JColorChooser。颜色选择器是一个组件， 它包含了用于创建包含颜色选择器组件的对话框方法。</p>
-<p>何利用颜色选择器显示模式对话框:<br>Color selectedColor = JColorChooser.showDialog(parent,titl e, initialColor);<br>也可以显示无模式颜色选择器对话框， 需要提供：一个父组件、对话框的标题、选择模式 / 无模式对话框的标志、颜色选择器、0K 和 Cancel 按钮的监听器（如果不需要监听器可以设置为 null)。</p>
-<p>如果想要监视颜色的选择，那就需要获得选择器的选择模型并添加改变监听器，这会将颜色选择立即反馈给用户：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">chooser.getSelectionModel().addChangeListener(event -&gt; &#123;</span><br><span class="line">	do something with chooser.getColor();</span><br><span class="line">&#125;；)</span><br></pre></td></tr></table></figure>
-<h3 id="GUI-程序排错"><a href="#GUI-程序排错" class="headerlink" title="GUI 程序排错"></a>GUI 程序排错</h3><h5 id="调试技巧"><a href="#调试技巧" class="headerlink" title="调试技巧"></a>调试技巧</h5><p>按下 Ctrl+Shift+F1 得到所有Swing组件的层次结构输出。</p>
-<p>可以使用 JComponent 类的 setDebugGraphicsOptions 方法打开对一个 Swing 组件的调试。有以下几个选项：</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>DebugGraphics.FLASH_OPTION</td>
-<td>绘制前用红色闪烁地显示各条线、 矩形和文本</td>
-</tr>
-<tr>
-<td>DebugGraphics.LOG_OPTION</td>
-<td>为每个绘制操作打印一个消息</td>
-</tr>
-<tr>
-<td>DebugGraphics.BUFFERED_OPTION</td>
-<td>显示在离屏缓冲区完成的操作</td>
-</tr>
-<tr>
-<td>DebugGraphics.NONE_OPTION</td>
-<td>关闭图形调试</td>
-</tr>
-</tbody></table>
-<p>要让闪烁选项起作用， 必须禁用“ 双缓冲”——这是 Swing 更新窗口时为减少闪烁所用的策略：<br>RepaintManager.currentManager(getRootPane()).setDoubleBufferingEnabled(false);<br>((JComponent) getContentPane()).setDebugCraphicsOptions(DebugCraphics.FLASH_OPTION);<br>只需要把这些代码行放在 feme 窗口构造器的末尾。程序运行时， 你将看到会用慢动作填充内容窗格。</p>
-<p>如果希望得到 GUI 应用中生成的每一个 AWT 事件的记录， 可以在发出事件的每一个组件中安装一个监听器。利用反射， 可以很容易地自动完成这个工作。</p>
-<h5 id="让-AWT-机器人完成工作"><a href="#让-AWT-机器人完成工作" class="headerlink" title="让 AWT 机器人完成工作"></a>让 AWT 机器人完成工作</h5><p>Robot 类可以向任何 AWT 程序发送按键和鼠标点击事件。这个类就是用来自动测试用户界面的。</p>
-<p>要得到一个机器人，首先需要得到一个 GraphicsDevice 对象：<br>CraphicsEnvironment environment = CraphicsEnvironment.getlocalCraphicsEnvironment();<br>CraphicsDevice screen = environinent.getDefaultScreenDevice():<br>然后构造一个机器人：<br>Robot robot = new Robot(screen);<br>若要发送一个按键事件， 需告知机器人模拟按下和松开按键:<br>robot.keyPress(KeyEvent.VK_TAB):<br>robot.keyRelease(KeyEvent.VK_TAB);<br>对于鼠标点击事件，首先需要移动鼠标， 然后按下再释放鼠标按钮:<br>robot.mouseMove(x, y); // x and y are absolute screen pixel coordinates,<br>robot.nousePress(InputEvent.BUTTON1_MASK);<br>robot.mouseRelease(InputEvent.BUTTON1_MASK);<br>首先模拟按键和鼠标输入， 然后截屏来查看应用是否完成了它该完成的工作。截屏需要使用 createScreenCapture 方法：<br>Rectangle rect = new Rectangle(x, y, width, height);<br>Bufferedlmage image = robot.createScreenCapture(rect):<br>通常我们都希望在机器人指令之间增加一个很小的延迟，使应用能跟得上。可以使用 delay 方法并提供延迟时间（毫秒数) ：<br>robot.delay(1000); </p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/04/26/12Swing%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2%E7%BB%84%E4%BB%B6/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -974,7 +712,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-27 23:21:38" itemprop="dateModified" datetime="2021-04-27T23:21:38+08:00">2021-04-27</time>
+        <time title="Modified: 2021-04-27 23:24:41" itemprop="dateModified" datetime="2021-04-27T23:24:41+08:00">2021-04-27</time>
       </span>
 
   
@@ -1264,7 +1002,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-27 23:21:38" itemprop="dateModified" datetime="2021-04-27T23:21:38+08:00">2021-04-27</time>
+        <time title="Modified: 2021-04-27 23:24:41" itemprop="dateModified" datetime="2021-04-27T23:24:41+08:00">2021-04-27</time>
       </span>
 
   
@@ -1555,7 +1293,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-27 23:21:38" itemprop="dateModified" datetime="2021-04-27T23:21:38+08:00">2021-04-27</time>
+        <time title="Modified: 2021-04-27 23:24:41" itemprop="dateModified" datetime="2021-04-27T23:24:41+08:00">2021-04-27</time>
       </span>
 
   
@@ -1649,7 +1387,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-27 23:21:38" itemprop="dateModified" datetime="2021-04-27T23:21:38+08:00">2021-04-27</time>
+        <time title="Modified: 2021-04-27 23:24:41" itemprop="dateModified" datetime="2021-04-27T23:24:41+08:00">2021-04-27</time>
       </span>
 
   
@@ -1743,7 +1481,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-27 23:21:38" itemprop="dateModified" datetime="2021-04-27T23:21:38+08:00">2021-04-27</time>
+        <time title="Modified: 2021-04-27 23:24:41" itemprop="dateModified" datetime="2021-04-27T23:24:41+08:00">2021-04-27</time>
       </span>
 
   
@@ -1837,7 +1575,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-27 23:21:38" itemprop="dateModified" datetime="2021-04-27T23:21:38+08:00">2021-04-27</time>
+        <time title="Modified: 2021-04-27 23:24:41" itemprop="dateModified" datetime="2021-04-27T23:24:41+08:00">2021-04-27</time>
       </span>
 
   
