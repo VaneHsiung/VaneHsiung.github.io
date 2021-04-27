@@ -6644,9 +6644,11 @@ class ViewHolder &#123;
       </tags>
   </entry>
   <entry>
-    <title></title>
+    <title>01HTML-I</title>
     <url>/2021/04/27/01HTML-I/</url>
-    <content><![CDATA[<h1 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h1><p>HTML 语言是互联网开发的基础。</p>
+    <content><![CDATA[<p>HTML 语言是互联网开发的基础。</p>
+<a id="more"></a>
+
 <h2 id="HTML-语言简介"><a href="#HTML-语言简介" class="headerlink" title="HTML 语言简介"></a>HTML 语言简介</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>HTML 是网页使用的语言，定义了网页的结构和内容。浏览器访问网站，其实就是从服务器下载 HTML 代码，然后渲染出网页。</p>
 <p>HTML 的全名是“超文本标记语言”（HyperText Markup Language），上个世纪90年代由欧洲核子研究中心的物理学家蒂姆·伯纳斯-李（Tim Berners-Lee）发明。它的最大特点就是支持超链接，点击链接就可以跳转到其他网页，从而构成了整个互联网。</p>
 <p>1999年，HTML 4.01 版发布，成为广泛接受的 HTML 标准。2014年，HTML 5 发布，这是目前正在使用的版本。</p>
@@ -8300,5 +8302,8 @@ class ViewHolder &#123;
 <p>如果将<code>&lt;share-buttons&gt;</code>元素的样式与脚本，封装在一个 HTML 文件<code>share-buttons.html</code>之中，这个元素就可以复用了。</p>
 <p>使用的时候，先引入<code>share-buttons.html</code>。</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;link rel&#x3D;&quot;import&quot; href&#x3D;&quot;share-buttons.html&quot;&gt;</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>Programming</tag>
+      </tags>
   </entry>
 </search>
