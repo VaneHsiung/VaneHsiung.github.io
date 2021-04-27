@@ -37,7 +37,7 @@
 <meta property="og:description" content="Swing 概述在 Java 1.0 刚刚出现的时候，包含了一个用于基本 GUI 程序设计的类库，Sun将它称为抽象窗口工具箱（ Abstract Window Toolkit, AWT)。基本 AWT 库采用将处理用户界面元素的任务委派给每个目标平台（ Windows、Solaris、 Macintosh 等）的本地 GUI 工具箱的方式，由本地 GUI 工具箱负责用户界面元素的创建和动作。从理">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-04-26T02:19:00.000Z">
-<meta property="article:modified_time" content="2021-04-27T15:24:41.998Z">
+<meta property="article:modified_time" content="2021-04-27T15:27:18.053Z">
 <meta property="article:author" content="vane">
 <meta property="article:tag" content="Programming">
 <meta name="twitter:card" content="summary">
@@ -339,7 +339,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-27 23:24:41" itemprop="dateModified" datetime="2021-04-27T23:24:41+08:00">2021-04-27</time>
+        <time title="Modified: 2021-04-27 23:27:18" itemprop="dateModified" datetime="2021-04-27T23:27:18+08:00">2021-04-27</time>
       </span>
 
   
@@ -376,6 +376,8 @@
     
     <div class="post-body" itemprop="articleBody">
         <h3 id="Swing-概述"><a href="#Swing-概述" class="headerlink" title="Swing 概述"></a>Swing 概述</h3><p>在 Java 1.0 刚刚出现的时候，包含了一个用于基本 GUI 程序设计的类库，Sun将它称为抽象窗口工具箱（ Abstract Window Toolkit, AWT)。基本 AWT 库采用将处理用户界面元素的任务委派给每个目标平台（ Windows、Solaris、 Macintosh 等）的本地 GUI 工具箱的方式，由本地 GUI 工具箱负责用户界面元素的创建和动作。从理论上说，结果程序可以运行在任何平台上， 但观感（ look and feel ) 的效果却依赖于目标平台，因此，Sun 公司的口号是“ 一次编写，随处使用”。</p>
+<a id="more"></a>
+
 <p>对于简单的应用程序来说，基于对等体方法的效果还是不错的。但是，要想编写依赖于本地用户界面元素的高质量、 可移植的图形库就会暴露出一些缺陷。因此， 要想给予用户一致的、 可预见性的界面操作方式是相当困难的。而且，有些图形环境（如 XII/Motif) 并没有像 Windows 或 Macintosh 这样丰富的用户界面组件集合。这也就将基于对等体的可移植库限制在了“ 最小公分母” 的范围内。其结果使 AWT 构建的 GUI 应用程序看起来没有 Windows 或 Macintosh 应用程序显示的那么漂亮， 也没有提供那些平台用户所认知的功能。更加糟糕的是， 在不同平台上的 AWT 用户界面库中存在着不同的 bug。研发人员必须在每一个平号上测试应用程序， 因此人们嘲弄地将 AWT 称为“ 一次编写， 随处调试”。</p>
 <p>在 1996 年，Netscape 创建了一种称为 IFC ( Internet Foundation Class) 的 GUI 库， 它采用了与 AWT 完全不同的工作方式。它将按钮、菜单这样的用户界面元素绘制在空白窗口上，而对等体只需要创建和绘制窗口。因此，Netscape 的 IFC 组件在程序运行的所有平台上的外观和动作都一样。Sun 与 Netscape 合作完善了这种方式， 创建了一个名为 Swing 的用户界面库。Swing 可作为 Java 1.1 的扩展部分使用， 现已成为 Java SE 1.2 标准库的一部分。JFC 特性不仅仅包含了 Swing 组件，而且还包含了一个可访问性 API、一2D API 和一个可拖放 API。</p>
 <p>Swing 没有完全替代 AWT, 而是基于 AWT 架构之上。Swing 仅仅提供了能力更加强大的用户界面组件。 尤其在采用 Swing 编写的程序中，还需要使用基本的 AWT 处理事件。从现在开始，Swing 是指 “ 被绘制的” 用户界面类；AWT 是指像事件处理这样的窗口工具箱的底层机制。</p>
