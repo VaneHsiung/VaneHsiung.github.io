@@ -1992,7 +1992,7 @@
 <a id="more"></a>
 
 <h3 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h3><h5 id="安装，windows需要处理换行符"><a href="#安装，windows需要处理换行符" class="headerlink" title="安装，windows需要处理换行符"></a>安装，windows需要处理换行符</h5><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo yum install git</span><br></pre></td></tr></table></figure>
-<h5 id="设置姓名和邮箱地址"><a href="#设置姓名和邮箱地址" class="headerlink" title="设置姓名和邮箱地址"></a>设置姓名和邮箱地址</h5><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;Firstname Lastname&quot;</span><br><span class="line">git config --global user.email &quot;your_email@example.com&quot;</span><br></pre></td></tr></table></figure>
+<h5 id="设置姓名和邮箱地址"><a href="#设置姓名和邮箱地址" class="headerlink" title="设置姓名和邮箱地址"></a>设置姓名和邮箱地址</h5><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;Vane Hsiung&quot;</span><br><span class="line">git config --global user.email &quot;1664548605@qq.com&quot;</span><br></pre></td></tr></table></figure>
 <h5 id="提高输出可读性"><a href="#提高输出可读性" class="headerlink" title="提高输出可读性"></a>提高输出可读性</h5><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git config --global color.ui auto</span><br></pre></td></tr></table></figure>
 <h5 id="设置文件"><a href="#设置文件" class="headerlink" title="设置文件"></a>设置文件</h5><ul>
 <li><p>显示当前的 Git 配置</p>
@@ -2001,7 +2001,7 @@
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git config -e [--global]</span><br></pre></td></tr></table></figure>
 <h5 id="设置SSH，添加认证密码"><a href="#设置SSH，添加认证密码" class="headerlink" title="设置SSH，添加认证密码"></a>设置SSH，添加认证密码</h5></li>
 </ul>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;your_email@example.com&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;1664548605@qq.com&quot;</span><br></pre></td></tr></table></figure>
 <h5 id="添加公开密钥"><a href="#添加公开密钥" class="headerlink" title="添加公开密钥"></a>添加公开密钥</h5><p>将下面的密钥添加到 GitHub 设置中的 SSH key 中</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cat ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
 <h5 id="查看是否认证和通信成功"><a href="#查看是否认证和通信成功" class="headerlink" title="查看是否认证和通信成功"></a>查看是否认证和通信成功</h5><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
@@ -2123,6 +2123,13 @@
 <li><code>-u</code> 在推送的同时将远程仓库的（origin仓库）的 branch 分支设为本地仓库当前分支的 upstream（上游）<br>运行 git pull 从远程仓库获取内容时，就可以省略参数</li>
 </ul>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git push [-u origin branchName]		# 上传本地指定分支到远程仓库</span><br></pre></td></tr></table></figure>
+<p>如果每次 <code>git push</code> 都需要输入账号和密码</p>
+<ul>
+<li><p>首先在 git 工作目录下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config [--global] credential.helper store</span><br></pre></td></tr></table></figure></li>
+<li><p>然后执行一次 <code>git pull</code>，这次输入账号和密码之后就不用再输入了。</p>
+</li>
+</ul>
 <h3 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h3><h5 id="创建并切换分支"><a href="#创建并切换分支" class="headerlink" title="创建并切换分支"></a>创建并切换分支</h5><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git checkout branchName			# 切换分支，并更新工作区</span><br><span class="line">git checkout -					#切换至上一分支</span><br><span class="line">git checkout -b branchName		# 新建一个分支，并切换到该分支</span><br><span class="line">git branch [branch] [commit]		# 新建一个分支，指向指定commit</span><br><span class="line">git branch --track [branch] [remote-branch]		# 新建一个分支，与指定的远程分支建立追踪关系</span><br></pre></td></tr></table></figure>
 <h5 id="以图表形式查看分支"><a href="#以图表形式查看分支" class="headerlink" title="以图表形式查看分支"></a>以图表形式查看分支</h5><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git log --graph</span><br></pre></td></tr></table></figure>
 <h5 id="显示分支一览表"><a href="#显示分支一览表" class="headerlink" title="显示分支一览表"></a>显示分支一览表</h5><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git branch		# 列出所有本地分支</span><br><span class="line">git branch -r		#  列出所有远程分支</span><br><span class="line">git branch -a				# 同时显示本地仓库和远程仓库的分支信息</span><br><span class="line">git branch branchName		# 用于创建分支</span><br></pre></td></tr></table></figure>
@@ -2503,7 +2510,7 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dnf install fcitx-im fcitx-configtool fcitx-googlepinyin</span><br></pre></td></tr></table></figure></li>
 <li><p>配置</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ nano ~&#x2F;.xprofile</span><br><span class="line">export GTK_MODULE&#x3D;fcitx</span><br><span class="line">export QT_IM_MODULE&#x3D;fcitx</span><br><span class="line">export XMODIFIERS&#x3D;&quot;@im&#x3D;fcitx&quot;</span><br></pre></td></tr></table></figure></li>
-<li><p>fictx 没图标：重装fcitx，在fcitx配置里关掉Kimpanel</p>
+<li><p>fcitx  没图标：重装fcitx，在fcitx配置里关掉Kimpanel</p>
 </li>
 </ul>
 <p><strong>关闭触摸板</strong></p>
@@ -2958,9 +2965,29 @@
 apt install exfat-fuse exfat-utils<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">**制作 windows U盘启动盘**</span><br><span class="line"></span><br><span class="line">Ubuntu 下安装 WoeUSB</span><br><span class="line"></span><br><span class="line">**libguestfs**</span><br><span class="line"></span><br><span class="line">libguestfs 支持几乎所有类型的磁盘镜像。</span><br><span class="line"></span><br><span class="line">在基于 Debian 的系统上：</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 $ apt-get install libguestfs-tools<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">我们可以像下面这样挂载一个 qcow2 格式的磁盘镜像：</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 $ guestmount -a /path/to/qcow2/image -m <device> /path/to/mount/point<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">要卸载它，则执行：</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-$ guestunmount qcow2_mount_point<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">### openSUSE</span><br><span class="line"></span><br><span class="line">（&#x2F;ˌoʊpənˈsuːzə&#x2F;）</span><br><span class="line"></span><br><span class="line">使用了 openSUSE 的 KDE 之后，真是惊喜连连，感觉比 gnome 要方便的多。系统主题，在 gnome 上，要切换主题，还是比较麻烦的；但是在 KDE 上，在系统设置里面可以直接下载主题，一键切换。桌面壁纸，在 gnome 上，我用的都是离线壁纸，通过 shotwell 轮播，而在 KDE 上，可以在 Desktop setting 里面使用每日一图，比如 bing，还有 Unsplash Wallpapers。gnome nautilus 没有创建文件的 menu item，每次都得打开 terminal touch 一下，而 kde dolphin 则不需要。还有很喜欢的 KDE connect。总之还有很多有待探索。</span><br><span class="line"></span><br><span class="line">**YaST 系统配置**</span><br><span class="line"></span><br><span class="line">YaST 是 *Yet another Setup Tool*（又一个配置工具）的缩写。YaST 是 openSUSE 和 SUSE Linux 企业版的安装和配置工具。YaST 控制中心是 YaST 配置模块的统一入口。 </span><br><span class="line"></span><br><span class="line">区别于 kde 桌面系统配置。</span><br><span class="line"></span><br><span class="line">在 YaST 加入新语言支持时，会自动下载对应的字体与输入法。</span><br><span class="line"></span><br><span class="line">**Zypper 包管理器**</span><br><span class="line"></span><br><span class="line">Zypper 是个命令行形式的软件包管理器，以 libzypp 为处理引擎，提供诸如供应源管理、依赖关系解决和软件包安装等功能。 </span><br><span class="line"></span><br><span class="line">可以直接使用 &#96;rpm&#96; 命令。</span><br><span class="line"></span><br><span class="line"> **装入 NTFS 分区**</span><br><span class="line"></span><br><span class="line">1. 安装 &#96;ntfs-3g&#96;。</span><br><span class="line"></span><br><span class="line">   &#96;&#96;&#96;bash</span><br><span class="line">   sudo zypper in ntfs-3g</span><br></pre></td></tr></table></figure></li>
+$ guestunmount qcow2_mount_point<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">**Ubuntu hosts**</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="security-ubuntu-com"><a href="#security-ubuntu-com" class="headerlink" title="security.ubuntu.com"></a>security.ubuntu.com</h1></li>
 </ul>
-<ol start="2">
+<p>91.189.88.142 security.ubuntu.com<br>91.189.88.152 security.ubuntu.com<br>91.189.91.38 security.ubuntu.com<br>91.189.91.39 security.ubuntu.com</p>
+<h1 id="archive-canonical-com"><a href="#archive-canonical-com" class="headerlink" title="archive.canonical.com"></a>archive.canonical.com</h1><p>91.189.92.150 archive.canonical.com<br>91.189.92.191 archive.canonical.com<br>91.189.91.15 archive.canonical.com</p>
+<h1 id="downloads-sourceforge-net"><a href="#downloads-sourceforge-net" class="headerlink" title="downloads.sourceforge.net"></a>downloads.sourceforge.net</h1><p>216.105.38.13 downloads.sourceforge.net</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">**安装 fcitx 相关**</span><br><span class="line"></span><br><span class="line">总结来说，就是我想用搜狗输入法的词库，因为通过ibus导入搜狗细胞词库这条路不通，就考虑使用fcitx，起先由于 ibus 在，fcitx 报错  “start FCITX error, Another XIM daemon named ibus is running”，搜索都无法解决，就直接删除了ibus，删除了之后，由于 Ubuntu 21.04 默认使用 wayland ，fcitx 也不能好好运行，之后又重装了ibus，结果发现fcitx与fcitx5不同，所以又装了fcitx5，装的时候又自动装了fcitx，之后又发现搜狗输入法linux版只支持fcitx。oh-my-zsh应该对通配符作了限制，需要用跳脱字符</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;bash</span><br><span class="line">sudo apt remove fcitx\*</span><br></pre></td></tr></table></figure>
+<p>Fcitx 5 是 Fcitx （也即 Fcitx 4）的继任者，相比于 Fcitx 4, Fcitx 5 带来了很多改进，例如更好的  Wayland 支持以及全新的插件机制。从 Fcitx 4 升级到5 并非是完全兼容的，它们之间不共享输入法、配置文件以及数据，往往你需要通过  fcitx5-migrator 等工具完成数据的迁移。在 Fedora 中，Fcitx 5 框架及对应的输入法是被单独打包的。但是可以与  Fcitx 4 共存。</p>
+<p><strong>列出所有手动安装软件</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">apt-mark showmanual</span><br></pre></td></tr></table></figure>
+<h3 id="openSUSE"><a href="#openSUSE" class="headerlink" title="openSUSE"></a>openSUSE</h3><p>（/ˌoʊpənˈsuːzə/）</p>
+<p>使用了 openSUSE 的 KDE 之后，真是惊喜连连，感觉比 gnome 要方便的多。系统主题，在 gnome 上，要切换主题，还是比较麻烦的；但是在 KDE 上，在系统设置里面可以直接下载主题，一键切换。桌面壁纸，在 gnome 上，我用的都是离线壁纸，通过 shotwell 轮播，而在 KDE 上，可以在 Desktop setting 里面使用每日一图，比如 bing，还有 Unsplash Wallpapers。gnome nautilus 没有创建文件的 menu item，每次都得打开 terminal touch 一下，而 kde dolphin 则不需要。还有很喜欢的 KDE connect。总之还有很多有待探索。</p>
+<p><strong>YaST 系统配置</strong></p>
+<p>YaST 是 <em>Yet another Setup Tool</em>（又一个配置工具）的缩写。YaST 是 openSUSE 和 SUSE Linux 企业版的安装和配置工具。YaST 控制中心是 YaST 配置模块的统一入口。 </p>
+<p>区别于 kde 桌面系统配置。</p>
+<p>在 YaST 加入新语言支持时，会自动下载对应的字体与输入法。</p>
+<p><strong>Zypper 包管理器</strong></p>
+<p>Zypper 是个命令行形式的软件包管理器，以 libzypp 为处理引擎，提供诸如供应源管理、依赖关系解决和软件包安装等功能。 </p>
+<p>可以直接使用 <code>rpm</code> 命令。</p>
+<p> <strong>装入 NTFS 分区</strong></p>
+<ol>
+<li><p>安装 <code>ntfs-3g</code>。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo zypper <span class="keyword">in</span> ntfs-3g</span><br></pre></td></tr></table></figure></li>
 <li><p>创建一个要充当安装点的目录，如 <code>~/mounts/windows</code>。    </p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkdir ~/mounts/windows</span><br></pre></td></tr></table></figure></li>
 <li><p>确定所需的 Windows 分区。</p>
@@ -5389,12 +5416,18 @@ $ guestunmount qcow2_mount_point<figure class="highlight plain"><table><tr><td c
 <li>package-lock.json 执行 npm install 命令生成，描述模块来源及依赖信息，可删除</li>
 </ul>
 </li>
-<li><p>安装模块：读取 package.json 并下载模块到 <code>node_modules</code> 的目录，模块分为两类 dependencies 和devDependencies，分别对应生产环境需要的安装包和开发环境需要的安装包</p>
+<li><p>安装模块：</p>
+<ul>
+<li><p>全局安装</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install -g 模块名称</span><br></pre></td></tr></table></figure></li>
+<li><p>本地安装：读取 package.json 并下载模块到 <code>node_modules</code> 的目录，模块分为两类 dependencies 和devDependencies，分别对应生产环境需要的安装包和开发环境需要的安装包</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install &lt;package_name&gt;</span><br><span class="line"></span><br><span class="line"># 在安装模块的时候，可以通过指定参数来修改 package.json 文件</span><br><span class="line">npm install &lt;package_name&gt; --save</span><br><span class="line">npm install &lt;package_name&gt; --save-dev</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
 <li><p>更新模块</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm update</span><br></pre></td></tr></table></figure></li>
 <li><p>卸载模块</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm uninstall &lt;package_name&gt;</span><br><span class="line"></span><br><span class="line"># 卸载模块的同时，也从 package.json 文件中移除</span><br><span class="line">$ npm uninstall --save &lt;package_name&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm uninstall -g &lt;package_name&gt;</span><br><span class="line">npm uninstall &lt;package_name&gt;</span><br><span class="line"></span><br><span class="line"># 卸载模块的同时，也从 package.json 文件中移除</span><br><span class="line">npm uninstall --save &lt;package_name&gt;</span><br><span class="line">npm uninstall --save-dev &lt;package_name&gt;</span><br></pre></td></tr></table></figure>
 <p>解决问题：</p>
 </li>
 <li><p>Ubuntu 安装最新 LTS 版本：<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL25vZGVqcy9oZWxwL3dpa2kvSW5zdGFsbGF0aW9u">官方教程<i class="fa fa-external-link-alt"></i></span>，Windows 版本更好</p>

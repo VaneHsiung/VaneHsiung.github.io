@@ -40,7 +40,7 @@
 <meta property="og:image" content="https://vanehsiung.netlify.app/2020/12/10/Hexo/CDN1.webp">
 <meta property="og:image" content="https://vanehsiung.netlify.app/2020/12/10/Hexo/CDN2.webp">
 <meta property="article:published_time" content="2020-12-10T14:50:12.000Z">
-<meta property="article:modified_time" content="2021-04-27T15:27:18.061Z">
+<meta property="article:modified_time" content="2021-05-01T14:27:04.843Z">
 <meta property="article:author" content="vane">
 <meta property="article:tag" content="Tools">
 <meta name="twitter:card" content="summary">
@@ -343,7 +343,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-27 23:27:18" itemprop="dateModified" datetime="2021-04-27T23:27:18+08:00">2021-04-27</time>
+        <time title="Modified: 2021-05-01 22:27:04" itemprop="dateModified" datetime="2021-05-01T22:27:04+08:00">2021-05-01</time>
       </span>
 
   
@@ -1156,12 +1156,18 @@
 <li>package-lock.json 执行 npm install 命令生成，描述模块来源及依赖信息，可删除</li>
 </ul>
 </li>
-<li><p>安装模块：读取 package.json 并下载模块到 <code>node_modules</code> 的目录，模块分为两类 dependencies 和devDependencies，分别对应生产环境需要的安装包和开发环境需要的安装包</p>
+<li><p>安装模块：</p>
+<ul>
+<li><p>全局安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g 模块名称</span><br></pre></td></tr></table></figure></li>
+<li><p>本地安装：读取 package.json 并下载模块到 <code>node_modules</code> 的目录，模块分为两类 dependencies 和devDependencies，分别对应生产环境需要的安装包和开发环境需要的安装包</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm install &lt;package_name&gt;</span><br><span class="line"></span><br><span class="line"># 在安装模块的时候，可以通过指定参数来修改 package.json 文件</span><br><span class="line">npm install &lt;package_name&gt; --save</span><br><span class="line">npm install &lt;package_name&gt; --save-dev</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
 <li><p>更新模块</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm update</span><br></pre></td></tr></table></figure></li>
 <li><p>卸载模块</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall &lt;package_name&gt;</span><br><span class="line"></span><br><span class="line"># 卸载模块的同时，也从 package.json 文件中移除</span><br><span class="line">$ npm uninstall --save &lt;package_name&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall -g &lt;package_name&gt;</span><br><span class="line">npm uninstall &lt;package_name&gt;</span><br><span class="line"></span><br><span class="line"># 卸载模块的同时，也从 package.json 文件中移除</span><br><span class="line">npm uninstall --save &lt;package_name&gt;</span><br><span class="line">npm uninstall --save-dev &lt;package_name&gt;</span><br></pre></td></tr></table></figure>
 <p>解决问题：</p>
 </li>
 <li><p>Ubuntu 安装最新 LTS 版本：<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL25vZGVqcy9oZWxwL3dpa2kvSW5zdGFsbGF0aW9u">官方教程<i class="fa fa-external-link-alt"></i></span>，Windows 版本更好</p>

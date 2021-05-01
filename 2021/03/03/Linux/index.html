@@ -39,7 +39,7 @@
 <meta property="og:image" content="https://vanehsiung.netlify.app/2021/03/03/Linux/XServer.png">
 <meta property="og:image" content="https://vanehsiung.netlify.app/2021/03/03/Linux/Wayland.png">
 <meta property="article:published_time" content="2021-03-03T14:48:56.000Z">
-<meta property="article:modified_time" content="2021-04-27T15:27:18.061Z">
+<meta property="article:modified_time" content="2021-05-01T14:27:04.843Z">
 <meta property="article:author" content="vane">
 <meta property="article:tag" content="Unix-like">
 <meta name="twitter:card" content="summary">
@@ -235,7 +235,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#CentOS"><span class="nav-text">CentOS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ubuntu"><span class="nav-text">Ubuntu</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IRC"><span class="nav-text">IRC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Others"><span class="nav-text">Others</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#CentOS"><span class="nav-text">CentOS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ubuntu"><span class="nav-text">Ubuntu</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#security-ubuntu-com"><span class="nav-text">security.ubuntu.com</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#archive-canonical-com"><span class="nav-text">archive.canonical.com</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#downloads-sourceforge-net"><span class="nav-text">downloads.sourceforge.net</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#openSUSE"><span class="nav-text">openSUSE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IRC"><span class="nav-text">IRC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Others"><span class="nav-text">Others</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -342,7 +342,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-27 23:27:18" itemprop="dateModified" datetime="2021-04-27T23:27:18+08:00">2021-04-27</time>
+        <time title="Modified: 2021-05-01 22:27:04" itemprop="dateModified" datetime="2021-05-01T22:27:04+08:00">2021-05-01</time>
       </span>
 
   
@@ -360,14 +360,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Symbols count in article: </span>
-      <span>14k</span>
+      <span>15k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>13 mins.</span>
+      <span>14 mins.</span>
     </span>
 </div>
 
@@ -409,7 +409,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnf install fcitx-im fcitx-configtool fcitx-googlepinyin</span><br></pre></td></tr></table></figure></li>
 <li><p>配置</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ nano ~&#x2F;.xprofile</span><br><span class="line">export GTK_MODULE&#x3D;fcitx</span><br><span class="line">export QT_IM_MODULE&#x3D;fcitx</span><br><span class="line">export XMODIFIERS&#x3D;&quot;@im&#x3D;fcitx&quot;</span><br></pre></td></tr></table></figure></li>
-<li><p>fictx 没图标：重装fcitx，在fcitx配置里关掉Kimpanel</p>
+<li><p>fcitx  没图标：重装fcitx，在fcitx配置里关掉Kimpanel</p>
 </li>
 </ul>
 <p><strong>关闭触摸板</strong></p>
@@ -864,9 +864,29 @@
 apt install exfat-fuse exfat-utils<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">**制作 windows U盘启动盘**</span><br><span class="line"></span><br><span class="line">Ubuntu 下安装 WoeUSB</span><br><span class="line"></span><br><span class="line">**libguestfs**</span><br><span class="line"></span><br><span class="line">libguestfs 支持几乎所有类型的磁盘镜像。</span><br><span class="line"></span><br><span class="line">在基于 Debian 的系统上：</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 $ apt-get install libguestfs-tools<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">我们可以像下面这样挂载一个 qcow2 格式的磁盘镜像：</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 $ guestmount -a /path/to/qcow2/image -m <device> /path/to/mount/point<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">要卸载它，则执行：</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-$ guestunmount qcow2_mount_point<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### openSUSE</span><br><span class="line"></span><br><span class="line">（&#x2F;ˌoʊpənˈsuːzə&#x2F;）</span><br><span class="line"></span><br><span class="line">使用了 openSUSE 的 KDE 之后，真是惊喜连连，感觉比 gnome 要方便的多。系统主题，在 gnome 上，要切换主题，还是比较麻烦的；但是在 KDE 上，在系统设置里面可以直接下载主题，一键切换。桌面壁纸，在 gnome 上，我用的都是离线壁纸，通过 shotwell 轮播，而在 KDE 上，可以在 Desktop setting 里面使用每日一图，比如 bing，还有 Unsplash Wallpapers。gnome nautilus 没有创建文件的 menu item，每次都得打开 terminal touch 一下，而 kde dolphin 则不需要。还有很喜欢的 KDE connect。总之还有很多有待探索。</span><br><span class="line"></span><br><span class="line">**YaST 系统配置**</span><br><span class="line"></span><br><span class="line">YaST 是 *Yet another Setup Tool*（又一个配置工具）的缩写。YaST 是 openSUSE 和 SUSE Linux 企业版的安装和配置工具。YaST 控制中心是 YaST 配置模块的统一入口。 </span><br><span class="line"></span><br><span class="line">区别于 kde 桌面系统配置。</span><br><span class="line"></span><br><span class="line">在 YaST 加入新语言支持时，会自动下载对应的字体与输入法。</span><br><span class="line"></span><br><span class="line">**Zypper 包管理器**</span><br><span class="line"></span><br><span class="line">Zypper 是个命令行形式的软件包管理器，以 libzypp 为处理引擎，提供诸如供应源管理、依赖关系解决和软件包安装等功能。 </span><br><span class="line"></span><br><span class="line">可以直接使用 &#96;rpm&#96; 命令。</span><br><span class="line"></span><br><span class="line"> **装入 NTFS 分区**</span><br><span class="line"></span><br><span class="line">1. 安装 &#96;ntfs-3g&#96;。</span><br><span class="line"></span><br><span class="line">   &#96;&#96;&#96;bash</span><br><span class="line">   sudo zypper in ntfs-3g</span><br></pre></td></tr></table></figure></li>
+$ guestunmount qcow2_mount_point<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">**Ubuntu hosts**</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="security-ubuntu-com"><a href="#security-ubuntu-com" class="headerlink" title="security.ubuntu.com"></a>security.ubuntu.com</h1></li>
 </ul>
-<ol start="2">
+<p>91.189.88.142 security.ubuntu.com<br>91.189.88.152 security.ubuntu.com<br>91.189.91.38 security.ubuntu.com<br>91.189.91.39 security.ubuntu.com</p>
+<h1 id="archive-canonical-com"><a href="#archive-canonical-com" class="headerlink" title="archive.canonical.com"></a>archive.canonical.com</h1><p>91.189.92.150 archive.canonical.com<br>91.189.92.191 archive.canonical.com<br>91.189.91.15 archive.canonical.com</p>
+<h1 id="downloads-sourceforge-net"><a href="#downloads-sourceforge-net" class="headerlink" title="downloads.sourceforge.net"></a>downloads.sourceforge.net</h1><p>216.105.38.13 downloads.sourceforge.net</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">**安装 fcitx 相关**</span><br><span class="line"></span><br><span class="line">总结来说，就是我想用搜狗输入法的词库，因为通过ibus导入搜狗细胞词库这条路不通，就考虑使用fcitx，起先由于 ibus 在，fcitx 报错  “start FCITX error, Another XIM daemon named ibus is running”，搜索都无法解决，就直接删除了ibus，删除了之后，由于 Ubuntu 21.04 默认使用 wayland ，fcitx 也不能好好运行，之后又重装了ibus，结果发现fcitx与fcitx5不同，所以又装了fcitx5，装的时候又自动装了fcitx，之后又发现搜狗输入法linux版只支持fcitx。oh-my-zsh应该对通配符作了限制，需要用跳脱字符</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;bash</span><br><span class="line">sudo apt remove fcitx\*</span><br></pre></td></tr></table></figure>
+<p>Fcitx 5 是 Fcitx （也即 Fcitx 4）的继任者，相比于 Fcitx 4, Fcitx 5 带来了很多改进，例如更好的  Wayland 支持以及全新的插件机制。从 Fcitx 4 升级到5 并非是完全兼容的，它们之间不共享输入法、配置文件以及数据，往往你需要通过  fcitx5-migrator 等工具完成数据的迁移。在 Fedora 中，Fcitx 5 框架及对应的输入法是被单独打包的。但是可以与  Fcitx 4 共存。</p>
+<p><strong>列出所有手动安装软件</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-mark showmanual</span><br></pre></td></tr></table></figure>
+<h3 id="openSUSE"><a href="#openSUSE" class="headerlink" title="openSUSE"></a>openSUSE</h3><p>（/ˌoʊpənˈsuːzə/）</p>
+<p>使用了 openSUSE 的 KDE 之后，真是惊喜连连，感觉比 gnome 要方便的多。系统主题，在 gnome 上，要切换主题，还是比较麻烦的；但是在 KDE 上，在系统设置里面可以直接下载主题，一键切换。桌面壁纸，在 gnome 上，我用的都是离线壁纸，通过 shotwell 轮播，而在 KDE 上，可以在 Desktop setting 里面使用每日一图，比如 bing，还有 Unsplash Wallpapers。gnome nautilus 没有创建文件的 menu item，每次都得打开 terminal touch 一下，而 kde dolphin 则不需要。还有很喜欢的 KDE connect。总之还有很多有待探索。</p>
+<p><strong>YaST 系统配置</strong></p>
+<p>YaST 是 <em>Yet another Setup Tool</em>（又一个配置工具）的缩写。YaST 是 openSUSE 和 SUSE Linux 企业版的安装和配置工具。YaST 控制中心是 YaST 配置模块的统一入口。 </p>
+<p>区别于 kde 桌面系统配置。</p>
+<p>在 YaST 加入新语言支持时，会自动下载对应的字体与输入法。</p>
+<p><strong>Zypper 包管理器</strong></p>
+<p>Zypper 是个命令行形式的软件包管理器，以 libzypp 为处理引擎，提供诸如供应源管理、依赖关系解决和软件包安装等功能。 </p>
+<p>可以直接使用 <code>rpm</code> 命令。</p>
+<p> <strong>装入 NTFS 分区</strong></p>
+<ol>
+<li><p>安装 <code>ntfs-3g</code>。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo zypper <span class="keyword">in</span> ntfs-3g</span><br></pre></td></tr></table></figure></li>
 <li><p>创建一个要充当安装点的目录，如 <code>~/mounts/windows</code>。    </p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir ~/mounts/windows</span><br></pre></td></tr></table></figure></li>
 <li><p>确定所需的 Windows 分区。</p>
