@@ -5957,13 +5957,14 @@ $ guestunmount qcow2_mount_point<figure class="highlight plain"><table><tr><td c
 <li>可在任一个线程里添加或移除事件监听器。 该监听器的方法会在事件分配线程中被触发。</li>
 <li>有很少的 Swing 方法是线程安全的。在这些线程安全的方法中最有用的是：<br>JTextComponent.setText、JTextArea.insert、JTextArea.append、JTextArea.replaceRange、JCouponent.repaint、JComponent.revalidat。</li>
 </ul>
+<h2 id="参见"><a href="#参见" class="headerlink" title="参见"></a>参见</h2><p>Core Java I</p>
 ]]></content>
       <tags>
         <tag>Programming</tag>
       </tags>
   </entry>
   <entry>
-    <title>Android 移动开发基础案例教程</title>
+    <title>Android</title>
     <url>/2020/12/14/Android/</url>
     <content><![CDATA[<h3 id="Android-基础入门"><a href="#Android-基础入门" class="headerlink" title="Android 基础入门"></a>Android 基础入门</h3><h5 id="Android-简介"><a href="#Android-简介" class="headerlink" title="Android 简介"></a>Android 简介</h5><p>Android 是一款基于 Linux 平台的开源操作系统，主要用于移动设备中，由 Google 公司和开放手机联盟领导及开发。Android 一词最早出现于法国作家利尔亚当在 1886 年发表的科幻小说《未来夏娃》中，将外表像人的机器起名为 Android。从 Android 1.5 版本开始， Android 用甜点作为系统版本的代号。</p>
 <a id="more"></a>
@@ -6134,13 +6135,11 @@ $ guestunmount qcow2_mount_point<figure class="highlight plain"><table><tr><td c
 </li>
 <li><p>在 Activity 代码中引用自定义主题：在 onCreate() 方法内 setContentView() 方法之后添加 setTheme() 方法，</p>
   <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">setTheme(R.style.grayTheme);</span><br></pre></td></tr></table></figure>
-
-
-</li>
+<h5 id="国际化（i18n）"><a href="#国际化（i18n）" class="headerlink" title="国际化（i18n）"></a>国际化（i18n）</h5></li>
 </ul>
 </li>
 </ul>
-<h5 id="国际化（i18n）"><a href="#国际化（i18n）" class="headerlink" title="国际化（i18n）"></a>国际化（i18n）</h5><p>国际化的应用具备支持多种语言功能，能被不同国家或地区用户访问，提供符合访问者阅读习惯的页面和数据。</p>
+<p>国际化的应用具备支持多种语言功能，能被不同国家或地区用户访问，提供符合访问者阅读习惯的页面和数据。</p>
 <p>实现国际化：</p>
 <ul>
 <li><p>在程序的 <code>res/values/</code> 目录下创建用于国际化的文件 <code>strings.xml</code>，单击右键，选择 New -&gt; Values resource file 选项，在 Available qualifiers 区域中选择 Locale, 单击中间的向右图标，在 Language 语言区域中选择语言， 在 Specific Region Only 中选择区域，此时 Directory name 名称会根据选择的语言以及区域自动变化，其命名规则为 <code>values­-语言代码－r国家或地区代码</code>。由于每个程序都自带一个 strings.xml 文件，Android Studio 会自动创建一个文件夹存放这些同名文件，并且会根据语言和地区区分这些文件。</p>
@@ -6681,7 +6680,8 @@ class ViewHolder &#123;
 <p>逐帧动画：一张一张地播放事先准备好的静态图像。在 <code>res/drawable</code> 目录下创建逐帧动画的 XML 文件并在 <code>&lt;animation-list&gt;</code> 节点的 <code>&lt;item&gt;</code> 子节点中指定图片出现的顺序以及每帧的持续时间</p>
 <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">animation-list</span> <span class="attr">xmlns:android</span>=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span>&gt;</span> </span><br><span class="line">	<span class="tag">&lt;<span class="name">item</span> <span class="attr">android:drawable</span>=<span class="string">&quot;@drawable/img0l&quot;</span> <span class="attr">android:duration</span>=<span class="string">&quot;200&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">item</span>&gt;</span> </span><br><span class="line">	<span class="tag">&lt;<span class="name">item</span> <span class="attr">android:drawable</span>=<span class="string">&quot;@drawable/img02&quot;</span> <span class="attr">android:duration</span>=<span class="string">&quot;200&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">item</span>&gt;</span> </span><br><span class="line">	<span class="tag">&lt;<span class="name">item</span> <span class="attr">android:drawable</span>=<span class="string">&quot;@drawable/img03&quot;</span> <span class="attr">android:duration</span>=<span class="string">&quot;200&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">item</span>&gt;</span> </span><br><span class="line">	<span class="tag">&lt;<span class="name">item</span> <span class="attr">android:drawable</span>=<span class="string">&quot;@drawable/img04&quot;</span> <span class="attr">android:duration</span>=<span class="string">&quot;200&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">item</span>&gt;</span> </span><br><span class="line">	<span class="tag">&lt;<span class="name">item</span> <span class="attr">android:drawable</span>=<span class="string">&quot;@drawable/img05&quot;</span> <span class="attr">android:duration</span>=<span class="string">&quot;200&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">item</span>&gt;</span> </span><br><span class="line">	<span class="tag">&lt;<span class="name">item</span> <span class="attr">android:drawable</span>=<span class="string">&quot;@drawable/img06&quot;</span> <span class="attr">android:duration</span>=<span class="string">&quot;200&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">item</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">animation-list</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>在代码中定义逐帧动画需要用到 AnimationDrawable 中的 addFrame() 方法来添加图片</p>
-<h5 id="多媒体"><a href="#多媒体" class="headerlink" title="多媒体"></a>多媒体</h5>]]></content>
+<h5 id="多媒体"><a href="#多媒体" class="headerlink" title="多媒体"></a>多媒体</h5><h2 id="参见"><a href="#参见" class="headerlink" title="参见"></a>参见</h2><p>Android 移动开发基础案例教程</p>
+]]></content>
       <tags>
         <tag>Unix-like</tag>
       </tags>
@@ -8344,7 +8344,9 @@ class ViewHolder &#123;
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">share-buttons</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">social-button</span> <span class="attr">type</span>=<span class="string">&quot;weibo&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;...&quot;</span>&gt;</span>微博<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">social-button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">social-button</span> <span class="attr">type</span>=<span class="string">&quot;weixin&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;...&quot;</span>&gt;</span>微信<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">social-button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">share-buttons</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>如果将<code>&lt;share-buttons&gt;</code>元素的样式与脚本，封装在一个 HTML 文件<code>share-buttons.html</code>之中，这个元素就可以复用了。</p>
 <p>使用的时候，先引入<code>share-buttons.html</code>。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;link rel&#x3D;&quot;import&quot; href&#x3D;&quot;share-buttons.html&quot;&gt;</span><br></pre></td></tr></table></figure>]]></content>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;link rel&#x3D;&quot;import&quot; href&#x3D;&quot;share-buttons.html&quot;&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="参见"><a href="#参见" class="headerlink" title="参见"></a>参见</h2><p><span class="exturl" data-url="aHR0cHM6Ly93YW5nZG9jLmNvbS9odG1sLw==">HTML 教程<i class="fa fa-external-link-alt"></i></span></p>
+]]></content>
       <tags>
         <tag>Programming</tag>
       </tags>
