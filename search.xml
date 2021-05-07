@@ -2122,7 +2122,7 @@
 <li>推送的是当前分支 </li>
 <li><code>-u</code> 在推送的同时将远程仓库的（origin仓库）的 branch 分支设为本地仓库当前分支的 upstream（上游）<br>运行 git pull 从远程仓库获取内容时，就可以省略参数</li>
 </ul>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git push [-u origin branchName]		# 上传本地指定分支到远程仓库</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git push [-u origin branchName]		# 上传本地指定分支到远程仓库</span><br><span class="line"></span><br><span class="line">git push --set-upstream origin [branchName]		# To push the current branch and set the remote as upstream</span><br></pre></td></tr></table></figure>
 <p>如果每次 <code>git push</code> 都需要输入账号和密码</p>
 <ul>
 <li><p>首先在 git 工作目录下：</p>
