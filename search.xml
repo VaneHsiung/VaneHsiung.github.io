@@ -4173,7 +4173,7 @@ $ guestunmount qcow2_mount_point<figure class="highlight plain"><table><tr><td c
 <h3 id="同一台电脑配置多个-GItHub-账号"><a href="#同一台电脑配置多个-GItHub-账号" class="headerlink" title="同一台电脑配置多个 GItHub 账号"></a><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2phd2lsL25vdGVzL2lzc3Vlcy8y">同一台电脑配置多个 GItHub 账号<i class="fa fa-external-link-alt"></i></span></h3><ul>
 <li><p>创建默认 <code>SSH Key</code></p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;one@example.com&quot;</span></span><br></pre></td></tr></table></figure></li>
-<li><p>将公钥添加到 <span class="exturl" data-url="bWFpbHRvOiYjMTExOyYjMTEwOyYjeDY1OyYjeDQwOyYjeDY1OyYjMTIwOyYjOTc7JiMxMDk7JiMxMTI7JiMxMDg7JiN4NjU7JiM0NjsmIzk5OyYjMTExOyYjeDZkOw==">&#111;&#110;&#x65;&#x40;&#x65;&#120;&#97;&#109;&#112;&#108;&#x65;&#46;&#99;&#111;&#x6d;<i class="fa fa-external-link-alt"></i></span> 的 GitHub SSH key 中。</p>
+<li><p>将公钥添加到 <span class="exturl" data-url="bWFpbHRvOiYjeDZmOyYjeDZlOyYjMTAxOyYjNjQ7JiN4NjU7JiMxMjA7JiN4NjE7JiMxMDk7JiN4NzA7JiN4NmM7JiN4NjU7JiM0NjsmIzk5OyYjMTExOyYjeDZkOw==">&#x6f;&#x6e;&#101;&#64;&#x65;&#120;&#x61;&#109;&#x70;&#x6c;&#x65;&#46;&#99;&#111;&#x6d;<i class="fa fa-external-link-alt"></i></span> 的 GitHub SSH key 中。</p>
 </li>
 <li><p>测试 <code>ssh key</code> 是否成功</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure></li>
@@ -4181,7 +4181,7 @@ $ guestunmount qcow2_mount_point<figure class="highlight plain"><table><tr><td c
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看当前配置</span></span><br><span class="line">git config --list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 取消 global user.name user.email</span></span><br><span class="line">git config --global --<span class="built_in">unset</span> user.name</span><br><span class="line">git config --global --<span class="built_in">unset</span> user.email</span><br></pre></td></tr></table></figure></li>
 <li><p>生成另外一个账号新的SSH keys</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;two@example.com&quot;</span></span><br></pre></td></tr></table></figure>
-<p>私钥需重命名，如 <code>id_rsa_new</code>。然后将对应的公钥添加到<span class="exturl" data-url="bWFpbHRvOiYjMTE2OyYjMTE5OyYjeDZmOyYjeDQwOyYjeDY1OyYjMTIwOyYjOTc7JiN4NmQ7JiN4NzA7JiMxMDg7JiMxMDE7JiN4MmU7JiN4NjM7JiN4NmY7JiN4NmQ7">&#116;&#119;&#x6f;&#x40;&#x65;&#120;&#97;&#x6d;&#x70;&#108;&#101;&#x2e;&#x63;&#x6f;&#x6d;<i class="fa fa-external-link-alt"></i></span>的 Github SSH key 中。</p>
+<p>私钥需重命名，如 <code>id_rsa_new</code>。然后将对应的公钥添加到<span class="exturl" data-url="bWFpbHRvOiYjeDc0OyYjeDc3OyYjMTExOyYjeDQwOyYjeDY1OyYjMTIwOyYjOTc7JiMxMDk7JiN4NzA7JiMxMDg7JiMxMDE7JiM0NjsmI3g2MzsmI3g2ZjsmIzEwOTs=">&#x74;&#x77;&#111;&#x40;&#x65;&#120;&#97;&#109;&#x70;&#108;&#101;&#46;&#x63;&#x6f;&#109;<i class="fa fa-external-link-alt"></i></span>的 Github SSH key 中。</p>
 </li>
 <li><p>需添加新私钥到 <code>SSH agent</code> 中，因为默认只读取 <code>id_rsa</code></p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 在管理员下运行</span></span><br><span class="line">Get-Service ssh-agent</span><br><span class="line">Set-Service ssh-agent -StartupType Manual</span><br><span class="line">Start-Service ssh-agent</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加私钥</span></span><br><span class="line">ssh-add ~/.ssh/id_rsa_new</span><br></pre></td></tr></table></figure>
@@ -4195,9 +4195,13 @@ $ guestunmount qcow2_mount_point<figure class="highlight plain"><table><tr><td c
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># default</span></span><br><span class="line">git remote add origin git@github.com:one/demo.git</span><br><span class="line"></span><br><span class="line"><span class="comment"># another</span></span><br><span class="line">git remote add origin git@two.github.com:two/demo.git </span><br></pre></td></tr></table></figure></li>
 <li><p>设置每个项目的自己的 user.name user.email</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config  user.email <span class="string">&quot;two@example.com&quot;</span></span><br><span class="line">git config  user.name <span class="string">&quot;two&quot;</span></span><br></pre></td></tr></table></figure>
-<h2 id="本地仓库"><a href="#本地仓库" class="headerlink" title="本地仓库"></a>本地仓库</h2></li>
+<h3 id="Git-中-HTTPS-和-SSH-的-Clone-方式区别"><a href="#Git-中-HTTPS-和-SSH-的-Clone-方式区别" class="headerlink" title="Git 中 HTTPS 和 SSH 的 Clone 方式区别"></a><span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vdG9tYXRvMDkwNi9hcnRpY2xlcy84NDYxMzI1Lmh0bWw=">Git 中 HTTPS 和 SSH 的 Clone 方式区别<i class="fa fa-external-link-alt"></i></span></h3></li>
+<li><p>HTTPS：不管是谁，拿到url随便clone，但是在push的时候需要验证用户名和密码；</p>
+</li>
+<li><p>SSH：clone的项目你必须是拥有者或者管理员，而且需要在clone前添加SSH Key。SSH 在push的时候，是不需要输入用户名的，如果配置SSH key的时候设置了密码，则需要输入密码的。</p>
+</li>
 </ul>
-<h3 id="初始化仓库"><a href="#初始化仓库" class="headerlink" title="初始化仓库"></a>初始化仓库</h3><p>生成  <code>.git</code>  目录, 也就是当前目录的仓库，当前目录称为“附属于该仓库的工作树”</p>
+<h2 id="本地仓库"><a href="#本地仓库" class="headerlink" title="本地仓库"></a>本地仓库</h2><h3 id="初始化仓库"><a href="#初始化仓库" class="headerlink" title="初始化仓库"></a>初始化仓库</h3><p>生成  <code>.git</code>  目录, 也就是当前目录的仓库，当前目录称为“附属于该仓库的工作树”</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git init [project-name]</span><br></pre></td></tr></table></figure>
 <h3 id="查看仓库的状态"><a href="#查看仓库的状态" class="headerlink" title="查看仓库的状态"></a>查看仓库的状态</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git status		# 显示有变更的文件</span><br></pre></td></tr></table></figure>
 <h3 id="向暂存区添加文件"><a href="#向暂存区添加文件" class="headerlink" title="向暂存区添加文件"></a>向暂存区添加文件</h3><ul>
@@ -4653,6 +4657,7 @@ $ guestunmount qcow2_mount_point<figure class="highlight plain"><table><tr><td c
 <h3 id="参考-3"><a href="#参考-3" class="headerlink" title="参考"></a>参考</h3><p><span class="exturl" data-url="aHR0cDovL3d3dy5ydWFueWlmZW5nLmNvbS9ibG9nLzIwMTEvMDgvd2hhdF9pc19hX2RpZ2l0YWxfc2lnbmF0dXJlLmh0bWw=">数字签名是什么？<i class="fa fa-external-link-alt"></i></span></p>
 <p><span class="exturl" data-url="aHR0cDovL3d3dy5ydWFueWlmZW5nLmNvbS9ibG9nLzIwMTEvMTIvc3NoX3JlbW90ZV9sb2dpbi5odG1s">SSH原理与运用（一）：远程登录<i class="fa fa-external-link-alt"></i></span></p>
 <p><span class="exturl" data-url="aHR0cDovL3d3dy5ydWFueWlmZW5nLmNvbS9ibG9nLzIwMTEvMTIvc3NoX3BvcnRfZm9yd2FyZGluZy5odG1s">SSH原理与运用（二）：远程操作与端口转发<i class="fa fa-external-link-alt"></i></span></p>
+<h2 id="GitHub-Packages"><a href="#GitHub-Packages" class="headerlink" title="GitHub Packages"></a><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmdpdGh1Yi5jb20vZW4vcGFja2FnZXM=">GitHub Packages<i class="fa fa-external-link-alt"></i></span></h2><p>Learn to safely publish and consume packages, store your packages alongside your code, and share your packages privately with your team or publicly with the open source community. You can also automate your packages with GitHub Actions.</p>
 <h2 id="参考-4"><a href="#参考-4" class="headerlink" title="参考"></a>参考</h2><p>《GitHub入门与实践》</p>
 <p><span class="exturl" data-url="aHR0cDovL3d3dy5ydWFueWlmZW5nLmNvbS9ibG9nLzIwMTkvMTIvZ2l0LXVuZG8uaHRtbA==">如何撤销 Git 操作？<i class="fa fa-external-link-alt"></i></span></p>
 <p><span class="exturl" data-url="aHR0cDovL3d3dy5ydWFueWlmZW5nLmNvbS9ibG9nLzIwMTgvMTAvZ2l0LWludGVybmFscy5odG1s">Git 原理入门<i class="fa fa-external-link-alt"></i></span></p>
