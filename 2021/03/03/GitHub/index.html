@@ -17,7 +17,7 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Architects+Daughter:300,300italic,400,400italic,700,700italic%7CShare+Tech+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Share+Tech+Mono:300,300italic,400,400italic,700,700italic%7CArchitects+Daughter:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
@@ -51,7 +51,7 @@
 <meta property="og:image" content="https://vanehsiung.github.io/2021/03/03/GitHub/signature10.png">
 <meta property="og:image" content="https://vanehsiung.github.io/2021/03/03/GitHub/signature12.png">
 <meta property="article:published_time" content="2021-03-03T14:25:22.000Z">
-<meta property="article:modified_time" content="2021-05-25T13:23:20.639Z">
+<meta property="article:modified_time" content="2021-05-30T06:19:33.022Z">
 <meta property="article:author" content="vane">
 <meta property="article:tag" content="Tools">
 <meta name="twitter:card" content="summary">
@@ -354,7 +354,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-05-25 21:23:20" itemprop="dateModified" datetime="2021-05-25T21:23:20+08:00">2021-05-25</time>
+        <time title="Modified: 2021-05-30 14:19:33" itemprop="dateModified" datetime="2021-05-30T14:19:33+08:00">2021-05-30</time>
       </span>
 
   
@@ -426,7 +426,7 @@
 <h3 id="同一台电脑配置多个-GItHub-账号"><a href="#同一台电脑配置多个-GItHub-账号" class="headerlink" title="同一台电脑配置多个 GItHub 账号"></a><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2phd2lsL25vdGVzL2lzc3Vlcy8y">同一台电脑配置多个 GItHub 账号<i class="fa fa-external-link-alt"></i></span></h3><ul>
 <li><p>创建默认 <code>SSH Key</code></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;one@example.com&quot;</span></span><br></pre></td></tr></table></figure></li>
-<li><p>将公钥添加到 <span class="exturl" data-url="bWFpbHRvOiYjMTExOyYjeDZlOyYjMTAxOyYjNjQ7JiMxMDE7JiN4Nzg7JiM5NzsmIzEwOTsmIzExMjsmI3g2YzsmIzEwMTsmIzQ2OyYjOTk7JiMxMTE7JiN4NmQ7">&#111;&#x6e;&#101;&#64;&#101;&#x78;&#97;&#109;&#112;&#x6c;&#101;&#46;&#99;&#111;&#x6d;<i class="fa fa-external-link-alt"></i></span> 的 GitHub SSH key 中。</p>
+<li><p>将公钥添加到 <span class="exturl" data-url="bWFpbHRvOiYjeDZmOyYjMTEwOyYjMTAxOyYjNjQ7JiN4NjU7JiN4Nzg7JiN4NjE7JiN4NmQ7JiN4NzA7JiMxMDg7JiN4NjU7JiM0NjsmIzk5OyYjMTExOyYjMTA5Ow==">&#x6f;&#110;&#101;&#64;&#x65;&#x78;&#x61;&#x6d;&#x70;&#108;&#x65;&#46;&#99;&#111;&#109;<i class="fa fa-external-link-alt"></i></span> 的 GitHub SSH key 中。</p>
 </li>
 <li><p>测试 <code>ssh key</code> 是否成功</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure></li>
@@ -434,7 +434,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看当前配置</span></span><br><span class="line">git config --list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 取消 global user.name user.email</span></span><br><span class="line">git config --global --<span class="built_in">unset</span> user.name</span><br><span class="line">git config --global --<span class="built_in">unset</span> user.email</span><br></pre></td></tr></table></figure></li>
 <li><p>生成另外一个账号新的SSH keys</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;two@example.com&quot;</span></span><br></pre></td></tr></table></figure>
-<p>私钥需重命名，如 <code>id_rsa_new</code>。然后将对应的公钥添加到<span class="exturl" data-url="bWFpbHRvOiYjMTE2OyYjeDc3OyYjeDZmOyYjeDQwOyYjeDY1OyYjeDc4OyYjeDYxOyYjeDZkOyYjMTEyOyYjeDZjOyYjMTAxOyYjNDY7JiM5OTsmI3g2ZjsmIzEwOTs=">&#116;&#x77;&#x6f;&#x40;&#x65;&#x78;&#x61;&#x6d;&#112;&#x6c;&#101;&#46;&#99;&#x6f;&#109;<i class="fa fa-external-link-alt"></i></span>的 Github SSH key 中。</p>
+<p>私钥需重命名，如 <code>id_rsa_new</code>。然后将对应的公钥添加到<span class="exturl" data-url="bWFpbHRvOiYjeDc0OyYjeDc3OyYjeDZmOyYjeDQwOyYjMTAxOyYjeDc4OyYjOTc7JiMxMDk7JiN4NzA7JiMxMDg7JiMxMDE7JiN4MmU7JiM5OTsmI3g2ZjsmI3g2ZDs=">&#x74;&#x77;&#x6f;&#x40;&#101;&#x78;&#97;&#109;&#x70;&#108;&#101;&#x2e;&#99;&#x6f;&#x6d;<i class="fa fa-external-link-alt"></i></span>的 Github SSH key 中。</p>
 </li>
 <li><p>需添加新私钥到 <code>SSH agent</code> 中，因为默认只读取 <code>id_rsa</code></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在管理员下运行</span></span><br><span class="line">Get-Service ssh-agent</span><br><span class="line">Set-Service ssh-agent -StartupType Manual</span><br><span class="line">Start-Service ssh-agent</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加私钥</span></span><br><span class="line">ssh-add ~/.ssh/id_rsa_new</span><br></pre></td></tr></table></figure>
