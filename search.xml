@@ -2481,6 +2481,11 @@ $ guestunmount qcow2_mount_point<figure class="highlight plain"><table><tr><td c
 <p>Fcitx 5 是 Fcitx （也即 Fcitx 4）的继任者，相比于 Fcitx 4, Fcitx 5 带来了很多改进，例如更好的  Wayland 支持以及全新的插件机制。从 Fcitx 4 升级到5 并非是完全兼容的，它们之间不共享输入法、配置文件以及数据，往往你需要通过  fcitx5-migrator 等工具完成数据的迁移。在 Fedora 中，Fcitx 5 框架及对应的输入法是被单独打包的。但是可以与  Fcitx 4 共存。</p>
 <p><strong>列出所有手动安装软件</strong></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">apt-mark showmanual</span><br></pre></td></tr></table></figure>
+<p><strong>Ubuntu关机异常慢的解决方法</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo vim /etc/systemd/system.conf</span><br></pre></td></tr></table></figure>
+<p>取消 DefaultTimeoutStopSec 注释并改为更小值。</p>
+<p>最后重新加载服务的配置文件</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo systemctl daemon-reload</span><br></pre></td></tr></table></figure>
 <h3 id="openSUSE"><a href="#openSUSE" class="headerlink" title="openSUSE"></a>openSUSE</h3><p>（/ˌoʊpənˈsuːzə/）</p>
 <p>使用了 openSUSE 的 KDE 之后，真是惊喜连连，感觉比 gnome 要方便的多。系统主题，在 gnome 上，要切换主题，还是比较麻烦的；但是在 KDE 上，在系统设置里面可以直接下载主题，一键切换。桌面壁纸，在 gnome 上，我用的都是离线壁纸，通过 shotwell 轮播，而在 KDE 上，可以在 Desktop setting 里面使用每日一图，比如 bing，还有 Unsplash Wallpapers。gnome nautilus 没有创建文件的 menu item，每次都得打开 terminal touch 一下，而 kde dolphin 则不需要。还有很喜欢的 KDE connect。总之还有很多有待探索。</p>
 <p><strong>YaST 系统配置</strong></p>
@@ -4180,13 +4185,26 @@ $ guestunmount qcow2_mount_point<figure class="highlight plain"><table><tr><td c
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git branch -v</span><br></pre></td></tr></table></figure>
 <p>查看分支上的递交情况:</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git show-branch</span><br></pre></td></tr></table></figure>
-<h3 id="获取最新的远程仓库分支"><a href="#获取最新的远程仓库分支" class="headerlink" title="获取最新的远程仓库分支"></a>获取最新的远程仓库分支</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git pull origin branchName		# 取回远程仓库的变化，并与本地分支合并</span><br><span class="line">git fetch [remote]		# 下载远程仓库的所有变动</span><br></pre></td></tr></table></figure>
+<h3 id="获取最新的远程仓库分支"><a href="#获取最新的远程仓库分支" class="headerlink" title="获取最新的远程仓库分支"></a>获取最新的远程仓库分支</h3><p>远程仓库拉取代码并合并到本地，可简写为 git pull 等同于 git fetch &amp;&amp; git merge </p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git pull &lt;远程主机名&gt; &lt;远程分支名&gt;:&lt;本地分支名&gt;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 取回远程仓库的变化，并与本地分支合并</span></span><br><span class="line">git pull origin branchName</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 使用rebase的模式进行合并</span></span><br><span class="line">git pull --rebase &lt;远程主机名&gt; &lt;远程分支名&gt;:&lt;本地分支名&gt;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 获取远程仓库特定分支的更新</span></span><br><span class="line">git fetch &lt;远程主机名&gt; &lt;分支名&gt;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 获取远程仓库所有分支的更新</span></span><br><span class="line">git fetch --all</span><br></pre></td></tr></table></figure>
 <p><span class="exturl" data-url="aHR0cHM6Ly9zdGFja292ZXJmbG93LmNvbS9xdWVzdGlvbnMvNDkyOTcxNTMvd2h5LWlzLWl0LW5vdC1hLWNvbW1pdC1hbmQtYS1icmFuY2gtY2Fubm90LWJlLWNyZWF0ZWQtZnJvbS1pdA==">问题<i class="fa fa-external-link-alt"></i></span>：For those who found this searching for an answer to <code>fatal: &#39;origin/remote-branch-name&#39; is not a commit and a branch &#39;local-branch-name&#39; cannot be created from it</code>, you may also want to try this first:</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git fetch --all</span><br></pre></td></tr></table></figure>
+<p>与 <code>git pull</code> 不同的是 <code>git fetch</code> 操作仅仅只会拉取远程的更改，不会自动进行 merge 操作。对你当前的代码没有影响。</p>
+<p><strong>git rebase 让你的提交记录更加清晰可读</strong></p>
+<p>rebase 翻译为变基，他的作用和 merge 很相似，用于把一个分支的修改合并到当前分支上。</p>
+<img data-src="/2021/03/03/GitHub/rebase.image" class="" title="GitHub">
+
+<p>即逐个应用了 mater 分支的更改，然后以 master 分支最后的提交作为基点，再逐个应用 feature 的每个更改。</p>
+<p>大部分情况下，rebase 的过程中会产生冲突的，此时，就需要手动解决冲突，然后使用依次 <code>git add </code> 、<code>git rebase --continue </code> 的方式来处理冲突，完成 rebase 的过程，如果不想要某次 rebase 的结果，那么需要使用 <code>git rebase --skip </code> 来跳过这次 rebase 操作。</p>
+<p><strong>git merge 和 git rebase 的区别</strong></p>
+<p>不同于 <code>git rebase</code> 的是，<code>git merge</code> 在不是 fast-forward（快速合并）的情况下，会产生一条额外的合并记录，类似 <code>Merge branch &#39;xxx&#39; into &#39;xxx&#39;</code> 的一条提交信息。</p>
+<img data-src="/2021/03/03/GitHub/merge.image" class="" title="GitHub">
+
+<p>另外，在解决冲突的时候，用 merge 只需要解决一次冲突即可，简单粗暴，而用 rebase 的时候 ，需要依次解决每次的冲突，才可以提交。</p>
 <h3 id="同一台电脑配置多个-GItHub-账号"><a href="#同一台电脑配置多个-GItHub-账号" class="headerlink" title="同一台电脑配置多个 GItHub 账号"></a><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2phd2lsL25vdGVzL2lzc3Vlcy8y">同一台电脑配置多个 GItHub 账号<i class="fa fa-external-link-alt"></i></span></h3><ul>
 <li><p>创建默认 <code>SSH Key</code></p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;one@example.com&quot;</span></span><br></pre></td></tr></table></figure></li>
-<li><p>将公钥添加到 <span class="exturl" data-url="bWFpbHRvOiYjMTExOyYjeDZlOyYjMTAxOyYjNjQ7JiMxMDE7JiMxMjA7JiM5NzsmIzEwOTsmI3g3MDsmI3g2YzsmIzEwMTsmIzQ2OyYjOTk7JiN4NmY7JiMxMDk7">&#111;&#x6e;&#101;&#64;&#101;&#120;&#97;&#109;&#x70;&#x6c;&#101;&#46;&#99;&#x6f;&#109;<i class="fa fa-external-link-alt"></i></span> 的 GitHub SSH key 中。</p>
+<li><p>将公钥添加到 <span class="exturl" data-url="bWFpbHRvOiYjeDZmOyYjMTEwOyYjMTAxOyYjeDQwOyYjeDY1OyYjMTIwOyYjOTc7JiMxMDk7JiN4NzA7JiN4NmM7JiMxMDE7JiM0NjsmI3g2MzsmI3g2ZjsmI3g2ZDs=">&#x6f;&#110;&#101;&#x40;&#x65;&#120;&#97;&#109;&#x70;&#x6c;&#101;&#46;&#x63;&#x6f;&#x6d;<i class="fa fa-external-link-alt"></i></span> 的 GitHub SSH key 中。</p>
 </li>
 <li><p>测试 <code>ssh key</code> 是否成功</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure></li>
@@ -4194,7 +4212,7 @@ $ guestunmount qcow2_mount_point<figure class="highlight plain"><table><tr><td c
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看当前配置</span></span><br><span class="line">git config --list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 取消 global user.name user.email</span></span><br><span class="line">git config --global --<span class="built_in">unset</span> user.name</span><br><span class="line">git config --global --<span class="built_in">unset</span> user.email</span><br></pre></td></tr></table></figure></li>
 <li><p>生成另外一个账号新的SSH keys</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;two@example.com&quot;</span></span><br></pre></td></tr></table></figure>
-<p>私钥需重命名，如 <code>id_rsa_new</code>。然后将对应的公钥添加到<span class="exturl" data-url="bWFpbHRvOiYjMTE2OyYjeDc3OyYjeDZmOyYjNjQ7JiMxMDE7JiMxMjA7JiM5NzsmI3g2ZDsmI3g3MDsmI3g2YzsmI3g2NTsmIzQ2OyYjOTk7JiMxMTE7JiN4NmQ7">&#116;&#x77;&#x6f;&#64;&#101;&#120;&#97;&#x6d;&#x70;&#x6c;&#x65;&#46;&#99;&#111;&#x6d;<i class="fa fa-external-link-alt"></i></span>的 Github SSH key 中。</p>
+<p>私钥需重命名，如 <code>id_rsa_new</code>。然后将对应的公钥添加到<span class="exturl" data-url="bWFpbHRvOiYjMTE2OyYjMTE5OyYjeDZmOyYjeDQwOyYjeDY1OyYjMTIwOyYjOTc7JiN4NmQ7JiN4NzA7JiN4NmM7JiN4NjU7JiN4MmU7JiN4NjM7JiMxMTE7JiMxMDk7">&#116;&#119;&#x6f;&#x40;&#x65;&#120;&#97;&#x6d;&#x70;&#x6c;&#x65;&#x2e;&#x63;&#111;&#109;<i class="fa fa-external-link-alt"></i></span>的 Github SSH key 中。</p>
 </li>
 <li><p>需添加新私钥到 <code>SSH agent</code> 中，因为默认只读取 <code>id_rsa</code></p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 在管理员下运行</span></span><br><span class="line">Get-Service ssh-agent</span><br><span class="line">Set-Service ssh-agent -StartupType Manual</span><br><span class="line">Start-Service ssh-agent</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加私钥</span></span><br><span class="line">ssh-add ~/.ssh/id_rsa_new</span><br></pre></td></tr></table></figure>
@@ -4244,10 +4262,13 @@ $ guestunmount qcow2_mount_point<figure class="highlight plain"><table><tr><td c
 <p><code>git diff</code> 默认查看工作树和暂存区的差别</p>
 <p>HEAD查看工作树与最新提交的差别，HEAD 为指向当前分支中最新一次提交的指针，<code>HEAD^</code> 指向 <code>HEAD</code> 的前一个提交，<code>HEAD~6</code> 则是 <code>HEAD</code> 之前的第6个提交。每一个分支都是一个文本文件，保存在 <code>.git/refs/heads/</code> 目录中，文件的内容是最新提交的哈希值</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git diff [HEAD]</span><br></pre></td></tr></table></figure>
-<h3 id="将暂存区中文件保存到仓库历史记录中"><a href="#将暂存区中文件保存到仓库历史记录中" class="headerlink" title="将暂存区中文件保存到仓库历史记录中"></a>将暂存区中文件保存到仓库历史记录中</h3><p><code>-m</code> 用于记录一行信息，不加 <code>-m</code> 记录详细信息</p>
+<h3 id="将暂存区中文件保存到仓库历史记录中"><a href="#将暂存区中文件保存到仓库历史记录中" class="headerlink" title="将暂存区中文件保存到仓库历史记录中"></a>将暂存区中文件保存到仓库历史记录中</h3><p><code>-m</code> 用于记录一行信息；不加 <code>-m</code> 记录详细信息，会新开编辑器进行编辑</p>
 <ul>
-<li><p>```shell<br>git commit -am “Message”    # 相当与 git add 与 git commit</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">- 提交暂存区的指定文件到仓库区</span><br><span class="line"></span><br><span class="line">  &#96;&#96;&#96;shell</span><br><span class="line">   git commit [file1] [file2] ... -m &quot;Message&quot;</span><br></pre></td></tr></table></figure></li>
+<li><p>相当与 git add 与 git commit</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git commit -am &quot;Message&quot;	</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>提交暂存区的指定文件到仓库区</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git commit [file1] [file2] ... -m &quot;Message&quot;</span><br></pre></td></tr></table></figure></li>
 <li><p>提交工作区自上次commit之后的变化，直接到仓库区</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git commit -a</span><br></pre></td></tr></table></figure></li>
 <li><p>提交时显示所有diff信息</p>
@@ -4341,9 +4362,9 @@ $ guestunmount qcow2_mount_point<figure class="highlight plain"><table><tr><td c
 <li><code>git push origin master</code></li>
 </ol>
 <p>Now you can work with it just like any other github repo. To pull in patches from upstream, simply run <code>git pull upstream master &amp;&amp; git push origin master</code>.</p>
-<h2 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h2><h3 id="创建并切换分支"><a href="#创建并切换分支" class="headerlink" title="创建并切换分支"></a>创建并切换分支</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git checkout branchName			# 切换分支，并更新工作区</span><br><span class="line">git checkout -					#切换至上一分支</span><br><span class="line">git checkout -b branchName		# 新建一个分支，并切换到该分支</span><br><span class="line">git branch [branch] [commit]		# 新建一个分支，指向指定commit</span><br><span class="line">git branch --track [branch] [remote-branch]		# 新建一个分支，与指定的远程分支建立追踪关系</span><br></pre></td></tr></table></figure>
+<h2 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h2><h3 id="创建并切换分支"><a href="#创建并切换分支" class="headerlink" title="创建并切换分支"></a>创建并切换分支</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 切换分支，并更新工作区</span></span><br><span class="line">git checkout branchName	</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">切换至上一分支</span></span><br><span class="line">git checkout -			</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 新建一个分支，并切换到该分支</span></span><br><span class="line">git checkout -b branchName		</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 新建本地分支，但不切换</span></span><br><span class="line">git branch &lt;branch-name&gt; </span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 新建一个分支，指向指定commit</span></span><br><span class="line">git branch [branch] [commit]		</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 新建一个分支，与指定的远程分支建立追踪关系</span></span><br><span class="line">git branch --track [branch] [remote-branch]		</span><br></pre></td></tr></table></figure>
 <h3 id="以图表形式查看分支"><a href="#以图表形式查看分支" class="headerlink" title="以图表形式查看分支"></a>以图表形式查看分支</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git log --graph</span><br></pre></td></tr></table></figure>
-<h3 id="显示分支一览表"><a href="#显示分支一览表" class="headerlink" title="显示分支一览表"></a>显示分支一览表</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git branch		# 列出所有本地分支</span><br><span class="line">git branch -r		#  列出所有远程分支</span><br><span class="line">git branch -a				# 同时显示本地仓库和远程仓库的分支信息</span><br><span class="line">git branch branchName		# 用于创建分支</span><br></pre></td></tr></table></figure>
+<h3 id="显示分支一览表"><a href="#显示分支一览表" class="headerlink" title="显示分支一览表"></a>显示分支一览表</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 列出所有本地分支</span></span><br><span class="line">git branch	</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 列出所有远程分支</span></span><br><span class="line">git branch -r		</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 同时显示本地仓库和远程仓库的分支信息</span></span><br><span class="line">git branch -a	</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 用于创建分支</span></span><br><span class="line">git branch branchName		</span><br></pre></td></tr></table></figure>
 <h3 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h3><ul>
 <li><code>--no-ff</code> 用于记录本次分支合并</li>
 <li>消除冲突：打开冲突的文件，在编辑器中改为想要的样子</li>
@@ -4351,7 +4372,7 @@ $ guestunmount qcow2_mount_point<figure class="highlight plain"><table><tr><td c
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git merge [--no-ff]  branchName		# 合并指定分支到当前分支</span><br><span class="line">git cherry-pick [commit]		# 选择一个 commit，合并进当前分支</span><br></pre></td></tr></table></figure>
 <h3 id="删除分支"><a href="#删除分支" class="headerlink" title="删除分支"></a>删除分支</h3><ul>
 <li><p>删除分支</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git branch -d [branch-name]</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 删除本地分支</span></span><br><span class="line">git branch -d [branch-name]</span><br></pre></td></tr></table></figure></li>
 <li><p>删除远程分支</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git push origin --delete [branch-name]</span><br><span class="line">git branch -dr [remote/branch]</span><br></pre></td></tr></table></figure>
 <h3 id="撤销工作区的文件修改"><a href="#撤销工作区的文件修改" class="headerlink" title="撤销工作区的文件修改"></a>撤销工作区的文件修改</h3></li>
@@ -4362,17 +4383,15 @@ $ guestunmount qcow2_mount_point<figure class="highlight plain"><table><tr><td c
 <li><p>恢复暂存区的所有文件到工作区</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git checkout .</span><br></pre></td></tr></table></figure>
 <h3 id="分支重命名"><a href="#分支重命名" class="headerlink" title="分支重命名"></a><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3MTQ4MjcwL2FydGljbGUvZGV0YWlscy8xMDcxMDYzOTI=">分支重命名<i class="fa fa-external-link-alt"></i></span></h3></li>
-</ul>
-<p>重命名本地分支：</p>
+<li><p>重命名本地分支：</p>
 <ul>
-<li>在当前分支时</li>
+<li><p>在当前分支时</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git branch -m new_branch_name</span><br></pre></td></tr></table></figure></li>
+<li><p>当不在当前分支时</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git branch -m old_branch_name new_branch_name</span><br></pre></td></tr></table></figure></li>
 </ul>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git branch -m new_branch_name</span><br></pre></td></tr></table></figure>
-<ul>
-<li>当不在当前分支时</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git branch -m old_branch_name new_branch_name</span><br></pre></td></tr></table></figure>
-<p>重命名远端分支：</p>
+</li>
+<li><p>重命名远端分支：</p>
 <p>假设是在当前分支，并且远端分支与本地分支名是一致的重命名本地分支</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git branch -m new_branch_name</span><br></pre></td></tr></table></figure>
 <p>删除远程分支</p>
@@ -4381,7 +4400,7 @@ $ guestunmount qcow2_mount_point<figure class="highlight plain"><table><tr><td c
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git push origin new_branch_name</span><br></pre></td></tr></table></figure>
 <p>关联修改后的本地分支与远程分支</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git branch --set-upstream-to origin/new_branch_name</span><br></pre></td></tr></table></figure>
-<h2 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h2><ul>
+<h2 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h2></li>
 <li><p>列出所有 tag</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git tag</span><br></pre></td></tr></table></figure></li>
 <li><p>新建一个 tag 在当前commit</p>
