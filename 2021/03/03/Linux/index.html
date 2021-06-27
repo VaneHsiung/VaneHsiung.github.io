@@ -39,7 +39,7 @@
 <meta property="og:image" content="https://vanehsiung.github.io/Linux/XServer.png">
 <meta property="og:image" content="https://vanehsiung.github.io/Linux/Wayland.png">
 <meta property="article:published_time" content="2021-03-03T14:48:56.000Z">
-<meta property="article:modified_time" content="2021-06-27T09:44:55.136Z">
+<meta property="article:modified_time" content="2021-06-27T09:49:43.175Z">
 <meta property="article:author" content="vane">
 <meta property="article:tag" content="Unix-like">
 <meta name="twitter:card" content="summary">
@@ -342,7 +342,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-06-27 17:44:55" itemprop="dateModified" datetime="2021-06-27T17:44:55+08:00">2021-06-27</time>
+        <time title="Modified: 2021-06-27 17:49:43" itemprop="dateModified" datetime="2021-06-27T17:49:43+08:00">2021-06-27</time>
       </span>
 
   
@@ -1044,10 +1044,10 @@ $ guestunmount qcow2_mount_point<figure class="highlight plain"><table><tr><td c
 <p><strong>Wayland</strong></p>
 <p>X即X11、X Window System，是用于在类UNIX的操作系统上的位图显示的窗口系统，提供了GUI环境的基本框架。X由X.Org Foundation维护，遵守MIT协议，当前参考实现为X.Org Server。在架构方面，X使用了C/S模型，客户端和服务器可以在同一个机器上，也可以在不同的机器上，X作为Server为应用程序这个Client提供显示和I/O服务。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% asset_img XServer.png XServer %&#125;</span><br></pre></td></tr></table></figure>
-<p><img data-src="/Linux/XServer.png" alt="XServer"></p>
+<p><img data-src="/./Linux/XServer.png" alt="XServer"></p>
 <p>Wayland是一个显示服务协议，服务端为Wayland Compositor，把X的X Server和Compositor合二为一，旨在替换X，作为类Unix操作系统上更现代、简介的窗口系统，遵守MIT协议，提供了Wayland Compositor的参考C语言实现Weston。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% asset_img Wayland.png Wayland %&#125;</span><br></pre></td></tr></table></figure>
-<p><img data-src="/Linux/Wayland.png" alt="Wayland"></p>
+<p><img data-src="/./Linux/Wayland.png" alt="Wayland"></p>
 <p>时至今日，原本在X Server中做的事很多已被移到kernel或者单独的库中，因此X Server就显得比较累赘了。Wayland在架构上去掉了这个中间层，将compositor作为display server，使client与compositor直接通信，从而在灵活性和性能等方面上能够比前辈更加出色。</p>
 <p>查看是否使用 wayland</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="variable">$XDG_SESSION_TYPE</span></span><br></pre></td></tr></table></figure>
