@@ -3524,7 +3524,7 @@
 <h3 id="同一台电脑配置多个-GItHub-账号"><a href="#同一台电脑配置多个-GItHub-账号" class="headerlink" title="同一台电脑配置多个 GItHub 账号"></a><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2phd2lsL25vdGVzL2lzc3Vlcy8y">同一台电脑配置多个 GItHub 账号<i class="fa fa-external-link-alt"></i></span></h3><ul>
 <li><p>创建默认 <code>SSH Key</code></p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;one@example.com&quot;</span></span><br></pre></td></tr></table></figure></li>
-<li><p>将公钥添加到 <span class="exturl" data-url="bWFpbHRvOiYjMTExOyYjMTEwOyYjMTAxOyYjNjQ7JiMxMDE7JiN4Nzg7JiM5NzsmIzEwOTsmIzExMjsmIzEwODsmI3g2NTsmIzQ2OyYjeDYzOyYjMTExOyYjMTA5Ow==">&#111;&#110;&#101;&#64;&#101;&#x78;&#97;&#109;&#112;&#108;&#x65;&#46;&#x63;&#111;&#109;<i class="fa fa-external-link-alt"></i></span> 的 GitHub SSH key 中。</p>
+<li><p>将公钥添加到 <span class="exturl" data-url="bWFpbHRvOiYjeDZmOyYjMTEwOyYjeDY1OyYjNjQ7JiN4NjU7JiN4Nzg7JiN4NjE7JiN4NmQ7JiMxMTI7JiN4NmM7JiN4NjU7JiM0NjsmI3g2MzsmI3g2ZjsmIzEwOTs=">&#x6f;&#110;&#x65;&#64;&#x65;&#x78;&#x61;&#x6d;&#112;&#x6c;&#x65;&#46;&#x63;&#x6f;&#109;<i class="fa fa-external-link-alt"></i></span> 的 GitHub SSH key 中。</p>
 </li>
 <li><p>测试 <code>ssh key</code> 是否成功</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure></li>
@@ -3532,7 +3532,7 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看当前配置</span></span><br><span class="line">git config --list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 取消 global user.name user.email</span></span><br><span class="line">git config --global --<span class="built_in">unset</span> user.name</span><br><span class="line">git config --global --<span class="built_in">unset</span> user.email</span><br></pre></td></tr></table></figure></li>
 <li><p>生成另外一个账号新的SSH keys</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;two@example.com&quot;</span></span><br></pre></td></tr></table></figure>
-<p>私钥需重命名，如 <code>id_rsa_new</code>。然后将对应的公钥添加到<span class="exturl" data-url="bWFpbHRvOiYjMTE2OyYjMTE5OyYjeDZmOyYjNjQ7JiN4NjU7JiMxMjA7JiN4NjE7JiN4NmQ7JiN4NzA7JiN4NmM7JiMxMDE7JiM0NjsmIzk5OyYjMTExOyYjMTA5Ow==">&#116;&#119;&#x6f;&#64;&#x65;&#120;&#x61;&#x6d;&#x70;&#x6c;&#101;&#46;&#99;&#111;&#109;<i class="fa fa-external-link-alt"></i></span>的 Github SSH key 中。</p>
+<p>私钥需重命名，如 <code>id_rsa_new</code>。然后将对应的公钥添加到<span class="exturl" data-url="bWFpbHRvOiYjeDc0OyYjeDc3OyYjMTExOyYjNjQ7JiN4NjU7JiN4Nzg7JiM5NzsmI3g2ZDsmIzExMjsmI3g2YzsmIzEwMTsmI3gyZTsmI3g2MzsmI3g2ZjsmI3g2ZDs=">&#x74;&#x77;&#111;&#64;&#x65;&#x78;&#97;&#x6d;&#112;&#x6c;&#101;&#x2e;&#x63;&#x6f;&#x6d;<i class="fa fa-external-link-alt"></i></span>的 Github SSH key 中。</p>
 </li>
 <li><p>需添加新私钥到 <code>SSH agent</code> 中，因为默认只读取 <code>id_rsa</code></p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 在管理员下运行</span></span><br><span class="line">Get-Service ssh-agent</span><br><span class="line">Set-Service ssh-agent -StartupType Manual</span><br><span class="line">Start-Service ssh-agent</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加私钥</span></span><br><span class="line">ssh-add ~/.ssh/id_rsa_new</span><br></pre></td></tr></table></figure>
@@ -5386,17 +5386,34 @@
 </ul>
 <p><strong>Backup And Restore Linux</strong></p>
 <ul>
-<li>```<br>apt-get install timeshift<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">- Making a backup of your Linux system</span><br><span class="line"></span><br><span class="line">- Restoring your Linux system</span><br><span class="line"></span><br><span class="line">  - log onto to your OS, launch Timeshift and select a Restore Image and hit restore</span><br><span class="line">  - when you can’t log into your Linux system, boot into a live session(need a Live USB) and download and install Timeshift(yes, you can install applications in live sessions).After installation, launch the application and browse to your backup location and select restore (yes, you can access your hard drive using a live session).</span><br><span class="line"></span><br><span class="line">**Linux 添加 exFAT 支持**</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-apt install exfat-fuse exfat-utils<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">**制作 windows U盘启动盘**</span><br><span class="line"></span><br><span class="line">Ubuntu 下安装 WoeUSB</span><br><span class="line"></span><br><span class="line">**libguestfs**</span><br><span class="line"></span><br><span class="line">libguestfs 支持几乎所有类型的磁盘镜像。</span><br><span class="line"></span><br><span class="line">在基于 Debian 的系统上：</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-$ apt-get install libguestfs-tools<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">我们可以像下面这样挂载一个 qcow2 格式的磁盘镜像：</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-$ guestmount -a /path/to/qcow2/image -m <device> /path/to/mount/point<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">要卸载它，则执行：</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-$ guestunmount qcow2_mount_point<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">**Ubuntu hosts**</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h1 id="security-ubuntu-com"><a href="#security-ubuntu-com" class="headerlink" title="security.ubuntu.com"></a>security.ubuntu.com</h1></li>
+<li><p><code>apt-get install timeshift</code></p>
+</li>
+<li><p>Making a backup of your Linux system</p>
+</li>
+<li><p>Restoring your Linux system</p>
+<ul>
+<li>log onto to your OS, launch Timeshift and select a Restore Image and hit restore</li>
+<li>when you can’t log into your Linux system, boot into a live session(need a Live USB) and download and install Timeshift(yes, you can install applications in live sessions).After installation, launch the application and browse to your backup location and select restore (yes, you can access your hard drive using a live session).</li>
 </ul>
-<p>91.189.88.142 security.ubuntu.com<br>91.189.88.152 security.ubuntu.com<br>91.189.91.38 security.ubuntu.com<br>91.189.91.39 security.ubuntu.com</p>
-<h1 id="archive-canonical-com"><a href="#archive-canonical-com" class="headerlink" title="archive.canonical.com"></a>archive.canonical.com</h1><p>91.189.92.150 archive.canonical.com<br>91.189.92.191 archive.canonical.com<br>91.189.91.15 archive.canonical.com</p>
-<h1 id="downloads-sourceforge-net"><a href="#downloads-sourceforge-net" class="headerlink" title="downloads.sourceforge.net"></a>downloads.sourceforge.net</h1><p>216.105.38.13 downloads.sourceforge.net</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">**oh-my-zsh**</span><br><span class="line"></span><br><span class="line">oh-my-zsh应该对通配符作了限制，需要用跳脱字符</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;bash</span><br><span class="line">sudo apt remove fcitx\*</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>Linux 添加 exFAT 支持</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">apt install exfat-fuse exfat-utils</span><br></pre></td></tr></table></figure>
+<p><strong>制作 windows U盘启动盘</strong></p>
+<p>Ubuntu 下安装 WoeUSB</p>
+<p><strong>libguestfs</strong></p>
+<p>libguestfs 支持几乎所有类型的磁盘镜像。</p>
+<p>在基于 Debian 的系统上：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ apt-get install libguestfs-tools</span><br></pre></td></tr></table></figure>
+<p>我们可以像下面这样挂载一个 qcow2 格式的磁盘镜像：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ guestmount -a &#x2F;path&#x2F;to&#x2F;qcow2&#x2F;image -m &lt;device&gt; &#x2F;path&#x2F;to&#x2F;mount&#x2F;point</span><br></pre></td></tr></table></figure>
+<p>要卸载它，则执行：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ guestunmount qcow2_mount_point</span><br></pre></td></tr></table></figure>
+<p><strong>Ubuntu hosts</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># security.ubuntu.com</span><br><span class="line">91.189.88.142 security.ubuntu.com</span><br><span class="line">91.189.88.152 security.ubuntu.com</span><br><span class="line">91.189.91.38 security.ubuntu.com</span><br><span class="line">91.189.91.39 security.ubuntu.com</span><br><span class="line"></span><br><span class="line"># archive.canonical.com</span><br><span class="line">91.189.92.150 archive.canonical.com</span><br><span class="line">91.189.92.191 archive.canonical.com</span><br><span class="line">91.189.91.15 archive.canonical.com</span><br><span class="line"></span><br><span class="line"># downloads.sourceforge.net</span><br><span class="line">216.105.38.13 downloads.sourceforge.net</span><br></pre></td></tr></table></figure>
+<p><strong>oh-my-zsh</strong></p>
+<p>oh-my-zsh应该对通配符作了限制，需要用跳脱字符</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt remove fcitx\*</span><br></pre></td></tr></table></figure>
 <p><strong>列出所有手动安装软件</strong></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">apt-mark showmanual</span><br></pre></td></tr></table></figure>
 <p><strong>Ubuntu关机异常慢的解决方法</strong></p>
