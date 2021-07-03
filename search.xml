@@ -3524,7 +3524,7 @@
 <h3 id="同一台电脑配置多个-GItHub-账号"><a href="#同一台电脑配置多个-GItHub-账号" class="headerlink" title="同一台电脑配置多个 GItHub 账号"></a><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2phd2lsL25vdGVzL2lzc3Vlcy8y">同一台电脑配置多个 GItHub 账号<i class="fa fa-external-link-alt"></i></span></h3><ul>
 <li><p>创建默认 <code>SSH Key</code></p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;one@example.com&quot;</span></span><br></pre></td></tr></table></figure></li>
-<li><p>将公钥添加到 <span class="exturl" data-url="bWFpbHRvOiYjeDZmOyYjMTEwOyYjeDY1OyYjNjQ7JiN4NjU7JiN4Nzg7JiN4NjE7JiN4NmQ7JiMxMTI7JiN4NmM7JiN4NjU7JiM0NjsmI3g2MzsmI3g2ZjsmIzEwOTs=">&#x6f;&#110;&#x65;&#64;&#x65;&#x78;&#x61;&#x6d;&#112;&#x6c;&#x65;&#46;&#x63;&#x6f;&#109;<i class="fa fa-external-link-alt"></i></span> 的 GitHub SSH key 中。</p>
+<li><p>将公钥添加到 <span class="exturl" data-url="bWFpbHRvOiYjMTExOyYjeDZlOyYjMTAxOyYjNjQ7JiN4NjU7JiMxMjA7JiN4NjE7JiMxMDk7JiN4NzA7JiN4NmM7JiN4NjU7JiN4MmU7JiM5OTsmI3g2ZjsmI3g2ZDs=">&#111;&#x6e;&#101;&#64;&#x65;&#120;&#x61;&#109;&#x70;&#x6c;&#x65;&#x2e;&#99;&#x6f;&#x6d;<i class="fa fa-external-link-alt"></i></span> 的 GitHub SSH key 中。</p>
 </li>
 <li><p>测试 <code>ssh key</code> 是否成功</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure></li>
@@ -3532,7 +3532,7 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看当前配置</span></span><br><span class="line">git config --list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 取消 global user.name user.email</span></span><br><span class="line">git config --global --<span class="built_in">unset</span> user.name</span><br><span class="line">git config --global --<span class="built_in">unset</span> user.email</span><br></pre></td></tr></table></figure></li>
 <li><p>生成另外一个账号新的SSH keys</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;two@example.com&quot;</span></span><br></pre></td></tr></table></figure>
-<p>私钥需重命名，如 <code>id_rsa_new</code>。然后将对应的公钥添加到<span class="exturl" data-url="bWFpbHRvOiYjeDc0OyYjeDc3OyYjMTExOyYjNjQ7JiN4NjU7JiN4Nzg7JiM5NzsmI3g2ZDsmIzExMjsmI3g2YzsmIzEwMTsmI3gyZTsmI3g2MzsmI3g2ZjsmI3g2ZDs=">&#x74;&#x77;&#111;&#64;&#x65;&#x78;&#97;&#x6d;&#112;&#x6c;&#101;&#x2e;&#x63;&#x6f;&#x6d;<i class="fa fa-external-link-alt"></i></span>的 Github SSH key 中。</p>
+<p>私钥需重命名，如 <code>id_rsa_new</code>。然后将对应的公钥添加到<span class="exturl" data-url="bWFpbHRvOiYjMTE2OyYjeDc3OyYjMTExOyYjeDQwOyYjeDY1OyYjMTIwOyYjOTc7JiMxMDk7JiN4NzA7JiN4NmM7JiMxMDE7JiN4MmU7JiN4NjM7JiMxMTE7JiMxMDk7">&#116;&#x77;&#111;&#x40;&#x65;&#120;&#97;&#109;&#x70;&#x6c;&#101;&#x2e;&#x63;&#111;&#109;<i class="fa fa-external-link-alt"></i></span>的 Github SSH key 中。</p>
 </li>
 <li><p>需添加新私钥到 <code>SSH agent</code> 中，因为默认只读取 <code>id_rsa</code></p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 在管理员下运行</span></span><br><span class="line">Get-Service ssh-agent</span><br><span class="line">Set-Service ssh-agent -StartupType Manual</span><br><span class="line">Start-Service ssh-agent</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加私钥</span></span><br><span class="line">ssh-add ~/.ssh/id_rsa_new</span><br></pre></td></tr></table></figure>
@@ -4943,17 +4943,16 @@
 <li><p>查看是否运行</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;usr&#x2F;sbin&#x2F;sestatus -v</span><br></pre></td></tr></table></figure></li>
 <li><p>关闭 SELinux </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># vi &#x2F;etc&#x2F;selinux&#x2F;config</span><br><span class="line">SELINUX&#x3D;disabled</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># vi &#x2F;etc&#x2F;selinux&#x2F;configSELINUX&#x3D;disabled</span><br></pre></td></tr></table></figure></li>
 </ul>
 <p><strong>安装 Oracle JDK</strong></p>
 <ul>
 <li><p>解压缩到目录</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tar -zxvf jdk-7u60-linux-x64.gz -C dir</span><br></pre></td></tr></table></figure></li>
 <li><p>修改环境变量</p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># vim ~&#x2F;.bashrc</span><br><span class="line">set oracle jdk environment</span><br><span class="line">export JAVA_HOME&#x3D;&#x2F;usr&#x2F;lib&#x2F;jvm&#x2F;jdk1.7.0_60 		# 这里换成自己解压的jdk 目录</span><br><span class="line">export JRE_HOME&#x3D;$&#123;JAVA_HOME&#125;&#x2F;jre  </span><br><span class="line">export CLASSPATH&#x3D;.:$&#123;JAVA_HOME&#125;&#x2F;lib:$&#123;JRE_HOME&#125;&#x2F;lib  </span><br><span class="line">export PATH&#x3D;$&#123;JAVA_HOME&#125;&#x2F;bin:$PATH</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># vim ~&#x2F;.bashrcset oracle jdk environmentexport JAVA_HOME&#x3D;&#x2F;usr&#x2F;lib&#x2F;jvm&#x2F;jdk1.7.0_60 		# 这里换成自己解压的jdk 目录export JRE_HOME&#x3D;$&#123;JAVA_HOME&#125;&#x2F;jre  export CLASSPATH&#x3D;.:$&#123;JAVA_HOME&#125;&#x2F;lib:$&#123;JRE_HOME&#125;&#x2F;lib  export PATH&#x3D;$&#123;JAVA_HOME&#125;&#x2F;bin:$PATH</span><br></pre></td></tr></table></figure></li>
 <li><p>使环境变量生效</p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">source ~&#x2F;.bashrc</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">source ~&#x2F;.bashrc</span><br></pre></td></tr></table></figure></li>
 </ul>
 <p><strong>用 MTP 挂载手机</strong></p>
 <ul>
@@ -4970,7 +4969,7 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dd bs&#x3D;4M if&#x3D;fileName.iso of&#x3D;&#x2F;dev&#x2F;sdx status&#x3D;progress &amp;&amp; sync</span><br></pre></td></tr></table></figure>
 <p>Windows 下用Rufus 且 dd 写入模式</p>
 <p><strong>查找依赖</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum whatprovide package</span><br><span class="line">dnf provides package</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum whatprovide package dnf provides package</span><br></pre></td></tr></table></figure>
 <p><strong>修改文件默认关联的应用程序</strong></p>
 <ul>
 <li>mime类型文件存在于以下的两个路径：<ul>
@@ -4987,7 +4986,7 @@
 </ul>
 </li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[Desktop Entry]</span><br><span class="line">Type&#x3D;Application</span><br><span class="line">Name&#x3D;name		# 应用名称，即开始菜单中的名称</span><br><span class="line">Exec&#x3D;appPath		# 应用执行文件位置</span><br><span class="line">Icon&#x3D;default48.png		# 应用图标位置</span><br><span class="line">Terminal&#x3D;false		# 是否显示终端</span><br><span class="line">StartupNotify&#x3D;true</span><br><span class="line">Categories&#x3D;Office		# 所属分类</span><br><span class="line">MimeType&#x3D;text&#x2F;x-markdown		# MIME 类型</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[Desktop Entry]Type&#x3D;ApplicationName&#x3D;name		# 应用名称，即开始菜单中的名称Exec&#x3D;appPath		# 应用执行文件位置Icon&#x3D;default48.png		# 应用图标位置Terminal&#x3D;false		# 是否显示终端StartupNotify&#x3D;trueCategories&#x3D;Office		# 所属分类MimeType&#x3D;text&#x2F;x-markdown		# MIME 类型</span><br></pre></td></tr></table></figure>
 <ul>
 <li>应用程序默认关联文件，存在于以下的两个路径：<ul>
 <li>/usr/share/applications/mimeapps.list</li>
@@ -5240,7 +5239,7 @@
 <li><p>Find and remove duplicate files：You can use a GUI tool like <span class="exturl" data-url="aHR0cHM6Ly93d3cucGl4ZWxiZWF0Lm9yZy9mc2xpbnQv">FSlint<i class="fa fa-external-link-alt"></i></span> or a command line tool like <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FkcmlhbmxvcGV6cm9jaGUvZmR1cGVz">FDUPES<i class="fa fa-external-link-alt"></i></span> for this task</p>
 </li>
 <li><p>Remove old Linux kernels</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dpkg --list &#39;linux-image*&#39;		# List all installed Linux kernels </span><br><span class="line">apt-get remove linux-image-VERSION</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dpkg --list &#39;linux-image*&#39;		# List all installed Linux kernels apt-get remove linux-image-VERSION</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 <li><p>快捷键</p>
@@ -5255,7 +5254,7 @@
 <p><span class="exturl" data-url="aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC8xMzgxNTczNDg=">安装完 Ubuntu 20.04 后要做的 16 件事<i class="fa fa-external-link-alt"></i></span></p>
 <p><strong>Ubuntu Software &amp; Update 卡在 cache refresh</strong></p>
 <p>通过 <code>apt update</code> 可以看见是 Connecting to security.ubuntu.com Failed，解决办法是更改 /etc/hosts 文件添加其 IP，可通过 <span class="exturl" data-url="aHR0cHM6Ly93d3cuZWFzeWNvdW50ZXIuY29tLw==">EASYCOUNTER<i class="fa fa-external-link-alt"></i></span> 查找：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># security.ubuntu.com DNS Records</span><br><span class="line">91.189.88.142 security.ubuntu.com</span><br><span class="line">91.189.88.152 security.ubuntu.com</span><br><span class="line">91.189.91.38 security.ubuntu.com</span><br><span class="line">91.189.91.39 security.ubuntu.com</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># security.ubuntu.com DNS Records91.189.88.142 security.ubuntu.com91.189.88.152 security.ubuntu.com91.189.91.38 security.ubuntu.com91.189.91.39 security.ubuntu.com</span><br></pre></td></tr></table></figure>
 <p><strong>ubuntu下如何获取源码包和源码</strong></p>
 <ul>
 <li><p>在 Software &amp; Updates 中选中 Source code，不要 Reload，因为很慢，在命令行中 update。或者在软件源配置文件 /etc/apt/sources.list 中添加 deb-src 项。</p>
@@ -5286,7 +5285,7 @@
 <p>当你在安装完 Snap 后，你会发现在在根目录下会出现如 /dev/loop0 的挂载点，这些挂载点正是 Snap 软件包的目录。</p>
 <ul>
 <li><p>原因是软件之前安装了一次，只是安装失败。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">snap changes</span><br><span class="line">snap abort 5		# 5 为安装失败软件的 ID</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">snap changessnap abort 5		# 5 为安装失败软件的 ID</span><br></pre></td></tr></table></figure></li>
 <li><p>现在重新安装</p>
 </li>
 </ul>
@@ -5410,7 +5409,7 @@
 <p>要卸载它，则执行：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ guestunmount qcow2_mount_point</span><br></pre></td></tr></table></figure>
 <p><strong>Ubuntu hosts</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># security.ubuntu.com</span><br><span class="line">91.189.88.142 security.ubuntu.com</span><br><span class="line">91.189.88.152 security.ubuntu.com</span><br><span class="line">91.189.91.38 security.ubuntu.com</span><br><span class="line">91.189.91.39 security.ubuntu.com</span><br><span class="line"></span><br><span class="line"># archive.canonical.com</span><br><span class="line">91.189.92.150 archive.canonical.com</span><br><span class="line">91.189.92.191 archive.canonical.com</span><br><span class="line">91.189.91.15 archive.canonical.com</span><br><span class="line"></span><br><span class="line"># downloads.sourceforge.net</span><br><span class="line">216.105.38.13 downloads.sourceforge.net</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># security.ubuntu.com91.189.88.142 security.ubuntu.com91.189.88.152 security.ubuntu.com91.189.91.38 security.ubuntu.com91.189.91.39 security.ubuntu.com# archive.canonical.com91.189.92.150 archive.canonical.com91.189.92.191 archive.canonical.com91.189.91.15 archive.canonical.com# downloads.sourceforge.net216.105.38.13 downloads.sourceforge.net</span><br></pre></td></tr></table></figure>
 <p><strong>oh-my-zsh</strong></p>
 <p>oh-my-zsh应该对通配符作了限制，需要用跳脱字符</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt remove fcitx\*</span><br></pre></td></tr></table></figure>
@@ -5465,7 +5464,7 @@
 <p>要在只读模式下使用 Windows 分区，请追加 <code>-o ro</code></p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ntfs-3g /dev/DEVICE MOUNT POINT -o ro</span><br></pre></td></tr></table></figure>
 <p><code>ntfs-3g</code> 命令使用当前用户 (UID) 和组 (GID) 装入给定设备。如果要为其他用户设置写权限，请使用命令 <code>id</code>     <code> USER</code> 获取 UID 和 GID 值的输出。设置方式：    </p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">id username</span><br><span class="line">ntfs-3g /dev/DEVICE MOUNT POINT -o uid=1000,gid=100</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">id usernamentfs-3g /dev/DEVICE MOUNT POINT -o uid=1000,gid=100</span><br></pre></td></tr></table></figure></li>
 <li><p>要卸载资源，请运行 <code>fusermount -u 安装点</code>。  </p>
 </li>
 </ol>
@@ -5486,7 +5485,7 @@
 <li>共享通知</li>
 </ul>
 <p>默认 kdeconnect 在防火墙那边是没放开的，要操作一下</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo firewall-cmd --zone=public --permanent --add-service=kdeconnect-kde</span><br><span class="line">sudo firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo firewall-cmd --zone=public --permanent --add-service=kdeconnect-kdesudo firewall-cmd --reload</span><br></pre></td></tr></table></figure>
 <p><strong>openSUSE 镜像</strong></p>
 <p>我们官方的态度是不鼓励直接使用镜像的。</p>
 <p>因为比起「其它」发行版，我们 openSUSE 的技术力量比较强，开发了两个东西。</p>
@@ -5595,7 +5594,7 @@
 <li><p>解除离开</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;away</span><br></pre></td></tr></table></figure></li>
 <li><p>离开频道</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;wc</span><br><span class="line">&#x2F;part centos-social message</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;wc&#x2F;part centos-social message</span><br></pre></td></tr></table></figure></li>
 <li><p>离开服务器</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;disconnect freenode</span><br></pre></td></tr></table></figure></li>
 <li><p>离开irssi</p>
@@ -5614,7 +5613,19 @@
 
 <p>时至今日，原本在X Server中做的事很多已被移到kernel或者单独的库中，因此X Server就显得比较累赘了。Wayland在架构上去掉了这个中间层，将compositor作为display server，使client与compositor直接通信，从而在灵活性和性能等方面上能够比前辈更加出色。</p>
 <p>查看是否使用 wayland</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="variable">$XDG_SESSION_TYPE</span></span><br></pre></td></tr></table></figure>]]></content>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="variable">$XDG_SESSION_TYPE</span></span><br></pre></td></tr></table></figure>
+<p><strong><span class="exturl" data-url="aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC84NTgzMzc2Ng==">为什么执行自己的程序要在前面加./<i class="fa fa-external-link-alt"></i></span></strong></p>
+<p>shell是如何运行程序的：如果不给出相对路径，或者绝对路径，那么它会经历下面的查找过程。</p>
+<ul>
+<li>alias中查找</li>
+<li>内置命令中查找</li>
+<li>PATH中查找</li>
+</ul>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">$ cd /temp</span><br><span class="line">$ ./ls_bak</span><br></pre></td></tr></table></figure>
+<p>等同于</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">$ /temp/ls_bak</span><br></pre></td></tr></table></figure>
+<p>shell通常可以执行两种程序，一种是二进制程序，一种是脚本程序。如果是文本程序，且开头没有指定解释程序，则按照shell脚本处理，如果指定了解释程序，则使用解释程序来解释运行；对于二进制程序，则直接创建新的进程即可。</p>
+]]></content>
       <tags>
         <tag>Unix-like</tag>
       </tags>
