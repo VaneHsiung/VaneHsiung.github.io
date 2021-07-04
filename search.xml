@@ -3524,7 +3524,7 @@
 <h3 id="同一台电脑配置多个-GItHub-账号"><a href="#同一台电脑配置多个-GItHub-账号" class="headerlink" title="同一台电脑配置多个 GItHub 账号"></a><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2phd2lsL25vdGVzL2lzc3Vlcy8y">同一台电脑配置多个 GItHub 账号<i class="fa fa-external-link-alt"></i></span></h3><ul>
 <li><p>创建默认 <code>SSH Key</code></p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;one@example.com&quot;</span></span><br></pre></td></tr></table></figure></li>
-<li><p>将公钥添加到 <span class="exturl" data-url="bWFpbHRvOiYjMTExOyYjeDZlOyYjMTAxOyYjNjQ7JiN4NjU7JiMxMjA7JiN4NjE7JiMxMDk7JiN4NzA7JiN4NmM7JiN4NjU7JiN4MmU7JiM5OTsmI3g2ZjsmI3g2ZDs=">&#111;&#x6e;&#101;&#64;&#x65;&#120;&#x61;&#109;&#x70;&#x6c;&#x65;&#x2e;&#99;&#x6f;&#x6d;<i class="fa fa-external-link-alt"></i></span> 的 GitHub SSH key 中。</p>
+<li><p>将公钥添加到 <span class="exturl" data-url="bWFpbHRvOiYjeDZmOyYjMTEwOyYjMTAxOyYjNjQ7JiMxMDE7JiMxMjA7JiN4NjE7JiN4NmQ7JiN4NzA7JiMxMDg7JiMxMDE7JiM0NjsmI3g2MzsmIzExMTsmI3g2ZDs=">&#x6f;&#110;&#101;&#64;&#101;&#120;&#x61;&#x6d;&#x70;&#108;&#101;&#46;&#x63;&#111;&#x6d;<i class="fa fa-external-link-alt"></i></span> 的 GitHub SSH key 中。</p>
 </li>
 <li><p>测试 <code>ssh key</code> 是否成功</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure></li>
@@ -3532,7 +3532,7 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看当前配置</span></span><br><span class="line">git config --list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 取消 global user.name user.email</span></span><br><span class="line">git config --global --<span class="built_in">unset</span> user.name</span><br><span class="line">git config --global --<span class="built_in">unset</span> user.email</span><br></pre></td></tr></table></figure></li>
 <li><p>生成另外一个账号新的SSH keys</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;two@example.com&quot;</span></span><br></pre></td></tr></table></figure>
-<p>私钥需重命名，如 <code>id_rsa_new</code>。然后将对应的公钥添加到<span class="exturl" data-url="bWFpbHRvOiYjMTE2OyYjeDc3OyYjMTExOyYjeDQwOyYjeDY1OyYjMTIwOyYjOTc7JiMxMDk7JiN4NzA7JiN4NmM7JiMxMDE7JiN4MmU7JiN4NjM7JiMxMTE7JiMxMDk7">&#116;&#x77;&#111;&#x40;&#x65;&#120;&#97;&#109;&#x70;&#x6c;&#101;&#x2e;&#x63;&#111;&#109;<i class="fa fa-external-link-alt"></i></span>的 Github SSH key 中。</p>
+<p>私钥需重命名，如 <code>id_rsa_new</code>。然后将对应的公钥添加到<span class="exturl" data-url="bWFpbHRvOiYjMTE2OyYjeDc3OyYjMTExOyYjeDQwOyYjeDY1OyYjeDc4OyYjeDYxOyYjeDZkOyYjeDcwOyYjMTA4OyYjMTAxOyYjeDJlOyYjeDYzOyYjeDZmOyYjMTA5Ow==">&#116;&#x77;&#111;&#x40;&#x65;&#x78;&#x61;&#x6d;&#x70;&#108;&#101;&#x2e;&#x63;&#x6f;&#109;<i class="fa fa-external-link-alt"></i></span>的 Github SSH key 中。</p>
 </li>
 <li><p>需添加新私钥到 <code>SSH agent</code> 中，因为默认只读取 <code>id_rsa</code></p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 在管理员下运行</span></span><br><span class="line">Get-Service ssh-agent</span><br><span class="line">Set-Service ssh-agent -StartupType Manual</span><br><span class="line">Start-Service ssh-agent</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加私钥</span></span><br><span class="line">ssh-add ~/.ssh/id_rsa_new</span><br></pre></td></tr></table></figure>
@@ -3752,13 +3752,13 @@
 </ol>
 <p>至此，整个 pull request 的过程就结束了。</p>
 <p>拉取请求，就是请求对方拉取我本地仓库的 bug fix，合并到对方的 repo 中。以对方的视角来看，我的本地仓库就是一个远程仓库。因为我们是在请求对方做什么，所以要以对方视角来看，即 pull，因为对方可能同意，也可能不同意，所以是请求，即 pull request。</p>
-<h2 id="GitHub-Hosts"><a href="#GitHub-Hosts" class="headerlink" title="GitHub Hosts"></a>GitHub Hosts</h2><p>查看打不开网页的域名，可在 <span class="exturl" data-url="aHR0cHM6Ly93d3cuaXBhZGRyZXNzLmNvbS8=">IPAddress<i class="fa fa-external-link-alt"></i></span> 中查找域名的 IP，添加至 hosts 文件中。</p>
-<p>原则：</p>
+<h2 id="GitHub-Hosts"><a href="#GitHub-Hosts" class="headerlink" title="GitHub Hosts"></a>GitHub Hosts</h2><h3 id="GitHub520"><a href="#GitHub520" class="headerlink" title="GitHub520"></a><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tLzUyMXh1ZXdlaWhhbi9HaXRIdWI1MjA=">GitHub520<i class="fa fa-external-link-alt"></i></span></h3><p>本项目无需安装任何程序，通过修改本地 hosts 文件，试图解决：</p>
 <ul>
-<li>网页打不开才加，DNS 比人工加要方便</li>
-<li>加了打得开才留，保持 hosts 文件精简</li>
+<li>GitHub 访问速度慢的问题</li>
+<li>GitHub 项目中的图片显示不出的问题</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># GitHub520 Host Start</span><br><span class="line">185.199.108.154               github.githubassets.com</span><br><span class="line">140.82.112.22                 central.github.com</span><br><span class="line">185.199.108.133               desktop.githubusercontent.com</span><br><span class="line">185.199.108.153               assets-cdn.github.com</span><br><span class="line">185.199.108.133               camo.githubusercontent.com</span><br><span class="line">185.199.108.133               github.map.fastly.net</span><br><span class="line">199.232.69.194                github.global.ssl.fastly.net</span><br><span class="line">140.82.113.4                  gist.github.com</span><br><span class="line">185.199.108.153               github.io</span><br><span class="line">140.82.112.4                  github.com</span><br><span class="line">140.82.113.5                  api.github.com</span><br><span class="line">185.199.108.133               raw.githubusercontent.com</span><br><span class="line">185.199.108.133               user-images.githubusercontent.com</span><br><span class="line">185.199.108.133               favicons.githubusercontent.com</span><br><span class="line">185.199.108.133               avatars5.githubusercontent.com</span><br><span class="line">185.199.108.133               avatars4.githubusercontent.com</span><br><span class="line">185.199.108.133               avatars3.githubusercontent.com</span><br><span class="line">185.199.108.133               avatars2.githubusercontent.com</span><br><span class="line">185.199.108.133               avatars1.githubusercontent.com</span><br><span class="line">185.199.108.133               avatars0.githubusercontent.com</span><br><span class="line">185.199.108.133               avatars.githubusercontent.com</span><br><span class="line">140.82.112.10                 codeload.github.com</span><br><span class="line">52.216.236.131                github-cloud.s3.amazonaws.com</span><br><span class="line">52.217.37.76                  github-com.s3.amazonaws.com</span><br><span class="line">52.217.73.172                 github-production-release-asset-2e65be.s3.amazonaws.com</span><br><span class="line">52.217.42.180                 github-production-user-asset-6210df.s3.amazonaws.com</span><br><span class="line">52.216.25.84                  github-production-repository-file-5c1aeb.s3.amazonaws.com</span><br><span class="line">185.199.108.153               githubstatus.com</span><br><span class="line">64.71.168.201                 github.community</span><br><span class="line">185.199.108.133               media.githubusercontent.com</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># Update time: 2021-04-17T12:06:21+08:00</span><br><span class="line"># Star me GitHub url: https:&#x2F;&#x2F;github.com&#x2F;521xueweihan&#x2F;GitHub520</span><br><span class="line"># GitHub520 Host End</span><br></pre></td></tr></table></figure>
+<p>花 5 分钟时间，让你”爱”上 GitHub。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># GitHub520 Host Start</span><br><span class="line">140.82.112.26                 alive.github.com</span><br><span class="line">140.82.114.25                 live.github.com</span><br><span class="line">185.199.108.154               github.githubassets.com</span><br><span class="line">140.82.113.22                 central.github.com</span><br><span class="line">185.199.108.133               desktop.githubusercontent.com</span><br><span class="line">185.199.108.153               assets-cdn.github.com</span><br><span class="line">185.199.108.133               camo.githubusercontent.com</span><br><span class="line">185.199.108.133               github.map.fastly.net</span><br><span class="line">199.232.69.194                github.global.ssl.fastly.net</span><br><span class="line">140.82.113.4                  gist.github.com</span><br><span class="line">185.199.108.153               github.io</span><br><span class="line">140.82.114.3                  github.com</span><br><span class="line">140.82.114.5                  api.github.com</span><br><span class="line">185.199.108.133               raw.githubusercontent.com</span><br><span class="line">185.199.108.133               user-images.githubusercontent.com</span><br><span class="line">185.199.108.133               favicons.githubusercontent.com</span><br><span class="line">185.199.108.133               avatars5.githubusercontent.com</span><br><span class="line">185.199.108.133               avatars4.githubusercontent.com</span><br><span class="line">185.199.108.133               avatars3.githubusercontent.com</span><br><span class="line">185.199.108.133               avatars2.githubusercontent.com</span><br><span class="line">185.199.108.133               avatars1.githubusercontent.com</span><br><span class="line">185.199.108.133               avatars0.githubusercontent.com</span><br><span class="line">185.199.108.133               avatars.githubusercontent.com</span><br><span class="line">140.82.112.10                 codeload.github.com</span><br><span class="line">52.216.170.203                github-cloud.s3.amazonaws.com</span><br><span class="line">52.217.98.76                  github-com.s3.amazonaws.com</span><br><span class="line">52.216.164.3                  github-production-release-asset-2e65be.s3.amazonaws.com</span><br><span class="line">52.216.160.147                github-production-user-asset-6210df.s3.amazonaws.com</span><br><span class="line">52.217.103.12                 github-production-repository-file-5c1aeb.s3.amazonaws.com</span><br><span class="line">185.199.108.153               githubstatus.com</span><br><span class="line">64.71.168.201                 github.community</span><br><span class="line">185.199.108.133               media.githubusercontent.com</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># Update time: 2021-07-04T08:07:49+08:00</span><br><span class="line"># Star me GitHub url: https:&#x2F;&#x2F;github.com&#x2F;521xueweihan&#x2F;GitHub520</span><br><span class="line"># GitHub520 Host End</span><br></pre></td></tr></table></figure>
 <h2 id="GitHub-Pages"><a href="#GitHub-Pages" class="headerlink" title="GitHub Pages"></a>GitHub Pages</h2><h3 id="使用-GitHub"><a href="#使用-GitHub" class="headerlink" title="使用 GitHub"></a><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmdpdGh1Yi5jb20vY24vZnJlZS1wcm8tdGVhbUBsYXRlc3QvZ2l0aHViL3dvcmtpbmctd2l0aC1naXRodWItcGFnZXMvZ2V0dGluZy1zdGFydGVkLXdpdGgtZ2l0aHViLXBhZ2Vz">使用 GitHub<i class="fa fa-external-link-alt"></i></span></h3><p>GitHub Pages 是一项静态站点托管服务，它直接从 GitHub 上的仓库获取 HTML、CSS 和 JavaScript 文件，（可选）通过构建过程运行文件，然后发布网站。</p>
 <p>有三种类型的 GitHub Pages 站点：项目、用户和组织。 项目站点连接到 GitHub 上托管的特定项目。 用户和组织站点连接到特定的 GitHub 帐户。</p>
 <p>To publish a user site, you must create a repository owned by your user account that’s named <code>&lt;username.github.io&gt;</code>. Repositories using the legacy <code>&lt;username.github.com&gt;</code> naming scheme will still be published, but visitors will be redirected from <code>http(s)://&lt;username.github.com&gt;</code> to <code>http(s)://&lt;username.github.io</code>. If both a <code>&lt;username.github.com&gt;</code> and <code>&lt;username.github.io&gt;</code> repository exist, only the <code>&lt;username.github.io&gt;</code> repository will be published.</p>
@@ -4905,8 +4905,7 @@
     <content><![CDATA[<p>Linux 使用笔记</p>
 <a id="more"></a>
 
-<h3 id="CentOS"><a href="#CentOS" class="headerlink" title="CentOS"></a>CentOS</h3><p><strong>连接热点</strong></p>
-<ul>
+<h2 id="CentOS"><a href="#CentOS" class="headerlink" title="CentOS"></a>CentOS</h2><h3 id="连接热点"><a href="#连接热点" class="headerlink" title="连接热点"></a>连接热点</h3><ul>
 <li><p>打开WIFI</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ifconfig interface up </span><br></pre></td></tr></table></figure></li>
 <li><p>查看所有可用的无线网络信号</p>
@@ -4916,19 +4915,15 @@
 <li><p>分配IP地址</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dhclient interface</span><br></pre></td></tr></table></figure></li>
 <li><p>查看无线网卡地址信息，有ip地址表示网络连接成功</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ifconfig interface</span><br></pre></td></tr></table></figure></li>
-</ul>
-<p><strong>PPPOE （ADSL）拨号上网</strong></p>
-<ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ifconfig interface</span><br></pre></td></tr></table></figure>
+<h3 id="PPPOE-（ADSL）拨号上网"><a href="#PPPOE-（ADSL）拨号上网" class="headerlink" title="PPPOE （ADSL）拨号上网"></a>PPPOE （ADSL）拨号上网</h3></li>
 <li><p>安装拨号软件</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dnf install  rp-pppoe* ppp*</span><br></pre></td></tr></table></figure></li>
 <li><p>设定</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pppoe-setup</span><br></pre></td></tr></table></figure></li>
 <li><p>拨号上网</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pppoe-stop</span><br><span class="line">pppoe-start</span><br></pre></td></tr></table></figure></li>
-</ul>
-<p><strong>安装中文输入法</strong></p>
-<ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pppoe-stop</span><br><span class="line">pppoe-start</span><br></pre></td></tr></table></figure>
+<h3 id="安装中文输入法"><a href="#安装中文输入法" class="headerlink" title="安装中文输入法"></a>安装中文输入法</h3></li>
 <li><p>安装 fcitx </p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dnf install fcitx-im fcitx-configtool fcitx-googlepinyin</span><br></pre></td></tr></table></figure></li>
 <li><p>配置</p>
@@ -4936,26 +4931,21 @@
 <li><p>fcitx  没图标：重装fcitx，在fcitx配置里关掉Kimpanel</p>
 </li>
 </ul>
-<p><strong>关闭触摸板</strong></p>
+<p>关闭触摸板</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dnf install xorg-x11-apps</span><br><span class="line">synclient TouchpadOff&#x3D;1		# 关闭</span><br><span class="line">synclient TouchpadOff&#x3D;0		# 开启</span><br></pre></td></tr></table></figure>
-<p><strong>关闭 SELinux</strong></p>
-<ul>
+<h3 id="关闭-SELinux"><a href="#关闭-SELinux" class="headerlink" title="关闭 SELinux"></a>关闭 SELinux</h3><ul>
 <li><p>查看是否运行</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;usr&#x2F;sbin&#x2F;sestatus -v</span><br></pre></td></tr></table></figure></li>
 <li><p>关闭 SELinux </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># vi &#x2F;etc&#x2F;selinux&#x2F;configSELINUX&#x3D;disabled</span><br></pre></td></tr></table></figure></li>
-</ul>
-<p><strong>安装 Oracle JDK</strong></p>
-<ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># vi &#x2F;etc&#x2F;selinux&#x2F;configSELINUX&#x3D;disabled</span><br></pre></td></tr></table></figure>
+<h3 id="安装-Oracle-JDK"><a href="#安装-Oracle-JDK" class="headerlink" title="安装 Oracle JDK"></a>安装 Oracle JDK</h3></li>
 <li><p>解压缩到目录</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tar -zxvf jdk-7u60-linux-x64.gz -C dir</span><br></pre></td></tr></table></figure></li>
 <li><p>修改环境变量</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># vim ~&#x2F;.bashrcset oracle jdk environmentexport JAVA_HOME&#x3D;&#x2F;usr&#x2F;lib&#x2F;jvm&#x2F;jdk1.7.0_60 		# 这里换成自己解压的jdk 目录export JRE_HOME&#x3D;$&#123;JAVA_HOME&#125;&#x2F;jre  export CLASSPATH&#x3D;.:$&#123;JAVA_HOME&#125;&#x2F;lib:$&#123;JRE_HOME&#125;&#x2F;lib  export PATH&#x3D;$&#123;JAVA_HOME&#125;&#x2F;bin:$PATH</span><br></pre></td></tr></table></figure></li>
 <li><p>使环境变量生效</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">source ~&#x2F;.bashrc</span><br></pre></td></tr></table></figure></li>
-</ul>
-<p><strong>用 MTP 挂载手机</strong></p>
-<ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">source ~&#x2F;.bashrc</span><br></pre></td></tr></table></figure>
+<h3 id="用-MTP-挂载手机"><a href="#用-MTP-挂载手机" class="headerlink" title="用 MTP 挂载手机"></a>用 MTP 挂载手机</h3></li>
 <li><p>安装jmtpfs</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dnf install jmtpfs</span><br></pre></td></tr></table></figure></li>
 <li><p>查看手机 “busnum”和“devnum”</p>
@@ -4963,15 +4953,13 @@
 <li><p>建立挂载点</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mkdir &#x2F;media&#x2F;dir</span><br></pre></td></tr></table></figure></li>
 <li><p>挂载手机</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">jmtpfs -device&#x3D;busnum,devnum &#x2F;media&#x2F;dir&#x2F;</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">jmtpfs -device&#x3D;busnum,devnum &#x2F;media&#x2F;dir&#x2F;</span><br></pre></td></tr></table></figure>
+<h3 id="dd-制作U盘启动盘"><a href="#dd-制作U盘启动盘" class="headerlink" title="dd 制作U盘启动盘"></a>dd 制作U盘启动盘</h3></li>
 </ul>
-<p><strong>dd 制作U盘启动盘</strong></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dd bs&#x3D;4M if&#x3D;fileName.iso of&#x3D;&#x2F;dev&#x2F;sdx status&#x3D;progress &amp;&amp; sync</span><br></pre></td></tr></table></figure>
 <p>Windows 下用Rufus 且 dd 写入模式</p>
-<p><strong>查找依赖</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum whatprovide package dnf provides package</span><br></pre></td></tr></table></figure>
-<p><strong>修改文件默认关联的应用程序</strong></p>
-<ul>
+<h3 id="查找依赖"><a href="#查找依赖" class="headerlink" title="查找依赖"></a>查找依赖</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum whatprovide package dnf provides package</span><br></pre></td></tr></table></figure>
+<h3 id="修改文件默认关联的应用程序"><a href="#修改文件默认关联的应用程序" class="headerlink" title="修改文件默认关联的应用程序"></a>修改文件默认关联的应用程序</h3><ul>
 <li>mime类型文件存在于以下的两个路径：<ul>
 <li>/usr/share/mime</li>
 <li>~/.local/share/mime</li>
@@ -4994,21 +4982,17 @@
 </ul>
 </li>
 </ul>
-<p><strong>Firefox 安装 Adobe Flash</strong></p>
-<p>Firefox 不要在网页下载，直接通过源下载。</p>
-<p><strong>wine exe程序的卸载</strong></p>
-<ol>
+<h3 id="Firefox-安装-Adobe-Flash"><a href="#Firefox-安装-Adobe-Flash" class="headerlink" title="Firefox 安装 Adobe Flash"></a>Firefox 安装 Adobe Flash</h3><p>Firefox 不要在网页下载，直接通过源下载。</p>
+<h3 id="wine-exe程序的卸载"><a href="#wine-exe程序的卸载" class="headerlink" title="wine exe程序的卸载"></a>wine exe程序的卸载</h3><ol>
 <li>wine 会在 /home 下的用户名目录生成三个隐藏的文件夹 .wine、.local、.config 等文件夹，快捷键 ctrl+H 可以显示出来;</li>
 <li>进入 .wine 文件夹可以看到 drive_c 文件夹，这是wine自动生成的虚拟windows  C盘，里面有类似windows系统盘的目录结构，在里面找到需要卸载的软件文件夹删除即可；</li>
 <li>找到 /home/用户名/.local/share/applications/wine/Programs，将软件对应的文件删除；</li>
 <li>找到 /home/用户名/.config/menus/applications-merged，将软件对应的文件删除；</li>
 <li>这时候已经删除完毕，但是可能还会看到桌面图标或软件列表，重启系统即可。</li>
 </ol>
-<p><strong>默认字体</strong></p>
-<p>CentOS 默认字体目录 /lib/kbd/consolefonts </p>
+<h3 id="默认字体"><a href="#默认字体" class="headerlink" title="默认字体"></a>默认字体</h3><p>CentOS 默认字体目录 /lib/kbd/consolefonts </p>
 <p>纯命令行是不能使用系统之外的字体的。</p>
-<p><strong>CentOS Minimal + Xfce</strong></p>
-<p>base 源与 epel 源，使用用阿里镜像: <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYWxpeXVuLmNvbS9taXJyb3Iv">https://developer.aliyun.com/mirror/<i class="fa fa-external-link-alt"></i></span></p>
+<h3 id="CentOS-Minimal-Xfce"><a href="#CentOS-Minimal-Xfce" class="headerlink" title="CentOS Minimal + Xfce"></a>CentOS Minimal + Xfce</h3><p>base 源与 epel 源，使用用阿里镜像: <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYWxpeXVuLmNvbS9taXJyb3Iv">https://developer.aliyun.com/mirror/<i class="fa fa-external-link-alt"></i></span></p>
 <ul>
 <li><p>安装Xfce4，先安装 Xfce 可以保证不安装多余的包</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dnf group list</span><br><span class="line">dnf groupinstall Xfce</span><br></pre></td></tr></table></figure></li>
@@ -5038,8 +5022,7 @@
 </ul>
 </li>
 </ul>
-<p><strong>DNF 与 YUM 区别</strong></p>
-<table>
+<h3 id="DNF-与-YUM-区别"><a href="#DNF-与-YUM-区别" class="headerlink" title="DNF 与 YUM 区别"></a>DNF 与 YUM 区别</h3><table>
 <thead>
 <tr>
 <th>编号</th>
@@ -5143,8 +5126,7 @@
 <td>YUM 由 Zdenek Pavlas、Jan Silhan 和团队成员开发</td>
 </tr>
 </tbody></table>
-<p><strong>DNF 命令</strong></p>
-<ul>
+<h3 id="DNF-命令"><a href="#DNF-命令" class="headerlink" title="DNF 命令"></a>DNF 命令</h3><ul>
 <li><p>查看 DNF 包管理器版本</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dnf –version</span><br></pre></td></tr></table></figure></li>
 <li><p>查看系统中可用的 DNF 软件库</p>
@@ -5199,11 +5181,93 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dnf reinstall nano</span><br></pre></td></tr></table></figure></li>
 <li><p>回滚某个特定软件的版本</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dnf downgrade acpid</span><br></pre></td></tr></table></figure>
-<h3 id="Ubuntu"><a href="#Ubuntu" class="headerlink" title="Ubuntu"></a>Ubuntu</h3></li>
+<h3 id="IRC"><a href="#IRC" class="headerlink" title="IRC"></a>IRC</h3></li>
+<li><p>运行</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ irssi</span><br></pre></td></tr></table></figure></li>
+<li><p>列出服务器列表</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;network list</span><br></pre></td></tr></table></figure></li>
+<li><p>翻页记录</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pgUP, pgDN</span><br></pre></td></tr></table></figure></li>
+<li><p>添加服务器</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;network add freenode</span><br></pre></td></tr></table></figure></li>
+<li><p>添加服务器地址</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;server add -network freenode irc.freenode.net</span><br></pre></td></tr></table></figure></li>
+<li><p>新建窗口</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;window new</span><br></pre></td></tr></table></figure></li>
+<li><p>隐藏窗口</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;window hide</span><br></pre></td></tr></table></figure></li>
+<li><p>关闭窗口</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;window close</span><br></pre></td></tr></table></figure></li>
+<li><p>关闭指定窗口</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;window close number</span><br></pre></td></tr></table></figure></li>
+<li><p>窗口列表</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;window list</span><br></pre></td></tr></table></figure></li>
+<li><p>连接服务器</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;connect freenode</span><br></pre></td></tr></table></figure></li>
+<li><p>修改昵称，这个昵称就是用户名</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;nick newname</span><br></pre></td></tr></table></figure></li>
+<li><p>注册</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;msg NickServ register password e-mail</span><br></pre></td></tr></table></figure></li>
+<li><p>登陆</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;msg NickServ identify name password</span><br></pre></td></tr></table></figure></li>
+<li><p>服务器信息</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;info</span><br></pre></td></tr></table></figure></li>
+<li><p>查询服务器admin</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;admin</span><br></pre></td></tr></table></figure></li>
+<li><p>服务器统计信息</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;lusers</span><br></pre></td></tr></table></figure></li>
+<li><p>服务器今日统计信息</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;motd</span><br></pre></td></tr></table></figure></li>
+<li><p>解析当前有几个服务器</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;links</span><br></pre></td></tr></table></figure></li>
+<li><p>频道列表</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;list</span><br></pre></td></tr></table></figure></li>
+<li><p>列出当前服务器或指定频道人员名字</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;names centos-social</span><br></pre></td></tr></table></figure></li>
+<li><p>加入频道</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;join centos-social</span><br></pre></td></tr></table></figure></li>
+<li><p>提示频道对话情况</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Act:</span><br></pre></td></tr></table></figure></li>
+<li><p>切换到1-10编号的频道</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Alt+1~0</span><br></pre></td></tr></table></figure></li>
+<li><p>切换到11-20编号的频道</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Alt+q~p</span><br></pre></td></tr></table></figure></li>
+<li><p>切换上/下频道</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Ctrl+n&#x2F;p</span><br></pre></td></tr></table></figure></li>
+<li><p>查看频道所有人</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;who</span><br></pre></td></tr></table></figure></li>
+<li><p>看某人资料</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;whois name</span><br></pre></td></tr></table></figure></li>
+<li><p>查询是否在线</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;ison name</span><br></pre></td></tr></table></figure></li>
+<li><p>向某人说话</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;say name message</span><br></pre></td></tr></table></figure></li>
+<li><p>发动作</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;me action</span><br></pre></td></tr></table></figure></li>
+<li><p>查看name所说的话</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;lastlog name</span><br></pre></td></tr></table></figure></li>
+<li><p>忽略某人聊天内容</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;ignore name</span><br></pre></td></tr></table></figure></li>
+<li><p>向某人发注意消息</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;notice name message</span><br></pre></td></tr></table></figure></li>
+<li><p>向某人发私信</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;msg name message&#x2F;query name message</span><br></pre></td></tr></table></figure></li>
+<li><p>暂时离开</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;away reason</span><br></pre></td></tr></table></figure></li>
+<li><p>解除离开</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;away</span><br></pre></td></tr></table></figure></li>
+<li><p>离开频道</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;wc&#x2F;part centos-social message</span><br></pre></td></tr></table></figure></li>
+<li><p>离开服务器</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;disconnect freenode</span><br></pre></td></tr></table></figure></li>
+<li><p>离开irssi</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;quit&#x2F;exit</span><br></pre></td></tr></table></figure></li>
+<li><p>自动保存聊天内容</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;set autolog on</span><br></pre></td></tr></table></figure>
+<h2 id="Ubuntu"><a href="#Ubuntu" class="headerlink" title="Ubuntu"></a>Ubuntu</h2></li>
 </ul>
 <p>(友邦拓)</p>
-<p><strong>GNOME 使用</strong></p>
-<ul>
+<h3 id="GNOME-使用"><a href="#GNOME-使用" class="headerlink" title="GNOME 使用"></a>GNOME 使用</h3><ul>
 <li><p>Ubuntu 自动下载并安装对你的系统至关重要的安全更新。而这个自动更新经常导致你“无法锁定管理目录”错误(<span class="exturl" data-url="aHR0cHM6Ly9pdHNmb3NzLmNvbS9jb3VsZC1ub3QtZ2V0LWxvY2stZXJyb3IvKSVFMyU4MCU4MiVFNSU5QiVBMCVFNiVBRCVBNCVFOSU4MCU4OSVFNiU4QiVBOQ==">https://itsfoss.com/could-not-get-lock-error/)。因此选择<i class="fa fa-external-link-alt"></i></span> Display immediately。同时把其他 Updates 都改为 Every two weeks，免得烦。</p>
 </li>
 <li><p>Gnome 3 自带自动切换壁纸的功能，选择有时间小图标的壁纸。</p>
@@ -5252,27 +5316,26 @@
 </li>
 </ul>
 <p><span class="exturl" data-url="aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC8xMzgxNTczNDg=">安装完 Ubuntu 20.04 后要做的 16 件事<i class="fa fa-external-link-alt"></i></span></p>
-<p><strong>Ubuntu Software &amp; Update 卡在 cache refresh</strong></p>
-<p>通过 <code>apt update</code> 可以看见是 Connecting to security.ubuntu.com Failed，解决办法是更改 /etc/hosts 文件添加其 IP，可通过 <span class="exturl" data-url="aHR0cHM6Ly93d3cuZWFzeWNvdW50ZXIuY29tLw==">EASYCOUNTER<i class="fa fa-external-link-alt"></i></span> 查找：</p>
+<h3 id="Ubuntu-Software-amp-Update-卡在-cache-refresh"><a href="#Ubuntu-Software-amp-Update-卡在-cache-refresh" class="headerlink" title="Ubuntu Software &amp; Update 卡在 cache refresh"></a>Ubuntu Software &amp; Update 卡在 cache refresh</h3><p>通过 <code>apt update</code> 可以看见是 Connecting to security.ubuntu.com Failed，解决办法是更改 /etc/hosts 文件添加其 IP，可通过 <span class="exturl" data-url="aHR0cHM6Ly93d3cuZWFzeWNvdW50ZXIuY29tLw==">EASYCOUNTER<i class="fa fa-external-link-alt"></i></span> 查找：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># security.ubuntu.com DNS Records91.189.88.142 security.ubuntu.com91.189.88.152 security.ubuntu.com91.189.91.38 security.ubuntu.com91.189.91.39 security.ubuntu.com</span><br></pre></td></tr></table></figure>
-<p><strong>ubuntu下如何获取源码包和源码</strong></p>
-<ul>
+<h3 id="ubuntu下如何获取源码包和源码"><a href="#ubuntu下如何获取源码包和源码" class="headerlink" title="ubuntu下如何获取源码包和源码"></a>ubuntu下如何获取源码包和源码</h3><ul>
 <li><p>在 Software &amp; Updates 中选中 Source code，不要 Reload，因为很慢，在命令行中 update。或者在软件源配置文件 /etc/apt/sources.list 中添加 deb-src 项。</p>
 </li>
 <li><p>获取 xxx 源码包的详细信息</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">apt-cache showsrc xxx</span><br></pre></td></tr></table></figure></li>
 <li><p>获取源码包，并将源码包解压到同名目录</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">apt-get source  xxx </span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">apt-get source  xxx </span><br></pre></td></tr></table></figure>
+<h3 id="Ubuntu-自动切换壁纸"><a href="#Ubuntu-自动切换壁纸" class="headerlink" title="Ubuntu 自动切换壁纸"></a>Ubuntu 自动切换壁纸</h3></li>
+<li><p>安装 Shotwell</p>
+</li>
+<li><p>在侧边栏 Photos 中 Ctrl + A，在菜单栏 File 中选择 Set as Desktop SlideShow…</p>
+</li>
+<li><p>这会把图片复制到 .local/share/shotwell/wallpaper，并在该目录生成 wallpaper.xml，wallpaper.xml 定义自动切换壁纸动画。</p>
+</li>
+<li><p>替代软件 Variety、BingWall 等</p>
+</li>
 </ul>
-<p><strong>Ubuntu 自动切换壁纸</strong></p>
-<ul>
-<li>安装 Shotwell</li>
-<li>在侧边栏 Photos 中 Ctrl + A，在菜单栏 File 中选择 Set as Desktop SlideShow…</li>
-<li>这会把图片复制到 .local/share/shotwell/wallpaper，并在该目录生成 wallpaper.xml，wallpaper.xml 定义自动切换壁纸动画。</li>
-<li>替代软件 Variety、BingWall 等</li>
-</ul>
-<p><strong><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1NvbmdHdTE5OTYvYXJ0aWNsZS9kZXRhaWxzLzg3NzEyNTQ2">Ubuntu 桌面卡死<i class="fa fa-external-link-alt"></i></span></strong></p>
-<ul>
+<h3 id="Ubuntu-桌面卡死"><a href="#Ubuntu-桌面卡死" class="headerlink" title="Ubuntu 桌面卡死"></a><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1NvbmdHdTE5OTYvYXJ0aWNsZS9kZXRhaWxzLzg3NzEyNTQ2">Ubuntu 桌面卡死<i class="fa fa-external-link-alt"></i></span></h3><ul>
 <li><p>选择其他 tty：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pkill Xorg </span><br></pre></td></tr></table></figure>
 <p>pkill 用于杀死一个进程，与 kill 不同的是它会杀死指定名字的所有进程。kill 命令杀死指定进程 PID，需要配合 ps 使用。</p>
@@ -5280,8 +5343,7 @@
 <li><p>安全重启：同时按住 Ctrl 和 Alt 键，按住不要放，按一下 SysRq 键（有的键盘是PrtSc），按一下 R 键，按一下 E 键，依次按下 I , S , U , B 键。</p>
 </li>
 </ul>
-<p><a href="https://blog.csdn.net/u011870280/article/details/80213866"><strong>snap “canonical-livepatch” has “install-snap” change in progress</strong></a></p>
-<p>Snap 包是 Ubuntu 16.04 LTS 发布时引入的新应用格式包。目前已流行在很多 Linux 发行版上。并且可以很方便地安装常用软件，如 VLC、Sublime Text、VSCode、Node、WPS等</p>
+<h3 id="snap-“canonical-livepatch”-has-“install-snap”-change-in-progress"><a href="#snap-“canonical-livepatch”-has-“install-snap”-change-in-progress" class="headerlink" title="snap “canonical-livepatch” has “install-snap” change in progress"></a><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTE4NzAyODAvYXJ0aWNsZS9kZXRhaWxzLzgwMjEzODY2">snap “canonical-livepatch” has “install-snap” change in progress<i class="fa fa-external-link-alt"></i></span></h3><p>Snap 包是 Ubuntu 16.04 LTS 发布时引入的新应用格式包。目前已流行在很多 Linux 发行版上。并且可以很方便地安装常用软件，如 VLC、Sublime Text、VSCode、Node、WPS等</p>
 <p>当你在安装完 Snap 后，你会发现在在根目录下会出现如 /dev/loop0 的挂载点，这些挂载点正是 Snap 软件包的目录。</p>
 <ul>
 <li><p>原因是软件之前安装了一次，只是安装失败。</p>
@@ -5294,11 +5356,9 @@
 <p>Flatpak is designed to install and update “apps”; user-facing software such as video editors, chat programs and more. </p>
 <p>snaps can install anything which contains a kernel, printer drivers, audio subsystems and more. </p>
 <p>Snap and Flatpak are the software behind two universal Linux app stores: the <span class="exturl" data-url="aHR0cHM6Ly9zbmFwY3JhZnQuaW8vc3RvcmU=">Snap Store<i class="fa fa-external-link-alt"></i></span> and <span class="exturl" data-url="aHR0cHM6Ly9mbGF0aHViLm9yZy8=">Flathub<i class="fa fa-external-link-alt"></i></span><em>.</em> </p>
-<p><strong>Ubuntu 系统中使用 Firefox 播放 HTML5 视频</strong></p>
-<p>安装媒体解码器来播放 MP3、MPEG4 和其他格式媒体文件。由于各个国家的版权问题， Ubuntu 在默认情况下不会安装它。</p>
+<h3 id="Ubuntu-系统中使用-Firefox-播放-HTML5-视频"><a href="#Ubuntu-系统中使用-Firefox-播放-HTML5-视频" class="headerlink" title="Ubuntu 系统中使用 Firefox 播放 HTML5 视频"></a>Ubuntu 系统中使用 Firefox 播放 HTML5 视频</h3><p>安装媒体解码器来播放 MP3、MPEG4 和其他格式媒体文件。由于各个国家的版权问题， Ubuntu 在默认情况下不会安装它。</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">apt-get install ubuntu-restricted-extras</span><br></pre></td></tr></table></figure>
-<p><strong>apt 与 apt-get</strong></p>
-<p>Debian 使用一套名为 Advanced Packaging Tool（APT）的工具来管理包系统。在基于 Debian 的 Linux 发行版中，有各种工具可以与 APT 进行交互，以方便用户安装、删除和管理的软件包。apt-get 便是其中一款广受欢迎的命令行工具，但是最常用的命令都被分散在了 apt-get、apt-cache 和 apt-config 这三条命令当中，apt 命令的引入就是为了解决命令过于分散的问题。（简单来说就是：apt = apt-get、apt-cache 和 apt-config 中最常用命令选项的集合）</p>
+<h3 id="apt-与-apt-get-区别"><a href="#apt-与-apt-get-区别" class="headerlink" title="apt 与 apt-get 区别"></a>apt 与 apt-get 区别</h3><p>Debian 使用一套名为 Advanced Packaging Tool（APT）的工具来管理包系统。在基于 Debian 的 Linux 发行版中，有各种工具可以与 APT 进行交互，以方便用户安装、删除和管理的软件包。apt-get 便是其中一款广受欢迎的命令行工具，但是最常用的命令都被分散在了 apt-get、apt-cache 和 apt-config 这三条命令当中，apt 命令的引入就是为了解决命令过于分散的问题。（简单来说就是：apt = apt-get、apt-cache 和 apt-config 中最常用命令选项的集合）</p>
 <table>
 <thead>
 <tr>
@@ -5369,8 +5429,7 @@
 <td align="center">编辑源列表</td>
 </tr>
 </tbody></table>
-<p><strong>Ubuntu Repositories(should enable)</strong></p>
-<ul>
+<h3 id="Ubuntu-Repositories-should-enable"><a href="#Ubuntu-Repositories-should-enable" class="headerlink" title="Ubuntu Repositories(should enable)"></a>Ubuntu Repositories(should enable)</h3><ul>
 <li><p>Main - Canonical-supported free and open-source software.</p>
 </li>
 <li><p>Universe - Community-maintained free and open-source software.</p>
@@ -5383,8 +5442,7 @@
 <p>Repositories/Ubuntu( Repositories/Ubuntu)</p>
 </li>
 </ul>
-<p><strong>Backup And Restore Linux</strong></p>
-<ul>
+<h3 id="Backup-And-Restore-Linux"><a href="#Backup-And-Restore-Linux" class="headerlink" title="Backup And Restore Linux"></a>Backup And Restore Linux</h3><ul>
 <li><p><code>apt-get install timeshift</code></p>
 </li>
 <li><p>Making a backup of your Linux system</p>
@@ -5396,32 +5454,24 @@
 </ul>
 </li>
 </ul>
-<p><strong>Linux 添加 exFAT 支持</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">apt install exfat-fuse exfat-utils</span><br></pre></td></tr></table></figure>
-<p><strong>制作 windows U盘启动盘</strong></p>
-<p>Ubuntu 下安装 WoeUSB</p>
-<p><strong>libguestfs</strong></p>
-<p>libguestfs 支持几乎所有类型的磁盘镜像。</p>
+<h3 id="Linux-添加-exFAT-支持"><a href="#Linux-添加-exFAT-支持" class="headerlink" title="Linux 添加 exFAT 支持"></a>Linux 添加 exFAT 支持</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">apt install exfat-fuse exfat-utils</span><br></pre></td></tr></table></figure>
+<h3 id="制作-windows-U盘启动盘"><a href="#制作-windows-U盘启动盘" class="headerlink" title="制作 windows U盘启动盘"></a>制作 windows U盘启动盘</h3><p>Ubuntu 下安装 WoeUSB</p>
+<h3 id="libguestfs"><a href="#libguestfs" class="headerlink" title="libguestfs"></a>libguestfs</h3><p>libguestfs 支持几乎所有类型的磁盘镜像。</p>
 <p>在基于 Debian 的系统上：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ apt-get install libguestfs-tools</span><br></pre></td></tr></table></figure>
 <p>我们可以像下面这样挂载一个 qcow2 格式的磁盘镜像：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ guestmount -a &#x2F;path&#x2F;to&#x2F;qcow2&#x2F;image -m &lt;device&gt; &#x2F;path&#x2F;to&#x2F;mount&#x2F;point</span><br></pre></td></tr></table></figure>
 <p>要卸载它，则执行：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ guestunmount qcow2_mount_point</span><br></pre></td></tr></table></figure>
-<p><strong>Ubuntu hosts</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># security.ubuntu.com91.189.88.142 security.ubuntu.com91.189.88.152 security.ubuntu.com91.189.91.38 security.ubuntu.com91.189.91.39 security.ubuntu.com# archive.canonical.com91.189.92.150 archive.canonical.com91.189.92.191 archive.canonical.com91.189.91.15 archive.canonical.com# downloads.sourceforge.net216.105.38.13 downloads.sourceforge.net</span><br></pre></td></tr></table></figure>
-<p><strong>oh-my-zsh</strong></p>
-<p>oh-my-zsh应该对通配符作了限制，需要用跳脱字符</p>
+<h3 id="Ubuntu-hosts"><a href="#Ubuntu-hosts" class="headerlink" title="Ubuntu hosts"></a>Ubuntu hosts</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># security.ubuntu.com91.189.88.142 security.ubuntu.com91.189.88.152 security.ubuntu.com91.189.91.38 security.ubuntu.com91.189.91.39 security.ubuntu.com# archive.canonical.com91.189.92.150 archive.canonical.com91.189.92.191 archive.canonical.com91.189.91.15 archive.canonical.com# downloads.sourceforge.net216.105.38.13 downloads.sourceforge.net</span><br></pre></td></tr></table></figure>
+<h3 id="oh-my-zsh"><a href="#oh-my-zsh" class="headerlink" title="oh-my-zsh"></a>oh-my-zsh</h3><p>oh-my-zsh应该对通配符作了限制，需要用跳脱字符</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt remove fcitx\*</span><br></pre></td></tr></table></figure>
-<p><strong>列出所有手动安装软件</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">apt-mark showmanual</span><br></pre></td></tr></table></figure>
-<p><strong>Ubuntu关机异常慢的解决方法</strong></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo vim /etc/systemd/system.conf</span><br></pre></td></tr></table></figure>
+<h3 id="列出所有手动安装软件"><a href="#列出所有手动安装软件" class="headerlink" title="列出所有手动安装软件"></a>列出所有手动安装软件</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">apt-mark showmanual</span><br></pre></td></tr></table></figure>
+<h3 id="Ubuntu关机异常慢的解决方法"><a href="#Ubuntu关机异常慢的解决方法" class="headerlink" title="Ubuntu关机异常慢的解决方法"></a>Ubuntu关机异常慢的解决方法</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo vim /etc/systemd/system.conf</span><br></pre></td></tr></table></figure>
 <p>取消 DefaultTimeoutStopSec 注释并改为更小值。</p>
 <p>最后重新加载服务的配置文件</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo systemctl daemon-reload</span><br></pre></td></tr></table></figure>
-<p><strong><span class="exturl" data-url="aHR0cHM6Ly93d3cuc2lub2NhbGlmZS5jb20vdWJ1bnR1LTIwLTA0LWNoaW5lc2UtaW1lLXNlbGVjdGlvbg==">在Ubuntu Wayland 桌面中使用fictx管理中文输入法<i class="fa fa-external-link-alt"></i></span></strong></p>
-<p>wayland桌面默认不读取/etc/profile中的环境变量，而是从/etc/environment文件中读取，这是导致fcitx不能正常工作的原因。</p>
+<h3 id="在Ubuntu-Wayland-桌面中使用fictx管理中文输入法"><a href="#在Ubuntu-Wayland-桌面中使用fictx管理中文输入法" class="headerlink" title="在Ubuntu Wayland 桌面中使用fictx管理中文输入法"></a><span class="exturl" data-url="aHR0cHM6Ly93d3cuc2lub2NhbGlmZS5jb20vdWJ1bnR1LTIwLTA0LWNoaW5lc2UtaW1lLXNlbGVjdGlvbg==">在Ubuntu Wayland 桌面中使用fictx管理中文输入法<i class="fa fa-external-link-alt"></i></span></h3><p><strong>wayland</strong>桌面默认不读取/etc/profile中的环境变量，而是从/etc/environment文件中读取，这是导致fcitx不能正常工作的原因。</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo vim /etc/environment</span></span><br><span class="line">INPUT_METHOD=fcitx</span><br><span class="line">GTK_IM_MODULE=fcitx</span><br><span class="line">QT_IM_MODULE=fcitx</span><br><span class="line">XMODIFIERS=@im=fcitx</span><br></pre></td></tr></table></figure>
 <ul>
 <li><span class="exturl" data-url="aHR0cHM6Ly9waW55aW4uc29nb3UuY29tL2xpbnV4Lz9yPXBpbnlpbg==">搜狗输入法 for Linux<i class="fa fa-external-link-alt"></i></span></li>
@@ -5430,29 +5480,50 @@
 </ul>
 <p>百度输入法不能安装用于更换皮肤的 fcitx-ui-qimpanel，否则乱码。需要手动安装 fcitx-libs，否则开机不自动启动。</p>
 <p>综上所述，还是使用 sougoupinyin 更简单方便。</p>
-<p><strong>ubuntu 无法关机</strong></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo vim /etc/systemd/system.conf</span></span><br><span class="line">DefaultTimeoutStartSec=5s</span><br><span class="line">DefaultTimeoutStopSec=5s</span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo systemctl reload</span></span><br></pre></td></tr></table></figure>
+<h3 id="ubuntu-无法关机"><a href="#ubuntu-无法关机" class="headerlink" title="ubuntu 无法关机"></a>ubuntu 无法关机</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo vim /etc/systemd/system.conf</span></span><br><span class="line">DefaultTimeoutStartSec=5s</span><br><span class="line">DefaultTimeoutStopSec=5s</span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo systemctl reload</span></span><br></pre></td></tr></table></figure>
 <p><code>DefaultTimeoutStartSec=</code>, <code>DefaultTimeoutStopSec=</code> 设置启动/停止一个单元所允许的最大时长。若仅设置一个整数而没有单位，那么单位是秒。 也可以在整数后面加上时间单位后缀： “ms”(毫秒), “s”(秒), “min”(分钟), “h”(小时), “d”(天), “w”(周) 。 对于 <code>Type=oneshot</code> 类型的 service 单元， 这些选项没有意义(相当于全部被禁用)。 对于其他类型的 service 单元，可以在单元文件中设置 <code>TimeoutStartSec=</code>, <code>TimeoutStopSec=</code>, <code>RestartSec=</code> 以覆盖此处设置的默认值 (参见<span class="exturl" data-url="aHR0cDovL3d3dy5qaW5idWd1by5jb20vc3lzdGVtZC9zeXN0ZW1kLnNlcnZpY2UuaHRtbCM=">systemd.service(5)<i class="fa fa-external-link-alt"></i></span>)。 对于其他非 service 类型的单元， <code>DefaultTimeoutStartSec=</code> 是 <code>TimeoutSec=</code> 的默认值。</p>
 <p>注1：尽量不要使用上面更改。应该在完全清楚自己的更改造成的影响、产生的作用的前提下，做出更改。</p>
 <p>注2：作为桌面操作系统，如果有硬件驱动或其他各种莫名问题，可以尝试升级到最新版本来解决。</p>
-<p><strong><span class="exturl" data-url="aHR0cHM6Ly92aXR1eC5jb20vaG93LXRvLXVwZ3JhZGUtdWJ1bnR1LTIwLTA0LXRvLTIxLTA0Lw==">How to Upgrade Ubuntu<i class="fa fa-external-link-alt"></i></span></strong></p>
-<ul>
+<h3 id="How-to-Upgrade-Ubuntu"><a href="#How-to-Upgrade-Ubuntu" class="headerlink" title="How to Upgrade Ubuntu"></a><span class="exturl" data-url="aHR0cHM6Ly92aXR1eC5jb20vaG93LXRvLXVwZ3JhZGUtdWJ1bnR1LTIwLTA0LXRvLTIxLTA0Lw==">How to Upgrade Ubuntu<i class="fa fa-external-link-alt"></i></span></h3><ul>
 <li>打开 Software Updater 更新软件</li>
 <li>打开 Software &amp; Updates 选择 Updates 栏，在 Notify me of a new Ubuntu Version 中选择 For any new version 。</li>
 <li>打开 Software Updater 更新到新 Ubuntu 版本。</li>
 <li>使用 <code>lsb_release -a</code> 确认 Ubuntu 版本。</li>
 </ul>
-<h3 id="openSUSE"><a href="#openSUSE" class="headerlink" title="openSUSE"></a>openSUSE</h3><p>（/ˌoʊpənˈsuːzə/）</p>
+<h3 id="选择发行版"><a href="#选择发行版" class="headerlink" title="选择发行版"></a>选择发行版</h3><p>根据桌面环境选择发行版，可以到各桌面环境官网下载第一个发行版，像 <span class="exturl" data-url="aHR0cHM6Ly9rZGUub3JnLw==">KDE<i class="fa fa-external-link-alt"></i></span> 第一个是 <span class="exturl" data-url="aHR0cHM6Ly9rdWJ1bnR1Lm9yZy8=">Kbuntu<i class="fa fa-external-link-alt"></i></span>， <span class="exturl" data-url="aHR0cHM6Ly93d3cuZ25vbWUub3JnLw==">GNOME<i class="fa fa-external-link-alt"></i></span> 第一个是 Fedora。</p>
+<p>根据发行版选择桌面环境。比如 Fedora、Ubuntu 等多数都默认为 GNOME，openSUSE 默认 KDE。</p>
+<p>根据实际需求选择。比如公司要求使用 Ubuntu 20.04 LTS 作为开发环境。或者自己喜欢某个系统，比如 FreeBSD。或者学习需要，安装 Arch。</p>
+<p>首先需要明确，我喜欢 deb 包管理，因为许多国有软件官网现成打包多数为 deb 系。其次，我用的时长最多是 Ubuntu。然后，公司要求后端使用的也是 Ubuntu LTS。因此，我嘛，选定了 Ubuntu，当然，是 Ubuntu 整个系列，包括长期支持(LTS)版本、最新版本（ latest version）以及衍生版本（Ubuntu flavours）。</p>
+<p>安装 Ubuntu，最好选择开源的显卡驱动，也就是在安装界面时不要选择第三方软件。在我的笔记本电脑上，开源显卡驱动表现比 Nvidia 驱动要好。</p>
+<p>重新安装电脑时，注意备份一些配置，如 <code>.zshrc</code>、<code>.ssh</code> 目录、自己编写的 <code>.desktop</code> 文件等。</p>
+<h3 id="The-10-Best-Programming-Fonts-for-Developers"><a href="#The-10-Best-Programming-Fonts-for-Developers" class="headerlink" title="The 10 Best Programming Fonts for Developers"></a><span class="exturl" data-url="aHR0cHM6Ly93d3cuZm9zc21pbnQuY29tL2Jlc3QtcHJvZ3JhbW1pbmctZm9udHMv">The 10 Best Programming Fonts for Developers<i class="fa fa-external-link-alt"></i></span></h3><h3 id="Wayland"><a href="#Wayland" class="headerlink" title="Wayland"></a>Wayland</h3><p>X即X11、X Window System，是用于在类UNIX的操作系统上的位图显示的窗口系统，提供了GUI环境的基本框架。X由X.Org Foundation维护，遵守MIT协议，当前参考实现为X.Org Server。在架构方面，X使用了C/S模型，客户端和服务器可以在同一个机器上，也可以在不同的机器上，X作为Server为应用程序这个Client提供显示和I/O服务。</p>
+<img data-src="/2021/03/03/Linux/XServer.png" class="" title="XServer">
+
+<p>Wayland是一个显示服务协议，服务端为Wayland Compositor，把X的X Server和Compositor合二为一，旨在替换X，作为类Unix操作系统上更现代、简介的窗口系统，遵守MIT协议，提供了Wayland Compositor的参考C语言实现Weston。</p>
+<img data-src="/2021/03/03/Linux/Wayland.png" class="" title="Wayland">
+
+<p>时至今日，原本在X Server中做的事很多已被移到kernel或者单独的库中，因此X Server就显得比较累赘了。Wayland在架构上去掉了这个中间层，将compositor作为display server，使client与compositor直接通信，从而在灵活性和性能等方面上能够比前辈更加出色。</p>
+<p>查看是否使用 wayland</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="variable">$XDG_SESSION_TYPE</span></span><br></pre></td></tr></table></figure>
+<h3 id="为什么执行自己的程序要在前面加"><a href="#为什么执行自己的程序要在前面加" class="headerlink" title="为什么执行自己的程序要在前面加./"></a><span class="exturl" data-url="aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC84NTgzMzc2Ng==">为什么执行自己的程序要在前面加./<i class="fa fa-external-link-alt"></i></span></h3><p>shell是如何运行程序的：如果不给出相对路径，或者绝对路径，那么它会经历下面的查找过程。</p>
+<ul>
+<li>alias中查找</li>
+<li>内置命令中查找</li>
+<li>PATH中查找</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> /temp</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> ./ls_bak</span></span><br></pre></td></tr></table></figure>
+<p>等同于</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> /temp/ls_bak</span></span><br></pre></td></tr></table></figure>
+<p>shell通常可以执行两种程序，一种是二进制程序，一种是脚本程序。如果是文本程序，且开头没有指定解释程序，则按照shell脚本处理，如果指定了解释程序，则使用解释程序来解释运行；对于二进制程序，则直接创建新的进程即可。</p>
+<h2 id="openSUSE"><a href="#openSUSE" class="headerlink" title="openSUSE"></a>openSUSE</h2><p>（/ˌoʊpənˈsuːzə/）</p>
 <p>使用了 openSUSE 的 KDE 之后，真是惊喜连连，感觉比 gnome 要方便的多。系统主题，在 gnome 上，要切换主题，还是比较麻烦的；但是在 KDE 上，在系统设置里面可以直接下载主题，一键切换。桌面壁纸，在 gnome 上，我用的都是离线壁纸，通过 shotwell 轮播，而在 KDE 上，可以在 Desktop setting 里面使用每日一图，比如 bing，还有 Unsplash Wallpapers。gnome nautilus 没有创建文件的 menu item，每次都得打开 terminal touch 一下，而 kde dolphin 则不需要。还有很喜欢的 KDE connect。总之还有很多有待探索。</p>
-<p><strong>YaST 系统配置</strong></p>
-<p>YaST 是 <em>Yet another Setup Tool</em>（又一个配置工具）的缩写。YaST 是 openSUSE 和 SUSE Linux 企业版的安装和配置工具。YaST 控制中心是 YaST 配置模块的统一入口。 </p>
+<h3 id="YaST-系统配置"><a href="#YaST-系统配置" class="headerlink" title="YaST 系统配置"></a>YaST 系统配置</h3><p>YaST 是 <em>Yet another Setup Tool</em>（又一个配置工具）的缩写。YaST 是 openSUSE 和 SUSE Linux 企业版的安装和配置工具。YaST 控制中心是 YaST 配置模块的统一入口。 </p>
 <p>区别于 kde 桌面系统配置。</p>
 <p>在 YaST 加入新语言支持时，会自动下载对应的字体与输入法。</p>
-<p><strong>Zypper 包管理器</strong></p>
+<p>Zypper 包管理器</p>
 <p>Zypper 是个命令行形式的软件包管理器，以 libzypp 为处理引擎，提供诸如供应源管理、依赖关系解决和软件包安装等功能。 </p>
 <p>可以直接使用 <code>rpm</code> 命令。</p>
-<p> <strong>装入 NTFS 分区</strong></p>
-<ol>
+<h3 id="装入-NTFS-分区"><a href="#装入-NTFS-分区" class="headerlink" title="装入 NTFS 分区"></a>装入 NTFS 分区</h3><ol>
 <li><p>安装 <code>ntfs-3g</code>。</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo zypper <span class="keyword">in</span> ntfs-3g</span><br></pre></td></tr></table></figure></li>
 <li><p>创建一个要充当安装点的目录，如 <code>~/mounts/windows</code>。    </p>
@@ -5468,12 +5539,12 @@
 <li><p>要卸载资源，请运行 <code>fusermount -u 安装点</code>。  </p>
 </li>
 </ol>
-<p><strong>KDE</strong></p>
-<p>KDE 是一个为桌面和便携式计算机创造自由和开源软件的国际技术团队。由 KDE 开发的 Plasma 是 openSUSE 的默认图形桌面环境。</p>
+<h3 id="KDE"><a href="#KDE" class="headerlink" title="KDE"></a>KDE</h3><p>KDE 是一个为桌面和便携式计算机创造自由和开源软件的国际技术团队。由 KDE 开发的 Plasma 是 openSUSE 的默认图形桌面环境。</p>
 <p>KDE 上游有一份维护良好的 <span class="exturl" data-url="aHR0cHM6Ly91c2VyYmFzZS5rZGUub3JnLw==">UserBase Wiki<i class="fa fa-external-link-alt"></i></span>。大多数 KDE 应用程序的详细信息都可以在那里找到。</p>
 <p>尽量使用自带软件，因为与系统完美整合。比如播放媒体用自带的 VLC，可以通过 kde connect 控制。</p>
-<p><strong>KDE Connect</strong></p>
-<p>KDE Connect 是一款能够方便手机与电脑进行连接的应用。</p>
+<p><span class="exturl" data-url="aHR0cHM6Ly90aW1lbGluZS5rZGUub3JnL3poLWNuLw==">KDE 25 年大事年表<i class="fa fa-external-link-alt"></i></span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly91c2VyYmFzZS5rZGUub3JnL1dlbGNvbWVfdG9fS0RFX1VzZXJCYXNl">KDE UserBase<i class="fa fa-external-link-alt"></i></span></p>
+<h3 id="KDE-Connect"><a href="#KDE-Connect" class="headerlink" title="KDE Connect"></a>KDE Connect</h3><p>KDE Connect 是一款能够方便手机与电脑进行连接的应用。</p>
 <ul>
 <li>文件互传</li>
 <li>共享剪贴板</li>
@@ -5486,14 +5557,12 @@
 </ul>
 <p>默认 kdeconnect 在防火墙那边是没放开的，要操作一下</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo firewall-cmd --zone=public --permanent --add-service=kdeconnect-kdesudo firewall-cmd --reload</span><br></pre></td></tr></table></figure>
-<p><strong>openSUSE 镜像</strong></p>
-<p>我们官方的态度是不鼓励直接使用镜像的。</p>
+<h3 id="openSUSE-镜像"><a href="#openSUSE-镜像" class="headerlink" title="openSUSE 镜像"></a>openSUSE 镜像</h3><p>我们官方的态度是不鼓励直接使用镜像的。</p>
 <p>因为比起「其它」发行版，我们 openSUSE 的技术力量比较强，开发了两个东西。</p>
 <p>一个叫做 Metalink，意思是这个格式（BT、Megalink 磁力链一样的格式）可以自动从 BT/FTP/HTTP 同时下载。</p>
 <p>另一个叫做 MirrorBrain，意思是我把所有的镜像地址隐藏起来，只暴露出一个中央服务器，所有人只需使用这个中央服务器（download.opensuse.org ），它会根据你的 IP 地理位置为你分配一个离你最近的镜像，但是在你那边显示的依旧是来自 download.opensuse.org。而如何分配是根据镜像管理员和中央服务器管理员当初的协定来确定的，比如镜像每月能够承受的流量、所愿意扮演的角色（是区域中心、地标式的镜像比如北交大、中科大，还是小镜像）等。</p>
 <p><span class="exturl" data-url="aHR0cHM6Ly9mb3J1bS5zdXNlLm9yZy5jbi90L29wZW5zdXNlLzE3NTk=">openSUSE 国内镜像汇总<i class="fa fa-external-link-alt"></i></span></p>
-<p><a href="https://cloud.tencent.com/developer/article/1688182"><strong>解决KDE下KDE Wallet重装系统后每次登陆需要输入密码</strong></a></p>
-<p>在每次重装或者配置桌面后<code>kdewallet</code>总是在登陆系统之后提示输入密码，虽然在输入密码后能够继续正常使用，但是每次登陆系统都需要输入一次密码还是很烦人的。</p>
+<h3 id="解决KDE下KDE-Wallet重装系统后每次登陆需要输入密码"><a href="#解决KDE下KDE-Wallet重装系统后每次登陆需要输入密码" class="headerlink" title="解决KDE下KDE Wallet重装系统后每次登陆需要输入密码"></a><span class="exturl" data-url="aHR0cHM6Ly9jbG91ZC50ZW5jZW50LmNvbS9kZXZlbG9wZXIvYXJ0aWNsZS8xNjg4MTgy">解决KDE下KDE Wallet重装系统后每次登陆需要输入密码<i class="fa fa-external-link-alt"></i></span></h3><p>在每次重装或者配置桌面后<code>kdewallet</code>总是在登陆系统之后提示输入密码，虽然在输入密码后能够继续正常使用，但是每次登陆系统都需要输入一次密码还是很烦人的。</p>
 <p>出现的原因：</p>
 <p>在重新配置桌面或者重装系统之后KDE Wallet所需要的一些必备需要依赖组件未能找到，所以导致不能正确运行KDE Wallet，所以只要安装其所需的组件即可。而其所需的但是未能自动安装的依赖组件正是 <code>pam_kwallet</code></p>
 <p>解决方案 ：</p>
@@ -5502,129 +5571,17 @@
 <p>为了保险起见，查看个人目录下是否存在<code>~/.kde4/share/apps/kwallet</code>文件夹，如果存在则将其删除或者重命名以避免出现冲突，并且还需要确定使用的钱包名为<code>kdewallet</code>并且密码为当前用户的密码。</p>
 <p>如此便可完全正常使用<code>KDE Wallet</code></p>
 <p>解决方案参考<code>arch wiki</code>的<span class="exturl" data-url="aHR0cHM6Ly93aWtpLmFyY2hsaW51eC5vcmcvaW5kZXgucGhwP3RpdGxlPUtERV9XYWxsZXRfKCVFNyVBRSU4MCVFNCVCRCU5MyVFNCVCOCVBRCVFNiU5NiU4Nykmb2xkaWQ9NTcwODcw">KDE Wallet<i class="fa fa-external-link-alt"></i></span>小节中。</p>
-<p><a href="https://zh.opensuse.org/%E8%A7%A3%E7%A0%81%E5%99%A8#.E9.80.9A.E8.BF.87_Packman_.E5.AE.89.E8.A3.85.E8.A7.A3.E7.A0.81.E5.99.A8"><strong>通过 Packman 安装解码器</strong></a></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">zypper ar -cfp 90 <span class="string">&#x27;https://mirrors.ustc.edu.cn/packman/suse/openSUSE_Leap_$releasever&#x27;</span> packman-essentials</span><br><span class="line"></span><br><span class="line">sudo zypper refresh</span><br><span class="line"></span><br><span class="line">sudo zypper dist-upgrade --from packman-essentials --allow-vendor-change</span><br><span class="line"></span><br><span class="line">sudo zypper install --from packman-essentials ffmpeg gstreamer-plugins-&#123;good,bad,ugly,libav&#125; libavcodec-full vlc-codecs</span><br></pre></td></tr></table></figure>
-<p><strong>M17N 源</strong></p>
-<p>即多语言支持源，<span class="exturl" data-url="aHR0cDovL2Rvd25sb2FkLm9wZW5zdXNlLm9yZy9yZXBvc2l0b3JpZXMvTTE3Ti8lRTMlODAlODI=">http://download.opensuse.org/repositories/M17N/。<i class="fa fa-external-link-alt"></i></span></p>
+<h3 id="通过-Packman-安装解码器"><a href="#通过-Packman-安装解码器" class="headerlink" title="通过 Packman 安装解码器"></a><span class="exturl" data-url="aHR0cHM6Ly96aC5vcGVuc3VzZS5vcmcvJUU4JUE3JUEzJUU3JUEwJTgxJUU1JTk5JUE4Iy5FOS44MC45QS5FOC5CRi44N19QYWNrbWFuXy5FNS5BRS44OS5FOC5BMy44NS5FOC5BNy5BMy5FNy5BMC44MS5FNS45OS5BOA==">通过 Packman 安装解码器<i class="fa fa-external-link-alt"></i></span></h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">zypper ar -cfp 90 <span class="string">&#x27;https://mirrors.ustc.edu.cn/packman/suse/openSUSE_Leap_$releasever&#x27;</span> packman-essentials</span><br><span class="line"></span><br><span class="line">sudo zypper refresh</span><br><span class="line"></span><br><span class="line">sudo zypper dist-upgrade --from packman-essentials --allow-vendor-change</span><br><span class="line"></span><br><span class="line">sudo zypper install --from packman-essentials ffmpeg gstreamer-plugins-&#123;good,bad,ugly,libav&#125; libavcodec-full vlc-codecs</span><br></pre></td></tr></table></figure>
+<h3 id="M17N-源"><a href="#M17N-源" class="headerlink" title="M17N 源"></a>M17N 源</h3><p>即多语言支持源，<span class="exturl" data-url="aHR0cDovL2Rvd25sb2FkLm9wZW5zdXNlLm9yZy9yZXBvc2l0b3JpZXMvTTE3Ti8lRTMlODAlODI=">http://download.opensuse.org/repositories/M17N/。<i class="fa fa-external-link-alt"></i></span></p>
 <p><span class="exturl" data-url="aHR0cHM6Ly93d3cuamlhbnNodS5jb20vcC9jNjg4MTQyODIyZWQ=">为OpenSUSE安装搜狗输入法<i class="fa fa-external-link-alt"></i></span></p>
-<p><strong>Libpinyin</strong></p>
-<p>Fcitx 的 Libpinyin 可以直接在线导入<span class="exturl" data-url="aHR0cDovL3Bpbnlpbi5zb2dvdS5jb20vZGljdC8=">搜狗细胞词库<i class="fa fa-external-link-alt"></i></span>。完全不需要安装sougou输入法，或者使用默认准确度极其低的输入法了。</p>
+<h3 id="Libpinyin"><a href="#Libpinyin" class="headerlink" title="Libpinyin"></a>Libpinyin</h3><p>Fcitx 的 Libpinyin 可以直接在线导入<span class="exturl" data-url="aHR0cDovL3Bpbnlpbi5zb2dvdS5jb20vZGljdC8=">搜狗细胞词库<i class="fa fa-external-link-alt"></i></span>。完全不需要安装sougou输入法，或者使用默认准确度极其低的输入法了。</p>
 <p>需要安装 fcitx-pinyin-tools/fcitx-table-tools 这两个包，以<span class="exturl" data-url="aHR0cHM6Ly9mb3J1bS5zdXNlLm9yZy5jbi90L2xpYnBpbnlpbi8zODE0LzI=">添加处理词库的工具<i class="fa fa-external-link-alt"></i></span>。</p>
-<p><a href="https://askubuntu.com/questions/1173618/how-to-make-kde-plasma-taskbar-panel-transparent"><strong>任务栏透明化</strong></a></p>
-<p>Go to <em>System Settings | Window Management | Window Rules</em>. Press New… button. Give some description to the new rule, <code>Dock Transparency</code>, for example. Then select only <code>Dock (panel)</code> in “Window type” field.</p>
+<h3 id="任务栏透明化"><a href="#任务栏透明化" class="headerlink" title="任务栏透明化"></a><a href="https://askubuntu.com/questions/1173618/how-to-make-kde-plasma-taskbar-panel-transparent"><strong>任务栏透明化</strong></a></h3><p>Go to <em>System Settings | Window Management | Window Rules</em>. Press New… button. Give some description to the new rule, <code>Dock Transparency</code>, for example. Then select only <code>Dock (panel)</code> in “Window type” field.</p>
 <p>之后在 Appearance &amp; Fixes 中调整 opacity。</p>
-<p><a href="https://forum.suse.org.cn/t/topic/13464/46"><strong>禁用 Discover 与 自带的更新功能</strong></a></p>
-<p>禁用桌面自带的更新功能，就是 KDE 任务栏上的那个小箭头，这个用的是 packagekit，和 zypper 有冲突，会导致 zypper 无法启动，用 discover 安装程序也有这个问题。</p>
+<h3 id="禁用-Discover-与-自带的更新功能"><a href="#禁用-Discover-与-自带的更新功能" class="headerlink" title="禁用 Discover 与 自带的更新功能"></a><span class="exturl" data-url="aHR0cHM6Ly9mb3J1bS5zdXNlLm9yZy5jbi90L3RvcGljLzEzNDY0LzQ2">禁用 Discover 与 自带的更新功能<i class="fa fa-external-link-alt"></i></span></h3><p>禁用桌面自带的更新功能，就是 KDE 任务栏上的那个小箭头，这个用的是 packagekit，和 zypper 有冲突，会导致 zypper 无法启动，用 discover 安装程序也有这个问题。</p>
 <p>方案一：把 discover 和 packagekit 的所有相关的包都删掉就行了。</p>
 <p>方案二：关闭自带的更新功能通知，不使用这些，只使用zypper和YaST</p>
 <p>更新的话，最好用命令行。登录界面出现后按 ctrl+alt+f1，然后用 root 登录，运行 zypper up。</p>
-<h3 id="IRC"><a href="#IRC" class="headerlink" title="IRC"></a>IRC</h3><ul>
-<li><p>运行</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ irssi</span><br></pre></td></tr></table></figure></li>
-<li><p>列出服务器列表</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;network list</span><br></pre></td></tr></table></figure></li>
-<li><p>翻页记录</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pgUP, pgDN</span><br></pre></td></tr></table></figure></li>
-<li><p>添加服务器</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;network add freenode</span><br></pre></td></tr></table></figure></li>
-<li><p>添加服务器地址</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;server add -network freenode irc.freenode.net</span><br></pre></td></tr></table></figure></li>
-<li><p>新建窗口</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;window new</span><br></pre></td></tr></table></figure></li>
-<li><p>隐藏窗口</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;window hide</span><br></pre></td></tr></table></figure></li>
-<li><p>关闭窗口</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;window close</span><br></pre></td></tr></table></figure></li>
-<li><p>关闭指定窗口</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;window close number</span><br></pre></td></tr></table></figure></li>
-<li><p>窗口列表</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;window list</span><br></pre></td></tr></table></figure></li>
-<li><p>连接服务器</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;connect freenode</span><br></pre></td></tr></table></figure></li>
-<li><p>修改昵称，这个昵称就是用户名</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;nick newname</span><br></pre></td></tr></table></figure></li>
-<li><p>注册</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;msg NickServ register password e-mail</span><br></pre></td></tr></table></figure></li>
-<li><p>登陆</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;msg NickServ identify name password</span><br></pre></td></tr></table></figure></li>
-<li><p>服务器信息</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;info</span><br></pre></td></tr></table></figure></li>
-<li><p>查询服务器admin</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;admin</span><br></pre></td></tr></table></figure></li>
-<li><p>服务器统计信息</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;lusers</span><br></pre></td></tr></table></figure></li>
-<li><p>服务器今日统计信息</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;motd</span><br></pre></td></tr></table></figure></li>
-<li><p>解析当前有几个服务器</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;links</span><br></pre></td></tr></table></figure></li>
-<li><p>频道列表</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;list</span><br></pre></td></tr></table></figure></li>
-<li><p>列出当前服务器或指定频道人员名字</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;names centos-social</span><br></pre></td></tr></table></figure></li>
-<li><p>加入频道</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;join centos-social</span><br></pre></td></tr></table></figure></li>
-<li><p>提示频道对话情况</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Act:</span><br></pre></td></tr></table></figure></li>
-<li><p>切换到1-10编号的频道</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Alt+1~0</span><br></pre></td></tr></table></figure></li>
-<li><p>切换到11-20编号的频道</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Alt+q~p</span><br></pre></td></tr></table></figure></li>
-<li><p>切换上/下频道</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Ctrl+n&#x2F;p</span><br></pre></td></tr></table></figure></li>
-<li><p>查看频道所有人</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;who</span><br></pre></td></tr></table></figure></li>
-<li><p>看某人资料</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;whois name</span><br></pre></td></tr></table></figure></li>
-<li><p>查询是否在线</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;ison name</span><br></pre></td></tr></table></figure></li>
-<li><p>向某人说话</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;say name message</span><br></pre></td></tr></table></figure></li>
-<li><p>发动作</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;me action</span><br></pre></td></tr></table></figure></li>
-<li><p>查看name所说的话</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;lastlog name</span><br></pre></td></tr></table></figure></li>
-<li><p>忽略某人聊天内容</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;ignore name</span><br></pre></td></tr></table></figure></li>
-<li><p>向某人发注意消息</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;notice name message</span><br></pre></td></tr></table></figure></li>
-<li><p>向某人发私信</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;msg name message</span><br><span class="line">&#x2F;query name message</span><br></pre></td></tr></table></figure></li>
-<li><p>暂时离开</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;away reason</span><br></pre></td></tr></table></figure></li>
-<li><p>解除离开</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;away</span><br></pre></td></tr></table></figure></li>
-<li><p>离开频道</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;wc&#x2F;part centos-social message</span><br></pre></td></tr></table></figure></li>
-<li><p>离开服务器</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;disconnect freenode</span><br></pre></td></tr></table></figure></li>
-<li><p>离开irssi</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;quit</span><br><span class="line">&#x2F;exit</span><br></pre></td></tr></table></figure></li>
-<li><p>自动保存聊天内容</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;set autolog on</span><br></pre></td></tr></table></figure>
-<h3 id="Others"><a href="#Others" class="headerlink" title="Others"></a>Others</h3></li>
-</ul>
-<p><a href="https://www.fossmint.com/best-programming-fonts/"><strong>The 10 Best Programming Fonts for Developers</strong></a></p>
-<p><strong>Wayland</strong></p>
-<p>X即X11、X Window System，是用于在类UNIX的操作系统上的位图显示的窗口系统，提供了GUI环境的基本框架。X由X.Org Foundation维护，遵守MIT协议，当前参考实现为X.Org Server。在架构方面，X使用了C/S模型，客户端和服务器可以在同一个机器上，也可以在不同的机器上，X作为Server为应用程序这个Client提供显示和I/O服务。</p>
-<img data-src="/2021/03/03/Linux/XServer.png" class="" title="XServer">
-
-<p>Wayland是一个显示服务协议，服务端为Wayland Compositor，把X的X Server和Compositor合二为一，旨在替换X，作为类Unix操作系统上更现代、简介的窗口系统，遵守MIT协议，提供了Wayland Compositor的参考C语言实现Weston。</p>
-<img data-src="/2021/03/03/Linux/Wayland.png" class="" title="Wayland">
-
-<p>时至今日，原本在X Server中做的事很多已被移到kernel或者单独的库中，因此X Server就显得比较累赘了。Wayland在架构上去掉了这个中间层，将compositor作为display server，使client与compositor直接通信，从而在灵活性和性能等方面上能够比前辈更加出色。</p>
-<p>查看是否使用 wayland</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="variable">$XDG_SESSION_TYPE</span></span><br></pre></td></tr></table></figure>
-<p><strong><span class="exturl" data-url="aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC84NTgzMzc2Ng==">为什么执行自己的程序要在前面加./<i class="fa fa-external-link-alt"></i></span></strong></p>
-<p>shell是如何运行程序的：如果不给出相对路径，或者绝对路径，那么它会经历下面的查找过程。</p>
-<ul>
-<li>alias中查找</li>
-<li>内置命令中查找</li>
-<li>PATH中查找</li>
-</ul>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">$ cd /temp</span><br><span class="line">$ ./ls_bak</span><br></pre></td></tr></table></figure>
-<p>等同于</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">$ /temp/ls_bak</span><br></pre></td></tr></table></figure>
-<p>shell通常可以执行两种程序，一种是二进制程序，一种是脚本程序。如果是文本程序，且开头没有指定解释程序，则按照shell脚本处理，如果指定了解释程序，则使用解释程序来解释运行；对于二进制程序，则直接创建新的进程即可。</p>
 ]]></content>
       <tags>
         <tag>Unix-like</tag>
